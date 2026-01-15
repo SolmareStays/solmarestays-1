@@ -41,7 +41,7 @@ export function PropertiesSection() {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="text-center mt-12"
         >
-          <Button variant="hero" size="lg" asChild>
+          <Button variant="outline" size="lg" className="px-8" asChild>
             <Link to="/collection">View All Properties</Link>
           </Button>
         </motion.div>

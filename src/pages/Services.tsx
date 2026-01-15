@@ -51,10 +51,10 @@ const localPartners = [
 const ServicesPage = () => {
   const heroRef = useRef(null);
   const isHeroInView = useInView(heroRef, { once: true });
-  
+
   const servicesRef = useRef(null);
   const isServicesInView = useInView(servicesRef, { once: true, margin: '-100px' });
-  
+
   const partnersRef = useRef(null);
   const isPartnersInView = useInView(partnersRef, { once: true, margin: '-100px' });
 
@@ -63,7 +63,8 @@ const ServicesPage = () => {
       <Header />
       <main>
         {/* Hero Section - Full Screen */}
-        <section ref={heroRef} className="relative min-h-[80vh] flex items-center">
+        {/* Hero Section - Full Screen */}
+        <section ref={heroRef} className="relative h-screen min-h-[600px] flex items-center overflow-hidden">
           <div className="absolute inset-0">
             <motion.img
               src={servicesHeroImage}
@@ -73,25 +74,25 @@ const ServicesPage = () => {
               animate={{ scale: 1 }}
               transition={{ duration: 1.5, ease: "easeOut" }}
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-foreground/80 via-foreground/50 to-transparent" />
           </div>
-          
-          <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
+
+          {/* Content Box */}
+          <div className="absolute bottom-0 left-0 w-full md:w-[600px] lg:w-[700px] bg-white pt-12 pb-10 pr-12 pl-4 md:pl-8 lg:pl-16 rounded-tr-[3rem]">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+              initial={{ opacity: 0, x: -30 }}
+              animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8 }}
-              className="max-w-2xl text-white"
+              className="max-w-xl"
             >
-              <span className="inline-block text-gold font-medium mb-4">Services & Partners</span>
-              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-6">
+              <span className="inline-block text-sm font-semibold tracking-widest text-muted-foreground uppercase mb-4">Services & Partners</span>
+              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight text-foreground mb-6">
                 Excellence in Every Detail
               </h1>
-              <p className="text-lg text-white/90 leading-relaxed mb-8">
-                From immaculate cleaning to curated local experiences, we partner with the 
+              <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+                From immaculate cleaning to curated local experiences, we partner with the
                 best to deliver exceptional stays for every guest.
               </p>
-              <Button variant="hero" size="xl" className="bg-white text-foreground hover:bg-white/90" asChild>
+              <Button variant="default" size="xl" asChild>
                 <Link to="/contact">Work With Us</Link>
               </Button>
             </motion.div>
@@ -153,7 +154,7 @@ const ServicesPage = () => {
                 Local Partners
               </h2>
               <p className="text-muted-foreground text-lg">
-                We've built relationships with the best local businesses to enhance your 
+                We've built relationships with the best local businesses to enhance your
                 Central Coast experience.
               </p>
             </motion.div>
@@ -209,7 +210,7 @@ const ServicesPage = () => {
                 Interested in Partnering?
               </h2>
               <p className="text-muted-foreground text-lg mb-8">
-                We're always looking to connect with local businesses that share our commitment 
+                We're always looking to connect with local businesses that share our commitment
                 to quality and exceptional experiences.
               </p>
               <Button variant="hero" size="xl" asChild>

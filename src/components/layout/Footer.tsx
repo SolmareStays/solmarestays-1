@@ -8,25 +8,30 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link to="/" className="flex items-center gap-2 mb-4">
-              <svg
-                viewBox="0 0 48 48"
-                className="w-10 h-10 text-primary-foreground"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-              >
-                <circle cx="24" cy="16" r="8" />
-                <path d="M8 28 C16 24, 32 24, 40 28" />
-                <path d="M6 34 C12 31, 18 37, 24 34 C30 31, 36 37, 42 34" />
-                <path d="M6 40 C12 37, 18 43, 24 40 C30 37, 36 43, 42 40" />
-              </svg>
-              <div className="flex flex-col leading-tight">
-                <span className="font-serif text-xl font-semibold tracking-wide">
+            <Link to="/" className="flex flex-col items-start gap-1 mb-6 group">
+              <div className="relative mb-2">
+                <svg
+                  viewBox="0 0 48 48"
+                  className="w-10 h-10 md:w-12 md:h-12 text-primary-foreground transition-transform duration-300 group-hover:scale-105"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.2"
+                >
+                   {/* Sun centered */}
+                   <circle cx="24" cy="18" r="7" />
+                   {/* Waves below */}
+                   <path d="M10 32 C16 30, 22 34, 28 32 C34 30, 40 34, 46 32" strokeLinecap="round" />
+                   <path d="M10 38 C16 36, 22 40, 28 38 C34 36, 40 40, 46 38" strokeLinecap="round" />
+                   {/* Circle container */}
+                   <circle cx="24" cy="24" r="22" strokeWidth="1" />
+                </svg>
+              </div>
+              <div className="flex flex-col leading-none">
+                <span className="font-serif text-xl font-semibold tracking-wider text-primary-foreground">
                   SOLMARÉ
                 </span>
-                <span className="text-xs tracking-[0.25em] opacity-70 uppercase">
-                  Stays
+                <span className="text-[10px] tracking-[0.3em] opacity-70 uppercase mt-1">
+                  STAYS
                 </span>
               </div>
             </Link>

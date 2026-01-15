@@ -35,7 +35,7 @@ export function CTASection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl opacity-90 mb-8"
           >
-            Book your stay directly with us and experience the best of California's Central Coast. 
+            Book your stay directly with us and experience the best of California's Central Coast.
             Skip the fees, get personalized service, and enjoy exclusive local perks.
           </motion.p>
           <motion.div
@@ -44,18 +44,18 @@ export function CTASection() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="flex flex-wrap justify-center gap-4"
           >
-            <Button 
-              variant="hero-outline" 
-              size="xl" 
-              className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
+            <Button
+              variant="outline"
+              size="xl"
+              className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary rounded-md"
               asChild
             >
               <Link to="/collection">Browse Properties</Link>
             </Button>
-            <Button 
-              variant="default" 
-              size="xl" 
-              className="bg-primary-foreground text-primary hover:bg-primary-foreground/90"
+            <Button
+              variant="secondary"
+              size="xl"
+              className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 rounded-md"
               asChild
             >
               <Link to="/contact">Get In Touch</Link>

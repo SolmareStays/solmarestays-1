@@ -52,12 +52,12 @@ const PropertyDetailPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main className="pt-20">
+      <main className="pt-32 md:pt-36">
         {/* Back Navigation */}
         <section className="py-4 bg-secondary">
           <div className="container mx-auto px-4 md:px-6 lg:px-8">
-            <Link 
-              to="/collection" 
+            <Link
+              to="/collection"
               className="inline-flex items-center text-muted-foreground hover:text-primary transition-colors group"
             >
               <ChevronLeft className="w-4 h-4 mr-1 group-hover:-translate-x-1 transition-transform" />
@@ -95,28 +95,28 @@ const PropertyDetailPage = () => {
                   {property.name}
                 </h1>
                 <div className="flex flex-wrap gap-6 text-muted-foreground">
-                  <motion.span 
+                  <motion.span
                     whileHover={{ scale: 1.05 }}
                     className="flex items-center gap-2 bg-secondary px-4 py-2 rounded-full"
                   >
                     <MapPin className="w-4 h-4 text-ocean" />
                     {property.location}
                   </motion.span>
-                  <motion.span 
+                  <motion.span
                     whileHover={{ scale: 1.05 }}
                     className="flex items-center gap-2 bg-secondary px-4 py-2 rounded-full"
                   >
                     <BedDouble className="w-4 h-4 text-ocean" />
                     {property.bedrooms > 0 ? `${property.bedrooms} Bedroom${property.bedrooms > 1 ? 's' : ''}` : 'Studio'}
                   </motion.span>
-                  <motion.span 
+                  <motion.span
                     whileHover={{ scale: 1.05 }}
                     className="flex items-center gap-2 bg-secondary px-4 py-2 rounded-full"
                   >
                     <Bath className="w-4 h-4 text-ocean" />
                     {property.bathrooms} Bath{property.bathrooms > 1 ? 's' : ''}
                   </motion.span>
-                  <motion.span 
+                  <motion.span
                     whileHover={{ scale: 1.05 }}
                     className="flex items-center gap-2 bg-secondary px-4 py-2 rounded-full"
                   >
@@ -155,9 +155,9 @@ const PropertyDetailPage = () => {
                     {property.description}
                   </p>
                   <p className="text-muted-foreground leading-relaxed text-lg mt-4">
-                    Experience the best of California's Central Coast from this perfectly located retreat. 
-                    Whether you're seeking relaxation or adventure, this property offers the ideal base 
-                    for your coastal getaway. Wake up to ocean breezes, explore nearby beaches, or 
+                    Experience the best of California's Central Coast from this perfectly located retreat.
+                    Whether you're seeking relaxation or adventure, this property offers the ideal base
+                    for your coastal getaway. Wake up to ocean breezes, explore nearby beaches, or
                     venture to world-renowned wineries just a short drive away.
                   </p>
                 </motion.div>
@@ -176,8 +176,8 @@ const PropertyDetailPage = () => {
                     {property.amenities.map((amenity, index) => {
                       const Icon = getAmenityIcon(amenity);
                       return (
-                        <motion.div 
-                          key={amenity} 
+                        <motion.div
+                          key={amenity}
                           initial={{ opacity: 0, x: -20 }}
                           animate={isAmenitiesInView ? { opacity: 1, x: 0 } : {}}
                           transition={{ duration: 0.4, delay: index * 0.08 }}
@@ -205,8 +205,8 @@ const PropertyDetailPage = () => {
                     Location
                   </h2>
                   <p className="text-muted-foreground leading-relaxed mb-6">
-                    Located in {property.location}, California's Central Coast. Close to beaches, 
-                    wine tasting, hiking trails, and local dining. Perfect for exploring the 
+                    Located in {property.location}, California's Central Coast. Close to beaches,
+                    wine tasting, hiking trails, and local dining. Perfect for exploring the
                     best of SLO County.
                   </p>
                   <div className="rounded-xl overflow-hidden h-[300px] shadow-soft">
@@ -236,7 +236,7 @@ const PropertyDetailPage = () => {
         {/* Other Properties */}
         <section className="section-padding bg-secondary">
           <div className="container mx-auto px-4 md:px-6 lg:px-8">
-            <motion.h2 
+            <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

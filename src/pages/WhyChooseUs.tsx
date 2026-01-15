@@ -75,10 +75,10 @@ function ParallaxImage({ src, alt, className }: { src: string; alt: string; clas
 const WhyChooseUsPage = () => {
   const heroRef = useRef(null);
   const isHeroInView = useInView(heroRef, { once: true });
-  
+
   const valuesRef = useRef(null);
   const isValuesInView = useInView(valuesRef, { once: true, margin: '-100px' });
-  
+
   const testimonialsRef = useRef(null);
   const isTestimonialsInView = useInView(testimonialsRef, { once: true, margin: '-100px' });
 
@@ -87,7 +87,8 @@ const WhyChooseUsPage = () => {
       <Header />
       <main>
         {/* Hero Section - Full Screen with Image */}
-        <section ref={heroRef} className="relative min-h-screen flex items-center">
+        {/* Hero Section - Full Screen */}
+        <section ref={heroRef} className="relative h-screen min-h-[600px] flex items-center overflow-hidden">
           <div className="absolute inset-0">
             <motion.img
               src={aboutHeroImage}
@@ -97,47 +98,37 @@ const WhyChooseUsPage = () => {
               animate={{ scale: 1 }}
               transition={{ duration: 1.5, ease: "easeOut" }}
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-foreground/70 via-foreground/40 to-transparent" />
           </div>
-          
-          <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
+
+          {/* Content Box */}
+          <div className="absolute bottom-0 left-0 w-full md:w-[600px] lg:w-[700px] bg-white pt-12 pb-10 pr-12 pl-4 md:pl-8 lg:pl-16 rounded-tr-[3rem]">
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
+              initial={{ opacity: 0, x: -30 }}
               animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8 }}
-              className="max-w-2xl text-white"
+              className="max-w-xl"
             >
-              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-6">
+              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight text-foreground mb-6">
                 Refined Rentals.<br />
                 Trusted Management.<br />
                 <span className="text-gold">Coastal Living, Curated.</span>
               </h1>
-              <p className="text-lg text-white/90 leading-relaxed mb-6">
-                Welcome to Solmaré Stays, where elevated living meets the spirit of the California Coast. 
-                Our story is rooted in a passion for hospitality, thoughtful design, and creating 
+              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                Welcome to Solmaré Stays, where elevated living meets the spirit of the California Coast.
+                Our story is rooted in a passion for hospitality, thoughtful design, and creating
                 unforgettable experiences.
               </p>
-              <p className="text-white/80 leading-relaxed mb-8">
-                At Solmaré Stays, we do more than manage properties—we craft stays that inspire. 
-                Every home is hand-selected for its character, comfort, and location, and every 
-                detail is handled with care.
+              <p className="text-muted-foreground leading-relaxed mb-8">
+                At Solmaré Stays, we do more than manage properties—we craft stays that inspire.
+                Every home is hand-selected for its character, comfort, and location.
               </p>
-              <Button variant="hero" size="lg" asChild>
-                <Link to="/collection">Explore Our Properties</Link>
-              </Button>
+              <div className="flex flex-wrap gap-4">
+                <Button variant="default" size="xl" asChild>
+                  <Link to="/collection">Explore Our Properties</Link>
+                </Button>
+              </div>
             </motion.div>
           </div>
-          
-          {/* Floating accent card */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="absolute bottom-12 right-12 bg-white/95 backdrop-blur-sm text-foreground p-6 rounded-xl shadow-elevated hidden lg:block"
-          >
-            <span className="font-serif text-3xl font-bold block text-primary">10+</span>
-            <span className="text-sm text-muted-foreground">Curated Properties</span>
-          </motion.div>
         </section>
 
         {/* More Than a Place to Stay */}
@@ -166,7 +157,7 @@ const WhyChooseUsPage = () => {
                   transition={{ duration: 0.8, delay: 0.2 }}
                   className="text-xl text-muted-foreground italic mb-8"
                 >
-                  We design homes that feel like they were made for <em>you</em>. Our guests choose 
+                  We design homes that feel like they were made for <em>you</em>. Our guests choose
                   Solmaré for more than convenience — they come for serenity, setting, and style.
                 </motion.p>
               </div>
@@ -174,44 +165,56 @@ const WhyChooseUsPage = () => {
           </div>
         </section>
 
-        {/* Our Values */}
-        <section ref={valuesRef} className="section-padding bg-background">
+        {/* Our Values - Stacking Cards */}
+        <section ref={valuesRef} className="section-padding bg-background relative">
           <div className="container mx-auto px-4 md:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={isValuesInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8 }}
-              className="text-center max-w-2xl mx-auto mb-16"
-            >
-              <h2 className="font-serif text-4xl md:text-5xl font-semibold text-foreground mb-4">
-                Our Values
-              </h2>
-              <p className="text-muted-foreground text-lg">
-                The principles that guide every decision we make.
-              </p>
-            </motion.div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {values.map((value, index) => (
+              {/* Left Content - Sticky */}
+              <div className="lg:sticky lg:top-32 h-fit mb-12 lg:mb-0">
                 <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={isValuesInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: index * 0.15 }}
-                  whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                  className="bg-card p-8 rounded-xl shadow-soft hover:shadow-elevated transition-shadow duration-300 text-center group"
+                  initial={{ opacity: 0, x: -50 }}
+                  animate={isValuesInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.8 }}
                 >
-                  <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-ocean/10 flex items-center justify-center group-hover:bg-ocean/20 transition-colors duration-300">
-                    <value.icon className="w-8 h-8 text-ocean" />
-                  </div>
-                  <h3 className="font-serif text-xl font-semibold text-foreground mb-3">
-                    {value.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    {value.description}
+                  <h2 className="font-serif text-3xl md:text-5xl font-semibold text-foreground mb-6 leading-tight">
+                    Our Values
+                  </h2>
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+                    The principles that guide every decision we make. At Solmaré Stays,
+                    we are dedicated to excellence, integrity, and crafting experiences
+                    that linger in memory.
                   </p>
                 </motion.div>
-              ))}
+              </div>
+
+              {/* Right Values - Stacking Cards */}
+              <div className="relative flex flex-col gap-8 pb-12">
+                {values.map((value, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={isValuesInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+                    className="bg-card p-8 md:p-12 rounded-3xl shadow-lg border border-border/50 sticky top-24 lg:top-32 min-h-[250px] flex flex-col justify-center"
+                  >
+                    <div className="flex items-start gap-6">
+                      <div className="w-14 h-14 rounded-full bg-ocean/10 flex items-center justify-center shrink-0">
+                        <value.icon className="w-7 h-7 text-ocean" />
+                      </div>
+                      <div>
+                        <h3 className="font-serif text-2xl md:text-3xl font-semibold text-foreground mb-4">
+                          {value.title}
+                        </h3>
+                        <p className="text-muted-foreground text-lg leading-relaxed">
+                          {value.description}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
             </div>
           </div>
         </section>
@@ -229,7 +232,7 @@ const WhyChooseUsPage = () => {
                 Moments at Solmaré
               </h2>
               <p className="text-primary-foreground/80 text-lg max-w-2xl mx-auto">
-                At Solmaré Stays, we don't just offer homes — we create experiences. 
+                At Solmaré Stays, we don't just offer homes — we create experiences.
                 Here's how our guests describe their time by the sea.
               </p>
             </motion.div>
