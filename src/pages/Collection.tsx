@@ -3,13 +3,15 @@ import { useState } from 'react';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { PropertyCard } from '@/components/properties/PropertyCard';
-import { properties } from '@/data/properties';
+import { useProperties } from '@/hooks/useProperties';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 const CollectionPage = () => {
   const [locationFilter, setLocationFilter] = useState<string>('all');
   const [typeFilter, setTypeFilter] = useState<string>('all');
   const [sleepsFilter, setSleepsFilter] = useState<string>('all');
+
+  const { data: properties = [], isLoading, error } = useProperties();
 
   const filteredProperties = properties.filter((property) => {
     if (locationFilter !== 'all' && property.location !== locationFilter) return false;
@@ -93,7 +95,23 @@ const CollectionPage = () => {
         {/* Properties Grid */}
         <section className="section-padding">
           <div className="container mx-auto px-4 md:px-6 lg:px-8">
-            {filteredProperties.length > 0 ? (
+            {isLoading ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {[...Array(6)].map((_, i) => (
+                  <div key={i} className="animate-pulse">
+                    <div className="aspect-[4/3] rounded-xl bg-muted mb-4" />
+                    <div className="h-6 bg-muted rounded w-3/4 mb-2" />
+                    <div className="h-4 bg-muted rounded w-1/2" />
+                  </div>
+                ))}
+              </div>
+            ) : error ? (
+              <div className="text-center py-16">
+                <p className="text-muted-foreground text-lg">
+                  Unable to load properties. Please try again later.
+                </p>
+              </div>
+            ) : filteredProperties.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {filteredProperties.map((property, index) => (
                   <PropertyCard key={property.id} property={property} index={index} />

@@ -5,17 +5,70 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { BookingWidget } from '@/components/booking/BookingWidget';
 import { ImageGallery } from '@/components/properties/ImageGallery';
-import { getPropertyBySlug, properties } from '@/data/properties';
+import { usePropertyBySlug, useProperties } from '@/hooks/useProperties';
 import { MapPin, Users, BedDouble, Bath, Check, ChevronLeft, Star, Wifi, Car, Coffee } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PropertyCard } from '@/components/properties/PropertyCard';
 
 const PropertyDetailPage = () => {
   const { slug } = useParams<{ slug: string }>();
-  const property = getPropertyBySlug(slug || '');
+  const { data: property, isLoading, error } = usePropertyBySlug(slug || '');
+  const { data: allProperties = [] } = useProperties();
   const amenitiesRef = useRef(null);
   const isAmenitiesInView = useInView(amenitiesRef, { once: true, margin: '-100px' });
 
+  // Loading state
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Header />
+        <main className="pt-32 md:pt-36">
+          <section className="py-4 bg-secondary">
+            <div className="container mx-auto px-4 md:px-6 lg:px-8">
+              <div className="h-6 bg-muted rounded w-32 animate-pulse" />
+            </div>
+          </section>
+          <section className="py-6">
+            <div className="container mx-auto px-4 md:px-6 lg:px-8">
+              <div className="aspect-[16/9] md:aspect-[21/9] rounded-xl bg-muted animate-pulse" />
+            </div>
+          </section>
+          <section className="py-8">
+            <div className="container mx-auto px-4 md:px-6 lg:px-8">
+              <div className="h-10 bg-muted rounded w-1/3 mb-4 animate-pulse" />
+              <div className="h-6 bg-muted rounded w-1/4 animate-pulse" />
+            </div>
+          </section>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
+  // Error state
+  if (error) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Header />
+        <main className="pt-24 pb-16">
+          <div className="container mx-auto px-4 md:px-6 lg:px-8 text-center py-16">
+            <h1 className="font-serif text-3xl font-semibold text-foreground mb-4">
+              Unable to Load Property
+            </h1>
+            <p className="text-muted-foreground mb-8">
+              There was an error loading this property. Please try again later.
+            </p>
+            <Button variant="hero" asChild>
+              <Link to="/collection">View All Properties</Link>
+            </Button>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
+  // Property not found
   if (!property) {
     return (
       <div className="min-h-screen bg-background">
@@ -38,7 +91,7 @@ const PropertyDetailPage = () => {
     );
   }
 
-  const otherProperties = properties.filter((p) => p.id !== property.id).slice(0, 3);
+  const otherProperties = allProperties.filter((p) => p.id !== property.id).slice(0, 3);
 
   // Get amenity icon
   const getAmenityIcon = (amenity: string) => {
@@ -151,14 +204,8 @@ const PropertyDetailPage = () => {
                   <h2 className="font-serif text-2xl font-semibold text-foreground mb-4">
                     About This Property
                   </h2>
-                  <p className="text-muted-foreground leading-relaxed text-lg">
+                  <p className="text-muted-foreground leading-relaxed text-lg whitespace-pre-line">
                     {property.description}
-                  </p>
-                  <p className="text-muted-foreground leading-relaxed text-lg mt-4">
-                    Experience the best of California's Central Coast from this perfectly located retreat.
-                    Whether you're seeking relaxation or adventure, this property offers the ideal base
-                    for your coastal getaway. Wake up to ocean breezes, explore nearby beaches, or
-                    venture to world-renowned wineries just a short drive away.
                   </p>
                 </motion.div>
 
@@ -234,23 +281,25 @@ const PropertyDetailPage = () => {
         </section>
 
         {/* Other Properties */}
-        <section className="section-padding bg-secondary">
-          <div className="container mx-auto px-4 md:px-6 lg:px-8">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="font-serif text-3xl font-semibold text-foreground mb-8 text-center"
-            >
-              You May Also Like
-            </motion.h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {otherProperties.map((prop, index) => (
-                <PropertyCard key={prop.id} property={prop} index={index} />
-              ))}
+        {otherProperties.length > 0 && (
+          <section className="section-padding bg-secondary">
+            <div className="container mx-auto px-4 md:px-6 lg:px-8">
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="font-serif text-3xl font-semibold text-foreground mb-8 text-center"
+              >
+                You May Also Like
+              </motion.h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {otherProperties.map((prop, index) => (
+                  <PropertyCard key={prop.id} property={prop} index={index} />
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
       </main>
       <Footer />
     </div>
