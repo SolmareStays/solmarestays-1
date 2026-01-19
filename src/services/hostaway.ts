@@ -1,5 +1,6 @@
-import { HostawayListing, HostawayListingsResponse } from '@/types/hostaway';
+import { HostawayListing, HostawayListingsResponse, HostawayCalendarDay, HostawayCalendarResponse } from '@/types/hostaway';
 import { Property } from '@/data/properties';
+import { format } from 'date-fns';
 
 const API_URL = import.meta.env.VITE_HOSTAWAY_API_URL || 'https://api.hostaway.com/v1';
 const API_TOKEN = import.meta.env.VITE_HOSTAWAY_API_TOKEN;
@@ -128,4 +129,58 @@ export async function fetchListingById(id: string): Promise<Property | null> {
   }
 
   return transformListing(data.result);
+}
+
+/**
+ * Fetch calendar data for a listing from Hostaway API
+ * Returns day-by-day availability, pricing, and reservations
+ */
+export async function fetchCalendar(
+  listingId: string,
+  startDate: Date,
+  endDate: Date,
+  includeResources: boolean = true
+): Promise<HostawayCalendarDay[]> {
+  if (!API_TOKEN) {
+    throw new Error('Hostaway API token is not configured. Please set VITE_HOSTAWAY_API_TOKEN in .env');
+  }
+
+  const startDateStr = format(startDate, 'yyyy-MM-dd');
+  const endDateStr = format(endDate, 'yyyy-MM-dd');
+
+  const params = new URLSearchParams({
+    startDate: startDateStr,
+    endDate: endDateStr,
+    ...(includeResources && { includeResources: '1' }),
+  });
+
+  const response = await fetch(`${API_URL}/listings/${listingId}/calendar?${params}`, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${API_TOKEN}`,
+      'Cache-control': 'no-cache',
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch calendar: ${response.status} ${response.statusText}`);
+  }
+
+  const data: HostawayCalendarResponse = await response.json();
+
+  if (data.status !== 'success') {
+    throw new Error('Hostaway API returned an error');
+  }
+
+  return data.result;
+}
+
+/**
+ * Get dates that are not available for booking
+ * Filters calendar data to return only dates that are booked/blocked
+ */
+export function getUnavailableDates(calendarDays: HostawayCalendarDay[]): Date[] {
+  return calendarDays
+    .filter((day) => !day.isAvailable || day.status !== 'available')
+    .map((day) => new Date(day.date));
 }

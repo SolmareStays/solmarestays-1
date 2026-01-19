@@ -310,3 +310,36 @@
 .animate-pulse-glow {
   animation: pulse-glow 3s ease-in-out infinite;
 }
+
+/* Calendar date visibility improvements */
+.rdp-day {
+  color: hsl(var(--foreground)) !important;
+}
+
+.rdp-day:hover:not([disabled]):not(.rdp-day_selected) {
+  background-color: hsl(var(--accent) / 0.3) !important;
+  color: hsl(var(--foreground)) !important;
+}
+
+.rdp-day_today:not(.rdp-day_selected) {
+  background-color: hsl(var(--accent)) !important;
+  color: hsl(var(--foreground)) !important;
+  font-weight: 600;
+}
+
+.rdp-day_selected {
+  background-color: hsl(var(--primary)) !important;
+  color: hsl(var(--primary-foreground)) !important;
+}
+
+.rdp-day_disabled {
+  color: hsl(var(--muted-foreground)) !important;
+  opacity: 0.6 !important;
+}
+
+/* Booked dates styling - red strikethrough */
+.rdp-day.line-through {
+  text-decoration: line-through !important;
+  text-decoration-color: hsl(var(--destructive)) !important;
+  color: hsl(var(--muted-foreground)) !important;
+}

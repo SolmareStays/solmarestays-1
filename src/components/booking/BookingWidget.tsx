@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import { format, differenceInDays, addDays } from 'date-fns';
+import { useState, useMemo } from 'react';
+import { format, differenceInDays, addDays, isSameDay } from 'date-fns';
+import { useCalendar } from '@/hooks/useCalendar';
 import { Calendar } from '@/components/ui/calendar';
 import { Button } from '@/components/ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
@@ -18,6 +19,19 @@ export function BookingWidget({ property }: BookingWidgetProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [showPricing, setShowPricing] = useState(false);
 
+  // Fetch calendar availability data
+  const { unavailableDates, isLoading: isCalendarLoading } = useCalendar(
+    property.hostawayListingId,
+    { monthsAhead: 12 }
+  );
+
+  // Helper to check if a date is unavailable
+  const isDateUnavailable = useMemo(() => {
+    return (date: Date): boolean => {
+      return unavailableDates.some((unavailableDate) => isSameDay(date, unavailableDate));
+    };
+  }, [unavailableDates]);
+
   const nights = checkIn && checkOut ? differenceInDays(checkOut, checkIn) : 0;
   const subtotal = nights * property.startingPrice;
   const cleaningFee = 150;
@@ -26,7 +40,7 @@ export function BookingWidget({ property }: BookingWidgetProps) {
 
   const handleCheckAvailability = async () => {
     if (!checkIn || !checkOut) return;
-    
+
     setIsLoading(true);
     // Simulate API call - this is where Hostaway API would be integrated
     await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -40,7 +54,7 @@ export function BookingWidget({ property }: BookingWidgetProps) {
     // 2. Redirect to Hostaway booking engine
     const checkInStr = checkIn ? format(checkIn, 'yyyy-MM-dd') : '';
     const checkOutStr = checkOut ? format(checkOut, 'yyyy-MM-dd') : '';
-    
+
     // Redirect to Hostaway booking engine (placeholder URL structure)
     if (property.hostawayListingId) {
       window.open(
@@ -88,8 +102,14 @@ export function BookingWidget({ property }: BookingWidgetProps) {
                 }
                 setShowPricing(false);
               }}
-              disabled={(date) => date < new Date()}
+              disabled={(date) => date < new Date() || isDateUnavailable(date)}
               initialFocus
+              modifiers={{
+                booked: unavailableDates,
+              }}
+              modifiersClassNames={{
+                booked: 'line-through opacity-50',
+              }}
             />
           </PopoverContent>
         </Popover>
@@ -118,8 +138,14 @@ export function BookingWidget({ property }: BookingWidgetProps) {
                 setCheckOut(date);
                 setShowPricing(false);
               }}
-              disabled={(date) => date < (checkIn ? addDays(checkIn, 1) : new Date())}
+              disabled={(date) => date < (checkIn ? addDays(checkIn, 1) : new Date()) || isDateUnavailable(date)}
               initialFocus
+              modifiers={{
+                booked: unavailableDates,
+              }}
+              modifiersClassNames={{
+                booked: 'line-through opacity-50',
+              }}
             />
           </PopoverContent>
         </Popover>

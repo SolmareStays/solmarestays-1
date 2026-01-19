@@ -80,3 +80,76 @@ export interface HostawayListingsResponse {
   status: string;
   result: HostawayListing[];
 }
+
+/**
+ * Calendar day status types
+ */
+export type CalendarDayStatus =
+  | 'available'
+  | 'reserved'
+  | 'blocked'
+  | 'mblocked'
+  | 'hardBlock'
+  | 'conflicted'
+  | 'pending'
+  | 'mreserved';
+
+/**
+ * Hostaway Calendar Day object
+ * Represents availability and pricing for a single day
+ */
+export interface HostawayCalendarDay {
+  id: number;
+  date: string; // "YYYY-MM-DD" format
+  isAvailable: number; // 0 or 1
+  isProcessed: number;
+  status: CalendarDayStatus;
+  price: number;
+  minimumStay: number;
+  maximumStay: number;
+  closedOnArrival: number | null;
+  closedOnDeparture: number | null;
+  note: string | null;
+  countAvailableUnits: number | null;
+  availableUnitsToSell: number | null;
+  countPendingUnits: number | null;
+  countBlockingReservations: number | null;
+  countBlockedUnits: number | null;
+  desiredUnitsToSell: number | null;
+  reservations?: HostawayReservation[]; // Available when includeResources=1
+}
+
+/**
+ * Hostaway Reservation object (simplified for calendar view)
+ */
+export interface HostawayReservation {
+  id: number;
+  listingMapId: number;
+  channelId: number;
+  channelName: string;
+  reservationId: string;
+  guestName: string;
+  guestFirstName: string;
+  guestLastName: string;
+  numberOfGuests: number;
+  adults: number;
+  children: number | null;
+  infants: number | null;
+  pets: number | null;
+  arrivalDate: string;
+  departureDate: string;
+  checkInTime: number | null;
+  checkOutTime: number | null;
+  nights: number;
+  totalPrice: number;
+  currency: string;
+  status: string;
+}
+
+/**
+ * Hostaway Calendar API response
+ */
+export interface HostawayCalendarResponse {
+  status: string;
+  result: HostawayCalendarDay[];
+}
