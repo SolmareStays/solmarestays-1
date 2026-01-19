@@ -26,6 +26,24 @@ export interface HostawayBedType {
   bedroomNumber: number;
 }
 
+export interface HostawayCustomFieldValue {
+  id: number;
+  customFieldId: number;
+  listingUnitId: number | null;
+  value: string;
+  insertedOn: string;
+  updatedOn: string;
+  customField: {
+    id: number;
+    name: string;
+    possibleValues: string | null;
+    type: string;
+    isPublic: number;
+    insertedOn: string;
+    updatedOn: string;
+  };
+}
+
 export interface HostawayListing {
   id: number;
   propertyTypeId: number;
@@ -71,6 +89,7 @@ export interface HostawayListing {
   listingAmenities: HostawayAmenity[];
   listingBedTypes: HostawayBedType[];
   listingImages: HostawayListingImage[];
+  customFieldValues: HostawayCustomFieldValue[];
   averageReviewRating: number | null;
   airbnbListingUrl: string | null;
   vrboListingUrl: string | null;

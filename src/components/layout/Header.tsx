@@ -43,29 +43,11 @@ export function Header() {
             {/* Logo */}
             <Link to="/" className="flex flex-col items-center group">
               <div className="relative mb-1">
-                <svg
-                  viewBox="0 0 48 48"
-                  className="w-8 h-8 md:w-10 md:h-10 text-primary transition-transform duration-300 group-hover:scale-105"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.2"
-                >
-                   {/* Sun centered */}
-                   <circle cx="24" cy="18" r="7" />
-                   {/* Waves below */}
-                   <path d="M10 32 C16 30, 22 34, 28 32 C34 30, 40 34, 46 32" strokeLinecap="round" />
-                   <path d="M10 38 C16 36, 22 40, 28 38 C34 36, 40 40, 46 38" strokeLinecap="round" />
-                   {/* Circle container */}
-                   <circle cx="24" cy="24" r="22" strokeWidth="1" />
-                </svg>
-              </div>
-              <div className="flex flex-col items-center leading-none">
-                <span className="font-serif text-lg font-semibold tracking-wider text-primary">
-                  SOLMARÉ
-                </span>
-                <span className="text-[10px] tracking-[0.3em] text-muted-foreground uppercase mt-0.5">
-                  STAYS
-                </span>
+                <img
+                  src="/logo.avif"
+                  alt="Solmaré Stays"
+                  className="w-24 h-24 md:w-28 md:h-28 object-contain transition-transform duration-300 group-hover:scale-105"
+                />
               </div>
             </Link>
 

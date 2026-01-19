@@ -10,29 +10,11 @@ export function Footer() {
           <div className="lg:col-span-1">
             <Link to="/" className="flex flex-col items-start gap-1 mb-6 group">
               <div className="relative mb-2">
-                <svg
-                  viewBox="0 0 48 48"
-                  className="w-10 h-10 md:w-12 md:h-12 text-primary-foreground transition-transform duration-300 group-hover:scale-105"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.2"
-                >
-                   {/* Sun centered */}
-                   <circle cx="24" cy="18" r="7" />
-                   {/* Waves below */}
-                   <path d="M10 32 C16 30, 22 34, 28 32 C34 30, 40 34, 46 32" strokeLinecap="round" />
-                   <path d="M10 38 C16 36, 22 40, 28 38 C34 36, 40 40, 46 38" strokeLinecap="round" />
-                   {/* Circle container */}
-                   <circle cx="24" cy="24" r="22" strokeWidth="1" />
-                </svg>
-              </div>
-              <div className="flex flex-col leading-none">
-                <span className="font-serif text-xl font-semibold tracking-wider text-primary-foreground">
-                  SOLMARÉ
-                </span>
-                <span className="text-[10px] tracking-[0.3em] opacity-70 uppercase mt-1">
-                  STAYS
-                </span>
+                <img
+                  src="/footerlogo.avif"
+                  alt="Solmaré Stays"
+                  className="w-24 h-24 md:w-32 md:h-32 object-contain bg-white rounded-xl p-2 transition-transform duration-300 group-hover:scale-105"
+                />
               </div>
             </Link>
             <p className="text-sm opacity-80 leading-relaxed max-w-xs">
@@ -73,19 +55,19 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center gap-3 text-sm opacity-80">
                 <Mail className="w-4 h-4" />
-                <a href="mailto:hello@solmarestays.com" className="hover:opacity-100 transition-opacity">
-                  hello@solmarestays.com
+                <a href="mailto:info@solmarestays.com" className="hover:opacity-100 transition-opacity">
+                  info@solmarestays.com
                 </a>
               </li>
               <li className="flex items-center gap-3 text-sm opacity-80">
                 <Phone className="w-4 h-4" />
-                <a href="tel:+18055551234" className="hover:opacity-100 transition-opacity">
-                  (805) 555-1234
+                <a href="tel:+18058016429" className="hover:opacity-100 transition-opacity">
+                  (805) 801-6429
                 </a>
               </li>
               <li className="flex items-start gap-3 text-sm opacity-80">
                 <MapPin className="w-4 h-4 mt-0.5" />
-                <span>Avila Beach & San Luis Obispo, CA</span>
+                <span>Licensed & Insured | Based in Pismo Beach</span>
               </li>
             </ul>
           </div>

@@ -34,9 +34,19 @@ export function BookingWidget({ property }: BookingWidgetProps) {
 
   const nights = checkIn && checkOut ? differenceInDays(checkOut, checkIn) : 0;
   const subtotal = nights * property.startingPrice;
-  const cleaningFee = 150;
+  const cleaningFee = property.cleaningFee;
   const serviceFee = Math.round(subtotal * 0.12);
-  const total = subtotal + cleaningFee + serviceFee;
+
+  // Apply weekly discount if applicable (and staying 7+ nights)
+  const hasWeeklyDiscount = property.weeklyDiscount && property.weeklyDiscount < 1 && nights >= 7;
+  const discountMultiplier = hasWeeklyDiscount ? property.weeklyDiscount! : 1;
+  const discountedSubtotal = Math.round(subtotal * discountMultiplier);
+  const discountAmount = subtotal - discountedSubtotal;
+  const total = discountedSubtotal + cleaningFee + serviceFee;
+
+  // Validate minimum nights
+  const meetsMinNights = nights >= property.minNights;
+  const meetsMaxNights = nights <= property.maxNights;
 
   const handleCheckAvailability = async () => {
     if (!checkIn || !checkOut) return;
@@ -66,14 +76,24 @@ export function BookingWidget({ property }: BookingWidgetProps) {
 
   return (
     <div className="bg-card rounded-xl shadow-elevated p-6 sticky top-24">
-      <div className="mb-6">
+      <div className="mb-4">
         <span className="font-serif text-2xl font-semibold text-foreground">
           ${property.startingPrice}
         </span>
         <span className="text-muted-foreground"> / night</span>
+        {property.weeklyDiscount && property.weeklyDiscount < 1 && (
+          <span className="ml-2 px-2 py-1 bg-ocean/10 text-ocean text-xs rounded-full font-medium">
+            {Math.round((1 - property.weeklyDiscount) * 100)}% off weekly
+          </span>
+        )}
       </div>
 
-      {/* Date Selection */}
+      {/* Check-in/out times */}
+      <div className="flex items-center gap-4 mb-4 text-xs text-muted-foreground">
+        <span>Check-in: {property.checkInTimeStart}:00</span>
+        <span>•</span>
+        <span>Check-out: {property.checkOutTime}:00</span>
+      </div>
       <div className="grid grid-cols-2 gap-2 mb-4">
         <Popover>
           <PopoverTrigger asChild>
@@ -207,12 +227,25 @@ export function BookingWidget({ property }: BookingWidgetProps) {
         </Button>
       ) : (
         <>
+          {/* Min nights warning */}
+          {!meetsMinNights && (
+            <div className="mb-4 p-3 bg-destructive/10 rounded-lg text-destructive text-sm">
+              Minimum stay is {property.minNights} nights
+            </div>
+          )}
+
           {/* Pricing Breakdown */}
           <div className="space-y-3 mb-6 pb-6 border-b border-border">
             <div className="flex justify-between text-muted-foreground">
               <span>${property.startingPrice} × {nights} nights</span>
               <span>${subtotal}</span>
             </div>
+            {hasWeeklyDiscount && (
+              <div className="flex justify-between text-ocean">
+                <span>Weekly discount ({Math.round((1 - property.weeklyDiscount!) * 100)}% off)</span>
+                <span>-${discountAmount}</span>
+              </div>
+            )}
             <div className="flex justify-between text-muted-foreground">
               <span>Cleaning fee</span>
               <span>${cleaningFee}</span>
@@ -231,6 +264,7 @@ export function BookingWidget({ property }: BookingWidgetProps) {
             size="xl"
             className="w-full"
             onClick={handleBookNow}
+            disabled={!meetsMinNights}
           >
             Book Now
           </Button>

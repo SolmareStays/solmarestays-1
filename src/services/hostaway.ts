@@ -33,6 +33,23 @@ function getUnitType(bedroomsNumber: number | null): string {
 }
 
 /**
+ * Convert square meters to square feet
+ */
+function squareMetersToFeet(meters: number): number {
+  return Math.round(meters * 10.764);
+}
+
+/**
+ * Extract guidebook URL from custom field values
+ */
+function extractGuidebookUrl(customFieldValues: HostawayListing['customFieldValues']): string | null {
+  const guidebookField = customFieldValues?.find(
+    (field) => field.customField?.name?.toLowerCase() === 'guidebook'
+  );
+  return guidebookField?.value || null;
+}
+
+/**
  * Transform Hostaway listing to Property interface
  */
 function transformListing(listing: HostawayListing): Property {
@@ -47,26 +64,63 @@ function transformListing(listing: HostawayListing): Property {
   // Get the first image as the main thumbnail
   const mainImage = images.length > 0 ? images[0].src : listing.thumbnailUrl;
 
-  // Extract amenity names
-  const amenities = listing.listingAmenities
-    .slice(0, 10) // Limit to 10 amenities for display
-    .map((a) => a.amenityName);
+  // Extract amenity names (show all, not limited)
+  const amenities = listing.listingAmenities.map((a) => a.amenityName);
 
   return {
+    // Basic info
     id: String(listing.id),
     slug: generateSlug(listing.name),
     name: listing.name,
     location: listing.city,
     unitType: getUnitType(listing.bedroomsNumber),
+    description: listing.description,
+
+    // Capacity & layout
     sleeps: listing.personCapacity,
     bedrooms: listing.bedroomsNumber ?? 0,
     bathrooms: listing.bathroomsNumber,
+    bedsNumber: listing.bedsNumber,
+    squareFeet: squareMetersToFeet(listing.squareMeters),
+
+    // Pricing
     startingPrice: listing.price,
+    cleaningFee: listing.cleaningFee,
+    weeklyDiscount: listing.weeklyDiscount,
+
+    // Images
     image: mainImage,
     images: images.length > 0 ? images : [{ src: mainImage, alt: listing.name }],
-    description: listing.description,
+
+    // Amenities
     amenities,
+
+    // Policies & rules
+    houseRules: listing.houseRules,
+    cancellationPolicy: listing.cancellationPolicy,
+    minNights: listing.minNights,
+    maxNights: listing.maxNights,
+
+    // Check-in/out
+    checkInTimeStart: listing.checkInTimeStart,
+    checkInTimeEnd: listing.checkInTimeEnd,
+    checkOutTime: listing.checkOutTime,
+
+    // Location
+    lat: listing.lat,
+    lng: listing.lng,
+    address: listing.publicAddress || listing.address,
+
+    // Reviews
+    averageReviewRating: listing.averageReviewRating,
+
+    // External links
     hostawayListingId: String(listing.id),
+    airbnbListingUrl: listing.airbnbListingUrl,
+    vrboListingUrl: listing.vrboListingUrl,
+
+    // Guidebook
+    guidebookUrl: extractGuidebookUrl(listing.customFieldValues),
   };
 }
 
