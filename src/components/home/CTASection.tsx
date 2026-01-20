@@ -8,9 +8,19 @@ export function CTASection() {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section ref={ref} className="py-24 md:py-32 bg-primary text-primary-foreground relative overflow-hidden">
-      <div className="container mx-auto px-6 md:px-8 lg:px-12 relative z-10">
-        <div className="max-w-2xl mx-auto text-center">
+    <section ref={ref} className="section-padding bg-primary text-primary-foreground relative overflow-hidden">
+      {/* Background pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <pattern id="waves" patternUnits="userSpaceOnUse" width="40" height="20" patternTransform="rotate(10)">
+            <path d="M0 10 Q10 0, 20 10 T40 10" fill="none" stroke="currentColor" strokeWidth="0.5" />
+          </pattern>
+          <rect width="100%" height="100%" fill="url(#waves)" />
+        </svg>
+      </div>
+
+      <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
+        <div className="max-w-3xl mx-auto text-center">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
