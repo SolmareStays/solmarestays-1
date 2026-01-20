@@ -11,43 +11,37 @@ interface PropertyCardProps {
 export function PropertyCard({ property, index = 0 }: PropertyCardProps) {
   return (
     <motion.article
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      whileHover={{ y: -8 }}
+      transition={{ duration: 0.5, delay: index * 0.08 }}
+      whileHover={{ y: -4 }}
       className="group property-card"
     >
       <Link to={`/property/${property.slug}`} className="block">
-        <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 shadow-soft group-hover:shadow-elevated transition-shadow duration-500">
+        <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 shadow-soft group-hover:shadow-medium transition-shadow duration-300">
           <motion.img
             src={property.image}
             alt={property.name}
             className="w-full h-full object-cover property-card-image"
-            whileHover={{ scale: 1.08 }}
-            transition={{ duration: 0.7, ease: 'easeOut' }}
+            whileHover={{ scale: 1.03 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
           />
 
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          {/* Subtle Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-foreground/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
           {/* Price Tag */}
-          <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-            <span className="text-sm text-white font-semibold bg-primary/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-md">
+          <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
+            <span className="text-xs text-white font-medium bg-foreground/80 backdrop-blur-sm px-3 py-1.5 rounded-full">
               From ${property.startingPrice}/night
             </span>
           </div>
 
           {/* View Details CTA */}
-          <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
-            <span className="text-white font-medium flex items-center gap-2">
+          <div className="absolute bottom-3 left-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
+            <span className="text-white text-sm font-medium">
               View Details
-              <motion.span
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              >
-                <ArrowRight className="w-4 h-4" />
-              </motion.span>
             </span>
           </div>
         </div>

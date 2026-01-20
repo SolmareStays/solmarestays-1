@@ -34,10 +34,10 @@ export function HeroSection() {
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
-            initial={{ opacity: 0, scale: 1.1 }}
+            initial={{ opacity: 0, scale: 1.02 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
             className="absolute inset-0"
           >
               <img
@@ -45,42 +45,38 @@ export function HeroSection() {
               alt={slides[currentSlide].alt}
               className="w-full h-full object-cover"
             />
-            {/* Side Fades */}
-            <div className="absolute inset-y-0 left-0 w-[30%] bg-gradient-to-r from-black/30 via-black/10 to-transparent pointer-events-none" />
-            <div className="absolute inset-y-0 right-0 w-[30%] bg-gradient-to-l from-black/30 via-black/10 to-transparent pointer-events-none" />
-
-            {/* Optional overlay to ensure text contrast if needed, strictly not needed with white box but good for depth */}
-            <div className="absolute inset-0 bg-black/5" />
+            {/* Subtle overlay for text contrast */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20" />
           </motion.div>
         </AnimatePresence>
       </div>
 
-      {/* Content Box - Floating Glass Card */}
-      <div className="absolute bottom-4 left-4 right-4 md:right-auto md:bottom-20 md:left-20 z-20 md:max-w-xl lg:max-w-2xl bg-white/95 backdrop-blur-md p-8 md:p-12 rounded-3xl shadow-elevated border border-white/20">
+      {/* Content Box - Clean Minimalist Card */}
+      <div className="absolute bottom-8 left-4 right-4 md:right-auto md:bottom-24 md:left-16 z-20 md:max-w-lg lg:max-w-xl bg-white p-8 md:p-10 rounded-2xl shadow-medium">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-normal text-foreground leading-[1.1] mb-4 tracking-tight">
+          <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-normal text-foreground leading-tight mb-3 tracking-tight">
             Solmaré Stays
           </h1>
-          <p className="text-muted-foreground text-lg md:text-xl font-light tracking-wide mb-8">
+          <p className="text-muted-foreground text-base md:text-lg font-light tracking-wide mb-6">
             Where the Sun Meets the Sea in Style
           </p>
 
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-3">
             <Button
-              size="lg"
-              className="bg-black text-white hover:bg-black/90 rounded-md px-8 h-12 text-sm font-medium transition-all"
+              size="default"
+              className="bg-foreground text-white hover:bg-foreground/90 rounded-lg px-6 h-11 text-sm font-medium transition-all"
               asChild
             >
               <Link to="/collection">Explore Properties</Link>
             </Button>
             <Button
-              variant="outline"
-              size="lg"
-              className="bg-white text-foreground border-input hover:bg-accent hover:text-accent-foreground rounded-md px-8 h-12 text-sm font-medium transition-all"
+              variant="ghost"
+              size="default"
+              className="text-foreground hover:text-primary hover:bg-transparent px-6 h-11 text-sm font-medium transition-all"
               asChild
             >
               <Link to="/why-choose-us">Learn More</Link>
@@ -89,32 +85,32 @@ export function HeroSection() {
         </motion.div>
       </div>
 
-      {/* Navigation Controls - Custom Positioning */}
-      <div className="absolute bottom-8 right-8 z-20 flex gap-3">
+      {/* Navigation Controls - Minimal */}
+      <div className="absolute bottom-10 right-8 z-20 flex gap-2">
         <button
           onClick={prevSlide}
-          className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/30 flex items-center justify-center text-white hover:bg-white/30 transition-colors"
+          className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/40 transition-colors duration-200"
           aria-label="Previous slide"
         >
-          <ChevronLeft className="w-6 h-6" />
+          <ChevronLeft className="w-5 h-5" />
         </button>
         <button
           onClick={nextSlide}
-          className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/30 flex items-center justify-center text-white hover:bg-white/30 transition-colors"
+          className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/40 transition-colors duration-200"
           aria-label="Next slide"
         >
-          <ChevronRight className="w-6 h-6" />
+          <ChevronRight className="w-5 h-5" />
         </button>
       </div>
 
-      {/* Slide Indicators - Centered Bottom or near controls */}
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+      {/* Slide Indicators - Subtle */}
+      <div className="absolute bottom-14 left-1/2 -translate-x-1/2 z-20 flex gap-1.5">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`h-1.5 rounded-full transition-all duration-300 shadow-sm ${
-              index === currentSlide ? 'bg-white w-10' : 'bg-white/50 w-4'
+            className={`h-1 rounded-full transition-all duration-300 ${
+              index === currentSlide ? 'bg-white w-8' : 'bg-white/40 w-3'
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />

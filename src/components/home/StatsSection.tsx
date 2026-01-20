@@ -93,18 +93,18 @@ export function StatsSection() {
           {stats.map((stat, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-              className="text-center group"
+              transition={{ duration: 0.5, delay: 0.2 + index * 0.08 }}
+              className="text-center"
             >
-               {/* Icon */}
-               <div className="inline-flex items-center justify-center w-12 h-12 mb-6 text-foreground group-hover:scale-110 transition-transform duration-300">
-                  <stat.icon className="w-8 h-8 opacity-80" strokeWidth={1.5} />
+               {/* Icon - Subtle */}
+               <div className="inline-flex items-center justify-center mb-4 text-muted-foreground">
+                  <stat.icon className="w-5 h-5" strokeWidth={1.5} />
                </div>
 
                 {/* Counter */}
-                <div className="font-serif text-4xl lg:text-5xl font-medium text-foreground mb-3">
+                <div className="font-serif text-4xl lg:text-5xl font-medium text-foreground mb-2">
                   {stat.hasCounter ? (
                     <AnimatedCounter from={0} to={stat.value} suffix={stat.suffix} />
                   ) : (
@@ -113,8 +113,8 @@ export function StatsSection() {
                 </div>
 
                 {/* Label */}
-                <div className="text-sm font-semibold tracking-wide text-foreground uppercase mb-1">{stat.label}</div>
-                <div className="text-sm text-muted-foreground font-light">{stat.description}</div>
+                <div className="text-xs font-medium tracking-widest text-muted-foreground uppercase mb-1">{stat.label}</div>
+                <div className="text-sm text-muted-foreground/80 font-light">{stat.description}</div>
             </motion.div>
           ))}
         </div>

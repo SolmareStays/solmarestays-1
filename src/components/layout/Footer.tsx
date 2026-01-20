@@ -4,21 +4,21 @@ import { Mail, Phone, MapPin, Instagram, Facebook } from 'lucide-react';
 export function Footer() {
   return (
     <footer className="bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4 md:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+      <div className="container mx-auto px-6 md:px-8 lg:px-12 py-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link to="/" className="flex flex-col items-start gap-1 mb-6 group">
-              <div className="relative mb-2">
+            <Link to="/" className="flex flex-col items-start gap-1 mb-5 group">
+              <div className="relative">
                 <img
                   src="/footerlogo.avif"
                   alt="Solmaré Stays"
-                  className="w-24 h-24 md:w-32 md:h-32 object-contain bg-white rounded-xl p-2 transition-transform duration-300 group-hover:scale-105"
+                  className="w-16 h-16 md:w-20 md:h-20 object-contain transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
             </Link>
-            <p className="text-sm opacity-80 leading-relaxed max-w-xs">
-              Where the Sun Meets the Sea in Style. Boutique vacation rentals on California's Central Coast.
+            <p className="text-sm opacity-70 leading-relaxed max-w-xs">
+              Where the Sun Meets the Sea in Style.
             </p>
           </div>
 
@@ -74,13 +74,13 @@ export function Footer() {
 
           {/* Social */}
           <div>
-            <h4 className="font-serif text-lg font-semibold mb-4">Follow Us</h4>
-            <div className="flex gap-4">
+            <h4 className="font-serif text-base font-medium mb-4">Follow Us</h4>
+            <div className="flex gap-3">
               <a
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary-foreground/20 transition-colors"
+                className="w-8 h-8 flex items-center justify-center text-primary-foreground/70 hover:text-primary-foreground transition-colors"
               >
                 <Instagram className="w-5 h-5" />
               </a>
@@ -88,7 +88,7 @@ export function Footer() {
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary-foreground/20 transition-colors"
+                className="w-8 h-8 flex items-center justify-center text-primary-foreground/70 hover:text-primary-foreground transition-colors"
               >
                 <Facebook className="w-5 h-5" />
               </a>

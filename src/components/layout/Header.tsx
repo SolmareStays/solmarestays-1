@@ -42,29 +42,29 @@ export function Header() {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link to="/" className="flex flex-col items-center group">
-              <div className="relative mb-1">
+              <div className="relative">
                 <img
                   src="/logo.avif"
                   alt="Solmaré Stays"
-                  className="w-24 h-24 md:w-28 md:h-28 object-contain transition-transform duration-300 group-hover:scale-105"
+                  className="w-16 h-16 md:w-24 md:h-24 object-contain transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
             </Link>
 
             {/* Desktop Navigation - Centered */}
-            <nav className="hidden lg:flex items-center gap-6 xl:gap-8 absolute left-1/2 transform -translate-x-1/2">
+            <nav className="hidden lg:flex items-center gap-8 xl:gap-10 absolute left-1/2 transform -translate-x-1/2">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   to={link.href}
-                  className={`relative group text-sm xl:text-base font-normal transition-colors hover:text-primary ${
+                  className={`relative group text-sm font-normal tracking-wide transition-colors duration-200 hover:text-primary ${
                     location.pathname === link.href
                       ? 'text-primary'
-                      : 'text-foreground/80'
+                      : 'text-foreground/70'
                   }`}
                 >
                   {link.label}
-                  <span className="absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 w-0 group-hover:w-full" />
+                  <span className="absolute -bottom-1 left-0 h-px bg-primary transition-all duration-300 w-0 group-hover:w-full" />
                 </Link>
               ))}
             </nav>
@@ -73,8 +73,8 @@ export function Header() {
             <div className="flex items-center gap-4">
               <Button
                 variant="outline"
-                size="lg"
-                className="hidden md:flex border-foreground/20 text-foreground hover:bg-foreground hover:text-white px-8"
+                size="default"
+                className="hidden md:flex border-foreground/30 text-foreground hover:bg-foreground hover:text-white rounded-lg px-6"
                 asChild
               >
                 <Link to="/collection">Book Now</Link>
