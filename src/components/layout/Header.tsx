@@ -46,6 +46,7 @@ export function Header() {
                 <img
                   src="/logo.avif"
                   alt="Solmaré Stays"
+                  draggable="false"
                   className="w-16 h-16 md:w-24 md:h-24 object-contain transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
