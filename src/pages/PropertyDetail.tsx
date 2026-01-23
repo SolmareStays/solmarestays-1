@@ -6,6 +6,7 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { BookingWidget } from '@/components/booking/BookingWidget';
 import { ImageGallery } from '@/components/properties/ImageGallery';
+import { ReviewsSection } from '@/components/properties/ReviewsSection';
 import { usePropertyBySlug, useProperties } from '@/hooks/useProperties';
 import { MapPin, Users, BedDouble, Bath, Check, ChevronLeft, Star, Wifi, Car, Coffee, Clock, ExternalLink, Book, FileText, AlertCircle, ChevronDown, ChevronUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -160,7 +161,12 @@ const PropertyDetailPage = () => {
     );
   }
 
-  const otherProperties = allProperties.filter((p) => p.id !== property.id).slice(0, 3);
+  // Prioritize same-city properties for "You May Also Like"
+  const otherProperties = useMemo(() => {
+    const sameCity = allProperties.filter((p) => p.id !== property.id && p.location === property.location);
+    const otherCities = allProperties.filter((p) => p.id !== property.id && p.location !== property.location);
+    return [...sameCity, ...otherCities].slice(0, 3);
+  }, [allProperties, property.id, property.location]);
 
   // Get amenity icon
   const getAmenityIcon = (amenity: string) => {
@@ -211,7 +217,14 @@ const PropertyDetailPage = () => {
             >
               <div>
                 {property.averageReviewRating && (
-                  <div className="flex items-center gap-2 mb-2">
+                  <a
+                    href="#reviews"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document.getElementById('reviews')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className="flex items-center gap-2 mb-2 cursor-pointer hover:opacity-80 transition-opacity"
+                  >
                     <div className="flex items-center gap-1 text-gold">
                       {[...Array(5)].map((_, i) => (
                         <Star
@@ -220,10 +233,10 @@ const PropertyDetailPage = () => {
                         />
                       ))}
                     </div>
-                    <span className="text-sm text-muted-foreground">
+                    <span className="text-sm text-muted-foreground underline-offset-2 hover:underline">
                       {property.averageReviewRating.toFixed(1)} rating
                     </span>
-                  </div>
+                  </a>
                 )}
                 <h1 className="font-serif text-4xl md:text-5xl font-semibold text-foreground mb-4">
                   {property.name}
@@ -290,6 +303,12 @@ const PropertyDetailPage = () => {
                   </p>
                 </motion.div>
 
+                {/* Reviews Section - After Description, Before Amenities */}
+                <ReviewsSection
+                  propertyName={property.name}
+                  averageRating={property.averageReviewRating}
+                />
+
                 {/* Amenities */}
                 <AmenitiesSection amenities={property.amenities} getAmenityIcon={getAmenityIcon} />
 
@@ -340,9 +359,8 @@ const PropertyDetailPage = () => {
                                 return (
                                   <div
                                     key={index}
-                                    className={`p-4 rounded-xl border border-border ${
-                                      isHeader ? 'bg-primary/5 font-semibold' : 'bg-card'
-                                    }`}
+                                    className={`p-4 rounded-xl border border-border ${isHeader ? 'bg-primary/5 font-semibold' : 'bg-card'
+                                      }`}
                                   >
                                     <div className="flex items-start gap-3">
                                       {!isHeader && (

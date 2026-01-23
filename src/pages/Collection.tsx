@@ -7,35 +7,58 @@ import { SEO } from '@/components/SEO';
 import { PropertyCard } from '@/components/properties/PropertyCard';
 import { PropertyMap } from '@/components/properties/PropertyMap';
 import { useProperties } from '@/hooks/useProperties';
+import { useAvailability } from '@/hooks/useAvailability';
+import { useBooking } from '@/context/BookingContext';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
 import { CalendarTwin } from '@/components/ui/calendar-twin';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
-import { Calendar as CalendarIcon, X } from 'lucide-react';
+import { Calendar as CalendarIcon, X, Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const CollectionPage = () => {
   const [locationFilter, setLocationFilter] = useState<string>('all');
-  const [sleepsFilter, setSleepsFilter] = useState<string>('all');
-  const [priceSort, setPriceSort] = useState<string>('none');
-  const [petFriendly, setPetFriendly] = useState<boolean>(false);
-  const [checkIn, setCheckIn] = useState<Date>();
-  const [checkOut, setCheckOut] = useState<Date>();
+  // Use shared booking context
+  const { checkIn, checkOut, guests, setDateRange, clearDates } = useBooking();
 
-  const { data: properties = [], isLoading, error } = useProperties();
+  // Sync sleepsFilter with guests from booking context on initial load
+  const [sleepsFilter, setSleepsFilter] = useState<string>(
+    guests > 1 ? guests.toString() : 'all'
+  );
+  // Default to price low-high as per requirements
+  const [priceSort, setPriceSort] = useState<string>('low-high');
+  const [petFriendly, setPetFriendly] = useState<boolean>(false);
+
+  const { data: properties = [], isLoading: isLoadingProperties, error } = useProperties();
+
+  // Check availability when dates are selected
+  const {
+    availablePropertyIds,
+    isCheckingAvailability
+  } = useAvailability({
+    properties,
+    checkIn,
+    checkOut,
+    enabled: !!checkIn && !!checkOut,
+  });
 
   // Filter and sort properties
   const filteredProperties = useMemo(() => {
     let result = properties.filter((property) => {
+      // Availability filter (when dates are selected)
+      if (checkIn && checkOut && !availablePropertyIds.has(property.id)) {
+        return false;
+      }
+
       // Location filter
       if (locationFilter !== 'all' && property.location !== locationFilter) return false;
 
-      // Sleeps filter
+      // Sleeps filter (max occupancy)
       if (sleepsFilter !== 'all') {
-        const sleeps = parseInt(sleepsFilter);
-        if (property.sleeps < sleeps) return false;
+        const requiredSleeps = parseInt(sleepsFilter);
+        if (property.sleeps < requiredSleeps) return false;
       }
 
       // Pet-friendly filter
@@ -49,7 +72,7 @@ const CollectionPage = () => {
       return true;
     });
 
-    // Sort by price
+    // Sort by price (default is now low-high)
     if (priceSort === 'low-high') {
       result = [...result].sort((a, b) => a.startingPrice - b.startingPrice);
     } else if (priceSort === 'high-low') {
@@ -57,15 +80,10 @@ const CollectionPage = () => {
     }
 
     return result;
-  }, [properties, locationFilter, sleepsFilter, petFriendly, priceSort]);
+  }, [properties, checkIn, checkOut, availablePropertyIds, locationFilter, sleepsFilter, petFriendly, priceSort]);
 
   const locations = [...new Set(properties.map((p) => p.location))];
-
-  // Clear date filters
-  const clearDates = () => {
-    setCheckIn(undefined);
-    setCheckOut(undefined);
-  };
+  const isLoading = isLoadingProperties || isCheckingAvailability;
 
   return (
     <div className="min-h-screen bg-background">
@@ -113,19 +131,17 @@ const CollectionPage = () => {
                       {checkIn && checkOut
                         ? `${format(checkIn, 'MMM d')} → ${format(checkOut, 'MMM d')}`
                         : checkIn
-                        ? `${format(checkIn, 'MMM d')} → Select end`
-                        : 'Select dates'}
+                          ? `${format(checkIn, 'MMM d')} → Select end`
+                          : 'Select dates'}
                     </Button>
                   </PopoverTrigger>
                   <PopoverContent className="w-auto p-0" align="start">
                     <CalendarTwin
                       value={{ from: checkIn, to: checkOut }}
                       onChange={(range) => {
-                        setCheckIn(range.from);
-                        setCheckOut(range.to);
+                        setDateRange(range.from, range.to);
                       }}
                       onComplete={() => {
-                        // Close popover by clicking outside or via state
                         const trigger = document.querySelector('[data-state="open"]');
                         if (trigger) {
                           (trigger as HTMLElement).click();
@@ -140,18 +156,23 @@ const CollectionPage = () => {
                     <X className="h-4 w-4" />
                   </Button>
                 )}
+
+                {/* Availability loading indicator */}
+                {isCheckingAvailability && (
+                  <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
+                )}
               </div>
 
               {/* Divider */}
               <div className="hidden md:block h-8 w-px bg-border" />
 
-              {/* Sleeps Filter */}
+              {/* Guests Filter - Updated label */}
               <Select value={sleepsFilter} onValueChange={setSleepsFilter}>
-                <SelectTrigger className="w-[130px]">
-                  <SelectValue placeholder="Sleeps" />
+                <SelectTrigger className="w-[140px]">
+                  <SelectValue placeholder="# of Guests" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="all">All Guests</SelectItem>
+                  <SelectItem value="all"># of Guests</SelectItem>
                   <SelectItem value="2">2+ Guests</SelectItem>
                   <SelectItem value="4">4+ Guests</SelectItem>
                   <SelectItem value="6">6+ Guests</SelectItem>
@@ -172,13 +193,12 @@ const CollectionPage = () => {
                 </SelectContent>
               </Select>
 
-              {/* Price Sort */}
+              {/* Price Sort - Default is now Starting Price */}
               <Select value={priceSort} onValueChange={setPriceSort}>
-                <SelectTrigger className="w-[150px]">
-                  <SelectValue placeholder="Sort by Price" />
+                <SelectTrigger className="w-[170px]">
+                  <SelectValue placeholder="Starting Price" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="none">Default</SelectItem>
                   <SelectItem value="low-high">Price: Low → High</SelectItem>
                   <SelectItem value="high-low">Price: High → Low</SelectItem>
                 </SelectContent>
@@ -206,6 +226,11 @@ const CollectionPage = () => {
             {!isLoading && !error && (
               <p className="text-muted-foreground mb-6">
                 {filteredProperties.length} {filteredProperties.length === 1 ? 'property' : 'properties'} found
+                {checkIn && checkOut && (
+                  <span className="ml-1">
+                    for {format(checkIn, 'MMM d')} – {format(checkOut, 'MMM d')}
+                  </span>
+                )}
               </p>
             )}
 
@@ -234,7 +259,9 @@ const CollectionPage = () => {
             ) : (
               <div className="text-center py-16">
                 <p className="text-muted-foreground text-lg">
-                  No properties match your filters. Try adjusting your search.
+                  {checkIn && checkOut
+                    ? 'No homes available for these dates. Try adjusting your search.'
+                    : 'No properties match your filters. Try adjusting your search.'}
                 </p>
               </div>
             )}

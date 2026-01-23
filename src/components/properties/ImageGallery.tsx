@@ -105,32 +105,43 @@ export function ImageGallery({ images, className = '' }: ImageGalleryProps) {
               <ChevronRight className="w-6 h-6" />
             </button>
 
-            {/* Image */}
-            <motion.img
-              key={currentIndex}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.3 }}
-              src={images[currentIndex]?.src}
-              alt={images[currentIndex]?.alt}
-              className="max-w-[90vw] max-h-[85vh] object-contain rounded-lg"
-              onClick={(e) => e.stopPropagation()}
-            />
+            {/* Image and Caption Container */}
+            <div className="flex flex-col items-center justify-center h-full pb-32">
+              <motion.div
+                key={currentIndex}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3 }}
+                className="flex flex-col items-center"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <img
+                  src={images[currentIndex]?.src}
+                  alt={images[currentIndex]?.alt}
+                  className="max-w-[90vw] max-h-[60vh] object-contain rounded-lg"
+                />
+                {/* Image Caption from Hostaway */}
+                {images[currentIndex]?.alt && (
+                  <p className="text-white/90 text-center mt-4 text-base font-light max-w-2xl px-4 bg-black/40 py-2 rounded-lg">
+                    {images[currentIndex].alt}
+                  </p>
+                )}
+              </motion.div>
+            </div>
 
             {/* Counter */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/80 text-sm">
+            <div className="absolute bottom-[88px] left-1/2 -translate-x-1/2 text-white/80 text-sm">
               {currentIndex + 1} / {images.length}
             </div>
 
             {/* Thumbnails */}
-            <div className="absolute bottom-16 left-1/2 -translate-x-1/2 flex gap-2 overflow-x-auto max-w-[90vw] pb-2">
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 overflow-x-auto max-w-[90vw] pb-2">
               {images.map((image, index) => (
                 <button
                   key={index}
-                  className={`w-16 h-16 rounded-md overflow-hidden flex-shrink-0 transition-all ${
-                    index === currentIndex ? 'ring-2 ring-white' : 'opacity-50 hover:opacity-100'
-                  }`}
+                  className={`w-16 h-16 rounded-md overflow-hidden flex-shrink-0 transition-all ${index === currentIndex ? 'ring-2 ring-white' : 'opacity-50 hover:opacity-100'
+                    }`}
                   onClick={(e) => {
                     e.stopPropagation();
                     setCurrentIndex(index);

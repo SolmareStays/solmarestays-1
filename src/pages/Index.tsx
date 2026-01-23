@@ -4,7 +4,6 @@ import { SEO } from '@/components/SEO';
 import { HeroSection } from '@/components/home/HeroSection';
 import { StatsSection } from '@/components/home/StatsSection';
 import { LocationSection } from '@/components/home/LocationSection';
-import { ExperienceSection } from '@/components/home/ExperienceSection';
 import { PropertiesSection } from '@/components/home/PropertiesSection';
 import { ManagementSection } from '@/components/home/ManagementSection';
 import { ReviewsSection } from '@/components/home/ReviewsSection';
@@ -23,7 +22,6 @@ const Index = () => {
         <StatsSection />
         <PropertiesSection />
         <LocationSection />
-        <ExperienceSection />
         <ManagementSection />
         <ReviewsSection />
         <CTASection />

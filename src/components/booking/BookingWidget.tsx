@@ -1,10 +1,11 @@
 import { useState, useMemo } from 'react';
 import { format, differenceInDays, addDays, isSameDay } from 'date-fns';
+import { Link } from 'react-router-dom';
 import { useCalendar } from '@/hooks/useCalendar';
 import { CalendarTwin } from '@/components/ui/calendar-twin';
 import { Button } from '@/components/ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { Calendar as CalendarIcon, Users, Loader2 } from 'lucide-react';
+import { Calendar as CalendarIcon, Users, Loader2, MessageCircle, Shield } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Property } from '@/data/properties';
 
@@ -20,7 +21,7 @@ export function BookingWidget({ property }: BookingWidgetProps) {
   const [showPricing, setShowPricing] = useState(false);
 
   // Fetch calendar availability data with pricing
-  const { unavailableDates, getPriceForDate, calendarDays, isLoading: isCalendarLoading } = useCalendar(
+  const { unavailableDates, getPriceForDate, isLoading: isCalendarLoading } = useCalendar(
     property.hostawayListingId,
     { monthsAhead: 12 }
   );
@@ -88,26 +89,20 @@ export function BookingWidget({ property }: BookingWidgetProps) {
 
   // Validate minimum nights
   const meetsMinNights = nights >= property.minNights;
-  const meetsMaxNights = nights <= property.maxNights;
 
   const handleCheckAvailability = async () => {
     if (!checkIn || !checkOut) return;
 
     setIsLoading(true);
-    // Simulate API call - this is where Hostaway API would be integrated
     await new Promise((resolve) => setTimeout(resolve, 1000));
     setShowPricing(true);
     setIsLoading(false);
   };
 
   const handleBookNow = () => {
-    // In production, this would either:
-    // 1. Complete booking via Hostaway API
-    // 2. Redirect to Hostaway booking engine
     const checkInStr = checkIn ? format(checkIn, 'yyyy-MM-dd') : '';
     const checkOutStr = checkOut ? format(checkOut, 'yyyy-MM-dd') : '';
 
-    // Redirect to Hostaway booking engine (placeholder URL structure)
     if (property.hostawayListingId) {
       window.open(
         `https://117087_2.holidayfuture.com/listings/${property.hostawayListingId}?checkin=${checkInStr}&checkout=${checkOutStr}&guests=${guests}`,
@@ -118,9 +113,12 @@ export function BookingWidget({ property }: BookingWidgetProps) {
 
   return (
     <div className="bg-card rounded-xl shadow-elevated p-6 sticky top-24">
+      {/* Dynamic Price Display */}
       <div className="mb-4">
         <span className="font-serif text-2xl font-semibold text-foreground">
-          ${property.startingPrice}
+          ${showPricing && dynamicPricing.usedDynamicPricing
+            ? dynamicPricing.averageNightlyRate
+            : property.startingPrice}
         </span>
         <span className="text-muted-foreground"> / night</span>
         {property.weeklyDiscount && property.weeklyDiscount < 1 && (
@@ -136,6 +134,8 @@ export function BookingWidget({ property }: BookingWidgetProps) {
         <span>•</span>
         <span>Check-out: {property.checkOutTime}:00</span>
       </div>
+
+      {/* Date Selection */}
       <Popover>
         <PopoverTrigger asChild>
           <Button
@@ -152,8 +152,8 @@ export function BookingWidget({ property }: BookingWidgetProps) {
                 {checkIn && checkOut
                   ? `${format(checkIn, 'MMM d')} → ${format(checkOut, 'MMM d, yyyy')}`
                   : checkIn
-                  ? `${format(checkIn, 'MMM d')} → Select checkout`
-                  : 'Select dates'}
+                    ? `${format(checkIn, 'MMM d')} → Select checkout`
+                    : 'Select dates'}
               </span>
             </div>
           </Button>
@@ -167,7 +167,6 @@ export function BookingWidget({ property }: BookingWidgetProps) {
               setShowPricing(false);
             }}
             onComplete={() => {
-              // Close popover after both dates selected
               const trigger = document.querySelector('[data-state="open"]');
               if (trigger) {
                 (trigger as HTMLElement).click();
@@ -214,7 +213,7 @@ export function BookingWidget({ property }: BookingWidgetProps) {
         </Button>
       </div>
 
-      {/* Check Availability / Book Now */}
+      {/* Check Availability / Pricing View */}
       {!showPricing ? (
         <Button
           variant="hero"
@@ -245,8 +244,7 @@ export function BookingWidget({ property }: BookingWidgetProps) {
           <div className="space-y-3 mb-6 pb-6 border-b border-border">
             <div className="flex justify-between text-muted-foreground">
               <span>
-                ${dynamicPricing.averageNightlyRate} avg/night × {nights} nights
-                {dynamicPricing.usedDynamicPricing}
+                ${dynamicPricing.averageNightlyRate} × {nights} night{nights > 1 ? 's' : ''}
               </span>
               <span>${dynamicPricing.subtotal}</span>
             </div>
@@ -265,24 +263,52 @@ export function BookingWidget({ property }: BookingWidgetProps) {
               <span>${serviceFee}</span>
             </div>
           </div>
+
+          {/* Total */}
           <div className="flex justify-between font-semibold text-lg mb-6">
             <span>Total</span>
             <span>${total}</span>
           </div>
+
+          {/* Book Now Button */}
           <Button
             variant="hero"
             size="xl"
-            className="w-full"
+            className="w-full mb-3"
             onClick={handleBookNow}
             disabled={!meetsMinNights}
           >
             Book Now
           </Button>
+
+          {/* Send Inquiry Button */}
+          <Button
+            variant="outline"
+            size="lg"
+            className="w-full gap-2"
+            asChild
+          >
+            <Link to="/contact">
+              <MessageCircle className="w-4 h-4" />
+              Have a question? Message Host
+            </Link>
+          </Button>
         </>
       )}
 
-      <p className="text-center text-sm text-muted-foreground mt-4">
-        You won't be charged yet
+      {/* Best Rate Guarantee */}
+      <div className="mt-4 p-3 bg-ocean/5 rounded-lg border border-ocean/20">
+        <div className="flex items-start gap-2">
+          <Shield className="w-4 h-4 text-ocean mt-0.5 flex-shrink-0" />
+          <p className="text-xs text-muted-foreground leading-relaxed">
+            <span className="font-medium text-foreground">Best Rate Guarantee:</span> Rates may be lower here than on Airbnb/Vrbo due to zero platform fees.
+          </p>
+        </div>
+      </div>
+
+      {/* Cancellation Policy */}
+      <p className="text-center text-xs text-muted-foreground mt-4">
+        Free cancellation for a full refund if canceled at least 14 days before check-in.
       </p>
     </div>
   );

@@ -12,25 +12,25 @@ const locations = [
     id: 'avila',
     name: 'Avila Beach',
     image: avilaImg,
-    description: 'A relaxed, upscale escape with year-round sunshine and oceanfront dining.',
+    description: 'A coastal sanctuary known for its calm waters, sunny micro-climate, and walkable promenade. Experience the best of beachside living.',
     mapLink: 'https://www.google.com/maps/search/?api=1&query=Avila+Beach,+CA',
     mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25884.25447087949!2d-120.75!3d35.18!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80ec48e7b76e3d1d%3A0x8c8c8c8c8c8c8c8c!2sAvila%20Beach%2C%20CA!5e0!3m2!1sen!2sus!4v1234567890',
+  },
+  {
+    id: 'pismo',
+    name: 'Pismo Beach',
+    image: pismoImg,
+    description: 'Classic California soul. From the iconic pier to the sweeping dunes, Pismo offers an adventurous yet refined seaside escape.',
+    mapLink: 'https://www.google.com/maps/search/?api=1&query=Pismo+Beach,+CA',
+    mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25884.25447087949!2d-120.64!3d35.14!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80ec4319abe8f8d5%3A0x8c8c8c8c8c8c8c8c!2sPismo%20Beach%2C%20CA!5e0!3m2!1sen!2sus!4v1234567890',
   },
   {
     id: 'slo',
     name: 'San Luis Obispo',
     image: sloImg,
-    description: 'The vibrant heart of the Central Coast, known for wineries and downtown charm.',
+    description: 'Where historic charm meets modern sophistication. Explore world-class vineyards and a vibrant downtown nestled in the foothills.',
     mapLink: 'https://www.google.com/maps/search/?api=1&query=San+Luis+Obispo,+CA',
     mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25884.25447087949!2d-120.66!3d35.28!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80ecf523a871483d%3A0x7c8c8c8c8c8c8c8c!2sSan%20Luis%20Obispo%2C%20CA!5e0!3m2!1sen!2sus!4v1234567890',
-  },
-  {
-    id: 'pismo',
-    name: 'Pismo Beach',
-    image: pismoImg, // Will be replaced with Kyle's image when provided
-    description: 'A classic California beach town with stunning sunsets, fresh seafood, and coastal adventures.',
-    mapLink: 'https://www.google.com/maps/search/?api=1&query=Pismo+Beach,+CA',
-    mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25884.25447087949!2d-120.64!3d35.14!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80ec4319abe8f8d5%3A0x8c8c8c8c8c8c8c8c!2sPismo%20Beach%2C%20CA!5e0!3m2!1sen!2sus!4v1234567890',
   },
 ];
 
@@ -108,11 +108,11 @@ export function LocationSection() {
             {/* Map Container - Floating 3D Look */}
             <div className="relative w-full h-[240px] rounded-2xl overflow-hidden shadow-elevated bg-secondary/30 group hover:scale-[1.01] transition-transform duration-500">
               <motion.div
-                 key={activeLocation.mapEmbed}
-                 initial={{ opacity: 0 }}
-                 animate={{ opacity: 1 }}
-                 transition={{ duration: 0.6 }}
-                 className="w-full h-full"
+                key={activeLocation.mapEmbed}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6 }}
+                className="w-full h-full"
               >
                 <iframe
                   src={activeLocation.mapEmbed}
@@ -139,9 +139,9 @@ export function LocationSection() {
             </div>
 
             <div className="mt-8 text-right">
-                <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground flex items-center justify-end gap-2 font-medium">
-                  <MapPin className="w-3 h-3" /> California Central Coast
-                </p>
+              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground flex items-center justify-end gap-2 font-medium">
+                <MapPin className="w-3 h-3" /> California Central Coast
+              </p>
             </div>
           </motion.div>
         </div>

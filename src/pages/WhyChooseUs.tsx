@@ -5,51 +5,69 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { SEO } from '@/components/SEO';
 import { Button } from '@/components/ui/button';
-import { Sparkles, Search, ShieldCheck, Handshake, Star } from 'lucide-react';
+import { Sparkles, ShieldCheck, MapPin, Clock, BadgeCheck, Smartphone, Star, MessageCircle } from 'lucide-react';
 import aboutHeroImage from '/about-us/outside-chair.jpg';
 import avilaBeachImage from '/about-us/fire-pit.jpg';
 
+// Core Values - Addressing top 3 guest fears
 const values = [
   {
     icon: Sparkles,
-    title: 'Elevated Hospitality',
-    description: 'We believe every stay should feel intentional, refined, and unforgettable—from the quality of the linens to the warmth of the welcome.',
-  },
-  {
-    icon: Search,
-    title: 'Attention to Detail',
-    description: 'From the layout of a space to the placement of a welcome card, we obsess over the small things that create meaningful experiences.',
+    title: 'Curated Comfort',
+    description: 'From Parachute linens to locally sourced welcome baskets, every detail is hand-selected to make you feel spoiled the moment you walk through the door.',
   },
   {
     icon: ShieldCheck,
-    title: 'Immaculate Standards',
-    description: "Cleanliness is non-negotiable. Our properties are maintained to the highest standards to ensure every guest feels at ease the moment they arrive.",
+    title: 'The 50-Point Clean',
+    description: "We don't just 'clean.' We inspect. Every home undergoes a rigorous 50-point video inspection before your arrival to guarantee it is spotless and staged to perfection.",
   },
   {
-    icon: Handshake,
-    title: 'Trust & Transparency',
-    description: "Whether you're a guest or a homeowner, our commitment to clear communication, reliability, and professionalism is at the heart of everything we do.",
+    icon: MapPin,
+    title: 'Your Local Concierge',
+    description: "We live here. Whether you need a reservation at the best winery or a secret beach recommendation, our team is your boots-on-the-ground guide to the Central Coast.",
+  },
+];
+
+// Seamless Service features
+const seamlessFeatures = [
+  {
+    icon: Clock,
+    title: '24/7 Instant Response',
+    description: "We are always just a text away. Whether it's a late-night check-in question or a morning coffee recommendation, you get instant answers when you need them most.",
+  },
+  {
+    icon: BadgeCheck,
+    title: 'Best Rate Guarantee',
+    description: "We monitor local market rates daily to ensure our direct-booking prices are always fair, competitive, and free from the hidden service fees found on big listing sites.",
+  },
+  {
+    icon: Smartphone,
+    title: 'Frictionless Check-In',
+    description: "No keys to lose or meetups to coordinate. Enjoy a smooth arrival with your own unique smart-lock code, plus unobtrusive tech that keeps your stay safe and secure.",
   },
 ];
 
 const testimonials = [
   {
     name: 'Paul',
-    date: 'March 2025',
+    date: 'December 2024',
     property: 'Coral House',
     text: "The place was decorated with top notch decor and was spotless upon arrival. The location was perfect. Just a block from the beach and close to everything. Restaurants, coffee shops, etc. would highly recommend. You won't be disappointed :)",
+    platform: 'Airbnb',
   },
   {
     name: 'Ashlea',
-    date: 'May 2025',
+    date: 'November 2024',
     property: 'Palm House',
     text: 'Great spot for one or two people to stay in Avila Beach. Pet friendly which was a plus. Super walkable and one block from the beach. We enjoyed our stay and would definitely stay here again!',
+    platform: 'Airbnb',
   },
   {
     name: 'Chasity',
-    date: 'Feb 2025',
+    date: 'October 2024',
     property: 'Pine House',
     text: 'Beautiful stay! 30 second walk to the beach! Super clean and plenty of amenities for a few nights. I will definitely be going back and Kyle was a great host!',
+    platform: 'Vrbo',
   },
 ];
 
@@ -80,19 +98,25 @@ const WhyChooseUsPage = () => {
   const valuesRef = useRef(null);
   const isValuesInView = useInView(valuesRef, { once: true, margin: '-100px' });
 
+  const seamlessRef = useRef(null);
+  const isSeamlessInView = useInView(seamlessRef, { once: true, margin: '-100px' });
+
   const testimonialsRef = useRef(null);
   const isTestimonialsInView = useInView(testimonialsRef, { once: true, margin: '-100px' });
+
+  const scrollToValues = () => {
+    document.getElementById('standards')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Why Choose Us"
-        description="Discover the Solmaré difference. We offer refined rentals, trusted management, and curated coastal living experiences."
+        title="The Solmaré Standard"
+        description="Hotel reliability meets vacation home freedom. Discover immaculate standards, curated comfort, and local expertise on California's Central Coast."
       />
       <Header />
       <main>
-        {/* Hero Section - Full Screen with Image */}
-        {/* Hero Section - Full Screen */}
+        {/* SECTION 1: Hero Section */}
         <section ref={heroRef} className="relative h-screen min-h-[600px] flex items-center overflow-hidden">
           <div className="absolute inset-0">
             <motion.img
@@ -114,117 +138,141 @@ const WhyChooseUsPage = () => {
               className="max-w-xl"
             >
               <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight text-foreground mb-6">
-                Refined Rentals.<br />
-                Trusted Management.<br />
-                <span className="text-gold">Coastal Living, Curated.</span>
+                The Solmaré Standard.
               </h1>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                Welcome to Solmaré Stays, where elevated living meets the spirit of the California Coast.
-                Our story is rooted in a passion for hospitality, thoughtful design, and creating
-                unforgettable experiences.
-              </p>
-              <p className="text-muted-foreground leading-relaxed mb-8">
-                At Solmaré Stays, we do more than manage properties—we craft stays that inspire.
-                Every home is hand-selected for its character, comfort, and location.
+              <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+                Not just a vacation rental. A curated coastal experience defined by immaculate standards and effortless stays.
               </p>
               <div className="flex flex-wrap gap-4">
-                <Button variant="default" size="xl" asChild>
-                  <Link to="/collection">Explore Our Properties</Link>
+                <Button variant="default" size="xl" onClick={scrollToValues}>
+                  See Our Standards
                 </Button>
               </div>
             </motion.div>
           </div>
         </section>
 
-        {/* More Than a Place to Stay */}
-        <section className="py-24 bg-secondary">
-          <div className="container mx-auto px-4 md:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <ParallaxImage
-                src={avilaBeachImage}
-                alt="California coastal view"
-                className="aspect-[4/3] rounded-2xl shadow-elevated"
-              />
-              <div>
-                <motion.h2
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8 }}
-                  className="font-serif text-3xl md:text-4xl font-semibold text-foreground mb-6"
-                >
-                  More Than a Place to Stay
-                </motion.h2>
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                  className="text-xl text-muted-foreground italic mb-8"
-                >
-                  We design homes that feel like they were made for <em>you</em>. Our guests choose
-                  Solmaré for more than convenience — they come for serenity, setting, and style.
-                </motion.p>
+        {/* SECTION 2: Emotional Hook */}
+        <section className="relative py-0">
+          <div className="relative h-[60vh] min-h-[400px]">
+            <img
+              src={avilaBeachImage}
+              alt="California coastal sunset"
+              className="w-full h-full object-cover"
+            />
+            {/* Stronger overlay for better text visibility */}
+            <div className="absolute inset-0 bg-black/60" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="text-center text-white max-w-3xl px-6">
+                {/* Text container with subtle background */}
+                <div className="bg-black/30 backdrop-blur-sm rounded-2xl py-10 px-8">
+                  <motion.h2
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="font-serif text-3xl md:text-5xl font-semibold mb-6 drop-shadow-lg"
+                  >
+                    More Than a Place to Stay.
+                  </motion.h2>
+                  <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    className="text-white text-lg md:text-xl leading-relaxed drop-shadow-md"
+                  >
+                    We believe a vacation home should feel better than your own home. That means chef-ready kitchens, professional interior design, and a level of cleanliness that rivals 5-star hotels. No clutter, no guesswork—just the coast.
+                  </motion.p>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Our Values - Stacking Cards */}
-        <section ref={valuesRef} className="section-padding bg-background relative">
+        {/* SECTION 3: Core Values - 3 White Cards */}
+        <section id="standards" ref={valuesRef} className="section-padding bg-background scroll-mt-24">
           <div className="container mx-auto px-4 md:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={isValuesInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-16"
+            >
+              <h2 className="font-serif text-3xl md:text-5xl font-semibold text-foreground mb-4">
+                Our Core Values
+              </h2>
+              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                Hotel reliability, vacation home freedom.
+              </p>
+            </motion.div>
 
-              {/* Left Content - Sticky */}
-              <div className="lg:sticky lg:top-32 h-fit mb-12 lg:mb-0">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {values.map((value, index) => (
                 <motion.div
-                  initial={{ opacity: 0, x: -50 }}
-                  animate={isValuesInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.8 }}
+                  key={index}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={isValuesInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+                  className="bg-white p-8 md:p-10 rounded-2xl shadow-elevated border border-border/30"
                 >
-                  <h2 className="font-serif text-3xl md:text-5xl font-semibold text-foreground mb-6 leading-tight">
-                    Our Values
-                  </h2>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-                    The principles that guide every decision we make. At Solmaré Stays,
-                    we are dedicated to excellence, integrity, and crafting experiences
-                    that linger in memory.
+                  <div className="w-14 h-14 rounded-full bg-ocean/10 flex items-center justify-center mb-6">
+                    <value.icon className="w-7 h-7 text-ocean" />
+                  </div>
+                  <h3 className="font-serif text-2xl font-semibold text-foreground mb-4">
+                    {value.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {value.description}
                   </p>
                 </motion.div>
-              </div>
-
-              {/* Right Values - Stacking Cards */}
-              <div className="relative flex flex-col gap-8 pb-12">
-                {values.map((value, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={isValuesInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-                    className="bg-card p-8 md:p-12 rounded-3xl shadow-lg border border-border/50 sticky top-24 lg:top-32 min-h-[250px] flex flex-col justify-center"
-                  >
-                    <div className="flex items-start gap-6">
-                      <div className="w-14 h-14 rounded-full bg-ocean/10 flex items-center justify-center shrink-0">
-                        <value.icon className="w-7 h-7 text-ocean" />
-                      </div>
-                      <div>
-                        <h3 className="font-serif text-2xl md:text-3xl font-semibold text-foreground mb-4">
-                          {value.title}
-                        </h3>
-                        <p className="text-muted-foreground text-lg leading-relaxed">
-                          {value.description}
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Testimonials */}
+        {/* SECTION 4: Seamless Service (NEW) */}
+        <section ref={seamlessRef} className="section-padding bg-[#f5f5f5]">
+          <div className="container mx-auto px-4 md:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={isSeamlessInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-16"
+            >
+              <h2 className="font-serif text-3xl md:text-5xl font-semibold text-foreground mb-4">
+                SEAMLESS FROM START TO FINISH
+              </h2>
+              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                Modern conveniences designed to make your stay effortless.
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+              {seamlessFeatures.map((feature, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={isSeamlessInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+                  className="text-center"
+                >
+                  <div className="w-16 h-16 rounded-full bg-ocean/10 flex items-center justify-center mx-auto mb-6">
+                    <feature.icon className="w-8 h-8 text-ocean" />
+                  </div>
+                  <h3 className="font-serif text-xl md:text-2xl font-semibold text-foreground mb-4">
+                    {feature.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {feature.description}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION 5: Testimonials */}
         <section ref={testimonialsRef} className="section-padding bg-primary text-primary-foreground">
           <div className="container mx-auto px-4 md:px-6 lg:px-8">
             <motion.div
@@ -264,6 +312,9 @@ const WhyChooseUsPage = () => {
                     <span className="font-semibold">{testimonial.name}</span>
                     <span className="text-primary-foreground/60 text-sm"> · {testimonial.date}</span>
                     <p className="text-primary-foreground/60 text-sm">{testimonial.property}</p>
+                    <p className="text-primary-foreground/50 text-xs mt-1 italic">
+                      ✓ Verified Review from {testimonial.platform}
+                    </p>
                   </div>
                 </motion.div>
               ))}
@@ -271,7 +322,7 @@ const WhyChooseUsPage = () => {
           </div>
         </section>
 
-        {/* CTA */}
+        {/* SECTION 6: Final CTA */}
         <section className="section-padding bg-background">
           <div className="container mx-auto px-4 md:px-6 lg:px-8 text-center">
             <motion.div
@@ -284,14 +335,17 @@ const WhyChooseUsPage = () => {
                 Ready to Experience the Difference?
               </h2>
               <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">
-                Discover our curated collection of coastal properties and book your perfect escape today.
+                The coast is calling. Book direct for the best rates guaranteed.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Button variant="hero" size="xl" asChild>
-                  <Link to="/collection">Browse Properties</Link>
+                  <Link to="/collection">Browse The Collection</Link>
                 </Button>
                 <Button variant="hero-outline" size="xl" asChild>
-                  <Link to="/contact">Get in Touch</Link>
+                  <Link to="/contact" className="gap-2">
+                    <MessageCircle className="w-5 h-5" />
+                    Message the Host
+                  </Link>
                 </Button>
               </div>
             </motion.div>

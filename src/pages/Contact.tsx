@@ -1,5 +1,6 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { SEO } from '@/components/SEO';
@@ -8,9 +9,30 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Mail, Phone, MapPin, Send, Check } from 'lucide-react';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Mail, Phone, MapPin, Send, Check, Clock } from 'lucide-react';
 import { toast } from 'sonner';
 import contactHeroImage from '@/assets/contact-hero.jpg';
+
+// FAQ Data
+const faqItems = [
+  {
+    question: 'What is your cancellation policy?',
+    answer: 'You will receive a full refund if you cancel your reservation at least 14 days prior to your scheduled check-in date.',
+  },
+  {
+    question: 'Do you offer early check-in?',
+    answer: 'We try our best to accommodate early arrivals whenever possible. Please message us on the morning of your arrival, and we will let you know if the property is ready for you early.',
+  },
+  {
+    question: 'Are your homes pet-friendly?',
+    answer: "Many of our properties welcome pets! Look for the 'Pet Friendly' badge on our Collection page or filter your search to see available options.",
+  },
+  {
+    question: 'I\'m a property owner. How do I list with you?',
+    answer: "We'd love to chat! Select 'List My Property' in the contact form above, or visit our For Homeowners page to schedule a revenue consultation.",
+  },
+];
 
 const ContactPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -28,6 +50,9 @@ const ContactPage = () => {
 
   const formRef = useRef(null);
   const isFormInView = useInView(formRef, { once: true, margin: '-100px' });
+
+  const faqRef = useRef(null);
+  const isFaqInView = useInView(faqRef, { once: true, margin: '-100px' });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -84,8 +109,7 @@ const ContactPage = () => {
                 Get In Touch
               </h1>
               <p className="text-lg text-white/90 leading-relaxed">
-                Have questions about booking, property management, or partnering with us?
-                We'd love to hear from you.
+                Have questions about a stay, property management, or partnering with us? Our local team is here to help.
               </p>
             </motion.div>
           </div>
@@ -102,53 +126,19 @@ const ContactPage = () => {
                 transition={{ duration: 0.8 }}
                 className="lg:col-span-2"
               >
-                <h2 className="font-serif text-3xl font-semibold text-foreground mb-6">
-                  Contact Information
+                <h2 className="font-serif text-3xl font-semibold text-foreground mb-4">
+                  Connect With Us
                 </h2>
                 <p className="text-muted-foreground mb-8">
-                  Reach out to us directly or fill out the form and we'll get back to you
-                  within 24 hours.
+                  We are based locally on the Central Coast and are available to assist you.
                 </p>
 
                 <div className="space-y-6">
+                  {/* Location */}
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={isFormInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6, delay: 0.2 }}
-                    className="flex items-start gap-4"
-                  >
-                    <div className="w-12 h-12 rounded-full bg-ocean/10 flex items-center justify-center flex-shrink-0">
-                      <Mail className="w-5 h-5 text-ocean" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1">Email</h3>
-                      <a href="mailto:info@solmarestays.com" className="text-muted-foreground hover:text-primary transition-colors">
-                        info@solmarestays.com
-                      </a>
-                    </div>
-                  </motion.div>
-
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isFormInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6, delay: 0.3 }}
-                    className="flex items-start gap-4"
-                  >
-                    <div className="w-12 h-12 rounded-full bg-ocean/10 flex items-center justify-center flex-shrink-0">
-                      <Phone className="w-5 h-5 text-ocean" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1">Phone</h3>
-                      <a href="tel:+18058016429" className="text-muted-foreground hover:text-primary transition-colors">
-                        (805) 801-6429
-                      </a>
-                    </div>
-                  </motion.div>
-
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isFormInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6, delay: 0.4 }}
                     className="flex items-start gap-4"
                   >
                     <div className="w-12 h-12 rounded-full bg-ocean/10 flex items-center justify-center flex-shrink-0">
@@ -157,24 +147,69 @@ const ContactPage = () => {
                     <div>
                       <h3 className="font-semibold text-foreground mb-1">Location</h3>
                       <p className="text-muted-foreground">
-                        Avila Beach & San Luis Obispo<br />
-                        California's Central Coast
+                        Serving the Central Coast, CA
                       </p>
+                    </div>
+                  </motion.div>
+
+                  {/* Email */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isFormInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                    className="flex items-start gap-4"
+                  >
+                    <div className="w-12 h-12 rounded-full bg-ocean/10 flex items-center justify-center flex-shrink-0">
+                      <Mail className="w-5 h-5 text-ocean" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground mb-1">Email</h3>
+                      <a href="mailto:info@solmarestays.com" className="text-muted-foreground hover:text-ocean transition-colors">
+                        info@solmarestays.com
+                      </a>
+                    </div>
+                  </motion.div>
+
+                  {/* Phone */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isFormInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                    className="flex items-start gap-4"
+                  >
+                    <div className="w-12 h-12 rounded-full bg-ocean/10 flex items-center justify-center flex-shrink-0">
+                      <Phone className="w-5 h-5 text-ocean" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground mb-1">Phone</h3>
+                      <a href="tel:+18058016429" className="text-muted-foreground hover:text-ocean transition-colors">
+                        (805) 801-6429
+                      </a>
                     </div>
                   </motion.div>
                 </div>
 
+                {/* Office Hours */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={isFormInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.6, delay: 0.5 }}
                   className="mt-10 p-6 bg-secondary rounded-xl"
                 >
-                  <p className="text-sm text-muted-foreground">
-                    <strong className="text-foreground">Office Hours:</strong><br />
-                    Monday - Friday: 9am - 5pm PST<br />
-                    Weekends: By appointment
-                  </p>
+                  <div className="flex items-center gap-2 mb-3">
+                    <Clock className="w-5 h-5 text-ocean" />
+                    <h3 className="font-semibold text-foreground">Office Hours</h3>
+                  </div>
+                  <div className="space-y-2 text-sm text-muted-foreground">
+                    <p>
+                      <span className="font-medium text-foreground">General Inquiries:</span><br />
+                      Monday - Friday: 9am - 5pm PST
+                    </p>
+                    <p>
+                      <span className="font-medium text-foreground">Guest Support:</span><br />
+                      24/7 for current guests and emergencies
+                    </p>
+                  </div>
                 </motion.div>
               </motion.div>
 
@@ -242,10 +277,10 @@ const ContactPage = () => {
                             <SelectValue placeholder="Select a topic" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="booking">Booking Inquiry</SelectItem>
-                            <SelectItem value="property">Property Management</SelectItem>
-                            <SelectItem value="partnership">Partnership Opportunity</SelectItem>
-                            <SelectItem value="general">General Question</SelectItem>
+                            <SelectItem value="booking">Booking Inquiry (Guest)</SelectItem>
+                            <SelectItem value="property">List My Property (Owner Lead)</SelectItem>
+                            <SelectItem value="guest-support">Current Guest Support (Urgent)</SelectItem>
+                            <SelectItem value="partnership">Vendor / Partnership</SelectItem>
                             <SelectItem value="other">Other</SelectItem>
                           </SelectContent>
                         </Select>
@@ -290,7 +325,7 @@ const ContactPage = () => {
                       ) : (
                         <>
                           <Send className="w-5 h-5 mr-2" />
-                          Send Message
+                          Send Inquiry
                         </>
                       )}
                     </Button>
@@ -298,6 +333,59 @@ const ContactPage = () => {
                 </div>
               </motion.div>
             </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section ref={faqRef} className="section-padding bg-secondary">
+          <div className="container mx-auto px-4 md:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={isFaqInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8 }}
+              className="max-w-3xl mx-auto"
+            >
+              <h2 className="font-serif text-3xl md:text-4xl font-semibold text-foreground text-center mb-10">
+                Frequently Asked Questions
+              </h2>
+
+              <Accordion type="single" collapsible className="space-y-4">
+                {faqItems.map((item, index) => (
+                  <AccordionItem
+                    key={index}
+                    value={`item-${index}`}
+                    className="bg-card rounded-xl px-6 border-none shadow-soft"
+                  >
+                    <AccordionTrigger className="text-left font-medium text-foreground hover:no-underline py-5">
+                      {item.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-muted-foreground pb-5">
+                      {item.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Final CTA */}
+        <section className="section-padding bg-background">
+          <div className="container mx-auto px-4 md:px-6 lg:px-8 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="max-w-2xl mx-auto"
+            >
+              <h2 className="font-serif text-4xl md:text-5xl font-semibold text-foreground mb-6">
+                Ready to Book Your Escape?
+              </h2>
+              <Button variant="hero" size="xl" asChild>
+                <Link to="/collection">Browse The Collection</Link>
+              </Button>
+            </motion.div>
           </div>
         </section>
       </main>
