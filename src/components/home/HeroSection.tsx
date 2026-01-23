@@ -104,8 +104,8 @@ export function HeroSection() {
               </div>
             </motion.div>
 
-            {/* Right: Floating Booking Widget (All Screens) - No carousel fade */}
-            <div className="w-full lg:w-auto">
+            {/* Right: Floating Booking Widget (Desktop Only) */}
+            <div className="hidden lg:block w-full lg:w-auto">
               <div className="bg-white rounded-2xl shadow-elevated p-6 md:p-8">
                 <h3 className="font-serif text-xl font-medium text-foreground mb-6">
                   Find Your Perfect Stay
@@ -204,8 +204,19 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* Navigation Controls - Minimal */}
-        <div className="absolute bottom-10 right-8 z-20 hidden md:flex gap-2">
+        {/* Mobile Sticky Book Now Button */}
+        <div className="fixed bottom-0 left-0 right-0 z-50 p-4 bg-white border-t border-border lg:hidden pb-safe">
+          <Button
+            size="lg"
+            className="w-full h-14 text-lg font-medium shadow-xl"
+            onClick={handleSearch}
+          >
+            Book Your Stay
+          </Button>
+        </div>
+
+        {/* Navigation Controls - Minimal (Desktop Only) */}
+        <div className="absolute bottom-10 left-12 z-20 hidden lg:flex gap-2">
           <button
             onClick={prevSlide}
             className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/40 transition-colors duration-200"

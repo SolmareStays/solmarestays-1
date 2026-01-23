@@ -70,8 +70,8 @@ function transformListing(listing: HostawayListing): Property {
   return {
     // Basic info
     id: String(listing.id),
-    slug: generateSlug(listing.name),
-    name: listing.name,
+    slug: generateSlug(listing.internalListingName || listing.name),
+    name: listing.internalListingName || listing.name,
     location: listing.city,
     unitType: getUnitType(listing.bedroomsNumber),
     description: listing.description,
@@ -121,6 +121,14 @@ function transformListing(listing: HostawayListing): Property {
 
     // Guidebook
     guidebookUrl: extractGuidebookUrl(listing.customFieldValues),
+
+    // Additional fees and taxes
+    checkinFee: listing.checkinFee,
+    priceForExtraPerson: listing.priceForExtraPerson,
+    propertyRentTax: listing.propertyRentTax,
+    guestStayTax: listing.guestStayTax,
+    guestNightlyTax: listing.guestNightlyTax,
+    refundableDamageDeposit: listing.refundableDamageDeposit,
   };
 }
 

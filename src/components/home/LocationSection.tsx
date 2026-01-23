@@ -1,11 +1,13 @@
 import { motion, AnimatePresence, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef, useState, useMemo } from 'react';
 import avilaImg from '/home/avila.jpg';
 import sloImg from '/home/san-luis.jpg';
 import pismoImg from '/home/pismo-beach.jpg';
 import { MapPin, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { useProperties } from '@/hooks/useProperties';
+import { PropertyMap } from '@/components/properties/PropertyMap';
 
 const locations = [
   {
@@ -14,7 +16,6 @@ const locations = [
     image: avilaImg,
     description: 'A coastal sanctuary known for its calm waters, sunny micro-climate, and walkable promenade. Experience the best of beachside living.',
     mapLink: 'https://www.google.com/maps/search/?api=1&query=Avila+Beach,+CA',
-    mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25884.25447087949!2d-120.75!3d35.18!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80ec48e7b76e3d1d%3A0x8c8c8c8c8c8c8c8c!2sAvila%20Beach%2C%20CA!5e0!3m2!1sen!2sus!4v1234567890',
   },
   {
     id: 'pismo',
@@ -22,7 +23,6 @@ const locations = [
     image: pismoImg,
     description: 'Classic California soul. From the iconic pier to the sweeping dunes, Pismo offers an adventurous yet refined seaside escape.',
     mapLink: 'https://www.google.com/maps/search/?api=1&query=Pismo+Beach,+CA',
-    mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25884.25447087949!2d-120.64!3d35.14!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80ec4319abe8f8d5%3A0x8c8c8c8c8c8c8c8c!2sPismo%20Beach%2C%20CA!5e0!3m2!1sen!2sus!4v1234567890',
   },
   {
     id: 'slo',
@@ -30,7 +30,6 @@ const locations = [
     image: sloImg,
     description: 'Where historic charm meets modern sophistication. Explore world-class vineyards and a vibrant downtown nestled in the foothills.',
     mapLink: 'https://www.google.com/maps/search/?api=1&query=San+Luis+Obispo,+CA',
-    mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25884.25447087949!2d-120.66!3d35.28!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80ecf523a871483d%3A0x7c8c8c8c8c8c8c8c!2sSan%20Luis%20Obispo%2C%20CA!5e0!3m2!1sen!2sus!4v1234567890',
   },
 ];
 
@@ -39,7 +38,13 @@ export function LocationSection() {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [activeLocationIndex, setActiveLocationIndex] = useState(0);
 
+  const { data: properties = [] } = useProperties();
+
   const activeLocation = locations[activeLocationIndex];
+
+  const filteredProperties = useMemo(() => {
+    return properties.filter(p => p.location.includes(activeLocation.name));
+  }, [properties, activeLocation.name]);
 
   return (
     <section ref={ref} className="relative bg-background overflow-hidden">
@@ -106,24 +111,15 @@ export function LocationSection() {
             </div>
 
             {/* Map Container - Floating 3D Look */}
-            <div className="relative w-full h-[240px] rounded-2xl overflow-hidden shadow-elevated bg-secondary/30 group hover:scale-[1.01] transition-transform duration-500">
+            <div className="relative w-full h-[240px] rounded-2xl overflow-hidden shadow-elevated bg-secondary/30 group hover:scale-[1.01] transition-transform duration-500 isolate">
               <motion.div
-                key={activeLocation.mapEmbed}
+                key={activeLocation.id} // Re-mount map when location changes to force re-center
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6 }}
                 className="w-full h-full"
               >
-                <iframe
-                  src={activeLocation.mapEmbed}
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="grayscale hover:grayscale-0 transition-all duration-700"
-                />
+                <PropertyMap properties={filteredProperties} height="100%" />
               </motion.div>
 
               {/* External Link Overlay */}
@@ -131,7 +127,7 @@ export function LocationSection() {
                 href={activeLocation.mapLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="absolute top-4 right-4 p-3 bg-white/90 backdrop-blur-sm rounded-full shadow-medium hover:scale-110 transition-transform text-foreground hover:text-primary"
+                className="absolute top-4 right-4 p-3 bg-white/90 backdrop-blur-sm rounded-full shadow-medium hover:scale-110 transition-transform text-foreground hover:text-primary z-[1001]"
                 title="Open in Google Maps"
               >
                 <ExternalLink className="w-5 h-5" />

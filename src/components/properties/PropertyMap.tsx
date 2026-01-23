@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Property } from '@/data/properties';
@@ -30,6 +30,7 @@ export function PropertyMap({ properties, height = '500px' }: PropertyMapProps) 
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<L.Map | null>(null);
   const markersRef = useRef<L.Marker[]>([]);
+  const navigate = useNavigate();
 
   // Initialize Map
   useEffect(() => {
@@ -40,7 +41,7 @@ export function PropertyMap({ properties, height = '500px' }: PropertyMapProps) 
       : [35.1798, -120.7331];
 
     const map = L.map(mapContainerRef.current, {
-        scrollWheelZoom: true
+      scrollWheelZoom: true
     }).setView(defaultCenter, 12);
 
     L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
@@ -104,8 +105,8 @@ export function PropertyMap({ properties, height = '500px' }: PropertyMapProps) 
       `;
 
       marker.bindPopup(popupHtml, {
-          className: 'property-map-popup',
-          minWidth: 220
+        className: 'property-map-popup',
+        minWidth: 220
       });
 
       markersRef.current.push(marker);
@@ -118,10 +119,10 @@ export function PropertyMap({ properties, height = '500px' }: PropertyMapProps) 
   }, [properties]);
 
   return (
-    <div className="relative rounded-2xl overflow-hidden shadow-elevated z-0 isolate">
+    <div className="relative rounded-2xl overflow-hidden shadow-elevated z-0 isolate h-full" style={{ height }}>
       <div
         ref={mapContainerRef}
-        style={{ height, width: '100%' }}
+        style={{ height: '100%', width: '100%' }}
         className="bg-secondary"
       />
 

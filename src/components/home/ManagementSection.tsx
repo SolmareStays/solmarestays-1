@@ -43,7 +43,7 @@ export function ManagementSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-              className="text-center md:text-left"
+              className="text-center"
             >
               <h3 className="font-serif text-xl md:text-2xl font-semibold text-foreground mb-4 leading-tight">
                 {standard.title}
