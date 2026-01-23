@@ -6,7 +6,7 @@ import { Footer } from '@/components/layout/Footer';
 import { SEO } from '@/components/SEO';
 import { Button } from '@/components/ui/button';
 import { Wine, UtensilsCrossed, Bike, MapPin } from 'lucide-react';
-import servicesHeroImage from '@/assets/services-hero.jpg';
+import servicesHeroImage from '/experience/hero.jpg';
 import heroImage1 from '/experience/bolt.avif';
 import heroImage2 from '/experience/rod.avif';
 import heroImage3 from '/experience/AvilaWine.avif';

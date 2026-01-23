@@ -81,6 +81,13 @@ export interface HostawayListing {
   minNights: number;
   maxNights: number;
   cleaningFee: number;
+  checkinFee: number;
+  priceForExtraPerson: number;
+  propertyRentTax: number;
+  guestPerPersonPerNightTax: number;
+  guestStayTax: number;
+  guestNightlyTax: number;
+  refundableDamageDeposit: number;
   instantBookable: number;
   currencyCode: string;
   timeZoneName: string;

@@ -17,6 +17,12 @@ export interface Property {
   // Pricing
   startingPrice: number;
   cleaningFee: number;
+  checkinFee: number;
+  priceForExtraPerson: number;
+  propertyRentTax: number;
+  guestStayTax: number;
+  guestNightlyTax: number;
+  refundableDamageDeposit: number;
   weeklyDiscount: number | null;
 
   // Images

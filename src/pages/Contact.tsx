@@ -12,7 +12,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Mail, Phone, MapPin, Send, Check, Clock } from 'lucide-react';
 import { toast } from 'sonner';
-import contactHeroImage from '@/assets/contact-hero.jpg';
+import contactHeroImage from '/contact/contact.jpg';
 
 // FAQ Data
 const faqItems = [
