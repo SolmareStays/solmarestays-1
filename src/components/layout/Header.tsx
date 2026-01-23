@@ -7,10 +7,10 @@ import { Button } from '@/components/ui/button';
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/collection', label: 'The Collection' },
-  { href: '/why-choose-us', label: 'Why Choose Us' },
-  { href: '/for-homeowners', label: 'For Homeowners' },
-  { href: '/guest-experience', label: 'Guest Experience' },
-  { href: '/contact', label: 'Get In Touch' },
+  { href: '/philosophy', label: 'Philosophy' },
+  { href: '/management', label: 'Management' },
+  { href: '/experiences', label: 'Experiences' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 export function Header() {
@@ -44,7 +44,7 @@ export function Header() {
             <Link to="/" className="flex flex-col items-center group">
               <div className="relative">
                 <img
-                  src="/logo.avif"
+                  src="/logo.png"
                   alt="Solmaré Stays"
                   draggable="false"
                   className="w-16 h-16 md:w-24 md:h-24 object-contain transition-transform duration-300 group-hover:scale-105"
@@ -58,11 +58,10 @@ export function Header() {
                 <Link
                   key={link.href}
                   to={link.href}
-                  className={`relative group text-sm font-normal tracking-wide transition-colors duration-200 hover:text-primary ${
-                    location.pathname === link.href
-                      ? 'text-primary'
-                      : 'text-foreground/70'
-                  }`}
+                  className={`relative group text-sm font-normal tracking-wide transition-colors duration-200 hover:text-primary ${location.pathname === link.href
+                    ? 'text-primary'
+                    : 'text-foreground/70'
+                    }`}
                 >
                   {link.label}
                   <span className="absolute -bottom-1 left-0 h-px bg-primary transition-all duration-300 w-0 group-hover:w-full" />
@@ -124,11 +123,10 @@ export function Header() {
                   <Link
                     key={link.href}
                     to={link.href}
-                    className={`block px-4 py-2 text-lg font-medium transition-colors hover:text-primary ${
-                      location.pathname === link.href
-                        ? 'text-primary'
-                        : 'text-foreground'
-                    }`}
+                    className={`block px-4 py-2 text-lg font-medium transition-colors hover:text-primary ${location.pathname === link.href
+                      ? 'text-primary'
+                      : 'text-foreground'
+                      }`}
                   >
                     {link.label}
                   </Link>

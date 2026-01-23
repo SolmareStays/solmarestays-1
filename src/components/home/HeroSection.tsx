@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-import heroImage1 from '@/assets/hero-1.jpg';
-import heroImage2 from '@/assets/hero-2.jpg';
-import heroImage3 from '@/assets/hero-3.jpg';
+import heroImage1 from '/home/home-12.jpg'
+import heroImage2 from '/home/home-29.jpg'
+import heroImage3 from '/home/home-09.jpg'
 
 const slides = [
   { image: heroImage1, alt: 'Luxury coastal living room' },

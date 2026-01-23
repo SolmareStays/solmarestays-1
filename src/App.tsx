@@ -21,22 +21,26 @@ const App = () => (
     <HelmetProvider>
       <TooltipProvider>
         <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/collection" element={<Collection />} />
-          <Route path="/property/:slug" element={<PropertyDetail />} />
-          <Route path="/why-choose-us" element={<WhyChooseUs />} />
-          <Route path="/for-homeowners" element={<ForHomeowners />} />
-          <Route path="/guest-experience" element={<GuestExperience />} />
-          <Route path="/services" element={<GuestExperience />} /> {/* Redirect for old URL */}
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/book" element={<Collection />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+        <Sonner />
+        <BrowserRouter>
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/collection" element={<Collection />} />
+            <Route path="/property/:slug" element={<PropertyDetail />} />
+            <Route path="/philosophy" element={<WhyChooseUs />} />
+            <Route path="/management" element={<ForHomeowners />} />
+            <Route path="/experiences" element={<GuestExperience />} />
+            {/* Redirects for old URLs */}
+            <Route path="/why-choose-us" element={<WhyChooseUs />} />
+            <Route path="/for-homeowners" element={<ForHomeowners />} />
+            <Route path="/guest-experience" element={<GuestExperience />} />
+            <Route path="/services" element={<GuestExperience />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/book" element={<Collection />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
       </TooltipProvider>
     </HelmetProvider>
   </QueryClientProvider>

@@ -1,7 +1,8 @@
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import avilaImg from '@/assets/avila-beach.jpg';
-import sloImg from '@/assets/hero-2.jpg';
+import avilaImg from '/home/avila.jpg';
+import sloImg from '/home/san-luis.jpg';
+import pismoImg from '/home/pismo-beach.jpg';
 import { MapPin, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -26,7 +27,7 @@ const locations = [
   {
     id: 'pismo',
     name: 'Pismo Beach',
-    image: avilaImg, // Will be replaced with Kyle's image when provided
+    image: pismoImg, // Will be replaced with Kyle's image when provided
     description: 'A classic California beach town with stunning sunsets, fresh seafood, and coastal adventures.',
     mapLink: 'https://www.google.com/maps/search/?api=1&query=Pismo+Beach,+CA',
     mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25884.25447087949!2d-120.64!3d35.14!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80ec4319abe8f8d5%3A0x8c8c8c8c8c8c8c8c!2sPismo%20Beach%2C%20CA!5e0!3m2!1sen!2sus!4v1234567890',

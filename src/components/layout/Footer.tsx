@@ -23,10 +23,10 @@ export function Footer() {
             <Link to="/" className="flex flex-col items-start gap-1 mb-6 group">
               <div className="relative mb-2">
                 <img
-                  src="/footerlogo.png"
+                  src="/logo.png"
                   alt="Solmaré Stays"
                   draggable="false"
-                  className="w-24 h-24 md:w-32 md:h-32 object-contain transition-transform duration-300 group-hover:scale-105"
+                  className="w-32 h-32 md:w-40 md:h-40 object-contain transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
             </Link>
@@ -50,17 +50,17 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/why-choose-us" className="text-sm opacity-80 hover:opacity-100 transition-opacity">
+                <Link to="/philosophy" className="text-sm opacity-80 hover:opacity-100 transition-opacity">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to="/for-homeowners" className="text-sm opacity-80 hover:opacity-100 transition-opacity">
+                <Link to="/management" className="text-sm opacity-80 hover:opacity-100 transition-opacity">
                   For Homeowners
                 </Link>
               </li>
               <li>
-                <Link to="/guest-experience" className="text-sm opacity-80 hover:opacity-100 transition-opacity">
+                <Link to="/experiences" className="text-sm opacity-80 hover:opacity-100 transition-opacity">
                   Guest Experience
                 </Link>
               </li>

@@ -6,8 +6,8 @@ import { Footer } from '@/components/layout/Footer';
 import { SEO } from '@/components/SEO';
 import { Button } from '@/components/ui/button';
 import { TrendingUp, Shield, Users, BarChart3, Calendar, Headphones, Check, Star, Quote, Sparkles, Home, Camera, Wrench } from 'lucide-react';
-import homeownersHeroImage from '@/assets/homeowners-hero.jpg';
-import propertyHummingbird from '@/assets/property-hummingbird.jpg';
+import homeownersHeroImage from '/homeowners/drone.jpg';
+import propertyHummingbird from '/homeowners/ipad.jpg';
 
 const benefits = [
   {

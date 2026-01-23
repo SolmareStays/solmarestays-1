@@ -6,8 +6,8 @@ import { Footer } from '@/components/layout/Footer';
 import { SEO } from '@/components/SEO';
 import { Button } from '@/components/ui/button';
 import { Sparkles, Search, ShieldCheck, Handshake, Star } from 'lucide-react';
-import aboutHeroImage from '@/assets/about-hero.jpg';
-import avilaBeachImage from '@/assets/avila-beach.jpg';
+import aboutHeroImage from '/about-us/outside-chair.jpg';
+import avilaBeachImage from '/about-us/fire-pit.jpg';
 
 const values = [
   {
