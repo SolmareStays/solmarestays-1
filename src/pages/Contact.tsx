@@ -109,7 +109,10 @@ const ContactPage = () => {
                 Get In Touch
               </h1>
               <p className="text-lg text-white/90 leading-relaxed">
-                Have questions about a stay, property management, or partnering with us? Our local team is here to help.
+                Have questions about a stay, property management, or partnering with us?
+              </p>
+              <p className="text-lg text-white/90 leading-relaxed">
+                Our local team is here to help.
               </p>
             </motion.div>
           </div>
