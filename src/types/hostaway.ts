@@ -50,6 +50,7 @@ export interface HostawayListing {
   name: string;
   externalListingName: string;
   internalListingName: string;
+  bookingcomPropertyRoomName: string;
   description: string;
   thumbnailUrl: string;
   houseRules: string | null;

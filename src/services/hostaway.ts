@@ -73,7 +73,7 @@ function transformListing(listing: HostawayListing): Property {
     slug: generateSlug(listing.internalListingName || listing.name),
     name: listing.name,
     location: listing.city,
-    unitType: listing.internalListingName || getUnitType(listing.bedroomsNumber),
+    unitType: listing.bookingcomPropertyRoomName || getUnitType(listing.bedroomsNumber),
     description: listing.description,
 
     // Capacity & layout
@@ -164,7 +164,7 @@ export async function fetchListings(): Promise<Property[]> {
 
   // Cache the result
   try {
-    localStorage.setItem('solmare_properties_cache_v2', JSON.stringify({
+    localStorage.setItem('solmare_properties_cache_v3', JSON.stringify({
       timestamp: Date.now(),
       data: result
     }));

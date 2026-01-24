@@ -13,7 +13,7 @@ export function useProperties() {
     gcTime: 30 * 60 * 1000,
     initialData: () => {
       try {
-        const cached = localStorage.getItem('solmare_properties_cache_v2');
+        const cached = localStorage.getItem('solmare_properties_cache_v3');
         if (cached) {
           const { timestamp, data } = JSON.parse(cached);
           // Use cache if less than 24 hours old
