@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { SEO } from '@/components/SEO';
 import { Button } from '@/components/ui/button';
 import { Sparkles, Home, Camera, Wrench, UtensilsCrossed, Wine, Bike } from 'lucide-react';
 import servicesHeroImage from '@/assets/services-hero.jpg';
@@ -58,8 +59,30 @@ const ServicesPage = () => {
   const partnersRef = useRef(null);
   const isPartnersInView = useInView(partnersRef, { once: true, margin: '-100px' });
 
+  // Structured Data (Service Schema)
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Vacation Rental Management",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Solmaré Stays",
+      "image": "https://solmarestays.com/logo.png"
+    },
+    "areaServed": {
+      "@type": "Place",
+      "name": "Central Coast, California"
+    },
+    "description": "End-to-end vacation rental management including guest services, maintenance, and revenue optimization."
+  };
+
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Concierge Services & Local Partners"
+        description="Enhance your stay with our premium concierge services and curated local partner experiences on California's Central Coast."
+        schema={serviceSchema}
+      />
       <Header />
       <main>
         {/* Hero Section - Full Screen */}
