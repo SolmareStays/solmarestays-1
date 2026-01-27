@@ -47,7 +47,7 @@ export function Header() {
                   src="/logo.png"
                   alt="Solmaré Stays"
                   draggable="false"
-                  className="w-16 h-16 md:w-24 md:h-24 object-contain transition-transform duration-300 group-hover:scale-105"
+                  className="w-20 h-20 md:w-28 md:h-28 object-contain transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
             </Link>
