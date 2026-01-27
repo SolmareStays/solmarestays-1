@@ -25,12 +25,12 @@ const App = () => (
         <TooltipProvider>
           <Toaster />
           <Sonner />
-          <BrowserRouter>
+          <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
             <ScrollToTop />
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/collection" element={<Collection />} />
-              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/checkout/:slug" element={<Checkout />} />
               <Route path="/property/:slug" element={<PropertyDetail />} />
               <Route path="/philosophy" element={<WhyChooseUs />} />
               <Route path="/management" element={<ForHomeowners />} />

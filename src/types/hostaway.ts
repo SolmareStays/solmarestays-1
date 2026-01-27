@@ -174,10 +174,81 @@ export interface HostawayReservation {
   status: string;
 }
 
-/**
- * Hostaway Calendar API response
- */
 export interface HostawayCalendarResponse {
   status: string;
   result: HostawayCalendarDay[];
+}
+
+/**
+ * Credit Card Information for booking
+ */
+export interface HostawayCreditCard {
+  cardNumber: string;
+  expirationYear: string;
+  expirationMonth: string;
+  cvc: string;
+  holderName: string; // "ccName" in API
+}
+
+/**
+ * Payload for creating a reservation
+ */
+export interface HostawayReservationPayload {
+  listingId: number;
+  channelId: number; // 2000 for Direct Booking usually, or check documentation
+  guestFirstName: string;
+  guestLastName: string;
+  guestEmail: string;
+  guestAddress: string;
+  guestCity: string;
+  guestZipCode: string;
+  guestCountry: string;
+  guestPhone: string;
+  numberOfGuests: number;
+  arrivalDate: string; // YYYY-MM-DD
+  departureDate: string; // YYYY-MM-DD
+  comment?: string;
+
+  // Payment fields
+  ccNumber?: string;
+  ccExpirationYear?: string;
+  ccExpirationMonth?: string;
+  cvc?: string;
+  ccName?: string;
+}
+
+/**
+ * Response from creating a reservation
+ */
+export interface HostawayReservationCreateResponse {
+  status: string;
+  result: {
+    id: number;
+    reservationId: string;
+    status: string;
+    totalPrice: number;
+    currency: string;
+    // ... potentially other fields
+  };
+}
+
+export interface HostawayCoupon {
+  id: number;
+  name: string; // The Coupon Code
+  type: 'percentage' | 'amount'; // Note: API might say 'percentage' or 'fixed'? Test script said 'percentage'
+  amount: number;
+  isActive: number;
+  isExpired: number;
+  checkInDateStart: string | null;
+  checkInDateEnd: string | null;
+  validityDateStart: string | null;
+  validityDateEnd: string | null;
+  lengthOfStayCondition: 'moreThan' | 'moreThanOrEqualTo' | 'lessThan' | 'lessThanOrEqualTo' | 'equals' | null;
+  lengthOfStayValue: number | null;
+  listingMapIds: number[];
+}
+
+export interface HostawayCouponsResponse {
+  status: string;
+  result: HostawayCoupon[];
 }

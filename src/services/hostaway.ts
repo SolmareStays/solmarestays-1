@@ -1,4 +1,4 @@
-import { HostawayListing, HostawayListingsResponse, HostawayCalendarDay, HostawayCalendarResponse } from '@/types/hostaway';
+import { HostawayListing, HostawayListingsResponse, HostawayCalendarDay, HostawayCalendarResponse, HostawayCoupon, HostawayCouponsResponse } from '@/types/hostaway';
 import { Property } from '@/data/properties';
 import { format } from 'date-fns';
 
@@ -67,7 +67,7 @@ function transformListing(listing: HostawayListing): Property {
   // Extract amenity names (show all, not limited)
   const amenities = listing.listingAmenities.map((a) => a.amenityName);
 
-  return {
+  const transformed = {
     // Basic info
     id: String(listing.id),
     slug: String(listing.id),
@@ -132,6 +132,12 @@ function transformListing(listing: HostawayListing): Property {
     guestPerPersonPerNightTax: listing.guestPerPersonPerNightTax,
     refundableDamageDeposit: listing.refundableDamageDeposit,
   };
+
+  if (String(listing.id) === '429263') {
+    console.log(`[DEBUG] Property 429263 Tax Rate check:`, listing.propertyRentTax);
+  }
+
+  return transformed;
 }
 
 /**
@@ -285,7 +291,7 @@ export interface CalculatePriceResponse {
   breakdown: any; // We'll inspect this for details
 }
 
-export async function calculateReservationPrice(
+export async function getListingPriceDetails(
   listingId: string,
   startDate: Date,
   endDate: Date,
@@ -296,13 +302,14 @@ export async function calculateReservationPrice(
   }
 
   const payload = {
-    listingId: Number(listingId), // Hostaway usually expects integer ID
     startingDate: format(startDate, 'yyyy-MM-dd'),
     endingDate: format(endDate, 'yyyy-MM-dd'),
-    numberOfGuests: guests,
+    numberOfGuests: guests, // Keep as number, internal JSON stringify handles it. Script uses string but JSON standard is fine. 
+    // If strict string required: String(guests)
+    version: 2
   };
 
-  const response = await fetch(`${API_URL}/reservations/calculate-price`, {
+  const response = await fetch(`${API_URL}/listings/${listingId}/calendar/priceDetails`, {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${API_TOKEN}`,
@@ -313,10 +320,9 @@ export async function calculateReservationPrice(
   });
 
   if (!response.ok) {
-    // Attempt to read error message
     const errorBody = await response.text();
-    console.error('Price calculation failed:', errorBody);
-    throw new Error(`Failed to calculate price: ${response.status}`);
+    console.error('Price details fetch failed:', errorBody);
+    throw new Error(`Failed to get price details: ${response.status}`);
   }
 
   const data = await response.json();
@@ -326,4 +332,206 @@ export async function calculateReservationPrice(
   }
 
   return data.result;
+}
+
+/**
+ * Create a new reservation in Hostaway
+ */
+export async function createReservation(
+  listingId: string,
+  guestDetails: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+    address: string;
+    city: string;
+    zipCode: string;
+    country: string;
+    message?: string;
+  },
+  stayDetails: {
+    checkIn: Date;
+    checkOut: Date;
+    guests: number;
+  },
+  payment?: {
+    cardNumber: string;
+    expiryDate: string; // MM/YY
+    cvc: string;
+    holderName: string;
+  },
+  validatePayment: boolean = true
+): Promise<any> {
+  if (!API_TOKEN) {
+    throw new Error('Hostaway API token is not configured');
+  }
+
+  // Parse expiry MM/YY
+  let ccExpirationMonth = '';
+  let ccExpirationYear = '';
+  if (payment) {
+    const [month, year] = payment.expiryDate.split('/').map(s => s.trim());
+    ccExpirationMonth = month;
+    ccExpirationYear = year.length === 2 ? `20${year}` : year;
+  }
+
+  const payload = {
+    listingId: Number(listingId),
+    channelId: 2000, // Direct booking channel ID, or generic
+    guestFirstName: guestDetails.firstName,
+    guestLastName: guestDetails.lastName,
+    guestEmail: guestDetails.email,
+    guestPhone: guestDetails.phone,
+    guestAddress: guestDetails.address,
+    guestCity: guestDetails.city,
+    guestZipCode: guestDetails.zipCode,
+    guestCountry: guestDetails.country,
+    numberOfGuests: stayDetails.guests,
+    arrivalDate: format(stayDetails.checkIn, 'yyyy-MM-dd'),
+    departureDate: format(stayDetails.checkOut, 'yyyy-MM-dd'),
+    comment: guestDetails.message,
+
+    // Add payment fields if provided
+    ...(payment && {
+      ccNumber: payment.cardNumber.replace(/\s/g, ''),
+      ccExpirationMonth,
+      ccExpirationYear,
+      cvc: payment.cvc,
+      ccName: payment.holderName,
+    })
+  };
+
+  const params = new URLSearchParams();
+  if (validatePayment && payment) {
+    params.append('validatePaymentMethod', '1');
+  }
+
+  const response = await fetch(`${API_URL}/reservations?${params.toString()}`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${API_TOKEN}`,
+      'Content-Type': 'application/json',
+      'Cache-control': 'no-cache',
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!response.ok) {
+    const errorBody = await response.text();
+    console.error('Reservation creation failed:', errorBody);
+    try {
+      const errorJson = JSON.parse(errorBody);
+      throw new Error(errorJson.errorMessage || `Failed to create reservation: ${response.status}`);
+    } catch (e) {
+      throw new Error(`Failed to create reservation: ${response.status} ${response.statusText}`);
+    }
+  }
+
+  const data = await response.json();
+
+  if (data.status !== 'success') {
+    throw new Error(data.errorMessage || 'Hostaway API returned an error');
+  }
+
+  return data.result;
+}
+
+/**
+ * Fetch all coupons from Hostaway
+ */
+export async function fetchCoupons(): Promise<HostawayCoupon[]> {
+  if (!API_TOKEN) {
+    throw new Error('Hostaway API token is not configured');
+  }
+
+  const response = await fetch(`${API_URL}/coupons`, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${API_TOKEN}`,
+      'Cache-control': 'no-cache',
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch coupons: ${response.status}`);
+  }
+
+  const data: HostawayCouponsResponse = await response.json();
+  if (data.status !== 'success') {
+    throw new Error('Hostaway API returned an error');
+  }
+
+  return data.result;
+}
+
+/**
+ * Validate a coupon code against a listing and stay details
+ * This fetches ALL coupons and filters client-side (no direct validate endpoint known)
+ */
+export async function validateCoupon(
+  code: string,
+  listingId: number,
+  checkIn: Date,
+  checkOut: Date
+): Promise<HostawayCoupon> {
+  // 1. Fetch all coupons
+  const coupons = await fetchCoupons();
+
+  // 2. Find matching code
+  // Note: Hostaway coupon codes might be case insensitive, but usually they are uppercase properties.
+  // Test script showed "RETURNGUEST". Let's normalize input to uppercase.
+  const coupon = coupons.find(c => c.name.toUpperCase() === code.trim().toUpperCase());
+
+  if (!coupon) {
+    throw new Error('Invalid coupon code');
+  }
+
+  // 3. Validation Checks
+
+  // Active status
+  if (!coupon.isActive) throw new Error('Coupon is inactive');
+  if (coupon.isExpired) throw new Error('Coupon has expired');
+
+  // Validity Dates (When the coupon can be USED/APPLIED)
+  const now = new Date();
+  if (coupon.validityDateStart && new Date(coupon.validityDateStart) > now) throw new Error('Coupon is not valid yet');
+  if (coupon.validityDateEnd && new Date(coupon.validityDateEnd) < now) throw new Error('Coupon has expired');
+
+  // Stay Dates (Check-in requirements)
+  if (coupon.checkInDateStart && new Date(coupon.checkInDateStart) > checkIn) throw new Error('Coupon not valid for these dates');
+  if (coupon.checkInDateEnd && new Date(coupon.checkInDateEnd) < checkIn) throw new Error('Coupon not valid for these dates');
+
+  // Listing requirement
+  if (coupon.listingMapIds && coupon.listingMapIds.length > 0) {
+    if (!coupon.listingMapIds.includes(listingId)) {
+      throw new Error('Coupon not valid for this property');
+    }
+  }
+
+  // Length of stay requirement
+  if (coupon.lengthOfStayCondition && coupon.lengthOfStayValue) {
+    const nightCount = Math.ceil((checkOut.getTime() - checkIn.getTime()) / (1000 * 60 * 60 * 24));
+    const value = coupon.lengthOfStayValue;
+
+    switch (coupon.lengthOfStayCondition) {
+      case 'moreThan':
+        if (nightCount <= value) throw new Error(`Minimum stay of ${value + 1} nights required`);
+        break;
+      case 'moreThanOrEqualTo':
+        if (nightCount < value) throw new Error(`Minimum stay of ${value} nights required`);
+        break;
+      case 'lessThan':
+        if (nightCount >= value) throw new Error(`Maximum stay of ${value - 1} nights allowed`);
+        break;
+      case 'lessThanOrEqualTo':
+        if (nightCount > value) throw new Error(`Maximum stay of ${value} nights allowed`);
+        break;
+      case 'equals':
+        if (nightCount !== value) throw new Error(`Stay must be exactly ${value} nights`);
+        break;
+    }
+  }
+
+  return coupon;
 }

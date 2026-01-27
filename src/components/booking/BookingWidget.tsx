@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { format, differenceInDays, addDays, isSameDay } from 'date-fns';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCalendar } from '@/hooks/useCalendar';
@@ -8,6 +8,8 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Calendar as CalendarIcon, Users, Loader2, MessageCircle, Shield } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Property } from '@/data/properties';
+import { getListingPriceDetails } from '@/services/hostaway';
+import { parseHostawayResponse, StructuredPricingBreakdown } from '@/utils/hostawayPricing';
 
 interface BookingWidgetProps {
   property: Property;
@@ -103,16 +105,17 @@ export function BookingWidget({ property }: BookingWidgetProps) {
   // We'll calculate taxes on (DiscountedRent + ExtraPersonFee + CleaningFee)
   const taxableAmount = discountedRent + extraPersonFee + cleaningFee;
 
-  // 5. Taxes (Excluded by user request)
+  // 5. Taxes
   // propertyRentTax is a percentage (e.g., 10 for 10%)
-  // const rentTax = Math.round(taxableAmount * (property.propertyRentTax / 100));
+  const taxRate = property.propertyRentTax ? property.propertyRentTax / 100 : 0;
+  const rentTax = taxRate > 0 ? Math.round(taxableAmount * taxRate) : 0;
 
   // Flat taxes
   // const stayTax = property.guestStayTax;
   // const nightlyTax = property.guestNightlyTax * nights;
   // const personNightlyTax = property.guestPerPersonPerNightTax * guests * nights;
 
-  const totalTaxes = 0; // rentTax + stayTax + nightlyTax + personNightlyTax;
+  const totalTaxes = rentTax; // + stayTax + nightlyTax + personNightlyTax;
 
   // 6. Refundable Deposit
   const damageDeposit = property.refundableDamageDeposit;
@@ -125,103 +128,112 @@ export function BookingWidget({ property }: BookingWidgetProps) {
 
 
 
+  const [apiPricing, setApiPricing] = useState<StructuredPricingBreakdown | null>(null);
+  const [isPricingLoading, setIsPricingLoading] = useState(false);
+
+  // Fetch API pricing when dates/guests change
+  useEffect(() => {
+    async function fetchPrice() {
+      if (checkIn && checkOut && property.hostawayListingId) {
+        setIsPricingLoading(true);
+        try {
+          const result = await getListingPriceDetails(
+            property.hostawayListingId,
+            checkIn,
+            checkOut,
+            guests
+          );
+          const duration = Math.max(1, differenceInDays(checkOut, checkIn));
+          const parsed = parseHostawayResponse(result, duration, 'USD');
+          setApiPricing(parsed);
+        } catch (error) {
+          console.error('Failed to fetch price details:', error);
+          setApiPricing(null);
+        } finally {
+          setIsPricingLoading(false);
+        }
+      } else {
+        setApiPricing(null);
+      }
+    }
+
+    // Debounce slightly or just call
+    const timer = setTimeout(fetchPrice, 300);
+    return () => clearTimeout(timer);
+  }, [checkIn, checkOut, guests, property.hostawayListingId]);
+
+
   const navigate = useNavigate();
 
   const handleBookNow = () => {
     if (!checkIn || !checkOut) return;
 
-    // Construct breakdown for the checkout page
-    const breakdown = [
-      {
-        label: `$${dynamicPricing.averageNightlyRate} × ${nights} night${nights > 1 ? 's' : ''}`,
-        amount: dynamicPricing.subtotal,
-      },
-    ];
+    // Use API pricing if available, otherwise fall back to local (or block?)
+    // User requested "take it from api", so we trust API.
 
-    if (extraPersonFee > 0) {
-      breakdown.push({
-        label: `Extra guest fee`,
-        amount: extraPersonFee,
-      });
+    let breakdownToPass: any[] = [];
+    let totalToPass = 0;
+
+    if (apiPricing) {
+      totalToPass = apiPricing.grandTotal;
+      const nightsCount = apiPricing.nights;
+
+      // Base
+      if (apiPricing.basePrice > 0) {
+        breakdownToPass.push({
+          label: `$${Math.round(apiPricing.basePrice / nightsCount)} × ${nightsCount} night${nightsCount > 1 ? 's' : ''}`,
+          amount: apiPricing.basePrice
+        });
+      }
+
+      // Fees
+      apiPricing.fees.forEach(f => breakdownToPass.push({ label: f.name, amount: f.amount }));
+
+      // Taxes
+      apiPricing.taxes.forEach(t => breakdownToPass.push({ label: t.name, amount: t.amount }));
+
+    } else {
+      // Fallback
+      totalToPass = dynamicPricing.subtotal;
     }
 
-    if (hasWeeklyDiscount) {
-      breakdown.push({
-        label: `Weekly discount`,
-        amount: -discountAmount,
-      });
-    }
-
-    if (cleaningFee > 0) {
-      breakdown.push({
-        label: `Cleaning Fee`,
-        amount: cleaningFee,
-      });
-    }
-
-    if (serviceFee > 0) {
-      breakdown.push({
-        label: `Guest Channel Fee`,
-        amount: serviceFee,
-      });
-    }
-
-    if (checkinFee > 0) {
-      breakdown.push({
-        label: `Check-in fee`,
-        amount: checkinFee,
-      });
-    }
-
-    // Taxes excluded by user request
-    /*
-    if (totalTaxes > 0) {
-      breakdown.push({
-        label: `Occupancy Tax`,
-        amount: totalTaxes,
-      });
-    }
-    */
-
-    if (damageDeposit > 0) {
-      breakdown.push({
-        label: `Refundable Damage Deposit`,
-        amount: damageDeposit,
-      });
-    }
-
-    navigate('/checkout', {
+    navigate(`/checkout/${property.slug}`, {
       state: {
         property,
         checkIn,
         checkOut,
         guests,
-        pricing: {
-          nightlyPrices: dynamicPricing.nightlyPrices,
-          subtotal: dynamicPricing.subtotal,
-          averageNightlyRate: dynamicPricing.averageNightlyRate,
-          total,
-          breakdown,
-        },
+        // If API loaded, pass it. If not, Checkout will fetch it.
+        // We pass 'pricing' object.
+        pricing: apiPricing ? {
+          nightlyPrices: [],
+          subtotal: apiPricing.basePrice,
+          averageNightlyRate: Math.round(apiPricing.basePrice / apiPricing.nights),
+          total: apiPricing.grandTotal,
+          breakdown: breakdownToPass
+        } : undefined
       },
     });
   };
+
+  // Display Logic: Prefer API pricing for the widget totals/breakdown
+  // Display Logic: Prefer API pricing for the widget totals/breakdown
+  const displayTotal = apiPricing ? apiPricing.grandTotal : 0;
+  const displayBreakdown = apiPricing ? [
+    ...apiPricing.fees.map(f => ({ label: f.name, amount: f.amount })),
+    ...apiPricing.taxes.map(t => ({ label: t.name, amount: t.amount }))
+  ] : [];
 
   return (
     <div className="bg-card rounded-xl shadow-elevated p-6 sticky top-24">
       {/* Dynamic Price Display */}
       <div className="mb-4">
         <span className="font-serif text-2xl font-semibold text-foreground">
-          {checkIn && checkOut && dynamicPricing.usedDynamicPricing
-            ? `$${dynamicPricing.averageNightlyRate}`
+          {checkIn && checkOut
+            ? (isPricingLoading ? <Loader2 className="inline h-6 w-6 animate-spin" /> : `$${apiPricing ? Math.round(apiPricing.basePrice / apiPricing.nights) : dynamicPricing.averageNightlyRate}`)
             : 'Select dates'}
         </span>
         {checkIn && checkOut && <span className="text-muted-foreground"> / night</span>}
-        {property.weeklyDiscount && property.weeklyDiscount < 1 && (
-          <span className="ml-2 px-2 py-1 bg-ocean/10 text-ocean text-xs rounded-full font-medium">
-            {Math.round((1 - property.weeklyDiscount) * 100)}% off weekly
-          </span>
-        )}
       </div>
 
       {/* Check-in/out times */}
@@ -310,6 +322,7 @@ export function BookingWidget({ property }: BookingWidgetProps) {
         </div>
       </div>
 
+
       {/* Pricing View */}
       {checkIn && checkOut ? (
         <>
@@ -329,77 +342,37 @@ export function BookingWidget({ property }: BookingWidgetProps) {
               )}
 
               {/* Pricing Breakdown */}
-              <div className="space-y-3 mb-6 pb-6 border-b border-border">
-                {/* Rent */}
-                <div className="flex justify-between text-muted-foreground">
-                  <span>
-                    ${dynamicPricing.averageNightlyRate} × {nights} night{nights > 1 ? 's' : ''}
-                  </span>
-                  <span>${dynamicPricing.subtotal}</span>
+              {apiPricing && (
+                <div className="space-y-3 mb-6 pb-6 border-b border-border">
+                  {/* Rent */}
+                  <div className="flex justify-between text-muted-foreground">
+                    <span>
+                      ${Math.round(apiPricing.basePrice / apiPricing.nights)} × {apiPricing.nights} night{apiPricing.nights > 1 ? 's' : ''}
+                    </span>
+                    <span>${apiPricing.basePrice}</span>
+                  </div>
+
+                  {/* Combined Breakdown (Fees + Taxes + Channel Fee) */}
+                  {displayBreakdown.map((item, i) => (
+                    <div key={`item-${i}`} className="flex justify-between text-muted-foreground">
+                      <span>{item.label}</span>
+                      <span>${item.amount}</span>
+                    </div>
+                  ))}
+
+                  {/* Total */}
+                  <div className="flex justify-between font-semibold text-lg pt-4 border-t mt-4">
+                    <span>Total</span>
+                    <span>${displayTotal}</span>
+                  </div>
                 </div>
+              )}
 
-                {/* Extra Person Fee */}
-                {extraPersonFee > 0 && (
-                  <div className="flex justify-between text-muted-foreground">
-                    <span>Extra guest fee (${property.priceForExtraPerson} × {extraGuests} × {nights})</span>
-                    <span>${extraPersonFee}</span>
-                  </div>
-                )}
-
-                {/* Discount Bar */}
-                {hasWeeklyDiscount && (
-                  <div className="flex justify-between items-center text-sm bg-green-50 text-green-700 p-2 rounded-md mb-2">
-                    <span>Weekly discount applied</span>
-                    <span className="font-semibold">-${discountAmount}</span>
-                  </div>
-                )}
-
-                {/* Fees */}
-                {cleaningFee > 0 && (
-                  <div className="flex justify-between text-muted-foreground">
-                    <span>Cleaning Fee</span>
-                    <span>${cleaningFee}</span>
-                  </div>
-                )}
-
-                {/* Guest Channel Fee */}
-                {serviceFee > 0 && (
-                  <div className="flex justify-between text-muted-foreground">
-                    <span>Guest Channel Fee</span>
-                    <span>${serviceFee}</span>
-                  </div>
-                )}
-
-                {checkinFee > 0 && (
-                  <div className="flex justify-between text-muted-foreground">
-                    <span>Check-in fee</span>
-                    <span>${checkinFee}</span>
-                  </div>
-                )}
-
-                {/* Occupancy Tax - Excluded
-                {totalTaxes > 0 && (
-                  <div className="flex justify-between text-muted-foreground">
-                    <span>Occupancy Tax</span>
-                    <span>${totalTaxes}</span>
-                  </div>
-                )}
-                */}
-
-                {/* Damage Deposit */}
-                {damageDeposit > 0 && (
-                  <div className="flex justify-between text-muted-foreground">
-                    <span>Refundable Damage Deposit</span>
-                    <span>${damageDeposit}</span>
-                  </div>
-                )}
-              </div>
-
-              {/* Total */}
-              <div className="flex justify-between font-semibold text-lg mb-6">
-                <span>Total</span>
-                <span>${total}</span>
-              </div>
+              {!apiPricing && !isPricingLoading && (
+                <div className="text-center text-sm text-red-500 mb-4">
+                  Unable to calculate price. Please try different dates.
+                </div>
+              )}
 
               {/* Book Now Button */}
               <Button
