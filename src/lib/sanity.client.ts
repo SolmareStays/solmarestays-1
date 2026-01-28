@@ -1,6 +1,14 @@
 import { createClient } from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
-import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
+
+// Sanity image source type
+export interface SanityImageSource {
+    _type?: string;
+    asset: {
+        _ref: string;
+        _type: string;
+    };
+}
 
 // Sanity client configuration
 export const sanityClient = createClient({

@@ -1,5 +1,12 @@
 import { urlFor } from '@/lib/sanity.client';
-import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
+
+interface SanityImageSource {
+    _type?: string;
+    asset: {
+        _ref: string;
+        _type: string;
+    };
+}
 
 interface SanityImageProps {
     image: SanityImageSource;
