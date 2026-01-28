@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
 import { Button } from '@/components/ui/button';
-import { ChevronLeft, ChevronRight, Calendar, Users, Search, ChevronDown } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Calendar, Users, Search, ChevronDown, X } from 'lucide-react';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { CalendarTwin } from '@/components/ui/calendar-twin';
 import { useBooking } from '@/context/BookingContext';
@@ -25,6 +25,7 @@ export function HeroSection({ data }: { data?: any }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [datePopoverOpen, setDatePopoverOpen] = useState(false);
   const [guestPopoverOpen, setGuestPopoverOpen] = useState(false);
+  const [isWidgetExpanded, setIsWidgetExpanded] = useState(false);
   const navigate = useNavigate();
 
   const { checkIn, checkOut, guests, setDateRange, setGuests } = useBooking();
@@ -110,107 +111,127 @@ export function HeroSection({ data }: { data?: any }) {
               </div>
             </motion.div>
 
-            {/* Right: Floating Booking Widget (Desktop Only) */}
-            <motion.div
-              initial={{ opacity: 0, y: 30, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
-              className="hidden lg:block w-full lg:w-auto"
-            >
-              <div className="bg-white rounded-2xl shadow-elevated p-5">
-                <h3 className="font-serif text-lg font-medium text-foreground mb-5">
-                  Find Your Perfect Stay
-                </h3>
-
-                <div className="space-y-4">
-                  {/* Date Range Picker */}
-                  <div>
-                    <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wider">
-                      Dates
-                    </label>
-                    <Popover open={datePopoverOpen} onOpenChange={setDatePopoverOpen}>
-                      <PopoverTrigger asChild>
-                        <button
-                          className={cn(
-                            'w-full flex items-center gap-2 p-3 border border-border rounded-lg bg-secondary/30 hover:bg-secondary/50 transition-colors text-left',
-                            (checkIn || checkOut) && 'text-foreground'
-                          )}
-                        >
-                          <Calendar className="w-4 h-4 text-muted-foreground flex-shrink-0" />
-                          <span className={cn('text-sm', !(checkIn || checkOut) && 'text-muted-foreground')}>
-                            {checkIn && checkOut
-                              ? `${format(checkIn, 'MMM d')} → ${format(checkOut, 'MMM d')}`
-                              : checkIn
-                                ? `${format(checkIn, 'MMM d')} → Select end`
-                                : 'Select dates'}
-                          </span>
-                        </button>
-                      </PopoverTrigger>
-                      <PopoverContent className="w-auto p-0" align="start">
-                        <CalendarTwin
-                          value={{ from: checkIn, to: checkOut }}
-                          onChange={(range) => {
-                            setDateRange(range.from, range.to);
-                          }}
-                          onComplete={() => {
-                            setDatePopoverOpen(false);
-                          }}
-                        />
-                      </PopoverContent>
-                    </Popover>
-                  </div>
-
-                  {/* Guests Dropdown */}
-                  <div>
-                    <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wider">
-                      Guests
-                    </label>
-                    <Popover open={guestPopoverOpen} onOpenChange={setGuestPopoverOpen}>
-                      <PopoverTrigger asChild>
-                        <button className="w-full flex items-center justify-between gap-2 p-3 border border-border rounded-lg bg-secondary/30 hover:bg-secondary/50 transition-colors">
-                          <div className="flex items-center gap-2">
-                            <Users className="w-4 h-4 text-muted-foreground" />
-                            <span className="text-sm text-foreground">{guests} Guest{guests > 1 ? 's' : ''}</span>
-                          </div>
-                          <ChevronDown className="w-4 h-4 text-muted-foreground" />
-                        </button>
-                      </PopoverTrigger>
-                      <PopoverContent className="w-[200px] p-2" align="start">
-                        <div className="space-y-1">
-                          {guestOptions.map((num) => (
-                            <button
-                              key={num}
-                              onClick={() => {
-                                setGuests(num);
-                                setGuestPopoverOpen(false);
-                              }}
-                              className={cn(
-                                'w-full text-left px-3 py-2 text-sm rounded-md transition-colors',
-                                guests === num
-                                  ? 'bg-primary text-primary-foreground'
-                                  : 'hover:bg-secondary'
-                              )}
-                            >
-                              {num} Guest{num > 1 ? 's' : ''}
-                            </button>
-                          ))}
-                        </div>
-                      </PopoverContent>
-                    </Popover>
-                  </div>
-
-                  {/* Search Button */}
-                  <Button
-                    size="lg"
-                    className="w-full bg-foreground text-white hover:bg-foreground/90 rounded-lg h-12 text-base font-medium mt-2"
-                    onClick={handleSearch}
-                  >
-                    <Search className="w-4 h-4 mr-2" />
-                    Book Now
-                  </Button>
+            {/* Right: Floating Booking Widget (Desktop Only) - Push-out Card */}
+            <div className="hidden lg:flex justify-end w-full lg:w-auto">
+              <motion.div
+                initial="collapsed"
+                animate={isWidgetExpanded ? 'expanded' : 'collapsed'}
+                variants={{
+                  collapsed: { width: '60px', height: '60px', borderRadius: '30px', overflow: 'hidden' },
+                  expanded: { width: '380px', height: 'auto', borderRadius: '16px', overflow: 'visible' }
+                }}
+                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                className="bg-white shadow-elevated relative z-50 origin-top-right group"
+              >
+                {/* Collapsed Trigger (Visible always, handles toggle) */}
+                <div
+                  className="absolute right-0 top-0 w-[60px] h-[60px] flex items-center justify-center cursor-pointer z-20 bg-foreground text-white rounded-full hover:bg-foreground/90 transition-colors"
+                  onClick={() => setIsWidgetExpanded(!isWidgetExpanded)}
+                >
+                  {isWidgetExpanded ? <X className="w-6 h-6" /> : <Calendar className="w-6 h-6" />}
                 </div>
-              </div>
-            </motion.div>
+
+                {/* Expanded Content */}
+                <div
+                  className={cn(
+                    "p-5 min-w-[380px] transition-opacity duration-200 delay-100",
+                    isWidgetExpanded ? "opacity-100 visible" : "opacity-0 invisible"
+                  )}
+                >
+                  <h3 className="font-serif text-lg font-medium text-foreground mb-5 pr-12">
+                    Find Your Perfect Stay
+                  </h3>
+
+                  <div className="space-y-4">
+                    {/* Date Range Picker */}
+                    <div>
+                      <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wider">
+                        Dates
+                      </label>
+                      <Popover open={datePopoverOpen} onOpenChange={setDatePopoverOpen}>
+                        <PopoverTrigger asChild>
+                          <button
+                            className={cn(
+                              'w-full flex items-center gap-2 p-3 border border-border rounded-lg bg-secondary/30 hover:bg-secondary/50 transition-colors text-left',
+                              (checkIn || checkOut) && 'text-foreground'
+                            )}
+                          >
+                            <Calendar className="w-4 h-4 text-muted-foreground flex-shrink-0" />
+                            <span className={cn('text-sm', !(checkIn || checkOut) && 'text-muted-foreground')}>
+                              {checkIn && checkOut
+                                ? `${format(checkIn, 'MMM d')} → ${format(checkOut, 'MMM d')}`
+                                : checkIn
+                                  ? `${format(checkIn, 'MMM d')} → Select end`
+                                  : 'Select dates'}
+                            </span>
+                          </button>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-auto p-0 z-[60]" align="start">
+                          <CalendarTwin
+                            value={{ from: checkIn, to: checkOut }}
+                            onChange={(range) => {
+                              setDateRange(range.from, range.to);
+                            }}
+                            onComplete={() => {
+                              setDatePopoverOpen(false);
+                            }}
+                          />
+                        </PopoverContent>
+                      </Popover>
+                    </div>
+
+                    {/* Guests Dropdown */}
+                    <div>
+                      <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wider">
+                        Guests
+                      </label>
+                      <Popover open={guestPopoverOpen} onOpenChange={setGuestPopoverOpen}>
+                        <PopoverTrigger asChild>
+                          <button className="w-full flex items-center justify-between gap-2 p-3 border border-border rounded-lg bg-secondary/30 hover:bg-secondary/50 transition-colors">
+                            <div className="flex items-center gap-2">
+                              <Users className="w-4 h-4 text-muted-foreground" />
+                              <span className="text-sm text-foreground">{guests} Guest{guests > 1 ? 's' : ''}</span>
+                            </div>
+                            <ChevronDown className="w-4 h-4 text-muted-foreground" />
+                          </button>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-[200px] p-2 z-[60]" align="start">
+                          <div className="space-y-1">
+                            {guestOptions.map((num) => (
+                              <button
+                                key={num}
+                                onClick={() => {
+                                  setGuests(num);
+                                  setGuestPopoverOpen(false);
+                                }}
+                                className={cn(
+                                  'w-full text-left px-3 py-2 text-sm rounded-md transition-colors',
+                                  guests === num
+                                    ? 'bg-primary text-primary-foreground'
+                                    : 'hover:bg-secondary'
+                                )}
+                              >
+                                {num} Guest{num > 1 ? 's' : ''}
+                              </button>
+                            ))}
+                          </div>
+                        </PopoverContent>
+                      </Popover>
+                    </div>
+
+                    {/* Search Button (Standard) */}
+                    <Button
+                      size="lg"
+                      className="w-full bg-foreground text-white hover:bg-foreground/90 rounded-lg h-12 text-base font-medium mt-2"
+                      onClick={handleSearch}
+                    >
+                      <Search className="w-4 h-4 mr-2" />
+                      Book Now
+                    </Button>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
 
           </div>
         </div>
