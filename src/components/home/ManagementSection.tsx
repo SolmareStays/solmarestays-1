@@ -16,9 +16,15 @@ const standards = [
   },
 ];
 
-export function ManagementSection() {
+export function ManagementSection({ data }: { data?: any }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+
+  const heading = data?.heading || "THE SOLMARÉ STANDARD";
+  const displayStandards = data?.features?.map((f: any) => ({
+    title: f.title,
+    description: f.description
+  })) || standards;
 
   return (
     <section ref={ref} className="section-padding bg-[#f5f0e8] relative">
@@ -31,13 +37,13 @@ export function ManagementSection() {
           className="text-center mb-16"
         >
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground tracking-tight">
-            THE SOLMARÉ STANDARD
+            {heading}
           </h2>
         </motion.div>
 
         {/* 3-Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
-          {standards.map((standard, index) => (
+          {displayStandards.map((standard: any, index: number) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}

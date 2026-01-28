@@ -5,7 +5,7 @@ import { ArrowRight } from 'lucide-react';
 // Using existing images as placeholders for partners
 import img1 from '@/assets/hero-1.jpg';
 import img2 from '@/assets/hero-2.jpg';
-import img3 from '@/assets/avila-beach.jpg';
+import img3 from '@/assets/hero-3.jpg';
 
 const partners = [
   {
@@ -25,9 +25,27 @@ const partners = [
   },
 ];
 
-export function ExperienceSection() {
+export function ExperienceSection({ data }: { data?: any }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+
+  const heading = data?.heading || "Experience the Central Coast<br />with Our Local Partners";
+  const subtitle = data?.subtitle || "Handpicked local businesses that bring our guests closer to the coast — from craft spirits and beach gear to local eats and adventures.";
+
+  const mergedPartners = data?.partners?.map((p: any) => {
+    // Simple matching logic for images
+    let image = img1;
+    const lowerName = p.name.toLowerCase();
+    if (lowerName.includes('wine') || lowerName.includes('roasting')) image = img2;
+    else if (lowerName.includes('bike') || lowerName.includes('adventure')) image = img3;
+    else if (lowerName.includes('whiskey') || lowerName.includes('spirits')) image = img1;
+
+    return {
+      name: p.name,
+      category: p.category,
+      image: image
+    };
+  }) || partners;
 
   return (
     <section ref={ref} className="section-padding bg-background">
@@ -40,18 +58,18 @@ export function ExperienceSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="font-serif text-3xl md:text-5xl font-semibold text-foreground mb-4 leading-tight">
-            Experience the Central Coast<br />with Our Local Partners
-          </h2>
+          <h2
+            className="font-serif text-3xl md:text-5xl font-semibold text-foreground mb-4 leading-tight"
+            dangerouslySetInnerHTML={{ __html: heading.replace(/\n/g, '<br />') }}
+          />
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto font-light">
-            Handpicked local businesses that bring our guests closer to the coast —
-            from craft spirits and beach gear to local eats and adventures.
+            {subtitle}
           </p>
         </motion.div>
 
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {partners.map((partner, index) => (
+          {mergedPartners.map((partner: any, index: number) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}

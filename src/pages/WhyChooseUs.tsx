@@ -1,4 +1,6 @@
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
+import { usePage } from '@/hooks/useSanityContent';
+import { SanitySectionRenderer } from '@/components/sanity/SanitySectionRenderer';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Header } from '@/components/layout/Header';
@@ -89,6 +91,9 @@ function ParallaxImage({ src, alt, className }: { src: string; alt: string; clas
 }
 
 const WhyChooseUsPage = () => {
+  const { data: pageData, isLoading } = usePage('philosophy');
+  const showSanityContent = !isLoading && pageData?.sections?.length > 0;
+
   const heroRef = useRef(null);
   const isHeroInView = useInView(heroRef, { once: true });
 
@@ -108,247 +113,255 @@ const WhyChooseUsPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="The Solmaré Standard"
-        description="Hotel reliability meets vacation home freedom. Discover immaculate standards, curated comfort, and local expertise on California's Central Coast."
+        title={pageData?.title || "The Solmaré Standard"}
+        description={pageData?.metaDescription || "Hotel reliability meets vacation home freedom. Discover immaculate standards, curated comfort, and local expertise on California's Central Coast."}
       />
       <Header />
       <main>
-        {/* SECTION 1: Hero Section */}
-        <section ref={heroRef} className="relative h-screen min-h-[600px] flex items-center overflow-hidden">
-          <div className="absolute inset-0">
-            <motion.img
-              src={aboutHeroImage}
-              alt="California Central Coast"
-              className="w-full h-full object-cover"
-              initial={{ scale: 1.1 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 1.5, ease: "easeOut" }}
-            />
+        {showSanityContent ? (
+          <div className="pt-32">
+            <SanitySectionRenderer sections={pageData.sections} />
           </div>
-
-          {/* Content Box */}
-          <div className="absolute bottom-6 left-6 md:bottom-20 md:left-20 w-[calc(100%-3rem)] md:w-[600px] lg:w-[700px] bg-white p-8 md:p-12 rounded-[2.5rem] shadow-2xl">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8 }}
-              className="max-w-xl"
-            >
-              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight text-foreground mb-6">
-                The Solmaré Standard.
-              </h1>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                Not just a vacation rental. A curated coastal experience defined by immaculate standards and effortless stays.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Button variant="default" size="xl" onClick={scrollToValues}>
-                  See Our Standards
-                </Button>
+        ) : (
+          <>
+            {/* SECTION 1: Hero Section */}
+            <section ref={heroRef} className="relative h-screen min-h-[600px] flex items-center overflow-hidden">
+              <div className="absolute inset-0">
+                <motion.img
+                  src={aboutHeroImage}
+                  alt="California Central Coast"
+                  className="w-full h-full object-cover"
+                  initial={{ scale: 1.1 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 1.5, ease: "easeOut" }}
+                />
               </div>
-            </motion.div>
-          </div>
-        </section>
 
-        {/* SECTION 2: More Than a Place to Stay */}
-        <section className="section-padding bg-[#F9F7F2]">
-          <div className="container mx-auto px-4 md:px-6 lg:px-8">
-            <div className="flex flex-col md:flex-row items-center gap-10 lg:gap-16">
-              {/* Left: Image */}
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="w-full md:w-1/2"
-              >
-                <div className="overflow-hidden rounded-2xl shadow-elevated">
-                  <img
-                    src="/avila-beach.jpg"
-                    alt="California palm trees at sunset"
-                    className="w-full h-full object-cover aspect-[4/3]"
-                  />
-                </div>
-              </motion.div>
-
-              {/* Right: Text */}
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="w-full md:w-1/2"
-              >
-                <h2 className="font-serif text-3xl md:text-5xl font-semibold text-foreground mb-6">
-                  More Than a Place to Stay.
-                </h2>
-                <p className="text-muted-foreground text-lg md:text-xl leading-relaxed italic">
-                  "We believe a vacation home should feel better than your own home. That means chef-ready kitchens, professional interior design, and a level of cleanliness that rivals 5-star hotels. No clutter, no guesswork—just the coast."
-                </p>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        {/* SECTION 3: Core Values - 3 White Cards */}
-        <section id="standards" ref={valuesRef} className="section-padding bg-background scroll-mt-24">
-          <div className="container mx-auto px-4 md:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={isValuesInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8 }}
-              className="text-center mb-16"
-            >
-              <h2 className="font-serif text-3xl md:text-5xl font-semibold text-foreground mb-4">
-                Our Core Values
-              </h2>
-              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-                Hotel reliability, vacation home freedom.
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {values.map((value, index) => (
+              {/* Content Box */}
+              <div className="absolute bottom-6 left-6 md:bottom-20 md:left-20 w-[calc(100%-3rem)] md:w-[600px] lg:w-[700px] bg-white p-8 md:p-12 rounded-[2.5rem] shadow-2xl">
                 <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={isValuesInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-                  className="bg-white p-8 md:p-10 rounded-2xl shadow-elevated border border-border/30"
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.8 }}
+                  className="max-w-xl"
                 >
-                  <div className="w-14 h-14 rounded-full bg-ocean/10 flex items-center justify-center mb-6">
-                    <value.icon className="w-7 h-7 text-ocean" />
+                  <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight text-foreground mb-6">
+                    The Solmaré Standard.
+                  </h1>
+                  <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+                    Not just a vacation rental. A curated coastal experience defined by immaculate standards and effortless stays.
+                  </p>
+                  <div className="flex flex-wrap gap-4">
+                    <Button variant="default" size="xl" onClick={scrollToValues}>
+                      See Our Standards
+                    </Button>
                   </div>
-                  <h3 className="font-serif text-2xl font-semibold text-foreground mb-4">
-                    {value.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {value.description}
+                </motion.div>
+              </div>
+            </section>
+
+            {/* SECTION 2: More Than a Place to Stay */}
+            <section className="section-padding bg-[#F9F7F2]">
+              <div className="container mx-auto px-4 md:px-6 lg:px-8">
+                <div className="flex flex-col md:flex-row items-center gap-10 lg:gap-16">
+                  {/* Left: Image */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="w-full md:w-1/2"
+                  >
+                    <div className="overflow-hidden rounded-2xl shadow-elevated">
+                      <img
+                        src="/avila-beach.jpg"
+                        alt="California palm trees at sunset"
+                        className="w-full h-full object-cover aspect-[4/3]"
+                      />
+                    </div>
+                  </motion.div>
+
+                  {/* Right: Text */}
+                  <motion.div
+                    initial={{ opacity: 0, x: 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    className="w-full md:w-1/2"
+                  >
+                    <h2 className="font-serif text-3xl md:text-5xl font-semibold text-foreground mb-6">
+                      More Than a Place to Stay.
+                    </h2>
+                    <p className="text-muted-foreground text-lg md:text-xl leading-relaxed italic">
+                      "We believe a vacation home should feel better than your own home. That means chef-ready kitchens, professional interior design, and a level of cleanliness that rivals 5-star hotels. No clutter, no guesswork—just the coast."
+                    </p>
+                  </motion.div>
+                </div>
+              </div>
+            </section>
+
+            {/* SECTION 3: Core Values - 3 White Cards */}
+            <section id="standards" ref={valuesRef} className="section-padding bg-background scroll-mt-24">
+              <div className="container mx-auto px-4 md:px-6 lg:px-8">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={isValuesInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.8 }}
+                  className="text-center mb-16"
+                >
+                  <h2 className="font-serif text-3xl md:text-5xl font-semibold text-foreground mb-4">
+                    Our Core Values
+                  </h2>
+                  <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                    Hotel reliability, vacation home freedom.
                   </p>
                 </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
 
-        {/* SECTION 4: Seamless Service (NEW) */}
-        <section ref={seamlessRef} className="section-padding bg-[#f5f5f5]">
-          <div className="container mx-auto px-4 md:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={isSeamlessInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8 }}
-              className="text-center mb-16"
-            >
-              <h2 className="font-serif text-3xl md:text-5xl font-semibold text-foreground mb-4">
-                SEAMLESS FROM START TO FINISH
-              </h2>
-              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-                Modern conveniences designed to make your stay effortless.
-              </p>
-            </motion.div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  {values.map((value, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 50 }}
+                      animate={isValuesInView ? { opacity: 1, y: 0 } : {}}
+                      transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+                      className="bg-white p-8 md:p-10 rounded-2xl shadow-elevated border border-border/30"
+                    >
+                      <div className="w-14 h-14 rounded-full bg-ocean/10 flex items-center justify-center mb-6">
+                        <value.icon className="w-7 h-7 text-ocean" />
+                      </div>
+                      <h3 className="font-serif text-2xl font-semibold text-foreground mb-4">
+                        {value.title}
+                      </h3>
+                      <p className="text-muted-foreground leading-relaxed">
+                        {value.description}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </section>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
-              {seamlessFeatures.map((feature, index) => (
+            {/* SECTION 4: Seamless Service (NEW) */}
+            <section ref={seamlessRef} className="section-padding bg-[#f5f5f5]">
+              <div className="container mx-auto px-4 md:px-6 lg:px-8">
                 <motion.div
-                  key={index}
                   initial={{ opacity: 0, y: 30 }}
                   animate={isSeamlessInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-                  className="text-center"
+                  transition={{ duration: 0.8 }}
+                  className="text-center mb-16"
                 >
-                  <div className="w-16 h-16 rounded-full bg-ocean/10 flex items-center justify-center mx-auto mb-6">
-                    <feature.icon className="w-8 h-8 text-ocean" />
-                  </div>
-                  <h3 className="font-serif text-xl md:text-2xl font-semibold text-foreground mb-4">
-                    {feature.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {feature.description}
+                  <h2 className="font-serif text-3xl md:text-5xl font-semibold text-foreground mb-4">
+                    SEAMLESS FROM START TO FINISH
+                  </h2>
+                  <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                    Modern conveniences designed to make your stay effortless.
                   </p>
                 </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
 
-        {/* SECTION 5: Testimonials */}
-        <section ref={testimonialsRef} className="section-padding bg-primary text-primary-foreground">
-          <div className="container mx-auto px-4 md:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={isTestimonialsInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8 }}
-              className="text-center mb-16"
-            >
-              <h2 className="font-serif text-4xl md:text-5xl font-semibold mb-4">
-                Moments at Solmaré
-              </h2>
-              <p className="text-primary-foreground/80 text-lg max-w-2xl mx-auto">
-                At Solmaré Stays, we don't just offer homes — we create experiences.
-                Here's how our guests describe their time by the sea.
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {testimonials.map((testimonial, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={isTestimonialsInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: index * 0.15 }}
-                  whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
-                  className="bg-primary-foreground/10 backdrop-blur-sm p-8 rounded-xl"
-                >
-                  <div className="flex gap-1 mb-4">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-gold text-gold" />
-                    ))}
-                  </div>
-                  <p className="text-primary-foreground/90 mb-6 leading-relaxed">
-                    "{testimonial.text}"
-                  </p>
-                  <div className="border-t border-primary-foreground/20 pt-4">
-                    <span className="font-semibold">{testimonial.name}</span>
-                    <p className="text-primary-foreground/60 text-sm mt-1">{testimonial.property}</p>
-                    <p className="text-primary-foreground/50 text-xs mt-1 italic">
-                      ✓ Verified Review from {testimonial.platform}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* SECTION 6: Final CTA */}
-        <section className="section-padding bg-background">
-          <div className="container mx-auto px-4 md:px-6 lg:px-8 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <h2 className="font-serif text-4xl md:text-5xl font-semibold text-foreground mb-6">
-                Ready to Experience the Difference?
-              </h2>
-              <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">
-                The coast is calling. Book direct for the best rates guaranteed.
-              </p>
-              <div className="flex flex-wrap justify-center gap-4">
-                <Button variant="hero" size="xl" asChild>
-                  <Link to="/collection">Browse The Collection</Link>
-                </Button>
-                <Button variant="hero-outline" size="xl" asChild>
-                  <Link to="/contact" className="gap-2">
-                    <MessageCircle className="w-5 h-5" />
-                    Message the Host
-                  </Link>
-                </Button>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+                  {seamlessFeatures.map((feature, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={isSeamlessInView ? { opacity: 1, y: 0 } : {}}
+                      transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+                      className="text-center"
+                    >
+                      <div className="w-16 h-16 rounded-full bg-ocean/10 flex items-center justify-center mx-auto mb-6">
+                        <feature.icon className="w-8 h-8 text-ocean" />
+                      </div>
+                      <h3 className="font-serif text-xl md:text-2xl font-semibold text-foreground mb-4">
+                        {feature.title}
+                      </h3>
+                      <p className="text-muted-foreground leading-relaxed">
+                        {feature.description}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
-            </motion.div>
-          </div>
-        </section>
+            </section>
+
+            {/* SECTION 5: Testimonials */}
+            <section ref={testimonialsRef} className="section-padding bg-primary text-primary-foreground">
+              <div className="container mx-auto px-4 md:px-6 lg:px-8">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={isTestimonialsInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.8 }}
+                  className="text-center mb-16"
+                >
+                  <h2 className="font-serif text-4xl md:text-5xl font-semibold mb-4">
+                    Moments at Solmaré
+                  </h2>
+                  <p className="text-primary-foreground/80 text-lg max-w-2xl mx-auto">
+                    At Solmaré Stays, we don't just offer homes — we create experiences.
+                    Here's how our guests describe their time by the sea.
+                  </p>
+                </motion.div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  {testimonials.map((testimonial, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 40 }}
+                      animate={isTestimonialsInView ? { opacity: 1, y: 0 } : {}}
+                      transition={{ duration: 0.6, delay: index * 0.15 }}
+                      whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
+                      className="bg-primary-foreground/10 backdrop-blur-sm p-8 rounded-xl"
+                    >
+                      <div className="flex gap-1 mb-4">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="w-5 h-5 fill-gold text-gold" />
+                        ))}
+                      </div>
+                      <p className="text-primary-foreground/90 mb-6 leading-relaxed">
+                        "{testimonial.text}"
+                      </p>
+                      <div className="border-t border-primary-foreground/20 pt-4">
+                        <span className="font-semibold">{testimonial.name}</span>
+                        <p className="text-primary-foreground/60 text-sm mt-1">{testimonial.property}</p>
+                        <p className="text-primary-foreground/50 text-xs mt-1 italic">
+                          ✓ Verified Review from {testimonial.platform}
+                        </p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {/* SECTION 6: Final CTA */}
+            <section className="section-padding bg-background">
+              <div className="container mx-auto px-4 md:px-6 lg:px-8 text-center">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                >
+                  <h2 className="font-serif text-4xl md:text-5xl font-semibold text-foreground mb-6">
+                    Ready to Experience the Difference?
+                  </h2>
+                  <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">
+                    The coast is calling. Book direct for the best rates guaranteed.
+                  </p>
+                  <div className="flex flex-wrap justify-center gap-4">
+                    <Button variant="hero" size="xl" asChild>
+                      <Link to="/collection">Browse The Collection</Link>
+                    </Button>
+                    <Button variant="hero-outline" size="xl" asChild>
+                      <Link to="/contact" className="gap-2">
+                        <MessageCircle className="w-5 h-5" />
+                        Message the Host
+                      </Link>
+                    </Button>
+                  </div>
+                </motion.div>
+              </div>
+            </section>
+          </>
+        )}
       </main>
       <Footer />
     </div>

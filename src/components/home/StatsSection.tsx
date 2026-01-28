@@ -20,9 +20,16 @@ const stats = [
   },
 ];
 
-export function StatsSection() {
+export function StatsSection({ data }: { data?: any }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+
+  const introText = data?.introText || "Solmaré Stays is a premier collection of high-end vacation rentals along California's Central Coast. We specialize in curated hospitality, blending sophisticated design with the effortless ease of coastal living.";
+
+  const displayStats = data?.stats?.map((s: any) => ({
+    title: s.title,
+    description: s.description
+  })) || stats;
 
   return (
     <section ref={ref} className="py-24 bg-[#f8f7f5] relative overflow-hidden">
@@ -35,13 +42,13 @@ export function StatsSection() {
           className="text-center max-w-3xl mx-auto mb-16"
         >
           <p className="font-serif text-xl md:text-2xl lg:text-3xl text-foreground leading-relaxed font-light">
-            Solmaré Stays is a premier collection of high-end vacation rentals along California's Central Coast. We specialize in curated hospitality, blending sophisticated design with the effortless ease of coastal living.
+            {introText}
           </p>
         </motion.div>
 
         {/* Horizontal Stats Row - No Icons */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 border-t border-border/40 pt-12">
-          {stats.map((stat, index) => (
+          {displayStats.map((stat: any, index: number) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}

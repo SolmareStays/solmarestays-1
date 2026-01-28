@@ -29,9 +29,21 @@ const reviews = [
   },
 ];
 
-export function ReviewsSection() {
+export function ReviewsSection({ data }: { data?: any }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+
+  const heading = data?.heading || "Guest Reviews";
+  const subtitle = data?.subtitle || "Hear what our guests have to say about their coastal getaways.";
+
+  const displayReviews = data?.reviews?.map((r: any, i: number) => ({
+    id: i,
+    name: r.name,
+    date: r.date,
+    property: r.property,
+    rating: r.rating || 5,
+    text: r.text
+  })) || reviews;
 
   return (
     <section ref={ref} className="section-padding bg-secondary/50">
@@ -44,16 +56,16 @@ export function ReviewsSection() {
           className="text-center mb-14"
         >
           <h2 className="font-serif text-3xl md:text-4xl font-medium text-foreground mb-3">
-            Guest Reviews
+            {heading}
           </h2>
           <p className="text-muted-foreground text-base max-w-xl mx-auto font-light">
-            Hear what our guests have to say about their coastal getaways.
+            {subtitle}
           </p>
         </motion.div>
 
         {/* Reviews Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {reviews.map((review, index) => (
+          {displayReviews.map((review: any, index: number) => (
             <motion.div
               key={review.id}
               initial={{ opacity: 0, y: 20 }}
@@ -66,9 +78,8 @@ export function ReviewsSection() {
                 {[...Array(5)].map((_, i) => (
                   <Star
                     key={i}
-                    className={`w-3.5 h-3.5 ${
-                      i < review.rating ? 'fill-gold text-gold' : 'text-muted-foreground/20'
-                    }`}
+                    className={`w-3.5 h-3.5 ${i < review.rating ? 'fill-gold text-gold' : 'text-muted-foreground/20'
+                      }`}
                   />
                 ))}
               </div>

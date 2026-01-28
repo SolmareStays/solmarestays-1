@@ -1,13 +1,29 @@
 import { pageSchema } from './page';
 import { siteSettingsSchema } from './siteSettings';
-import { heroSection, textSection, featureGrid, imageSection, faqSection } from './sections';
+import {
+    heroSection,
+    statsSection,
+    textSection,
+    featureGrid,
+    locationsSection,
+    reviewsSection,
+    ctaSection,
+    partnersSection,
+    imageSection,
+    faqSection
+} from './sections';
 
 export const schemaTypes = [
     pageSchema,
     siteSettingsSchema,
     heroSection,
+    statsSection,
     textSection,
     featureGrid,
+    locationsSection,
+    reviewsSection,
+    ctaSection,
+    partnersSection,
     imageSection,
     faqSection,
 ];

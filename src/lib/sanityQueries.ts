@@ -7,6 +7,24 @@
  * Fetch a page by its slug
  * Returns the page document with all its sections
  */
+// Fetch homepage content
+export const homePageQuery = `
+  *[_type == "page" && slug.current == "home"][0] {
+    _id,
+    title,
+    slug,
+    sections[] {
+      _type,
+      _key,
+      ...
+    }
+  }
+`;
+
+/**
+ * Fetch a page by its slug
+ * Returns the page document with all its sections
+ */
 export const pageBySlugQuery = `
   *[_type == "page" && slug.current == $slug][0] {
     _id,

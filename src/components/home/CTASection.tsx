@@ -4,9 +4,15 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import heroImage from '/home/home-29.jpg';
 
-export function CTASection() {
+export function CTASection({ data }: { data?: any }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+
+  const heading = data?.heading || "Your Central Coast Story Starts Here.";
+  const btnText = data?.buttonText || "Browse Properties";
+  const btnLink = data?.buttonLink || "/collection";
+  const secBtnText = data?.secondButtonText || "Get in touch";
+  const secBtnLink = data?.secondButtonLink || "/contact";
 
   return (
     <section ref={ref} className="relative min-h-[500px] md:min-h-[600px] overflow-hidden">
@@ -31,7 +37,7 @@ export function CTASection() {
               transition={{ duration: 0.6 }}
               className="font-serif text-3xl md:text-4xl lg:text-5xl font-medium mb-8 leading-tight"
             >
-              Your Central Coast Story Starts Here.
+              {heading}
             </motion.h2>
 
             <motion.div
@@ -45,7 +51,7 @@ export function CTASection() {
                 className="bg-white text-foreground hover:bg-white/90 rounded-lg px-8 h-12 text-base font-medium"
                 asChild
               >
-                <Link to="/collection">Browse Properties</Link>
+                <Link to={btnLink}>{btnText}</Link>
               </Button>
               <Button
                 variant="ghost"
@@ -53,7 +59,7 @@ export function CTASection() {
                 className="text-white hover:text-white hover:bg-white/10 rounded-lg px-8 h-12 text-base font-medium border border-white/40"
                 asChild
               >
-                <Link to="/contact">Get in touch</Link>
+                <Link to={secBtnLink}>{secBtnText}</Link>
               </Button>
             </motion.div>
           </div>

@@ -1,4 +1,6 @@
 import { motion, useInView } from 'framer-motion';
+import { usePage } from '@/hooks/useSanityContent';
+import { SanitySectionRenderer } from '@/components/sanity/SanitySectionRenderer';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Header } from '@/components/layout/Header';
@@ -75,6 +77,9 @@ const partnerDirectory = [
 ];
 
 const GuestExperiencePage = () => {
+  const { data: pageData, isLoading } = usePage('experiences');
+  const showSanityContent = !isLoading && pageData?.sections?.length > 0;
+
   const heroRef = useRef(null);
   const isHeroInView = useInView(heroRef, { once: true });
 
@@ -90,252 +95,260 @@ const GuestExperiencePage = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Guest Experience"
-        description="Discover curated local experiences and partners. From wineries to adventure, explore the best of the Central Coast with Solmaré Stays."
+        title={pageData?.title || "Guest Experience"}
+        description={pageData?.metaDescription || "Discover curated local experiences and partners. From wineries to adventure, explore the best of the Central Coast with Solmaré Stays."}
       />
       <Header />
       <main>
-        {/* SECTION 1: Hero */}
-        <section ref={heroRef} className="relative h-screen min-h-[600px] flex items-center overflow-hidden">
-          <div className="absolute inset-0">
-            <motion.img
-              src={servicesHeroImage}
-              alt="Central Coast Experience"
-              className="w-full h-full object-cover"
-              initial={{ scale: 1.1 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 1.5, ease: "easeOut" }}
-            />
-            <div className="absolute inset-0 bg-black/20" />
+        {showSanityContent ? (
+          <div className="pt-32">
+            <SanitySectionRenderer sections={pageData.sections} />
           </div>
+        ) : (
+          <>
+            {/* SECTION 1: Hero */}
+            <section ref={heroRef} className="relative h-screen min-h-[600px] flex items-center overflow-hidden">
+              <div className="absolute inset-0">
+                <motion.img
+                  src={servicesHeroImage}
+                  alt="Central Coast Experience"
+                  className="w-full h-full object-cover"
+                  initial={{ scale: 1.1 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 1.5, ease: "easeOut" }}
+                />
+                <div className="absolute inset-0 bg-black/20" />
+              </div>
 
-          <div className="absolute bottom-6 left-6 md:bottom-20 md:left-20 w-[calc(100%-3rem)] md:w-[600px] lg:w-[700px] bg-white p-8 md:p-12 rounded-[2.5rem] shadow-2xl">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8 }}
-              className="max-w-xl"
-            >
-              <span className="inline-block text-sm font-semibold tracking-widest text-muted-foreground uppercase mb-4">
-                Guest Experience
-              </span>
-              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight text-foreground mb-6">
-                More Than a Place to Stay
-              </h1>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                Staying with Solmaré means more than a beautiful coastal home. We curate local partnerships and experiences that make every stay feel effortless, personal, and distinctly Central Coast.
-              </p>
-              <Button variant="default" size="xl" asChild>
-                <Link to="/collection">Browse Properties</Link>
-              </Button>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* SECTION 2: Philosophy */}
-        <section ref={philosophyRef} className="section-padding bg-secondary">
-          <div className="container mx-auto px-4 md:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={isPhilosophyInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8 }}
-              className="max-w-4xl mx-auto text-center"
-            >
-              <h2 className="font-serif text-3xl md:text-4xl font-semibold text-foreground mb-6">
-                What This Means for Our Guests
-              </h2>
-              <p className="text-muted-foreground text-lg leading-relaxed mb-4">
-                At Solmaré, we believe the best trips feel seamless. That's why we partner with trusted local businesses to offer our guests thoughtful perks, preferred experiences, and insider recommendations—so you can spend less time planning and more time enjoying your stay.
-              </p>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                Our partnerships are intentionally selective. We focus on quality, consistency, and businesses we trust to deliver an experience that reflects the Solmaré standard.
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* SECTION 3: Featured Partners */}
-        <section ref={featuredRef} className="section-padding bg-background">
-          <div className="container mx-auto px-4 md:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={isFeaturedInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8 }}
-              className="text-center max-w-2xl mx-auto mb-16"
-            >
-              <h2 className="font-serif text-4xl md:text-5xl font-semibold text-foreground mb-4">
-                Featured Partners
-              </h2>
-              <p className="text-muted-foreground text-lg">
-                Hand-picked local favorites that our guests love.
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {featuredPartners.map((partner, index) => (
+              <div className="absolute bottom-6 left-6 md:bottom-20 md:left-20 w-[calc(100%-3rem)] md:w-[600px] lg:w-[700px] bg-white p-8 md:p-12 rounded-[2.5rem] shadow-2xl">
                 <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 40 }}
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.8 }}
+                  className="max-w-xl"
+                >
+                  <span className="inline-block text-sm font-semibold tracking-widest text-muted-foreground uppercase mb-4">
+                    Guest Experience
+                  </span>
+                  <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight text-foreground mb-6">
+                    More Than a Place to Stay
+                  </h1>
+                  <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+                    Staying with Solmaré means more than a beautiful coastal home. We curate local partnerships and experiences that make every stay feel effortless, personal, and distinctly Central Coast.
+                  </p>
+                  <Button variant="default" size="xl" asChild>
+                    <Link to="/collection">Browse Properties</Link>
+                  </Button>
+                </motion.div>
+              </div>
+            </section>
+
+            {/* SECTION 2: Philosophy */}
+            <section ref={philosophyRef} className="section-padding bg-secondary">
+              <div className="container mx-auto px-4 md:px-6 lg:px-8">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={isPhilosophyInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.8 }}
+                  className="max-w-4xl mx-auto text-center"
+                >
+                  <h2 className="font-serif text-3xl md:text-4xl font-semibold text-foreground mb-6">
+                    What This Means for Our Guests
+                  </h2>
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-4">
+                    At Solmaré, we believe the best trips feel seamless. That's why we partner with trusted local businesses to offer our guests thoughtful perks, preferred experiences, and insider recommendations—so you can spend less time planning and more time enjoying your stay.
+                  </p>
+                  <p className="text-muted-foreground text-lg leading-relaxed">
+                    Our partnerships are intentionally selective. We focus on quality, consistency, and businesses we trust to deliver an experience that reflects the Solmaré standard.
+                  </p>
+                </motion.div>
+              </div>
+            </section>
+
+            {/* SECTION 3: Featured Partners */}
+            <section ref={featuredRef} className="section-padding bg-background">
+              <div className="container mx-auto px-4 md:px-6 lg:px-8">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
                   animate={isFeaturedInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: index * 0.15 }}
-                  whileHover={{ y: -8 }}
-                  className="group relative overflow-hidden rounded-2xl bg-card shadow-soft hover:shadow-elevated transition-all duration-300"
+                  transition={{ duration: 0.8 }}
+                  className="text-center max-w-2xl mx-auto mb-16"
                 >
-                  <div className="aspect-[4/3] overflow-hidden">
-                    <img
-                      src={partner.image}
-                      alt={partner.name}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <h3 className="font-serif text-xl font-semibold mb-2">
-                      {partner.name}
-                    </h3>
-                    <p className="text-sm opacity-90 leading-relaxed">
-                      {partner.description}
-                    </p>
-                  </div>
+                  <h2 className="font-serif text-4xl md:text-5xl font-semibold text-foreground mb-4">
+                    Featured Partners
+                  </h2>
+                  <p className="text-muted-foreground text-lg">
+                    Hand-picked local favorites that our guests love.
+                  </p>
                 </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
 
-        {/* SECTION 4: Partner Directory - Best of the Coast */}
-        <section ref={directoryRef} className="section-padding bg-secondary">
-          <div className="container mx-auto px-4 md:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={isDirectoryInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8 }}
-              className="text-center max-w-2xl mx-auto mb-16"
-            >
-              <h2 className="font-serif text-4xl md:text-5xl font-semibold text-foreground mb-4">
-                Best of the Coast
-              </h2>
-              <p className="text-muted-foreground text-lg">
-                Our curated guide to the Central Coast's finest experiences.
-              </p>
-            </motion.div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  {featuredPartners.map((partner, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 40 }}
+                      animate={isFeaturedInView ? { opacity: 1, y: 0 } : {}}
+                      transition={{ duration: 0.6, delay: index * 0.15 }}
+                      whileHover={{ y: -8 }}
+                      className="group relative overflow-hidden rounded-2xl bg-card shadow-soft hover:shadow-elevated transition-all duration-300"
+                    >
+                      <div className="aspect-[4/3] overflow-hidden">
+                        <img
+                          src={partner.image}
+                          alt={partner.name}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+                      </div>
+                      <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                        <h3 className="font-serif text-xl font-semibold mb-2">
+                          {partner.name}
+                        </h3>
+                        <p className="text-sm opacity-90 leading-relaxed">
+                          {partner.description}
+                        </p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </section>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {partnerDirectory.map((category, index) => (
+            {/* SECTION 4: Partner Directory - Best of the Coast */}
+            <section ref={directoryRef} className="section-padding bg-secondary">
+              <div className="container mx-auto px-4 md:px-6 lg:px-8">
                 <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 40 }}
+                  initial={{ opacity: 0, y: 30 }}
                   animate={isDirectoryInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-card p-6 rounded-xl shadow-soft"
+                  transition={{ duration: 0.8 }}
+                  className="text-center max-w-2xl mx-auto mb-16"
                 >
-                  {/* Category Header */}
-                  <div className="flex items-center gap-3 mb-6 pb-4 border-b border-border">
-                    <div className="w-10 h-10 rounded-full bg-ocean/10 flex items-center justify-center">
-                      <category.icon className="w-5 h-5 text-ocean" />
-                    </div>
-                    <h3 className="font-serif text-lg font-semibold text-foreground">
-                      {category.title}
-                    </h3>
-                  </div>
-
-                  {/* Venues List */}
-                  <ul className="space-y-4">
-                    {category.venues.map((venue, vIndex) => (
-                      <motion.li
-                        key={vIndex}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={isDirectoryInView ? { opacity: 1, x: 0 } : {}}
-                        transition={{ duration: 0.4, delay: 0.3 + vIndex * 0.05 }}
-                        className="group"
-                      >
-                        <div className="flex justify-between items-start">
-                          <div>
-                            <p className="font-medium text-foreground text-sm group-hover:text-ocean transition-colors">
-                              {venue.name}
-                            </p>
-                            <p className="text-xs text-muted-foreground/70">
-                              {venue.location}
-                            </p>
-                          </div>
-                          <p className="text-xs text-muted-foreground text-right max-w-[45%]">
-                            {venue.experience}
-                          </p>
-                        </div>
-                      </motion.li>
-                    ))}
-                  </ul>
+                  <h2 className="font-serif text-4xl md:text-5xl font-semibold text-foreground mb-4">
+                    Best of the Coast
+                  </h2>
+                  <p className="text-muted-foreground text-lg">
+                    Our curated guide to the Central Coast's finest experiences.
+                  </p>
                 </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
 
-        {/* SECTION 5: How It Works */}
-        <section className="section-padding bg-background">
-          <div className="container mx-auto px-4 md:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="max-w-4xl mx-auto text-center"
-            >
-              <div className="w-16 h-16 mx-auto mb-8 rounded-full bg-ocean/10 flex items-center justify-center">
-                <MapPin className="w-8 h-8 text-ocean" />
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                  {partnerDirectory.map((category, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 40 }}
+                      animate={isDirectoryInView ? { opacity: 1, y: 0 } : {}}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
+                      className="bg-card p-6 rounded-xl shadow-soft"
+                    >
+                      {/* Category Header */}
+                      <div className="flex items-center gap-3 mb-6 pb-4 border-b border-border">
+                        <div className="w-10 h-10 rounded-full bg-ocean/10 flex items-center justify-center">
+                          <category.icon className="w-5 h-5 text-ocean" />
+                        </div>
+                        <h3 className="font-serif text-lg font-semibold text-foreground">
+                          {category.title}
+                        </h3>
+                      </div>
+
+                      {/* Venues List */}
+                      <ul className="space-y-4">
+                        {category.venues.map((venue, vIndex) => (
+                          <motion.li
+                            key={vIndex}
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={isDirectoryInView ? { opacity: 1, x: 0 } : {}}
+                            transition={{ duration: 0.4, delay: 0.3 + vIndex * 0.05 }}
+                            className="group"
+                          >
+                            <div className="flex justify-between items-start">
+                              <div>
+                                <p className="font-medium text-foreground text-sm group-hover:text-ocean transition-colors">
+                                  {venue.name}
+                                </p>
+                                <p className="text-xs text-muted-foreground/70">
+                                  {venue.location}
+                                </p>
+                              </div>
+                              <p className="text-xs text-muted-foreground text-right max-w-[45%]">
+                                {venue.experience}
+                              </p>
+                            </div>
+                          </motion.li>
+                        ))}
+                      </ul>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
-              <h2 className="font-serif text-3xl md:text-4xl font-semibold text-foreground mb-6">
-                How Guests Access These Experiences
-              </h2>
-              <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-                Once your stay is confirmed, you'll receive access to our curated digital guest guide. Inside, you'll find full details on available partner offers, redemption codes, and our team's personal recommendations for the best hidden spots in town.
-              </p>
-              <div className="flex flex-wrap gap-4 justify-center">
-                <Button variant="hero" size="xl" asChild>
-                  <Link to="/collection">Book Your Stay</Link>
-                </Button>
-                <Button variant="outline" size="xl" asChild>
-                  <Link to="/contact">Ask a Question</Link>
-                </Button>
+            </section>
+
+            {/* SECTION 5: How It Works */}
+            <section className="section-padding bg-background">
+              <div className="container mx-auto px-4 md:px-6 lg:px-8">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  className="max-w-4xl mx-auto text-center"
+                >
+                  <div className="w-16 h-16 mx-auto mb-8 rounded-full bg-ocean/10 flex items-center justify-center">
+                    <MapPin className="w-8 h-8 text-ocean" />
+                  </div>
+                  <h2 className="font-serif text-3xl md:text-4xl font-semibold text-foreground mb-6">
+                    How Guests Access These Experiences
+                  </h2>
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+                    Once your stay is confirmed, you'll receive access to our curated digital guest guide. Inside, you'll find full details on available partner offers, redemption codes, and our team's personal recommendations for the best hidden spots in town.
+                  </p>
+                  <div className="flex flex-wrap gap-4 justify-center">
+                    <Button variant="hero" size="xl" asChild>
+                      <Link to="/collection">Book Your Stay</Link>
+                    </Button>
+                    <Button variant="outline" size="xl" asChild>
+                      <Link to="/contact">Ask a Question</Link>
+                    </Button>
+                  </div>
+                </motion.div>
               </div>
-            </motion.div>
-          </div>
-        </section>
+            </section>
 
-        {/* SECTION 6: Final CTA */}
-        <section className="section-padding bg-primary text-primary-foreground">
-          <div className="container mx-auto px-4 md:px-6 lg:px-8 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="max-w-3xl mx-auto"
-            >
-              <h2 className="font-serif text-4xl md:text-5xl font-semibold mb-6">
-                Ready to Experience the Central Coast, Thoughtfully Curated?
-              </h2>
-              <p className="text-primary-foreground/80 text-lg mb-8">
-                Discover coastal homes paired with local experiences designed to make your stay unforgettable.
-              </p>
-              <Button variant="secondary" size="xl" asChild>
-                <Link to="/collection">Explore Our Stays</Link>
-              </Button>
-            </motion.div>
-          </div>
-        </section>
+            {/* SECTION 6: Final CTA */}
+            <section className="section-padding bg-primary text-primary-foreground">
+              <div className="container mx-auto px-4 md:px-6 lg:px-8 text-center">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  className="max-w-3xl mx-auto"
+                >
+                  <h2 className="font-serif text-4xl md:text-5xl font-semibold mb-6">
+                    Ready to Experience the Central Coast, Thoughtfully Curated?
+                  </h2>
+                  <p className="text-primary-foreground/80 text-lg mb-8">
+                    Discover coastal homes paired with local experiences designed to make your stay unforgettable.
+                  </p>
+                  <Button variant="secondary" size="xl" asChild>
+                    <Link to="/collection">Explore Our Stays</Link>
+                  </Button>
+                </motion.div>
+              </div>
+            </section>
 
-        {/* Partner Micro-Copy */}
-        <section className="py-8 bg-primary">
-          <div className="container mx-auto px-4 md:px-6 lg:px-8 text-center">
-            <p className="text-sm text-white">
-              Interested in partnering with Solmaré? We're always open to collaborating with local businesses that share our commitment to quality and guest experience.{' '}
-              <Link to="/contact" className="underline hover:opacity-100 transition-opacity font-medium">
-                Contact Us
-              </Link>
-            </p>
-          </div>
-        </section>
+            {/* Partner Micro-Copy */}
+            <section className="py-8 bg-primary">
+              <div className="container mx-auto px-4 md:px-6 lg:px-8 text-center">
+                <p className="text-sm text-white">
+                  Interested in partnering with Solmaré? We're always open to collaborating with local businesses that share our commitment to quality and guest experience.{' '}
+                  <Link to="/contact" className="underline hover:opacity-100 transition-opacity font-medium">
+                    Contact Us
+                  </Link>
+                </p>
+              </div>
+            </section>
+          </>
+        )}
       </main>
       <Footer />
     </div>

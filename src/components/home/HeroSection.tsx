@@ -13,7 +13,7 @@ import heroImage1 from '/home/home-12.jpg'
 import heroImage2 from '/home/home-29.jpg'
 import heroImage3 from '/home/home-09.jpg'
 
-const slides = [
+const defaultSlides = [
   { image: heroImage1, alt: 'Luxury coastal living room' },
   { image: heroImage2, alt: 'California Central Coast pier' },
   { image: heroImage3, alt: 'Coastal bedroom with ocean view' },
@@ -21,7 +21,7 @@ const slides = [
 
 const guestOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-export function HeroSection() {
+export function HeroSection({ data }: { data?: any }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [datePopoverOpen, setDatePopoverOpen] = useState(false);
   const [guestPopoverOpen, setGuestPopoverOpen] = useState(false);
@@ -29,12 +29,17 @@ export function HeroSection() {
 
   const { checkIn, checkOut, guests, setDateRange, setGuests } = useBooking();
 
+  // Use data from Sanity if available, otherwise fallback to defaults
+  const slides = defaultSlides; // Keeping slides static for now as Sanity image handling requires a builder
+  const heading = data?.title || "Where the Sun Meets<br />the Sea in Style";
+  const subheading = data?.subtitle || "Curated Boutique Management & Elevated Stays on the Central Coast.";
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 6000);
     return () => clearInterval(timer);
-  }, []);
+  }, [slides.length]);
 
   const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
@@ -79,11 +84,12 @@ export function HeroSection() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="text-white"
             >
-              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-normal leading-tight mb-4 tracking-tight">
-                Where the Sun Meets<br />the Sea in Style
-              </h1>
+              <h1
+                className="font-serif text-4xl md:text-5xl lg:text-6xl font-normal leading-tight mb-4 tracking-tight"
+                dangerouslySetInnerHTML={{ __html: heading }}
+              />
               <p className="text-white/90 text-lg md:text-xl font-light tracking-wide mb-8 max-w-lg">
-                Curated Boutique Management & Elevated Stays on the Central Coast.
+                {subheading}
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button

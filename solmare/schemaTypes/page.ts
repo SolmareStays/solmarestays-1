@@ -34,8 +34,13 @@ export const pageSchema = defineType({
             type: 'array',
             of: [
                 { type: 'heroSection' },
+                { type: 'statsSection' },
                 { type: 'textSection' },
                 { type: 'featureGrid' },
+                { type: 'locationsSection' },
+                { type: 'reviewsSection' },
+                { type: 'ctaSection' },
+                { type: 'partnersSection' },
                 { type: 'imageSection' },
                 { type: 'faqSection' },
             ],

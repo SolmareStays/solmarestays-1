@@ -33,18 +33,41 @@ const locations = [
   },
 ];
 
-export function LocationSection() {
+export function LocationSection({ data }: { data?: any }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [activeLocationIndex, setActiveLocationIndex] = useState(0);
 
   const { data: properties = [] } = useProperties();
 
-  const activeLocation = locations[activeLocationIndex];
+  // Merge Sanity data with hardcoded images/links
+  // If Sanity data exists, find the matching location by ID or Name to apply the image
+  // Fallback to default 'locations' if no data
+  const mergedLocations = useMemo(() => {
+    if (!data?.locations || data.locations.length === 0) return locations;
+
+    return data.locations.map((loc: any) => {
+      // Find matching hardcoded location to get the image and mapLink
+      // Matching by name is safest if IDs aren't consistent
+      const match = locations.find(l => l.name === loc.name || l.id === loc.name.toLowerCase().replace(' ', ''));
+      return {
+        id: match?.id || 'unknown',
+        name: loc.name, // Use name from Sanity
+        description: loc.description, // Use description from Sanity
+        image: match?.image || avilaImg, // Detailed fallback logic or default
+        mapLink: loc.mapLink || match?.mapLink // Sanity link or hardcoded
+      };
+    });
+  }, [data]);
+
+  const activeLocation = mergedLocations[activeLocationIndex] || mergedLocations[0];
 
   const filteredProperties = useMemo(() => {
+    if (!activeLocation) return [];
     return properties.filter(p => p.location.includes(activeLocation.name));
-  }, [properties, activeLocation.name]);
+  }, [properties, activeLocation?.name]);
+
+  if (!activeLocation) return null;
 
   return (
     <section ref={ref} className="relative bg-background overflow-hidden">
@@ -73,15 +96,16 @@ export function LocationSection() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="font-serif text-4xl md:text-5xl font-light text-foreground mb-8 text-right">
-              Where you can<br />find us
-            </h2>
+            <h2
+              className="font-serif text-4xl md:text-5xl font-light text-foreground mb-8 text-right"
+              dangerouslySetInnerHTML={{ __html: data?.heading || "Where you can<br />find us" }}
+            />
 
             {/* Buttons Row */}
             <div className="flex flex-wrap justify-end gap-2 md:gap-3 mb-8">
-              {locations.map((loc, index) => (
+              {mergedLocations.map((loc: any, index: number) => (
                 <button
-                  key={loc.id}
+                  key={loc.id + index}
                   onClick={() => setActiveLocationIndex(index)}
                   onMouseEnter={() => setActiveLocationIndex(index)}
                   className={cn(
