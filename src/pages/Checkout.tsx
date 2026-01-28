@@ -1026,7 +1026,7 @@ export default function Checkout() {
                             <Input
                               placeholder="Enter coupon code"
                               value={couponCode}
-                              onChange={(e) => setCouponCode(e.target.value)}
+                              onChange={(e) => setCouponCode(e.target.value.replace(/\s/g, ''))}
                               className="h-9 text-sm"
                               onKeyDown={(e) => {
                                 if (e.key === 'Enter') {
