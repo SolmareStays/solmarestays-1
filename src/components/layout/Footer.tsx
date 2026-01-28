@@ -51,17 +51,17 @@ export function Footer() {
               </li>
               <li>
                 <Link to="/philosophy" className="text-sm opacity-80 hover:opacity-100 transition-opacity">
-                  About Us
+                  Philosophy
                 </Link>
               </li>
               <li>
                 <Link to="/management" className="text-sm opacity-80 hover:opacity-100 transition-opacity">
-                  For Homeowners
+                  Management
                 </Link>
               </li>
               <li>
                 <Link to="/experiences" className="text-sm opacity-80 hover:opacity-100 transition-opacity">
-                  Guest Experience
+                  Experiences
                 </Link>
               </li>
             </ul>
