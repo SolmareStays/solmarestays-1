@@ -280,9 +280,9 @@ const ContactPage = () => {
                             <SelectValue placeholder="Select a topic" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="booking">Booking Inquiry (Guest)</SelectItem>
-                            <SelectItem value="property">List My Property (Owner Lead)</SelectItem>
-                            <SelectItem value="guest-support">Current Guest Support (Urgent)</SelectItem>
+                            <SelectItem value="booking">Booking Inquiry</SelectItem>
+                            <SelectItem value="property">List My Property</SelectItem>
+                            <SelectItem value="guest-support">Current Guest Support</SelectItem>
                             <SelectItem value="partnership">Vendor / Partnership</SelectItem>
                             <SelectItem value="other">Other</SelectItem>
                           </SelectContent>
