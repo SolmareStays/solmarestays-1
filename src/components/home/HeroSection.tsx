@@ -9,9 +9,9 @@ import { CalendarTwin } from '@/components/ui/calendar-twin';
 import { useBooking } from '@/context/BookingContext';
 import { cn } from '@/lib/utils';
 
-import heroImage1 from '/home/home-12.jpg'
-import heroImage2 from '/home/home-29.jpg'
-import heroImage3 from '/home/home-09.jpg'
+import heroImage1 from '/home/home-12.webp'
+import heroImage2 from '/home/home-29.webp'
+import heroImage3 from '/home/home-09.webp'
 
 const defaultSlides = [
   { image: heroImage1, alt: 'Luxury coastal living room' },

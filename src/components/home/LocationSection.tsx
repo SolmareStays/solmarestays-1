@@ -1,8 +1,8 @@
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { useRef, useState, useMemo } from 'react';
-import avilaImg from '/home/avila.jpg';
-import sloImg from '/home/san-luis.jpg';
-import pismoImg from '/home/pismo-beach.jpg';
+import avilaImg from '/home/avila.webp';
+import sloImg from '/home/san-luis.webp';
+import pismoImg from '/home/pismo-beach.webp';
 import { MapPin, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
