@@ -252,3 +252,28 @@ export interface HostawayCouponsResponse {
   status: string;
   result: HostawayCoupon[];
 }
+
+
+export interface HostawayReview {
+  id: number;
+  reservationId: number;
+  listingMapId: number;
+  reviewerName: string;
+  guestName: string;
+  channelId: number;
+  rating: number; // Out of 10
+  title: string | null;
+  publicReview: string;
+  privateFeedback: string | null;
+  revieweeResponse: string | null;
+  submittedAt: string;
+  insertedOn: string;
+  updatedOn: string;
+  status: string;
+  listingName: string;
+}
+
+export interface HostawayReviewsResponse {
+  status: string;
+  result: HostawayReview[];
+}

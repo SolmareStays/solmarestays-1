@@ -1,4 +1,4 @@
-import { HostawayListing, HostawayListingsResponse, HostawayCalendarDay, HostawayCalendarResponse, HostawayCoupon, HostawayCouponsResponse } from '@/types/hostaway';
+import { HostawayListing, HostawayListingsResponse, HostawayCalendarDay, HostawayCalendarResponse, HostawayCoupon, HostawayCouponsResponse, HostawayReviewsResponse, HostawayReview } from '@/types/hostaway';
 import { Property } from '@/data/properties';
 import { format } from 'date-fns';
 
@@ -58,7 +58,7 @@ function transformListing(listing: HostawayListing): Property {
     .sort((a, b) => a.sortOrder - b.sortOrder)
     .map((img) => ({
       src: img.url,
-      alt: img.caption || listing.name,
+      alt: img.airbnbCaption || listing.name,
     }));
 
   // Get the first image as the main thumbnail
@@ -112,7 +112,8 @@ function transformListing(listing: HostawayListing): Property {
     address: listing.publicAddress || listing.address || `${listing.street}, ${listing.city}`,
 
     // Reviews
-    averageReviewRating: listing.averageReviewRating ? listing.averageReviewRating / 2 : null,
+    // Note: Hostaway sometimes returns 0-10 or 0-5. Inspecting value.
+    averageReviewRating: listing.averageReviewRating ? listing.averageReviewRating : null,
 
     // External links
     hostawayListingId: String(listing.id),
@@ -533,5 +534,41 @@ export async function validateCoupon(
     }
   }
 
+
   return coupon;
+}
+
+/**
+ * Fetch reviews from Hostaway
+ */
+export async function fetchReviews(listingId?: string): Promise<HostawayReview[]> {
+  if (!API_TOKEN) {
+    throw new Error('Hostaway API token is not configured');
+  }
+
+  const params = new URLSearchParams();
+  if (listingId) {
+    params.append('listingId', listingId);
+  }
+  // Sort by newest first
+  params.append('sortOrder', 'DESC');
+
+  const response = await fetch(`${API_URL}/reviews?${params.toString()}`, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${API_TOKEN}`,
+      'Cache-control': 'no-cache',
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch reviews: ${response.status}`);
+  }
+
+  const data: HostawayReviewsResponse = await response.json();
+  if (data.status !== 'success') {
+    throw new Error('Hostaway API returned an error');
+  }
+
+  return data.result;
 }

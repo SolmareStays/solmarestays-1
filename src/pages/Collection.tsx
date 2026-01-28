@@ -27,8 +27,8 @@ const CollectionPage = () => {
   const [sleepsFilter, setSleepsFilter] = useState<string>(
     guests > 1 ? guests.toString() : 'all'
   );
-  // Default to price low-high as per requirements
-  const [priceSort, setPriceSort] = useState<string>('low-high');
+  // No price sorting by default
+  const [priceSort, setPriceSort] = useState<string>('none');
   const [petFriendly, setPetFriendly] = useState<boolean>(false);
 
   const { data: properties = [], isLoading: isLoadingProperties, error } = useProperties();
@@ -72,12 +72,13 @@ const CollectionPage = () => {
       return true;
     });
 
-    // Sort by price (default is now low-high)
+    // Sort by price (only if selected)
     if (priceSort === 'low-high') {
       result = [...result].sort((a, b) => a.startingPrice - b.startingPrice);
     } else if (priceSort === 'high-low') {
       result = [...result].sort((a, b) => b.startingPrice - a.startingPrice);
     }
+    // If priceSort === 'none', no sorting is applied
 
     return result;
   }, [properties, checkIn, checkOut, availablePropertyIds, locationFilter, sleepsFilter, petFriendly, priceSort]);
@@ -199,6 +200,7 @@ const CollectionPage = () => {
                   <SelectValue placeholder="Starting Price" />
                 </SelectTrigger>
                 <SelectContent>
+                  <SelectItem value="none">Starting Price</SelectItem>
                   <SelectItem value="low-high">Price: Low → High</SelectItem>
                   <SelectItem value="high-low">Price: High → Low</SelectItem>
                 </SelectContent>

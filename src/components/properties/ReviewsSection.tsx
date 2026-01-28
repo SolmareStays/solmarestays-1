@@ -3,7 +3,8 @@ import { motion } from 'framer-motion';
 import { Star, ChevronDown, ArrowUpDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { getReviewsForProperty } from '@/data/reviews';
+import { useReviews } from '@/hooks/useReviews';
+import { HostawayReview } from '@/types/hostaway';
 
 interface ReviewsSectionProps {
   propertyName: string;
@@ -15,23 +16,54 @@ export function ReviewsSection({ propertyName, propertyId, averageRating }: Revi
   const [showAll, setShowAll] = useState(false);
   const [sortBy, setSortBy] = useState<'date' | 'rating-high' | 'rating-low'>('date');
 
-  const allReviews = useMemo(() => getReviewsForProperty(propertyId), [propertyId]);
+  const { data: rawReviews = [], isLoading, error } = useReviews(propertyId);
+
+  // Filter reviews for this specific property and handle new data structure
+  const allReviews = useMemo(() => {
+    // Debug logging requested by user
+    console.log('ReviewsSection Debug:', {
+      propertyName,
+      propertyId,
+      rawReviewsCount: rawReviews.length,
+      sampleReview: rawReviews[0],
+      filteredCount: rawReviews.filter(r => String(r.listingMapId) === propertyId).length
+    });
+
+    return rawReviews.filter(
+      r => String(r.listingMapId) === propertyId && Number(r.rating) > 0
+    );
+  }, [rawReviews, propertyId, propertyName]);
 
   const sortedReviews = useMemo(() => {
     const reviews = [...allReviews];
     switch (sortBy) {
       case 'rating-high':
-        return reviews.sort((a, b) => b.rating - a.rating);
+        return reviews.sort((a, b) => (b.rating || 0) - (a.rating || 0));
       case 'rating-low':
-        return reviews.sort((a, b) => a.rating - b.rating);
+        return reviews.sort((a, b) => (a.rating || 0) - (b.rating || 0));
       case 'date':
       default:
-        return reviews.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+        // Sort by newest first (descending date)
+        return reviews.sort((a, b) => {
+          const dateA = new Date(a.submittedAt).getTime();
+          const dateB = new Date(b.submittedAt).getTime();
+          return dateB - dateA;
+        });
     }
   }, [sortBy, allReviews]);
 
   const visibleReviews = showAll ? sortedReviews : sortedReviews.slice(0, 3);
-  const averageScore = averageRating ?? (allReviews.reduce((acc, r) => acc + r.rating, 0) / allReviews.length);
+
+  // Use the averageRating prop from Hostaway property data (authoritative)
+  // Only calculate from fetched reviews as fallback if prop not provided
+  const averageScore = averageRating
+    ? averageRating
+    : (allReviews.length > 0
+      ? (allReviews.reduce((acc, r) => acc + Number(r.rating || 0), 0) / allReviews.length)
+      : 0);
+
+  // For star display (out of 5)
+  const averageStars = averageScore / 2;
 
   const formatDate = (dateStr: string) => {
     return new Date(dateStr).toLocaleDateString('en-US', {
@@ -39,6 +71,25 @@ export function ReviewsSection({ propertyName, propertyId, averageRating }: Revi
       year: 'numeric'
     });
   };
+
+  if (isLoading) {
+    return (
+      <div className="py-8 space-y-4 animate-pulse">
+        <div className="h-8 bg-secondary rounded w-1/4"></div>
+        <div className="space-y-4">
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="bg-secondary rounded-xl p-6 h-32"></div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  // If error or no reviews, we can hide the section or show a message.
+  // Showing nothing if no reviews is often cleaner.
+  if (error || allReviews.length === 0) {
+    return null;
+  }
 
   return (
     <motion.div
@@ -60,14 +111,15 @@ export function ReviewsSection({ propertyName, propertyId, averageRating }: Revi
               {[1, 2, 3, 4, 5].map((star) => (
                 <Star
                   key={star}
-                  className={`w-5 h-5 ${star <= Math.round(averageScore)
+                  className={`w-5 h-5 ${star <= Math.round(averageStars)
                     ? 'fill-gold text-gold'
                     : 'text-muted-foreground/30'
                     }`}
                 />
               ))}
             </div>
-            <span className="font-semibold text-foreground">{averageScore.toFixed(1)}</span>
+            {/* Display raw score out of 10 as requested */}
+            <span className="font-semibold text-foreground">{averageStars.toFixed(1)}</span>
             <span className="text-muted-foreground">({allReviews.length} reviews)</span>
           </div>
         </div>
@@ -97,14 +149,14 @@ export function ReviewsSection({ propertyName, propertyId, averageRating }: Revi
           >
             <div className="flex items-start justify-between mb-3">
               <div>
-                <p className="font-medium text-foreground">{review.guestName}</p>
-                <p className="text-sm text-muted-foreground">{formatDate(review.date)}</p>
+                <p className="font-medium text-foreground">{review.reviewerName || review.guestName}</p>
+                <p className="text-sm text-muted-foreground">{formatDate(review.submittedAt)}</p>
               </div>
               <div className="flex items-center gap-1">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <Star
                     key={star}
-                    className={`w-4 h-4 ${star <= review.rating
+                    className={`w-4 h-4 ${star <= (review.rating / 2)
                       ? 'fill-gold text-gold'
                       : 'text-muted-foreground/30'
                       }`}
@@ -112,7 +164,13 @@ export function ReviewsSection({ propertyName, propertyId, averageRating }: Revi
                 ))}
               </div>
             </div>
-            <p className="text-muted-foreground leading-relaxed">{review.comment}</p>
+            <p className="text-muted-foreground leading-relaxed whitespace-pre-line">{review.publicReview}</p>
+            {review.revieweeResponse && (
+              <div className="mt-4 pl-4 border-l-2 border-primary/20">
+                <p className="text-sm font-medium text-foreground mb-1">Response from Host:</p>
+                <p className="text-sm text-muted-foreground">{review.hostResponse}</p>
+              </div>
+            )}
           </motion.div>
         ))}
       </div>
@@ -131,3 +189,4 @@ export function ReviewsSection({ propertyName, propertyId, averageRating }: Revi
     </motion.div>
   );
 }
+

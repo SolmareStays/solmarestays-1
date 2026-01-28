@@ -35,7 +35,7 @@ export function PropertyCard({ property, index = 0, maskPrice = false }: Propert
           {/* Price Tag */}
           <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
             <span className="text-xs text-white font-medium bg-foreground/80 backdrop-blur-sm px-3 py-1.5 rounded-full">
-              {maskPrice ? '$XXX' : `$${property.startingPrice}`}/night
+              {`$${property.startingPrice}`}/night
             </span>
           </div>
 
@@ -57,7 +57,7 @@ export function PropertyCard({ property, index = 0, maskPrice = false }: Propert
                 {[...Array(5)].map((_, i) => (
                   <Star
                     key={i}
-                    className={`w-3.5 h-3.5 ${i < Math.round(property.averageReviewRating!)
+                    className={`w-3.5 h-3.5 ${i < Math.round(property.averageReviewRating! / 2)
                       ? 'fill-gold text-gold'
                       : 'text-muted-foreground/30'
                       }`}
@@ -65,7 +65,7 @@ export function PropertyCard({ property, index = 0, maskPrice = false }: Propert
                 ))}
               </div>
               <span className="text-xs text-muted-foreground ml-1">
-                {property.averageReviewRating.toFixed(1)}
+                {(property.averageReviewRating / 2).toFixed(1)}
               </span>
             </div>
           )}

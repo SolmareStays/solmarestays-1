@@ -91,7 +91,7 @@ export function HeroSection() {
                   className="bg-white text-foreground hover:bg-white/90 rounded-lg px-8 h-12 text-base font-medium transition-all"
                   asChild
                 >
-                  <Link to="/collection">Explore Properties</Link>
+                  <Link to="/collection">Book Now</Link>
                 </Button>
                 <Button
                   variant="ghost"
@@ -105,9 +105,14 @@ export function HeroSection() {
             </motion.div>
 
             {/* Right: Floating Booking Widget (Desktop Only) */}
-            <div className="hidden lg:block w-full lg:w-auto">
-              <div className="bg-white rounded-2xl shadow-elevated p-6 md:p-8">
-                <h3 className="font-serif text-xl font-medium text-foreground mb-6">
+            <motion.div
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
+              className="hidden lg:block w-full lg:w-auto"
+            >
+              <div className="bg-white rounded-2xl shadow-elevated p-5">
+                <h3 className="font-serif text-lg font-medium text-foreground mb-5">
                   Find Your Perfect Stay
                 </h3>
 
@@ -195,11 +200,11 @@ export function HeroSection() {
                     onClick={handleSearch}
                   >
                     <Search className="w-4 h-4 mr-2" />
-                    Explore Properties
+                    Book Now
                   </Button>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
           </div>
         </div>

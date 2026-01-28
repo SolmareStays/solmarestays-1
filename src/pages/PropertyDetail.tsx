@@ -84,6 +84,16 @@ const PropertyDetailPage = () => {
   const amenitiesRef = useRef(null);
   const isAmenitiesInView = useInView(amenitiesRef, { once: true, margin: '-100px' });
 
+  // Prioritize same-city properties for "You May Also Like"
+  // Move this up before conditional returns to satisfy React Hook rules
+  const otherProperties = useMemo(() => {
+    if (!property) return [];
+
+    const sameCity = allProperties.filter((p) => p.id !== property.id && p.location === property.location);
+    const otherCities = allProperties.filter((p) => p.id !== property.id && p.location !== property.location);
+    return [...sameCity, ...otherCities].slice(0, 3);
+  }, [allProperties, property]);
+
   // Loading state
   if (isLoading) {
     return (
@@ -161,13 +171,6 @@ const PropertyDetailPage = () => {
     );
   }
 
-  // Prioritize same-city properties for "You May Also Like"
-  const otherProperties = useMemo(() => {
-    const sameCity = allProperties.filter((p) => p.id !== property.id && p.location === property.location);
-    const otherCities = allProperties.filter((p) => p.id !== property.id && p.location !== property.location);
-    return [...sameCity, ...otherCities].slice(0, 3);
-  }, [allProperties, property.id, property.location]);
-
   // Get amenity icon
   const getAmenityIcon = (amenity: string) => {
     const lower = amenity.toLowerCase();
@@ -229,12 +232,12 @@ const PropertyDetailPage = () => {
                       {[...Array(5)].map((_, i) => (
                         <Star
                           key={i}
-                          className={`w-4 h-4 ${i < Math.round(property.averageReviewRating!) ? 'fill-current' : 'opacity-30'}`}
+                          className={`w-4 h-4 ${i < Math.round(property.averageReviewRating! / 2) ? 'fill-current' : 'opacity-30'}`}
                         />
                       ))}
                     </div>
                     <span className="text-sm text-muted-foreground underline-offset-2 hover:underline">
-                      {property.averageReviewRating.toFixed(1)} rating
+                      {(property.averageReviewRating / 2).toFixed(1)} rating
                     </span>
                   </a>
                 )}
