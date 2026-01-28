@@ -9,7 +9,7 @@ import { SEO } from '@/components/SEO';
 import { Button } from '@/components/ui/button';
 import { Sparkles, ShieldCheck, MapPin, Clock, BadgeCheck, Smartphone, Star, MessageCircle } from 'lucide-react';
 import aboutHeroImage from '/about-us/outside-chair.jpg';
-// import avilaBeachImage from '/about-us/avila-beach.jpg';
+import placeHeroImage from '/about-us/fire-pit.jpg';
 
 // Core Values - Addressing top 3 guest fears
 const values = [
@@ -174,7 +174,7 @@ const WhyChooseUsPage = () => {
                   >
                     <div className="overflow-hidden rounded-2xl shadow-elevated">
                       <img
-                        src="/avila-beach.jpg"
+                        src={placeHeroImage}
                         alt="California palm trees at sunset"
                         className="w-full h-full object-cover aspect-[4/3]"
                       />
@@ -195,6 +195,8 @@ const WhyChooseUsPage = () => {
                     <p className="text-muted-foreground text-lg md:text-xl leading-relaxed italic">
                       "We believe a vacation home should feel better than your own home. That means chef-ready kitchens, professional interior design, and a level of cleanliness that rivals 5-star hotels. No clutter, no guesswork—just the coast."
                     </p>
+                    <p className="mt-4 font-medium text-foreground text-right">— Kyle Van Til, Founder</p>
+
                   </motion.div>
                 </div>
               </div>
