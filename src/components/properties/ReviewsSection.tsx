@@ -63,7 +63,7 @@ export function ReviewsSection({ propertyName, propertyId, averageRating }: Revi
       : 0);
 
   // For star display (out of 5)
-  const averageStars = averageScore / 2;
+  const averageStars = averageScore;
 
   const formatDate = (dateStr: string) => {
     return new Date(dateStr).toLocaleDateString('en-US', {
