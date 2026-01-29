@@ -195,8 +195,9 @@ const WhyChooseUsPage = () => {
                     <p className="text-muted-foreground text-lg md:text-xl leading-relaxed italic">
                       "We believe a vacation home should feel better than your own home. That means chef-ready kitchens, professional interior design, and a level of cleanliness that rivals 5-star hotels. No clutter, no guesswork—just the coast."
                     </p>
-                    <p className="mt-4 font-medium text-foreground text-right">— Kyle Van Til, Founder</p>
-
+                    <p className="text-muted-foreground text-lg md:text-xl leading-relaxed italic text-right">
+                      — Kyle Van Til, Founder
+                    </p>
                   </motion.div>
                 </div>
               </div>
