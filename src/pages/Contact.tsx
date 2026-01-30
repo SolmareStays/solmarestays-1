@@ -58,18 +58,35 @@ const ContactPage = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const form = e.target as HTMLFormElement;
+      const formDataToSend = new FormData(form);
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    toast.success('Message sent successfully! We\'ll be in touch soon.');
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formDataToSend,
+      });
 
-    // Reset form after delay
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-    }, 3000);
+      const data = await response.json();
+
+      if (data.success) {
+        setIsSubmitted(true);
+        toast.success('Message sent successfully! We\'ll be in touch soon.');
+
+        // Reset form after delay
+        setTimeout(() => {
+          setIsSubmitted(false);
+          setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+        }, 3000);
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      toast.error('Failed to send message. Please try again or contact us directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -229,6 +246,15 @@ const ContactPage = () => {
                   </h2>
 
                   <form onSubmit={handleSubmit} className="space-y-6">
+                    {/* Web3Forms Access Key */}
+                    <input type="hidden" name="access_key" value={import.meta.env.VITE_WEB3FORMS} />
+
+                    {/* Optional: Custom subject line */}
+                    <input type="hidden" name="from_name" value="Solmaré Stays Website" />
+
+                    {/* Anti-spam honeypot */}
+                    <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <Label htmlFor="name">Full Name *</Label>
@@ -275,18 +301,21 @@ const ContactPage = () => {
                         <Select
                           value={formData.subject}
                           onValueChange={(value) => setFormData((prev) => ({ ...prev, subject: value }))}
+                          required
                         >
                           <SelectTrigger className="h-12">
                             <SelectValue placeholder="Select a topic" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="booking">Booking Inquiry</SelectItem>
-                            <SelectItem value="property">List My Property</SelectItem>
-                            <SelectItem value="guest-support">Current Guest Support</SelectItem>
-                            <SelectItem value="partnership">Vendor / Partnership</SelectItem>
-                            <SelectItem value="other">Other</SelectItem>
+                            <SelectItem value="Booking Inquiry">Booking Inquiry</SelectItem>
+                            <SelectItem value="List My Property">List My Property</SelectItem>
+                            <SelectItem value="Current Guest Support">Current Guest Support</SelectItem>
+                            <SelectItem value="Vendor / Partnership">Vendor / Partnership</SelectItem>
+                            <SelectItem value="Other">Other</SelectItem>
                           </SelectContent>
                         </Select>
+                        {/* Hidden input for form submission */}
+                        <input type="hidden" name="subject" value={formData.subject || 'Contact Form Submission'} />
                       </div>
                     </div>
 
