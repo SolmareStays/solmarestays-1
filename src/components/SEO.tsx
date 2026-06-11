@@ -23,25 +23,29 @@ const organizationSchema = {
   name: 'Solmaré Stays',
   url: SITE_URL,
   logo: `${SITE_URL}/logo.png`,
-  description: "Refined vacation rentals on California's Central Coast",
+  description: "Professional vacation rental management on California's Central Coast. 13 properties across Avila Beach, Pismo Beach, Arroyo Grande, and San Luis Obispo. 2,400+ five-star reviews.",
+  telephone: '+1-805-801-6429',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Avila Beach',
     addressRegion: 'CA',
+    postalCode: '93424',
     addressCountry: 'US',
   },
   areaServed: [
     { '@type': 'City', name: 'Avila Beach' },
     { '@type': 'City', name: 'Pismo Beach' },
-    { '@type': 'City', name: 'San Luis Obispo' },
-    { '@type': 'City', name: 'Arroyo Grande' },
     { '@type': 'City', name: 'Shell Beach' },
+    { '@type': 'City', name: 'Arroyo Grande' },
+    { '@type': 'City', name: 'San Luis Obispo' },
     { '@type': 'City', name: 'Grover Beach' },
+    { '@type': 'City', name: 'Oceano' },
   ],
   sameAs: [
     'https://www.instagram.com/solmarestays',
     'https://www.facebook.com/solmarestays',
     'https://www.tiktok.com/@solmarestays',
+    'https://www.linkedin.com/in/kyle-van-til',
   ],
 };
 
@@ -50,8 +54,9 @@ const lodgingBusinessSchema = {
   '@type': 'LodgingBusiness',
   name: 'Solmaré Stays',
   url: SITE_URL,
+  telephone: '+1-805-801-6429',
   description:
-    "Premium vacation rental management on California's Central Coast. 13 properties in Avila Beach, Pismo Beach, Arroyo Grande, and San Luis Obispo.",
+    "Professional vacation rental management on California's Central Coast. 13 properties in Avila Beach, Pismo Beach, Arroyo Grande, and San Luis Obispo. From cozy bungalows to luxury estates. 2,400+ five-star reviews. Book direct for the best rates.",
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Avila Beach',
@@ -59,14 +64,30 @@ const lodgingBusinessSchema = {
     postalCode: '93424',
     addressCountry: 'US',
   },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 35.1803,
+    longitude: -120.7314,
+  },
   aggregateRating: {
     '@type': 'AggregateRating',
-    ratingValue: '9.7',
-    ratingCount: '2429',
-    bestRating: '10',
+    ratingValue: '4.82',
+    ratingCount: '746',
+    bestRating: '5',
     worstRating: '1',
   },
-  priceRange: '$140 - $10,000',
+  priceRange: '$140 - $4,000',
+  numberOfRooms: 13,
+  checkinTime: '15:00',
+  checkoutTime: '11:00',
+  amenityFeature: [
+    { '@type': 'LocationFeatureSpecification', name: 'Free WiFi', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Free Parking', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Air Conditioning', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Kitchen', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Washer/Dryer', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Pet Friendly', value: true },
+  ],
 };
 
 const webSiteSchema = {
@@ -75,7 +96,7 @@ const webSiteSchema = {
   name: 'Solmaré Stays',
   url: SITE_URL,
   description:
-    "Refined vacation rentals on California's Central Coast. Experience elevated hospitality in Avila Beach, Pismo Beach, and San Luis Obispo.",
+    "Vacation rentals on California's Central Coast. 13 properties in Avila Beach, Pismo Beach, Arroyo Grande, and San Luis Obispo. From beachfront bungalows to wine country estates. Book direct for the best rates.",
   publisher: {
     '@type': 'Organization',
     name: 'Solmaré Stays',

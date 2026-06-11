@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     question: 'What wineries are near Arroyo Grande?',
-    answer: 'The Arroyo Grande Valley and neighboring Edna Valley are home to dozens of world-class wineries. Andreini Winery is literally next door to our Casitas Estate property. Other nearby favorites include Talley Vineyards, Laetitia Vineyard & Winery, Saucelito Canyon, and Claiborne & Churchill. The region is known for exceptional pinot noir, chardonnay, and sparkling wines.',
+    answer: 'The Arroyo Grande Valley and neighboring Edna Valley are home to dozens of world-class wineries. Talley Vineyards and Chamisal Vineyards are both nearby, along with Laetitia Vineyard & Winery, Saucelito Canyon, Claiborne & Churchill, and Timbre Winery in the AG Village. The region is known for exceptional pinot noir, chardonnay, and sparkling wines.',
   },
   {
     question: 'Is Arroyo Grande good for group trips and retreats?',
@@ -204,7 +204,7 @@ const ArroyoGrandePage = () => {
                     Our Casitas Estate in Arroyo Grande takes this location and elevates it into something extraordinary:
                     seven private acres of vineyard-lined grounds, a 3,700 square foot main house, five private casitas each
                     with a king bed and fireplace, a pool, hot tub, bocce court, and walking trails — all reserved exclusively
-                    for your group. Andreini Winery is literally next door. It is one of the most beloved private estates on
+                    for your group. Talley and Chamisal vineyards are nearby. It is one of the most beloved private estates on
                     the Central Coast, and it is now managed by Solmaré Stays.
                   </p>
                 </div>
@@ -273,9 +273,8 @@ const ArroyoGrandePage = () => {
                     elegance that has earned the area recognition from wine critics worldwide.
                   </p>
                   <p>
-                    Andreini Winery, literally adjacent to our Casitas Estate property, is a boutique producer known for
-                    Italian-inspired wines grown on the estate vineyard. You can walk from your front door to the tasting
-                    room and return with a bottle for dinner — no car needed. Talley Vineyards, one of the region's most
+                    Chamisal Vineyards, one of the original Edna Valley plantings, offers exceptional chardonnay and pinot noir
+                    in a beautiful hilltop setting near our Casitas Estate property. Talley Vineyards, one of the region's most
                     celebrated producers, is a short drive south and offers tastings overlooking their organic vineyards.
                     Laetitia Vineyard and Winery specializes in sparkling wines and pinot noir, with a beautiful tasting
                     room and patio.

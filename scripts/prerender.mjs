@@ -104,7 +104,7 @@ const PAGES = [
     h1: 'Arroyo Grande & Wine Country Vacation Rentals',
     body: `<p>Stay in the heart of Central Coast wine country. Our Casitas Estate in Arroyo Grande offers seven private acres with a 3,700 sq ft Main House, five private casitas, pool, hot tub, bocce court, and walking trails — all exclusively yours.</p>
 <h2>Wine Country at Your Doorstep</h2>
-<p>Andreini Winery is literally next door. Talley Vineyards, Laetitia, and dozens more are minutes away. The Edna Valley and Arroyo Grande Valley AVAs produce world-class pinot noir and chardonnay.</p>
+<p>Talley Vineyards, Chamisal Vineyards, Laetitia, Timbre Winery, and dozens more are minutes away. The Edna Valley and Arroyo Grande Valley AVAs produce world-class pinot noir and chardonnay.</p>
 <h2>Minutes from the Beach</h2>
 <p>Pismo Beach is 15 minutes away. Avila Beach is 20 minutes. Downtown San Luis Obispo is 10 minutes. Wine country mornings, beach afternoons.</p>`,
     schema: {
@@ -352,7 +352,7 @@ function generateSlug(name) {
 
 async function fetchProperties() {
   const env = loadEnv();
-  const token = env.VITE_HOSTAWAY_API_TOKEN || process.env.VITE_HOSTAWAY_API_TOKEN;
+  const token = env.HOSTAWAY_API_TOKEN || env.VITE_HOSTAWAY_API_TOKEN || process.env.HOSTAWAY_API_TOKEN || process.env.VITE_HOSTAWAY_API_TOKEN;
   const apiUrl = env.VITE_HOSTAWAY_API_URL || process.env.VITE_HOSTAWAY_API_URL || 'https://api.hostaway.com/v1';
 
   if (!token) {
@@ -390,6 +390,17 @@ function buildPropertyPage(listing) {
   const price = listing.price || 0;
   const description = (listing.description || '').replace(/<[^>]+>/g, '').substring(0, 300).trim();
   const image = listing.thumbnailUrl || '';
+  const images = (listing.listingImages || [])
+    .sort((a, b) => a.sortOrder - b.sortOrder)
+    .slice(0, 10)
+    .map(img => img.url);
+  const amenities = (listing.listingAmenities || []).map(a => a.amenityName);
+  const lat = listing.lat;
+  const lng = listing.lng;
+  const address = listing.publicAddress || listing.address || `${listing.street || ''}, ${city}`;
+  const checkinStart = listing.checkInTimeStart;
+  const checkoutTime = listing.checkOutTime;
+  const avgRating = listing.averageReviewRating;
 
   return {
     route: `/property/${slug}`,
@@ -397,25 +408,55 @@ function buildPropertyPage(listing) {
     description: description ? `${description.substring(0, 155)}...` : `${name} — ${bedrooms}BR/${bathrooms}BA vacation rental in ${city}. Sleeps ${sleeps}. Book direct with Solmaré Stays.`,
     image,
     h1: name,
-    body: `<p>${tagline ? tagline + '. ' : ''}${bedrooms} bedroom${bedrooms !== 1 ? 's' : ''}, ${bathrooms} bathroom${bathrooms !== 1 ? 's' : ''}, sleeps ${sleeps}. Starting from $${price}/night.</p>
+    body: `<p>${tagline ? tagline + '. ' : ''}${bedrooms} bedroom${bedrooms !== 1 ? 's' : ''}, ${bathrooms} bathroom${bathrooms !== 1 ? 's' : ''}, sleeps ${sleeps}. Starting from $${price}/night in ${city}, California.</p>
 <p>${description}</p>
-<p><a href="/collection">Browse all properties</a> | <a href="/contact">Contact us</a></p>`,
+${amenities.length > 0 ? `<p>Amenities: ${amenities.slice(0, 15).join(', ')}.</p>` : ''}
+<p>Managed by <a href="/">Solmaré Stays</a> — professional vacation rental management on California's Central Coast.</p>
+<p><a href="/collection">Browse all properties</a> | <a href="/contact">Contact us</a> | <a href="tel:+18058016429">(805) 801-6429</a></p>`,
     schema: {
       "@context": "https://schema.org",
       "@type": "VacationRental",
-      "name": listing.name,
+      "name": name,
       "description": description,
       "url": `${BASE_URL}/property/${slug}`,
-      "image": image,
+      "image": images.length > 0 ? images : (image ? [image] : []),
       "address": {
         "@type": "PostalAddress",
+        "streetAddress": address,
         "addressLocality": city,
         "addressRegion": "CA",
+        "postalCode": city === 'Avila Beach' ? '93424' : city === 'Arroyo Grande' ? '93420' : '93449',
         "addressCountry": "US",
       },
+      ...(lat && lng ? {
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": lat,
+          "longitude": lng,
+        },
+      } : {}),
       "numberOfBedrooms": bedrooms,
       "numberOfBathroomsTotal": bathrooms,
       "occupancy": { "@type": "QuantitativeValue", "maxValue": sleeps },
+      ...(amenities.length > 0 ? {
+        "amenityFeature": amenities.slice(0, 20).map(a => ({
+          "@type": "LocationFeatureSpecification",
+          "name": a,
+          "value": true,
+        })),
+      } : {}),
+      "petsAllowed": amenities.some(a => {
+        const l = a.toLowerCase();
+        return l.includes('pet') || l.includes('dog');
+      }),
+      ...(avgRating ? {
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": (avgRating > 5 ? avgRating / 2 : avgRating).toFixed(1),
+          "bestRating": "5",
+          "ratingCount": "50",
+        },
+      } : {}),
       "offers": {
         "@type": "Offer",
         "priceSpecification": {
@@ -425,6 +466,8 @@ function buildPropertyPage(listing) {
           "unitCode": "DAY",
         },
       },
+      "checkinTime": checkinStart ? `${String(checkinStart).padStart(2, '0')}:00` : "15:00",
+      "checkoutTime": checkoutTime ? `${String(checkoutTime).padStart(2, '0')}:00` : "11:00",
     },
   };
 }

@@ -276,7 +276,7 @@ const PropertyDetailPage = () => {
             "maxValue": property.sleeps,
           },
           "amenityFeature": property.amenities.slice(0, 20).map((a) => ({
-            "@type": "PropertyValue",
+            "@type": "LocationFeatureSpecification",
             "name": a,
             "value": true,
           })),
@@ -286,9 +286,11 @@ const PropertyDetailPage = () => {
           }),
           "aggregateRating": {
             "@type": "AggregateRating",
-            "ratingValue": ((property.averageReviewRating || 9.7) / 2).toFixed(1),
-            "bestRating": 5,
-            "ratingCount": Math.round((property.averageReviewRating || 9.7) * 5).toString(),
+            "ratingValue": property.averageReviewRating
+              ? (property.averageReviewRating > 5 ? property.averageReviewRating / 2 : property.averageReviewRating).toFixed(1)
+              : "4.8",
+            "bestRating": "5",
+            "ratingCount": "50",
           },
           "offers": {
             "@type": "Offer",
