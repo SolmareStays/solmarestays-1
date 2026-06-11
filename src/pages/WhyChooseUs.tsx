@@ -361,25 +361,25 @@ const WhyChooseUsPage = () => {
             </section>
 
             {/* SECTION 7: Final CTA */}
-            <section className="section-padding bg-background">
-              <div className="container mx-auto px-4 md:px-6 lg:px-8 text-center">
+            <section className="section-padding bg-primary pb-0">
+              <div className="container mx-auto px-4 md:px-6 lg:px-8 text-center pb-20">
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8 }}
                 >
-                  <h2 className="font-serif text-4xl md:text-5xl font-semibold text-foreground mb-6">
+                  <h2 className="font-serif text-4xl md:text-5xl font-semibold text-primary-foreground mb-6">
                     Ready to Experience the Difference?
                   </h2>
-                  <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">
+                  <p className="text-primary-foreground/70 text-lg max-w-2xl mx-auto mb-8">
                     The coast is calling. Book direct for the best rates guaranteed.
                   </p>
                   <div className="flex flex-wrap justify-center gap-4">
-                    <Button variant="hero" size="xl" asChild>
+                    <Button variant="default" size="xl" className="bg-white text-primary hover:bg-white/90" asChild>
                       <Link to="/collection">Browse The Collection</Link>
                     </Button>
-                    <Button variant="hero-outline" size="xl" asChild>
+                    <Button variant="outline" size="xl" className="border-white/30 text-white hover:bg-white/10" asChild>
                       <Link to="/contact" className="gap-2">
                         <MessageCircle className="w-5 h-5" />
                         Message the Host

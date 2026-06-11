@@ -51,7 +51,7 @@ const lodgingBusinessSchema = {
   name: 'Solmaré Stays',
   url: SITE_URL,
   description:
-    "Premium vacation rental management on California's Central Coast. 12 curated properties in Avila Beach, Pismo Beach, and San Luis Obispo.",
+    "Premium vacation rental management on California's Central Coast. 13 properties in Avila Beach, Pismo Beach, Arroyo Grande, and San Luis Obispo.",
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Avila Beach',

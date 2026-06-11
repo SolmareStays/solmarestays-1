@@ -16,8 +16,6 @@ const projectId = import.meta.env.VITE_SANITY_PROJECT_ID;
 const dataset = import.meta.env.VITE_SANITY_DATASET;
 const apiVersion = import.meta.env.VITE_SANITY_API_VERSION || '2023-05-03';
 
-console.log('Sanity Config:', { projectId, dataset, apiVersion });
-
 if (!projectId) {
     console.error('Missing VITE_SANITY_PROJECT_ID. Please ensure your .env file has VITE_SANITY_PROJECT_ID set.');
 }

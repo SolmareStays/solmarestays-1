@@ -434,7 +434,7 @@ const PismoBeachPage = () => {
           </div>
         </section>
 
-        {/* Why Book with Solmare */}
+        {/* Why Book with Solmaré */}
         <section className="section-padding bg-background">
           <div className="container mx-auto px-4 md:px-6 lg:px-8">
             <motion.div
