@@ -2,8 +2,28 @@ import { HostawayListing, HostawayListingsResponse, HostawayCalendarDay, Hostawa
 import { Property } from '@/data/properties';
 import { format } from 'date-fns';
 
-const API_URL = import.meta.env.VITE_HOSTAWAY_API_URL || 'https://api.hostaway.com/v1';
-const API_TOKEN = import.meta.env.VITE_HOSTAWAY_API_TOKEN;
+// All Hostaway calls now route through our server-side proxy at /api/hostaway
+// The API token lives server-side only — never exposed to the browser
+const PROXY_URL = '/api/hostaway';
+
+/**
+ * Make a proxied request to the Hostaway API via our server-side function.
+ * The server adds the Authorization header — client never sees the token.
+ */
+async function proxyFetch(endpoint: string, method: string = 'GET', body?: any): Promise<any> {
+  const response = await fetch(PROXY_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ endpoint, method, body }),
+  });
+
+  if (!response.ok) {
+    const errorBody = await response.text();
+    throw new Error(`API request failed: ${response.status} ${errorBody}`);
+  }
+
+  return response.json();
+}
 
 /**
  * Generate a URL-friendly slug from a property name
@@ -144,10 +164,6 @@ function transformListing(listing: HostawayListing): Property {
     refundableDamageDeposit: listing.refundableDamageDeposit,
   };
 
-  if (String(listing.id) === '429263') {
-    console.log(`[DEBUG] Property 429263 Tax Rate check:`, listing.propertyRentTax);
-  }
-
   return transformed;
 }
 
@@ -155,23 +171,7 @@ function transformListing(listing: HostawayListing): Property {
  * Fetch all listings from Hostaway API
  */
 export async function fetchListings(): Promise<Property[]> {
-  if (!API_TOKEN) {
-    throw new Error('Hostaway API token is not configured. Please set VITE_HOSTAWAY_API_TOKEN in .env');
-  }
-
-  const response = await fetch(`${API_URL}/listings`, {
-    method: 'GET',
-    headers: {
-      'Authorization': `Bearer ${API_TOKEN}`,
-      'Cache-control': 'no-cache',
-    },
-  });
-
-  if (!response.ok) {
-    throw new Error(`Failed to fetch listings: ${response.status} ${response.statusText}`);
-  }
-
-  const data: HostawayListingsResponse = await response.json();
+  const data: HostawayListingsResponse = await proxyFetch('/listings');
 
   if (data.status !== 'success') {
     throw new Error('Hostaway API returned an error');
@@ -213,32 +213,18 @@ export async function fetchListings(): Promise<Property[]> {
  * Fetch a single listing by ID from Hostaway API
  */
 export async function fetchListingById(id: string): Promise<Property | null> {
-  if (!API_TOKEN) {
-    throw new Error('Hostaway API token is not configured. Please set VITE_HOSTAWAY_API_TOKEN in .env');
-  }
+  try {
+    const data: { status: string; result: HostawayListing } = await proxyFetch(`/listings/${id}`);
 
-  const response = await fetch(`${API_URL}/listings/${id}`, {
-    method: 'GET',
-    headers: {
-      'Authorization': `Bearer ${API_TOKEN}`,
-      'Cache-control': 'no-cache',
-    },
-  });
-
-  if (!response.ok) {
-    if (response.status === 404) {
-      return null;
+    if (data.status !== 'success') {
+      throw new Error('Hostaway API returned an error');
     }
-    throw new Error(`Failed to fetch listing: ${response.status} ${response.statusText}`);
+
+    return transformListing(data.result);
+  } catch (error: any) {
+    if (error.message?.includes('404')) return null;
+    throw error;
   }
-
-  const data: { status: string; result: HostawayListing } = await response.json();
-
-  if (data.status !== 'success') {
-    throw new Error('Hostaway API returned an error');
-  }
-
-  return transformListing(data.result);
 }
 
 // ... (previous code)
@@ -253,11 +239,6 @@ export async function fetchCalendar(
   endDate: Date,
   includeResources: boolean = true
 ): Promise<HostawayCalendarDay[]> {
-  if (!API_TOKEN) {
-    console.error('Hostaway API token is missing');
-    throw new Error('Hostaway API token is not configured');
-  }
-
   const startDateStr = format(startDate, 'yyyy-MM-dd');
   const endDateStr = format(endDate, 'yyyy-MM-dd');
 
@@ -267,19 +248,7 @@ export async function fetchCalendar(
     ...(includeResources && { includeResources: '1' }),
   });
 
-  const response = await fetch(`${API_URL}/listings/${listingId}/calendar?${params}`, {
-    method: 'GET',
-    headers: {
-      'Authorization': `Bearer ${API_TOKEN}`,
-      'Cache-control': 'no-cache',
-    },
-  });
-
-  if (!response.ok) {
-    throw new Error(`Failed to fetch calendar: ${response.status} ${response.statusText}`);
-  }
-
-  const data: HostawayCalendarResponse = await response.json();
+  const data: HostawayCalendarResponse = await proxyFetch(`/listings/${listingId}/calendar?${params}`);
 
   if (data.status !== 'success') {
     throw new Error('Hostaway API returned an error');
@@ -325,35 +294,14 @@ export async function getListingPriceDetails(
   endDate: Date,
   guests: number
 ): Promise<any> {
-  if (!API_TOKEN) {
-    throw new Error('Hostaway API token is not configured');
-  }
-
   const payload = {
     startingDate: format(startDate, 'yyyy-MM-dd'),
     endingDate: format(endDate, 'yyyy-MM-dd'),
-    numberOfGuests: guests, // Keep as number, internal JSON stringify handles it. Script uses string but JSON standard is fine. 
-    // If strict string required: String(guests)
+    numberOfGuests: guests,
     version: 2
   };
 
-  const response = await fetch(`${API_URL}/listings/${listingId}/calendar/priceDetails`, {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${API_TOKEN}`,
-      'Content-Type': 'application/json',
-      'Cache-control': 'no-cache',
-    },
-    body: JSON.stringify(payload),
-  });
-
-  if (!response.ok) {
-    const errorBody = await response.text();
-    console.error('Price details fetch failed:', errorBody);
-    throw new Error(`Failed to get price details: ${response.status}`);
-  }
-
-  const data = await response.json();
+  const data = await proxyFetch(`/listings/${listingId}/calendar/priceDetails`, 'POST', payload);
 
   if (data.status !== 'success') {
     throw new Error(data.errorMessage || 'Hostaway API returned an error');
@@ -391,10 +339,6 @@ export async function createReservation(
   },
   validatePayment: boolean = true
 ): Promise<any> {
-  if (!API_TOKEN) {
-    throw new Error('Hostaway API token is not configured');
-  }
-
   // Parse expiry MM/YY
   let ccExpirationMonth = '';
   let ccExpirationYear = '';
@@ -406,7 +350,7 @@ export async function createReservation(
 
   const payload = {
     listingMapId: Number(listingId),
-    channelId: 2000, // Direct booking channel ID
+    channelId: 2000,
     guestName: `${guestDetails.firstName} ${guestDetails.lastName}`,
     guestFirstName: guestDetails.firstName,
     guestLastName: guestDetails.lastName,
@@ -417,14 +361,14 @@ export async function createReservation(
     guestZipCode: guestDetails.zipCode,
     guestCountry: guestDetails.country,
     numberOfGuests: stayDetails.guests,
-    adults: stayDetails.guests, // Often required to match numberOfGuests if no children info
+    adults: stayDetails.guests,
     arrivalDate: format(stayDetails.checkIn, 'yyyy-MM-dd'),
     departureDate: format(stayDetails.checkOut, 'yyyy-MM-dd'),
     comment: guestDetails.message,
     isManuallyChecked: 0,
     isInitial: 0,
 
-    // Add payment fields if provided
+    // Payment fields — these now go through the server proxy, never exposed in browser
     ...(payment && {
       ccNumber: payment.cardNumber.replace(/\s/g, ''),
       ccExpirationMonth,
@@ -438,31 +382,9 @@ export async function createReservation(
   if (validatePayment && payment) {
     params.append('validatePaymentMethod', '1');
   }
-  // Ensure we DO NOT force overbooking
   params.append('forceOverbooking', '0');
 
-  const response = await fetch(`${API_URL}/reservations?${params.toString()}`, {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${API_TOKEN}`,
-      'Content-Type': 'application/json',
-      'Cache-control': 'no-cache',
-    },
-    body: JSON.stringify(payload),
-  });
-
-  if (!response.ok) {
-    const errorBody = await response.text();
-    console.error('Reservation creation failed:', errorBody);
-    try {
-      const errorJson = JSON.parse(errorBody);
-      throw new Error(errorJson.errorMessage || `Failed to create reservation: ${response.status}`);
-    } catch (e) {
-      throw new Error(`Failed to create reservation: ${response.status} ${response.statusText}`);
-    }
-  }
-
-  const data = await response.json();
+  const data = await proxyFetch(`/reservations?${params.toString()}`, 'POST', payload);
 
   if (data.status !== 'success') {
     throw new Error(data.errorMessage || 'Hostaway API returned an error');
@@ -475,23 +397,8 @@ export async function createReservation(
  * Fetch all coupons from Hostaway
  */
 export async function fetchCoupons(): Promise<HostawayCoupon[]> {
-  if (!API_TOKEN) {
-    throw new Error('Hostaway API token is not configured');
-  }
+  const data: HostawayCouponsResponse = await proxyFetch('/coupons');
 
-  const response = await fetch(`${API_URL}/coupons`, {
-    method: 'GET',
-    headers: {
-      'Authorization': `Bearer ${API_TOKEN}`,
-      'Cache-control': 'no-cache',
-    },
-  });
-
-  if (!response.ok) {
-    throw new Error(`Failed to fetch coupons: ${response.status}`);
-  }
-
-  const data: HostawayCouponsResponse = await response.json();
   if (data.status !== 'success') {
     throw new Error('Hostaway API returned an error');
   }
@@ -575,10 +482,6 @@ export async function validateCoupon(
  * Fetch reviews from Hostaway
  */
 export async function fetchReviews(listingId?: string): Promise<HostawayReview[]> {
-  if (!API_TOKEN) {
-    throw new Error('Hostaway API token is not configured');
-  }
-
   const allReviews: HostawayReview[] = [];
   let offset = 0;
   const limit = 100;
@@ -593,19 +496,8 @@ export async function fetchReviews(listingId?: string): Promise<HostawayReview[]
     params.append('limit', String(limit));
     params.append('offset', String(offset));
 
-    const response = await fetch(`${API_URL}/reviews?${params.toString()}`, {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${API_TOKEN}`,
-        'Cache-control': 'no-cache',
-      },
-    });
+    const data: HostawayReviewsResponse = await proxyFetch(`/reviews?${params.toString()}`);
 
-    if (!response.ok) {
-      throw new Error(`Failed to fetch reviews: ${response.status}`);
-    }
-
-    const data: HostawayReviewsResponse = await response.json();
     if (data.status !== 'success') {
       throw new Error('Hostaway API returned an error');
     }
