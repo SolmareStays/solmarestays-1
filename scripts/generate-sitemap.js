@@ -43,7 +43,7 @@ function loadEnv() {
 const env = loadEnv();
 
 const HOSTAWAY_API_URL = env.VITE_HOSTAWAY_API_URL || process.env.VITE_HOSTAWAY_API_URL || 'https://api.hostaway.com/v1';
-const HOSTAWAY_API_TOKEN = env.VITE_HOSTAWAY_API_TOKEN || process.env.VITE_HOSTAWAY_API_TOKEN;
+const HOSTAWAY_API_TOKEN = env.HOSTAWAY_API_TOKEN || env.VITE_HOSTAWAY_API_TOKEN || process.env.HOSTAWAY_API_TOKEN || process.env.VITE_HOSTAWAY_API_TOKEN;
 
 const SANITY_PROJECT_ID = env.VITE_SANITY_PROJECT_ID || process.env.VITE_SANITY_PROJECT_ID || 'ubjffxhw';
 const SANITY_DATASET = env.VITE_SANITY_DATASET || process.env.VITE_SANITY_DATASET || 'production';

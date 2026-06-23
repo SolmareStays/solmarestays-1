@@ -46,6 +46,8 @@
     { "source": "/central-coast", "destination": "/central-coast/index.html" },
     { "source": "/terms", "destination": "/terms/index.html" },
     { "source": "/privacy", "destination": "/privacy/index.html" },
+    { "source": "/arroyo-grande", "destination": "/arroyo-grande/index.html" },
+    { "source": "/for-homeowners", "destination": "/for-homeowners/index.html" },
     {
       "source": "/(.*)",
       "destination": "/index.html"
