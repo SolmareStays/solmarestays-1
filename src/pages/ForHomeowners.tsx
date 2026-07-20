@@ -1,13 +1,17 @@
 import { motion, useInView } from 'framer-motion';
 import { usePage } from '@/hooks/useSanityContent';
 import { SanitySectionRenderer } from '@/components/sanity/SanitySectionRenderer';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { SEO } from '@/components/SEO';
 import { Button } from '@/components/ui/button';
-import { TrendingUp, Shield, Users, BarChart3, Calendar, Headphones, Check, Star, Quote } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
+import { toast } from 'sonner';
+import { TrendingUp, Shield, Users, BarChart3, Calendar, Headphones, Check, Star, Quote, Send } from 'lucide-react';
 import homeownersHeroImage from '/homeowners/management-hero.jpg';
 
 
@@ -118,6 +122,93 @@ const serviceCategories = [
   },
 ];
 
+const OwnerLeadForm = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    propertyLocation: '',
+    message: '',
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    try {
+      const form = e.target as HTMLFormElement;
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: new FormData(form),
+      });
+      const data = await response.json();
+      if (data.success) {
+        setIsSubmitted(true);
+        toast.success("We'll be in touch within 24 hours with your revenue projection.");
+        setTimeout(() => {
+          setIsSubmitted(false);
+          setFormData({ name: '', email: '', phone: '', propertyLocation: '', message: '' });
+        }, 4000);
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch {
+      toast.error('Something went wrong. Call us at (805) 242-6411.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-5">
+      <input type="hidden" name="access_key" value={import.meta.env.VITE_WEB3FORMS} />
+      <input type="hidden" name="subject" value="Property Management Inquiry — Management Page" />
+      <input type="hidden" name="from_name" value="Solmaré Stays — Owner Lead" />
+      <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="space-y-2">
+          <Label htmlFor="owner-name">Your Name *</Label>
+          <Input id="owner-name" name="name" value={formData.name} onChange={handleChange} placeholder="Full name" required className="h-12" />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="owner-email">Email *</Label>
+          <Input id="owner-email" name="email" type="email" value={formData.email} onChange={handleChange} placeholder="you@email.com" required className="h-12" />
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="space-y-2">
+          <Label htmlFor="owner-phone">Phone</Label>
+          <Input id="owner-phone" name="phone" type="tel" value={formData.phone} onChange={handleChange} placeholder="(555) 123-4567" className="h-12" />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="owner-location">Property Location *</Label>
+          <Input id="owner-location" name="propertyLocation" value={formData.propertyLocation} onChange={handleChange} placeholder="City or address" required className="h-12" />
+        </div>
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="owner-message">Tell us about your property</Label>
+        <Textarea id="owner-message" name="message" value={formData.message} onChange={handleChange} placeholder="Bedrooms, current use, any questions..." rows={4} className="resize-none" />
+      </div>
+
+      <Button type="submit" variant="hero" size="xl" className="w-full" disabled={isSubmitting || isSubmitted}>
+        {isSubmitted ? (<><Check className="w-5 h-5 mr-2" /> Sent! We'll be in touch.</>) : isSubmitting ? (<>Sending...</>) : (<><Send className="w-5 h-5 mr-2" /> Get My Free Revenue Projection</>)}
+      </Button>
+
+      <p className="text-center text-xs text-muted-foreground">
+        Or call us directly at <a href="tel:+18052426411" className="text-ocean hover:underline">(805) 242-6411</a>
+      </p>
+    </form>
+  );
+};
+
 const ForHomeownersPage = () => {
   const { data: pageData, isLoading } = usePage('management');
   const showSanityContent = !isLoading && pageData?.sections?.length > 0;
@@ -180,7 +271,7 @@ const ForHomeownersPage = () => {
                   </p>
                   <div className="flex flex-wrap gap-4">
                     <Button variant="default" size="xl" asChild>
-                      <Link to="/contact">Schedule a Consultation</Link>
+                      <a href="#contact-form">Get Your Revenue Projection</a>
                     </Button>
                   </div>
                 </motion.div>
@@ -323,7 +414,7 @@ const ForHomeownersPage = () => {
                         We treat your home as a high-performing asset, not just inventory. By combining local stewardship with sophisticated revenue strategies, we deliver higher net income and better property care than large, impersonal management firms.
                       </p>
                       <Button variant="default" size="lg" asChild className="rounded-full">
-                        <Link to="/contact">Schedule a Consultation</Link>
+                        <a href="#contact-form">Get Your Revenue Projection</a>
                       </Button>
                     </motion.div>
                   </div>
@@ -355,26 +446,35 @@ const ForHomeownersPage = () => {
               </div>
             </section>
 
-            {/* SECTION 6: Final CTA */}
-            <section className="section-padding bg-background">
-              <div className="container mx-auto px-4 md:px-6 lg:px-8 text-center">
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8 }}
-                  className="max-w-3xl mx-auto"
-                >
-                  <h2 className="font-serif text-4xl md:text-5xl font-semibold text-foreground mb-6">
-                    Ready to Get Started?
-                  </h2>
-                  <p className="text-muted-foreground text-lg mb-8">
-                    See how much your home could be earning with Solmaré.
-                  </p>
-                  <Button variant="hero" size="xl" asChild>
-                    <Link to="/contact">Get My Revenue Projection</Link>
-                  </Button>
-                </motion.div>
+            {/* SECTION 6: Inline Lead Capture Form */}
+            <section id="contact-form" className="section-padding bg-background">
+              <div className="container mx-auto px-4 md:px-6 lg:px-8">
+                <div className="max-w-2xl mx-auto">
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="text-center mb-10"
+                  >
+                    <h2 className="font-serif text-4xl md:text-5xl font-semibold text-foreground mb-4">
+                      Get Your Revenue Projection
+                    </h2>
+                    <p className="text-muted-foreground text-lg">
+                      Tell us about your property and we'll put together a free earnings estimate.
+                    </p>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    className="bg-card p-8 md:p-10 rounded-2xl shadow-elevated"
+                  >
+                    <OwnerLeadForm />
+                  </motion.div>
+                </div>
               </div>
             </section>
           </>
