@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hannah's Playbook — Solmare Stays</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f5f3ef;color:#1a1a1a;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.page{max-width:900px;margin:0 auto;padding:20px 16px 120px}
+
+/* Header */
+.header{background:linear-gradient(135deg,#0f2744,#1a3a5c);color:#fff;padding:40px 36px;border-radius:16px;margin-bottom:24px;position:relative;overflow:hidden}
+.header::after{content:'';position:absolute;top:-50%;right:-20%;width:300px;height:300px;background:radial-gradient(circle,rgba(255,255,255,.05),transparent 70%);border-radius:50%}
+.header .brand{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#a8c0d6;margin-bottom:10px}
+.header h1{font-size:28px;font-weight:700;line-height:1.2;margin-bottom:6px}
+.header .sub{font-size:14px;color:#a8c0d6;margin-bottom:14px}
+.header .pill{display:inline-block;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#d4e4f0;font-size:12px;padding:4px 14px;border-radius:20px}
+
+/* Nav */
+.nav{display:flex;flex-wrap:wrap;gap:6px;padding:4px 0 16px}
+.nav button{padding:12px 18px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid #d4cfc4;background:#fff;color:#555;transition:.2s;user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,.1);touch-action:manipulation;font-family:inherit;line-height:1;-webkit-appearance:none;appearance:none}
+.nav button:hover{border-color:#0f2744;color:#0f2744}
+.nav button.on{background:#0f2744;color:#fff;border-color:#0f2744}
+
+/* Tabs */
+.tab{display:none}.tab.on{display:block}
+
+/* Cards */
+.card{background:#fff;border-radius:12px;padding:28px;margin-bottom:16px;border:1px solid #e4e0d8}
+.card-t{font-size:18px;font-weight:700;color:#0f2744;margin-bottom:16px}
+
+/* Accordion */
+.acc{border:1px solid #e4e0d8;border-radius:10px;overflow:hidden;margin-bottom:10px}
+.acc-h{padding:14px 18px;background:#fafaf8;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none;transition:.15s;touch-action:manipulation;-webkit-tap-highlight-color:rgba(0,0,0,.05)}
+.acc-h:hover{background:#f0ece4}
+.acc-h h3{font-size:14px;font-weight:600;color:#0f2744}
+.acc-h .arr{font-size:11px;color:#999;transition:transform .2s}
+.acc.open .arr{transform:rotate(90deg)}
+.acc-b{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.acc.open .acc-b{max-height:8000px}
+.acc-i{padding:18px;border-top:1px solid #e4e0d8}
+
+/* Property cards */
+.pc{border:1px solid #e4e0d8;border-radius:10px;overflow:hidden;margin-bottom:8px}
+.pc-h{padding:14px 16px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none;touch-action:manipulation;-webkit-tap-highlight-color:rgba(0,0,0,.05)}
+.pc-h:hover{background:#f8f6f2}
+.pc-n{font-weight:700;font-size:14px;color:#0f2744}
+.pc-l{font-size:12px;color:#888;margin-left:8px;font-weight:400}
+.pc-b{max-height:0;overflow:hidden;transition:max-height .3s}
+.pc.open .pc-b{max-height:3000px}
+.pc-inner{padding:0 16px 16px;border-top:1px solid #f0ece4}
+.pg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+@media(max-width:500px){.pg{grid-template-columns:1fr}}
+.pd{background:#fafaf8;border-radius:6px;padding:8px 12px}
+.pd-l{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#999;margin-bottom:1px}
+.pd-v{font-size:13px;color:#333;font-weight:500}
+.pd-m{font-family:'SF Mono',Menlo,monospace;font-size:13px;color:#0f2744;font-weight:600}
+.pn{margin-top:10px;padding:10px 12px;background:#fff8f0;border:1px solid #f0e0c8;border-radius:6px;font-size:13px;color:#6b5020;line-height:1.5}
+.pn strong{color:#3a2a10}
+
+/* Badges */
+.badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;display:inline-block}
+.b-ac{background:#e0f0ff;color:#1a5a96}.b-noac{background:#fff0e0;color:#8b6914}.b-pet{background:#e8f4e8;color:#1a5c2a}
+
+/* Phase cards */
+.ph{border-radius:8px;padding:22px;border:1px solid #e4e0d8;margin-bottom:12px}
+.ph.p1{background:#f7f9fc;border-color:#c8d8e8}.ph.p2{background:#f9f7f4;border-color:#d4c8b8}.ph.p3{background:#f4f9f5;border-color:#b8d4be}
+.ph-lab{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:6px}
+.p1 .ph-lab{color:#2a6496}.p2 .ph-lab{color:#8b6914}.p3 .ph-lab{color:#1a7a3a}
+.ph h3{font-size:16px;font-weight:600;color:#0f2744;margin-bottom:3px}
+.ph .ph-sub{font-size:12px;color:#888;margin-bottom:12px}
+
+/* Lists */
+ul.tl{list-style:none;padding:0}
+ul.tl li{font-size:13px;color:#3a3a3a;padding:4px 0 4px 18px;position:relative;border-bottom:1px solid rgba(0,0,0,.04);line-height:1.5}
+ul.tl li:last-child{border-bottom:none}
+ul.tl li::before{content:'\2014';position:absolute;left:0;color:#aaa}
+
+/* Steps */
+ol.steps{list-style:none;padding:0;counter-reset:s}
+ol.steps li{counter-increment:s;display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #f0ece4;font-size:13px;color:#444;line-height:1.5}
+ol.steps li:last-child{border-bottom:none}
+ol.steps li::before{content:counter(s);flex-shrink:0;width:22px;height:22px;background:#0f2744;color:#fff;border-radius:50%;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px}
+
+/* Tips */
+.tip{padding:12px 16px;border-radius:8px;margin:12px 0;font-size:13px;line-height:1.5}
+.tip.info{background:#f0f6ff;border-left:4px solid #2a6496;color:#2a4a64}
+.tip.warn{background:#fff8f0;border-left:4px solid #e0841a;color:#6b4a10}
+.tip.good{background:#f0f9f0;border-left:4px solid #1a7a3a;color:#1a5c2a}
+.tip.crit{background:#fff0f0;border-left:4px solid #c0392b;color:#7a1a1a}
+.tip.warm{background:#fdf8f0;border-left:4px solid #d4b070;color:#5a4a30}
+.tip strong{font-weight:700}
+
+/* Tables */
+.rt{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
+.rt th{text-align:left;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#999;padding:8px 10px;border-bottom:2px solid #f0ece4}
+.rt td{padding:8px 10px;border-bottom:1px solid #f0ece4;vertical-align:top}
+.rt tr:last-child td{border-bottom:none}
+.mono{font-family:'SF Mono',Menlo,monospace;font-size:12px;color:#0f2744;font-weight:600}
+
+/* Login cards */
+.lc{border:1px solid #e4e0d8;border-radius:10px;padding:16px 18px;margin-bottom:10px}
+.lc .ln{font-size:14px;font-weight:700;color:#0f2744;margin-bottom:2px;display:flex;align-items:center;gap:8px}
+.lc .ld{font-size:12px;color:#888;margin-bottom:10px}
+.lr{display:flex;align-items:center;gap:8px;margin-bottom:5px;font-size:13px}
+.ll{font-weight:600;color:#555;min-width:65px;flex-shrink:0;font-size:12px}
+.lv{background:#f7f9fc;border:1px solid #ddd;padding:3px 8px;border-radius:5px;font-family:'SF Mono',Menlo,monospace;font-size:12px;color:#0f2744;user-select:all;flex:1}
+.la{color:#2a6496;text-decoration:none;font-weight:600;font-size:13px}
+.la:hover{text-decoration:underline}
+
+/* Status badges */
+.st{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;letter-spacing:.5px;display:inline-block}
+.st-on{background:#e8f4e8;color:#1a5c2a}.st-need{background:#fff0e0;color:#8b6914}.st-later{background:#f0ece4;color:#8b7a50}
+
+/* Timeline */
+.tline{position:relative;padding-left:26px}
+.tline::before{content:'';position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:#e4e0d8}
+.tl-i{position:relative;margin-bottom:22px}
+.tl-i::before{content:'';position:absolute;left:-22px;top:5px;width:10px;height:10px;border-radius:50%;background:#0f2744;border:2px solid #fff;box-shadow:0 0 0 2px #0f2744}
+.tl-i.fut::before{background:#fff;box-shadow:0 0 0 2px #b0bec8}
+.tl-m{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#888;margin-bottom:2px}
+.tl-t{font-size:14px;font-weight:600;color:#0f2744;margin-bottom:3px}
+.tl-b{font-size:13px;color:#555;line-height:1.5}
+.tl-p{display:inline-block;background:#e8f4e8;color:#1a5c2a;font-size:12px;font-weight:700;padding:2px 10px;border-radius:12px;margin-top:5px}
+
+/* Callout */
+.co{border-radius:8px;padding:16px 18px;margin-top:16px;font-size:13px;line-height:1.6}
+.co.warm{background:#fdf8f0;border:1px solid #e0d0b8;color:#5a4a30}
+.co strong{color:#3a2a10}
+
+/* Decision tree */
+.dtree{background:#fafaf8;border:1px solid #e4e0d8;border-radius:10px;padding:20px 22px;margin:10px 0;font-family:'SF Mono',Menlo,monospace;font-size:12px;line-height:2;white-space:pre-wrap;color:#555}
+.dtree .q{color:#8b6914;font-weight:600}.dtree .yes{color:#1a7a3a}.dtree .no{color:#c0392b}.dtree .act{color:#2a6496}
+
+/* Scenario */
+.scenario{background:#fff;border:1px solid #e4e0d8;border-radius:10px;padding:16px 20px;margin-bottom:8px}
+.scenario-q{font-weight:600;font-size:14px;color:#8b6914;margin-bottom:6px}
+.scenario-a{font-size:13px;line-height:1.6;color:#444}
+
+/* Footer */
+.footer{text-align:center;padding-top:24px;font-size:12px;color:#aaa}
+
+/* Phone bar */
+.pbar{position:fixed;bottom:0;left:0;right:0;background:#0f2744;color:#fff;display:flex;justify-content:center;align-items:center;gap:20px;padding:12px 16px;font-size:13px;font-weight:600;z-index:100;box-shadow:0 -4px 20px rgba(0,0,0,.15)}
+.pbar a{color:#a8c0d6;text-decoration:none;display:flex;align-items:center;gap:5px}
+.pbar a:hover{color:#fff}
+
+/* Search */
+.sbox{width:100%;padding:11px 16px;border-radius:10px;border:1px solid #d4cfc4;font-size:14px;background:#fff;margin-bottom:14px;outline:none}
+.sbox:focus{border-color:#0f2744}
+.sbox::placeholder{color:#bbb}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="header">
+<div class="brand">Solmare Stays</div>
+<h1>Hannah's Playbook</h1>
+<div class="sub">Everything in one place &mdash; roadmap, systems, properties, daily ops, guest messaging, and emergency procedures.</div>
+<div class="pill">August 2026 &middot; Updated from Jul 29 meeting</div>
+</div>
+
+<input type="text" class="sbox" placeholder="Search anything &mdash; WiFi, property, contact, how-to..." id="sb">
+
+<div class="nav">
+<button class="on" data-t="roadmap">Roadmap &amp; Pay</button>
+<button data-t="systems">Systems &amp; Logins</button>
+<button data-t="contacts">Contacts</button>
+<button data-t="props">Properties</button>
+<button data-t="ops">Daily Ops</button>
+<button data-t="guests">Guest Messaging</button>
+<button data-t="emergency">Emergency</button>
+</div>
+
+<!-- ======================= ROADMAP ======================= -->
+<div class="tab on" id="t-roadmap">
+
+<div class="card">
+<div class="card-t">Your Role</div>
+<p style="font-size:14px;color:#444;line-height:1.7;margin-bottom:14px">Solmare Stays runs 13 coastal rental properties across Avila Beach, Arroyo Grande, and San Luis Obispo. You're coming in as the operations person on the ground &mdash; guest messaging, cleaning crew coordination, property walkthroughs, restocking, vendors, and eventually the full picture including social media and the business side.</p>
+<p style="font-size:14px;color:#444;line-height:1.7">This starts collaborative and grows with you. There's a learning curve and that's completely expected. Start doing things when you feel ready. Kyle is always there for help. The phases and pay are flexible. The goal is for you to be comfortable and confident.</p>
+<div class="tip good" style="margin-top:14px"><strong>The job boils down to two questions every day:</strong> Are the guests happy? Are the units healthy? If you're confident both are good, your job's done for now.</div>
+</div>
+
+<div class="card">
+<div class="card-t">Three Phases</div>
+<div class="ph p1">
+<div class="ph-lab">Phase 1 &mdash; Aug 10</div>
+<h3>Get in the Mix</h3>
+<div class="ph-sub">50/50 with Kyle</div>
+<ul class="tl">
+<li>Take the lead on guest messaging &mdash; Kyle backs you up</li>
+<li>Take the lead on cleaner coordination &mdash; Kyle backs you up</li>
+<li>Get included in vendor chains &mdash; start coordinating alongside Kyle</li>
+<li>Weekly walkthrough of all 13 properties</li>
+<li>Emergency on-call &mdash; first contact when Kyle is out</li>
+<li>Observe restocking &mdash; learn what each property uses daily</li>
+</ul>
+</div>
+<div class="ph p2">
+<div class="ph-lab">Phase 2 &mdash; Sept 1</div>
+<h3>Own It</h3>
+<div class="ph-sub">You run it, Kyle monitors</div>
+<ul class="tl">
+<li>Guest messaging &mdash; fully yours</li>
+<li>Cleaner coordination &mdash; fully yours</li>
+<li>Handling most restocking across all 13 units</li>
+<li>Handling most vendor coordination &mdash; maintenance, repairs, service calls</li>
+<li>Property walkthroughs on your own schedule</li>
+<li>Kyle always there to help &mdash; checks in daily</li>
+</ul>
+</div>
+<div class="ph p3">
+<div class="ph-lab">Phase 3 &mdash; When Ready</div>
+<h3>The Full Picture</h3>
+<div class="ph-sub">Ops + growth + business</div>
+<ul class="tl">
+<li>Everything from Phase 2, fully running</li>
+<li>Social media &mdash; open to start whenever the basics feel solid</li>
+<li>Learn the business side of property management</li>
+<li>Help onboard new properties as we grow (goal: 21-25 by next summer)</li>
+<li>Support financials &mdash; invoices, owner reporting, tracking</li>
+<li>Real career path into operations management</li>
+</ul>
+</div>
+<div class="co warm"><strong>The vibe:</strong> Phase 1 is 50/50 &mdash; you're taking the lead on messaging and cleaners, but Kyle is right there doing it alongside you. Phase 2, you own those things and Kyle stops worrying about doing them every day. Phase 3, you're running the operation and learning the bigger picture. Move at whatever pace feels right.</div>
+</div>
+
+<div class="card">
+<div class="card-t">Compensation</div>
+<table class="rt">
+<thead><tr><th>Phase</th><th>Rate</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td style="font-weight:600">Phase 1</td><td class="mono" style="color:#1a5c2a">$500/mo</td><td>Starts Aug 10. Leading messaging + cleaners alongside Kyle, walkthroughs, on-call, observing restocking.</td></tr>
+<tr><td style="font-weight:600">Phase 2</td><td class="mono" style="color:#1a5c2a">$1,000/mo</td><td>Starts Sept 1. You fully own messaging, cleaners, most restocking + vendors. Exact pay based on scope taken on.</td></tr>
+<tr><td style="font-weight:600">Phase 3</td><td class="mono" style="color:#1a5c2a">$1,500+/mo</td><td>Full ops + social media + learning the business. Base $1,500 + a share of cleaning margins (details TBD based on scope).</td></tr>
+<tr><td style="font-weight:600">Emergency Call-Out</td><td class="mono" style="color:#1a5c2a">$50/hr</td><td>Unplanned on-site visit. Rounded to nearest half-hour. All phases.</td></tr>
+<tr><td style="font-weight:600">Property Referral</td><td class="mono" style="color:#1a5c2a">$1,000/property</td><td>One-time for any new property you bring in that gets onboarded. Keep an ear out &mdash; word of mouth, parents' friends, bar conversations, anyone with a vacation home.</td></tr>
+<tr><td style="font-weight:600">New Property Bonus</td><td class="mono" style="color:#1a5c2a">$150/property</td><td>One-time per new property you help onboard (unit 14+).</td></tr>
+</tbody>
+</table>
+<div class="co warm"><strong>On pay:</strong> The goal is for you to be comfortable. These numbers are the framework, not a rigid contract. As you take on more, pay moves up. No surprises on either side.</div>
+</div>
+
+<div class="card">
+<div class="card-t">Timeline</div>
+<div class="tline">
+<div class="tl-i"><div class="tl-m">Now &mdash; Aug 9</div><div class="tl-t">Onboarding &mdash; learn the portfolio</div><div class="tl-b">Kyle walks every property with you, introduces the cleaning crew, shows you Hostaway and the systems. Shadow everything. Ask questions. Observe a grocery haul / restock run in August.</div><span class="tl-p">Call-outs paid ($50/hr)</span></div>
+<div class="tl-i"><div class="tl-m">August 10</div><div class="tl-t">Phase 1 &mdash; take the lead, 50/50</div><div class="tl-b">Retainer starts. You lead guest messaging and cleaner coordination with Kyle alongside. Walkthroughs, on-call, observing restocking and vendor chains.</div><span class="tl-p">$500/mo + $50/hr call-outs</span></div>
+<div class="tl-i"><div class="tl-m">September 1</div><div class="tl-t">Phase 2 starts &mdash; Kyle here for 2 weeks</div><div class="tl-b">Phase 2 pay and scope kick in. Messaging, cleaners, restocking, vendors are yours. Kyle is still in town and here to help &mdash; ramp-up window, not a cold handoff.</div><span class="tl-p">Up to $1,000/mo</span></div>
+<div class="tl-i"><div class="tl-m">September 15</div><div class="tl-t">Kyle leaves the country &mdash; real Phase 2</div><div class="tl-b">Kyle is out of the country for several weeks. You're running day-to-day operations. Kyle reachable remotely for anything that needs a call or decision.</div><span class="tl-p">$1,000/mo + $50/hr call-outs</span></div>
+<div class="tl-i fut"><div class="tl-m">When Ready</div><div class="tl-t">Phase 3 &mdash; full ops, socials, the business</div><div class="tl-b">Everything running smoothly. Social media, new property onboarding, financials. You're learning how the business works.</div><span class="tl-p">$1,500+/mo + share of cleaning margins</span></div>
+<div class="tl-i fut"><div class="tl-m">2027</div><div class="tl-t">Full operations manager</div><div class="tl-b">21-25 units, retainer transitions to full-time salary.</div><span class="tl-p">Full-time role &mdash; TBD</span></div>
+</div>
+</div>
+</div>
+
+<!-- ======================= SYSTEMS & LOGINS ======================= -->
+<div class="tab" id="t-systems">
+
+<div class="card">
+<div class="card-t">Your Systems</div>
+<p style="font-size:13px;color:#666;margin-bottom:14px">Everything you need access to, organized by when you need it.</p>
+
+<div style="font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#888;margin:18px 0 10px">Phase 1 &mdash; Have Now or Need Before Aug 10</div>
+
+<div class="lc">
+<div class="ln">Hostaway <span class="st st-on">ADMIN ACCESS</span></div>
+<div class="ld">Your daily driver. Reservations, guest messages, cleaning tasks, calendar, door codes, financials. You have admin-level access &mdash; you can see and change most things. Just be careful and always hit Save.</div>
+<div class="lr"><span class="ll">Web</span><a class="la" href="https://dashboard.hostaway.com" target="_blank">dashboard.hostaway.com</a></div>
+<div class="lr"><span class="ll">App</span><span style="font-size:13px;color:#555">Hostaway app (iOS / Android)</span></div>
+<div class="tip info" style="margin-top:8px"><strong>Check this multiple times a day.</strong> Not every notification needs action, but make it a habit to look. Like scrolling social media &mdash; just open it once an hour and see what's happening.</div>
+</div>
+
+<div class="lc">
+<div class="ln">Notion <span class="st st-on">YOU HAVE ACCESS</span></div>
+<div class="ld">Task boards, SOPs, property checklists, restocking database, vendor contacts. Not a real-time ops tool &mdash; it's for prep, planning, and logging.</div>
+<div class="lr"><span class="ll">Web</span><a class="la" href="https://notion.so" target="_blank">notion.so</a></div>
+<div class="tip info" style="margin-top:8px"><strong>Have the property page open during every walkthrough.</strong> Scroll the amenities list, check tasks, log issues. It's your reference, not a to-do list you check every hour.</div>
+</div>
+
+<div class="lc">
+<div class="ln">Schlage Home (Door Locks) <span class="st st-on">YOU HAVE ACCESS</span></div>
+<div class="ld">Smart lock management &mdash; view codes, unlock remotely, check lock history.</div>
+<div class="lr"><span class="ll">App</span><span style="font-size:13px;color:#555">Schlage Home app (iOS / Android)</span></div>
+<div class="tip info" style="margin-top:8px"><strong>Key features:</strong> Manage Access (see all codes per lock), Lock History (timestamped entry log &mdash; good for disputes), Remote Unlock (for lockouts). Airbnb codes show automatically with guest names and dates.</div>
+</div>
+
+<div class="lc">
+<div class="ln">Google Drive <span class="st st-on">YOU HAVE ACCESS</span></div>
+<div class="ld">Property photos, reports, invoices, cleaning docs, shared files.</div>
+</div>
+
+<div class="lc">
+<div class="ln">Airbnb Host <span class="st st-on">YOU HAVE ACCESS</span></div>
+<div class="ld">Co-host access. Use for: changing early check-in times (Airbnb is source of truth for Airbnb bookings), viewing reviews, finding guest door codes if needed.</div>
+</div>
+
+<div class="lc">
+<div class="ln">Vrbo Host <span class="st st-need">IN PROGRESS</span></div>
+<div class="ld">View listings, bookings, reviews. Most messages come through Hostaway. Not critical &mdash; you rarely need to go into Vrbo directly.</div>
+</div>
+
+<div class="lc">
+<div class="ln">Cleaning Crew Group Chat <span class="st st-on">YOU HAVE ACCESS</span></div>
+<div class="ld">iMessage group with Judith, Ulises, Kyle. Turnover updates, walkthrough videos, issues. 10:45 AM brief posts here automatically.</div>
+</div>
+
+<div class="lc">
+<div class="ln">Feedback Group Chat <span class="st st-on">YOU HAVE ACCESS</span></div>
+<div class="ld">iMessage group with Kyle + Ulises. All feedback/corrections go here &mdash; Ulises relays to crew. Never send feedback in the main cleaner chat.</div>
+</div>
+
+<div class="lc">
+<div class="ln">Guidebook <span class="st st-on">LIVE</span></div>
+<div class="ld">Digital welcome guide at guide.solmarestays.com. Auto-sent to guests on booking. Has WiFi, amenities, house rules, local picks, partner deals. Point guests here for most questions: "Check out the guidebook!"</div>
+</div>
+
+<div class="lc">
+<div class="ln">Company Credit Card <span class="st st-need">GETTING YOU INFO</span></div>
+<div class="ld">For operational expenses (restocking, supplies, small purchases). Apple Pay. Kyle sending you the card info.</div>
+</div>
+
+<div class="lc">
+<div class="ln">Claude AI <span class="st st-on">FREE TO USE</span></div>
+<div class="ld">Kyle's recommendation over ChatGPT. Use for drafting guest messages, troubleshooting answers, updating documents. "The second I used Claude, I cancelled ChatGPT."</div>
+<div class="lr"><span class="ll">Web</span><a class="la" href="https://claude.ai" target="_blank">claude.ai</a></div>
+</div>
+
+<div style="font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#888;margin:24px 0 10px">Social Media &mdash; Open When You're Ready</div>
+
+<div class="tip good" style="margin:0 0 12px"><strong>No hard gate on this.</strong> Once you've got the day-to-day basics down and want to start helping with socials, jump in. Content = lifestyle reels, walkthrough videos, beach footage. Extra 2 minutes during walkthroughs.</div>
+
+<div class="lc">
+<div class="ln">Later.com <span class="st st-need">KYLE SETTING UP</span></div>
+<div class="ld">Social media scheduling &mdash; Instagram, Facebook, TikTok, LinkedIn all connected.</div>
+</div>
+
+<div class="lc">
+<div class="ln">Canva <span class="st st-need">KYLE SETTING UP</span></div>
+<div class="ld">Design tool for social graphics. Solmare brand kit loaded.</div>
+</div>
+
+<div style="font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#888;margin:24px 0 10px">Exists but You Don't Need Yet</div>
+
+<div class="lc" style="opacity:.5">
+<div class="ln">PriceLabs <span class="st st-later">LATER</span></div><div class="ld">Dynamic pricing. Kyle handles all rate strategy.</div>
+</div>
+<div class="lc" style="opacity:.5">
+<div class="ln">QuickBooks <span class="st st-later">LATER</span></div><div class="ld">Accounting, invoicing, owner reconciliation. Kyle handles.</div>
+</div>
+<div class="lc">
+<div class="ln">Mission Control <span class="st st-on">YOU HAVE ACCESS</span></div>
+<div class="ld">Internal ops dashboard &mdash; reservations, revenue, property health, system status.</div>
+<div class="lr"><span class="ll">URL</span><a class="la" href="https://mission-control-rho-sooty.vercel.app" target="_blank">mission-control-rho-sooty.vercel.app</a></div>
+<div class="lr"><span class="ll">Password</span><span class="lv">HannahOps9582^</span></div>
+<div class="tip info" style="margin-top:8px">Ops role &mdash; you'll see the pages relevant to your work. Good for a quick overview of what's happening across all properties.</div>
+</div>
+<div class="lc" style="opacity:.5">
+<div class="ln">MARLOW <span class="st st-later">BACKGROUND</span></div><div class="ld">Kyle's AI assistant. Monitors the inbox and may draft responses in the background. If you notice both you and the system responding to the same message, let Kyle know. Just focus on handling messages yourself.</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-t">Apps to Download</div>
+<table class="rt">
+<thead><tr><th>App</th><th>Why</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td style="font-weight:600">Hostaway</td><td>Guest messages, reservations, tasks on the go</td><td><span class="st st-on">Have</span></td></tr>
+<tr><td style="font-weight:600">Notion</td><td>Tasks, restocking lists, SOPs, walkthrough reference</td><td><span class="st st-on">Have</span></td></tr>
+<tr><td style="font-weight:600">Schlage Home</td><td>Door codes, remote unlock, lock history</td><td><span class="st st-on">Have</span></td></tr>
+<tr><td style="font-weight:600">Airbnb</td><td>Change check-in times, find guest door codes</td><td><span class="st st-on">Have</span></td></tr>
+<tr><td style="font-weight:600">Vrbo</td><td>Listing management (rarely needed)</td><td><span class="st st-need">In progress</span></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<!-- ======================= CONTACTS ======================= -->
+<div class="tab" id="t-contacts">
+
+<div class="card">
+<div class="card-t">Team</div>
+<div class="lc"><div class="ln">Kyle Van Til</div><div class="ld">Owner / Property Manager &mdash; your main contact for everything</div>
+<div class="lr"><span class="ll">Business</span><span class="lv">(805) 242-6411</span></div>
+<div class="lr"><span class="ll">Cell/Text</span><span class="lv">(805) 801-6429</span></div>
+<div class="lr"><span class="ll">Email</span><span class="lv">kyle@solmarestays.com</span></div></div>
+
+<div class="lc"><div class="ln">Ulises</div><div class="ld">Cleaning coordinator &mdash; schedules crew, relays feedback, manages invoicing</div>
+<div class="lr"><span class="ll">Phone</span><span class="lv">(805) 631-9084</span></div></div>
+
+<div class="lc"><div class="ln">Judith</div><div class="ld">Primary cleaner &mdash; all 9 Avila compound turnovers. Coordinate through Ulises or group chat.</div></div>
+</div>
+
+<div class="card">
+<div class="card-t">Property Owners</div>
+<table class="rt">
+<thead><tr><th>Owner</th><th>Properties</th><th>Contact</th></tr></thead>
+<tbody>
+<tr><td style="font-weight:600">Jane Miller</td><td>Hummingbird</td><td class="mono">(303) 416-0477</td></tr>
+<tr><td style="font-weight:600">La Casita LLC</td><td>La Casita, Shoreline, Deckhouse, Azul, Emberlight, Nest</td><td>Chad Van Til (805) 543-4422 &middot; Michael Hodge (805) 215-8753 &middot; Mike Salucci (805) 459-6552</td></tr>
+<tr><td style="font-weight:600">First Street LLC</td><td>Palm, Pine, Coral</td><td>Same ownership as La Casita LLC</td></tr>
+<tr><td style="font-weight:600">Mike Hodge</td><td>Monterey Heights</td><td class="mono">(805) 215-8753</td></tr>
+<tr><td style="font-weight:600">Julie Darmody</td><td>Casitas Estate</td><td class="mono">(310) 738-1631</td></tr>
+<tr><td style="font-weight:600">Kristin Juette</td><td>Flora Farm</td><td class="mono">(805) 234-3068</td></tr>
+</tbody>
+</table>
+<div class="tip info">Accounting for La Casita LLC: Sue Cosper / Jazmin at Connect Accounting &mdash; (805) 778-5106</div>
+<div class="tip warm"><strong>Owner communication is Kyle's domain.</strong> You flag things, he talks to owners.</div>
+</div>
+
+<div class="card">
+<div class="card-t">Vendors</div>
+<table class="rt">
+<thead><tr><th>Name</th><th>Trade</th><th>Phone</th><th>Properties</th></tr></thead>
+<tbody>
+<tr><td style="font-weight:600">Sean St. Denis</td><td>Electrician</td><td class="mono">(805) 440-5555</td><td>All</td></tr>
+<tr><td style="font-weight:600">DJs Plumbing</td><td>Plumber</td><td class="mono">(805) 489-6989</td><td>All</td></tr>
+<tr><td style="font-weight:600">Rob Wrage</td><td>Painter</td><td class="mono">(805) 904-9356</td><td>All</td></tr>
+<tr><td style="font-weight:600">Rob Stone</td><td>Handyman</td><td class="mono">(805) 215-0677</td><td>All</td></tr>
+<tr><td style="font-weight:600">Chuck</td><td>Handyman</td><td class="mono">(415) 269-5903</td><td>All</td></tr>
+<tr><td style="font-weight:600">Jason</td><td>Pest Control</td><td class="mono">(805) 458-0593</td><td>Avila compound</td></tr>
+<tr><td style="font-weight:600">Eco Advantage</td><td>Pest Control</td><td class="mono">(805) 668-9336</td><td>Casitas Estate + Flora Farm</td></tr>
+<tr><td style="font-weight:600">Authorized Pest</td><td>Pest Control</td><td class="mono">(805) 473-2847</td><td>Flora Farm ($60/mo)</td></tr>
+<tr><td style="font-weight:600">Bulldog Pool (Chris)</td><td>Pool / Hot Tub</td><td class="mono">(805) 709-8919</td><td>Flora Farm ($160/mo, Mon ~7 AM)</td></tr>
+<tr><td style="font-weight:600">Scott</td><td>Pool / Hot Tub</td><td class="mono">(805) 602-0852</td><td>Casitas Estate</td></tr>
+<tr><td style="font-weight:600">Joey Grajeda</td><td>Property Care</td><td class="mono">(805) 234-8235</td><td>Casitas Estate</td></tr>
+<tr><td style="font-weight:600">Daryn</td><td>Landscaper</td><td class="mono">(805) 471-0670</td><td>General</td></tr>
+<tr><td style="font-weight:600">Cameron Van Vleet</td><td>WiFi / Tech</td><td class="mono">(805) 234-3129</td><td>Google Nest mesh</td></tr>
+<tr><td style="font-weight:600">Marjan</td><td>Interior Design</td><td class="mono">(805) 441-0255</td><td>Design projects</td></tr>
+</tbody>
+</table>
+<div class="tip good"><strong>All of this lives in Notion too.</strong> The Contacts database has every vendor with phone, email, trade, and properties. This is just a quick reference.</div>
+</div>
+
+<div class="card">
+<div class="card-t">Social Media Accounts</div>
+<table class="rt">
+<thead><tr><th>Platform</th><th>Handle</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td style="font-weight:600">Instagram</td><td>@solmarestays</td><td>Sun/Tue/Thu/Sat posting cadence</td></tr>
+<tr><td style="font-weight:600">TikTok</td><td>@solmarestays</td><td>Short-form video</td></tr>
+<tr><td style="font-weight:600">Facebook</td><td>Solmare Stays</td><td>Company page</td></tr>
+<tr><td style="font-weight:600">LinkedIn</td><td>Solmare Stays</td><td>Company page</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<!-- ======================= PROPERTIES ======================= -->
+<div class="tab" id="t-props">
+
+<div class="card">
+<div class="card-t">WiFi Quick Reference</div>
+<table class="rt">
+<thead><tr><th>Network</th><th>Password</th><th>Properties</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td class="mono">Avila WiFi</td><td class="mono">Surfingisfun</td><td>All 9 Avila compound units</td><td>Shared Google Nest mesh with extenders. Can slow on busy weekends.</td></tr>
+<tr><td class="mono">California</td><td class="mono">Rudi2024!</td><td>Hummingbird only</td><td>Own dedicated router (main bedroom closet). Great speeds.</td></tr>
+<tr><td class="mono">Casitas Wifi</td><td class="mono">lanaico25</td><td>Casitas Estate</td><td>Weak signal in furthest casitas (especially Lanai).</td></tr>
+<tr><td class="mono">Flora Farms</td><td class="mono">1155flora</td><td>Flora Farm</td><td>Password says 1155 but address is 1153! Spell it out for guests.</td></tr>
+<tr><td class="mono">Hodge House</td><td class="mono">beaTles351</td><td>Monterey Heights</td><td>Standard router.</td></tr>
+</tbody></table>
+</div>
+
+<div class="card">
+<div class="card-t">Access Codes</div>
+<table class="rt">
+<thead><tr><th>Code</th><th>What</th><th>Where</th></tr></thead>
+<tbody>
+<tr><td class="mono">0000</td><td>Lockbox (physical backup keys)</td><td>9 Avila compound &mdash; beam by front door</td></tr>
+<tr><td class="mono">5150</td><td>Bike gate lock</td><td>Between Bungalows 1 &amp; 2 &mdash; line up to black lines</td></tr>
+<tr><td class="mono">1512</td><td>Hummingbird front door (direct code)</td><td>Smart lock keypad</td></tr>
+<tr><td class="mono">1207</td><td>Hummingbird gear locker + gate</td><td>Left side of unit</td></tr>
+<tr><td class="mono">3640</td><td>La Casita front door (direct code)</td><td>Smart lock keypad</td></tr>
+<tr><td class="mono">0521#</td><td>Flora Farm front gate</td><td>Gate keypad &mdash; press Emtek logo first</td></tr>
+<tr><td class="mono">1123</td><td>Flora Farm front door</td><td>Emtek keypad &mdash; press logo, enter code</td></tr>
+<tr><td class="mono">9196</td><td>Monterey Heights front door (direct code)</td><td>Smart lock keypad</td></tr>
+</tbody></table>
+<div class="tip warn"><strong>Direct/Vrbo codes are always active</strong> &mdash; no date restrictions. Kyle bulk-updates them every 1-3 weeks for security. Airbnb codes are automatic (managed by Airbnb with dates).</div>
+</div>
+
+<div class="card">
+<div class="card-t">Listing Errors &mdash; What Hostaway Says vs. Truth</div>
+<table class="rt">
+<thead><tr><th>Property</th><th>Hostaway Says</th><th>Truth</th></tr></thead>
+<tbody>
+<tr><td>Hummingbird</td><td>No AC</td><td><strong>HAS AC</strong> (3 units: each bedroom + living room)</td></tr>
+<tr><td>Hummingbird</td><td>Espresso maker</td><td>Keurig Duo (drip + K-Cup, NOT espresso)</td></tr>
+<tr><td>Monterey Heights</td><td>No AC</td><td><strong>HAS AC</strong></td></tr>
+<tr><td>Monterey Heights</td><td>Nespresso</td><td>Moccamaster drip</td></tr>
+<tr><td>Coral House</td><td>Has dishwasher</td><td><strong>NO dishwasher</strong></td></tr>
+<tr><td>Emberlight</td><td>King bed</td><td>Queen</td></tr>
+<tr><td>Pine House</td><td>King bed</td><td>Queen</td></tr>
+<tr><td>Casa Azul</td><td>Queen bed</td><td>King</td></tr>
+</tbody>
+</table>
+<div class="tip crit"><strong>Always give guests the truth from this table.</strong> Not what Hostaway or the listing shows.</div>
+</div>
+
+<div class="card" style="padding:16px 18px">
+<div class="card-t" style="margin-bottom:10px">All 13 Properties</div>
+
+<div class="pc" data-s="hummingbird 155 san antonio avila"><div class="pc-h" onclick="tp(this)"><div><span class="pc-n">Hummingbird House</span><span class="pc-l">Avila Beach</span></div><div><span class="badge b-ac">AC</span></div></div><div class="pc-b"><div class="pc-inner"><div class="pg"><div class="pd"><div class="pd-l">Address</div><div class="pd-v">155 San Antonio St, Avila Beach</div></div><div class="pd"><div class="pd-l">Type</div><div class="pd-v">2BR townhouse, multi-level</div></div><div class="pd"><div class="pd-l">Beds</div><div class="pd-v">King + Queen + air mattress</div></div><div class="pd"><div class="pd-l">Max Guests</div><div class="pd-v">5</div></div><div class="pd"><div class="pd-l">WiFi</div><div class="pd-m">California / Rudi2024!</div></div><div class="pd"><div class="pd-l">Direct Code</div><div class="pd-m">1512</div></div><div class="pd"><div class="pd-l">Check-in</div><div class="pd-v">3 PM</div></div><div class="pd"><div class="pd-l">Cleaning</div><div class="pd-v">$150 pay / $170 charge</div></div><div class="pd"><div class="pd-l">Owner</div><div class="pd-v">Jane Miller</div></div><div class="pd"><div class="pd-l">Lock</div><div class="pd-v">Schlage smart lock</div></div></div><div class="pn"><strong>Notes:</strong> Own WiFi (NOT compound mesh). Rooftop terrace 270&deg; views. Gas fireplace (remote in drawer). Gear locker code 1207. In-unit W/D. No smoking. 2 blocks to beach. Plants need weekly watering.</div></div></div></div>
+
+<div class="pc" data-s="la casita 380 first avila"><div class="pc-h" onclick="tp(this)"><div><span class="pc-n">La Casita</span><span class="pc-l">Avila Beach</span></div><div><span class="badge b-noac">No AC</span></div></div><div class="pc-b"><div class="pc-inner"><div class="pg"><div class="pd"><div class="pd-l">Address</div><div class="pd-v">380 1st St, Avila Beach</div></div><div class="pd"><div class="pd-l">Type</div><div class="pd-v">2BR beach house</div></div><div class="pd"><div class="pd-l">Beds</div><div class="pd-v">King + Queen + trundle sofa</div></div><div class="pd"><div class="pd-l">Max / WiFi</div><div class="pd-v">6 guests &middot; <span class="pd-m">Avila WiFi / Surfingisfun</span></div></div><div class="pd"><div class="pd-l">Direct Code</div><div class="pd-m">3640</div></div><div class="pd"><div class="pd-l">Check-in</div><div class="pd-v">3 PM</div></div><div class="pd"><div class="pd-l">Cleaning</div><div class="pd-v">$150 pay / $180 charge</div></div></div><div class="pn"><strong>Notes:</strong> Sliding glass doors (turn handle sideways to open/lock). Gas fireplace. Full kitchen. In-unit W/D. Compound amenities. Recently renovated.</div></div></div></div>
+
+<div class="pc" data-s="shoreline 370 first avila"><div class="pc-h" onclick="tp(this)"><div><span class="pc-n">Shoreline Suite</span><span class="pc-l">Avila Beach</span></div><div><span class="badge b-noac">No AC</span></div></div><div class="pc-b"><div class="pc-inner"><div class="pg"><div class="pd"><div class="pd-l">Address</div><div class="pd-v">370 1st St Apt C</div></div><div class="pd"><div class="pd-l">Type</div><div class="pd-v">1BR apartment, 600 sqft</div></div><div class="pd"><div class="pd-l">Beds / Max</div><div class="pd-v">King + sleeper sofa &middot; 4 guests</div></div><div class="pd"><div class="pd-l">Cleaning</div><div class="pd-v">$90 pay / $110 charge</div></div></div><div class="pn"><strong>Notes:</strong> Dual coffee makers. Pack n Play available. Ceiling fans only (no AC). Check sofa bed linens are present at turnover. Compound amenities.</div></div></div></div>
+
+<div class="pc" data-s="deckhouse bungalow 1 102 san miguel"><div class="pc-h" onclick="tp(this)"><div><span class="pc-n">Deckhouse</span><span class="pc-l">Bungalow 1</span></div><div><span class="badge b-ac">AC</span></div></div><div class="pc-b"><div class="pc-inner"><div class="pg"><div class="pd"><div class="pd-l">Address</div><div class="pd-v">102 San Miguel St #1</div></div><div class="pd"><div class="pd-l">Beds / Max</div><div class="pd-v">King + sofa bed &middot; 4 guests</div></div><div class="pd"><div class="pd-l">Cleaning</div><div class="pd-v">$65 pay / $90 charge</div></div></div><div class="pn"><strong>Notes:</strong> Kitchenette only (no stove). Pack n Play available. Mini fridge runs warm (by design, can't fix &mdash; most common complaint). Low water pressure shower (infrastructure, can't fix). Check sofa bed linens at turnover.</div></div></div></div>
+
+<div class="pc" data-s="casa azul bungalow 5"><div class="pc-h" onclick="tp(this)"><div><span class="pc-n">Casa Azul</span><span class="pc-l">Bungalow 5</span></div><div><span class="badge b-ac">AC</span></div></div><div class="pc-b"><div class="pc-inner"><div class="pg"><div class="pd"><div class="pd-l">Address</div><div class="pd-v">102 San Miguel St #5</div></div><div class="pd"><div class="pd-l">Beds / Max</div><div class="pd-v">King &middot; 2 guests</div></div><div class="pd"><div class="pd-l">Cleaning</div><div class="pd-v">$65 pay / $90 charge</div></div></div><div class="pn"><strong>Notes:</strong> Kitchenette only. Vibrant vintage design. <strong>Clear shower drain at EVERY turnover</strong> (clogs every time).</div></div></div></div>
+
+<div class="pc" data-s="emberlight bungalow 4"><div class="pc-h" onclick="tp(this)"><div><span class="pc-n">Emberlight</span><span class="pc-l">Bungalow 4</span></div><div><span class="badge b-ac">AC</span></div></div><div class="pc-b"><div class="pc-inner"><div class="pg"><div class="pd"><div class="pd-l">Address</div><div class="pd-v">102 San Miguel St #4</div></div><div class="pd"><div class="pd-l">Beds / Max</div><div class="pd-v">Queen &middot; 2 guests</div></div><div class="pd"><div class="pd-l">Cleaning</div><div class="pd-v">$65 pay / $90 charge</div></div></div><div class="pn"><strong>Notes:</strong> ONLY unit with private gas fire pit (#1 reason guests book). Pilot button doesn't work &mdash; use a lighter. Verify Keurig works after every turnover (has broken twice). Parking labeled "Bungalow 4."</div></div></div></div>
+
+<div class="pc" data-s="nest bungalow 6"><div class="pc-h" onclick="tp(this)"><div><span class="pc-n">The Nest</span><span class="pc-l">Bungalow 6</span></div><div><span class="badge b-ac">AC</span></div></div><div class="pc-b"><div class="pc-inner"><div class="pg"><div class="pd"><div class="pd-l">Address</div><div class="pd-v">102 San Miguel St #6</div></div><div class="pd"><div class="pd-l">Beds / Max</div><div class="pd-v">King &middot; 2 (couples only)</div></div><div class="pd"><div class="pd-l">Cleaning</div><div class="pd-v">$65 pay / $90 charge</div></div></div><div class="pn"><strong>Notes:</strong> Most private unit. Parking DIRECTLY behind unit via alley (not San Miguel spots &mdash; guide guests proactively). Skylights = bright at 6 AM (suggest eye mask if guest mentions).</div></div></div></div>
+
+<div class="pc" data-s="palm house 356 first"><div class="pc-h" onclick="tp(this)"><div><span class="pc-n">Palm House</span><span class="pc-l">Avila Beach</span></div><div><span class="badge b-ac">AC</span> <span class="badge b-pet">Pets OK</span></div></div><div class="pc-b"><div class="pc-inner"><div class="pg"><div class="pd"><div class="pd-l">Address</div><div class="pd-v">356 1st St (upper level, stairs)</div></div><div class="pd"><div class="pd-l">Beds / Max</div><div class="pd-v">King &middot; 2 guests</div></div><div class="pd"><div class="pd-l">Cleaning</div><div class="pd-v">$65 pay / $90 charge</div></div><div class="pd"><div class="pd-l">Pets</div><div class="pd-v">$50/dog, dogs only, can't be left alone</div></div></div><div class="pn"><strong>Notes:</strong> Partial ocean views. Kitchenette with stovetop. Dogs must stay off furniture.</div></div></div></div>
+
+<div class="pc" data-s="pine house 358 first"><div class="pc-h" onclick="tp(this)"><div><span class="pc-n">Pine House</span><span class="pc-l">Avila Beach</span></div><div><span class="badge b-ac">AC</span> <span class="badge b-pet">Pets OK</span></div></div><div class="pc-b"><div class="pc-inner"><div class="pg"><div class="pd"><div class="pd-l">Address</div><div class="pd-v">358 1st St (ground level)</div></div><div class="pd"><div class="pd-l">Beds / Max</div><div class="pd-v">Queen &middot; 2 guests</div></div><div class="pd"><div class="pd-l">Cleaning</div><div class="pd-v">$65 pay / $90 charge</div></div><div class="pd"><div class="pd-l">Pets</div><div class="pd-v">$50/dog, dogs only</div></div></div><div class="pn"><strong>Notes:</strong> Lowest rated unit (9.2). Known issues: blinds, spiders, leaves. HVAC is loud (works but noisy). Small shower. 4 AM garbage trucks (1st Street). Trash bins by unit 360.</div></div></div></div>
+
+<div class="pc" data-s="coral house 360 first"><div class="pc-h" onclick="tp(this)"><div><span class="pc-n">Coral House</span><span class="pc-l">Avila Beach</span></div><div><span class="badge b-ac">AC</span></div></div><div class="pc-b"><div class="pc-inner"><div class="pg"><div class="pd"><div class="pd-l">Address</div><div class="pd-v">360 1st St (upper level)</div></div><div class="pd"><div class="pd-l">Beds / Max</div><div class="pd-v">Cal King + sleeper sofa &middot; 4</div></div><div class="pd"><div class="pd-l">Cleaning</div><div class="pd-v">$90 pay / $110 charge</div></div></div><div class="pn"><strong>Notes:</strong> Modern luxury. Bifold doors (unlock, rotate handle horizontal, open one panel at a time). Garbage disposal broken. Wall heater confusing Oct-Apr (instruction card in unit). Own 2 bikes (left side). Rooftop deck. <strong>NO dishwasher</strong> (listing is wrong). Check wall heater is OFF after cleaning.</div></div></div></div>
+
+<div class="pc" data-s="casitas estate 2655 lopez arroyo grande"><div class="pc-h" onclick="tp(this)"><div><span class="pc-n">Casitas Estate</span><span class="pc-l">Arroyo Grande</span></div><div><span class="badge b-noac">AC Lanai Only</span></div></div><div class="pc-b"><div class="pc-inner"><div class="pg"><div class="pd"><div class="pd-l">Address</div><div class="pd-v">2655 Lopez Dr, Arroyo Grande</div></div><div class="pd"><div class="pd-l">Type</div><div class="pd-v">5-unit estate, 13 acres. Whole-estate booking only.</div></div><div class="pd"><div class="pd-l">Max Guests</div><div class="pd-v">14 STRICT (insurance/county &mdash; zero exceptions)</div></div><div class="pd"><div class="pd-l">WiFi</div><div class="pd-m">Casitas Wifi / lanaico25</div></div><div class="pd"><div class="pd-l">Check-in</div><div class="pd-v">4 PM (NOT 3)</div></div><div class="pd"><div class="pd-l">Entry</div><div class="pd-v">Physical keys in lockbox. Code sent 24h before.</div></div><div class="pd"><div class="pd-l">Cleaning</div><div class="pd-v">$400 pay / $600 charge</div></div><div class="pd"><div class="pd-l">Pets</div><div class="pd-v">Pre-approved, $100/dog, max 2</div></div><div class="pd"><div class="pd-l">Owner</div><div class="pd-v">Julie Darmody</div></div></div><div class="pn"><strong>Notes:</strong> You haven't been here yet &mdash; don't expect to know all answers. Monitor messages and text Kyle. Solar-heated pool (temp varies, 8AM-10PM, no glass, under-14 supervised). Hot tub (6-person max, don't let guests adjust temp). Bocce. 5 casitas (only Lanai has AC). Wood-burning fireplaces in Bay/Jersey/Main &mdash; use ONLY provided wood, NO fires during red flag warnings. Septic: TP only. Events require written approval + $1,500+ fee (always escalate to Kyle). Quiet hours 10PM-8PM (first warning, then termination). Smoking anywhere = $500 fee. Lost keys = $100. Late checkout = $100/hr (Kyle approves). Primary guest must be 25+.</div></div></div></div>
+
+<div class="pc" data-s="flora farm 1153 flora road arroyo grande"><div class="pc-h" onclick="tp(this)"><div><span class="pc-n">Flora Farm</span><span class="pc-l">Arroyo Grande</span></div><div><span class="badge b-noac">No AC</span></div></div><div class="pc-b"><div class="pc-inner"><div class="pg"><div class="pd"><div class="pd-l">Address</div><div class="pd-v">1153 Flora Rd, Arroyo Grande</div></div><div class="pd"><div class="pd-l">Type</div><div class="pd-v">2BR farmhouse, 3.8 acres</div></div><div class="pd"><div class="pd-l">Max / WiFi</div><div class="pd-v">4 &middot; <span class="pd-m">Flora Farms / 1155flora</span></div></div><div class="pd"><div class="pd-l">Check-in</div><div class="pd-v">4 PM (NOT 3 &mdash; some legacy bookings show 3)</div></div><div class="pd"><div class="pd-l">Gate / Door</div><div class="pd-m">Gate: 0521# &middot; Door: 1123</div></div><div class="pd"><div class="pd-l">Cleaning</div><div class="pd-v">$150 pay / $175 charge</div></div><div class="pd"><div class="pd-l">Lock System</div><div class="pd-v">Emtek keypads (NOT Schlage &mdash; older system, needs new lock)</div></div><div class="pd"><div class="pd-l">Owner</div><div class="pd-v">Kristin Juette</div></div></div><div class="pn"><strong>Notes:</strong> SEPTIC (TP only &mdash; no wipes, no feminine products). No shoes inside. Chickens/eggs (crates in pantry, fasten boxes back). Avocados need 1-2 weeks off-tree to ripen. Food scraps to chicken hatch. Hot tub (rinse in outdoor shower first, replace cover, no glass). BBQ &mdash; turn off GAS TANK VALVE after use (not just burner knobs), replace cover. Chris does hot tub maintenance Mon ~7AM. Creek OFF LIMITS. Wildlife (coyotes, bobcats, owls &mdash; give space). No pets (working farm). No trailers without prior approval. Quiet hours 10PM-8AM. Silk pillowcases (cold wash). Trash Wed 8AM. <strong>Fresh sponge every turnover</strong> (only property with this rule). To lock: press Emtek logo + turn deadbolt. Close and latch gate at departure.</div></div></div></div>
+
+<div class="pc" data-s="monterey heights 351 san miguel slo"><div class="pc-h" onclick="tp(this)"><div><span class="pc-n">Monterey Heights</span><span class="pc-l">San Luis Obispo</span></div><div><span class="badge b-ac">AC</span></div></div><div class="pc-b"><div class="pc-inner"><div class="pg"><div class="pd"><div class="pd-l">Address</div><div class="pd-v">351 San Miguel Ave, SLO</div></div><div class="pd"><div class="pd-l">Type</div><div class="pd-v">2BR suite in owner's home</div></div><div class="pd"><div class="pd-l">Max / WiFi</div><div class="pd-v">4 &middot; <span class="pd-m">Hodge House / beaTles351</span></div></div><div class="pd"><div class="pd-l">Direct Code</div><div class="pd-m">9196</div></div><div class="pd"><div class="pd-l">Check-in</div><div class="pd-v">4 PM (NOT 3)</div></div><div class="pd"><div class="pd-l">Cleaning</div><div class="pd-v">$75 pay / $120 charge</div></div><div class="pd"><div class="pd-l">Owner</div><div class="pd-v">Mike Hodge (lives in the home)</div></div></div><div class="pn"><strong>Notes:</strong> Private suite in Mike's residence. Exterior stairs. KITCHENETTE ONLY &mdash; no stove, no oven (city regulations, #1 complaint, disclose proactively). Moccamaster coffee (NOT Nespresso). No laundry. Park RIGHT side at BOTTOM. Thermostat is confusing &mdash; walk guests through: "Tap the 3 horizontal lines, scroll to SYSTEM, press OK, select COOL or HEAT, press OK, adjust temp."</div></div></div></div>
+
+</div>
+
+<div class="card">
+<div class="card-t">Known Recurring Issues</div>
+<table class="rt">
+<thead><tr><th>Property</th><th>Issue</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Deckhouse</td><td>Mini fridge runs warm</td><td>By design. Can't fix. Most common complaint.</td></tr>
+<tr><td>Deckhouse</td><td>Low water pressure shower</td><td>Infrastructure. Can't fix.</td></tr>
+<tr><td>Casa Azul</td><td>Shower drain clogs</td><td>Check/clear at EVERY turnover.</td></tr>
+<tr><td>Emberlight</td><td>Keurig breaks</td><td>Verify works after every turnover.</td></tr>
+<tr><td>Emberlight</td><td>Fire pit pilot doesn't work</td><td>Use a lighter. Scheduled for handyman.</td></tr>
+<tr><td>Pine House</td><td>HVAC is loud</td><td>Works but noisy. Light sleeper issue.</td></tr>
+<tr><td>Pine House</td><td>4 AM garbage trucks</td><td>1st Street collection. Can't change.</td></tr>
+<tr><td>Palm/Pine</td><td>Small shower</td><td>Physical limitation. Can't change.</td></tr>
+<tr><td>Coral House</td><td>Garbage disposal broken</td><td>Maintenance needed.</td></tr>
+<tr><td>Coral House</td><td>Wall heater confusing</td><td>Instruction card in unit Oct-Apr.</td></tr>
+<tr><td>The Nest</td><td>Skylights = morning light 6 AM</td><td>By design. Suggest eye mask.</td></tr>
+<tr><td>Shoreline/La Casita</td><td>No AC</td><td>By design. Set expectations in summer.</td></tr>
+<tr><td>Monterey Heights</td><td>No stove/oven</td><td>City regulations. #1 complaint. Disclose.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<!-- ======================= DAILY OPS ======================= -->
+<div class="tab" id="t-ops">
+
+<div class="card">
+<div class="card-t">Daily Timeline</div>
+<table class="rt">
+<thead><tr><th>Time</th><th>What You Do</th></tr></thead>
+<tbody>
+<tr><td style="font-weight:700;white-space:nowrap">Morning</td><td><strong>Open Hostaway.</strong> Check the overview: who's checking out? Who's arriving? Unread messages? Check group chat for anything from cleaners overnight. Know what's happening today and this week.</td></tr>
+<tr><td style="font-weight:700">9-10 AM</td><td><strong>Pre-arrival prep.</strong> For today's arrivals: verify door codes are set (Airbnb = check Schlage app, Vrbo/Direct = already active). Any early check-in requests? Handle now.</td></tr>
+<tr><td style="font-weight:700">10:45 AM</td><td><strong>Morning brief auto-posts</strong> to cleaning crew group chat. Full board: checkouts, turnovers, check-ins, priority flags. Verify crew acknowledges.</td></tr>
+<tr><td style="font-weight:700">11:00 AM</td><td><strong>Checkout deadline.</strong> Cleaners arrive. If a guest is still there at 11:15 and there's a same-day arrival, text Kyle &mdash; he'll nudge the guest. Don't let cleaners wait around for late guests.</td></tr>
+<tr><td style="font-weight:700">11-3 PM</td><td><strong>Monitor turnovers.</strong> Your main focus midday: are the turnovers getting done? Check Hostaway task status and cross-reference with group chat. If someone says "done" in chat but Hostaway isn't updated, remind them.</td></tr>
+<tr><td style="font-weight:700">1:00 PM</td><td><strong>Progress check.</strong> Open the calendar. Green = done. Red = not done. If a same-day turnover isn't started by 1 PM, check with crew.</td></tr>
+<tr><td style="font-weight:700">2:45 PM</td><td><strong>Final readiness check.</strong> Every arriving guest: unit clean (green on calendar)? Check-in info sent? Door code active?</td></tr>
+<tr><td style="font-weight:700">3:00 PM</td><td><strong>Check-in.</strong> Compound + Hummingbird. (4 PM for Casitas Estate, Flora Farm, Monterey Heights.)</td></tr>
+<tr><td style="font-weight:700">3 PM on</td><td><strong>Guest support.</strong> WiFi questions, parking, recommendations. Most questions hit in the first 2 hours after check-in. Point them to the guidebook for most things.</td></tr>
+</tbody></table>
+<div class="tip warm"><strong>This isn't a rigid schedule.</strong> It's a habit. You're not stressing every 5 minutes. Open Hostaway once an hour, scroll, see what's happening. Like checking social media. The more you do it, the more natural it gets.</div>
+</div>
+
+<div class="card">
+<div class="card-t">Turnover Workflow</div>
+<ol class="steps">
+<li>Guest checks out by 11 AM</li>
+<li>Cleaner arrives ~11 AM, marks Hostaway task "inProgress"</li>
+<li>Cleans unit (bungalows ~1-1.5 hrs, La Casita/Hummingbird ~2 hrs, Casitas ~4+ hrs)</li>
+<li>Takes walkthrough video, posts to group chat with "[Unit Name] &mdash; cleaned"</li>
+<li>Marks Hostaway task "completed" &mdash; this triggers guest "place is ready" notification</li>
+</ol>
+<div class="tip warn"><strong>#1 ops gap:</strong> Cleaner sends video and says "done" in group chat but forgets to update Hostaway. System doesn't know it's done. Guest doesn't get their ready message. YOU catch this by cross-referencing chat vs. Hostaway status.</div>
+<div class="tip info"><strong>No check-in today?</strong> A red (uncleaned) task is not urgent. Cleaners will batch it with the next day's work. Only follow up if there's a check-in and it's not done by 1 PM.</div>
+</div>
+
+<div class="card">
+<div class="card-t">Cleaning Standards</div>
+<table class="rt">
+<thead><tr><th>Item</th><th>Standard</th></tr></thead>
+<tbody>
+<tr><td>Bath towels</td><td>2 per guest</td></tr>
+<tr><td>Hand towels</td><td>3-4 per unit</td></tr>
+<tr><td>Washcloths</td><td>2 per guest</td></tr>
+<tr><td>Toilet paper</td><td>Full roll + 1 backup (studios) or 2 (larger)</td></tr>
+<tr><td>Beds</td><td>Wrinkle-free, pillows fluffed upright</td></tr>
+<tr><td>Drains</td><td>All checked &mdash; no standing water</td></tr>
+<tr><td>AC/heat</td><td>Off or 72&deg;F after cleaning</td></tr>
+<tr><td>TV remotes</td><td>ON or NEXT TO the TV</td></tr>
+<tr><td>QR code</td><td>Visible in welcome area</td></tr>
+<tr><td>Sponge</td><td>Replace only if worn/stained. Exception: Flora Farm = fresh every turnover.</td></tr>
+</tbody></table>
+</div>
+
+<div class="card">
+<div class="card-t">Property Walkthroughs</div>
+<p style="font-size:14px;color:#444;margin-bottom:14px">Weekly walkthroughs catch problems before guests do. Be thorough, be efficient, fix what you can on the spot.</p>
+
+<div class="acc"><div class="acc-h" onclick="ta(this)"><h3>What to Look For</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><ul class="tl">
+<li><strong>Point out EVERYTHING</strong> &mdash; burned-out lightbulb, scuff on wall, wobbly chair, slow drain, dusty fan blade</li>
+<li>Take photos of anything that needs attention &mdash; send to Kyle or log in Notion</li>
+<li>Check beds, bathrooms, kitchen, outdoor areas, parking signage</li>
+<li>Check supplies &mdash; low on TP, towels, coffee, cleaning products?</li>
+<li>Check AC/heat &mdash; working? Set correctly?</li>
+<li>Check door codes &mdash; do they work?</li>
+<li>Check for guest left-behinds from previous stays</li>
+</ul></div></div></div>
+
+<div class="acc"><div class="acc-h" onclick="ta(this)"><h3>Fix It If You Can</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><ul class="tl">
+<li>Quick fix? Just do it &mdash; tighten a screw, replace a lightbulb, straighten a picture, wipe a surface</li>
+<li>Don't spend 30 minutes on something &mdash; if more than a few minutes, log it and move on</li>
+<li>Anything that needs a vendor &mdash; note it, tell Kyle, he'll dispatch</li>
+</ul><div class="tip warn"><strong>Real example:</strong> Kyle noticed a loose screw at Coral House during a walkthrough, said "I'll do it later," forgot, and had to make a separate 45-minute trip for a 30-second fix. Having it written down and doing it while you're there saves hours.</div></div></div></div>
+
+<div class="acc"><div class="acc-h" onclick="ta(this)"><h3>Be Efficient with Visits</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><ul class="tl">
+<li>Batch by location &mdash; 9 Avila units are within a block, do them together</li>
+<li>Casitas Estate + Flora Farm are both in Arroyo Grande &mdash; same trip</li>
+<li>Monterey Heights (SLO) is standalone &mdash; combine with errands in town</li>
+<li>5-10 min for a studio, 10-15 for larger properties</li>
+<li>High-turnover days (weekends), prioritize units with guests arriving that day</li>
+</ul></div></div></div>
+
+<div class="tip good"><strong>Always have Notion open during walkthroughs.</strong> The property page has the amenity list, open tasks, and details you won't memorize. You don't have to check every item, but scan it as a reference &mdash; it'll catch things your brain misses (like a missing bath mat).</div>
+</div>
+
+<div class="card">
+<div class="card-t">Group Chat Rules</div>
+<div class="acc"><div class="acc-h" onclick="ta(this)"><h3>Cleaning Crew GC</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><p style="font-size:13px;color:#444;margin-bottom:8px"><strong>Who:</strong> Judith, Ulises, Kyle, you</p><p style="font-size:13px;color:#444;margin-bottom:8px"><strong>What goes here:</strong> Walkthrough videos, "[Unit] &mdash; cleaned" texts, issues found, restock needs, left-behinds. 10:45 AM brief posts automatically.</p><div class="tip warn"><strong>Do NOT send feedback in this chat.</strong> Crew gets overwhelmed. All corrections go through Feedback GC.</div></div></div></div>
+<div class="acc"><div class="acc-h" onclick="ta(this)"><h3>Feedback GC</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><p style="font-size:13px;color:#444"><strong>Who:</strong> Kyle, Ulises, you. All corrections, feedback, follow-ups about cleaning quality go here. Ulises relays to crew in his daily report.</p></div></div></div>
+</div>
+
+<div class="card">
+<div class="card-t">Cleaning Rates</div>
+<table class="rt">
+<thead><tr><th>Property</th><th>We Pay</th><th>Guest Pays</th><th>Margin</th></tr></thead>
+<tbody>
+<tr><td>Bungalows (Deck/Azul/Ember/Nest/Palm/Pine)</td><td>$65</td><td>$90</td><td>$25</td></tr>
+<tr><td>Coral / Shoreline</td><td>$90</td><td>$110</td><td>$20</td></tr>
+<tr><td>La Casita</td><td>$150</td><td>$180</td><td>$30</td></tr>
+<tr><td>Hummingbird</td><td>$150</td><td>$170</td><td>$20</td></tr>
+<tr><td>Monterey Heights</td><td>$75</td><td>$120</td><td>$45</td></tr>
+<tr><td>Flora Farm</td><td>$150</td><td>$175</td><td>$25</td></tr>
+<tr><td>Casitas Estate</td><td>$400</td><td>$600</td><td>$200</td></tr>
+</tbody>
+</table>
+<div class="tip info"><strong>Cleaning margins:</strong> In Phase 3, a share of these margins becomes part of your compensation on top of the $1,500 base.</div>
+</div>
+
+<div class="card">
+<div class="card-t">Restocking</div>
+<p style="font-size:14px;color:#444;margin-bottom:12px">Kyle currently handles Costco runs and supply coordination. Your plan:</p>
+<ul class="tl">
+<li><strong>August:</strong> Observe a grocery haul / restock run with Kyle. Learn what each property uses.</li>
+<li><strong>September 1:</strong> Start handling restocking yourself (company credit card for purchases).</li>
+<li><strong>For now:</strong> Pay attention during walkthroughs. Note what's low. Don't stress exact counts yet.</li>
+</ul>
+<div class="tip info">Common restock items: coffee pods, trash bags, paper towels, toilet paper, dish soap, shampoo/conditioner. Notion Restock DB tracks 148 items across 5 groups.</div>
+</div>
+
+<div class="card">
+<div class="card-t">Maintenance &mdash; Two Types</div>
+<div class="acc"><div class="acc-h" onclick="ta(this)"><h3>Non-Urgent: Batch for Handyman</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><p style="font-size:13px;color:#444;margin-bottom:10px">Cosmetic, annoying but livable. Doesn't block the stay.</p><ul class="tl">
+<li>Log it in Notion Tasks (property, issue, who reported, photos)</li>
+<li>Compile into a list for the handyman's next visit</li>
+<li>"Hey Zach, when you come by next week, I have a list of 8 things at the compound. Do as many as you can."</li>
+<li>Examples: fire pit pilot button, loose cable on deck, scuff on wall, light bulb</li>
+</ul><div class="tip warn">Don't call a handyman out for one loose screw at $100/hr. Batch it. He'll take 30 seconds when he's already there for other stuff.</div></div></div></div>
+
+<div class="acc"><div class="acc-h" onclick="ta(this)"><h3>Urgent: Call Vendor NOW</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><p style="font-size:13px;color:#444;margin-bottom:10px">Blocks the stay or is a safety hazard. Needs same-day fix.</p><ul class="tl">
+<li>No hot water, broken toilet, active leak, safety issue, broken lock, pest emergency</li>
+<li>Call the vendor directly (see Contacts tab). Give them Kyle's email to invoice.</li>
+<li>Text Kyle with: property, issue, severity, what you did</li>
+<li>If guest-reported mid-stay: "That's not right, let me get this sorted." Don't promise a timeline.</li>
+</ul></div></div></div>
+</div>
+
+<div class="card">
+<div class="card-t">Verifying Cleaner Invoices</div>
+<p style="font-size:13px;color:#444">When Ulises sends a cleaning invoice, cross-reference the clean count against Hostaway checkout data for that period. If invoice says 8 cleans at Hummingbird in June, verify Hostaway shows 8 checkouts. Flag discrepancies to Kyle before paying.</p>
+</div>
+
+<div class="card">
+<div class="card-t">Parking</div>
+<ul class="tl">
+<li>Guests arriving early can park in any empty spot &mdash; check the calendar to see which units are vacant</li>
+<li><strong>Cleaners always have parking priority</strong> &mdash; never let a guest park where the cleaner needs to be</li>
+<li>If a guest is parking early, text the group chat so cleaners know that spot might be taken</li>
+<li>Kyle usually parks at Bungalow 1 or the main house if empty</li>
+</ul>
+</div>
+</div>
+
+<!-- ======================= GUEST MESSAGING ======================= -->
+<div class="tab" id="t-guests">
+
+<div class="card">
+<div class="card-t">How It Works</div>
+<p style="font-size:14px;color:#444;margin-bottom:12px">All guest messages from Airbnb, Vrbo, and direct bookings flow into Hostaway. You respond from Hostaway and it syncs back to the guest's platform. You don't need to log into Airbnb or Vrbo to respond.</p>
+<div class="tip good"><strong>The whole point of this role:</strong> Kyle wants to get texted by ONE person (you) instead of 30 guests every weekend. You handle guest communication. You're never bothering Kyle &mdash; especially these first few months, reach out whenever you need to. But the goal is that you're the filter between guests and Kyle.</div>
+</div>
+
+<div class="card">
+<div class="card-t">How to Talk to Guests</div>
+<p style="font-size:14px;color:#444;margin-bottom:14px">Just be yourself. You're texting someone who's staying at a place you take care of. Keep it short, keep it real, keep it warm. Don't overthink it.</p>
+
+<div class="acc"><div class="acc-h" onclick="ta(this)"><h3>The General Vibe</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><ul class="tl">
+<li>Be you &mdash; friendly, helpful, to the point</li>
+<li>Short messages. 2-3 sentences is plenty. Nobody wants a novel.</li>
+<li>Read what they actually said and respond to that specific thing</li>
+<li>If they're excited, be warm. If they're frustrated, be honest and direct.</li>
+<li>Don't start with "Dear" or "Hello" &mdash; just talk</li>
+<li>Don't end with a signature or sign-off &mdash; just stop when you're done</li>
+<li>Don't say "we apologize for the inconvenience" or anything that sounds like a corporate email</li>
+<li>Use contractions always (you're, it's, don't, we're)</li>
+<li>"totally," "definitely," "for sure" are fine</li>
+</ul></div></div></div>
+
+<div class="acc"><div class="acc-h" onclick="ta(this)"><h3>The 80% Rule</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><p style="font-size:13px;color:#444;margin-bottom:10px"><strong>If you're 80% confident in the answer, send it.</strong> An 80% right answer in 10 minutes is better than a perfect answer in 4 hours. If you don't know, use Claude to help draft a response. If you're truly stuck, text Kyle.</p>
+<p style="font-size:13px;color:#444">"Hey, let us know if you're still having problems, but try this." &mdash; That covers most troubleshooting situations. You don't need to know every detail about every unit.</p></div></div></div>
+</div>
+
+<div class="card">
+<div class="card-t">What You Handle vs. Kyle</div>
+<div class="acc"><div class="acc-h" onclick="ta(this)"><h3>You Handle</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><ul class="tl">
+<li>WiFi questions (give password, point to guidebook)</li>
+<li>Parking instructions</li>
+<li>Amenity questions (coffee maker, AC, beds, kitchen)</li>
+<li>Checkout instructions</li>
+<li>Restaurant/activity recommendations ("Check out the guidebook!")</li>
+<li>Early check-in coordination (see decision tree below)</li>
+<li>Late checkout (generally no &mdash; see decision tree below)</li>
+<li>Extra towels/supplies coordination</li>
+<li>Door code delivery &mdash; point Airbnb guests to app, Vrbo/Direct already have it</li>
+<li>Lock troubleshooting (check Schlage app, remote unlock, direct to lockbox)</li>
+<li>Simple tech issues (use Claude to draft a troubleshooting response)</li>
+</ul></div></div></div>
+<div class="acc"><div class="acc-h" onclick="ta(this)"><h3>Kyle Handles</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><ul class="tl">
+<li>Pricing, refunds, discounts, compensation &mdash; never discuss money</li>
+<li>Cancellation requests</li>
+<li>Pest/bug reports &mdash; escalate immediately, never downplay</li>
+<li>Mattress/bedding complaints (all units have Novaform 14" ComfortGrande)</li>
+<li>Damage reports and claims</li>
+<li>Legal threats or emergencies</li>
+<li>Unhappy/emotional guests (after your initial acknowledgment)</li>
+<li>Occupancy violations</li>
+<li>Event requests (Casitas)</li>
+<li>Owner communication</li>
+<li>Rate/listing changes</li>
+<li>Negative review responses (sub-4-star)</li>
+<li>WiFi resets (he does it remotely via Google Home)</li>
+</ul></div></div></div>
+</div>
+
+<div class="card">
+<div class="card-t">Messages You Skip (No Reply Needed)</div>
+<ul class="tl">
+<li>Thank-yous under 60 characters ("Thanks!", "Great, thank you!")</li>
+<li>"We're on our way" / "omw" / "en route"</li>
+<li>"Figured it out" / "nevermind"</li>
+<li>Emoji-only messages</li>
+<li>System/automated platform messages</li>
+</ul>
+<div class="tip info"><strong>Inbox hygiene:</strong> Click the eyeball icon on a message to mark it back as unread. Use it like email &mdash; if it's not important right now, mark unread and come back later. Clear out random thank-yous so your inbox stays clean.</div>
+</div>
+
+<div class="card">
+<div class="card-t">Early Check-In &mdash; Decision Tree</div>
+<div class="dtree"><span class="q">Guest asks "can we check in early?"</span>
+  |
+  +-- <span class="q">DAYS BEFORE arrival?</span>
+  |   +-- <span class="act">"Totally! Shoot us a message morning-of and we'll</span>
+  |      <span class="act">let you know as soon as the place is ready."</span>
+  |      <span class="yes">Never promise. Never give a time.</span>
+  |
+  +-- <span class="q">MORNING OF -- is there a same-day turnover?</span>
+  |   +-- <span class="yes">YES</span> --> <span class="act">"We have a checkout this morning so we need</span>
+  |   |        <span class="act">time to clean. Plan on [3/4 PM] but we'll let</span>
+  |   |        <span class="act">you know if it's ready earlier!"</span>
+  |   |        <span class="yes">Don't promise. Don't stress. 70% of the time</span>
+  |   |        <span class="yes">you won't even text them -- they just show up at</span>
+  |   |        <span class="yes">check-in time and it's done.</span>
+  |   |
+  |   +-- <span class="no">NO turnover (unit is clean)</span>
+  |              <span class="act">"For sure! Place is all ready --</span>
+  |              <span class="act">feel free anytime after 1 PM!"</span>
+  |              <span class="yes">Never earlier than 1 PM.</span>
+  |
+  +-- <span class="q">CLEANING JUST FINISHED?</span>
+     +-- <span class="act">"Good news -- [property] is all set!</span>
+        <span class="act">Head over whenever."</span>
+
+<span class="q">PLATFORM-SPECIFIC:</span>
+  +-- <span class="yes">Airbnb</span> --> Change check-in time in Airbnb app
+  |        (Airbnb controls the door code timing)
+  +-- <span class="no">Vrbo/Direct</span> --> Just message "unit's ready for you"
+           (door code already works, no date restrictions)</div>
+<div class="tip crit"><strong>Never invent a time.</strong> Don't say "ready in 30 minutes" unless the Hostaway task is marked complete. A false promise once sent a guest to a dirty unit.</div>
+</div>
+
+<div class="card">
+<div class="card-t">Late Checkout</div>
+<p style="font-size:14px;color:#444;margin-bottom:12px"><strong>Generally no.</strong> But use your best judgment.</p>
+<ul class="tl">
+<li><strong>Default answer:</strong> "Checkout is at 11 AM &mdash; we need the time to get the place ready. You're welcome to leave bags and enjoy the area though!"</li>
+<li><strong>Exception (rare):</strong> Random Tuesday, awesome guest, no same-day booking coming in, they want noon? Maybe. Kyle's done this maybe 10 times ever.</li>
+<li><strong>Never approve if:</strong> There's a same-day turnover, it's a weekend, or it could bite you with a last-second booking and only 2 hours to clean.</li>
+<li><strong>Casitas Estate:</strong> Offers $100/hour late checkout &mdash; Kyle approves.</li>
+<li>Never mention the guest's length of stay.</li>
+<li>Never say "I'll check" (implies it might be possible when it usually isn't).</li>
+</ul>
+</div>
+
+<div class="card">
+<div class="card-t">Door Codes &mdash; Quick Reference</div>
+<table class="rt">
+<thead><tr><th>Channel</th><th>How Codes Work</th><th>Early Check-In Action</th></tr></thead>
+<tbody>
+<tr><td style="color:#FF5A5F;font-weight:600">Airbnb</td><td>Airbnb auto-creates codes on Schlage locks with guest name and dates. You verify in Schlage app. Guest finds code in Airbnb app. Morning check-in message says "find your door code in the Airbnb app."</td><td>Change check-in time in Airbnb app. Code activates at new time.</td></tr>
+<tr><td style="color:#3B5998;font-weight:600">Vrbo</td><td>Uses the direct code (always active, no date restriction). Code is in the automated Hostaway check-in message.</td><td>Just message "unit's ready for you." Code already works.</td></tr>
+<tr><td style="font-weight:600">Direct</td><td>Same as Vrbo &mdash; direct code, always active. Code in Hostaway message.</td><td>Just message "unit's ready for you." Code already works.</td></tr>
+</tbody>
+</table>
+<div class="tip info"><strong>Bulk code updates:</strong> Kyle changes direct/Vrbo codes every 1-3 weeks for security. He updates both Hostaway (listing settings > additional info > policies) and the Schlage app at the same time. 80% of bookings are Airbnb anyway, so the direct code might only be used twice in that window.</div>
+</div>
+
+<div class="card">
+<div class="card-t">Pricing Questions</div>
+<p style="font-size:13px;color:#444;margin-bottom:10px"><strong>We don't offer discounts.</strong> Especially in summer &mdash; it'll get booked at full price.</p>
+<ul class="tl">
+<li>"Can you lower the price?" &mdash; "Sorry, that's our best rate."</li>
+<li>Sometimes Kyle will push guests to book direct for a better rate, but you can't send links in Airbnb messages (they monitor).</li>
+<li>Later in the year when you're more comfortable, you'll use judgment on slow-season flexibility. For now, full price.</li>
+</ul>
+</div>
+
+<div class="card">
+<div class="card-t">Scenario Playbook</div>
+
+<div class="scenario"><div class="scenario-q">"Where's the WiFi?" / "What's the WiFi password?"</div><div class="scenario-a">Give the network + password from the Properties tab. Or: "It's in your guidebook! The QR code in the unit has everything." If they say it's slow: "It can be a bit slower on busy weekends &mdash; we'll reset the router on our end. Give it a couple minutes." Then text Kyle to reset via Google Home app.</div></div>
+
+<div class="scenario"><div class="scenario-q">"Where should we eat?" / restaurant recommendations</div><div class="scenario-a">"Check out the guidebook &mdash; it has a full list of our local picks! Firestone is great for lunch in SLO. The Avila Beach Farmers Market is Friday." The guidebook has partner deals and curated recommendations.</div></div>
+
+<div class="scenario"><div class="scenario-q">"Is there a stove?" (Monterey Heights)</div><div class="scenario-a">"There's a kitchenette with a mini fridge, microwave, and full dishware/utensils, but no stove or oven (city regulations on the building). Great restaurants within walking distance though!"</div></div>
+
+<div class="scenario"><div class="scenario-q">"Do you have AC?" (La Casita / Shoreline)</div><div class="scenario-a">"No AC in this one, but honestly the evenings cool down nicely. There are ceiling fans and good cross-ventilation. Most guests are totally comfortable!"</div></div>
+
+<div class="scenario"><div class="scenario-q">"Can we bring our dog?"</div><div class="scenario-a"><strong>Palm or Pine House:</strong> "We do allow dogs! $50/dog fee, dogs can't be left alone, stay off furniture."<br><strong>Casitas Estate:</strong> Dogs OK with prior approval, $100/dog, max 2. Escalate to Kyle.<br><strong>Flora Farm:</strong> "No pets &mdash; it's a working farm."<br><strong>All others:</strong> "Not pet-friendly. We have Palm House and Pine House if you'd like me to check availability!"</div></div>
+
+<div class="scenario"><div class="scenario-q">"I can't find my door code" (Airbnb guest)</div><div class="scenario-a">Check the Airbnb app or Schlage app &mdash; the code is there with the guest's name. Send it to them directly. "Your code is [XXXX] &mdash; you can also find it in the Airbnb app under your trip details!"</div></div>
+
+<div class="scenario"><div class="scenario-q">"The shower drain is clogged" (Casa Azul especially)</div><div class="scenario-a">Known recurring issue. Mid-stay: "Sorry about that &mdash; we'll get someone over to clear it." Escalate to Kyle for same-day fix. After checkout: make sure cleaners clear the drain during turnover.</div></div>
+
+<div class="scenario"><div class="scenario-q">"We found bugs" / pest report</div><div class="scenario-a">Escalate to Kyle immediately. Never downplay. "Really sorry to hear that &mdash; let me get this handled right now." Kyle may call exterminator, offer compensation, or move the guest.</div></div>
+
+<div class="scenario"><div class="scenario-q">"The bed is uncomfortable"</div><div class="scenario-a">Escalate to Kyle. Sensitive &mdash; guest may be angling for a refund. All properties have the same mattress (Novaform 14" ComfortGrande).</div></div>
+
+<div class="scenario"><div class="scenario-q">"We want a refund" / "Can we get a discount?"</div><div class="scenario-a">Escalate to Kyle. Never discuss money. "Let me get Kyle involved &mdash; he'll take care of this for you."</div></div>
+
+<div class="scenario"><div class="scenario-q">Guest wants to extend their stay</div><div class="scenario-a">Check Hostaway calendar: is the property available? If yes, tell Kyle &mdash; he handles pricing and the modification. If booked: "We'd love to have you stay longer but we've got guests coming right after. I can check our other properties!"</div></div>
+
+<div class="scenario"><div class="scenario-q">Guest left something behind</div><div class="scenario-a">Ask cleaning crew. If found: "We found it! Happy to ship &mdash; just send us the address. Shipping would be on you." Cleaners should ALWAYS set aside found items, never throw out.</div></div>
+
+<div class="scenario"><div class="scenario-q">"How do I open these doors?" (Coral bifolds / La Casita sliding glass)</div><div class="scenario-a"><strong>Coral bifolds:</strong> "Unlock first, rotate handle to horizontal, open one panel at a time. To close, fold back one at a time, rotate handle down to lock."<br><strong>La Casita sliding glass:</strong> "Turn handle sideways to open, down to lock."</div></div>
+
+<div class="scenario"><div class="scenario-q">"How does the fire pit work?" (Emberlight)</div><div class="scenario-a">"Make sure the gas valve is open, then use a lighter &mdash; the pilot button is finicky." If it won't light: escalate to Kyle. Fire pit is the #1 reason guests book Emberlight.</div></div>
+
+<div class="scenario"><div class="scenario-q">Guest asks to call / wants a phone number</div><div class="scenario-a">"We're quickest through messaging &mdash; what can I help with?" Escalate to Kyle if they insist.</div></div>
+
+<div class="scenario"><div class="scenario-q">TV / tech issues</div><div class="scenario-a">You're not expected to know every detail. Screenshot their issue, use Claude to draft a troubleshooting response. "Hey, try restarting the TV &mdash; unplug it for 10 seconds. Let us know if you're still having problems!"</div></div>
+
+<div class="scenario"><div class="scenario-q">Neighbor complains about guest noise</div><div class="scenario-a">Escalate to Kyle immediately. He handles neighbor relations. At Casitas: noise policy = first warning, then termination without refund.</div></div>
+
+<div class="scenario"><div class="scenario-q">Cleaner finds something broken during turnover</div><div class="scenario-a">Log in Notion Tasks DB with: property, issue, last guest name + dates + channel (for damage liability). If it blocks the next guest: escalate to Kyle immediately. If cosmetic: log for next maintenance window.</div></div>
+
+<div class="scenario"><div class="scenario-q">Cleaner can't make it today</div><div class="scenario-a">Escalate to Kyle immediately. If there are same-day turnovers, this is a fire drill.</div></div>
+
+<div class="scenario"><div class="scenario-q">Guest is still there after 11:15 AM (same-day turnover)</div><div class="scenario-a">Text Kyle &mdash; he'll message the guest to nudge them out. Don't let cleaners wait around. Kyle handles this communication.</div></div>
+</div>
+
+<div class="card">
+<div class="card-t">Reviews</div>
+<ul class="tl">
+<li><strong>4-5 stars:</strong> Draft a response. Thank by name, acknowledge something specific they mentioned, invite back. 2-3 sentences, Kyle's voice. Send draft to Kyle for approval.</li>
+<li><strong>Under 4 stars:</strong> Escalate to Kyle immediately. He drafts all negative review responses.</li>
+<li><strong>If review mentions a fixable issue:</strong> Log it as maintenance in Notion.</li>
+</ul>
+</div>
+</div>
+
+<!-- ======================= EMERGENCY ======================= -->
+<div class="tab" id="t-emergency">
+
+<div class="card">
+<div class="card-t">Emergency Procedures</div>
+<div class="tip crit"><strong>Life-threatening:</strong> Call 911 first. Then text Kyle immediately.</div>
+
+<div class="acc"><div class="acc-h" onclick="ta(this)"><h3>Guest Lockout</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><ol class="steps">
+<li><strong>Open the Schlage app and unlock the door remotely.</strong> Get them in the unit first &mdash; that's the priority, whether it's 2 AM or 2 PM.</li>
+<li>Check the code &mdash; is it active? Is it the right lock? Did it sync? Try resending it.</li>
+<li>If smart lock won't work: direct them to the emergency lockbox (beam by front door, code 0000 for compound properties).</li>
+<li>If lockbox fails too, text Kyle. He may need to go on-site or coordinate.</li>
+<li>On-site visit = $50/hr call-out rate for you.</li>
+</ol></div></div></div>
+
+<div class="acc"><div class="acc-h" onclick="ta(this)"><h3>Maintenance Emergency</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><ol class="steps">
+<li>Gas smell: tell guest to leave immediately, call gas company.</li>
+<li>No hot water / broken toilet / active leak / safety hazard: call the vendor directly (see Contacts). Give them Kyle's email to invoice.</li>
+<li>Text Kyle with: property, issue, severity, what you did.</li>
+<li>To guest: "That's not right, let me get this sorted." Never promise a timeline.</li>
+<li>On-site visit = $50/hr call-out rate.</li>
+</ol></div></div></div>
+
+<div class="acc"><div class="acc-h" onclick="ta(this)"><h3>Angry / Upset Guest</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><ol class="steps">
+<li>Don't engage on refunds or compensation &mdash; escalate.</li>
+<li>Acknowledge honestly: "That's not right, let me get this sorted."</li>
+<li>Text Kyle: guest name, property, what they're upset about.</li>
+<li>Kyle handles all resolution decisions.</li>
+</ol></div></div></div>
+</div>
+
+<div class="card">
+<div class="card-t">Emergency Contacts</div>
+<table class="rt">
+<thead><tr><th>Who</th><th>Number</th></tr></thead>
+<tbody>
+<tr><td style="font-weight:700">Emergency</td><td class="mono">911</td></tr>
+<tr><td style="font-weight:700">Kyle (business)</td><td class="mono">(805) 242-6411</td></tr>
+<tr><td style="font-weight:700">Kyle (cell/text)</td><td class="mono">(805) 801-6429</td></tr>
+<tr><td style="font-weight:700">SLO Police (non-emerg)</td><td class="mono">(805) 781-7312</td></tr>
+<tr><td style="font-weight:700">French Hospital</td><td>1911 Johnson Ave, SLO</td></tr>
+</tbody></table>
+</div>
+</div>
+
+<div class="footer">Solmare Stays &middot; Hannah's Playbook &middot; August 2026<br>Combines Operations Playbook + Hannah's Onboarding + Jul 29 meeting notes<br>Questions? Text Kyle: (805) 801-6429</div>
+</div>
+
+<div class="pbar">
+<span>Need help?</span>
+<a href="tel:8058016429">Kyle: (805) 801-6429</a>
+<a href="tel:8056319084">Ulises: (805) 631-9084</a>
+</div>
+
+<script>
+document.querySelectorAll('.nav button').forEach(t=>{t.addEventListener('click',()=>{document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('on'));document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));t.classList.add('on');document.getElementById('t-'+t.dataset.t).classList.add('on');window.scrollTo({top:0,behavior:'smooth'})})});
+function ta(h){h.closest('.acc').classList.toggle('open')}
+function tp(h){h.closest('.pc').classList.toggle('open')}
+document.getElementById('sb').addEventListener('input',function(){const q=this.value.toLowerCase().trim();if(!q){document.querySelectorAll('[class]').forEach(e=>{if(e.style)e.style.display=''});document.querySelectorAll('.pc').forEach(c=>c.classList.remove('open'));return}
+// Search across all tabs - show matching tab
+const tabs=document.querySelectorAll('.tab');let found=false;tabs.forEach(tab=>{const text=tab.textContent.toLowerCase();if(text.includes(q)&&!found){document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('on'));tabs.forEach(x=>x.classList.remove('on'));const id=tab.id.replace('t-','');document.querySelector('[data-t="'+id+'"]').classList.add('on');tab.classList.add('on');found=true}});
+// Open matching property cards
+document.querySelectorAll('.pc').forEach(c=>{const s=(c.dataset.s||'').toLowerCase();const t=c.textContent.toLowerCase();if(s.includes(q)||t.includes(q)){c.classList.add('open')}else{c.classList.remove('open')}});
+// Open matching accordions
+document.querySelectorAll('.acc').forEach(a=>{const t=a.textContent.toLowerCase();if(t.includes(q)){a.classList.add('open')}});
+// Open matching scenarios
+document.querySelectorAll('.scenario').forEach(s=>{const t=s.textContent.toLowerCase();s.style.display=t.includes(q)?'':'none'})})
+</script>
+</body>
+</html>
