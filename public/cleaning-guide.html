@@ -56,7 +56,8 @@ h1,h2,h3 { font-family:'Cormorant Garamond',serif; }
 .card-count { font-size:11px; color:var(--text-mid); }
 
 /* PROPERTY PAGE */
-.property-page { max-width:600px; margin:0 auto; padding-bottom:40px; }
+.property-page { max-width:600px; margin:0 auto; padding-bottom:40px; transition:opacity .15s ease; display:none; }
+.home-screen { transition:opacity .15s ease; }
 .back-bar { position:sticky; top:0; z-index:100; background:var(--slate); color:#fff; display:flex; align-items:center; padding:10px 12px; gap:8px; }
 .back-btn { background:none; border:none; color:#fff; font-size:15px; font-weight:600; cursor:pointer; padding:4px 8px; }
 .back-title { flex:1; font-size:14px; font-weight:600; text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
@@ -91,10 +92,13 @@ h1,h2,h3 { font-family:'Cormorant Garamond',serif; }
 
 /* ROOM CARDS */
 .room-card { margin:12px 16px; background:#fff; border:1px solid var(--border); border-radius:10px; overflow:hidden; }
-.room-header { display:flex; justify-content:space-between; align-items:center; padding:12px 14px; cursor:pointer; user-select:none; }
+.room-header { display:flex; justify-content:space-between; align-items:center; padding:12px 14px; cursor:pointer; user-select:none; gap:8px; }
+.room-chevron { font-size:12px; color:var(--text-light); transition:transform .3s ease; flex-shrink:0; }
+.room-header.expanded .room-chevron { transform:rotate(90deg); }
 .room-name { font-family:'Cormorant Garamond',serif; font-size:17px; font-weight:600; color:var(--slate); }
 .room-progress { font-size:12px; font-weight:600; color:var(--text-light); background:var(--cream); padding:2px 8px; border-radius:10px; }
-.room-body { padding:0; }
+.room-body { padding:0; overflow:hidden; max-height:0; transition:max-height .35s ease; }
+.room-body.open { max-height:3000px; transition:max-height .5s ease-in; }
 .room-photo { width:100%; height:auto; max-height:300px; object-fit:contain; background:#f0ede8; display:block; border-bottom:1px solid var(--border); }
 
 /* CHECK ITEMS */
@@ -276,7 +280,7 @@ html { scroll-behavior: smooth; }
 </div>
 
 <!-- PROPERTY PAGES -->
-<div class="property-page" id="prop-hummingbird" style="display:none">
+<div class="property-page" id="prop-hummingbird">
 <div class="back-bar">
 <button class="back-btn" onclick="showHome()">&larr; <span data-en="Back" data-es="Volver">Back</span></button>
 <span class="back-title">Hummingbird House</span>
@@ -306,10 +310,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('hummingbird',0)">
-<span class="room-name" data-en="Kitchen & Dining" data-es="Cocina y Comedor">Kitchen & Dining</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Kitchen & Dining" data-es="Cocina y Comedor">Kitchen & Dining</span>
 <span class="room-progress" id="rprog-hummingbird-0">0/10</span>
 </div>
-<div class="room-body" id="rbody-hummingbird-0" style="display:none">
+<div class="room-body" id="rbody-hummingbird-0">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-391355-Kv5UO92oNg4-7YtS---0Dfg-FDYXXqz8KVgmfut06Xeg-69d99d89ba16c" alt="Kitchen & Dining" loading="lazy">
 <div class="check-item" data-room="0" onclick="toggleCheck('hummingbird',this)">
 <span class="check-box"></span>
@@ -355,10 +359,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('hummingbird',1)">
-<span class="room-name" data-en="Primary Suite Bath" data-es="Bano de Suite Principal">Primary Suite Bath</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Primary Suite Bath" data-es="Bano de Suite Principal">Primary Suite Bath</span>
 <span class="room-progress" id="rprog-hummingbird-1">0/7</span>
 </div>
-<div class="room-body" id="rbody-hummingbird-1" style="display:none">
+<div class="room-body" id="rbody-hummingbird-1">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-391355-d1EWNPyIvQmyUhCmwarEXXVlI8dXKX6LVrNGCqWVO5A-69d99d811e9f5" alt="Primary Suite Bath" loading="lazy">
 <div class="check-item critical" data-room="1" onclick="toggleCheck('hummingbird',this)">
 <span class="check-box"></span>
@@ -395,10 +399,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('hummingbird',2)">
-<span class="room-name" data-en="Guest Suite Bath" data-es="Bano de Suite de Invitados">Guest Suite Bath</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Guest Suite Bath" data-es="Bano de Suite de Invitados">Guest Suite Bath</span>
 <span class="room-progress" id="rprog-hummingbird-2">0/7</span>
 </div>
-<div class="room-body" id="rbody-hummingbird-2" style="display:none">
+<div class="room-body" id="rbody-hummingbird-2">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-391355-Qvemr8n7QGb0ViAdKp5HbqrLD38RfG9YVlmfh4H7a-g-69d99d77d3398" alt="Guest Suite Bath" loading="lazy">
 <div class="check-item critical" data-room="2" onclick="toggleCheck('hummingbird',this)">
 <span class="check-box"></span>
@@ -435,10 +439,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('hummingbird',3)">
-<span class="room-name" data-en="Primary Suite — King" data-es="Suite Principal — King">Primary Suite — King</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Primary Suite — King" data-es="Suite Principal — King">Primary Suite — King</span>
 <span class="room-progress" id="rprog-hummingbird-3">0/5</span>
 </div>
-<div class="room-body" id="rbody-hummingbird-3" style="display:none">
+<div class="room-body" id="rbody-hummingbird-3">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-391355-CWTTWo6kTC9v24wQ8NB1Bt6wmGW6oka0CUrhBj3FH0I-69d99d84b6b33" alt="Primary Suite — King" loading="lazy">
 <div class="check-item critical" data-room="3" onclick="toggleCheck('hummingbird',this)">
 <span class="check-box"></span>
@@ -465,10 +469,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('hummingbird',4)">
-<span class="room-name" data-en="Guest Suite — Queen" data-es="Suite de Invitados — Queen">Guest Suite — Queen</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Guest Suite — Queen" data-es="Suite de Invitados — Queen">Guest Suite — Queen</span>
 <span class="room-progress" id="rprog-hummingbird-4">0/5</span>
 </div>
-<div class="room-body" id="rbody-hummingbird-4" style="display:none">
+<div class="room-body" id="rbody-hummingbird-4">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-391355-jp3N3kWUNHo3EWxc2ENT3ub59AndE7LJ6bfwi6UZjwM-69d99d82298fa" alt="Guest Suite — Queen" loading="lazy">
 <div class="check-item critical" data-room="4" onclick="toggleCheck('hummingbird',this)">
 <span class="check-box"></span>
@@ -495,10 +499,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('hummingbird',5)">
-<span class="room-name" data-en="Living Room" data-es="Sala">Living Room</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Living Room" data-es="Sala">Living Room</span>
 <span class="room-progress" id="rprog-hummingbird-5">0/6</span>
 </div>
-<div class="room-body" id="rbody-hummingbird-5" style="display:none">
+<div class="room-body" id="rbody-hummingbird-5">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-391355-V9by7R3Mefl7k8wwETtFaZSnqOpTbcOim-BYOvZIRR8-69d99d8863042" alt="Living Room" loading="lazy">
 <div class="check-item" data-room="5" onclick="toggleCheck('hummingbird',this)">
 <span class="check-box"></span>
@@ -528,10 +532,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('hummingbird',6)">
-<span class="room-name" data-en="Rooftop Terrace" data-es="Terraza en la Azotea">Rooftop Terrace</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Rooftop Terrace" data-es="Terraza en la Azotea">Rooftop Terrace</span>
 <span class="room-progress" id="rprog-hummingbird-6">0/4</span>
 </div>
-<div class="room-body" id="rbody-hummingbird-6" style="display:none">
+<div class="room-body" id="rbody-hummingbird-6">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-391355-xq4Bz4E3-wNL8tuoqKyAQnvz8ZP4sll-QscACQoVQzI-69d99d85ba6a8" alt="Rooftop Terrace" loading="lazy">
 <div class="check-item" data-room="6" onclick="toggleCheck('hummingbird',this)">
 <span class="check-box"></span>
@@ -553,10 +557,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('hummingbird',7)">
-<span class="room-name" data-en="Outdoor & Beach Gear" data-es="Exterior y Equipo de Playa">Outdoor & Beach Gear</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Outdoor & Beach Gear" data-es="Exterior y Equipo de Playa">Outdoor & Beach Gear</span>
 <span class="room-progress" id="rprog-hummingbird-7">0/4</span>
 </div>
-<div class="room-body" id="rbody-hummingbird-7" style="display:none">
+<div class="room-body" id="rbody-hummingbird-7">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-391355-RfRUld8R95xsfobsY3w4Xx6Bfw-XSwLPbgC9XzCr4xg-69d99d78b5bac" alt="Outdoor & Beach Gear" loading="lazy">
 <div class="check-item" data-room="7" onclick="toggleCheck('hummingbird',this)">
 <span class="check-box"></span>
@@ -578,10 +582,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('hummingbird',8)">
-<span class="room-name" data-en="Amenities & Supplies" data-es="Amenidades y Suministros">Amenities & Supplies</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Amenities & Supplies" data-es="Amenidades y Suministros">Amenities & Supplies</span>
 <span class="room-progress" id="rprog-hummingbird-8">0/9</span>
 </div>
-<div class="room-body" id="rbody-hummingbird-8" style="display:none">
+<div class="room-body" id="rbody-hummingbird-8">
 <div class="check-item" data-room="8" onclick="toggleCheck('hummingbird',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Filtered water pitcher — rinse and refill with fresh water" data-es="Jarra de agua filtrada — enjuagar y rellenar con agua fresca">Filtered water pitcher — rinse and refill with fresh water</span>
@@ -622,10 +626,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card final-card">
 <div class="room-header final-header" onclick="toggleRoom('hummingbird',9)">
-<span class="room-name" data-en="Final Walkthrough" data-es="Recorrido Final">Final Walkthrough</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Final Walkthrough" data-es="Recorrido Final">Final Walkthrough</span>
 <span class="room-progress" id="rprog-hummingbird-9">0/6</span>
 </div>
-<div class="room-body" id="rbody-hummingbird-9" style="display:none">
+<div class="room-body" id="rbody-hummingbird-9">
 <div class="check-item" data-room="9" onclick="toggleCheck('hummingbird',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Walk every room — look AND smell guest-ready" data-es="Recorrer cada cuarto — que se vea Y huela listo">Walk every room — look AND smell guest-ready</span>
@@ -659,7 +663,7 @@ html { scroll-behavior: smooth; }
 <p data-en="Questions? Message Hannah in the cleaning crew group chat." data-es="Preguntas? Mensaje a Hannah en el grupo.">Questions? Message Hannah in the cleaning crew group chat.</p>
 <p class="footer-brand">Solmare Stays &mdash; Hummingbird House</p>
 </div>
-</div><div class="property-page" id="prop-lacasita" style="display:none">
+</div><div class="property-page" id="prop-lacasita">
 <div class="back-bar">
 <button class="back-btn" onclick="showHome()">&larr; <span data-en="Back" data-es="Volver">Back</span></button>
 <span class="back-title">La Casita</span>
@@ -688,10 +692,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('lacasita',0)">
-<span class="room-name" data-en="Kitchen & Dining" data-es="Cocina y Comedor">Kitchen & Dining</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Kitchen & Dining" data-es="Cocina y Comedor">Kitchen & Dining</span>
 <span class="room-progress" id="rprog-lacasita-0">0/10</span>
 </div>
-<div class="room-body" id="rbody-lacasita-0" style="display:none">
+<div class="room-body" id="rbody-lacasita-0">
 <div class="check-item" data-room="0" onclick="toggleCheck('lacasita',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Clean French-door fridge — remove all guest food, wipe shelves" data-es="Limpiar refrigerador — sacar toda la comida, limpiar estantes">Clean French-door fridge — remove all guest food, wipe shelves</span>
@@ -736,10 +740,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('lacasita',1)">
-<span class="room-name" data-en="Primary Bathroom" data-es="Bano Principal">Primary Bathroom</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Primary Bathroom" data-es="Bano Principal">Primary Bathroom</span>
 <span class="room-progress" id="rprog-lacasita-1">0/7</span>
 </div>
-<div class="room-body" id="rbody-lacasita-1" style="display:none">
+<div class="room-body" id="rbody-lacasita-1">
 <div class="check-item critical" data-room="1" onclick="toggleCheck('lacasita',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Clean shower drain — remove ALL hair" data-es="Limpiar drenaje — quitar TODO el cabello">Clean shower drain — remove ALL hair</span>
@@ -775,10 +779,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('lacasita',2)">
-<span class="room-name" data-en="Powder Room" data-es="Medio Bano">Powder Room</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Powder Room" data-es="Medio Bano">Powder Room</span>
 <span class="room-progress" id="rprog-lacasita-2">0/4</span>
 </div>
-<div class="room-body" id="rbody-lacasita-2" style="display:none">
+<div class="room-body" id="rbody-lacasita-2">
 <div class="check-item" data-room="2" onclick="toggleCheck('lacasita',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Scrub toilet, sink, mirror" data-es="Tallar inodoro, lavabo, espejo">Scrub toilet, sink, mirror</span>
@@ -800,10 +804,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('lacasita',3)">
-<span class="room-name" data-en="Primary Bedroom — King" data-es="Recamara Principal — King">Primary Bedroom — King</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Primary Bedroom — King" data-es="Recamara Principal — King">Primary Bedroom — King</span>
 <span class="room-progress" id="rprog-lacasita-3">0/5</span>
 </div>
-<div class="room-body" id="rbody-lacasita-3" style="display:none">
+<div class="room-body" id="rbody-lacasita-3">
 <div class="check-item critical" data-room="3" onclick="toggleCheck('lacasita',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Bed WRINKLE-FREE — hospital corners, smooth duvet" data-es="Cama SIN ARRUGAS — esquinas de hospital, edredon liso">Bed WRINKLE-FREE — hospital corners, smooth duvet</span>
@@ -829,10 +833,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('lacasita',4)">
-<span class="room-name" data-en="Guest Bedroom — Queen" data-es="Recamara de Invitados — Queen">Guest Bedroom — Queen</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Guest Bedroom — Queen" data-es="Recamara de Invitados — Queen">Guest Bedroom — Queen</span>
 <span class="room-progress" id="rprog-lacasita-4">0/5</span>
 </div>
-<div class="room-body" id="rbody-lacasita-4" style="display:none">
+<div class="room-body" id="rbody-lacasita-4">
 <div class="check-item critical" data-room="4" onclick="toggleCheck('lacasita',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Bed WRINKLE-FREE — hospital corners, smooth duvet" data-es="Cama SIN ARRUGAS — esquinas de hospital, edredon liso">Bed WRINKLE-FREE — hospital corners, smooth duvet</span>
@@ -858,10 +862,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('lacasita',5)">
-<span class="room-name" data-en="Living Room" data-es="Sala">Living Room</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Living Room" data-es="Sala">Living Room</span>
 <span class="room-progress" id="rprog-lacasita-5">0/6</span>
 </div>
-<div class="room-body" id="rbody-lacasita-5" style="display:none">
+<div class="room-body" id="rbody-lacasita-5">
 <div class="check-item" data-room="5" onclick="toggleCheck('lacasita',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Fluff cushions, fold throws" data-es="Esponjar cojines, doblar mantas">Fluff cushions, fold throws</span>
@@ -890,10 +894,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('lacasita',6)">
-<span class="room-name" data-en="Outdoor & Beach Gear" data-es="Exterior y Equipo de Playa">Outdoor & Beach Gear</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Outdoor & Beach Gear" data-es="Exterior y Equipo de Playa">Outdoor & Beach Gear</span>
 <span class="room-progress" id="rprog-lacasita-6">0/4</span>
 </div>
-<div class="room-body" id="rbody-lacasita-6" style="display:none">
+<div class="room-body" id="rbody-lacasita-6">
 <div class="check-item" data-room="6" onclick="toggleCheck('lacasita',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Beach gear in hallway closet — verify organized" data-es="Equipo de playa en closet — verificar organizado">Beach gear in hallway closet — verify organized</span>
@@ -914,10 +918,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('lacasita',7)">
-<span class="room-name" data-en="Amenities & Supplies" data-es="Amenidades y Suministros">Amenities & Supplies</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Amenities & Supplies" data-es="Amenidades y Suministros">Amenities & Supplies</span>
 <span class="room-progress" id="rprog-lacasita-7">0/9</span>
 </div>
-<div class="room-body" id="rbody-lacasita-7" style="display:none">
+<div class="room-body" id="rbody-lacasita-7">
 <div class="check-item" data-room="7" onclick="toggleCheck('lacasita',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Filtered water pitcher refilled restocked (filtered water pitcher)" data-es="Jarra de agua filtrada rellenada">Filtered water pitcher refilled restocked (filtered water pitcher)</span>
@@ -958,10 +962,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card final-card">
 <div class="room-header final-header" onclick="toggleRoom('lacasita',8)">
-<span class="room-name" data-en="Final Walkthrough" data-es="Recorrido Final">Final Walkthrough</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Final Walkthrough" data-es="Recorrido Final">Final Walkthrough</span>
 <span class="room-progress" id="rprog-lacasita-8">0/5</span>
 </div>
-<div class="room-body" id="rbody-lacasita-8" style="display:none">
+<div class="room-body" id="rbody-lacasita-8">
 <div class="check-item" data-room="8" onclick="toggleCheck('lacasita',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Walk every room — look AND smell guest-ready" data-es="Recorrer cada cuarto — que se vea Y huela listo">Walk every room — look AND smell guest-ready</span>
@@ -991,7 +995,7 @@ html { scroll-behavior: smooth; }
 <p data-en="Questions? Message Hannah in the cleaning crew group chat." data-es="Preguntas? Mensaje a Hannah en el grupo.">Questions? Message Hannah in the cleaning crew group chat.</p>
 <p class="footer-brand">Solmare Stays &mdash; La Casita</p>
 </div>
-</div><div class="property-page" id="prop-shoreline" style="display:none">
+</div><div class="property-page" id="prop-shoreline">
 <div class="back-bar">
 <button class="back-btn" onclick="showHome()">&larr; <span data-en="Back" data-es="Volver">Back</span></button>
 <span class="back-title">Shoreline Suite</span>
@@ -1020,10 +1024,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('shoreline',0)">
-<span class="room-name" data-en="Kitchen & Dining" data-es="Cocina y Comedor">Kitchen & Dining</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Kitchen & Dining" data-es="Cocina y Comedor">Kitchen & Dining</span>
 <span class="room-progress" id="rprog-shoreline-0">0/8</span>
 </div>
-<div class="room-body" id="rbody-shoreline-0" style="display:none">
+<div class="room-body" id="rbody-shoreline-0">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-335978-u3-5cswr4oX1YokFq61vN2TpX8uDXMQAlDsWYwB--9Js-69d996971ad34" alt="Kitchen & Dining" loading="lazy">
 <div class="check-item" data-room="0" onclick="toggleCheck('shoreline',this)">
 <span class="check-box"></span>
@@ -1061,10 +1065,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('shoreline',1)">
-<span class="room-name" data-en="Bathroom" data-es="Bano">Bathroom</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Bathroom" data-es="Bano">Bathroom</span>
 <span class="room-progress" id="rprog-shoreline-1">0/7</span>
 </div>
-<div class="room-body" id="rbody-shoreline-1" style="display:none">
+<div class="room-body" id="rbody-shoreline-1">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-335978-dEUeyt4FV4UkiVDCp65kjd7vOiUtCrHSnUFhVbZeCUg-69d9969187452" alt="Bathroom" loading="lazy">
 <div class="check-item critical" data-room="1" onclick="toggleCheck('shoreline',this)">
 <span class="check-box"></span>
@@ -1101,10 +1105,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('shoreline',2)">
-<span class="room-name" data-en="Bedroom — King" data-es="Recamara — King">Bedroom — King</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Bedroom — King" data-es="Recamara — King">Bedroom — King</span>
 <span class="room-progress" id="rprog-shoreline-2">0/5</span>
 </div>
-<div class="room-body" id="rbody-shoreline-2" style="display:none">
+<div class="room-body" id="rbody-shoreline-2">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-335978-muIwZ8sAzaNohrpM-W8m5--EtqMoXs1ctyUe0ubaeZuM-69d99694685a4" alt="Bedroom — King" loading="lazy">
 <div class="check-item critical" data-room="2" onclick="toggleCheck('shoreline',this)">
 <span class="check-box"></span>
@@ -1131,10 +1135,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('shoreline',3)">
-<span class="room-name" data-en="Living Room" data-es="Sala">Living Room</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Living Room" data-es="Sala">Living Room</span>
 <span class="room-progress" id="rprog-shoreline-3">0/6</span>
 </div>
-<div class="room-body" id="rbody-shoreline-3" style="display:none">
+<div class="room-body" id="rbody-shoreline-3">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-335978-OwV0ybobejkJ0bSFrL3gLyvBCJ2F5pQpPxq3SNbCYvs-69d9969beadd0" alt="Living Room" loading="lazy">
 <div class="check-item" data-room="3" onclick="toggleCheck('shoreline',this)">
 <span class="check-box"></span>
@@ -1164,10 +1168,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('shoreline',4)">
-<span class="room-name" data-en="Amenities & Supplies" data-es="Amenidades y Suministros">Amenities & Supplies</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Amenities & Supplies" data-es="Amenidades y Suministros">Amenities & Supplies</span>
 <span class="room-progress" id="rprog-shoreline-4">0/7</span>
 </div>
-<div class="room-body" id="rbody-shoreline-4" style="display:none">
+<div class="room-body" id="rbody-shoreline-4">
 <div class="check-item" data-room="4" onclick="toggleCheck('shoreline',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Filtered water pitcher refilled restocked (filtered water pitcher)" data-es="Jarra de agua filtrada rellenada">Filtered water pitcher refilled restocked (filtered water pitcher)</span>
@@ -1200,10 +1204,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card final-card">
 <div class="room-header final-header" onclick="toggleRoom('shoreline',5)">
-<span class="room-name" data-en="Final Walkthrough" data-es="Recorrido Final">Final Walkthrough</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Final Walkthrough" data-es="Recorrido Final">Final Walkthrough</span>
 <span class="room-progress" id="rprog-shoreline-5">0/5</span>
 </div>
-<div class="room-body" id="rbody-shoreline-5" style="display:none">
+<div class="room-body" id="rbody-shoreline-5">
 <div class="check-item" data-room="5" onclick="toggleCheck('shoreline',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Walk every room — look AND smell guest-ready" data-es="Recorrer cada cuarto — que se vea Y huela listo">Walk every room — look AND smell guest-ready</span>
@@ -1233,7 +1237,7 @@ html { scroll-behavior: smooth; }
 <p data-en="Questions? Message Hannah in the cleaning crew group chat." data-es="Preguntas? Mensaje a Hannah en el grupo.">Questions? Message Hannah in the cleaning crew group chat.</p>
 <p class="footer-brand">Solmare Stays &mdash; Shoreline Suite</p>
 </div>
-</div><div class="property-page" id="prop-deckhouse" style="display:none">
+</div><div class="property-page" id="prop-deckhouse">
 <div class="back-bar">
 <button class="back-btn" onclick="showHome()">&larr; <span data-en="Back" data-es="Volver">Back</span></button>
 <span class="back-title">Deckhouse</span>
@@ -1262,10 +1266,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('deckhouse',0)">
-<span class="room-name" data-en="Studio — King Bed" data-es="Estudio — Cama King">Studio — King Bed</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Studio — King Bed" data-es="Estudio — Cama King">Studio — King Bed</span>
 <span class="room-progress" id="rprog-deckhouse-0">0/5</span>
 </div>
-<div class="room-body" id="rbody-deckhouse-0" style="display:none">
+<div class="room-body" id="rbody-deckhouse-0">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-335976-qfI2otCi1xuShuuo8H5txYug8P6qW5C7EY--YtA-pBwc-69d9968e0e4e2" alt="Studio — King Bed" loading="lazy">
 <div class="check-item critical" data-room="0" onclick="toggleCheck('deckhouse',this)">
 <span class="check-box"></span>
@@ -1292,10 +1296,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('deckhouse',1)">
-<span class="room-name" data-en="Kitchenette" data-es="Cocineta">Kitchenette</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Kitchenette" data-es="Cocineta">Kitchenette</span>
 <span class="room-progress" id="rprog-deckhouse-1">0/8</span>
 </div>
-<div class="room-body" id="rbody-deckhouse-1" style="display:none">
+<div class="room-body" id="rbody-deckhouse-1">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-335976-VVSIrG6imBWw5FIrxLDecKgfqamHI7dS6Spi68q4aQ4-69d996875c022" alt="Kitchenette" loading="lazy">
 <div class="check-item" data-room="1" onclick="toggleCheck('deckhouse',this)">
 <span class="check-box"></span>
@@ -1333,10 +1337,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('deckhouse',2)">
-<span class="room-name" data-en="Bathroom" data-es="Bano">Bathroom</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Bathroom" data-es="Bano">Bathroom</span>
 <span class="room-progress" id="rprog-deckhouse-2">0/7</span>
 </div>
-<div class="room-body" id="rbody-deckhouse-2" style="display:none">
+<div class="room-body" id="rbody-deckhouse-2">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-335976-bXimNQ60K38tR2prbm4LB7UBQkvWbmdPJEbhCAwI6nY-69d996856e91d" alt="Bathroom" loading="lazy">
 <div class="check-item critical" data-room="2" onclick="toggleCheck('deckhouse',this)">
 <span class="check-box"></span>
@@ -1373,10 +1377,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('deckhouse',3)">
-<span class="room-name" data-en="Living Area" data-es="Area de Estar">Living Area</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Living Area" data-es="Area de Estar">Living Area</span>
 <span class="room-progress" id="rprog-deckhouse-3">0/6</span>
 </div>
-<div class="room-body" id="rbody-deckhouse-3" style="display:none">
+<div class="room-body" id="rbody-deckhouse-3">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-335976-ralj5U8lxin1fg2oB9ngLzGWV1H0b8euEyjNKb-ytXc-69d9968c22345" alt="Living Area" loading="lazy">
 <div class="check-item" data-room="3" onclick="toggleCheck('deckhouse',this)">
 <span class="check-box"></span>
@@ -1406,10 +1410,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('deckhouse',4)">
-<span class="room-name" data-en="Outdoor Deck" data-es="Terraza Exterior">Outdoor Deck</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Outdoor Deck" data-es="Terraza Exterior">Outdoor Deck</span>
 <span class="room-progress" id="rprog-deckhouse-4">0/4</span>
 </div>
-<div class="room-body" id="rbody-deckhouse-4" style="display:none">
+<div class="room-body" id="rbody-deckhouse-4">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-335976-tv2vYc2UPbvHBbYK43VT3Oqc0Vp--1HY9XuiNBRo3c4M-69d99d74aa0e1" alt="Outdoor Deck" loading="lazy">
 <div class="check-item" data-room="4" onclick="toggleCheck('deckhouse',this)">
 <span class="check-box"></span>
@@ -1431,10 +1435,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('deckhouse',5)">
-<span class="room-name" data-en="Compound Shared Areas" data-es="Areas Compartidas del Complejo">Compound Shared Areas</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Compound Shared Areas" data-es="Areas Compartidas del Complejo">Compound Shared Areas</span>
 <span class="room-progress" id="rprog-deckhouse-5">0/4</span>
 </div>
-<div class="room-body" id="rbody-deckhouse-5" style="display:none">
+<div class="room-body" id="rbody-deckhouse-5">
 <div class="check-item" data-room="5" onclick="toggleCheck('deckhouse',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Fire pit area — verify clean and off" data-es="Area de fogata — verificar limpia y apagada">Fire pit area — verify clean and off</span>
@@ -1455,10 +1459,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('deckhouse',6)">
-<span class="room-name" data-en="Amenities & Supplies" data-es="Amenidades y Suministros">Amenities & Supplies</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Amenities & Supplies" data-es="Amenidades y Suministros">Amenities & Supplies</span>
 <span class="room-progress" id="rprog-deckhouse-6">0/7</span>
 </div>
-<div class="room-body" id="rbody-deckhouse-6" style="display:none">
+<div class="room-body" id="rbody-deckhouse-6">
 <div class="check-item" data-room="6" onclick="toggleCheck('deckhouse',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Filtered water pitcher refilled" data-es="Jarra de agua filtrada rellenada">Filtered water pitcher refilled</span>
@@ -1491,10 +1495,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card final-card">
 <div class="room-header final-header" onclick="toggleRoom('deckhouse',7)">
-<span class="room-name" data-en="Final Walkthrough" data-es="Recorrido Final">Final Walkthrough</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Final Walkthrough" data-es="Recorrido Final">Final Walkthrough</span>
 <span class="room-progress" id="rprog-deckhouse-7">0/6</span>
 </div>
-<div class="room-body" id="rbody-deckhouse-7" style="display:none">
+<div class="room-body" id="rbody-deckhouse-7">
 <div class="check-item" data-room="7" onclick="toggleCheck('deckhouse',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Walk every room — look AND smell guest-ready" data-es="Recorrer cada cuarto — que se vea Y huela listo">Walk every room — look AND smell guest-ready</span>
@@ -1528,7 +1532,7 @@ html { scroll-behavior: smooth; }
 <p data-en="Questions? Message Hannah in the cleaning crew group chat." data-es="Preguntas? Mensaje a Hannah en el grupo.">Questions? Message Hannah in the cleaning crew group chat.</p>
 <p class="footer-brand">Solmare Stays &mdash; Deckhouse</p>
 </div>
-</div><div class="property-page" id="prop-casaazul" style="display:none">
+</div><div class="property-page" id="prop-casaazul">
 <div class="back-bar">
 <button class="back-btn" onclick="showHome()">&larr; <span data-en="Back" data-es="Volver">Back</span></button>
 <span class="back-title">Casa Azul</span>
@@ -1554,10 +1558,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('casaazul',0)">
-<span class="room-name" data-en="Kitchenette" data-es="Cocineta">Kitchenette</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Kitchenette" data-es="Cocineta">Kitchenette</span>
 <span class="room-progress" id="rprog-casaazul-0">0/8</span>
 </div>
-<div class="room-body" id="rbody-casaazul-0" style="display:none">
+<div class="room-body" id="rbody-casaazul-0">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-335979-dkXYxnMBO1OsvfkgU7FQ16-iveXzZELMRAdkhXO1foU-69d9966a12e83" alt="Kitchenette" loading="lazy">
 <div class="check-item" data-room="0" onclick="toggleCheck('casaazul',this)">
 <span class="check-box"></span>
@@ -1595,10 +1599,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('casaazul',1)">
-<span class="room-name" data-en="Bathroom" data-es="Bano">Bathroom</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Bathroom" data-es="Bano">Bathroom</span>
 <span class="room-progress" id="rprog-casaazul-1">0/7</span>
 </div>
-<div class="room-body" id="rbody-casaazul-1" style="display:none">
+<div class="room-body" id="rbody-casaazul-1">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-335979-8UH4ZipQTbm-EARaD8jjzfCzFF3Kb2YzZBiNbUWs9pY-69d996720b4f4" alt="Bathroom" loading="lazy">
 <div class="check-item critical" data-room="1" onclick="toggleCheck('casaazul',this)">
 <span class="check-box"></span>
@@ -1635,10 +1639,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('casaazul',2)">
-<span class="room-name" data-en="Bedroom / Studio — King" data-es="Recamara / Estudio — King">Bedroom / Studio — King</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Bedroom / Studio — King" data-es="Recamara / Estudio — King">Bedroom / Studio — King</span>
 <span class="room-progress" id="rprog-casaazul-2">0/5</span>
 </div>
-<div class="room-body" id="rbody-casaazul-2" style="display:none">
+<div class="room-body" id="rbody-casaazul-2">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-335979-sbKrHh--AOJiH2wVtfFuy39WhaguQozgphsEUCXUelYc-69d99d7389f26" alt="Bedroom / Studio — King" loading="lazy">
 <div class="check-item critical" data-room="2" onclick="toggleCheck('casaazul',this)">
 <span class="check-box"></span>
@@ -1665,10 +1669,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('casaazul',3)">
-<span class="room-name" data-en="Living Area" data-es="Area de Estar">Living Area</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Living Area" data-es="Area de Estar">Living Area</span>
 <span class="room-progress" id="rprog-casaazul-3">0/5</span>
 </div>
-<div class="room-body" id="rbody-casaazul-3" style="display:none">
+<div class="room-body" id="rbody-casaazul-3">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-335979-Pe3MKd8le1dCCgBkIdRuSp9OjqIvH5BY-V2sbzY3P28-69d99d72ab65a" alt="Living Area" loading="lazy">
 <div class="check-item" data-room="3" onclick="toggleCheck('casaazul',this)">
 <span class="check-box"></span>
@@ -1694,10 +1698,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('casaazul',4)">
-<span class="room-name" data-en="Compound Shared Areas" data-es="Areas Compartidas del Complejo">Compound Shared Areas</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Compound Shared Areas" data-es="Areas Compartidas del Complejo">Compound Shared Areas</span>
 <span class="room-progress" id="rprog-casaazul-4">0/4</span>
 </div>
-<div class="room-body" id="rbody-casaazul-4" style="display:none">
+<div class="room-body" id="rbody-casaazul-4">
 <div class="check-item" data-room="4" onclick="toggleCheck('casaazul',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Fire pit area — verify clean and off" data-es="Fogata — verificar limpia y apagada">Fire pit area — verify clean and off</span>
@@ -1718,10 +1722,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('casaazul',5)">
-<span class="room-name" data-en="Amenities & Supplies" data-es="Amenidades y Suministros">Amenities & Supplies</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Amenities & Supplies" data-es="Amenidades y Suministros">Amenities & Supplies</span>
 <span class="room-progress" id="rprog-casaazul-5">0/7</span>
 </div>
-<div class="room-body" id="rbody-casaazul-5" style="display:none">
+<div class="room-body" id="rbody-casaazul-5">
 <div class="check-item" data-room="5" onclick="toggleCheck('casaazul',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Filtered water pitcher refilled" data-es="Jarra de agua filtrada rellenada">Filtered water pitcher refilled</span>
@@ -1754,10 +1758,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card final-card">
 <div class="room-header final-header" onclick="toggleRoom('casaazul',6)">
-<span class="room-name" data-en="Final Walkthrough" data-es="Recorrido Final">Final Walkthrough</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Final Walkthrough" data-es="Recorrido Final">Final Walkthrough</span>
 <span class="room-progress" id="rprog-casaazul-6">0/5</span>
 </div>
-<div class="room-body" id="rbody-casaazul-6" style="display:none">
+<div class="room-body" id="rbody-casaazul-6">
 <div class="check-item" data-room="6" onclick="toggleCheck('casaazul',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Walk every room — look AND smell guest-ready" data-es="Recorrer — que se vea Y huela listo">Walk every room — look AND smell guest-ready</span>
@@ -1787,7 +1791,7 @@ html { scroll-behavior: smooth; }
 <p data-en="Questions? Message Hannah in the cleaning crew group chat." data-es="Preguntas? Mensaje a Hannah en el grupo.">Questions? Message Hannah in the cleaning crew group chat.</p>
 <p class="footer-brand">Solmare Stays &mdash; Casa Azul</p>
 </div>
-</div><div class="property-page" id="prop-emberlight" style="display:none">
+</div><div class="property-page" id="prop-emberlight">
 <div class="back-bar">
 <button class="back-btn" onclick="showHome()">&larr; <span data-en="Back" data-es="Volver">Back</span></button>
 <span class="back-title">Emberlight</span>
@@ -1816,10 +1820,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('emberlight',0)">
-<span class="room-name" data-en="Kitchenette" data-es="Cocineta">Kitchenette</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Kitchenette" data-es="Cocineta">Kitchenette</span>
 <span class="room-progress" id="rprog-emberlight-0">0/8</span>
 </div>
-<div class="room-body" id="rbody-emberlight-0" style="display:none">
+<div class="room-body" id="rbody-emberlight-0">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-335975-o055nHQaajxNn9uJsqiFEPA2JFNaBk6uTA0MFX5ZrGc-69d996ba360ba" alt="Kitchenette" loading="lazy">
 <div class="check-item" data-room="0" onclick="toggleCheck('emberlight',this)">
 <span class="check-box"></span>
@@ -1857,10 +1861,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('emberlight',1)">
-<span class="room-name" data-en="Bathroom" data-es="Bano">Bathroom</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Bathroom" data-es="Bano">Bathroom</span>
 <span class="room-progress" id="rprog-emberlight-1">0/7</span>
 </div>
-<div class="room-body" id="rbody-emberlight-1" style="display:none">
+<div class="room-body" id="rbody-emberlight-1">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-335975-uHGyFAEvnExYU4HiL5VcWixnLji7bTOZ-HprYvDCsDw-69d996ad7156e" alt="Bathroom" loading="lazy">
 <div class="check-item critical" data-room="1" onclick="toggleCheck('emberlight',this)">
 <span class="check-box"></span>
@@ -1897,10 +1901,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('emberlight',2)">
-<span class="room-name" data-en="Bedroom / Studio — Queen" data-es="Recamara / Estudio — Queen">Bedroom / Studio — Queen</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Bedroom / Studio — Queen" data-es="Recamara / Estudio — Queen">Bedroom / Studio — Queen</span>
 <span class="room-progress" id="rprog-emberlight-2">0/5</span>
 </div>
-<div class="room-body" id="rbody-emberlight-2" style="display:none">
+<div class="room-body" id="rbody-emberlight-2">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-335975-1wDL--zP7-AMwhTJt8PN-aGm1IZ0gMeJpgNfex0yXJQQ-69d996bd84d8c" alt="Bedroom / Studio — Queen" loading="lazy">
 <div class="check-item critical" data-room="2" onclick="toggleCheck('emberlight',this)">
 <span class="check-box"></span>
@@ -1927,10 +1931,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('emberlight',3)">
-<span class="room-name" data-en="Living Area" data-es="Area de Estar">Living Area</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Living Area" data-es="Area de Estar">Living Area</span>
 <span class="room-progress" id="rprog-emberlight-3">0/5</span>
 </div>
-<div class="room-body" id="rbody-emberlight-3" style="display:none">
+<div class="room-body" id="rbody-emberlight-3">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-335975-VLcEUUFJUxsAa-qDchrwuGTyshKLBCYDOcPgU2XX2VU-69d996b847c2e" alt="Living Area" loading="lazy">
 <div class="check-item" data-room="3" onclick="toggleCheck('emberlight',this)">
 <span class="check-box"></span>
@@ -1956,10 +1960,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('emberlight',4)">
-<span class="room-name" data-en="Compound Shared Areas" data-es="Areas Compartidas del Complejo">Compound Shared Areas</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Compound Shared Areas" data-es="Areas Compartidas del Complejo">Compound Shared Areas</span>
 <span class="room-progress" id="rprog-emberlight-4">0/4</span>
 </div>
-<div class="room-body" id="rbody-emberlight-4" style="display:none">
+<div class="room-body" id="rbody-emberlight-4">
 <div class="check-item" data-room="4" onclick="toggleCheck('emberlight',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="PRIVATE fire pit + patio — sweep, clear ash, organize furniture" data-es="Fogata PRIVADA + patio — barrer, limpiar ceniza, organizar muebles">PRIVATE fire pit + patio — sweep, clear ash, organize furniture</span>
@@ -1980,10 +1984,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('emberlight',5)">
-<span class="room-name" data-en="Amenities & Supplies" data-es="Amenidades y Suministros">Amenities & Supplies</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Amenities & Supplies" data-es="Amenidades y Suministros">Amenities & Supplies</span>
 <span class="room-progress" id="rprog-emberlight-5">0/7</span>
 </div>
-<div class="room-body" id="rbody-emberlight-5" style="display:none">
+<div class="room-body" id="rbody-emberlight-5">
 <div class="check-item" data-room="5" onclick="toggleCheck('emberlight',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Filtered water pitcher refilled" data-es="Jarra de agua filtrada rellenada">Filtered water pitcher refilled</span>
@@ -2016,10 +2020,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card final-card">
 <div class="room-header final-header" onclick="toggleRoom('emberlight',6)">
-<span class="room-name" data-en="Final Walkthrough" data-es="Recorrido Final">Final Walkthrough</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Final Walkthrough" data-es="Recorrido Final">Final Walkthrough</span>
 <span class="room-progress" id="rprog-emberlight-6">0/5</span>
 </div>
-<div class="room-body" id="rbody-emberlight-6" style="display:none">
+<div class="room-body" id="rbody-emberlight-6">
 <div class="check-item" data-room="6" onclick="toggleCheck('emberlight',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Walk every room — look AND smell guest-ready" data-es="Recorrer — que se vea Y huela listo">Walk every room — look AND smell guest-ready</span>
@@ -2049,7 +2053,7 @@ html { scroll-behavior: smooth; }
 <p data-en="Questions? Message Hannah in the cleaning crew group chat." data-es="Preguntas? Mensaje a Hannah en el grupo.">Questions? Message Hannah in the cleaning crew group chat.</p>
 <p class="footer-brand">Solmare Stays &mdash; Emberlight</p>
 </div>
-</div><div class="property-page" id="prop-nest" style="display:none">
+</div><div class="property-page" id="prop-nest">
 <div class="back-bar">
 <button class="back-btn" onclick="showHome()">&larr; <span data-en="Back" data-es="Volver">Back</span></button>
 <span class="back-title">The Nest</span>
@@ -2077,10 +2081,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('nest',0)">
-<span class="room-name" data-en="Kitchenette" data-es="Cocineta">Kitchenette</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Kitchenette" data-es="Cocineta">Kitchenette</span>
 <span class="room-progress" id="rprog-nest-0">0/8</span>
 </div>
-<div class="room-body" id="rbody-nest-0" style="display:none">
+<div class="room-body" id="rbody-nest-0">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-335977-aSYg-E4EXLUnbWTRfFNUJintSa1axnv4g0s3NTZxB0o-69d996a457e52" alt="Kitchenette" loading="lazy">
 <div class="check-item" data-room="0" onclick="toggleCheck('nest',this)">
 <span class="check-box"></span>
@@ -2118,10 +2122,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('nest',1)">
-<span class="room-name" data-en="Bathroom" data-es="Bano">Bathroom</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Bathroom" data-es="Bano">Bathroom</span>
 <span class="room-progress" id="rprog-nest-1">0/7</span>
 </div>
-<div class="room-body" id="rbody-nest-1" style="display:none">
+<div class="room-body" id="rbody-nest-1">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-335977-eDuu8flVE1giXZvZVUNEDWu8ekFW2uYME-txGNV73gM-69d996a26ad86" alt="Bathroom" loading="lazy">
 <div class="check-item critical" data-room="1" onclick="toggleCheck('nest',this)">
 <span class="check-box"></span>
@@ -2158,10 +2162,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('nest',2)">
-<span class="room-name" data-en="Bedroom / Studio — King" data-es="Recamara / Estudio — King">Bedroom / Studio — King</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Bedroom / Studio — King" data-es="Recamara / Estudio — King">Bedroom / Studio — King</span>
 <span class="room-progress" id="rprog-nest-2">0/5</span>
 </div>
-<div class="room-body" id="rbody-nest-2" style="display:none">
+<div class="room-body" id="rbody-nest-2">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-335977-BEt--VQ6EHvNiGWsIAlwrqBh2ha--YbnxYmLzMvyBZmyU-69d996a707968" alt="Bedroom / Studio — King" loading="lazy">
 <div class="check-item critical" data-room="2" onclick="toggleCheck('nest',this)">
 <span class="check-box"></span>
@@ -2188,10 +2192,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('nest',3)">
-<span class="room-name" data-en="Living Area" data-es="Area de Estar">Living Area</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Living Area" data-es="Area de Estar">Living Area</span>
 <span class="room-progress" id="rprog-nest-3">0/6</span>
 </div>
-<div class="room-body" id="rbody-nest-3" style="display:none">
+<div class="room-body" id="rbody-nest-3">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-335977-5EPZ5UsQhiOEL-A2FXu8y3jR--v3d2LRDuJHGVVaXFLk-69d9969ea3be4" alt="Living Area" loading="lazy">
 <div class="check-item" data-room="3" onclick="toggleCheck('nest',this)">
 <span class="check-box"></span>
@@ -2221,10 +2225,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('nest',4)">
-<span class="room-name" data-en="Compound Shared Areas" data-es="Areas Compartidas del Complejo">Compound Shared Areas</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Compound Shared Areas" data-es="Areas Compartidas del Complejo">Compound Shared Areas</span>
 <span class="room-progress" id="rprog-nest-4">0/4</span>
 </div>
-<div class="room-body" id="rbody-nest-4" style="display:none">
+<div class="room-body" id="rbody-nest-4">
 <div class="check-item" data-room="4" onclick="toggleCheck('nest',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Fire pit area — verify clean and off" data-es="Fogata — verificar limpia y apagada">Fire pit area — verify clean and off</span>
@@ -2245,10 +2249,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('nest',5)">
-<span class="room-name" data-en="Amenities & Supplies" data-es="Amenidades y Suministros">Amenities & Supplies</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Amenities & Supplies" data-es="Amenidades y Suministros">Amenities & Supplies</span>
 <span class="room-progress" id="rprog-nest-5">0/7</span>
 </div>
-<div class="room-body" id="rbody-nest-5" style="display:none">
+<div class="room-body" id="rbody-nest-5">
 <div class="check-item" data-room="5" onclick="toggleCheck('nest',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Filtered water pitcher refilled" data-es="Jarra de agua filtrada rellenada">Filtered water pitcher refilled</span>
@@ -2281,10 +2285,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card final-card">
 <div class="room-header final-header" onclick="toggleRoom('nest',6)">
-<span class="room-name" data-en="Final Walkthrough" data-es="Recorrido Final">Final Walkthrough</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Final Walkthrough" data-es="Recorrido Final">Final Walkthrough</span>
 <span class="room-progress" id="rprog-nest-6">0/6</span>
 </div>
-<div class="room-body" id="rbody-nest-6" style="display:none">
+<div class="room-body" id="rbody-nest-6">
 <div class="check-item" data-room="6" onclick="toggleCheck('nest',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Walk every room — look AND smell guest-ready" data-es="Recorrer — que se vea Y huela listo">Walk every room — look AND smell guest-ready</span>
@@ -2318,7 +2322,7 @@ html { scroll-behavior: smooth; }
 <p data-en="Questions? Message Hannah in the cleaning crew group chat." data-es="Preguntas? Mensaje a Hannah en el grupo.">Questions? Message Hannah in the cleaning crew group chat.</p>
 <p class="footer-brand">Solmare Stays &mdash; The Nest</p>
 </div>
-</div><div class="property-page" id="prop-palmhouse" style="display:none">
+</div><div class="property-page" id="prop-palmhouse">
 <div class="back-bar">
 <button class="back-btn" onclick="showHome()">&larr; <span data-en="Back" data-es="Volver">Back</span></button>
 <span class="back-title">Palm House</span>
@@ -2345,10 +2349,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('palmhouse',0)">
-<span class="room-name" data-en="Kitchenette" data-es="Cocineta">Kitchenette</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Kitchenette" data-es="Cocineta">Kitchenette</span>
 <span class="room-progress" id="rprog-palmhouse-0">0/8</span>
 </div>
-<div class="room-body" id="rbody-palmhouse-0" style="display:none">
+<div class="room-body" id="rbody-palmhouse-0">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-429263-rF1eLDfKCardCSdkkRgjhRuz0wfhTc04Tb1pyGS2EnU-69d99d6e2c2fd" alt="Kitchenette" loading="lazy">
 <div class="check-item" data-room="0" onclick="toggleCheck('palmhouse',this)">
 <span class="check-box"></span>
@@ -2386,10 +2390,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('palmhouse',1)">
-<span class="room-name" data-en="Bathroom" data-es="Bano">Bathroom</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Bathroom" data-es="Bano">Bathroom</span>
 <span class="room-progress" id="rprog-palmhouse-1">0/7</span>
 </div>
-<div class="room-body" id="rbody-palmhouse-1" style="display:none">
+<div class="room-body" id="rbody-palmhouse-1">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-429263-aLki0--OPVHRh-oQ--9ph4cZmd561Kqq7L5v33CfGDuEM-69d99651b135d" alt="Bathroom" loading="lazy">
 <div class="check-item critical" data-room="1" onclick="toggleCheck('palmhouse',this)">
 <span class="check-box"></span>
@@ -2426,10 +2430,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('palmhouse',2)">
-<span class="room-name" data-en="Bedroom / Studio — King" data-es="Recamara / Estudio — King">Bedroom / Studio — King</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Bedroom / Studio — King" data-es="Recamara / Estudio — King">Bedroom / Studio — King</span>
 <span class="room-progress" id="rprog-palmhouse-2">0/6</span>
 </div>
-<div class="room-body" id="rbody-palmhouse-2" style="display:none">
+<div class="room-body" id="rbody-palmhouse-2">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-429263--8Q0sgqsjYvVu--ixaD69Jo-SeRwoandenFDdFpIK4m4-69d996577f739" alt="Bedroom / Studio — King" loading="lazy">
 <div class="check-item critical" data-room="2" onclick="toggleCheck('palmhouse',this)">
 <span class="check-box"></span>
@@ -2460,10 +2464,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('palmhouse',3)">
-<span class="room-name" data-en="Living Area" data-es="Area de Estar">Living Area</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Living Area" data-es="Area de Estar">Living Area</span>
 <span class="room-progress" id="rprog-palmhouse-3">0/6</span>
 </div>
-<div class="room-body" id="rbody-palmhouse-3" style="display:none">
+<div class="room-body" id="rbody-palmhouse-3">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-429263-mgt2PRApwcgNLUllBpbc9i--yHBMtAme-WnYsWDKCFig-69d99d6f2d283" alt="Living Area" loading="lazy">
 <div class="check-item" data-room="3" onclick="toggleCheck('palmhouse',this)">
 <span class="check-box"></span>
@@ -2493,10 +2497,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('palmhouse',4)">
-<span class="room-name" data-en="Compound Shared Areas" data-es="Areas Compartidas del Complejo">Compound Shared Areas</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Compound Shared Areas" data-es="Areas Compartidas del Complejo">Compound Shared Areas</span>
 <span class="room-progress" id="rprog-palmhouse-4">0/4</span>
 </div>
-<div class="room-body" id="rbody-palmhouse-4" style="display:none">
+<div class="room-body" id="rbody-palmhouse-4">
 <div class="check-item" data-room="4" onclick="toggleCheck('palmhouse',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Fire pit area — verify clean and off" data-es="Fogata — verificar limpia y apagada">Fire pit area — verify clean and off</span>
@@ -2517,10 +2521,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('palmhouse',5)">
-<span class="room-name" data-en="Amenities & Supplies" data-es="Amenidades y Suministros">Amenities & Supplies</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Amenities & Supplies" data-es="Amenidades y Suministros">Amenities & Supplies</span>
 <span class="room-progress" id="rprog-palmhouse-5">0/7</span>
 </div>
-<div class="room-body" id="rbody-palmhouse-5" style="display:none">
+<div class="room-body" id="rbody-palmhouse-5">
 <div class="check-item" data-room="5" onclick="toggleCheck('palmhouse',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Filtered water pitcher refilled" data-es="Jarra de agua filtrada rellenada">Filtered water pitcher refilled</span>
@@ -2553,10 +2557,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card final-card">
 <div class="room-header final-header" onclick="toggleRoom('palmhouse',6)">
-<span class="room-name" data-en="Final Walkthrough" data-es="Recorrido Final">Final Walkthrough</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Final Walkthrough" data-es="Recorrido Final">Final Walkthrough</span>
 <span class="room-progress" id="rprog-palmhouse-6">0/6</span>
 </div>
-<div class="room-body" id="rbody-palmhouse-6" style="display:none">
+<div class="room-body" id="rbody-palmhouse-6">
 <div class="check-item" data-room="6" onclick="toggleCheck('palmhouse',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Walk every room — look AND smell guest-ready (no pet odor)" data-es="Recorrer — que se vea Y huela listo (sin olor a mascota)">Walk every room — look AND smell guest-ready (no pet odor)</span>
@@ -2590,7 +2594,7 @@ html { scroll-behavior: smooth; }
 <p data-en="Questions? Message Hannah in the cleaning crew group chat." data-es="Preguntas? Mensaje a Hannah en el grupo.">Questions? Message Hannah in the cleaning crew group chat.</p>
 <p class="footer-brand">Solmare Stays &mdash; Palm House</p>
 </div>
-</div><div class="property-page" id="prop-pinehouse" style="display:none">
+</div><div class="property-page" id="prop-pinehouse">
 <div class="back-bar">
 <button class="back-btn" onclick="showHome()">&larr; <span data-en="Back" data-es="Volver">Back</span></button>
 <span class="back-title">Pine House</span>
@@ -2619,10 +2623,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('pinehouse',0)">
-<span class="room-name" data-en="Kitchenette" data-es="Cocineta">Kitchenette</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Kitchenette" data-es="Cocineta">Kitchenette</span>
 <span class="room-progress" id="rprog-pinehouse-0">0/8</span>
 </div>
-<div class="room-body" id="rbody-pinehouse-0" style="display:none">
+<div class="room-body" id="rbody-pinehouse-0">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-429264-QHM2NUw--f--K4w0gdIPtguuAaMxWkoal6VCjHNLfoioQ-69d9a49cbf35d" alt="Kitchenette" loading="lazy">
 <div class="check-item" data-room="0" onclick="toggleCheck('pinehouse',this)">
 <span class="check-box"></span>
@@ -2660,10 +2664,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('pinehouse',1)">
-<span class="room-name" data-en="Bathroom" data-es="Bano">Bathroom</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Bathroom" data-es="Bano">Bathroom</span>
 <span class="room-progress" id="rprog-pinehouse-1">0/8</span>
 </div>
-<div class="room-body" id="rbody-pinehouse-1" style="display:none">
+<div class="room-body" id="rbody-pinehouse-1">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-429264-OlFyPEjnQZ--O--gpTJCDwCCZZV1szZ--rA5lvJv3l-OiA-69d996bb134d3" alt="Bathroom" loading="lazy">
 <div class="check-item critical" data-room="1" onclick="toggleCheck('pinehouse',this)">
 <span class="check-box"></span>
@@ -2704,10 +2708,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('pinehouse',2)">
-<span class="room-name" data-en="Bedroom / Studio — Queen" data-es="Recamara / Estudio — Queen">Bedroom / Studio — Queen</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Bedroom / Studio — Queen" data-es="Recamara / Estudio — Queen">Bedroom / Studio — Queen</span>
 <span class="room-progress" id="rprog-pinehouse-2">0/6</span>
 </div>
-<div class="room-body" id="rbody-pinehouse-2" style="display:none">
+<div class="room-body" id="rbody-pinehouse-2">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-429264-ppkSAzNFYMd-9HKXvKfwamvyETUq16MlVK9oq--VMqqg-69d99d7b70ca4" alt="Bedroom / Studio — Queen" loading="lazy">
 <div class="check-item critical" data-room="2" onclick="toggleCheck('pinehouse',this)">
 <span class="check-box"></span>
@@ -2738,10 +2742,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('pinehouse',3)">
-<span class="room-name" data-en="Living Area" data-es="Area de Estar">Living Area</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Living Area" data-es="Area de Estar">Living Area</span>
 <span class="room-progress" id="rprog-pinehouse-3">0/6</span>
 </div>
-<div class="room-body" id="rbody-pinehouse-3" style="display:none">
+<div class="room-body" id="rbody-pinehouse-3">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-429264-UjKr9l9BokpAQKmuIDfPBlLJHjn2VK32-iQUNSdvEIs-69d99d7e63a8f" alt="Living Area" loading="lazy">
 <div class="check-item" data-room="3" onclick="toggleCheck('pinehouse',this)">
 <span class="check-box"></span>
@@ -2771,10 +2775,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('pinehouse',4)">
-<span class="room-name" data-en="Compound Shared Areas" data-es="Areas Compartidas del Complejo">Compound Shared Areas</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Compound Shared Areas" data-es="Areas Compartidas del Complejo">Compound Shared Areas</span>
 <span class="room-progress" id="rprog-pinehouse-4">0/5</span>
 </div>
-<div class="room-body" id="rbody-pinehouse-4" style="display:none">
+<div class="room-body" id="rbody-pinehouse-4">
 <div class="check-item" data-room="4" onclick="toggleCheck('pinehouse',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Fire pit area — verify clean and off" data-es="Fogata — verificar limpia y apagada">Fire pit area — verify clean and off</span>
@@ -2799,10 +2803,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('pinehouse',5)">
-<span class="room-name" data-en="Amenities & Supplies" data-es="Amenidades y Suministros">Amenities & Supplies</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Amenities & Supplies" data-es="Amenidades y Suministros">Amenities & Supplies</span>
 <span class="room-progress" id="rprog-pinehouse-5">0/7</span>
 </div>
-<div class="room-body" id="rbody-pinehouse-5" style="display:none">
+<div class="room-body" id="rbody-pinehouse-5">
 <div class="check-item" data-room="5" onclick="toggleCheck('pinehouse',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Filtered water pitcher refilled" data-es="Jarra de agua filtrada rellenada">Filtered water pitcher refilled</span>
@@ -2835,10 +2839,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card final-card">
 <div class="room-header final-header" onclick="toggleRoom('pinehouse',6)">
-<span class="room-name" data-en="Final Walkthrough" data-es="Recorrido Final">Final Walkthrough</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Final Walkthrough" data-es="Recorrido Final">Final Walkthrough</span>
 <span class="room-progress" id="rprog-pinehouse-6">0/7</span>
 </div>
-<div class="room-body" id="rbody-pinehouse-6" style="display:none">
+<div class="room-body" id="rbody-pinehouse-6">
 <div class="check-item" data-room="6" onclick="toggleCheck('pinehouse',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Walk every room — look AND smell guest-ready (no pet odor)" data-es="Recorrer — que se vea Y huela listo (sin olor a mascota)">Walk every room — look AND smell guest-ready (no pet odor)</span>
@@ -2876,7 +2880,7 @@ html { scroll-behavior: smooth; }
 <p data-en="Questions? Message Hannah in the cleaning crew group chat." data-es="Preguntas? Mensaje a Hannah en el grupo.">Questions? Message Hannah in the cleaning crew group chat.</p>
 <p class="footer-brand">Solmare Stays &mdash; Pine House</p>
 </div>
-</div><div class="property-page" id="prop-coralhouse" style="display:none">
+</div><div class="property-page" id="prop-coralhouse">
 <div class="back-bar">
 <button class="back-btn" onclick="showHome()">&larr; <span data-en="Back" data-es="Volver">Back</span></button>
 <span class="back-title">Coral House</span>
@@ -2903,10 +2907,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('coralhouse',0)">
-<span class="room-name" data-en="Kitchen & Dining" data-es="Cocina y Comedor">Kitchen & Dining</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Kitchen & Dining" data-es="Cocina y Comedor">Kitchen & Dining</span>
 <span class="room-progress" id="rprog-coralhouse-0">0/9</span>
 </div>
-<div class="room-body" id="rbody-coralhouse-0" style="display:none">
+<div class="room-body" id="rbody-coralhouse-0">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-434918-Ww16Ae77--YZyIjfc2g1sGTM3RNEI0SvE9bQzzn2KgPI-69d99d64c5fac" alt="Kitchen & Dining" loading="lazy">
 <div class="check-item" data-room="0" onclick="toggleCheck('coralhouse',this)">
 <span class="check-box"></span>
@@ -2949,10 +2953,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('coralhouse',1)">
-<span class="room-name" data-en="Bathroom" data-es="Bano">Bathroom</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Bathroom" data-es="Bano">Bathroom</span>
 <span class="room-progress" id="rprog-coralhouse-1">0/7</span>
 </div>
-<div class="room-body" id="rbody-coralhouse-1" style="display:none">
+<div class="room-body" id="rbody-coralhouse-1">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-434918-mGiT2kdQNbiUaGjVOe1OLw1R0J629AYkI6ZEW8HI6Cg-69d99637825eb" alt="Bathroom" loading="lazy">
 <div class="check-item critical" data-room="1" onclick="toggleCheck('coralhouse',this)">
 <span class="check-box"></span>
@@ -2989,10 +2993,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('coralhouse',2)">
-<span class="room-name" data-en="Bedroom — Cal King" data-es="Recamara — Cal King">Bedroom — Cal King</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Bedroom — Cal King" data-es="Recamara — Cal King">Bedroom — Cal King</span>
 <span class="room-progress" id="rprog-coralhouse-2">0/5</span>
 </div>
-<div class="room-body" id="rbody-coralhouse-2" style="display:none">
+<div class="room-body" id="rbody-coralhouse-2">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-434918-Wua-35Jg85ORLmMrms1XFxYVimPkd84oJlqCt--m5-q0-69d9963ee4293" alt="Bedroom — Cal King" loading="lazy">
 <div class="check-item critical" data-room="2" onclick="toggleCheck('coralhouse',this)">
 <span class="check-box"></span>
@@ -3019,10 +3023,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('coralhouse',3)">
-<span class="room-name" data-en="Living Room" data-es="Sala">Living Room</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Living Room" data-es="Sala">Living Room</span>
 <span class="room-progress" id="rprog-coralhouse-3">0/7</span>
 </div>
-<div class="room-body" id="rbody-coralhouse-3" style="display:none">
+<div class="room-body" id="rbody-coralhouse-3">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-434918-D6fRvp3N9tKQaAo--NSoNILJxApo--AgKPy4DG8Lt2OOY-69d99d6124c4b" alt="Living Room" loading="lazy">
 <div class="check-item" data-room="3" onclick="toggleCheck('coralhouse',this)">
 <span class="check-box"></span>
@@ -3056,10 +3060,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('coralhouse',4)">
-<span class="room-name" data-en="Outdoor — Balcony & Rooftop" data-es="Exterior — Balcon y Azotea">Outdoor — Balcony & Rooftop</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Outdoor — Balcony & Rooftop" data-es="Exterior — Balcon y Azotea">Outdoor — Balcony & Rooftop</span>
 <span class="room-progress" id="rprog-coralhouse-4">0/4</span>
 </div>
-<div class="room-body" id="rbody-coralhouse-4" style="display:none">
+<div class="room-body" id="rbody-coralhouse-4">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-434918-jOS0uwI2PQyDDZtPNngE6PCZqtlqxr--PvTmIgY3c4zs-69d9964109751" alt="Outdoor — Balcony & Rooftop" loading="lazy">
 <div class="check-item" data-room="4" onclick="toggleCheck('coralhouse',this)">
 <span class="check-box"></span>
@@ -3081,10 +3085,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('coralhouse',5)">
-<span class="room-name" data-en="Compound Shared Areas" data-es="Areas Compartidas del Complejo">Compound Shared Areas</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Compound Shared Areas" data-es="Areas Compartidas del Complejo">Compound Shared Areas</span>
 <span class="room-progress" id="rprog-coralhouse-5">0/4</span>
 </div>
-<div class="room-body" id="rbody-coralhouse-5" style="display:none">
+<div class="room-body" id="rbody-coralhouse-5">
 <div class="check-item" data-room="5" onclick="toggleCheck('coralhouse',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Fire pit area — verify clean and off" data-es="Fogata — verificar limpia y apagada">Fire pit area — verify clean and off</span>
@@ -3105,10 +3109,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('coralhouse',6)">
-<span class="room-name" data-en="Amenities & Supplies" data-es="Amenidades y Suministros">Amenities & Supplies</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Amenities & Supplies" data-es="Amenidades y Suministros">Amenities & Supplies</span>
 <span class="room-progress" id="rprog-coralhouse-6">0/9</span>
 </div>
-<div class="room-body" id="rbody-coralhouse-6" style="display:none">
+<div class="room-body" id="rbody-coralhouse-6">
 <div class="check-item" data-room="6" onclick="toggleCheck('coralhouse',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Filtered water pitcher refilled restocked (filtered water pitcher)" data-es="Jarra de agua filtrada rellenada">Filtered water pitcher refilled restocked (filtered water pitcher)</span>
@@ -3149,10 +3153,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card final-card">
 <div class="room-header final-header" onclick="toggleRoom('coralhouse',7)">
-<span class="room-name" data-en="Final Walkthrough" data-es="Recorrido Final">Final Walkthrough</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Final Walkthrough" data-es="Recorrido Final">Final Walkthrough</span>
 <span class="room-progress" id="rprog-coralhouse-7">0/6</span>
 </div>
-<div class="room-body" id="rbody-coralhouse-7" style="display:none">
+<div class="room-body" id="rbody-coralhouse-7">
 <div class="check-item" data-room="7" onclick="toggleCheck('coralhouse',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Walk every room — look AND smell guest-ready" data-es="Recorrer — que se vea Y huela listo">Walk every room — look AND smell guest-ready</span>
@@ -3186,7 +3190,7 @@ html { scroll-behavior: smooth; }
 <p data-en="Questions? Message Hannah in the cleaning crew group chat." data-es="Preguntas? Mensaje a Hannah en el grupo.">Questions? Message Hannah in the cleaning crew group chat.</p>
 <p class="footer-brand">Solmare Stays &mdash; Coral House</p>
 </div>
-</div><div class="property-page" id="prop-casitas" style="display:none">
+</div><div class="property-page" id="prop-casitas">
 <div class="back-bar">
 <button class="back-btn" onclick="showHome()">&larr; <span data-en="Back" data-es="Volver">Back</span></button>
 <span class="back-title">Casitas Estate</span>
@@ -3218,10 +3222,10 @@ html { scroll-behavior: smooth; }
 <!-- ===== ROOM 0: Main House Kitchen & Dining ===== -->
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('casitas',0)">
-<span class="room-name" data-en="Main House Kitchen & Dining" data-es="Cocina y Comedor Casa Principal">Main House Kitchen & Dining</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Main House Kitchen & Dining" data-es="Cocina y Comedor Casa Principal">Main House Kitchen & Dining</span>
 <span class="room-progress" id="rprog-casitas-0">0/10</span>
 </div>
-<div class="room-body" id="rbody-casitas-0" style="display:none">
+<div class="room-body" id="rbody-casitas-0">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-504852-qlo02jbIn3DWfBawtWDJ5Prz2XBWCBTfYgGGveR10Zo-69d5da6acde25" alt="Main House Kitchen" loading="lazy">
 <div class="check-item" data-room="0" onclick="toggleCheck('casitas',this)">
 <span class="check-box"></span>
@@ -3269,10 +3273,10 @@ html { scroll-behavior: smooth; }
 <!-- ===== ROOM 1: Main House Living Room ===== -->
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('casitas',1)">
-<span class="room-name" data-en="Main House Living Room" data-es="Sala Casa Principal">Main House Living Room</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Main House Living Room" data-es="Sala Casa Principal">Main House Living Room</span>
 <span class="room-progress" id="rprog-casitas-1">0/6</span>
 </div>
-<div class="room-body" id="rbody-casitas-1" style="display:none">
+<div class="room-body" id="rbody-casitas-1">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-504852-XiKppZM0vnVG8tWT88SenDn8nYvqvh2DGaRBIBromik-69d5da60cb3a0" alt="Main House Living Room" loading="lazy">
 <div class="check-item critical" data-room="1" onclick="toggleCheck('casitas',this)">
 <span class="check-box"></span>
@@ -3304,10 +3308,10 @@ html { scroll-behavior: smooth; }
 <!-- ===== ROOM 2: Main House Bar & Den ===== -->
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('casitas',2)">
-<span class="room-name" data-en="Main House Bar & Den" data-es="Bar y Estudio Casa Principal">Main House Bar & Den</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Main House Bar & Den" data-es="Bar y Estudio Casa Principal">Main House Bar & Den</span>
 <span class="room-progress" id="rprog-casitas-2">0/5</span>
 </div>
-<div class="room-body" id="rbody-casitas-2" style="display:none">
+<div class="room-body" id="rbody-casitas-2">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-504852-Ng3olNRPDY7x2uNcVXj03Nt3vgv--D0jCdsxuLV7rCG0-69d5da600b7c6" alt="Main House Bar & Den" loading="lazy">
 <div class="check-item" data-room="2" onclick="toggleCheck('casitas',this)">
 <span class="check-box"></span>
@@ -3335,10 +3339,10 @@ html { scroll-behavior: smooth; }
 <!-- ===== ROOM 3: Main House Primary Suite ===== -->
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('casitas',3)">
-<span class="room-name" data-en="Main House Primary Suite" data-es="Suite Principal Casa Principal">Main House Primary Suite</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Main House Primary Suite" data-es="Suite Principal Casa Principal">Main House Primary Suite</span>
 <span class="room-progress" id="rprog-casitas-3">0/7</span>
 </div>
-<div class="room-body" id="rbody-casitas-3" style="display:none">
+<div class="room-body" id="rbody-casitas-3">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-504852-AZmljXV6q79cHGNNT5xmS8CFerbduZXp40cFDLKEJ--Q-69d5da5945157" alt="Main House Primary Suite" loading="lazy">
 <div class="check-item critical" data-room="3" onclick="toggleCheck('casitas',this)">
 <span class="check-box"></span>
@@ -3374,10 +3378,10 @@ html { scroll-behavior: smooth; }
 <!-- ===== ROOM 4: Main House Primary Bathroom ===== -->
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('casitas',4)">
-<span class="room-name" data-en="Main House Primary Bathroom" data-es="Bano Principal Casa Principal">Main House Primary Bathroom</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Main House Primary Bathroom" data-es="Bano Principal Casa Principal">Main House Primary Bathroom</span>
 <span class="room-progress" id="rprog-casitas-4">0/7</span>
 </div>
-<div class="room-body" id="rbody-casitas-4" style="display:none">
+<div class="room-body" id="rbody-casitas-4">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-504852-dGJYiRbqt056VDhKBo0p2--hOnNWzXDmRZ13zbpPszHE-69d5e12bea673" alt="Main House Primary Bathroom" loading="lazy">
 <div class="check-item critical" data-room="4" onclick="toggleCheck('casitas',this)">
 <span class="check-box"></span>
@@ -3415,10 +3419,10 @@ html { scroll-behavior: smooth; }
 <!-- ===== ROOM 5: Main House Office ===== -->
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('casitas',5)">
-<span class="room-name" data-en="Main House Office" data-es="Oficina Casa Principal">Main House Office</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Main House Office" data-es="Oficina Casa Principal">Main House Office</span>
 <span class="room-progress" id="rprog-casitas-5">0/4</span>
 </div>
-<div class="room-body" id="rbody-casitas-5" style="display:none">
+<div class="room-body" id="rbody-casitas-5">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-504852-qjFBtXBiMSMqTXhsv5FAU3Hnzsqk9P89r482NvRXI-k-69d5da50c29da" alt="Main House Office" loading="lazy">
 <div class="check-item" data-room="5" onclick="toggleCheck('casitas',this)">
 <span class="check-box"></span>
@@ -3441,10 +3445,10 @@ html { scroll-behavior: smooth; }
 <!-- ===== ROOM 6: Main House Half Bath ===== -->
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('casitas',6)">
-<span class="room-name" data-en="Main House Half Bath" data-es="Medio Bano Casa Principal">Main House Half Bath</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Main House Half Bath" data-es="Medio Bano Casa Principal">Main House Half Bath</span>
 <span class="room-progress" id="rprog-casitas-6">0/4</span>
 </div>
-<div class="room-body" id="rbody-casitas-6" style="display:none">
+<div class="room-body" id="rbody-casitas-6">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-504852-e4GaOgOknkcDMhLtQI7Btpj1jAxaSnc2BoTKD--wMS7k-69d5da5f0c9b9" alt="Main House Half Bath" loading="lazy">
 <div class="check-item" data-room="6" onclick="toggleCheck('casitas',this)">
 <span class="check-box"></span>
@@ -3467,10 +3471,10 @@ html { scroll-behavior: smooth; }
 <!-- ===== ROOM 7: Main House Laundry ===== -->
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('casitas',7)">
-<span class="room-name" data-en="Main House Laundry" data-es="Lavanderia Casa Principal">Main House Laundry</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Main House Laundry" data-es="Lavanderia Casa Principal">Main House Laundry</span>
 <span class="room-progress" id="rprog-casitas-7">0/4</span>
 </div>
-<div class="room-body" id="rbody-casitas-7" style="display:none">
+<div class="room-body" id="rbody-casitas-7">
 <div class="check-item" data-room="7" onclick="toggleCheck('casitas',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Start dirty linens — washer/dryer" data-es="Iniciar ropa sucia — lavadora/secadora">Start dirty linens — washer/dryer</span>
@@ -3492,10 +3496,10 @@ html { scroll-behavior: smooth; }
 <!-- ===== ROOM 8: Northstar Casita ===== -->
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('casitas',8)">
-<span class="room-name" data-en="Northstar Casita" data-es="Casita Northstar">Northstar Casita</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Northstar Casita" data-es="Casita Northstar">Northstar Casita</span>
 <span class="room-progress" id="rprog-casitas-8">0/8</span>
 </div>
-<div class="room-body" id="rbody-casitas-8" style="display:none">
+<div class="room-body" id="rbody-casitas-8">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-504852-FdplmMmL-7Dmw3SVB1Mqkj6zf6HHP9HXSGWZmihg3yg-69d5da657ca24" alt="Northstar Casita" loading="lazy">
 <div class="check-item critical" data-room="8" onclick="toggleCheck('casitas',this)">
 <span class="check-box"></span>
@@ -3536,10 +3540,10 @@ html { scroll-behavior: smooth; }
 <!-- ===== ROOM 9: The Bay Casita ===== -->
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('casitas',9)">
-<span class="room-name" data-en="The Bay Casita" data-es="Casita The Bay">The Bay Casita</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="The Bay Casita" data-es="Casita The Bay">The Bay Casita</span>
 <span class="room-progress" id="rprog-casitas-9">0/8</span>
 </div>
-<div class="room-body" id="rbody-casitas-9" style="display:none">
+<div class="room-body" id="rbody-casitas-9">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-504852-bhhO3iduasXaKNkNEsEyostrgXjcyOyVl5YV0TPmbM4-69d5e82c27a5a" alt="The Bay Casita" loading="lazy">
 <div class="check-item critical" data-room="9" onclick="toggleCheck('casitas',this)">
 <span class="check-box"></span>
@@ -3580,10 +3584,10 @@ html { scroll-behavior: smooth; }
 <!-- ===== ROOM 10: Jersey Casita ===== -->
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('casitas',10)">
-<span class="room-name" data-en="Jersey Casita" data-es="Casita Jersey">Jersey Casita</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Jersey Casita" data-es="Casita Jersey">Jersey Casita</span>
 <span class="room-progress" id="rprog-casitas-10">0/7</span>
 </div>
-<div class="room-body" id="rbody-casitas-10" style="display:none">
+<div class="room-body" id="rbody-casitas-10">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-504852-QoeRT3Uc2Jphi-eyijlEhHYmLfFv4X8aOjMyOaul7OE-69d5da6927a61" alt="Jersey Casita" loading="lazy">
 <div class="check-item critical" data-room="10" onclick="toggleCheck('casitas',this)">
 <span class="check-box"></span>
@@ -3620,10 +3624,10 @@ html { scroll-behavior: smooth; }
 <!-- ===== ROOM 11: Lanai Casita ===== -->
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('casitas',11)">
-<span class="room-name" data-en="Lanai Casita" data-es="Casita Lanai">Lanai Casita</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Lanai Casita" data-es="Casita Lanai">Lanai Casita</span>
 <span class="room-progress" id="rprog-casitas-11">0/9</span>
 </div>
-<div class="room-body" id="rbody-casitas-11" style="display:none">
+<div class="room-body" id="rbody-casitas-11">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-504852-VtOb3S0aMxdqszv1nZVzGrg7EW1ozImL48UBVvGiyzk-69d5da4a43b7b" alt="Lanai Casita" loading="lazy">
 <div class="check-item critical" data-room="11" onclick="toggleCheck('casitas',this)">
 <span class="check-box"></span>
@@ -3668,10 +3672,10 @@ html { scroll-behavior: smooth; }
 <!-- ===== ROOM 12: Pool & Hot Tub ===== -->
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('casitas',12)">
-<span class="room-name" data-en="Pool & Hot Tub" data-es="Piscina y Jacuzzi">Pool & Hot Tub</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Pool & Hot Tub" data-es="Piscina y Jacuzzi">Pool & Hot Tub</span>
 <span class="room-progress" id="rprog-casitas-12">0/6</span>
 </div>
-<div class="room-body" id="rbody-casitas-12" style="display:none">
+<div class="room-body" id="rbody-casitas-12">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-504852-k--fami18jO1DhFkDf4mNH9wAb--gvq8JHEtXr3FyZoR0-69d5da7ed5d74" alt="Pool & Hot Tub" loading="lazy">
 <div class="check-item critical" data-room="12" onclick="toggleCheck('casitas',this)">
 <span class="check-box"></span>
@@ -3703,10 +3707,10 @@ html { scroll-behavior: smooth; }
 <!-- ===== ROOM 13: Grounds & Parking ===== -->
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('casitas',13)">
-<span class="room-name" data-en="Grounds & Parking" data-es="Terrenos y Estacionamiento">Grounds & Parking</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Grounds & Parking" data-es="Terrenos y Estacionamiento">Grounds & Parking</span>
 <span class="room-progress" id="rprog-casitas-13">0/7</span>
 </div>
-<div class="room-body" id="rbody-casitas-13" style="display:none">
+<div class="room-body" id="rbody-casitas-13">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-504852-UD38IldAubtGjOGwAGllJzFkANyZf5MQ--1BihsnGGyc-69d5da7777ded" alt="Grounds & Parking" loading="lazy">
 <div class="check-item critical" data-room="13" onclick="toggleCheck('casitas',this)">
 <span class="check-box"></span>
@@ -3742,10 +3746,10 @@ html { scroll-behavior: smooth; }
 <!-- ===== ROOM 14: Amenities & Supplies ===== -->
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('casitas',14)">
-<span class="room-name" data-en="Amenities & Supplies" data-es="Amenidades y Suministros">Amenities & Supplies</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Amenities & Supplies" data-es="Amenidades y Suministros">Amenities & Supplies</span>
 <span class="room-progress" id="rprog-casitas-14">0/10</span>
 </div>
-<div class="room-body" id="rbody-casitas-14" style="display:none">
+<div class="room-body" id="rbody-casitas-14">
 <div class="check-item" data-room="14" onclick="toggleCheck('casitas',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Coffee restocked — Main House + all 4 casita coffee bars" data-es="Cafe repuesto — Casa Principal + 4 barras de cafe en casitas">Coffee restocked — Main House + all 4 casita coffee bars</span>
@@ -3791,10 +3795,10 @@ html { scroll-behavior: smooth; }
 <!-- ===== ROOM 15: Final Walkthrough ===== -->
 <div class="room-card final-card">
 <div class="room-header final-header" onclick="toggleRoom('casitas',15)">
-<span class="room-name" data-en="Final Walkthrough" data-es="Recorrido Final">Final Walkthrough</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Final Walkthrough" data-es="Recorrido Final">Final Walkthrough</span>
 <span class="room-progress" id="rprog-casitas-15">0/8</span>
 </div>
-<div class="room-body" id="rbody-casitas-15" style="display:none">
+<div class="room-body" id="rbody-casitas-15">
 <div class="check-item" data-room="15" onclick="toggleCheck('casitas',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Walk ALL 5 units — every room look AND smell guest-ready" data-es="Recorrer LAS 5 unidades — cada cuarto debe verse Y oler listo para huespedes">Walk ALL 5 units — every room look AND smell guest-ready</span>
@@ -3838,7 +3842,7 @@ html { scroll-behavior: smooth; }
 <p data-en="Questions? Message Hannah in the cleaning crew group chat." data-es="Preguntas? Mensaje a Hannah en el grupo.">Questions? Message Hannah in the cleaning crew group chat.</p>
 <p class="footer-brand">Solmare Stays &mdash; Casitas Estate</p>
 </div>
-</div><div class="property-page" id="prop-florafarm" style="display:none">
+</div><div class="property-page" id="prop-florafarm">
 <div class="back-bar">
 <button class="back-btn" onclick="showHome()">&larr; <span data-en="Back" data-es="Volver">Back</span></button>
 <span class="back-title">Flora Farm</span>
@@ -3868,10 +3872,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('florafarm',0)">
-<span class="room-name" data-en="Kitchen & Dining" data-es="Cocina y Comedor">Kitchen & Dining</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Kitchen & Dining" data-es="Cocina y Comedor">Kitchen & Dining</span>
 <span class="room-progress" id="rprog-florafarm-0">0/7</span>
 </div>
-<div class="room-body" id="rbody-florafarm-0" style="display:none">
+<div class="room-body" id="rbody-florafarm-0">
 <div class="check-item" data-room="0" onclick="toggleCheck('florafarm',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Clean fridge — remove all guest food, wipe shelves" data-es="Limpiar refri — sacar comida, limpiar estantes">Clean fridge — remove all guest food, wipe shelves</span>
@@ -3905,10 +3909,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('florafarm',1)">
-<span class="room-name" data-en="Bathrooms" data-es="Banos">Bathrooms</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Bathrooms" data-es="Banos">Bathrooms</span>
 <span class="room-progress" id="rprog-florafarm-1">0/7</span>
 </div>
-<div class="room-body" id="rbody-florafarm-1" style="display:none">
+<div class="room-body" id="rbody-florafarm-1">
 <div class="check-item critical" data-room="1" onclick="toggleCheck('florafarm',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Clean shower drains — remove ALL hair" data-es="Limpiar drenajes — quitar TODO el cabello">Clean shower drains — remove ALL hair</span>
@@ -3945,10 +3949,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('florafarm',2)">
-<span class="room-name" data-en="Flagship Suite — King" data-es="Suite Flagship — King">Flagship Suite — King</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Flagship Suite — King" data-es="Suite Flagship — King">Flagship Suite — King</span>
 <span class="room-progress" id="rprog-florafarm-2">0/6</span>
 </div>
-<div class="room-body" id="rbody-florafarm-2" style="display:none">
+<div class="room-body" id="rbody-florafarm-2">
 <div class="check-item critical" data-room="2" onclick="toggleCheck('florafarm',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Bed WRINKLE-FREE — hospital corners, smooth duvet" data-es="Cama SIN ARRUGAS — esquinas de hospital, edredon liso">Bed WRINKLE-FREE — hospital corners, smooth duvet</span>
@@ -3979,10 +3983,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('florafarm',3)">
-<span class="room-name" data-en="Garden Suite — Full" data-es="Suite Garden — Full">Garden Suite — Full</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Garden Suite — Full" data-es="Suite Garden — Full">Garden Suite — Full</span>
 <span class="room-progress" id="rprog-florafarm-3">0/5</span>
 </div>
-<div class="room-body" id="rbody-florafarm-3" style="display:none">
+<div class="room-body" id="rbody-florafarm-3">
 <div class="check-item critical" data-room="3" onclick="toggleCheck('florafarm',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Bed WRINKLE-FREE — hospital corners, smooth duvet" data-es="Cama SIN ARRUGAS — esquinas de hospital, edredon liso">Bed WRINKLE-FREE — hospital corners, smooth duvet</span>
@@ -4008,10 +4012,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('florafarm',4)">
-<span class="room-name" data-en="Living Room" data-es="Sala">Living Room</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Living Room" data-es="Sala">Living Room</span>
 <span class="room-progress" id="rprog-florafarm-4">0/5</span>
 </div>
-<div class="room-body" id="rbody-florafarm-4" style="display:none">
+<div class="room-body" id="rbody-florafarm-4">
 <div class="check-item" data-room="4" onclick="toggleCheck('florafarm',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Fluff cushions, fold throws" data-es="Esponjar cojines, doblar mantas">Fluff cushions, fold throws</span>
@@ -4036,10 +4040,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('florafarm',5)">
-<span class="room-name" data-en="Outdoor & Patio" data-es="Exterior y Patio">Outdoor & Patio</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Outdoor & Patio" data-es="Exterior y Patio">Outdoor & Patio</span>
 <span class="room-progress" id="rprog-florafarm-5">0/5</span>
 </div>
-<div class="room-body" id="rbody-florafarm-5" style="display:none">
+<div class="room-body" id="rbody-florafarm-5">
 <div class="check-item" data-room="5" onclick="toggleCheck('florafarm',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Hot tub — check cover on, area clean" data-es="Jacuzzi — verificar tapa, area limpia">Hot tub — check cover on, area clean</span>
@@ -4064,10 +4068,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('florafarm',6)">
-<span class="room-name" data-en="Farm Check" data-es="Revision de Granja">Farm Check</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Farm Check" data-es="Revision de Granja">Farm Check</span>
 <span class="room-progress" id="rprog-florafarm-6">0/3</span>
 </div>
-<div class="room-body" id="rbody-florafarm-6" style="display:none">
+<div class="room-body" id="rbody-florafarm-6">
 <div class="check-item critical" data-room="6" onclick="toggleCheck('florafarm',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Chickens — verify gate is CLOSED and secure" data-es="Gallinas — verificar puerta CERRADA y segura">Chickens — verify gate is CLOSED and secure</span>
@@ -4085,10 +4089,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('florafarm',7)">
-<span class="room-name" data-en="Restock & Welcome" data-es="Reabastecimiento y Bienvenida">Restock & Welcome</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Restock & Welcome" data-es="Reabastecimiento y Bienvenida">Restock & Welcome</span>
 <span class="room-progress" id="rprog-florafarm-7">0/4</span>
 </div>
-<div class="room-body" id="rbody-florafarm-7" style="display:none">
+<div class="room-body" id="rbody-florafarm-7">
 <div class="check-item" data-room="7" onclick="toggleCheck('florafarm',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Wine bottle set out" data-es="Botella de vino colocada">Wine bottle set out</span>
@@ -4110,10 +4114,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('florafarm',8)">
-<span class="room-name" data-en="Amenities & Supplies" data-es="Amenidades y Suministros">Amenities & Supplies</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Amenities & Supplies" data-es="Amenidades y Suministros">Amenities & Supplies</span>
 <span class="room-progress" id="rprog-florafarm-8">0/9</span>
 </div>
-<div class="room-body" id="rbody-florafarm-8" style="display:none">
+<div class="room-body" id="rbody-florafarm-8">
 <div class="check-item" data-room="8" onclick="toggleCheck('florafarm',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Coffee restocked" data-es="Cafe repuesto">Coffee restocked</span>
@@ -4155,10 +4159,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card final-card">
 <div class="room-header final-header" onclick="toggleRoom('florafarm',9)">
-<span class="room-name" data-en="Final Walkthrough" data-es="Recorrido Final">Final Walkthrough</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Final Walkthrough" data-es="Recorrido Final">Final Walkthrough</span>
 <span class="room-progress" id="rprog-florafarm-9">0/6</span>
 </div>
-<div class="room-body" id="rbody-florafarm-9" style="display:none">
+<div class="room-body" id="rbody-florafarm-9">
 <div class="check-item" data-room="9" onclick="toggleCheck('florafarm',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Walk every room — look AND smell guest-ready" data-es="Recorrer — que se vea Y huela listo">Walk every room — look AND smell guest-ready</span>
@@ -4193,7 +4197,7 @@ html { scroll-behavior: smooth; }
 <p data-en="Questions? Message Hannah in the cleaning crew group chat." data-es="Preguntas? Mensaje a Hannah en el grupo.">Questions? Message Hannah in the cleaning crew group chat.</p>
 <p class="footer-brand">Solmare Stays &mdash; Flora Farm</p>
 </div>
-</div><div class="property-page" id="prop-monterey" style="display:none">
+</div><div class="property-page" id="prop-monterey">
 <div class="back-bar">
 <button class="back-btn" onclick="showHome()">&larr; <span data-en="Back" data-es="Volver">Back</span></button>
 <span class="back-title">Monterey Heights</span>
@@ -4221,10 +4225,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('monterey',0)">
-<span class="room-name" data-en="Kitchenette" data-es="Cocineta">Kitchenette</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Kitchenette" data-es="Cocineta">Kitchenette</span>
 <span class="room-progress" id="rprog-monterey-0">0/8</span>
 </div>
-<div class="room-body" id="rbody-monterey-0" style="display:none">
+<div class="room-body" id="rbody-monterey-0">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-400378-1TSSGpx--VMWYqZ6dhJS1QDzET5UUXJ--uOEok-acO63o-69d99d8c9f592" alt="Kitchenette" loading="lazy">
 <div class="check-item" data-room="0" onclick="toggleCheck('monterey',this)">
 <span class="check-box"></span>
@@ -4262,10 +4266,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('monterey',1)">
-<span class="room-name" data-en="Bathroom" data-es="Bano">Bathroom</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Bathroom" data-es="Bano">Bathroom</span>
 <span class="room-progress" id="rprog-monterey-1">0/7</span>
 </div>
-<div class="room-body" id="rbody-monterey-1" style="display:none">
+<div class="room-body" id="rbody-monterey-1">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-400378-nhLfj6T8ODbnZ5Dxsz62eMnZCzCUiNk3u7YKyqPsD-o-69d996d7b14b4" alt="Bathroom" loading="lazy">
 <div class="check-item critical" data-room="1" onclick="toggleCheck('monterey',this)">
 <span class="check-box"></span>
@@ -4302,10 +4306,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('monterey',2)">
-<span class="room-name" data-en="Bedroom 1 — Cal King" data-es="Recamara 1 — Cal King">Bedroom 1 — Cal King</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Bedroom 1 — Cal King" data-es="Recamara 1 — Cal King">Bedroom 1 — Cal King</span>
 <span class="room-progress" id="rprog-monterey-2">0/5</span>
 </div>
-<div class="room-body" id="rbody-monterey-2" style="display:none">
+<div class="room-body" id="rbody-monterey-2">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-400378-JfjX9XFGWQRRqca42uyhGLpyckeB--uP-V-JqfsO5Ba8-69d996dc37e1d" alt="Bedroom 1 — Cal King" loading="lazy">
 <div class="check-item critical" data-room="2" onclick="toggleCheck('monterey',this)">
 <span class="check-box"></span>
@@ -4332,10 +4336,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('monterey',3)">
-<span class="room-name" data-en="Bedroom 2 — Queen" data-es="Recamara 2 — Queen">Bedroom 2 — Queen</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Bedroom 2 — Queen" data-es="Recamara 2 — Queen">Bedroom 2 — Queen</span>
 <span class="room-progress" id="rprog-monterey-3">0/5</span>
 </div>
-<div class="room-body" id="rbody-monterey-3" style="display:none">
+<div class="room-body" id="rbody-monterey-3">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-400378-paceYPZVkb0y7zPgLjGU--JVaBB8xYvztcnwiyf5jUvA-69d996da0c291" alt="Bedroom 2 — Queen" loading="lazy">
 <div class="check-item critical" data-room="3" onclick="toggleCheck('monterey',this)">
 <span class="check-box"></span>
@@ -4362,10 +4366,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('monterey',4)">
-<span class="room-name" data-en="Living Room" data-es="Sala">Living Room</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Living Room" data-es="Sala">Living Room</span>
 <span class="room-progress" id="rprog-monterey-4">0/6</span>
 </div>
-<div class="room-body" id="rbody-monterey-4" style="display:none">
+<div class="room-body" id="rbody-monterey-4">
 <img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-400378-iZVeSTkB0v97pXqRLJpiSm30qk5O2vsMHHjSwFuVVdI-69d99d8e95d23" alt="Living Room" loading="lazy">
 <div class="check-item" data-room="4" onclick="toggleCheck('monterey',this)">
 <span class="check-box"></span>
@@ -4395,10 +4399,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card">
 <div class="room-header" onclick="toggleRoom('monterey',5)">
-<span class="room-name" data-en="Amenities & Supplies" data-es="Amenidades y Suministros">Amenities & Supplies</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Amenities & Supplies" data-es="Amenidades y Suministros">Amenities & Supplies</span>
 <span class="room-progress" id="rprog-monterey-5">0/7</span>
 </div>
-<div class="room-body" id="rbody-monterey-5" style="display:none">
+<div class="room-body" id="rbody-monterey-5">
 <div class="check-item" data-room="5" onclick="toggleCheck('monterey',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Coffee filters + grounds restocked (Moccamaster)" data-es="Filtros y cafe molido repuestos (Moccamaster)">Coffee filters + grounds restocked (Moccamaster)</span>
@@ -4431,10 +4435,10 @@ html { scroll-behavior: smooth; }
 </div>
 <div class="room-card final-card">
 <div class="room-header final-header" onclick="toggleRoom('monterey',6)">
-<span class="room-name" data-en="Final Walkthrough" data-es="Recorrido Final">Final Walkthrough</span>
+<span class="room-chevron">▸</span><span class="room-name" data-en="Final Walkthrough" data-es="Recorrido Final">Final Walkthrough</span>
 <span class="room-progress" id="rprog-monterey-6">0/6</span>
 </div>
-<div class="room-body" id="rbody-monterey-6" style="display:none">
+<div class="room-body" id="rbody-monterey-6">
 <div class="check-item" data-room="6" onclick="toggleCheck('monterey',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Walk every room — look AND smell guest-ready" data-es="Recorrer — que se vea Y huela listo">Walk every room — look AND smell guest-ready</span>
@@ -4537,25 +4541,58 @@ function toggleLang() {
 
 function showProperty(slug) {
   currentProperty = slug;
-  document.getElementById('home-screen').style.display = 'none';
-  document.getElementById('prop-' + slug).style.display = 'block';
-  restoreCheckedState(slug);
-  window.scrollTo(0, 0);
+  const home = document.getElementById('home-screen');
+  const prop = document.getElementById('prop-' + slug);
+  home.style.opacity = '0';
+  setTimeout(() => {
+    home.style.display = 'none';
+    prop.style.display = 'block';
+    prop.style.opacity = '0';
+    restoreCheckedState(slug);
+    window.scrollTo(0, 0);
+    requestAnimationFrame(() => { prop.style.opacity = '1'; });
+  }, 150);
 }
 
 function showHome() {
   if (currentProperty) {
-    document.getElementById('prop-' + currentProperty).style.display = 'none';
+    const prop = document.getElementById('prop-' + currentProperty);
+    prop.style.opacity = '0';
+    setTimeout(() => {
+      prop.style.display = 'none';
+      // Close all open rooms
+      prop.querySelectorAll('.room-body.open').forEach(b => {
+        b.classList.remove('open');
+        b.previousElementSibling.classList.remove('expanded');
+      });
+      const home = document.getElementById('home-screen');
+      home.style.display = 'block';
+      home.style.opacity = '0';
+      updateHomeCards();
+      window.scrollTo(0, 0);
+      requestAnimationFrame(() => { home.style.opacity = '1'; });
+    }, 150);
+  } else {
+    document.getElementById('home-screen').style.display = 'block';
+    updateHomeCards();
   }
   currentProperty = null;
-  document.getElementById('home-screen').style.display = 'block';
-  updateHomeCards();
-  window.scrollTo(0, 0);
 }
 
 function toggleRoom(slug, idx) {
   const body = document.getElementById('rbody-' + slug + '-' + idx);
-  body.style.display = body.style.display === 'none' ? 'block' : 'none';
+  const header = body.previousElementSibling;
+  const isOpen = body.classList.contains('open');
+  if (isOpen) {
+    body.classList.remove('open');
+    header.classList.remove('expanded');
+  } else {
+    body.classList.add('open');
+    header.classList.add('expanded');
+    setTimeout(() => {
+      header.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
 }
 
 function toggleCheck(slug, el) {
