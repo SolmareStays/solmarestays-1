@@ -99,6 +99,16 @@ h1,h2,h3 { font-family:'Cormorant Garamond',serif; }
 .room-progress { font-size:12px; font-weight:600; color:var(--text-light); background:var(--cream); padding:2px 8px; border-radius:10px; }
 .room-body { padding:0; overflow:hidden; max-height:0; transition:max-height .35s ease; }
 .room-body.open { max-height:3000px; transition:max-height .5s ease-in; }
+/* PHOTO CAROUSEL */
+.photo-carousel { position:relative; overflow:hidden; border-bottom:1px solid var(--border); background:#f0ede8; }
+.photo-track { display:flex; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+.photo-track::-webkit-scrollbar { display:none; }
+.photo-track img { width:100%; height:auto; max-height:300px; object-fit:contain; flex-shrink:0; scroll-snap-align:start; background:#f0ede8; display:block; }
+.photo-dots { display:flex; justify-content:center; gap:5px; padding:6px 0; position:absolute; bottom:4px; left:0; right:0; }
+.photo-dot { width:6px; height:6px; border-radius:50%; background:rgba(0,0,0,.25); border:none; padding:0; cursor:pointer; transition:all .2s; }
+.photo-dot.active { background:var(--gold); width:8px; height:8px; }
+.photo-count { position:absolute; top:8px; right:8px; background:rgba(0,0,0,.5); color:#fff; font-size:11px; font-weight:600; padding:2px 8px; border-radius:10px; }
+/* Single photo fallback */
 .room-photo { width:100%; height:auto; max-height:300px; object-fit:contain; background:#f0ede8; display:block; border-bottom:1px solid var(--border); }
 
 /* CHECK ITEMS */
@@ -314,7 +324,17 @@ html { scroll-behavior: smooth; }
 <span class="room-progress" id="rprog-hummingbird-0">0/10</span>
 </div>
 <div class="room-body" id="rbody-hummingbird-0">
-<img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-391355-Kv5UO92oNg4-7YtS---0Dfg-FDYXXqz8KVgmfut06Xeg-69d99d89ba16c" alt="Kitchen & Dining" loading="lazy">
+<div class="photo-carousel"><div class="photo-track">
+<img src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-391355-Kv5UO92oNg4-7YtS---0Dfg-FDYXXqz8KVgmfut06Xeg-69d99d89ba16c" alt="Kitchen overview" loading="lazy">
+<img src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-391355-rOR-4yx--cyZXX-kDxFXPiA0ngoTcbuCstnb3jpWvqJs-69d99d87935ce" alt="Gas range and appliances" loading="lazy">
+<img src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-391355-HhY4hcBgTNG-CEufOY0JopbtW--mllwSm3iFWx0QEZRQ-69d99d83d0bb6" alt="Island seating" loading="lazy">
+<img src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-391355-VQLAaYItXK-vHRjhfVSqkjAq9D9LS2bna-IO7YmHwTs-69d99d869c982" alt="Dining area" loading="lazy">
+</div><div class="photo-dots">
+<button class="photo-dot active" onclick="scrollCarousel(this.closest('.photo-carousel').querySelector('.photo-track'),0)"></button>
+<button class="photo-dot" onclick="scrollCarousel(this.closest('.photo-carousel').querySelector('.photo-track'),1)"></button>
+<button class="photo-dot" onclick="scrollCarousel(this.closest('.photo-carousel').querySelector('.photo-track'),2)"></button>
+<button class="photo-dot" onclick="scrollCarousel(this.closest('.photo-carousel').querySelector('.photo-track'),3)"></button>
+</div><span class="photo-count">1/4</span></div>
 <div class="check-item" data-room="0" onclick="toggleCheck('hummingbird',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Clean fridge — remove all guest food, wipe all shelves" data-es="Limpiar refrigerador — sacar toda la comida, limpiar estantes">Clean fridge — remove all guest food, wipe all shelves</span>
@@ -363,7 +383,13 @@ html { scroll-behavior: smooth; }
 <span class="room-progress" id="rprog-hummingbird-1">0/7</span>
 </div>
 <div class="room-body" id="rbody-hummingbird-1">
-<img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-391355-d1EWNPyIvQmyUhCmwarEXXVlI8dXKX6LVrNGCqWVO5A-69d99d811e9f5" alt="Primary Suite Bath" loading="lazy">
+<div class="photo-carousel"><div class="photo-track">
+<img src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-391355-CWTTWo6kTC9v24wQ8NB1Bt6wmGW6oka0CUrhBj3FH0I-69d99d84b6b33" alt="King bed" loading="lazy">
+<img src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-391355-y5x-RVQO5OZfgZj1LYyShXD3U8jYq-Fu5SHLtRkpGXo-69d9a49d861f9" alt="Primary workspace" loading="lazy">
+</div><div class="photo-dots">
+<button class="photo-dot active" onclick="scrollCarousel(this.closest('.photo-carousel').querySelector('.photo-track'),0)"></button>
+<button class="photo-dot" onclick="scrollCarousel(this.closest('.photo-carousel').querySelector('.photo-track'),1)"></button>
+</div><span class="photo-count">1/2</span></div>
 <div class="check-item critical" data-room="1" onclick="toggleCheck('hummingbird',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Clean shower drain — remove ALL hair" data-es="Limpiar drenaje de ducha — quitar TODO el cabello">Clean shower drain — remove ALL hair</span>
@@ -403,7 +429,13 @@ html { scroll-behavior: smooth; }
 <span class="room-progress" id="rprog-hummingbird-2">0/7</span>
 </div>
 <div class="room-body" id="rbody-hummingbird-2">
-<img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-391355-Qvemr8n7QGb0ViAdKp5HbqrLD38RfG9YVlmfh4H7a-g-69d99d77d3398" alt="Guest Suite Bath" loading="lazy">
+<div class="photo-carousel"><div class="photo-track">
+<img src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-391355-Qvemr8n7QGb0ViAdKp5HbqrLD38RfG9YVlmfh4H7a-g-69d99d77d3398" alt="Guest bath shower" loading="lazy">
+<img src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-391355-VFWXqZHrdSg--R5RhR4Tt-wY2ZEuQjD8fhkX7lAs-pco-69d99d7f63267" alt="Guest bath vanity" loading="lazy">
+</div><div class="photo-dots">
+<button class="photo-dot active" onclick="scrollCarousel(this.closest('.photo-carousel').querySelector('.photo-track'),0)"></button>
+<button class="photo-dot" onclick="scrollCarousel(this.closest('.photo-carousel').querySelector('.photo-track'),1)"></button>
+</div><span class="photo-count">1/2</span></div>
 <div class="check-item critical" data-room="2" onclick="toggleCheck('hummingbird',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Clean shower drain — remove ALL hair" data-es="Limpiar drenaje de ducha — quitar TODO el cabello">Clean shower drain — remove ALL hair</span>
@@ -473,7 +505,13 @@ html { scroll-behavior: smooth; }
 <span class="room-progress" id="rprog-hummingbird-4">0/5</span>
 </div>
 <div class="room-body" id="rbody-hummingbird-4">
-<img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-391355-jp3N3kWUNHo3EWxc2ENT3ub59AndE7LJ6bfwi6UZjwM-69d99d82298fa" alt="Guest Suite — Queen" loading="lazy">
+<div class="photo-carousel"><div class="photo-track">
+<img src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-391355-jp3N3kWUNHo3EWxc2ENT3ub59AndE7LJ6bfwi6UZjwM-69d99d82298fa" alt="Queen bed" loading="lazy">
+<img src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-391355-Idy1DP4Gk071QYHS2tjn9kt-dZrh0ogLNWi--VTaqyoY-69d99d8045555" alt="Guest room TV" loading="lazy">
+</div><div class="photo-dots">
+<button class="photo-dot active" onclick="scrollCarousel(this.closest('.photo-carousel').querySelector('.photo-track'),0)"></button>
+<button class="photo-dot" onclick="scrollCarousel(this.closest('.photo-carousel').querySelector('.photo-track'),1)"></button>
+</div><span class="photo-count">1/2</span></div>
 <div class="check-item critical" data-room="4" onclick="toggleCheck('hummingbird',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Bed WRINKLE-FREE — hospital corners, smooth duvet" data-es="Cama SIN ARRUGAS — esquinas de hospital, edredon liso">Bed WRINKLE-FREE — hospital corners, smooth duvet</span>
@@ -503,7 +541,15 @@ html { scroll-behavior: smooth; }
 <span class="room-progress" id="rprog-hummingbird-5">0/6</span>
 </div>
 <div class="room-body" id="rbody-hummingbird-5">
-<img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-391355-V9by7R3Mefl7k8wwETtFaZSnqOpTbcOim-BYOvZIRR8-69d99d8863042" alt="Living Room" loading="lazy">
+<div class="photo-carousel"><div class="photo-track">
+<img src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-391355-V9by7R3Mefl7k8wwETtFaZSnqOpTbcOim-BYOvZIRR8-69d99d8863042" alt="Living room overview" loading="lazy">
+<img src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-391355-lpqi28dtOEDciAmP--O5Dy6CJKgzz9UhnuY-XHpyaYgE-69d996c6860e9" alt="Fireplace" loading="lazy">
+<img src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-391355-1q1Xz--7X92z2XPX5tVgUCZIo6vzNOXXeDzAp4PhTPls-69d99d8aa9f18" alt="Open concept view" loading="lazy">
+</div><div class="photo-dots">
+<button class="photo-dot active" onclick="scrollCarousel(this.closest('.photo-carousel').querySelector('.photo-track'),0)"></button>
+<button class="photo-dot" onclick="scrollCarousel(this.closest('.photo-carousel').querySelector('.photo-track'),1)"></button>
+<button class="photo-dot" onclick="scrollCarousel(this.closest('.photo-carousel').querySelector('.photo-track'),2)"></button>
+</div><span class="photo-count">1/3</span></div>
 <div class="check-item" data-room="5" onclick="toggleCheck('hummingbird',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Fluff cushions, fold throws" data-es="Esponjar cojines, doblar mantas">Fluff cushions, fold throws</span>
@@ -536,7 +582,17 @@ html { scroll-behavior: smooth; }
 <span class="room-progress" id="rprog-hummingbird-6">0/4</span>
 </div>
 <div class="room-body" id="rbody-hummingbird-6">
-<img class="room-photo" src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-391355-xq4Bz4E3-wNL8tuoqKyAQnvz8ZP4sll-QscACQoVQzI-69d99d85ba6a8" alt="Rooftop Terrace" loading="lazy">
+<div class="photo-carousel"><div class="photo-track">
+<img src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-391355-xq4Bz4E3-wNL8tuoqKyAQnvz8ZP4sll-QscACQoVQzI-69d99d85ba6a8" alt="Rooftop overview" loading="lazy">
+<img src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-391355-yG25yQqNZzh4ZbQb2NpjCeKaT54R6PZ74w3jJfGksPM-69d996cd34581" alt="Ocean view" loading="lazy">
+<img src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-391355-ubuoDHldQuHlRTkJlqTA-yVX8wQYjkKy1sWxGJiI5--Y-69d9a49e5f84f" alt="Deck seating" loading="lazy">
+<img src="https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/117087-391355---b7ivs6pqt2QFMrnciE8i6BA4b2D78wnHqyy6VMjftE-69d99d7c6ea55" alt="Sunset lounge" loading="lazy">
+</div><div class="photo-dots">
+<button class="photo-dot active" onclick="scrollCarousel(this.closest('.photo-carousel').querySelector('.photo-track'),0)"></button>
+<button class="photo-dot" onclick="scrollCarousel(this.closest('.photo-carousel').querySelector('.photo-track'),1)"></button>
+<button class="photo-dot" onclick="scrollCarousel(this.closest('.photo-carousel').querySelector('.photo-track'),2)"></button>
+<button class="photo-dot" onclick="scrollCarousel(this.closest('.photo-carousel').querySelector('.photo-track'),3)"></button>
+</div><span class="photo-count">1/4</span></div>
 <div class="check-item" data-room="6" onclick="toggleCheck('hummingbird',this)">
 <span class="check-box"></span>
 <span class="check-text" data-en="Sweep terrace floor" data-es="Barrer el piso de la terraza">Sweep terrace floor</span>
@@ -4734,8 +4790,28 @@ function markComplete(slug) {
   alert(currentLang === 'es' ? 'Propiedad completada! No olvides enviar el video del recorrido y marcar la tarea en Hostaway.' : 'Property complete! Don\'t forget to send the walkthrough video and mark the task in Hostaway.');
 }
 
+// Photo carousel scroll tracking
+function initCarousels() {
+  document.querySelectorAll('.photo-track').forEach(track => {
+    const carousel = track.parentElement;
+    const dots = carousel.querySelectorAll('.photo-dot');
+    const counter = carousel.querySelector('.photo-count');
+    const total = track.children.length;
+    if (total < 2) return;
+    track.addEventListener('scroll', () => {
+      const idx = Math.round(track.scrollLeft / track.offsetWidth);
+      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+      if (counter) counter.textContent = (idx + 1) + '/' + total;
+    }, { passive: true });
+  });
+}
+function scrollCarousel(track, idx) {
+  track.scrollTo({ left: idx * track.offsetWidth, behavior: 'smooth' });
+}
+
 // Init
 updateHomeCards();
+initCarousels();
 </script>
 </body>
 </html>
