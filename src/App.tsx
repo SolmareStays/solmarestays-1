@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { ScrollToTop } from "@/components/ScrollToTop";
+import { TrackingEvents } from "@/components/TrackingEvents";
 import { BookingProvider } from "@/context/BookingContext";
 import { lazy, Suspense } from "react";
 
@@ -43,6 +44,7 @@ const App = () => (
           <Sonner />
           <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
             <ScrollToTop />
+            <TrackingEvents />
             <Suspense fallback={null}>
               <Routes>
                 <Route path="/" element={<Index />} />
