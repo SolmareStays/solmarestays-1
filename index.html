@@ -36,7 +36,9 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-YHD5N75Q4M');
+    // send_page_view: false — TrackingEvents.tsx fires page_view on every route
+    // (including the first). Leaving it on double-counts the initial pageview.
+    gtag('config', 'G-YHD5N75Q4M', { send_page_view: false });
   </script>
 </head>
 
