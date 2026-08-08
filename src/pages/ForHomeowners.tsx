@@ -148,6 +148,10 @@ const OwnerLeadForm = () => {
       });
       const data = await response.json();
       if (data.success) {
+        // The ONLY place a Lead may fire. A route change is interest, not a lead —
+        // see the note in TrackingEvents.tsx. This is a real owner form submission.
+        window.fbq?.('track', 'Lead', { content_name: 'management_form', content_category: 'owner' });
+        window.gtag?.('event', 'generate_lead', { event_category: 'owner' });
         setIsSubmitted(true);
         toast.success("We'll be in touch within 24 hours with your revenue projection.");
         setTimeout(() => {

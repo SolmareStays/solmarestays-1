@@ -52,8 +52,9 @@ export function TrackingEvents() {
     //
     // A page view is interest, not a lead. ViewContent / view_item say that
     // honestly. Do NOT restore a Lead fire here — a real lead needs a form
-    // submission or a booking, and no such handler exists in this codebase yet.
-    // When one is added, fire Lead from the submit handler, never from a route.
+    // submission. As of 2026-08-07 both forms do fire it, from their own
+    // `if (data.success)` branches: ForHomeowners.tsx and Contact.tsx.
+    // Lead fires from a submit handler, never from a route.
 
     // Contact page → ViewContent (interest, not a lead — no form on this page)
     if (slug === "contact") {

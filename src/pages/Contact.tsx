@@ -107,6 +107,10 @@ const ContactPage = () => {
       const data = await response.json();
 
       if (data.success) {
+        // The ONLY place a Lead may fire. A route change is interest, not a lead —
+        // see the note in TrackingEvents.tsx. This is a real contact form submission.
+        window.fbq?.('track', 'Lead', { content_name: 'contact_form', content_category: 'contact' });
+        window.gtag?.('event', 'generate_lead', { event_category: 'contact' });
         setIsSubmitted(true);
         toast.success('Message sent successfully! We\'ll be in touch soon.');
 
