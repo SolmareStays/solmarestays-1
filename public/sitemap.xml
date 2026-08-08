@@ -35,6 +35,72 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  <!-- Properties -->
+  <url>
+    <loc>https://www.solmarestays.com/property/emberlight</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.solmarestays.com/property/the-deckhouse</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.solmarestays.com/property/the-nest</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.solmarestays.com/property/shoreline-suite</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.solmarestays.com/property/casa-azul</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.solmarestays.com/property/la-casita</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.solmarestays.com/property/hummingbird-house</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.solmarestays.com/property/monterey-heights-suite</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.solmarestays.com/property/the-palm-house</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.solmarestays.com/property/the-pine-house</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.solmarestays.com/property/the-coral-house</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.solmarestays.com/property/wine-country-estate</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.solmarestays.com/property/flora-farm-cottage</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <!-- Location Pages -->
   <url>
     <loc>https://www.solmarestays.com/avila-beach</loc>
@@ -60,6 +126,32 @@
     <loc>https://www.solmarestays.com/arroyo-grande</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <!-- Blog Posts -->
+  <url>
+    <loc>https://www.solmarestays.com/blog/best-restaurants-avila-beach</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.solmarestays.com/blog/avila-beach-vs-pismo-beach</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.solmarestays.com/blog/things-to-do-avila-beach</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.solmarestays.com/blog/pet-friendly-vacation-rentals-avila-beach</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.solmarestays.com/blog/avila-beach-property-management</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <!-- Filter Pages -->
   <url>

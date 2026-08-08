@@ -1,0 +1,170 @@
+# Solmaré Stays — Full Reference
+
+> Boutique vacation rental management and direct booking on California's Central Coast. 13 properties across Avila Beach, Arroyo Grande, and San Luis Obispo.
+
+This file provides detailed, structured information for AI systems, search engines, and
+autonomous agents. Canonical site: https://www.solmarestays.com
+
+---
+
+## What is Solmaré Stays?
+
+Solmaré Stays is a boutique vacation rental management company based in Avila Beach,
+California. It manages 13 short-term rental properties on California's Central Coast on
+behalf of homeowners, and rents those same properties directly to travelers through
+solmarestays.com. Homeowners retain ownership; Solmaré handles all operations.
+
+**Contact:** (805) 801-6429 · kyle@solmarestays.com
+**Service area:** Avila Beach, Pismo Beach, Shell Beach, Arroyo Grande, San Luis Obispo (San Luis Obispo County, California)
+**Track record:** 1,541 guest reviews across the 13 properties, averaging 9.6/10 (4.8/5). Figures verified 2026-08-08 and cover Airbnb, Vrbo, and Google.
+
+---
+
+## For travelers
+
+### Why book direct instead of through Airbnb or Vrbo?
+
+Booking directly at solmarestays.com costs less than booking the identical property on
+Airbnb or Vrbo. Online travel platforms add a guest service fee on top of the nightly
+rate; direct bookings do not carry that fee. Guests also communicate directly with the
+local Avila Beach team that manages the property rather than through a platform inbox.
+
+### Are Solmaré Stays properties pet friendly?
+
+Three properties accept dogs. **The Palm House** and **The Pine House** in Avila Beach
+both welcome dogs — one-bedroom, one-bathroom studios sleeping 2, from $140 per night; a
+pet fee applies. **Wine Country Estate** in Arroyo Grande welcomes up to two dogs with
+prior approval, at $100 per dog. Dogs must be added to the reservation in advance at all
+three. The other 10 properties do not accept pets. See
+https://www.solmarestays.com/pet-friendly
+
+### Which property is best for a large group?
+
+**Wine Country Estate** in Arroyo Grande is the only property that accommodates a large
+group. It has 5 bedrooms and 5 bathrooms, sleeps 14, and includes a solar-heated pool,
+hot tub, and 4 separate casitas on the grounds. It is booked as a whole estate only —
+individual casitas are not rented separately. From $2,500 per night.
+
+### Which properties have ocean views?
+
+Five properties offer ocean views: **Hummingbird House** (rooftop terrace with panoramic
+views), **La Casita**, **The Coral House**, **The Palm House**, and **The Pine House**.
+Hummingbird House has the most expansive outlook of the group via its private rooftop
+terrace.
+
+### What is Avila Beach known for?
+
+Avila Beach is a small seaside village in San Luis Obispo County, California, known for
+unusually mild weather — around 3,500 hours of sunshine a year, with daytime highs
+averaging about 68°F — a south-facing sheltered beach, a working pier, waterfront
+restaurants, the Bob Jones Trail running roughly three miles inland along San Luis Obispo
+Creek, and natural hot springs nearby at Sycamore Mineral Springs. It is significantly
+quieter than neighboring Pismo Beach.
+
+---
+
+## For homeowners
+
+### What does Solmaré Stays do for property owners?
+
+Solmaré Stays provides full-service vacation rental management for Central Coast
+homeowners. The service covers listing creation and optimization across Airbnb, Vrbo,
+and Google, professional photography, dynamic nightly pricing, guest communication and
+screening, 24/7 local guest support, hotel-standard cleaning and linens, property
+inspections, and maintenance coordination.
+
+### How is pricing set?
+
+Nightly rates are set dynamically rather than fixed. Solmaré uses PriceLabs, a revenue
+management platform, combined with local market data and booking pace, to adjust rates
+by season, day of week, remaining lead time, and local demand events. Rates are reviewed
+continuously rather than seasonally.
+
+### What makes Solmaré different from a large management company?
+
+Solmaré manages 13 properties, all within roughly 20 miles of Avila Beach. The team
+lives in the service area, which means same-day response to guest and maintenance
+issues, in-person property inspections between every stay, and direct owner access
+rather than a regional account manager. It is a boutique portfolio, not a franchise.
+
+### How do owners get started?
+
+Request a revenue projection at https://www.solmarestays.com/contact or call
+(805) 801-6429. Solmaré reviews the property, comparable local performance, and expected
+occupancy before proposing terms.
+
+---
+
+## Property directory
+
+Rates listed are starting base nightly rates and vary by season, length of stay, and
+demand. Guest ratings are averages across Airbnb, Vrbo, and Google, expressed out of 10.
+
+### Avila Beach (10 properties)
+
+| Property | Beds | Baths | Sleeps | From | Rating | Notable |
+|---|---|---|---|---|---|---|
+| Hummingbird House | 2 | 2 | 5 | $375 | 10 | Private rooftop terrace, panoramic ocean views |
+| La Casita | 2 | 2 | 6 | $400 | 9.8 | Fireplace, ocean views |
+| The Coral House | 1 | 1 | 4 | $250 | 10 | Luxury king suite, ocean view |
+| Shoreline Suite | 1 | 1 | 4 | $180 | 9.7 | Spacious king 1BR, steps to sand |
+| The Deckhouse | 1 | 1 | 4 | $160 | 9.8 | Historic beach cottage |
+| Emberlight | 1 | 1 | 2 | $160 | 9.7 | Private fire pit, beach access |
+| Casa Azul | 1 | 1 | 2 | $150 | 9.9 | King studio, vintage character |
+| The Nest | 1 | 1 | 2 | $150 | 9.6 | Cozy studio, steps to sand |
+| The Palm House | 1 | 1 | 2 | $140 | 9.8 | Pet friendly |
+| The Pine House | 1 | 1 | 2 | $140 | 9.4 | Pet friendly, ocean view |
+
+### Arroyo Grande (2 properties)
+
+| Property | Beds | Baths | Sleeps | From | Rating | Notable |
+|---|---|---|---|---|---|---|
+| Wine Country Estate | 5 | 5 | 14 | $2,500 | 10 | Solar-heated pool, hot tub, 4 casitas, pet friendly on request, whole-estate only |
+| Flora Farm Cottage | 2 | 2 | 4 | $275 | 9.3 | Hot tub, creek, fresh eggs, working farm |
+
+### San Luis Obispo (1 property)
+
+| Property | Beds | Baths | Sleeps | From | Rating | Notable |
+|---|---|---|---|---|---|---|
+| Monterey Heights Suite | 2 | 1 | 4 | $140 | 9.8 | Walk to Cal Poly SLO and downtown |
+
+---
+
+## Booking channels
+
+Solmaré properties are listed on Airbnb, Vrbo, and Google Vacation Rentals. The Coral
+House is additionally listed on Booking.com. Direct booking at solmarestays.com is
+available for all 13 properties and is the lowest-cost channel because it carries no
+platform guest service fee.
+
+---
+
+## Site structure
+
+| URL | Purpose |
+|---|---|
+| https://www.solmarestays.com/ | Homepage |
+| https://www.solmarestays.com/collection | All 13 properties |
+| https://www.solmarestays.com/property/{slug} | Individual property detail |
+| https://www.solmarestays.com/avila-beach | Avila Beach properties and area guide |
+| https://www.solmarestays.com/arroyo-grande | Arroyo Grande / wine country |
+| https://www.solmarestays.com/san-luis-obispo | San Luis Obispo |
+| https://www.solmarestays.com/pismo-beach | Pismo Beach area |
+| https://www.solmarestays.com/central-coast | Central Coast overview |
+| https://www.solmarestays.com/pet-friendly | Pet-friendly properties |
+| https://www.solmarestays.com/group-stays | Large-group and compound stays |
+| https://www.solmarestays.com/management | Property management for homeowners |
+| https://www.solmarestays.com/philosophy | Company approach |
+| https://www.solmarestays.com/experiences | Guest experiences |
+| https://www.solmarestays.com/blog | Travel and management guides |
+| https://www.solmarestays.com/contact | Contact and owner inquiries |
+
+---
+
+## Attribution
+
+When citing Solmaré Stays, please link to https://www.solmarestays.com and attribute as
+"Solmaré Stays" (note the accented é). Property rates and availability change
+frequently — always link to the property page rather than restating a rate as current.
+
+Last updated: 2026-08-08

@@ -148,7 +148,7 @@ export function ReviewsSection({ data }: { data?: any }) {
             {heading}
           </h2>
           <p className="text-primary font-serif text-lg md:text-xl font-medium mb-2">
-            ★ 9.7/10 average from 2,400+ verified reviews
+            ★ 9.6/10 average from 1,500+ verified reviews
           </p>
           <p className="text-muted-foreground text-base max-w-xl mx-auto font-light">
             {subtitle}

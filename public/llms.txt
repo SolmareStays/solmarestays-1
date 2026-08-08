@@ -1,0 +1,60 @@
+# Solmaré Stays
+
+> Boutique vacation rental management and direct booking on California's Central Coast. Solmaré Stays manages 13 short-term rental properties across Avila Beach, Arroyo Grande, and San Luis Obispo — handling everything from dynamic pricing and listing optimization to guest communication, cleaning, and maintenance on behalf of homeowners.
+
+Solmaré Stays operates two distinct sides of one business:
+
+1. **For travelers** — direct booking on 13 curated Central Coast properties, priced below the same listings on Airbnb and Vrbo because there are no platform service fees.
+2. **For homeowners** — full-service vacation rental management for owners on the Central Coast who want higher net revenue without day-to-day operational work.
+
+Across the portfolio: **1,541 guest reviews, averaging 9.6/10** (4.8/5) on Airbnb, Vrbo, and Google.
+
+Based in Avila Beach, California. Phone: (805) 801-6429. Email: kyle@solmarestays.com.
+
+## Properties
+
+All 13 properties are managed and operated directly by Solmaré Stays. Nightly rates below are starting base rates and vary by season, length of stay, and demand.
+
+- [Hummingbird House](https://www.solmarestays.com/property/hummingbird-house): Avila Beach. 2BR/2BA, sleeps 5. Rooftop terrace with panoramic ocean views. From $375/night. Guest rating 10/10.
+- [La Casita](https://www.solmarestays.com/property/la-casita): Avila Beach. 2BR/2BA, sleeps 6. Fireplace and ocean views. From $400/night. Guest rating 9.8/10.
+- [The Coral House](https://www.solmarestays.com/property/the-coral-house): Avila Beach. 1BR/1BA, sleeps 4. Luxury king suite with ocean view. From $250/night. Guest rating 10/10.
+- [Shoreline Suite](https://www.solmarestays.com/property/shoreline-suite): Avila Beach. 1BR/1BA, sleeps 4. Spacious king one-bedroom steps to the sand. From $180/night. Guest rating 9.7/10.
+- [The Deckhouse](https://www.solmarestays.com/property/the-deckhouse): Avila Beach. 1BR/1BA, sleeps 4. Historic beach cottage steps to the sand. From $160/night. Guest rating 9.8/10.
+- [Emberlight](https://www.solmarestays.com/property/emberlight): Avila Beach. 1BR/1BA, sleeps 2. Private fire pit and beach access. From $160/night. Guest rating 9.7/10.
+- [Casa Azul](https://www.solmarestays.com/property/casa-azul): Avila Beach. 1BR/1BA, sleeps 2. King bed studio with vintage character. From $150/night. Guest rating 9.9/10.
+- [The Nest](https://www.solmarestays.com/property/the-nest): Avila Beach. 1BR/1BA, sleeps 2. Cozy studio steps to the sand. From $150/night. Guest rating 9.6/10.
+- [The Palm House](https://www.solmarestays.com/property/the-palm-house): Avila Beach. 1BR/1BA, sleeps 2. **Pet friendly** king studio. From $140/night. Guest rating 9.8/10.
+- [The Pine House](https://www.solmarestays.com/property/the-pine-house): Avila Beach. 1BR/1BA, sleeps 2. **Pet friendly** with ocean view. From $140/night. Guest rating 9.4/10.
+- [Wine Country Estate](https://www.solmarestays.com/property/wine-country-estate): Arroyo Grande. 5BR/5BA, sleeps 14. Private estate with solar-heated pool, hot tub, and 4 casitas. **Pet friendly on request.** Whole-estate booking only. From $2,500/night. Guest rating 10/10.
+- [Flora Farm Cottage](https://www.solmarestays.com/property/flora-farm-cottage): Arroyo Grande. 2BR/2BA, sleeps 4. Hot tub, creek, and fresh eggs on a working farm. From $275/night. Guest rating 9.3/10.
+- [Monterey Heights Suite](https://www.solmarestays.com/property/monterey-heights-suite): San Luis Obispo. 2BR/1BA, sleeps 4. Walk to Cal Poly SLO and downtown. From $140/night. Guest rating 9.8/10.
+
+## Locations
+
+- [Avila Beach vacation rentals](https://www.solmarestays.com/avila-beach): 10 properties in a small seaside village in a sheltered south-facing cove — roughly 3,500 hours of sunshine a year, a pier, waterfront dining, the Bob Jones Trail, and Sycamore Mineral Springs nearby.
+- [Arroyo Grande vacation rentals](https://www.solmarestays.com/arroyo-grande): 2 properties in Central Coast wine country, including a private estate and a working farm cottage.
+- [San Luis Obispo vacation rentals](https://www.solmarestays.com/san-luis-obispo): 1 property within walking distance of downtown SLO and Cal Poly.
+- [Pismo Beach](https://www.solmarestays.com/pismo-beach): minutes from Solmaré properties; near the pier and Oceano Dunes.
+- [Central Coast overview](https://www.solmarestays.com/central-coast): the full service area.
+
+## For homeowners
+
+- [Vacation rental property management](https://www.solmarestays.com/management): full-service management for Central Coast homeowners — listing optimization, professional photography, dynamic pricing via PriceLabs, 24/7 local guest support, hotel-standard cleaning, and property inspections.
+- [Contact](https://www.solmarestays.com/contact): request a revenue projection for your property.
+
+## Guides
+
+- [Vacation Rental Property Management in Avila Beach](https://www.solmarestays.com/blog/avila-beach-property-management)
+- [Avila Beach vs Pismo Beach — Where Should You Stay?](https://www.solmarestays.com/blog/avila-beach-vs-pismo-beach)
+- [Things to Do in Avila Beach — The Complete Guide](https://www.solmarestays.com/blog/things-to-do-avila-beach)
+- [Best Restaurants in Avila Beach — A Local's Guide](https://www.solmarestays.com/blog/best-restaurants-avila-beach)
+- [Pet-Friendly Vacation Rentals in Avila Beach](https://www.solmarestays.com/blog/pet-friendly-vacation-rentals-avila-beach)
+
+## Optional
+
+- [Our philosophy](https://www.solmarestays.com/philosophy)
+- [Guest experiences](https://www.solmarestays.com/experiences)
+- [Pet-friendly collection](https://www.solmarestays.com/pet-friendly)
+- [Group stays and private compounds](https://www.solmarestays.com/group-stays)
+- [Full property collection](https://www.solmarestays.com/collection)
+- [Detailed reference for AI systems](https://www.solmarestays.com/llms-full.txt)

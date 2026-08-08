@@ -19,9 +19,13 @@ const SITE_URL = 'https://www.solmarestays.com';
 
 // Load .env manually (no dotenv dependency required)
 function loadEnv() {
-  const envPath = path.join(ROOT, '.env');
+  // Must read .env.local too. The repo ships .env.local, not .env — reading only
+  // .env made local runs silently drop all 13 /property/ URLs AND overwrite
+  // public/sitemap.xml with the truncated version. Vercel injects real env vars.
   const env = {};
-  if (fs.existsSync(envPath)) {
+  for (const name of ['.env', '.env.local']) {
+    const envPath = path.join(ROOT, name);
+    if (!fs.existsSync(envPath)) continue;
     const content = fs.readFileSync(envPath, 'utf-8');
     for (const line of content.split('\n')) {
       const trimmed = line.trim();
@@ -66,6 +70,15 @@ const LOCATION_ROUTES = [
   { path: '/san-luis-obispo', changefreq: 'weekly', priority: '0.9' },
   { path: '/central-coast', changefreq: 'weekly', priority: '0.9' },
   { path: '/arroyo-grande', changefreq: 'weekly', priority: '0.9' },
+];
+
+// Blog posts (static, pre-rendered)
+const BLOG_ROUTES = [
+  { path: '/blog/best-restaurants-avila-beach', changefreq: 'monthly', priority: '0.8' },
+  { path: '/blog/avila-beach-vs-pismo-beach', changefreq: 'monthly', priority: '0.8' },
+  { path: '/blog/things-to-do-avila-beach', changefreq: 'monthly', priority: '0.8' },
+  { path: '/blog/pet-friendly-vacation-rentals-avila-beach', changefreq: 'monthly', priority: '0.8' },
+  { path: '/blog/avila-beach-property-management', changefreq: 'monthly', priority: '0.8' },
 ];
 
 // Filter pages
@@ -182,6 +195,12 @@ async function generateSitemap() {
   // Location pages
   entries.push('  <!-- Location Pages -->');
   for (const route of LOCATION_ROUTES) {
+    entries.push(buildUrlEntry(route.path, route.changefreq, route.priority));
+  }
+
+  // Static blog posts
+  entries.push('  <!-- Blog Posts -->');
+  for (const route of BLOG_ROUTES) {
     entries.push(buildUrlEntry(route.path, route.changefreq, route.priority));
   }
 

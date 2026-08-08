@@ -23,7 +23,7 @@ const organizationSchema = {
   name: 'Solmaré Stays',
   url: SITE_URL,
   logo: `${SITE_URL}/logo.png`,
-  description: "Professional vacation rental management on California's Central Coast. 13 properties across Avila Beach, Pismo Beach, Arroyo Grande, and San Luis Obispo. 2,400+ five-star reviews.",
+  description: "Professional vacation rental management on California's Central Coast. 13 properties across Avila Beach, Pismo Beach, Arroyo Grande, and San Luis Obispo. 1,500+ five-star reviews.",
   telephone: '+1-805-801-6429',
   address: {
     '@type': 'PostalAddress',
@@ -56,7 +56,7 @@ const lodgingBusinessSchema = {
   url: SITE_URL,
   telephone: '+1-805-801-6429',
   description:
-    "Professional vacation rental management on California's Central Coast. 13 properties in Avila Beach, Pismo Beach, Arroyo Grande, and San Luis Obispo. From cozy bungalows to luxury estates. 2,400+ five-star reviews. Book direct for the best rates.",
+    "Professional vacation rental management on California's Central Coast. 13 properties in Avila Beach, Pismo Beach, Arroyo Grande, and San Luis Obispo. From cozy bungalows to luxury estates. 1,500+ five-star reviews. Book direct for the best rates.",
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Avila Beach',
@@ -120,7 +120,7 @@ export function SEO({ title, description, image, type = 'website', schema, bread
   const location = useLocation();
   const siteTitle = 'Solmaré Stays';
   const fullTitle = `${title} | ${siteTitle}`;
-  const defaultDescription = 'Refined vacation rentals in Avila Beach, Pismo Beach & SLO. 2,400+ five-star reviews. Book direct for the best rates.';
+  const defaultDescription = 'Refined vacation rentals in Avila Beach, Pismo Beach & SLO. 1,500+ five-star reviews. Book direct for the best rates.';
 
   // Construct canonical URL safely
   const canonicalUrl = `${SITE_URL}${location.pathname}`;

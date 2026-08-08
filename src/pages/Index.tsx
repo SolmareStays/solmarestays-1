@@ -39,7 +39,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <SEO
         title="Avila Beach Vacation Rentals"
-        description="Refined vacation rentals in Avila Beach, Pismo Beach & SLO. 2,400+ five-star reviews. Book direct for the best rates."
+        description="Refined vacation rentals in Avila Beach, Pismo Beach & SLO. 1,500+ five-star reviews. Book direct for the best rates."
       />
       <Header />
       <main>
