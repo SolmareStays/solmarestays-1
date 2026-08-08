@@ -192,7 +192,7 @@ const PAGES = [
     title: 'Central Coast California Vacation Rentals | Solmaré Stays',
     description: 'Luxury vacation rentals on California\'s Central Coast. Avila Beach, Pismo Beach, San Luis Obispo, and Arroyo Grande. Book direct for the best rates.',
     h1: 'Central Coast California Vacation Rentals',
-    body: `<p>Solmaré Stays manages 12 premium vacation rentals across California's Central Coast, from beachfront bungalows in Avila Beach to a 7-acre wine country estate in Arroyo Grande.</p>
+    body: `<p>Solmaré Stays manages 13 premium vacation rentals across California's Central Coast, from beachfront bungalows in Avila Beach to a 7-acre wine country estate in Arroyo Grande.</p>
 <h2>Our Locations</h2>
 <ul>
 <li><a href="/avila-beach">Avila Beach</a> — 10 properties, steps to the sand</li>
