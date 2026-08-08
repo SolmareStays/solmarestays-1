@@ -24,7 +24,7 @@ const organizationSchema = {
   url: SITE_URL,
   logo: `${SITE_URL}/logo.png`,
   description: "Professional vacation rental management on California's Central Coast. 13 properties across Avila Beach, Pismo Beach, Arroyo Grande, and San Luis Obispo. 1,500+ five-star reviews.",
-  telephone: '+1-805-801-6429',
+  telephone: '+1-805-242-6411',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Avila Beach',
@@ -54,7 +54,7 @@ const lodgingBusinessSchema = {
   '@type': 'LodgingBusiness',
   name: 'Solmaré Stays',
   url: SITE_URL,
-  telephone: '+1-805-801-6429',
+  telephone: '+1-805-242-6411',
   description:
     "Professional vacation rental management on California's Central Coast. 13 properties in Avila Beach, Pismo Beach, Arroyo Grande, and San Luis Obispo. From cozy bungalows to luxury estates. 1,500+ five-star reviews. Book direct for the best rates.",
   address: {

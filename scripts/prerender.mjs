@@ -48,7 +48,7 @@ const PAGES = [
 <ul><li><a href="/avila-beach">Avila Beach</a> — 10 properties, steps from the pier and beach</li><li><a href="/pismo-beach">Pismo Beach</a> — minutes from the pier and Oceano Dunes</li><li><a href="/san-luis-obispo">San Luis Obispo</a> — walk to downtown SLO and Cal Poly</li><li><a href="/arroyo-grande">Arroyo Grande</a> — private 7-acre wine country estate</li></ul>
 <h2>Featured Properties</h2>
 <ul><li><strong>Hummingbird House</strong> — 2BR/2BA, rooftop terrace with panoramic ocean views</li><li><strong>La Casita</strong> — luxury 2BR beach house, 1 minute from the sand</li><li><strong>Casitas Estate</strong> — private 7-acre estate sleeping 14 with pool & hot tub</li><li><strong>The Coral House</strong> — modern 1BR with bifold doors and ocean views</li></ul>
-<p>Browse all <a href="/collection">13 vacation rentals</a> or <a href="/contact">contact us</a> at (805) 801-6429.</p>`,
+<p>Browse all <a href="/collection">13 vacation rentals</a> or <a href="/contact">contact us</a> at (805) 242-6411.</p>`,
     schema: {
       "@context": "https://schema.org",
       "@type": "VacationRentalAgency",
@@ -56,7 +56,7 @@ const PAGES = [
       "url": "https://www.solmarestays.com",
       "logo": "https://www.solmarestays.com/logo.png",
       "description": "Professional vacation rental management on California's Central Coast. 13 properties in Avila Beach, Pismo Beach, Arroyo Grande, and San Luis Obispo.",
-      "telephone": "+1-805-801-6429",
+      "telephone": "+1-805-242-6411",
       "email": "kyle@solmarestays.com",
       "address": { "@type": "PostalAddress", "addressLocality": "Avila Beach", "addressRegion": "CA", "postalCode": "93424", "addressCountry": "US" },
       "areaServed": ["Avila Beach", "Pismo Beach", "Shell Beach", "Arroyo Grande", "San Luis Obispo"].map(c => ({ "@type": "City", "name": c })),
@@ -293,7 +293,7 @@ const PAGES = [
       "logo": "https://www.solmarestays.com/logo.png",
       "image": "https://www.solmarestays.com/logo.png",
       "description": "Full-service vacation rental property management for homeowners on California's Central Coast, covering listing optimization, dynamic pricing, guest communication, cleaning, and maintenance.",
-      "telephone": "+1-805-801-6429",
+      "telephone": "+1-805-242-6411",
       "email": "kyle@solmarestays.com",
       "priceRange": "$$",
       "address": { "@type": "PostalAddress", "addressLocality": "Avila Beach", "addressRegion": "CA", "postalCode": "93424", "addressCountry": "US" },
@@ -318,7 +318,7 @@ const PAGES = [
       { q: "How much does vacation rental management cost in Avila Beach?", a: "Management is priced as a percentage of booking revenue, so the manager only earns when the property does. The exact rate depends on the property, its location, and how much service the owner wants. Solmaré Stays provides a revenue projection and proposed terms before any commitment." },
       { q: "How does Solmaré Stays set nightly rates?", a: "Rates are dynamic rather than fixed. Solmaré uses PriceLabs alongside local market data and live booking pace to adjust pricing by season, day of week, remaining lead time, and local demand events. Rates are reviewed continuously rather than set once per season." },
       { q: "Is Solmaré Stays local to Avila Beach?", a: "Yes. Solmaré Stays is based in Avila Beach and manages 13 properties, all within roughly 20 miles. That means same-day response to guest and maintenance issues, in-person inspection between every stay, and direct owner access rather than a regional account manager." },
-      { q: "How do I get a revenue estimate for my property?", a: "Request a revenue projection at solmarestays.com/contact or call (805) 801-6429. Solmaré reviews the property, comparable local performance, and realistic occupancy for its location and size, then proposes terms based on that analysis." }
+      { q: "How do I get a revenue estimate for my property?", a: "Request a revenue projection at solmarestays.com/contact or call (805) 242-6411. Solmaré reviews the property, comparable local performance, and realistic occupancy for its location and size, then proposes terms based on that analysis." }
     ]
   },
   {
@@ -490,7 +490,7 @@ const PAGES = [
 <p>Management fees on the Central Coast typically range from 15-25% of gross revenue. The fee pays for itself when professional management increases your occupancy and ADR enough to more than offset the commission. Most owners we work with see a net revenue increase even after our fee.</p>
 <h2>Is It Right for You?</h2>
 <p>If you own a vacation rental in Avila Beach, Pismo Beach, Shell Beach, San Luis Obispo, or Arroyo Grande, we'd love to show you what your property could be earning. No pressure — we start with a free market analysis and revenue projection.</p>
-<p><a href="/management">Learn more about our management services</a> or <a href="/contact">get in touch</a>. Call Kyle directly at (805) 801-6429.</p>`,
+<p><a href="/management">Learn more about our management services</a> or <a href="/contact">get in touch</a>. Call Kyle directly at (805) 242-6411.</p>`,
     faq: [
       { q: "How much does vacation rental management cost in Avila Beach?", a: "Management fees on the Central Coast typically range from 15-25% of gross revenue. Solmaré Stays' fees vary by property. The fee pays for itself when professional management increases occupancy and revenue." },
       { q: "What is the average occupancy for vacation rentals in Avila Beach?", a: "The market average occupancy in Avila Beach is approximately 40%. Solmaré Stays' portfolio runs at 59% occupancy — 19 points above the market average." },
@@ -637,7 +637,7 @@ function generatePage(page) {
 
   // Inject content into root div so ALL crawlers (Google + AI) see real HTML
   if (page.h1 || page.body) {
-    const seoContent = `<div id="root"><div style="max-width:900px;margin:0 auto;padding:2rem;font-family:system-ui,sans-serif;color:#1a1a1a"><h1>${page.h1 || ''}</h1>${page.body || ''}<p><a href="${BASE_URL}">← Back to Solmaré Stays</a> | <a href="tel:+18058016429">(805) 801-6429</a></p></div></div>`;
+    const seoContent = `<div id="root"><div style="max-width:900px;margin:0 auto;padding:2rem;font-family:system-ui,sans-serif;color:#1a1a1a"><h1>${page.h1 || ''}</h1>${page.body || ''}<p><a href="${BASE_URL}">← Back to Solmaré Stays</a> | <a href="tel:+18052426411">(805) 242-6411</a></p></div></div>`;
     html = html.replace(/<div id="root"><\/div>/, seoContent);
   }
 
@@ -801,7 +801,7 @@ function buildPropertyPage(listing, reviewCount) {
 <p>${description}</p>
 ${amenities.length > 0 ? `<p>Amenities: ${amenities.slice(0, 15).join(', ')}.</p>` : ''}
 <p>Managed by <a href="/">Solmaré Stays</a> — professional vacation rental management on California's Central Coast.</p>
-<p><a href="/collection">Browse all properties</a> | <a href="/contact">Contact us</a> | <a href="tel:+18058016429">(805) 801-6429</a></p>`,
+<p><a href="/collection">Browse all properties</a> | <a href="/contact">Contact us</a> | <a href="tel:+18052426411">(805) 242-6411</a></p>`,
     schema: {
       "@context": "https://schema.org",
       "@type": "VacationRental",
