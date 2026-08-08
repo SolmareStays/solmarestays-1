@@ -106,7 +106,7 @@ export function HeroSection({ data }: { data?: any }) {
                   className="text-white hover:text-white hover:bg-white/30 px-8 h-12 text-base font-medium transition-all bg-white/20 border border-white/40"
                   asChild
                 >
-                  <Link to="/why-choose-us">Learn More</Link>
+                  <Link to="/philosophy">Learn More</Link>
                 </Button>
               </div>
             </motion.div>
