@@ -471,6 +471,23 @@ export default function Checkout() {
 
       setReservationId(result.reservationId);
       setIsSubmitted(true);
+
+      // Purchase fires only here — after Hostaway confirms the reservation.
+      // content_ids matches the Meta catalog retailer_id (Hostaway listing ID).
+      window.fbq?.('track', 'Purchase', {
+        value: pricing.total,
+        currency: 'USD',
+        content_ids: [property.hostawayListingId],
+        content_type: 'product',
+        content_name: property.name,
+      });
+      window.gtag?.('event', 'purchase', {
+        transaction_id: String(result.reservationId),
+        value: pricing.total,
+        currency: 'USD',
+        items: [{ item_id: property.hostawayListingId, item_name: property.name }],
+      });
+
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (err) {
       console.error(err);

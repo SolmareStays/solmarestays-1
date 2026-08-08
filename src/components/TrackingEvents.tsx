@@ -1,13 +1,17 @@
 import { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 
-// Property slugs that map to individual listing pages
-const PROPERTY_SLUGS = new Set([
-  "emberlight", "the-deckhouse", "the-nest", "shoreline-suite",
-  "casa-azul", "la-casita", "hummingbird-house", "monterey-heights-suite",
-  "the-palm-house", "the-pine-house", "the-coral-house",
-  "wine-country-estate", "flora-farm-cottage",
-]);
+// Slug → Hostaway listing ID. These are the retailer_ids in the Meta catalog
+// "Solmaré Properties" (1080256234419979) — content_ids must match them exactly
+// or dynamic catalog ads cannot personalize.
+const PROPERTY_IDS: Record<string, string> = {
+  "emberlight": "335975", "the-deckhouse": "335976", "the-nest": "335977",
+  "shoreline-suite": "335978", "casa-azul": "335979", "la-casita": "335980",
+  "hummingbird-house": "391355", "monterey-heights-suite": "400378",
+  "the-palm-house": "429263", "the-pine-house": "429264",
+  "the-coral-house": "434918", "wine-country-estate": "504852",
+  "flora-farm-cottage": "512768",
+};
 
 declare global {
   interface Window {
@@ -38,9 +42,10 @@ export function TrackingEvents() {
         content_name: propertySlug,
         content_type: "product",
         content_category: "vacation_rental",
+        ...(PROPERTY_IDS[propertySlug] && { content_ids: [PROPERTY_IDS[propertySlug]] }),
       });
       window.gtag?.("event", "view_item", {
-        items: [{ item_name: propertySlug, item_category: "vacation_rental" }],
+        items: [{ item_id: PROPERTY_IDS[propertySlug], item_name: propertySlug, item_category: "vacation_rental" }],
       });
     }
 
@@ -80,9 +85,10 @@ export function TrackingEvents() {
       window.fbq?.("track", "InitiateCheckout", {
         content_name: propertySlug,
         content_type: "product",
+        ...(PROPERTY_IDS[propertySlug] && { content_ids: [PROPERTY_IDS[propertySlug]] }),
       });
       window.gtag?.("event", "begin_checkout", {
-        items: [{ item_name: propertySlug }],
+        items: [{ item_id: PROPERTY_IDS[propertySlug], item_name: propertySlug }],
       });
     }
 
