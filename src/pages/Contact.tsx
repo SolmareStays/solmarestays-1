@@ -46,7 +46,7 @@ const faqItems = [
   },
   {
     question: 'Can I book multiple properties for a group?',
-    answer: 'Absolutely. Many of our Avila Beach properties are located near each other, making them perfect for larger groups. For groups of 10 or more, our Casitas Estate in Arroyo Grande sleeps up to 14 on a private 7-acre estate. Contact us to coordinate multi-property bookings and group pricing.',
+    answer: 'Absolutely. Many of our Avila Beach properties are located near each other, making them perfect for larger groups. For groups of 10 or more, our Casitas Estate in Arroyo Grande sleeps up to 14 on a private 13-acre estate. Contact us to coordinate multi-property bookings and group pricing.',
   },
   {
     question: 'Are your homes pet-friendly?',

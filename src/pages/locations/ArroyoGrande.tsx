@@ -58,7 +58,7 @@ const locationSchema = {
   '@type': 'LodgingBusiness',
   name: 'Solmaré Stays - Arroyo Grande & Wine Country Vacation Rentals',
   description:
-    'Luxury vacation estate rental in Arroyo Grande wine country, California. Private 7-acre estate with pool, hot tub, and vineyard views. 15 minutes to Pismo Beach, 10 minutes to downtown SLO.',
+    'Luxury vacation estate rental in Arroyo Grande wine country, California. Private 13-acre estate with pool, hot tub, and vineyard views. 15 minutes to Pismo Beach, 10 minutes to downtown SLO.',
   url: 'https://www.solmarestays.com/arroyo-grande',
   address: {
     '@type': 'PostalAddress',
@@ -91,7 +91,7 @@ const highlights = [
     icon: TreePine,
     title: 'Seven Private Acres',
     description:
-      'Our Casitas Estate sits on seven acres of rolling vineyard landscape. Private trails, pool, hot tub, and bocce court — all exclusively yours.',
+      'Our Casitas Estate sits on 13 acres of rolling vineyard landscape. Private trails, pool, hot tub, and bocce court — all exclusively yours.',
   },
   {
     icon: Utensils,
@@ -131,7 +131,7 @@ const ArroyoGrandePage = () => {
     <div className="min-h-screen bg-background">
       <SEO
         title="Arroyo Grande & Wine Country Vacation Rentals"
-        description="Book a luxury wine country estate in Arroyo Grande, California. Private 7-acre estate sleeping 14 with pool, hot tub, and vineyard views. 15 minutes to the beach. Book direct and save."
+        description="Book a luxury wine country estate in Arroyo Grande, California. Private 13-acre estate sleeping 14 with pool, hot tub, and vineyard views. 15 minutes to the beach. Book direct and save."
         schema={locationSchema}
         breadcrumbs={[
           { name: 'Home', url: 'https://www.solmarestays.com' },
@@ -314,13 +314,13 @@ const ArroyoGrandePage = () => {
                   <p>
                     The grounds are designed for gathering and relaxation. A private pool and hot tub sit surrounded by
                     vineyard views with no neighbors in sight. A full-size bocce court is tucked into the landscape for
-                    afternoon tournaments. Walking trails wind through the full seven acres, past oak trees and working
+                    afternoon tournaments. Walking trails wind through the full 13 acres, past oak trees and working
                     vines, offering the kind of space and privacy that simply does not exist at a hotel or resort.
                   </p>
                   <p>
                     The Casitas Estate is ideal for family reunions, corporate retreats, wedding parties, and milestone
                     celebrations. It is a whole-estate booking — all six suites, the Main House, pool, hot tub, bocce court,
-                    and all seven acres are reserved exclusively for your group. No other guests, no shared spaces, no
+                    and all 13 acres are reserved exclusively for your group. No other guests, no shared spaces, no
                     schedules imposed on you.
                   </p>
                 </div>

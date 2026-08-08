@@ -45,9 +45,9 @@ const PAGES = [
 <h2>Why Book Direct with Solmaré Stays?</h2>
 <ul><li>Save 15% vs Airbnb — best rate guaranteed</li><li>No service fees</li><li>Direct communication with our local Avila Beach team</li><li>24/7 guest support</li></ul>
 <h2>Our Locations</h2>
-<ul><li><a href="/avila-beach">Avila Beach</a> — 10 properties, steps from the pier and beach</li><li><a href="/pismo-beach">Pismo Beach</a> — minutes from the pier and Oceano Dunes</li><li><a href="/san-luis-obispo">San Luis Obispo</a> — walk to downtown SLO and Cal Poly</li><li><a href="/arroyo-grande">Arroyo Grande</a> — private 7-acre wine country estate</li></ul>
+<ul><li><a href="/avila-beach">Avila Beach</a> — 10 properties, steps from the pier and beach</li><li><a href="/pismo-beach">Pismo Beach</a> — minutes from the pier and Oceano Dunes</li><li><a href="/san-luis-obispo">San Luis Obispo</a> — walk to downtown SLO and Cal Poly</li><li><a href="/arroyo-grande">Arroyo Grande</a> — private 13-acre wine country estate</li></ul>
 <h2>Featured Properties</h2>
-<ul><li><strong>Hummingbird House</strong> — 2BR/2BA, rooftop terrace with panoramic ocean views</li><li><strong>La Casita</strong> — luxury 2BR beach house, 1 minute from the sand</li><li><strong>Casitas Estate</strong> — private 7-acre estate sleeping 14 with pool & hot tub</li><li><strong>The Coral House</strong> — modern 1BR with bifold doors and ocean views</li></ul>
+<ul><li><strong>Hummingbird House</strong> — 2BR/2BA, rooftop terrace with panoramic ocean views</li><li><strong>La Casita</strong> — luxury 2BR beach house, 1 minute from the sand</li><li><strong>Casitas Estate</strong> — private 13-acre estate sleeping 14 with pool & hot tub</li><li><strong>The Coral House</strong> — modern 1BR with bifold doors and ocean views</li></ul>
 <p>Browse all <a href="/collection">13 vacation rentals</a> or <a href="/contact">contact us</a> at (805) 242-6411.</p>`,
     schema: {
       "@context": "https://schema.org",
@@ -74,7 +74,7 @@ const PAGES = [
     faq: [
       { q: "Who is Solmaré Stays?", a: "Solmaré Stays is a boutique vacation rental company based in Avila Beach, California. It manages 13 short-term rental properties across Avila Beach, Arroyo Grande, and San Luis Obispo on behalf of homeowners, and rents those same properties directly to travelers at solmarestays.com." },
       { q: "Is it cheaper to book direct than on Airbnb?", a: "Yes. Booking directly at solmarestays.com costs less than the identical property on Airbnb or Vrbo, because those platforms add a guest service fee on top of the nightly rate. Booking direct also means you deal with the local Avila Beach team rather than a platform inbox." },
-      { q: "Where are Solmaré Stays properties located?", a: "Ten properties are in Avila Beach, most within a block or two of the sand. Two are in Arroyo Grande wine country, including a 7-acre private estate and a working farm cottage. One is in San Luis Obispo, walking distance from downtown and Cal Poly." },
+      { q: "Where are Solmaré Stays properties located?", a: "Ten properties are in Avila Beach, most within a block or two of the sand. Two are in Arroyo Grande wine country, including a 13-acre private estate and a working farm cottage. One is in San Luis Obispo, walking distance from downtown and Cal Poly." },
       { q: "What is the best time of year to visit Avila Beach?", a: "Avila Beach sits in a sheltered, south-facing cove, so it stays mild year-round — daytime highs average around 68°F and the town records roughly 3,500 hours of sunshine a year. Summer is busiest and books earliest. September is the warmest month and noticeably quieter than August." },
       { q: "Do you also manage properties for owners?", a: "Yes. Solmaré Stays provides full-service vacation rental management for Central Coast homeowners, covering listing optimization, dynamic pricing, guest communication, cleaning, and maintenance. Owners can request a revenue projection for their property at solmarestays.com/management." }
     ]
@@ -167,7 +167,7 @@ const PAGES = [
   {
     route: '/arroyo-grande',
     title: 'Arroyo Grande & Wine Country Vacation Rentals | Solmaré Stays',
-    description: 'Luxury wine country estate rental in Arroyo Grande, California. Private 7-acre estate sleeping 14 with pool, hot tub, and vineyard views. 15 minutes to Pismo Beach. Book direct and save.',
+    description: 'Luxury wine country estate rental in Arroyo Grande, California. Private 13-acre estate sleeping 14 with pool, hot tub, and vineyard views. 15 minutes to Pismo Beach. Book direct and save.',
     h1: 'Arroyo Grande & Wine Country Vacation Rentals',
     body: `<p>Stay in the heart of Central Coast wine country. Our Casitas Estate in Arroyo Grande offers seven private acres with a 3,700 sq ft Main House, five private casitas, pool, hot tub, bocce court, and walking trails — all exclusively yours.</p>
 <h2>Wine Country at Your Doorstep</h2>
@@ -182,7 +182,7 @@ const PAGES = [
       "address": { "@type": "PostalAddress", "addressLocality": "Arroyo Grande", "addressRegion": "CA", "postalCode": "93420", "addressCountry": "US" }
     },
     faq: [
-      { q: "What vacation rentals does Solmaré Stays have in Arroyo Grande?", a: "Two. Wine Country Estate is a private 7-acre property with 5 bedrooms, a solar-heated pool, hot tub, and separate casitas, sleeping 14. Flora Farm Cottage is a 2-bedroom cottage on a working farm with a hot tub, a creek, and fresh eggs, sleeping 4." },
+      { q: "What vacation rentals does Solmaré Stays have in Arroyo Grande?", a: "Two. Wine Country Estate is a private 13-acre property with 5 bedrooms, a solar-heated pool, hot tub, and separate casitas, sleeping 14. Flora Farm Cottage is a 2-bedroom cottage on a working farm with a hot tub, a creek, and fresh eggs, sleeping 4." },
       { q: "Is Arroyo Grande good for wine tasting?", a: "Yes. Arroyo Grande sits in the Arroyo Grande Valley AVA at the southern end of San Luis Obispo wine country, within easy reach of Edna Valley and the Santa Maria Valley. Both Solmaré properties there are set among vineyards and farmland rather than in town." },
       { q: "How far is Arroyo Grande from the beach?", a: "Roughly 15 to 20 minutes by car to Pismo Beach and about 25 minutes to Avila Beach. Staying in Arroyo Grande gets you significantly more space and privacy for the money while keeping the coast within a short drive." }
     ]
@@ -192,7 +192,7 @@ const PAGES = [
     title: 'Central Coast California Vacation Rentals | Solmaré Stays',
     description: 'Luxury vacation rentals on California\'s Central Coast. Avila Beach, Pismo Beach, San Luis Obispo, and Arroyo Grande. Book direct for the best rates.',
     h1: 'Central Coast California Vacation Rentals',
-    body: `<p>Solmaré Stays manages 13 premium vacation rentals across California's Central Coast, from beachfront bungalows in Avila Beach to a 7-acre wine country estate in Arroyo Grande.</p>
+    body: `<p>Solmaré Stays manages 13 premium vacation rentals across California's Central Coast, from beachfront bungalows in Avila Beach to a 13-acre wine country estate in Arroyo Grande.</p>
 <h2>Our Locations</h2>
 <ul>
 <li><a href="/avila-beach">Avila Beach</a> — 10 properties, steps to the sand</li>
@@ -219,10 +219,10 @@ const PAGES = [
     title: 'Browse All Properties | Solmaré Stays',
     description: 'Browse all 13 vacation rental properties managed by Solmaré Stays. Avila Beach, Pismo Beach, SLO, and wine country. Filter by location, guests, and dates.',
     h1: 'Our Vacation Rental Collection',
-    body: `<p>Browse Solmaré Stays' curated collection of 13 vacation rentals across California's Central Coast. From intimate beach studios to a 7-acre wine country estate, find your perfect stay.</p>`,
+    body: `<p>Browse Solmaré Stays' curated collection of 13 vacation rentals across California's Central Coast. From intimate beach studios to a 13-acre wine country estate, find your perfect stay.</p>`,
     faq: [
       { q: "How many vacation rentals does Solmaré Stays have?", a: "Solmaré Stays manages 13 vacation rental properties on California's Central Coast: 10 in Avila Beach, 2 in Arroyo Grande wine country, and 1 in San Luis Obispo. All are managed and operated directly by the Solmaré team rather than sublet or franchised." },
-      { q: "What is the largest property you offer?", a: "Wine Country Estate in Arroyo Grande is the largest, with 5 bedrooms and 5 bathrooms across a private 7-acre property that sleeps 14. It includes a solar-heated pool and hot tub and is booked as a whole estate rather than by individual casita." },
+      { q: "What is the largest property you offer?", a: "Wine Country Estate in Arroyo Grande is the largest, with 5 bedrooms and 5 bathrooms across a private 13-acre property that sleeps 14. It includes a solar-heated pool and hot tub and is booked as a whole estate rather than by individual casita." },
       { q: "What is the smallest or most affordable option?", a: "The Palm House, The Pine House, and Monterey Heights Suite all start around $140 per night. The Avila Beach studios sleep two, while Monterey Heights Suite in San Luis Obispo has two bedrooms and sleeps four, making it the best value for small groups." },
       { q: "Do you offer discounts for longer stays?", a: "Yes. Weekly and monthly stays receive automatic length-of-stay discounts that are applied when you select your dates. Longer bookings also tend to land on lower nightly rates because pricing responds to how far ahead the reservation is made." }
     ]
@@ -237,10 +237,10 @@ const PAGES = [
 <ul>
 <li><strong>The Palm House</strong> — King studio with ocean peeks and private balcony. Pet fee applies.</li>
 <li><strong>The Pine House</strong> — Queen studio with balcony views. Pet fee applies.</li>
-<li><strong>Wine Country Estate</strong> — 7-acre estate with room to roam. Dogs welcome with approval.</li>
+<li><strong>Wine Country Estate</strong> — 13-acre estate with room to roam. Dogs welcome with approval.</li>
 </ul>`,
     faq: [
-      { q: "Which Solmaré Stays rentals are pet friendly?", a: "Three properties accept dogs. The Palm House and The Pine House in Avila Beach both welcome dogs, and each is a one-bedroom studio sleeping two. Wine Country Estate in Arroyo Grande welcomes up to two dogs with prior approval, on seven acres of private grounds. Dogs must be added to the reservation in advance at all three." },
+      { q: "Which Solmaré Stays rentals are pet friendly?", a: "Three properties accept dogs. The Palm House and The Pine House in Avila Beach both welcome dogs, and each is a one-bedroom studio sleeping two. Wine Country Estate in Arroyo Grande welcomes up to two dogs with prior approval, on 13 acres of private grounds. Dogs must be added to the reservation in advance at all three." },
       { q: "Where can I walk my dog near the Avila Beach rentals?", a: "The Bob Jones Trail runs from Avila Beach inland along San Luis Obispo Creek and is a popular leashed walk from our properties. Beach access rules for dogs vary by season and by section of beach, so check current City of Avila Beach signage when you arrive." },
       { q: "Is there a pet fee?", a: "Yes. At Wine Country Estate it is $100 per dog, for up to two dogs, with approval before booking. At The Palm House and The Pine House a pet fee also applies — add your dog to the reservation and we will confirm the amount for your dates, so the property can be prepared." },
       { q: "Are there breed or size restrictions?", a: "There are no blanket breed restrictions, but pets should be house-trained and not left unattended in the property. Larger dogs are generally better suited to Wine Country Estate, which has fenced outdoor space, than to the Avila Beach studios." }
@@ -254,11 +254,11 @@ const PAGES = [
     body: `<p>Planning a group trip, family reunion, wedding, or corporate retreat on the Central Coast? Solmaré Stays offers unique group accommodation options.</p>
 <h2>Options for Groups</h2>
 <ul>
-<li><strong>Wine Country Estate</strong> — Private 7-acre estate with a main house and 4 guest casitas, pool, hot tub, bocce court. Sleeps 14.</li>
+<li><strong>Wine Country Estate</strong> — Private 13-acre estate with a main house and 4 guest casitas, pool, hot tub, bocce court. Sleeps 14.</li>
 <li><strong>Las Casitas Avila Compound</strong> — Book multiple bungalows in our Avila Beach compound for a private group experience.</li>
 </ul>`,
     faq: [
-      { q: "What is the best rental for a large group on the Central Coast?", a: "Wine Country Estate in Arroyo Grande sleeps 14 across 5 bedrooms and 5 bathrooms on a private 7-acre property, with a solar-heated pool, hot tub, and separate casitas. It is the only single Solmaré property that accommodates a group that size." },
+      { q: "What is the best rental for a large group on the Central Coast?", a: "Wine Country Estate in Arroyo Grande sleeps 14 across 5 bedrooms and 5 bathrooms on a private 13-acre property, with a solar-heated pool, hot tub, and separate casitas. It is the only single Solmaré property that accommodates a group that size." },
       { q: "Can I book several Avila Beach properties together?", a: "Yes. Several Solmaré properties sit within the same Avila Beach compound, so larger groups can reserve multiple bungalows side by side and effectively take over a private cluster. Contact us with your dates and headcount and we will check which combination is available." },
       { q: "Do you host weddings or corporate retreats?", a: "Wine Country Estate is well suited to small weddings, family reunions, and corporate retreats given its acreage and separate casitas. Event use needs approval in advance, so tell us what you are planning when you enquire rather than after booking." },
       { q: "Can I rent just one casita at Wine Country Estate?", a: "No. Wine Country Estate is booked as a whole estate only. The casitas are not rented individually, which keeps the property private for whichever group has it and avoids sharing grounds, pool, and hot tub between separate parties." }
@@ -439,7 +439,7 @@ const PAGES = [
 <ul>
 <li><strong>The Palm House</strong> — King studio with ocean peeks and private balcony. Fenced area nearby.</li>
 <li><strong>The Pine House</strong> — Queen studio with balcony views. Walking distance to the beach.</li>
-<li><strong>Casitas Estate (Arroyo Grande)</strong> — 7-acre private estate with room to roam. Dogs welcome with approval.</li>
+<li><strong>Casitas Estate (Arroyo Grande)</strong> — 13-acre private estate with room to roam. Dogs welcome with approval.</li>
 </ul>
 <p>Pet fees vary by property. <a href="/pet-friendly">See all pet-friendly properties</a> or <a href="/contact">contact us</a> with questions about your specific pet.</p>
 <h2>Dog-Friendly Beaches</h2>
