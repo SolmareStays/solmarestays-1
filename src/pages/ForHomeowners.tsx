@@ -267,11 +267,11 @@ const ForHomeownersPage = () => {
                   transition={{ duration: 0.8 }}
                 >
                   <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight text-white mb-4">
-                    Elevate Your Property<br />
-                    Maximize Your Returns
+                    Thirteen houses,<br />
+                    chosen one at a time.
                   </h1>
                   <p className="text-base md:text-lg text-white/80 leading-relaxed mb-6 max-w-lg">
-                    Boutique management designed for high yields and asset protection on the Central Coast.
+                    Ten in Avila Beach, two in Arroyo Grande, one in San Luis Obispo. Same crew, same pricing engine, same person answering at nine at night.
                   </p>
                   <div className="flex flex-wrap gap-4">
                     <Button variant="default" size="xl" asChild>

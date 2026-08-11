@@ -32,8 +32,8 @@ export function HeroSection({ data }: { data?: any }) {
 
   // Use data from Sanity if available, otherwise fallback to defaults
   const slides = defaultSlides; // Keeping slides static for now as Sanity image handling requires a builder
-  const heading = data?.title || "Where the Sun Meets<br />the Sea in Style";
-  const subheading = data?.subtitle || "Luxury Vacation Rentals on California's Central Coast";
+  const heading = data?.title || "Thirteen houses on<br />the Central Coast.";
+  const subheading = data?.subtitle || "Ten of them a block from the sand.";
 
   const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
@@ -80,7 +80,7 @@ export function HeroSection({ data }: { data?: any }) {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="text-white"
             >
-              <h1 className="sr-only">Solmaré Stays — Luxury Vacation Rentals on California's Central Coast</h1>
+              <h1 className="sr-only">Solmaré Stays — Vacation Rentals on California's Central Coast</h1>
               <p
                 className="font-serif text-4xl md:text-5xl lg:text-6xl font-normal leading-tight mb-4 tracking-tight"
                 aria-hidden="true"
