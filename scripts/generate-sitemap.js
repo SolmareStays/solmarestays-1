@@ -79,6 +79,11 @@ const BLOG_ROUTES = [
   { path: '/blog/things-to-do-avila-beach', changefreq: 'monthly', priority: '0.8' },
   { path: '/blog/pet-friendly-vacation-rentals-avila-beach', changefreq: 'monthly', priority: '0.8' },
   { path: '/blog/avila-beach-property-management', changefreq: 'monthly', priority: '0.8' },
+  { path: '/blog/cal-poly-graduation-where-to-stay', changefreq: 'monthly', priority: '0.8' },
+  { path: '/blog/large-group-vacation-rentals-central-coast', changefreq: 'monthly', priority: '0.8' },
+  { path: '/blog/avila-beach-hot-springs', changefreq: 'monthly', priority: '0.8' },
+  { path: '/blog/wine-country-stays-edna-valley-arroyo-grande', changefreq: 'monthly', priority: '0.8' },
+  { path: '/blog/slo-county-short-term-rental-rules', changefreq: 'monthly', priority: '0.8' },
 ];
 
 // Filter pages
@@ -210,10 +215,13 @@ async function generateSitemap() {
     entries.push(buildUrlEntry(route.path, route.changefreq, route.priority));
   }
 
-  // Blog posts
-  if (blogPosts.length > 0) {
-    entries.push('  <!-- Blog Posts -->');
-    for (const post of blogPosts) {
+  // Sanity blog posts — skip slugs already listed statically in BLOG_ROUTES,
+  // otherwise each post appears twice once its Sanity document exists.
+  const staticBlogPaths = new Set(BLOG_ROUTES.map(r => r.path));
+  const sanityOnly = blogPosts.filter(p => !staticBlogPaths.has(`/blog/${p.slug}`));
+  if (sanityOnly.length > 0) {
+    entries.push('  <!-- Blog Posts (CMS) -->');
+    for (const post of sanityOnly) {
       const lastmod = post.publishedAt ? post.publishedAt.split('T')[0] : today;
       entries.push(buildUrlEntry(`/blog/${post.slug}`, 'monthly', '0.7', lastmod));
     }

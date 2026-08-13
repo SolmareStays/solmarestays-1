@@ -153,6 +153,31 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://www.solmarestays.com/blog/cal-poly-graduation-where-to-stay</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.solmarestays.com/blog/large-group-vacation-rentals-central-coast</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.solmarestays.com/blog/avila-beach-hot-springs</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.solmarestays.com/blog/wine-country-stays-edna-valley-arroyo-grande</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.solmarestays.com/blog/slo-county-short-term-rental-rules</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <!-- Filter Pages -->
   <url>
     <loc>https://www.solmarestays.com/pet-friendly</loc>
