@@ -31,6 +31,21 @@ if (template.includes('<div id="root"><div style="max-width:900px')) {
   process.exit(1);
 }
 
+// Publish dates for BlogPosting schema. Canon = scripts/push-blog-posts.mjs POSTS
+// (publishedAt) — keep in sync when adding a post.
+const BLOG_DATES = {
+  '/blog/best-restaurants-avila-beach': '2026-06-05',
+  '/blog/avila-beach-vs-pismo-beach': '2026-05-20',
+  '/blog/things-to-do-avila-beach': '2026-06-18',
+  '/blog/pet-friendly-vacation-rentals-avila-beach': '2026-07-02',
+  '/blog/avila-beach-property-management': '2026-07-15',
+  '/blog/cal-poly-graduation-where-to-stay': '2026-08-13',
+  '/blog/large-group-vacation-rentals-central-coast': '2026-08-13',
+  '/blog/avila-beach-hot-springs': '2026-08-13',
+  '/blog/wine-country-stays-edna-valley-arroyo-grande': '2026-08-13',
+  '/blog/slo-county-short-term-rental-rules': '2026-08-13',
+};
+
 /**
  * Page definitions with SEO data.
  * Each page gets its own title, description, schema, and crawlable body content.
@@ -38,7 +53,7 @@ if (template.includes('<div id="root"><div style="max-width:900px')) {
 const PAGES = [
   {
     route: '/',
-    title: 'Avila Beach Vacation Rentals | Solmaré Stays',
+    title: 'Solmaré Stays — Avila Beach & Central Coast Vacation Rentals',
     description: 'Refined vacation rentals in Avila Beach, Pismo Beach & SLO. 1,500+ five-star reviews. Book direct for the best rates.',
     h1: 'Avila Beach Vacation Rentals — Book Direct & Save',
     body: `<p>Solmaré Stays manages 13 premium vacation rentals across California's Central Coast — from beachfront bungalows in Avila Beach to a private wine country estate in Arroyo Grande. 1,500+ five-star reviews across Airbnb, VRBO, and Google.</p>
@@ -168,7 +183,7 @@ const PAGES = [
   {
     route: '/arroyo-grande',
     title: 'Arroyo Grande & Wine Country Vacation Rentals | Solmaré Stays',
-    description: 'Luxury wine country estate rental in Arroyo Grande, California. Private 13-acre estate sleeping 14 with pool, hot tub, and vineyard views. 15 minutes to Pismo Beach. Book direct and save.',
+    description: 'Private 13-acre wine country estate in Arroyo Grande, CA — sleeps 14 with pool, hot tub & vineyard views. 15 minutes to Pismo Beach. Book direct.',
     h1: 'Arroyo Grande & Wine Country Vacation Rentals',
     body: `<p>Stay in the heart of Central Coast wine country. Our Wine Country Estate in Arroyo Grande offers 13 private acres with a 3,700 sq ft Main House, 4 guest casitas, pool, hot tub, bocce court, and walking trails — all exclusively yours.</p>
 <h2>Wine Country at Your Doorstep</h2>
@@ -276,7 +291,7 @@ const PAGES = [
   },
   {
     route: '/management',
-    title: 'Vacation Rental Property Management | Avila Beach & Central Coast | Solmaré Stays',
+    title: 'Vacation Rental Property Management — Avila Beach | Solmaré Stays',
     description: 'Professional vacation rental management in Avila Beach, Pismo Beach, and SLO County. Maximize revenue with Solmaré Stays\' full-service property management.',
     h1: 'Vacation Rental Property Management',
     body: `<p>Solmaré Stays provides full-service vacation rental management for homeowners on California's Central Coast. We handle everything — from listing optimization and dynamic pricing to guest communication, cleaning, and maintenance — so you can earn more while doing less.</p>
@@ -353,7 +368,7 @@ const PAGES = [
   // ── BLOG POSTS ──
   {
     route: '/blog/best-restaurants-avila-beach',
-    title: 'Best Restaurants in Avila Beach — A Local\'s Guide (2026) | Solmaré Stays',
+    title: 'Best Restaurants in Avila Beach — A Local\'s Guide (2026)',
     description: 'The best restaurants in Avila Beach, CA ranked by a local. From seafood on the pier to hidden wine bars. Updated for 2026 with menus, prices, and reservation tips.',
     h1: 'Best Restaurants in Avila Beach — A Local\'s Guide',
     body: `<p><em>Updated June 2026 by the Solmaré Stays team — we live and work in Avila Beach and eat at these spots weekly.</em></p>
@@ -382,7 +397,7 @@ const PAGES = [
   },
   {
     route: '/blog/avila-beach-vs-pismo-beach',
-    title: 'Avila Beach vs Pismo Beach — Where to Stay on the Central Coast | Solmaré Stays',
+    title: 'Avila Beach vs Pismo Beach — Where Should You Stay?',
     description: 'Avila Beach vs Pismo Beach: which is better for your vacation? Compare beaches, restaurants, vibe, and accommodation. A local\'s honest comparison.',
     h1: 'Avila Beach vs Pismo Beach — Where Should You Stay?',
     body: `<p><em>Both towns are 10 minutes apart on California's Central Coast. Here's how to decide which one is right for your trip.</em></p>
@@ -410,7 +425,7 @@ const PAGES = [
   },
   {
     route: '/blog/things-to-do-avila-beach',
-    title: 'Things to Do in Avila Beach — The Complete Guide (2026) | Solmaré Stays',
+    title: 'Things to Do in Avila Beach — The Complete Guide (2026)',
     description: 'The complete guide to things to do in Avila Beach, CA. Beaches, hiking, wine tasting, hot springs, kayaking, and hidden gems from locals who live here.',
     h1: 'Things to Do in Avila Beach — The Complete Guide',
     body: `<p><em>Everything worth doing in Avila Beach, from a team that lives here year-round. Updated for 2026.</em></p>
@@ -438,7 +453,7 @@ const PAGES = [
   },
   {
     route: '/blog/pet-friendly-vacation-rentals-avila-beach',
-    title: 'Pet-Friendly Vacation Rentals in Avila Beach (2026) | Solmaré Stays',
+    title: 'Pet-Friendly Vacation Rentals in Avila Beach (2026)',
     description: 'The best pet-friendly vacation rentals in Avila Beach, CA. Bring your dog to the coast. Dog-friendly beaches, trails, restaurants, and accommodations.',
     h1: 'Pet-Friendly Vacation Rentals in Avila Beach',
     body: `<p><em>Traveling with your dog? Here's everything you need to know about bringing your pup to Avila Beach.</em></p>
@@ -469,7 +484,7 @@ const PAGES = [
   },
   {
     route: '/blog/avila-beach-property-management',
-    title: 'Vacation Rental Property Management in Avila Beach — What to Expect | Solmaré Stays',
+    title: 'Vacation Rental Property Management in Avila Beach, CA',
     description: 'Thinking about hiring a property manager for your Avila Beach vacation rental? Here\'s what professional management looks like and what it costs.',
     h1: 'Vacation Rental Property Management in Avila Beach',
     body: `<p><em>If you own a vacation rental on the Central Coast and you're doing everything yourself — pricing, guest messages, cleaning coordination, maintenance — here's what it looks like when a professional takes over.</em></p>
@@ -493,7 +508,7 @@ const PAGES = [
 <li><strong>Owner reporting</strong> — weekly performance reports, monthly financial statements</li>
 </ul>
 <h2>The Avila Beach Market</h2>
-<p>Avila Beach has unique dynamics: extreme seasonality (peak summer vs. quiet winter), event-driven demand (Cal Poly, wine festivals), and a small inventory that rewards quality. The market average occupancy is 40%. Our portfolio runs at 59%. That 19-point gap is the difference between a property that covers its mortgage and one that generates real income.</p>
+<p>Avila Beach has unique dynamics: extreme seasonality (peak summer vs. quiet winter), event-driven demand (Cal Poly, wine festivals), and a small inventory that rewards quality. The market average occupancy is 40%. Our portfolio runs at 51%. That 11-point gap is the difference between a property that covers its mortgage and one that generates real income.</p>
 <h2>What It Costs</h2>
 <p>Management fees on the Central Coast typically range from 15-25% of gross revenue. The fee pays for itself when professional management increases your occupancy and ADR enough to more than offset the commission. Most owners we work with see a net revenue increase even after our fee.</p>
 <h2>Is It Right for You?</h2>
@@ -501,13 +516,13 @@ const PAGES = [
 <p><a href="/management">Learn more about our management services</a> or <a href="/contact">get in touch</a>. Call Kyle directly at (805) 242-6411.</p>`,
     faq: [
       { q: "How much does vacation rental management cost in Avila Beach?", a: "Management fees on the Central Coast typically range from 15-25% of gross revenue. Solmaré Stays' fees vary by property. The fee pays for itself when professional management increases occupancy and revenue." },
-      { q: "What is the average occupancy for vacation rentals in Avila Beach?", a: "The market average occupancy in Avila Beach is approximately 40%. Solmaré Stays' portfolio runs at 59% occupancy — 19 points above the market average." },
-      { q: "Should I self-manage my Avila Beach vacation rental?", a: "Self-managing works if you have the time and expertise. But professional management typically increases occupancy from 35-42% to 55-60%+, improves guest ratings, and adds channels (VRBO, Google, direct) that most self-managers don't use." }
+      { q: "What is the average occupancy for vacation rentals in Avila Beach?", a: "The market average occupancy in Avila Beach is approximately 40%. Solmaré Stays' portfolio runs at 51% occupancy — 11 points above the market average." },
+      { q: "Should I self-manage my Avila Beach vacation rental?", a: "Self-managing works if you have the time and expertise. But professional management typically lifts occupancy from the market's ~40% into the low 50s, improves guest ratings, and adds channels (VRBO, Google, direct) that most self-managers don't use." }
     ]
   },
   {
     route: '/blog/cal-poly-graduation-where-to-stay',
-    title: 'Where to Stay for Cal Poly Graduation & Parents Weekend (SLO) | Solmaré Stays',
+    title: 'Where to Stay for Cal Poly Graduation Weekend (SLO)',
     description: 'Visiting Cal Poly for graduation, move-in, or Open House? Where to stay in San Luis Obispo and Avila Beach, when to book, and how to beat hotel price spikes.',
     h1: 'Where to Stay for Cal Poly Graduation & Parents Weekend',
     body: `<p><em>If you're visiting Cal Poly for graduation, move-in weekend, Open House, or a campus tour, here's the honest local guide to where to stay — and when to book before everything sells out.</em></p>
@@ -539,7 +554,7 @@ const PAGES = [
   },
   {
     route: '/blog/large-group-vacation-rentals-central-coast',
-    title: 'Large Group Vacation Rentals — Central Coast, CA (Sleeps 10, 12, 14) | Solmaré Stays',
+    title: 'Large Group Vacation Rentals — Central Coast, CA',
     description: 'Vacation rentals for large groups on the California Central Coast. A private 13-acre estate sleeping 14, and side-by-side Avila Beach bungalows for reunions and retreats.',
     h1: 'Large Group Vacation Rentals on the Central Coast (Sleeps 10-14+)',
     body: `<p><em>Family reunion, milestone birthday, company retreat, or a wedding weekend — housing 10 to 14+ people on the Central Coast comes down to two good options. Here's how to choose.</em></p>
@@ -573,7 +588,7 @@ const PAGES = [
   },
   {
     route: '/blog/avila-beach-hot-springs',
-    title: 'Avila Beach Hot Springs Guide — Sycamore Mineral Springs & More | Solmaré Stays',
+    title: 'Avila Beach Hot Springs Guide — Sycamore & Beyond',
     description: 'The complete guide to hot springs in Avila Beach, CA: Sycamore Mineral Springs private hillside tubs, Avila Hot Springs, prices, tips, and how to book.',
     h1: 'Avila Beach Hot Springs — The Complete Guide',
     body: `<p><em>Avila Beach sits on top of natural mineral springs — it's one of the few beach towns in California where you can follow a day on the sand with a soak in a hillside hot tub. Here's how to do it right.</em></p>
@@ -604,7 +619,7 @@ const PAGES = [
   },
   {
     route: '/blog/wine-country-stays-edna-valley-arroyo-grande',
-    title: 'Where to Stay in SLO Wine Country — Edna Valley & Arroyo Grande | Solmaré Stays',
+    title: 'Where to Stay in SLO Wine Country — Edna Valley',
     description: 'Where to stay for wine tasting in Edna Valley and Arroyo Grande Valley: a private 13-acre estate, a working farm cottage, and the wineries locals actually visit.',
     h1: 'Where to Stay in SLO Wine Country — Edna Valley & Arroyo Grande Valley',
     body: `<p><em>Edna Valley and Arroyo Grande Valley are what Napa was thirty years ago — world-class pinot noir and chardonnay, tasting rooms where the winemaker might pour your flight, and none of the crowds. Here's where to stay and where to taste.</em></p>
@@ -639,7 +654,7 @@ const PAGES = [
   },
   {
     route: '/blog/slo-county-short-term-rental-rules',
-    title: 'SLO County Short-Term Rental Rules 2026 — Permits, Licenses & TOT | Solmaré Stays',
+    title: 'SLO County Short-Term Rental Rules 2026 — Permits & TOT',
     description: 'What Central Coast owners need to know before renting short-term: permits and licenses by jurisdiction, transient occupancy tax rates, and the rules that trip owners up.',
     h1: "Short-Term Rental Rules in SLO County — An Owner's Guide",
     body: `<p><em>Thinking about renting out your Central Coast property as a vacation rental? The single most important thing to understand is that the rules change completely depending on which jurisdiction your property sits in — sometimes across the street from each other. Here's the owner's map.</em></p>
@@ -765,18 +780,21 @@ function generatePage(page) {
   }
 
   // Inject OG and Twitter tags before </head> (removed from static index.html, Helmet handles client-side)
+  // Every page gets an og:image — pages without their own fall back to the site
+  // default (1920x1080), otherwise shares render as bare-text cards.
+  const ogImage = page.image || `${BASE_URL}/avila-beach.jpg`;
   const ogTags = [
     `<meta property="og:title" content="${page.title}" />`,
     `<meta property="og:description" content="${page.description}" />`,
     `<meta property="og:url" content="${BASE_URL}${page.route}" />`,
     `<meta property="og:type" content="website" />`,
     `<meta property="og:site_name" content="Solmaré Stays" />`,
-    page.image ? `<meta property="og:image" content="${page.image}" />` : '',
+    `<meta property="og:image" content="${ogImage}" />`,
     `<meta name="twitter:card" content="summary_large_image" />`,
     `<meta name="twitter:title" content="${page.title}" />`,
     `<meta name="twitter:description" content="${page.description}" />`,
-    page.image ? `<meta name="twitter:image" content="${page.image}" />` : '',
-  ].filter(Boolean).join('\n  ');
+    `<meta name="twitter:image" content="${ogImage}" />`,
+  ].join('\n  ');
   html = html.replace('</head>', `  ${ogTags}\n</head>`);
 
   // Add JSON-LD schema before </head>
@@ -785,6 +803,29 @@ function generatePage(page) {
   // Page-specific schema
   if (page.schema) {
     schemas.push(page.schema);
+  }
+
+  // BlogPosting for posts — dates mirror push-blog-posts.mjs POSTS (that file is
+  // canon; update both together). AI engines weight dated, attributed articles.
+  const blogDate = BLOG_DATES[page.route];
+  if (blogDate) {
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": page.h1 || page.title,
+      "description": page.description,
+      "url": `${BASE_URL}${page.route}`,
+      "mainEntityOfPage": `${BASE_URL}${page.route}`,
+      "datePublished": blogDate,
+      "dateModified": blogDate,
+      "image": page.image || `${BASE_URL}/avila-beach.jpg`,
+      "author": { "@type": "Organization", "name": "Solmaré Stays", "url": BASE_URL },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Solmaré Stays",
+        "logo": { "@type": "ImageObject", "url": `${BASE_URL}/logo.png` }
+      }
+    });
   }
 
   // FAQ schema
@@ -961,11 +1002,12 @@ function buildPropertyPage(listing, reviewCount) {
   const sleeps = listing.personCapacity || 2;
   const price = listing.price || 0;
   const description = (listing.description || '').replace(/<[^>]+>/g, '').substring(0, 300).trim();
-  const image = listing.thumbnailUrl || '';
   const images = (listing.listingImages || [])
     .sort((a, b) => a.sortOrder - b.sortOrder)
     .slice(0, 10)
     .map(img => img.url);
+  // Several listings have no thumbnailUrl — fall back to the first gallery image
+  const image = listing.thumbnailUrl || images[0] || '';
   const amenities = (listing.listingAmenities || []).map(a => a.amenityName);
   const lat = listing.lat;
   const lng = listing.lng;

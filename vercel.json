@@ -53,6 +53,8 @@
     }
   ],
   "redirects": [
+    { "source": "/ourstory", "destination": "/philosophy", "permanent": true },
+    { "source": "/guidebook-pinehouse", "destination": "/property/the-pine-house", "permanent": true },
     { "source": "/for-homeowners", "destination": "/management", "permanent": true },
     { "source": "/why-choose-us", "destination": "/philosophy", "permanent": true },
     { "source": "/guest-experience", "destination": "/experiences", "permanent": true },
