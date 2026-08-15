@@ -175,7 +175,7 @@ _Both towns are 10 minutes apart on California's Central Coast. Here's how to de
 
 **Avila Beach:** Sheltered bay, calm water, south-facing (maximum sun). Wide sandy beach with a gentle slope, great for kids. The pier is walkable from downtown. Less crowded than Pismo, even in summer.
 
-**Pismo Beach:** Open coast, bigger waves, more dramatic. The famous Pismo Pier stretches 1,200 feet into the ocean. Oceano Dunes (the only California beach you can drive on) is at the south end. More exposed to wind and fog.
+**Pismo Beach:** Open coast, bigger waves, more dramatic. The famous Pismo Pier stretches 1,200 feet into the ocean. Oceano Dunes (one of the last California beaches you can drive on) is at the south end. More exposed to wind and fog.
 
 ## Restaurants & Nightlife
 
@@ -594,6 +594,20 @@ If you own a property on the Central Coast and want to know what compliant short
 
 // ═════════════════════════════════════════════════════════════════════════════
 
+// Cover images: uploaded once to Sanity assets (blog-<slug>.jpg); refs are stable.
+const COVERS = {
+  'avila-beach-hot-springs': { ref: 'image-9ca35801318910a9983d2d9e984183b13ef594da-1349x900-jpg', alt: "Private hot tub on a wooden deck at dusk with a windmill behind" },
+  'avila-beach-property-management': { ref: 'image-063cada11c8b8dafca80c174ffbadf9c73874d0a-1350x900-jpg', alt: "Rooftop terrace of an Avila Beach vacation rental overlooking the pier and bay" },
+  'avila-beach-vs-pismo-beach': { ref: 'image-01856c5c7e33b6a688fa481e0ba86c3576231907-1280x958-jpg', alt: "Aerial view of Avila Beach, the estuary, and the surrounding hills" },
+  'best-restaurants-avila-beach': { ref: 'image-22b280271c99f9f76baec85856df422be09a82b2-1280x958-jpg', alt: "The Avila Beach pier stretching over turquoise water" },
+  'cal-poly-graduation-where-to-stay': { ref: 'image-6991a88cc07c5dc6aafbff9b161f2bb69cc51c91-1350x900-jpg', alt: "Private patio with bistro seating at the Monterey Heights Suite in San Luis Obispo" },
+  'large-group-vacation-rentals-central-coast': { ref: 'image-57be41d873e99cbf59c64ffc37fa6a2c66f153f9-1280x958-jpg', alt: "Aerial view of the Wine Country Estate in Arroyo Grande" },
+  'pet-friendly-vacation-rentals-avila-beach': { ref: 'image-7e8f7d7a7ca8f61c2b25f43cd15c39ab34a21879-1350x900-jpg', alt: "Blue beach cottage exterior with a wooden deck in Avila Beach" },
+  'slo-county-short-term-rental-rules': { ref: 'image-6b2801964c53c5d22aa2b3a14bdeabc191b85106-1349x900-jpg', alt: "Wood-clad farmhouse at dusk in Arroyo Grande" },
+  'things-to-do-avila-beach': { ref: 'image-7030fbe22318103f7d9fdf5ececc277ee4e49cde-1280x958-jpg', alt: "Aerial view of Avila Beach town, beach, and pier" },
+  'wine-country-stays-edna-valley-arroyo-grande': { ref: 'image-329482dd8dc7eb485b0badcab30702cabaa18b7b-1350x900-jpg', alt: "Vineyard rows under oak trees in the Arroyo Grande Valley" },
+};
+
 const dry = process.argv.includes('--dry');
 const mutations = [];
 
@@ -610,6 +624,7 @@ for (const p of POSTS) {
     seoTitle: p.seoTitle,
     seoDescription: p.seoDescription,
     body: toPortableText(p.body),
+    ...(COVERS[p.slug] && { mainImage: { _type: 'image', asset: { _type: 'reference', _ref: COVERS[p.slug].ref }, alt: COVERS[p.slug].alt } }),
   };
   mutations.push({ createOrReplace: doc });
   writeFileSync(join(OUT, `${p.slug}.html`), toHtml(p.body));

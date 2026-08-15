@@ -368,6 +368,7 @@ const PAGES = [
   // ── BLOG POSTS ──
   {
     route: '/blog/best-restaurants-avila-beach',
+    image: 'https://cdn.sanity.io/images/mggny2hi/production/22b280271c99f9f76baec85856df422be09a82b2-1280x958.jpg',
     title: 'Best Restaurants in Avila Beach — A Local\'s Guide (2026)',
     description: 'The best restaurants in Avila Beach, CA ranked by a local. From seafood on the pier to hidden wine bars. Updated for 2026 with menus, prices, and reservation tips.',
     h1: 'Best Restaurants in Avila Beach — A Local\'s Guide',
@@ -397,6 +398,7 @@ const PAGES = [
   },
   {
     route: '/blog/avila-beach-vs-pismo-beach',
+    image: 'https://cdn.sanity.io/images/mggny2hi/production/01856c5c7e33b6a688fa481e0ba86c3576231907-1280x958.jpg',
     title: 'Avila Beach vs Pismo Beach — Where Should You Stay?',
     description: 'Avila Beach vs Pismo Beach: which is better for your vacation? Compare beaches, restaurants, vibe, and accommodation. A local\'s honest comparison.',
     h1: 'Avila Beach vs Pismo Beach — Where Should You Stay?',
@@ -406,7 +408,7 @@ const PAGES = [
 <p><strong>Choose Pismo Beach</strong> if you want: a bigger town feel with more shops and nightlife. Direct access to Oceano Dunes for ATVing. A classic California pier town vibe. More hotel options.</p>
 <h2>Beach Comparison</h2>
 <p><strong>Avila Beach:</strong> Sheltered bay, calm water, south-facing (maximum sun). Wide sandy beach with a gentle slope, great for kids. The pier is walkable from downtown. Less crowded than Pismo, even in summer.</p>
-<p><strong>Pismo Beach:</strong> Open coast, bigger waves, more dramatic. The famous Pismo Pier stretches 1,200 feet into the ocean. Oceano Dunes (the only California beach you can drive on) is at the south end. More exposed to wind and fog.</p>
+<p><strong>Pismo Beach:</strong> Open coast, bigger waves, more dramatic. The famous Pismo Pier stretches 1,200 feet into the ocean. Oceano Dunes (one of the last California beaches you can drive on) is at the south end. More exposed to wind and fog.</p>
 <h2>Restaurants & Nightlife</h2>
 <p><strong>Avila Beach:</strong> Smaller but curated. Custom House, Mersea's, Gardens of Avila, and several wine tasting rooms all within walking distance. Friday farmers market is legendary. Quieter at night.</p>
 <p><strong>Pismo Beach:</strong> More options overall. Ventana Grill, Splash Café (famous clam chowder), Giuseppe's, and a larger bar scene on Price Street. Premium Outlets for shopping.</p>
@@ -425,6 +427,7 @@ const PAGES = [
   },
   {
     route: '/blog/things-to-do-avila-beach',
+    image: 'https://cdn.sanity.io/images/mggny2hi/production/7030fbe22318103f7d9fdf5ececc277ee4e49cde-1280x958.jpg',
     title: 'Things to Do in Avila Beach — The Complete Guide (2026)',
     description: 'The complete guide to things to do in Avila Beach, CA. Beaches, hiking, wine tasting, hot springs, kayaking, and local favorites from the team that lives here.',
     h1: 'Things to Do in Avila Beach — The Complete Guide',
@@ -453,6 +456,7 @@ const PAGES = [
   },
   {
     route: '/blog/pet-friendly-vacation-rentals-avila-beach',
+    image: 'https://cdn.sanity.io/images/mggny2hi/production/7e8f7d7a7ca8f61c2b25f43cd15c39ab34a21879-1350x900.jpg',
     title: 'Pet-Friendly Vacation Rentals in Avila Beach (2026)',
     description: 'The best pet-friendly vacation rentals in Avila Beach, CA. Bring your dog to the coast. Dog-friendly beaches, trails, restaurants, and accommodations.',
     h1: 'Pet-Friendly Vacation Rentals in Avila Beach',
@@ -484,6 +488,7 @@ const PAGES = [
   },
   {
     route: '/blog/avila-beach-property-management',
+    image: 'https://cdn.sanity.io/images/mggny2hi/production/063cada11c8b8dafca80c174ffbadf9c73874d0a-1350x900.jpg',
     title: 'Vacation Rental Property Management in Avila Beach, CA',
     description: 'Thinking about hiring a property manager for your Avila Beach vacation rental? Here\'s what professional management looks like and what it costs.',
     h1: 'Vacation Rental Property Management in Avila Beach',
@@ -522,6 +527,7 @@ const PAGES = [
   },
   {
     route: '/blog/cal-poly-graduation-where-to-stay',
+    image: 'https://cdn.sanity.io/images/mggny2hi/production/6991a88cc07c5dc6aafbff9b161f2bb69cc51c91-1350x900.jpg',
     title: 'Where to Stay for Cal Poly Graduation Weekend (SLO)',
     description: 'Visiting Cal Poly for graduation, move-in, or Open House? Where to stay in San Luis Obispo and Avila Beach, when to book, and how to beat hotel price spikes.',
     h1: 'Where to Stay for Cal Poly Graduation & Parents Weekend',
@@ -554,6 +560,7 @@ const PAGES = [
   },
   {
     route: '/blog/large-group-vacation-rentals-central-coast',
+    image: 'https://cdn.sanity.io/images/mggny2hi/production/57be41d873e99cbf59c64ffc37fa6a2c66f153f9-1280x958.jpg',
     title: 'Large Group Vacation Rentals — Central Coast, CA',
     description: 'Vacation rentals for large groups on the California Central Coast. A private 13-acre estate sleeping 14, and side-by-side Avila Beach bungalows for reunions and retreats.',
     h1: 'Large Group Vacation Rentals on the Central Coast (Sleeps 10-14+)',
@@ -588,6 +595,7 @@ const PAGES = [
   },
   {
     route: '/blog/avila-beach-hot-springs',
+    image: 'https://cdn.sanity.io/images/mggny2hi/production/9ca35801318910a9983d2d9e984183b13ef594da-1349x900.jpg',
     title: 'Avila Beach Hot Springs Guide — Sycamore & Beyond',
     description: 'The complete guide to hot springs in Avila Beach, CA: Sycamore Mineral Springs private hillside tubs, Avila Hot Springs, prices, tips, and how to book.',
     h1: 'Avila Beach Hot Springs — The Complete Guide',
@@ -619,6 +627,7 @@ const PAGES = [
   },
   {
     route: '/blog/wine-country-stays-edna-valley-arroyo-grande',
+    image: 'https://cdn.sanity.io/images/mggny2hi/production/329482dd8dc7eb485b0badcab30702cabaa18b7b-1350x900.jpg',
     title: 'Where to Stay in SLO Wine Country — Edna Valley',
     description: 'Where to stay for wine tasting in Edna Valley and Arroyo Grande Valley: a private 13-acre estate, a working farm cottage, and the wineries locals actually visit.',
     h1: 'Where to Stay in SLO Wine Country — Edna Valley & Arroyo Grande Valley',
@@ -654,6 +663,7 @@ const PAGES = [
   },
   {
     route: '/blog/slo-county-short-term-rental-rules',
+    image: 'https://cdn.sanity.io/images/mggny2hi/production/6b2801964c53c5d22aa2b3a14bdeabc191b85106-1349x900.jpg',
     title: 'SLO County Short-Term Rental Rules 2026 — Permits & TOT',
     description: 'What Central Coast owners need to know before renting short-term: permits and licenses by jurisdiction, transient occupancy tax rates, and the rules that trip owners up.',
     h1: "Short-Term Rental Rules in SLO County — An Owner's Guide",
