@@ -24,7 +24,7 @@ mkdirSync(OUT, { recursive: true });
 const envFile = readFileSync('/Users/aihost/solmarestays-1/.env.local', 'utf-8');
 const token = envFile.split('\n').find(l => l.startsWith('SANITY_API_TOKEN='))?.split('=')[1]?.trim().replace(/^["']|["']$/g, '');
 if (!token) { console.error('No SANITY_API_TOKEN found'); process.exit(1); }
-const PROJECT = 'ubjffxhw';
+const PROJECT = 'mggny2hi';
 const DATASET = 'production';
 
 let keyCounter = 0;

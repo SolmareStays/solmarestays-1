@@ -7,7 +7,7 @@ export default defineConfig({
   name: 'default',
   title: 'solmare',
 
-  projectId: 'ubjffxhw',
+  projectId: 'mggny2hi',
   dataset: 'production',
 
   plugins: [structureTool(), visionTool()],

@@ -21,7 +21,7 @@ if (!projectId) {
 }
 
 export const sanityClient = createClient({
-    projectId: projectId || 'ubjffxhw', // Fallback to hardcoded ID if env missing
+    projectId: projectId || 'mggny2hi', // Fallback to hardcoded ID if env missing
     dataset: dataset || 'production',
     apiVersion: apiVersion,
     useCdn: true, // Use CDN for faster responses in production
