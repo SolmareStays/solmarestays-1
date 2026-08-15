@@ -109,7 +109,7 @@ const POSTS = [
   {
     slug: 'best-restaurants-avila-beach',
     title: "Best Restaurants in Avila Beach — A Local's Guide",
-    seoTitle: "Best Restaurants in Avila Beach — A Local's Guide (2026) | Solmaré Stays",
+    seoTitle: "Best Restaurants in Avila Beach — A Local's Guide (2026)",
     seoDescription: 'The best restaurants in Avila Beach, CA ranked by a local. From seafood on the pier to hidden wine bars. Updated for 2026 with menus, prices, and reservation tips.',
     excerpt: 'The best restaurants in Avila Beach, ranked by the team that lives here and eats at these spots weekly — from seafood on the pier to farm-to-table date nights.',
     publishedAt: '2026-06-05T10:00:00Z',
@@ -156,7 +156,7 @@ All of our [Avila Beach vacation rentals](/avila-beach) are within walking dista
   {
     slug: 'avila-beach-vs-pismo-beach',
     title: 'Avila Beach vs Pismo Beach — Where Should You Stay?',
-    seoTitle: 'Avila Beach vs Pismo Beach — Where to Stay on the Central Coast | Solmaré Stays',
+    seoTitle: 'Avila Beach vs Pismo Beach — Where Should You Stay?',
     seoDescription: "Avila Beach vs Pismo Beach: which is better for your vacation? Compare beaches, restaurants, vibe, and accommodation. A local's honest comparison.",
     excerpt: "Both towns are 10 minutes apart on California's Central Coast. A local's honest comparison of beaches, restaurants, weather, and vibe to help you decide.",
     publishedAt: '2026-05-20T10:00:00Z',
@@ -201,7 +201,7 @@ Stay in Avila Beach, day-trip to Pismo. They're 10 minutes apart. You get the qu
   {
     slug: 'things-to-do-avila-beach',
     title: 'Things to Do in Avila Beach — The Complete Guide',
-    seoTitle: 'Things to Do in Avila Beach — The Complete Guide (2026) | Solmaré Stays',
+    seoTitle: 'Things to Do in Avila Beach — The Complete Guide (2026)',
     seoDescription: 'The complete guide to things to do in Avila Beach, CA. Beaches, hiking, wine tasting, hot springs, kayaking, and hidden gems from locals who live here.',
     excerpt: 'Everything worth doing in Avila Beach, from a team that lives here year-round — beaches, kayaking, the Bob Jones Trail, wine tasting, hot springs, and the lighthouse.',
     publishedAt: '2026-06-18T10:00:00Z',
@@ -258,7 +258,7 @@ Our [Avila Beach vacation rentals](/avila-beach) put you walking distance from t
   {
     slug: 'pet-friendly-vacation-rentals-avila-beach',
     title: 'Pet-Friendly Vacation Rentals in Avila Beach',
-    seoTitle: 'Pet-Friendly Vacation Rentals in Avila Beach (2026) | Solmaré Stays',
+    seoTitle: 'Pet-Friendly Vacation Rentals in Avila Beach (2026)',
     seoDescription: 'The best pet-friendly vacation rentals in Avila Beach, CA. Bring your dog to the coast. Dog-friendly beaches, trails, restaurants, and accommodations.',
     excerpt: "Traveling with your dog? Everything you need to know about bringing your pup to Avila Beach — pet-friendly rentals, beaches, trails, and patios.",
     publishedAt: '2026-07-02T10:00:00Z',
@@ -312,7 +312,7 @@ Most Avila Beach restaurants have outdoor patios that welcome dogs: Custom House
   {
     slug: 'avila-beach-property-management',
     title: 'Vacation Rental Property Management in Avila Beach',
-    seoTitle: 'Vacation Rental Property Management in Avila Beach — What to Expect | Solmaré Stays',
+    seoTitle: 'Vacation Rental Property Management in Avila Beach, CA',
     seoDescription: "Thinking about hiring a property manager for your Avila Beach vacation rental? Here's what professional management looks like and what it costs.",
     excerpt: "If you own a vacation rental on the Central Coast and you're doing everything yourself, here's what it looks like when a professional takes over — and what it costs.",
     publishedAt: '2026-07-15T10:00:00Z',
@@ -362,7 +362,7 @@ If you own a vacation rental in Avila Beach, Pismo Beach, Shell Beach, San Luis 
   {
     slug: 'cal-poly-graduation-where-to-stay',
     title: 'Where to Stay for Cal Poly Graduation & Parents Weekend',
-    seoTitle: 'Where to Stay for Cal Poly Graduation & Parents Weekend (SLO) | Solmaré Stays',
+    seoTitle: 'Where to Stay for Cal Poly Graduation Weekend (SLO)',
     seoDescription: 'Visiting Cal Poly for graduation, move-in, or Open House? Where to stay in San Luis Obispo and Avila Beach, when to book, and how to beat hotel price spikes.',
     excerpt: 'Cal Poly weekends sell out San Luis Obispo months ahead. When to book, where to stay, and why a vacation rental 15 minutes away often beats a marked-up hotel.',
     publishedAt: '2026-08-13T10:00:00Z',
@@ -408,7 +408,7 @@ Booking directly at [solmarestays.com](/collection) costs less than the same pro
   {
     slug: 'large-group-vacation-rentals-central-coast',
     title: 'Large Group Vacation Rentals on the Central Coast (Sleeps 10-14+)',
-    seoTitle: 'Large Group Vacation Rentals — Central Coast, CA (Sleeps 10, 12, 14) | Solmaré Stays',
+    seoTitle: 'Large Group Vacation Rentals — Central Coast, CA',
     seoDescription: 'Vacation rentals for large groups on the California Central Coast. A private 13-acre estate sleeping 14, and side-by-side Avila Beach bungalows for reunions and retreats.',
     excerpt: 'Planning a reunion, retreat, or milestone birthday for 10-14+ people? The two ways to house a big group on the Central Coast — one estate or a beach compound.',
     publishedAt: '2026-08-13T10:00:00Z',
@@ -453,7 +453,7 @@ Properties that sleep 10+ are the scarcest inventory on the Central Coast. Summe
   {
     slug: 'avila-beach-hot-springs',
     title: 'Avila Beach Hot Springs — The Complete Guide',
-    seoTitle: 'Avila Beach Hot Springs Guide — Sycamore Mineral Springs & More | Solmaré Stays',
+    seoTitle: 'Avila Beach Hot Springs Guide — Sycamore & Beyond',
     seoDescription: 'The complete guide to hot springs in Avila Beach, CA: Sycamore Mineral Springs private hillside tubs, Avila Hot Springs, prices, tips, and how to book.',
     excerpt: "Avila Beach sits on natural mineral springs — one of the few California beach towns where you can soak in a hillside hot tub after a beach day. Here's the guide.",
     publishedAt: '2026-08-13T10:00:00Z',
@@ -491,7 +491,7 @@ Our [Avila Beach vacation rentals](/avila-beach) are 1-2 blocks from the beach a
   {
     slug: 'wine-country-stays-edna-valley-arroyo-grande',
     title: 'Where to Stay in SLO Wine Country — Edna Valley & Arroyo Grande Valley',
-    seoTitle: 'Where to Stay in SLO Wine Country — Edna Valley & Arroyo Grande | Solmaré Stays',
+    seoTitle: 'Where to Stay in SLO Wine Country — Edna Valley',
     seoDescription: 'Where to stay for wine tasting in Edna Valley and Arroyo Grande Valley: a private 13-acre estate, a working farm cottage, and the wineries locals actually visit.',
     excerpt: "San Luis Obispo wine country without the Napa crowds or prices. Where to stay among the vines — a 13-acre estate, a working farm stay — and the wineries worth your time.",
     publishedAt: '2026-08-13T10:00:00Z',
@@ -538,7 +538,7 @@ Morning coffee on the farm or by the pool. Two tastings in Edna Valley before lu
   {
     slug: 'slo-county-short-term-rental-rules',
     title: "Short-Term Rental Rules in SLO County — An Owner's Guide",
-    seoTitle: 'SLO County Short-Term Rental Rules 2026 — Permits, Licenses & TOT | Solmaré Stays',
+    seoTitle: 'SLO County Short-Term Rental Rules 2026 — Permits & TOT',
     seoDescription: 'What Central Coast owners need to know before renting short-term: permits and licenses by jurisdiction, transient occupancy tax rates, and the rules that trip owners up.',
     excerpt: 'Thinking of renting your Central Coast property short-term? The permits, licenses, and transient occupancy taxes vary sharply by jurisdiction — here\'s the owner\'s map.',
     publishedAt: '2026-08-13T10:00:00Z',
