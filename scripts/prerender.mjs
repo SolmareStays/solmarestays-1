@@ -371,20 +371,20 @@ const PAGES = [
     title: 'Best Restaurants in Avila Beach — A Local\'s Guide (2026)',
     description: 'The best restaurants in Avila Beach, CA ranked by a local. From seafood on the pier to hidden wine bars. Updated for 2026 with menus, prices, and reservation tips.',
     h1: 'Best Restaurants in Avila Beach — A Local\'s Guide',
-    body: `<p><em>Updated June 2026 by the Solmaré Stays team — we live and work in Avila Beach and eat at these spots weekly.</em></p>
-<p>Avila Beach may be a small town, but the dining scene punches well above its weight. Whether you're craving fresh-off-the-boat seafood, wood-fired pizza, or a quiet wine tasting with ocean views, here are the restaurants worth your time.</p>
-<h2>1. Custom House — Best Overall</h2>
+    body: `<p><em>Updated June 2026 by the Solmaré Stays team. We live and work in Avila Beach and eat at these spots weekly.</em></p>
+<p>Avila Beach may be a small town, but the dining scene punches well above its weight. From fresh-off-the-boat seafood to a quiet wine tasting with ocean views, these are the spots we actually send guests to.</p>
+<h2>1. Custom House: Best Overall</h2>
 <p>Right on the promenade with ocean views from every table. The fish tacos and clam chowder are the move. Reservations recommended on weekends. Open for lunch and dinner daily.</p>
-<h2>2. Mersea's — Best Seafood</h2>
+<h2>2. Mersea's: Best Seafood</h2>
 <p>Casual counter-service spot at the end of the pier. The fish and chips are some of the best on the Central Coast. Grab a table outside and watch the surfers. Cash-friendly prices.</p>
-<h2>3. Gardens of Avila — Best Date Night</h2>
-<p>Tucked inside the Sycamore Mineral Springs resort, this is the elevated option. Farm-to-table menu, excellent wine list focused on local Edna Valley producers. The garden patio is magical at sunset.</p>
-<h2>4. Blue Moon Over Avila — Best Bar & Apps</h2>
+<h2>3. Gardens of Avila: Best Date Night</h2>
+<p>Tucked inside the Sycamore Mineral Springs resort, this is the fancy one. Farm-to-table menu, excellent wine list focused on local Edna Valley producers. Ask for the garden patio at sunset.</p>
+<h2>4. Blue Moon Over Avila: Best Bar & Apps</h2>
 <p>Lively bar scene with solid appetizers and craft cocktails. Live music on weekends. Great for a casual night out after a beach day.</p>
-<h2>5. Mr. Rick's — Best Waterfront Drinks</h2>
+<h2>5. Mr. Rick's: Best Waterfront Drinks</h2>
 <p>The original Avila Beach bar. Nothing fancy, but the deck overlooking the harbor is unbeatable for sunset drinks. Classic California dive bar energy.</p>
 <h2>6. Avila Beach Farmers Market (Fridays)</h2>
-<p>Not a restaurant, but the Friday afternoon farmers market on the promenade is an Avila institution. Fresh produce, local honey, tri-tip sandwiches, live music, and a community atmosphere you won't find anywhere else. 4-8 PM every Friday, year-round.</p>
+<p>Not a restaurant, but the Friday afternoon farmers market on the promenade is an Avila institution. Fresh produce, local honey, tri-tip sandwiches, live music, and a crowd that feels like the whole town showed up. 4-8 PM every Friday, year-round.</p>
 <h2>Wine Tasting in Avila Beach</h2>
 <p>Several tasting rooms are walkable from our vacation rentals: Alapay Cellars, Peloton Cellars, and Sinor-LaVallee are all within a 5-minute walk. For a bigger wine experience, Edna Valley and Arroyo Grande Valley wineries are a 10-minute drive.</p>
 <h2>Where to Stay</h2>
@@ -392,7 +392,7 @@ const PAGES = [
     faq: [
       { q: "What is the best restaurant in Avila Beach?", a: "Custom House is the best overall restaurant in Avila Beach, with ocean views, excellent seafood, and a prime location on the promenade." },
       { q: "Where can I get seafood in Avila Beach?", a: "Mersea's on the pier has the best fish and chips. Custom House offers upscale seafood with ocean views. Both are walkable from Solmaré Stays properties." },
-      { q: "Is there a farmers market in Avila Beach?", a: "Yes — the Avila Beach Farmers Market runs every Friday from 4-8 PM on the promenade. It features local produce, food vendors, live music, and is a must-visit." }
+      { q: "Is there a farmers market in Avila Beach?", a: "Yes. The Avila Beach Farmers Market runs every Friday from 4-8 PM on the promenade, with local produce, food vendors, and live music." }
     ]
   },
   {
@@ -402,10 +402,10 @@ const PAGES = [
     h1: 'Avila Beach vs Pismo Beach — Where Should You Stay?',
     body: `<p><em>Both towns are 10 minutes apart on California's Central Coast. Here's how to decide which one is right for your trip.</em></p>
 <h2>The Quick Answer</h2>
-<p><strong>Choose Avila Beach</strong> if you want: a quieter, more intimate beach town. Walkable restaurants and wine tasting. A sheltered bay with calm water perfect for families, kayaking, and paddleboarding. More sunshine (Avila is in a sun pocket — it's often 10 degrees warmer than Pismo).</p>
+<p><strong>Choose Avila Beach</strong> if you want: a quieter, more intimate beach town. Walkable restaurants and wine tasting. A sheltered bay with calm water perfect for families, kayaking, and paddleboarding. More sunshine, too: Avila sits in a sun pocket and often runs 10 degrees warmer than Pismo.</p>
 <p><strong>Choose Pismo Beach</strong> if you want: a bigger town feel with more shops and nightlife. Direct access to Oceano Dunes for ATVing. A classic California pier town vibe. More hotel options.</p>
 <h2>Beach Comparison</h2>
-<p><strong>Avila Beach:</strong> Sheltered bay, calm water, south-facing (maximum sun). Wide sandy beach with a gentle slope — great for kids. The pier is walkable from downtown. Less crowded than Pismo, even in summer.</p>
+<p><strong>Avila Beach:</strong> Sheltered bay, calm water, south-facing (maximum sun). Wide sandy beach with a gentle slope, great for kids. The pier is walkable from downtown. Less crowded than Pismo, even in summer.</p>
 <p><strong>Pismo Beach:</strong> Open coast, bigger waves, more dramatic. The famous Pismo Pier stretches 1,200 feet into the ocean. Oceano Dunes (the only California beach you can drive on) is at the south end. More exposed to wind and fog.</p>
 <h2>Restaurants & Nightlife</h2>
 <p><strong>Avila Beach:</strong> Smaller but curated. Custom House, Mersea's, Gardens of Avila, and several wine tasting rooms all within walking distance. Friday farmers market is legendary. Quieter at night.</p>
@@ -416,7 +416,7 @@ const PAGES = [
 <p>Avila Beach wins again. Gardens of Avila for dinner, wine tasting walkable from your rental, sunset from the pier, then hot springs at Sycamore Mineral Springs. More romantic, less commercial.</p>
 <h2>The Best of Both</h2>
 <p>Stay in Avila Beach, day-trip to Pismo. They're 10 minutes apart. You get the quiet home base with easy access to Pismo's pier, shopping, and dunes whenever you want it.</p>
-<p><a href="/avila-beach">Browse our Avila Beach vacation rentals</a> — all within walking distance of the beach, restaurants, and wine tasting.</p>`,
+<p><a href="/avila-beach">Browse our Avila Beach vacation rentals</a>. All of them are within walking distance of the beach, restaurants, and wine tasting.</p>`,
     faq: [
       { q: "Is Avila Beach or Pismo Beach better?", a: "Avila Beach is better for families and couples who want a quieter, walkable beach town with wine tasting and calm water. Pismo Beach is better for those who want a bigger town with more nightlife and ocean dunes." },
       { q: "How far is Avila Beach from Pismo Beach?", a: "Avila Beach and Pismo Beach are about 10 minutes apart by car (7 miles). Many visitors stay in Avila and day-trip to Pismo." },
@@ -426,28 +426,28 @@ const PAGES = [
   {
     route: '/blog/things-to-do-avila-beach',
     title: 'Things to Do in Avila Beach — The Complete Guide (2026)',
-    description: 'The complete guide to things to do in Avila Beach, CA. Beaches, hiking, wine tasting, hot springs, kayaking, and hidden gems from locals who live here.',
+    description: 'The complete guide to things to do in Avila Beach, CA. Beaches, hiking, wine tasting, hot springs, kayaking, and local favorites from the team that lives here.',
     h1: 'Things to Do in Avila Beach — The Complete Guide',
     body: `<p><em>Everything worth doing in Avila Beach, from a team that lives here year-round. Updated for 2026.</em></p>
 <h2>Beach & Water Activities</h2>
 <h3>Swimming & Sunbathing</h3><p>Avila Beach's sheltered bay offers the calmest, warmest water on the Central Coast. The south-facing beach gets sun all day. Lifeguards on duty in summer.</p>
 <h3>Kayaking & Paddleboarding</h3><p>Rent kayaks and SUPs from Avila Beach Paddlesports right on the sand. Paddle to the sea caves at Point San Luis or just cruise the calm bay. Morning sessions are glassiest.</p>
-<h3>Fishing from the Pier</h3><p>Avila Beach Pier is free to fish — no license needed for pier fishing in California. Perch, halibut, and rockfish are common catches.</p>
+<h3>Fishing from the Pier</h3><p>Avila Beach Pier is free to fish. No license needed for pier fishing in California. Perch, halibut, and rockfish are common catches.</p>
 <h2>Hiking & Outdoors</h2>
 <h3>Bob Jones Trail</h3><p>A flat, paved 3-mile trail along San Luis Obispo Creek. Perfect for biking, jogging, or a family walk. Connects Avila Beach to the Ontario Road trailhead. Shaded and scenic.</p>
-<h3>Pecho Coast Trail</h3><p>A stunning 3.7-mile one-way hike along the bluffs to Point San Luis Lighthouse. Ocean views the entire way. Whale watching in winter. Docent-led tours available — book in advance as they sell out.</p>
+<h3>Pecho Coast Trail</h3><p>A 3.7-mile one-way hike along the bluffs to Point San Luis Lighthouse, with ocean views the entire way. Whale watching in winter. The docent-led tours sell out, so book ahead.</p>
 <h3>Pirate's Cove</h3><p>A short hike down to one of the Central Coast's most scenic (and clothing-optional) beaches. Dramatic cliffs, tide pools, and sea caves. The trailhead is on Cave Landing Road.</p>
 <h2>Wine Tasting</h2>
 <p>Avila Beach has several walkable tasting rooms: Alapay Cellars, Peloton Cellars, Sinor-LaVallee. For a bigger wine day, drive 10 minutes to Edna Valley (Tolosa, Chamisal, Baileyana) or Arroyo Grande Valley (Talley, Laetitia, Timbre).</p>
 <h2>Hot Springs</h2>
 <p>Sycamore Mineral Springs Resort offers private hillside hot tubs fed by natural mineral springs. Book a 1-hour soak ($20-25/person) and follow it with dinner at Gardens of Avila next door. One of the most unique experiences on the Central Coast.</p>
 <h2>Point San Luis Lighthouse</h2>
-<p>A historic 1890 lighthouse accessible only by guided hike or boat. Trolley rides available for those who can't hike. Tours run Wednesdays and Saturdays — book at pointsanluislighthouse.org.</p>
+<p>A historic 1890 lighthouse accessible only by guided hike or boat. Trolley rides available for those who can't hike. Tours run Wednesdays and Saturdays; book at pointsanluislighthouse.org.</p>
 <h2>Where to Stay</h2>
 <p>Our <a href="/avila-beach">Avila Beach vacation rentals</a> put you walking distance from the beach, pier, restaurants, and wine tasting. <a href="/collection">Browse all properties</a>.</p>`,
     faq: [
       { q: "What is there to do in Avila Beach?", a: "Avila Beach offers swimming, kayaking, paddleboarding, pier fishing, the Bob Jones Trail for biking, wine tasting at walkable tasting rooms, hot springs at Sycamore Mineral Springs, and the Point San Luis Lighthouse hike." },
-      { q: "Is Avila Beach good for families?", a: "Yes — Avila Beach is one of the best family beaches on the Central Coast. The sheltered bay has calm, warm water safe for kids. The Bob Jones Trail is flat and stroller-friendly. The Friday farmers market is family-friendly." },
+      { q: "Is Avila Beach good for families?", a: "Yes. Avila Beach is one of the best family beaches on the Central Coast. The sheltered bay has calm, warm water safe for kids. The Bob Jones Trail is flat and stroller-friendly. The Friday farmers market is family-friendly." },
       { q: "Where can I go wine tasting near Avila Beach?", a: "Several tasting rooms are walkable in downtown Avila Beach (Alapay Cellars, Peloton). Edna Valley wineries (Tolosa, Chamisal) are a 10-minute drive. Arroyo Grande Valley (Talley, Laetitia) is 15 minutes." }
     ]
   },
@@ -460,25 +460,25 @@ const PAGES = [
 <h2>Our Pet-Friendly Rentals</h2>
 <p>Solmaré Stays offers pet-friendly vacation rentals in Avila Beach that welcome dogs:</p>
 <ul>
-<li><strong>The Palm House</strong> — King studio with ocean peeks and private balcony. Fenced area nearby.</li>
-<li><strong>The Pine House</strong> — Queen studio with balcony views. Walking distance to the beach.</li>
-<li><strong>Casitas Estate (Arroyo Grande)</strong> — 13-acre private estate with room to roam. Dogs welcome with approval.</li>
+<li><strong>The Palm House</strong>: King studio with ocean peeks and a private balcony. Fenced area nearby.</li>
+<li><strong>The Pine House</strong>: Queen studio with balcony views. Walking distance to the beach.</li>
+<li><strong>Wine Country Estate (Arroyo Grande)</strong>: 13-acre private estate with room to roam. Dogs welcome with approval.</li>
 </ul>
 <p>Pet fees vary by property. <a href="/pet-friendly">See all pet-friendly properties</a> or <a href="/contact">contact us</a> with questions about your specific pet.</p>
 <h2>Dog-Friendly Beaches</h2>
-<h3>Avila Beach (Leashed)</h3><p>Dogs are welcome on Avila Beach on a leash. Early morning and evening are the best times — fewer crowds, cooler sand, and your dog gets more space to explore.</p>
+<h3>Avila Beach (Leashed)</h3><p>Dogs are welcome on Avila Beach on a leash. Early morning and evening are the best times: fewer crowds, cooler sand, and more space for your dog to run.</p>
 <h3>Pirate's Cove (Off-Leash Friendly)</h3><p>While not officially off-leash, Pirate's Cove is a more relaxed beach where dogs commonly run free. It's a short hike down from Cave Landing Road. Beautiful cliffs and tide pools.</p>
 <h3>Shell Beach / Dinosaur Caves Park</h3><p>Just 10 minutes south. Dogs on leash in the park, with grassy areas, benches, and ocean views. Great for a morning walk.</p>
 <h2>Dog-Friendly Trails</h2>
-<p><strong>Bob Jones Trail</strong> — dogs on leash, flat and shaded. <strong>Ontario Ridge Trail</strong> — more challenging, dogs on leash, great views. Both start within minutes of our properties.</p>
+<p><strong>Bob Jones Trail</strong> is flat and shaded, dogs on leash. <strong>Ontario Ridge Trail</strong> is more of a climb, also leashed, with great views. Both start within minutes of our properties.</p>
 <h2>Dog-Friendly Dining</h2>
 <p>Most Avila Beach restaurants have outdoor patios that welcome dogs: Custom House, Blue Moon, Mr. Rick's, and the Friday Farmers Market are all dog-friendly.</p>
 <h2>Tips for Visiting with Dogs</h2>
-<ul><li>Bring water and a portable bowl — the beach gets hot</li><li>Clean up after your dog (bags available at most trail heads)</li><li>Check tide schedules before beach walks</li><li>The Friday Farmers Market can be overwhelming for anxious dogs — consider going early</li></ul>
-<p><a href="/pet-friendly">Book a pet-friendly rental</a> — your dog deserves a vacation too.</p>`,
+<ul><li>Bring water and a portable bowl (the sand gets hot)</li><li>Clean up after your dog (bags available at most trail heads)</li><li>Check tide schedules before beach walks</li><li>The Friday Farmers Market can overwhelm anxious dogs, so go early</li></ul>
+<p><a href="/pet-friendly">Book a pet-friendly rental</a>. Your dog deserves a vacation too.</p>`,
     faq: [
       { q: "Are dogs allowed on Avila Beach?", a: "Yes, dogs are allowed on Avila Beach on a leash. Early morning and evening are the best times for beach walks with your dog." },
-      { q: "Are there pet-friendly vacation rentals in Avila Beach?", a: "Yes — Solmaré Stays offers pet-friendly vacation rentals including The Palm House and The Pine House, both in Avila Beach. Our Casitas Estate in Arroyo Grande also welcomes dogs." },
+      { q: "Are there pet-friendly vacation rentals in Avila Beach?", a: "Yes. Solmaré Stays offers pet-friendly vacation rentals including The Palm House and The Pine House, both in Avila Beach. Our Wine Country Estate in Arroyo Grande also welcomes dogs." },
       { q: "Where can I take my dog off-leash near Avila Beach?", a: "Pirate's Cove, a short hike from Cave Landing Road, is a beach where dogs commonly run off-leash. It's about 5 minutes from Avila Beach." }
     ]
   },
@@ -487,7 +487,7 @@ const PAGES = [
     title: 'Vacation Rental Property Management in Avila Beach, CA',
     description: 'Thinking about hiring a property manager for your Avila Beach vacation rental? Here\'s what professional management looks like and what it costs.',
     h1: 'Vacation Rental Property Management in Avila Beach',
-    body: `<p><em>If you own a vacation rental on the Central Coast and you're doing everything yourself — pricing, guest messages, cleaning coordination, maintenance — here's what it looks like when a professional takes over.</em></p>
+    body: `<p><em>If you own a vacation rental on the Central Coast and you're doing everything yourself (pricing, guest messages, cleaning coordination, maintenance), here's what it looks like when a professional takes over.</em></p>
 <h2>Self-Managing vs Professional Management</h2>
 <p>Most Avila Beach owners start by self-managing their rental. It works at first. Then the 2 AM guest messages, the double-bookings, the cleaning no-shows, and the bad reviews start adding up. The math changes.</p>
 <table><tr><th></th><th>Self-Managed</th><th>Solmaré Stays</th></tr>
@@ -499,24 +499,24 @@ const PAGES = [
 <tr><td>Your time</td><td>10-20 hrs/week</td><td>0 hrs/week</td></tr></table>
 <h2>What's Included</h2>
 <ul>
-<li><strong>Listing optimization</strong> — professional photos, SEO-optimized descriptions, strategic pricing</li>
-<li><strong>Dynamic pricing</strong> — PriceLabs adjusts your rates daily based on demand, events, and market data</li>
-<li><strong>Multi-channel distribution</strong> — Airbnb, VRBO, Google Vacation Rentals, and our direct booking website</li>
-<li><strong>24/7 guest communication</strong> — a local team on call, not an overseas call centre</li>
-<li><strong>Professional cleaning</strong> — 50-point checklist, hotel-quality linens, restocking</li>
-<li><strong>Maintenance coordination</strong> — proactive inspections, vendor management, emergency response</li>
-<li><strong>Owner reporting</strong> — weekly performance reports, monthly financial statements</li>
+<li><strong>Listing optimization</strong>: professional photos, search-optimized descriptions, strategic pricing</li>
+<li><strong>Dynamic pricing</strong>: PriceLabs adjusts your rates daily based on demand, events, and market data</li>
+<li><strong>Multi-channel distribution</strong>: Airbnb, VRBO, Google Vacation Rentals, and our direct booking website</li>
+<li><strong>24/7 guest communication</strong>: a local team on call, not an overseas call centre</li>
+<li><strong>Professional cleaning</strong>: 50-point checklist, hotel-quality linens, restocking</li>
+<li><strong>Maintenance coordination</strong>: proactive inspections, vendor management, emergency response</li>
+<li><strong>Owner reporting</strong>: weekly performance reports, monthly financial statements</li>
 </ul>
 <h2>The Avila Beach Market</h2>
 <p>Avila Beach has unique dynamics: extreme seasonality (peak summer vs. quiet winter), event-driven demand (Cal Poly, wine festivals), and a small inventory that rewards quality. The market average occupancy is 40%. Our portfolio runs at 51%. That 11-point gap is the difference between a property that covers its mortgage and one that generates real income.</p>
 <h2>What It Costs</h2>
 <p>Management fees on the Central Coast typically range from 15-25% of gross revenue. The fee pays for itself when professional management increases your occupancy and ADR enough to more than offset the commission. Most owners we work with see a net revenue increase even after our fee.</p>
 <h2>Is It Right for You?</h2>
-<p>If you own a vacation rental in Avila Beach, Pismo Beach, Shell Beach, San Luis Obispo, or Arroyo Grande, we'd love to show you what your property could be earning. No pressure — we start with a free market analysis and revenue projection.</p>
+<p>If you own a vacation rental in Avila Beach, Pismo Beach, Shell Beach, San Luis Obispo, or Arroyo Grande, we'd love to show you what your property could be earning. No pressure. We start with a free market analysis and revenue projection.</p>
 <p><a href="/management">Learn more about our management services</a> or <a href="/contact">get in touch</a>. Call Kyle directly at (805) 242-6411.</p>`,
     faq: [
       { q: "How much does vacation rental management cost in Avila Beach?", a: "Management fees on the Central Coast typically range from 15-25% of gross revenue. Solmaré Stays' fees vary by property. The fee pays for itself when professional management increases occupancy and revenue." },
-      { q: "What is the average occupancy for vacation rentals in Avila Beach?", a: "The market average occupancy in Avila Beach is approximately 40%. Solmaré Stays' portfolio runs at 51% occupancy — 11 points above the market average." },
+      { q: "What is the average occupancy for vacation rentals in Avila Beach?", a: "The market average occupancy in Avila Beach is approximately 40%. Solmaré Stays' portfolio runs at 51% occupancy, 11 points above the market average." },
       { q: "Should I self-manage my Avila Beach vacation rental?", a: "Self-managing works if you have the time and expertise. But professional management typically lifts occupancy from the market's ~40% into the low 50s, improves guest ratings, and adds channels (VRBO, Google, direct) that most self-managers don't use." }
     ]
   },
@@ -525,18 +525,18 @@ const PAGES = [
     title: 'Where to Stay for Cal Poly Graduation Weekend (SLO)',
     description: 'Visiting Cal Poly for graduation, move-in, or Open House? Where to stay in San Luis Obispo and Avila Beach, when to book, and how to beat hotel price spikes.',
     h1: 'Where to Stay for Cal Poly Graduation & Parents Weekend',
-    body: `<p><em>If you're visiting Cal Poly for graduation, move-in weekend, Open House, or a campus tour, here's the honest local guide to where to stay — and when to book before everything sells out.</em></p>
+    body: `<p><em>If you're visiting Cal Poly for graduation, move-in weekend, Open House, or a campus tour, here's the honest local guide to where to stay, and when to book before everything sells out.</em></p>
 <h2>The Problem: SLO Sells Out on Cal Poly Weekends</h2>
-<p>San Luis Obispo is a small city with limited hotel inventory, and Cal Poly weekends — spring commencement in June, fall commencement in December, Open House in spring, and move-in in September — reliably sell the whole town out. Hotels that normally charge $150 a night list at $400+ with two-night minimums, and the closest ones go first.</p>
+<p>San Luis Obispo is a small city with limited hotel inventory, and Cal Poly weekends (spring commencement in June, fall commencement in December, Open House in spring, move-in in September) reliably sell the whole town out. Hotels that normally charge $150 a night list at $400+ with two-night minimums, and the closest ones go first.</p>
 <p>The families who have done this before book months ahead. If your student just told you a date, book your lodging this week.</p>
 <h2>Option 1: Stay Walking Distance from Campus</h2>
 <p>Our <strong>Monterey Heights Suite</strong> is a 2-bedroom, 1-bath suite that sleeps 4, with a private patio and kitchenette, within walking distance of both Cal Poly and downtown San Luis Obispo. For a graduation weekend that means: no fighting for campus parking, walk to the ceremony, walk downtown for the celebration dinner, and a real kitchen for the morning of.</p>
-<p>It starts around $140 a night in normal season — <a href="/san-luis-obispo">check dates and pricing here</a>.</p>
+<p>It starts around $140 a night in normal season. <a href="/san-luis-obispo">Check dates and pricing here</a>.</p>
 <h2>Option 2: Stay at the Beach, Drive 20 Minutes</h2>
-<p>Here's the local secret: <strong>Avila Beach is about 20 minutes from campus.</strong> Families who book our <a href="/avila-beach">Avila Beach vacation rentals</a> get a beach vacation wrapped around the ceremony — morning on the sand, afternoon at commencement, dinner on the promenade. For multi-day trips (move-in especially), the beach base is the better trip.</p>
+<p>Here's the local secret: <strong>Avila Beach is about 20 minutes from campus.</strong> Families who book our <a href="/avila-beach">Avila Beach vacation rentals</a> get a beach vacation wrapped around the ceremony: morning on the sand, afternoon at commencement, dinner on the promenade. For multi-day trips (move-in especially), the beach base is the better trip.</p>
 <p>Most of our 10 Avila Beach properties are 1-2 blocks from the sand, ranging from couples studios to two-bedroom beach houses.</p>
 <h2>Option 3: Bring the Whole Family</h2>
-<p>Graduations pull grandparents, siblings, and partners into one trip. For big family groups, our <strong>Wine Country Estate</strong> in Arroyo Grande sleeps 14 across a private 13-acre property with a pool and hot tub, about 20 minutes from campus. One house, one kitchen, one celebration — instead of coordinating four hotel rooms. <a href="/group-stays">See group options</a>.</p>
+<p>Graduations pull grandparents, siblings, and partners into one trip. For big family groups, our <strong>Wine Country Estate</strong> in Arroyo Grande sleeps 14 across a private 13-acre property with a pool and hot tub, about 20 minutes from campus. One house, one kitchen, one celebration, instead of coordinating four hotel rooms. <a href="/group-stays">See group options</a>.</p>
 <h2>When to Book</h2>
 <ul>
 <li><strong>Spring commencement (June):</strong> book by February. This is the single most compressed weekend of the year in SLO.</li>
@@ -545,11 +545,11 @@ const PAGES = [
 <li><strong>Open House / campus tours (spring):</strong> book 6-8 weeks out.</li>
 </ul>
 <h2>Why Book Direct</h2>
-<p>Booking directly at <a href="/collection">solmarestays.com</a> costs less than the same property on Airbnb or Vrbo because there's no platform service fee — and you're dealing with a local team that answers in minutes if anything comes up on your weekend. <a href="/contact">Contact us</a> or call (805) 242-6411 if you want a recommendation for your group size.</p>`,
+<p>Booking directly at <a href="/collection">solmarestays.com</a> costs less than the same property on Airbnb or Vrbo because there's no platform service fee. And you're dealing with a local team that answers in minutes if anything comes up on your weekend. <a href="/contact">Contact us</a> or call (805) 242-6411 if you want a recommendation for your group size.</p>`,
     faq: [
-      { q: "Where should families stay for Cal Poly graduation?", a: "Book early — SLO sells out for commencement. Monterey Heights Suite sleeps 4 within walking distance of Cal Poly and downtown SLO. For larger family groups, Avila Beach vacation rentals are about 20 minutes from campus, and Wine Country Estate in Arroyo Grande sleeps 14." },
+      { q: "Where should families stay for Cal Poly graduation?", a: "Book early; SLO sells out for commencement. Monterey Heights Suite sleeps 4 within walking distance of Cal Poly and downtown SLO. For larger family groups, Avila Beach vacation rentals are about 20 minutes from campus, and Wine Country Estate in Arroyo Grande sleeps 14." },
       { q: "How far in advance should I book lodging for Cal Poly graduation?", a: "For June commencement, book by February. Fall commencement by October, September move-in by July. San Luis Obispo's hotel inventory is small and Cal Poly weekends reliably sell the town out with steep price spikes." },
-      { q: "Is Avila Beach a good base for visiting Cal Poly?", a: "Yes — Avila Beach is about 20 minutes from campus, and staying there wraps a beach vacation around the campus visit. Solmaré Stays has 10 vacation rentals in Avila Beach, most 1-2 blocks from the sand." }
+      { q: "Is Avila Beach a good base for visiting Cal Poly?", a: "Yes. Avila Beach is about 20 minutes from campus, and staying there wraps a beach vacation around the campus visit. Solmaré Stays has 10 vacation rentals in Avila Beach, most 1-2 blocks from the sand." }
     ]
   },
   {
@@ -557,32 +557,32 @@ const PAGES = [
     title: 'Large Group Vacation Rentals — Central Coast, CA',
     description: 'Vacation rentals for large groups on the California Central Coast. A private 13-acre estate sleeping 14, and side-by-side Avila Beach bungalows for reunions and retreats.',
     h1: 'Large Group Vacation Rentals on the Central Coast (Sleeps 10-14+)',
-    body: `<p><em>Family reunion, milestone birthday, company retreat, or a wedding weekend — housing 10 to 14+ people on the Central Coast comes down to two good options. Here's how to choose.</em></p>
+    body: `<p><em>Family reunion, milestone birthday, company retreat, wedding weekend: housing 10 to 14+ people on the Central Coast comes down to two good options. Here's how to choose.</em></p>
 <h2>The Two Ways to House a Big Group</h2>
 <p>Most vacation rentals sleep 4-8, so groups usually face a bad choice: split across hotel rooms and lose the shared-house feeling, or squeeze into a place that's too small. On the Central Coast there are two better answers.</p>
-<h2>Option 1: One Private Estate — Wine Country Estate (Sleeps 14)</h2>
-<p>Our <strong>Wine Country Estate</strong> in Arroyo Grande is a private 13-acre property with a main house and 4 guest casitas, 5 bedrooms and 5 bathrooms in total, sleeping 14. It comes with a solar-heated pool, a hot tub, a bocce court, and walking trails — and it's booked as a whole estate only, so your group never shares the grounds with strangers.</p>
+<h2>Option 1: One Private Estate That Sleeps 14</h2>
+<p>Our <strong>Wine Country Estate</strong> in Arroyo Grande is a private 13-acre property with a main house and 4 guest casitas, 5 bedrooms and 5 bathrooms in total, sleeping 14. It comes with a solar-heated pool, a hot tub, a bocce court, and walking trails. It's booked as a whole estate only, so your group never shares the grounds with strangers.</p>
 <p>What it's good for:</p>
 <ul>
-<li><strong>Family reunions</strong> — separate casitas mean grandparents, couples, and kids each get privacy, then everyone gathers at the main house.</li>
-<li><strong>Small weddings and celebrations</strong> — event use is possible with advance approval; tell us what you're planning when you enquire.</li>
-<li><strong>Company retreats</strong> — space to work, space to unwind, 10 minutes from downtown SLO.</li>
+<li><strong>Family reunions</strong>: separate casitas mean grandparents, couples, and kids each get privacy, then everyone gathers at the main house.</li>
+<li><strong>Small weddings and celebrations</strong>: event use is possible with advance approval. Tell us what you're planning when you enquire.</li>
+<li><strong>Company retreats</strong>: space to work, space to unwind, 10 minutes from downtown SLO.</li>
 </ul>
-<p>Wine country is at the doorstep — Talley, Laetitia, Timbre, and the Edna Valley wineries are minutes away — and Pismo Beach is 15 minutes by car. <a href="/arroyo-grande">See the Arroyo Grande estate</a>.</p>
-<h2>Option 2: A Beach Compound — Side-by-Side Bungalows in Avila Beach</h2>
+<p>Talley, Laetitia, Timbre, and the Edna Valley wineries are minutes away, and Pismo Beach is 15 minutes by car. <a href="/arroyo-grande">See the Arroyo Grande estate</a>.</p>
+<h2>Option 2: A Beach Compound of Side-by-Side Bungalows in Avila Beach</h2>
 <p>Several of our Avila Beach properties sit within the same compound, so larger groups can book multiple bungalows side by side and effectively take over a private cluster <strong>1-2 blocks from the sand</strong>. Everyone gets their own front door; the beach, pier, and restaurants are a 2-minute walk.</p>
-<p>This is the move for groups that want the beach-town experience — morning coffee on the promenade, kayaking in the calm bay, Friday farmers market — with the togetherness of shared walls. <a href="/contact">Tell us your dates and headcount</a> and we'll check which combination of bungalows is open.</p>
+<p>This is the move for groups that want the beach-town experience (morning coffee on the promenade, kayaking in the calm bay, the Friday farmers market) with the togetherness of shared walls. <a href="/contact">Tell us your dates and headcount</a> and we'll check which combination of bungalows is open.</p>
 <h2>How to Decide</h2>
 <ul>
 <li><strong>Want privacy, a pool, and one big table?</strong> The estate.</li>
 <li><strong>Want to walk to the beach and restaurants?</strong> The Avila compound.</li>
-<li><strong>Group bigger than 14?</strong> Combine — some groups book the estate for the core family and Avila bungalows for the overflow, 25 minutes apart.</li>
+<li><strong>Group bigger than 14?</strong> Combine. Some groups book the estate for the core family and Avila bungalows for the overflow; the two are 25 minutes apart.</li>
 </ul>
-<h2>Book Early — Big Inventory Is Scarce</h2>
+<h2>Book Early: Big Inventory Is Scarce</h2>
 <p>Properties that sleep 10+ are the scarcest inventory on the Central Coast. Summer weekends and holiday weeks at the estate book out months ahead. <a href="/group-stays">Start with our group stays page</a>, or call (805) 242-6411 and we'll help you plan it.</p>`,
     faq: [
       { q: "What is the best vacation rental for a group of 14 on the Central Coast?", a: "Wine Country Estate in Arroyo Grande sleeps 14 across 5 bedrooms and 5 bathrooms on a private 13-acre property with a solar-heated pool, hot tub, and separate guest casitas. It is booked whole-estate only, so the group has it entirely to themselves." },
-      { q: "Can a large group stay together in Avila Beach?", a: "Yes — several Solmaré Stays properties sit in the same Avila Beach compound, so groups can book multiple bungalows side by side, 1-2 blocks from the sand, and effectively take over a private cluster." },
+      { q: "Can a large group stay together in Avila Beach?", a: "Yes. Several Solmaré Stays properties sit in the same Avila Beach compound, so groups can book multiple bungalows side by side, 1-2 blocks from the sand, and effectively take over a private cluster." },
       { q: "Can Wine Country Estate host weddings or retreats?", a: "Small weddings, reunions, and corporate retreats are possible with advance approval. Tell Solmaré Stays what you're planning when you enquire, before booking." }
     ]
   },
@@ -591,17 +591,17 @@ const PAGES = [
     title: 'Avila Beach Hot Springs Guide — Sycamore & Beyond',
     description: 'The complete guide to hot springs in Avila Beach, CA: Sycamore Mineral Springs private hillside tubs, Avila Hot Springs, prices, tips, and how to book.',
     h1: 'Avila Beach Hot Springs — The Complete Guide',
-    body: `<p><em>Avila Beach sits on top of natural mineral springs — it's one of the few beach towns in California where you can follow a day on the sand with a soak in a hillside hot tub. Here's how to do it right.</em></p>
+    body: `<p><em>Avila Beach sits on top of natural mineral springs. It's one of the few beach towns in California where you can follow a day on the sand with a soak in a hillside hot tub. Here's how to do it right.</em></p>
 <h2>Sycamore Mineral Springs Resort</h2>
 <p>The signature experience. Sycamore's private open-air hot tubs are terraced up a wooded hillside along Avila Beach Drive, each fed by naturally heated mineral water and screened from the others by oak trees. You book by the hour.</p>
 <ul>
-<li><strong>What it costs:</strong> roughly $20-25 per person per hour for the hillside tubs. Prices vary by day and time — check current rates when you book.</li>
+<li><strong>What it costs:</strong> roughly $20-25 per person per hour for the hillside tubs. Prices vary by day and time, so check current rates when you book.</li>
 <li><strong>When to go:</strong> after sunset is the magic window. The tubs are lit, the hillside is quiet, and the temperature contrast is best once the coastal air cools.</li>
 <li><strong>Book ahead:</strong> weekend evening slots sell out, especially in summer. Reserve a day or two ahead minimum.</li>
 <li><strong>Make a night of it:</strong> Gardens of Avila, the farm-to-table restaurant on the resort grounds, is one of the best dinners in town. Soak first, dinner after.</li>
 </ul>
 <h2>Avila Hot Springs</h2>
-<p>At the Highway 101 end of Avila Beach Drive, Avila Hot Springs is the casual, family-friendly option — a large warm mineral pool alongside a freshwater swimming pool. Day passes are inexpensive, kids are welcome, and no reservation is needed for general soaking. Less romantic than Sycamore, much easier with children.</p>
+<p>At the Highway 101 end of Avila Beach Drive, Avila Hot Springs is the casual, family-friendly option: a large warm mineral pool alongside a freshwater swimming pool. Day passes are inexpensive, kids are welcome, and no reservation is needed for general soaking. Less romantic than Sycamore, much easier with children.</p>
 <h2>Which One Should You Pick?</h2>
 <ul>
 <li><strong>Couples / date night:</strong> Sycamore's private hillside tubs, evening slot.</li>
@@ -610,11 +610,11 @@ const PAGES = [
 </ul>
 <h2>Make It a Weekend</h2>
 <p>The hot springs pair naturally with everything else in town: a morning on <a href="/avila-beach">Avila's sheltered, south-facing beach</a>, lunch on the promenade, the <a href="/blog/things-to-do-avila-beach">Bob Jones Trail</a> by bike, wine tasting at the walkable downtown tasting rooms, then a soak as the sun drops.</p>
-<p>Our <a href="/avila-beach">Avila Beach vacation rentals</a> are 1-2 blocks from the beach and a short drive (or bike ride up the Bob Jones Trail) from both springs. <a href="/collection">Browse all 13 properties</a> — and if you're planning a couples trip, ask us which properties have the best sunset views.</p>`,
+<p>Our <a href="/avila-beach">Avila Beach vacation rentals</a> are 1-2 blocks from the beach and a short drive (or bike ride up the Bob Jones Trail) from both springs. <a href="/collection">Browse all 13 properties</a>. If you're planning a couples trip, ask us which ones have the best sunset views.</p>`,
     faq: [
-      { q: "Are there hot springs in Avila Beach?", a: "Yes — two. Sycamore Mineral Springs Resort offers private hillside hot tubs fed by natural mineral springs, booked by the hour (roughly $20-25 per person). Avila Hot Springs has a large family-friendly warm mineral pool with inexpensive day passes." },
+      { q: "Are there hot springs in Avila Beach?", a: "Yes, two. Sycamore Mineral Springs Resort offers private hillside hot tubs fed by natural mineral springs, booked by the hour (roughly $20-25 per person). Avila Hot Springs has a large family-friendly warm mineral pool with inexpensive day passes." },
       { q: "How much does Sycamore Mineral Springs cost?", a: "The private hillside hot tubs run roughly $20-25 per person per hour, varying by day and time. Weekend evening slots sell out in summer, so reserve at least a day or two ahead." },
-      { q: "Which Avila Beach hot spring is better for families?", a: "Avila Hot Springs — it has a large warm mineral pool alongside a freshwater swimming pool, welcomes kids, and needs no reservation. Sycamore's private hillside tubs are the couples option." }
+      { q: "Which Avila Beach hot spring is better for families?", a: "Avila Hot Springs. It has a large warm mineral pool alongside a freshwater swimming pool, welcomes kids, and needs no reservation. Sycamore's private hillside tubs are the couples option." }
     ]
   },
   {
@@ -622,34 +622,34 @@ const PAGES = [
     title: 'Where to Stay in SLO Wine Country — Edna Valley',
     description: 'Where to stay for wine tasting in Edna Valley and Arroyo Grande Valley: a private 13-acre estate, a working farm cottage, and the wineries locals actually visit.',
     h1: 'Where to Stay in SLO Wine Country — Edna Valley & Arroyo Grande Valley',
-    body: `<p><em>Edna Valley and Arroyo Grande Valley are what Napa was thirty years ago — world-class pinot noir and chardonnay, tasting rooms where the winemaker might pour your flight, and none of the crowds. Here's where to stay and where to taste.</em></p>
+    body: `<p><em>Edna Valley and Arroyo Grande Valley are what Napa was thirty years ago: world-class pinot noir and chardonnay, tasting rooms where the winemaker might pour your flight, and none of the crowds. Here's where to stay and where to taste.</em></p>
 <h2>Why SLO Wine Country</h2>
-<p>The Edna Valley and Arroyo Grande Valley AVAs sit in a rare east-west corridor that funnels ocean air inland, giving the region one of the longest growing seasons in California. The result is exceptional cool-climate pinot noir, chardonnay, and albariño — 10 minutes from the beach. Tastings here still cost a fraction of Napa's, and reservations are usually easy.</p>
+<p>The Edna Valley and Arroyo Grande Valley AVAs sit in a rare east-west corridor that funnels ocean air inland, giving the region one of the longest growing seasons in California. The result is exceptional cool-climate pinot noir, chardonnay, and albariño, all 10 minutes from the beach. Tastings here still cost a fraction of Napa's, and reservations are usually easy.</p>
 <h2>Stay Among the Vines</h2>
-<h3>Wine Country Estate — Private 13 Acres, Sleeps 14</h3>
-<p>Our flagship <a href="/arroyo-grande">Arroyo Grande property</a>: a main house and 4 guest casitas on 13 private acres with a solar-heated pool, hot tub, and bocce court. Booked whole-estate only, so it's yours alone. This is the wine-trip base for a group — taste all afternoon, cook long dinners, and never worry about who's driving far.</p>
-<h3>Flora Farm Cottage — A Working Farm Stay, Sleeps 4</h3>
-<p>The intimate option: a 2-bedroom cottage on a working Arroyo Grande farm, with a hot tub, a creek, and fresh eggs in the morning. It's the kind of stay the region does better than anywhere — agricultural, quiet, and genuinely local. Perfect for couples doing a tasting weekend.</p>
+<h3>Wine Country Estate: Private 13 Acres, Sleeps 14</h3>
+<p>Our flagship <a href="/arroyo-grande">Arroyo Grande property</a>: a main house and 4 guest casitas on 13 private acres with a solar-heated pool, hot tub, and bocce court. Booked whole-estate only, so it's yours alone. This is the wine-trip base for a group: taste all afternoon, cook long dinners, and never worry about who's driving far.</p>
+<h3>Flora Farm Cottage: A Working Farm Stay, Sleeps 4</h3>
+<p>The intimate option: a 2-bedroom cottage on a working Arroyo Grande farm, with a hot tub, a creek, and fresh eggs in the morning. It's the kind of stay the region does better than anywhere: agricultural, quiet, and genuinely local. Perfect for couples doing a tasting weekend.</p>
 <h2>The Wineries Worth Your Time</h2>
 <h3>Edna Valley (10 minutes from SLO)</h3>
 <ul>
-<li><strong>Tolosa</strong> — polished tasting room, excellent single-vineyard pinot flights.</li>
-<li><strong>Chamisal Vineyards</strong> — the valley's historic first vineyard, known for chardonnay.</li>
-<li><strong>Baileyana</strong> — tastings in an old schoolhouse.</li>
+<li><strong>Tolosa</strong>: polished tasting room, excellent single-vineyard pinot flights.</li>
+<li><strong>Chamisal Vineyards</strong>: the valley's historic first vineyard, known for chardonnay.</li>
+<li><strong>Baileyana</strong>: tastings in an old schoolhouse.</li>
 </ul>
 <h3>Arroyo Grande Valley</h3>
 <ul>
-<li><strong>Talley Vineyards</strong> — the benchmark producer of the valley; the estate tasting overlooks the vines.</li>
-<li><strong>Laetitia</strong> — sparkling wine specialists on a dramatic coastal ridge.</li>
-<li><strong>Timbre Winery</strong> — small-production, music-themed, worth the stop.</li>
+<li><strong>Talley Vineyards</strong>: the benchmark producer of the valley. The estate tasting overlooks the vines.</li>
+<li><strong>Laetitia</strong>: sparkling wine specialists on a dramatic coastal ridge.</li>
+<li><strong>Timbre Winery</strong>: small-production, music-themed, worth the stop.</li>
 </ul>
 <h2>A Perfect Day</h2>
-<p>Morning coffee on the farm or by the pool. Two tastings in Edna Valley before lunch in the village of Edna. One more tasting at Talley in the afternoon. Then 15 minutes to Pismo or 20-25 to <a href="/avila-beach">Avila Beach</a> for sunset on the sand — because here, unlike Napa, the beach is part of the wine trip.</p>
+<p>Morning coffee on the farm or by the pool. Two tastings in Edna Valley before lunch in the village of Edna. One more tasting at Talley in the afternoon. Then 15 minutes to Pismo or 20-25 to <a href="/avila-beach">Avila Beach</a> for sunset on the sand. Here, unlike Napa, the beach is part of the wine trip.</p>
 <p><a href="/arroyo-grande">See both wine country properties</a>, <a href="/collection">browse the full collection</a>, or <a href="/contact">contact us</a> to match the right property to your group.</p>`,
     faq: [
       { q: "Where should I stay for wine tasting in Edna Valley?", a: "Solmaré Stays has two wine country properties in Arroyo Grande, minutes from Edna Valley and Arroyo Grande Valley wineries: Wine Country Estate, a private 13-acre property sleeping 14, and Flora Farm Cottage, a 2-bedroom working-farm stay sleeping 4." },
       { q: "What wineries should I visit in SLO wine country?", a: "In Edna Valley: Tolosa, Chamisal Vineyards, and Baileyana. In Arroyo Grande Valley: Talley Vineyards, Laetitia, and Timbre Winery. All are within roughly 15 minutes of Solmaré's Arroyo Grande properties." },
-      { q: "Is SLO wine country cheaper than Napa?", a: "Yes — tastings in Edna Valley and Arroyo Grande Valley cost a fraction of Napa's, reservations are usually easy, and the beach is 15-25 minutes away, which makes it easy to combine a wine trip with a coastal stay." }
+      { q: "Is SLO wine country cheaper than Napa?", a: "Yes. Tastings in Edna Valley and Arroyo Grande Valley cost a fraction of Napa's, reservations are usually easy, and the beach is 15-25 minutes away, which makes it easy to combine a wine trip with a coastal stay." }
     ]
   },
   {
@@ -657,40 +657,40 @@ const PAGES = [
     title: 'SLO County Short-Term Rental Rules 2026 — Permits & TOT',
     description: 'What Central Coast owners need to know before renting short-term: permits and licenses by jurisdiction, transient occupancy tax rates, and the rules that trip owners up.',
     h1: "Short-Term Rental Rules in SLO County — An Owner's Guide",
-    body: `<p><em>Thinking about renting out your Central Coast property as a vacation rental? The single most important thing to understand is that the rules change completely depending on which jurisdiction your property sits in — sometimes across the street from each other. Here's the owner's map.</em></p>
-<p><strong>A note before we start:</strong> rules and tax rates change, and this article is a practical orientation, not legal advice. Verify current requirements with the county or city before you list — or <a href="/contact">ask us</a> and we'll point you at the right office.</p>
+    body: `<p><em>Thinking about renting out your Central Coast property as a vacation rental? The single most important thing to understand is that the rules change completely depending on which jurisdiction your property sits in. Sometimes they change across the street. Here's the owner's map.</em></p>
+<p><strong>A note before we start:</strong> rules and tax rates change, and this article is a practical orientation, not legal advice. Verify current requirements with the county or city before you list, or <a href="/contact">ask us</a> and we'll point you at the right office.</p>
 <h2>First: Which Jurisdiction Are You Actually In?</h2>
 <p>San Luis Obispo County is a patchwork. Avila Beach is unincorporated county land. The city of San Luis Obispo has its own (much stricter) rules. Arroyo Grande has a city permit process, while rural Arroyo Grande addresses can fall under the county instead. Two properties five minutes apart can face entirely different rulebooks, so confirm your parcel's jurisdiction before anything else.</p>
 <h2>Unincorporated SLO County (Includes Avila Beach)</h2>
-<p>Vacation rentals in the unincorporated county — which covers Avila Beach and much of the rural coast and wine country — operate under the county's vacation rental licensing rules. Expect requirements around:</p>
+<p>Vacation rentals in the unincorporated county (which covers Avila Beach and much of the rural coast and wine country) operate under the county's vacation rental licensing rules. Expect requirements around:</p>
 <ul>
 <li>A county business license and vacation rental license for the property</li>
 <li>Occupancy limits tied to bedrooms and parking</li>
 <li>Separation/density rules in some communities (limits on how many rentals per block)</li>
 <li>Quiet hours and a designated local contact who can respond to issues</li>
 </ul>
-<p>Licenses renew on a cycle and keep their number when renewed on time — letting one lapse can mean rejoining the queue under whatever rules exist then, which matters in communities with density caps.</p>
+<p>Licenses renew on a cycle and keep their number when renewed on time. Letting one lapse can mean rejoining the queue under whatever rules exist then, which matters in communities with density caps.</p>
 <h2>City of San Luis Obispo</h2>
-<p>The city of SLO is the strictest jurisdiction in the county: unhosted whole-home vacation rentals are broadly prohibited in most residential zones, and short-term renting generally requires a permitted, hosted homestay arrangement. If your property is inside SLO city limits, do not assume anything that applies in Avila Beach applies to you — check with the city's community development department before listing.</p>
+<p>The city of SLO is the strictest jurisdiction in the county: unhosted whole-home vacation rentals are broadly prohibited in most residential zones, and short-term renting generally requires a permitted, hosted homestay arrangement. If your property is inside SLO city limits, don't assume anything that applies in Avila Beach applies to you. Check with the city's community development department before listing.</p>
 <h2>Transient Occupancy Tax (TOT)</h2>
-<p>Every short-term stay in the county collects lodging tax from guests, and the total rate varies by jurisdiction — roughly 10.5% to 13.5% once county or city TOT plus local tourism assessments are combined. Avila Beach-area rentals sit at the lower end of that range; the cities run higher. Three things owners get wrong:</p>
+<p>Every short-term stay in the county collects lodging tax from guests, and the total rate varies by jurisdiction: roughly 10.5% to 13.5% once county or city TOT plus local tourism assessments are combined. Avila Beach-area rentals sit at the lower end of that range; the cities run higher. Three things owners get wrong:</p>
 <ul>
 <li><strong>It's the guest's tax, but your liability.</strong> You (or your platform/manager) must register, collect, and remit it.</li>
 <li><strong>Platform collection isn't universal.</strong> Airbnb collects and remits in some cases; direct bookings are always on you.</li>
-<li><strong>Tourism assessments stack on top of base TOT</strong> — budget from the combined rate, not the headline number.</li>
+<li><strong>Tourism assessments stack on top of base TOT</strong>, so budget from the combined rate, not the headline number.</li>
 </ul>
 <h2>The Mistakes That Cost Owners Real Money</h2>
 <ul>
-<li>Listing before the license exists — enforcement is complaint-driven and neighbors do complain.</li>
+<li>Listing before the license exists. Enforcement is complaint-driven, and neighbors do complain.</li>
 <li>Letting a license lapse in a density-capped community and losing the slot.</li>
 <li>Ignoring the local-contact requirement, then getting cited over a noise complaint nobody answered.</li>
 <li>Registering for TOT late and owing back taxes on months of stays.</li>
 </ul>
 <h2>Or: Have Someone Handle All of This</h2>
-<p>This is a meaningful part of what professional management is for. Solmaré Stays manages 13 vacation rentals across Avila Beach, Arroyo Grande, and San Luis Obispo — we operate inside these rules every day, keep licenses current, and handle TOT registration and remittance as part of <a href="/management">full-service management</a>.</p>
-<p>If you own a property on the Central Coast and want to know what compliant short-term renting would look like — and what the property could earn — <a href="/management">request a free revenue projection</a> or call (805) 242-6411.</p>`,
+<p>This is a meaningful part of what professional management is for. Solmaré Stays manages 13 vacation rentals across Avila Beach, Arroyo Grande, and San Luis Obispo. We operate inside these rules every day, keep licenses current, and handle TOT registration and remittance as part of <a href="/management">full-service management</a>.</p>
+<p>If you own a property on the Central Coast and want to know what compliant short-term renting would look like, and what the property could earn, <a href="/management">request a free revenue projection</a> or call (805) 242-6411.</p>`,
     faq: [
-      { q: "Do I need a permit to rent my house short-term in SLO County?", a: "In most of San Luis Obispo County, yes. Unincorporated areas like Avila Beach require county licensing for vacation rentals; the city of San Luis Obispo broadly prohibits unhosted whole-home rentals in residential zones; Arroyo Grande has its own city permit process. Confirm your parcel's jurisdiction first — requirements differ sharply." },
+      { q: "Do I need a permit to rent my house short-term in SLO County?", a: "In most of San Luis Obispo County, yes. Unincorporated areas like Avila Beach require county licensing for vacation rentals; the city of San Luis Obispo broadly prohibits unhosted whole-home rentals in residential zones; Arroyo Grande has its own city permit process. Confirm your parcel's jurisdiction first; requirements differ sharply." },
       { q: "How much is transient occupancy tax in SLO County?", a: "Combined lodging taxes (TOT plus local tourism assessments) run roughly 10.5% to 13.5% depending on jurisdiction. The tax is collected from guests, but registering, collecting, and remitting it is the owner's legal responsibility." },
       { q: "Can I run a vacation rental inside the city of San Luis Obispo?", a: "Only in limited form. The city of SLO generally prohibits unhosted whole-home short-term rentals in most residential zones and requires a permitted, hosted homestay arrangement. Check with the city's community development department before listing." }
     ]
