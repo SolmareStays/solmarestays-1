@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
 <title>Solmare Stays — Cleaning Guide</title>
+<meta name="theme-color" content="#1a2634">
+<link rel="manifest" href="/cleaning-guide.webmanifest">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Cleaning Guide">
+<link rel="preconnect" href="https://hostaway-platform.s3.us-west-2.amazonaws.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -50,10 +57,10 @@ h1,h2,h3 { font-family:'Cormorant Garamond',serif; }
 .card-thumb-placeholder span { font-family:'Cormorant Garamond',serif; font-size:32px; color:var(--gold-light); font-weight:700; }
 .card-info { padding:10px; }
 .card-name { display:block; font-weight:600; font-size:14px; color:var(--slate); margin-bottom:2px; }
-.card-addr { display:block; font-size:11px; color:var(--text-light); margin-bottom:6px; }
+.card-addr { display:block; font-size:12px; color:var(--text-light); margin-bottom:6px; }
 .card-progress-bar { height:4px; background:var(--cream); border-radius:2px; overflow:hidden; margin-bottom:4px; }
 .card-progress-fill { height:100%; background:var(--gold); border-radius:2px; width:0; transition:width .3s; }
-.card-count { font-size:11px; color:var(--text-mid); }
+.card-count { font-size:12px; color:var(--text-mid); }
 
 /* PROPERTY PAGE */
 .property-page { max-width:600px; margin:0 auto; padding-bottom:40px; transition:opacity .15s ease; display:none; }
@@ -120,9 +127,9 @@ h1,h2,h3 { font-family:'Cormorant Garamond',serif; }
 .check-item.checked .check-box::after { content:'\2713'; color:#fff; font-size:12px; font-weight:700; }
 .check-item.checked .check-text { text-decoration:line-through; color:var(--text-light); }
 .check-box { width:22px; height:22px; min-width:22px; border:2px solid var(--border); border-radius:5px; display:flex; align-items:center; justify-content:center; transition:all .15s; margin-top:1px; }
-.check-text { font-size:13px; line-height:1.4; color:var(--text); flex:1; }
-.crit-badge { font-size:9px; font-weight:700; color:var(--red); background:var(--red-soft); padding:2px 6px; border-radius:3px; white-space:nowrap; margin-top:2px; }
-.check-note { display:block; font-size:11px; color:var(--text-light); font-style:italic; margin-top:2px; }
+.check-text { font-size:14px; line-height:1.45; color:var(--text); flex:1; }
+.crit-badge { font-size:10px; font-weight:700; color:var(--red); background:var(--red-soft); padding:2px 6px; border-radius:3px; white-space:nowrap; margin-top:2px; }
+.check-note { display:block; font-size:12px; color:var(--text-light); font-style:italic; margin-top:2px; }
 
 /* FINAL CARD */
 .final-card { border-color:var(--slate-mid); }
@@ -5418,6 +5425,13 @@ window.addEventListener('hashchange', handleHash);
 updateHomeCards();
 initCarousels();
 handleHash();
+
+// Offline support: network-first shell, cached photos (scope limited to this page)
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/cleaning-guide-sw.js', { scope: '/cleaning-guide.html' }).catch(() => {});
+  });
+}
 </script>
 </body>
 </html>
