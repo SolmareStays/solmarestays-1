@@ -1,9 +1,9 @@
 // Service worker for /cleaning-guide.html only (registered with that scope).
 // HTML is network-first so guide updates land immediately; the cached copy is
 // the offline fallback for dead zones (Casitas, Flora). Images are cache-first.
-const SHELL_CACHE = 'cg-shell-v1';
-const IMG_CACHE = 'cg-img-v1';
-const FONT_CACHE = 'cg-font-v1';
+const SHELL_CACHE = 'cg-shell-v2';
+const IMG_CACHE = 'cg-img-v2';
+const FONT_CACHE = 'cg-font-v2';
 const GUIDE_URL = '/cleaning-guide.html';
 const IMG_CACHE_MAX = 260;
 
