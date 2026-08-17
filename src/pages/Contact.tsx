@@ -89,6 +89,9 @@ const ContactPage = () => {
 
   const formRef = useRef(null);
   const isFormInView = useInView(formRef, { once: true, margin: '-100px' });
+  // Feeds the server's dwell check. Nobody reads the page, writes a message and
+  // submits inside three seconds.
+  const mountedAt = useRef(Date.now());
 
   const faqRef = useRef(null);
   const isFaqInView = useInView(faqRef, { once: true, margin: '-100px' });
@@ -110,11 +113,18 @@ const ContactPage = () => {
 
     try {
       const form = e.target as HTMLFormElement;
-      const formDataToSend = new FormData(form);
 
-      const response = await fetch('https://api.web3forms.com/submit', {
+      // Goes to our own /api/contact, not straight to Web3Forms. The access key
+      // lives server-side now, and the server scores the submission before
+      // forwarding — see api/contact.ts for why.
+      const response = await fetch('/api/contact', {
         method: 'POST',
-        body: formDataToSend,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          botcheck: (form.elements.namedItem('botcheck') as HTMLInputElement)?.checked,
+          elapsedMs: Date.now() - mountedAt.current,
+        }),
       });
 
       const data = await response.json();
@@ -123,12 +133,18 @@ const ContactPage = () => {
         // The ONLY place a Lead may fire. A route change is interest, not a lead —
         // see the note in TrackingEvents.tsx. This is a real contact form submission.
         // Goes to the pixel AND the Conversions API under one shared event id.
-        trackMetaEvent(
-          'Lead',
-          { content_name: 'contact_form', content_category: 'contact' },
-          { email: formData.email, phone: formData.phone },
-        );
-        window.gtag?.('event', 'generate_lead', { event_category: 'contact' });
+        //
+        // Gated on data.clean. The bots hitting this form render the page and
+        // submit through it, so before this gate existed every one of them fired
+        // a Lead and Meta learned to go find more of them.
+        if (data.clean) {
+          trackMetaEvent(
+            'Lead',
+            { content_name: 'contact_form', content_category: 'contact' },
+            { email: formData.email, phone: formData.phone },
+          );
+          window.gtag?.('event', 'generate_lead', { event_category: 'contact' });
+        }
         setIsSubmitted(true);
         toast.success('Message sent successfully! We\'ll be in touch soon.');
 
@@ -311,11 +327,10 @@ const ContactPage = () => {
                   </h2>
 
                   <form onSubmit={handleSubmit} className="space-y-6">
-                    {/* Web3Forms Access Key */}
-                    <input type="hidden" name="access_key" value={import.meta.env.VITE_WEB3FORMS} />
-
-                    {/* Optional: Custom subject line */}
-                    <input type="hidden" name="from_name" value="Solmaré Stays Website" />
+                    {/* No access key here any more. It used to be a hidden input fed
+                        by VITE_WEB3FORMS, which put it in the public bundle for anyone
+                        to POST with. It lives in WEB3FORMS_ACCESS_KEY on the server
+                        now and only api/contact.ts ever sees it. */}
 
                     {/* Anti-spam honeypot */}
                     <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
