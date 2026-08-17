@@ -17,6 +17,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { createReservation, fetchCalendar, getUnavailableDates, validateCoupon, getListingPriceDetails } from '@/services/hostaway';
 import { parseHostawayResponse } from '@/utils/hostawayPricing';
+import { trackMetaEvent } from '@/lib/track';
 import { toast } from 'sonner';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Calendar } from '@/components/ui/calendar';
@@ -474,13 +475,20 @@ export default function Checkout() {
 
       // Purchase fires only here — after Hostaway confirms the reservation.
       // content_ids matches the Meta catalog retailer_id (Hostaway listing ID).
-      window.fbq?.('track', 'Purchase', {
-        value: pricing.total,
-        currency: 'USD',
-        content_ids: [property.hostawayListingId],
-        content_type: 'product',
-        content_name: property.name,
-      });
+      // Dual-fired through trackMetaEvent, not a bare fbq call: this is the event
+      // ad spend is judged on, so it has to survive iOS and ad blockers like every
+      // other event does. A bare `window.fbq?.()` drops silently when fbq is absent.
+      trackMetaEvent(
+        'Purchase',
+        {
+          value: pricing.total,
+          currency: 'USD',
+          content_ids: [property.hostawayListingId],
+          content_type: 'product',
+          content_name: property.name,
+        },
+        { email: data.email, phone: data.phone },
+      );
       window.gtag?.('event', 'purchase', {
         transaction_id: String(result.reservationId),
         value: pricing.total,

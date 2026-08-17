@@ -13,6 +13,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Mail, Phone, MapPin, Send, Check, Clock } from 'lucide-react';
 import { toast } from 'sonner';
 import contactHeroImage from '/contact/contact.jpg';
+import { trackMetaEvent } from '@/lib/track';
 
 // FAQ Data
 const faqItems = [
@@ -109,7 +110,12 @@ const ContactPage = () => {
       if (data.success) {
         // The ONLY place a Lead may fire. A route change is interest, not a lead —
         // see the note in TrackingEvents.tsx. This is a real contact form submission.
-        window.fbq?.('track', 'Lead', { content_name: 'contact_form', content_category: 'contact' });
+        // Goes to the pixel AND the Conversions API under one shared event id.
+        trackMetaEvent(
+          'Lead',
+          { content_name: 'contact_form', content_category: 'contact' },
+          { email: formData.email, phone: formData.phone },
+        );
         window.gtag?.('event', 'generate_lead', { event_category: 'contact' });
         setIsSubmitted(true);
         toast.success('Message sent successfully! We\'ll be in touch soon.');

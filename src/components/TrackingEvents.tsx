@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
+import { trackMetaEvent } from "@/lib/track";
 
 // Slug → Hostaway listing ID. These are the retailer_ids in the Meta catalog
 // "Solmaré Properties" (1080256234419979) — content_ids must match them exactly
@@ -38,7 +39,7 @@ export function TrackingEvents() {
     // Property detail pages → ViewContent
     if (slug.startsWith("property/")) {
       const propertySlug = slug.replace("property/", "");
-      window.fbq?.("track", "ViewContent", {
+      trackMetaEvent("ViewContent", {
         content_name: propertySlug,
         content_type: "product",
         content_category: "vacation_rental",
@@ -63,7 +64,7 @@ export function TrackingEvents() {
 
     // Contact page → ViewContent (interest, not a lead — no form on this page)
     if (slug === "contact") {
-      window.fbq?.("track", "ViewContent", {
+      trackMetaEvent("ViewContent", {
         content_name: "contact_page",
         content_category: "contact",
       });
@@ -72,7 +73,7 @@ export function TrackingEvents() {
 
     // Management page → ViewContent (owner interest, not a lead)
     if (slug === "management" || slug === "for-homeowners") {
-      window.fbq?.("track", "ViewContent", {
+      trackMetaEvent("ViewContent", {
         content_name: "management_page",
         content_category: "owner",
       });
@@ -82,7 +83,7 @@ export function TrackingEvents() {
     // Checkout page → InitiateCheckout
     if (slug.startsWith("checkout/")) {
       const propertySlug = slug.replace("checkout/", "");
-      window.fbq?.("track", "InitiateCheckout", {
+      trackMetaEvent("InitiateCheckout", {
         content_name: propertySlug,
         content_type: "product",
         ...(PROPERTY_IDS[propertySlug] && { content_ids: [PROPERTY_IDS[propertySlug]] }),
@@ -94,7 +95,7 @@ export function TrackingEvents() {
 
     // Collection (all properties browse) → ViewContent
     if (slug === "collection" || slug === "book") {
-      window.fbq?.("track", "ViewContent", {
+      trackMetaEvent("ViewContent", {
         content_name: "collection",
         content_type: "product_group",
       });

@@ -13,6 +13,7 @@ import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
 import { TrendingUp, Shield, Users, BarChart3, Calendar, Headphones, Check, Star, Quote, Send } from 'lucide-react';
 import homeownersHeroImage from '/homeowners/management-hero.jpg';
+import { trackMetaEvent } from '@/lib/track';
 
 
 // 6 Pillars - Sharpened Copy
@@ -150,7 +151,12 @@ const OwnerLeadForm = () => {
       if (data.success) {
         // The ONLY place a Lead may fire. A route change is interest, not a lead —
         // see the note in TrackingEvents.tsx. This is a real owner form submission.
-        window.fbq?.('track', 'Lead', { content_name: 'management_form', content_category: 'owner' });
+        // Goes to the pixel AND the Conversions API under one shared event id.
+        trackMetaEvent(
+          'Lead',
+          { content_name: 'management_form', content_category: 'owner' },
+          { email: formData.email, phone: formData.phone },
+        );
         window.gtag?.('event', 'generate_lead', { event_category: 'owner' });
         setIsSubmitted(true);
         toast.success("We'll be in touch within 24 hours with your revenue projection.");
