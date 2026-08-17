@@ -144,6 +144,7 @@ const ContactPage = () => {
     <div className="min-h-screen bg-background">
       <SEO
         title="Contact Solmaré Stays"
+        absoluteTitle="Contact Solmaré Stays | Avila Beach Vacation Rentals"
         description="Get in touch with Solmaré Stays. Book a vacation rental, list your property, or get guest support. Located in Avila Beach on California's Central Coast."
         schema={faqSchema}
         breadcrumbs={[
@@ -465,7 +466,7 @@ const ContactPage = () => {
               className="max-w-2xl mx-auto"
             >
               <h2 className="font-serif text-4xl md:text-5xl font-semibold text-foreground mb-6">
-                Ready to Book Your Escape?
+                Ready to Book?
               </h2>
               <Button variant="hero" size="xl" asChild>
                 <Link to="/collection">Browse The Collection</Link>

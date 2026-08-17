@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Instagram, Facebook } from 'lucide-react';
+import { CONTACT } from '@/data/stats';
 
 // Custom TikTok icon component (lucide-react doesn't include TikTok)
 const TikTokIcon = ({ className }: { className?: string }) => (
@@ -95,14 +96,19 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center gap-3 text-sm opacity-80">
                 <Mail className="w-4 h-4 flex-shrink-0" />
-                <a href="mailto:info@solmarestays.com" className="hover:opacity-100 transition-opacity">
-                  info@solmarestays.com
+                <a href={`mailto:${CONTACT.email}`} className="hover:opacity-100 transition-opacity">
+                  {CONTACT.email}
                 </a>
               </li>
               <li className="flex items-center gap-3 text-sm opacity-80">
                 <Phone className="w-4 h-4 flex-shrink-0" />
-                <a href="tel:+18058016429" className="hover:opacity-100 transition-opacity">
-                  (805) 801-6429
+                {/*
+                  ⚠ This was tel:+18058016429 — Kyle's personal cell — while every schema
+                  block on the site published the business line. Two numbers for one
+                  business is an inconsistent NAP, which suppresses the local pack.
+                */}
+                <a href={CONTACT.phoneHref} className="hover:opacity-100 transition-opacity">
+                  {CONTACT.phone}
                 </a>
               </li>
               <li className="flex items-start gap-3 text-sm opacity-80">

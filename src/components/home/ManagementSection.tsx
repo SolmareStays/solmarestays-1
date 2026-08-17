@@ -11,7 +11,7 @@ const pillars = [
   {
     icon: Sparkles,
     title: 'Designed for Real Comfort',
-    description: 'Every home is curated for the way guests actually use a space — not staged for photos and forgotten.',
+    description: 'Every home is set up for the way guests actually use a space — not staged for photos and forgotten.',
   },
   {
     icon: ShieldCheck,

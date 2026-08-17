@@ -58,7 +58,7 @@ const locationSchema = {
   '@type': 'LodgingBusiness',
   name: 'Solmaré Stays - Arroyo Grande & Wine Country Vacation Rentals',
   description:
-    'Luxury vacation estate rental in Arroyo Grande wine country, California. Private 13-acre estate with pool, hot tub, and vineyard views. 15 minutes to Pismo Beach, 10 minutes to downtown SLO.',
+    'Vacation estate rental in Arroyo Grande wine country, California. Private 13-acre estate with pool, hot tub, and vineyard views. 15 minutes to Pismo Beach, 10 minutes to downtown SLO.',
   url: 'https://www.solmarestays.com/arroyo-grande',
   address: {
     '@type': 'PostalAddress',
@@ -131,7 +131,7 @@ const ArroyoGrandePage = () => {
     <div className="min-h-screen bg-background">
       <SEO
         title="Arroyo Grande & Wine Country Vacation Rentals"
-        description="Book a luxury wine country estate in Arroyo Grande, California. Private 13-acre estate sleeping 14 with pool, hot tub, and vineyard views. 15 minutes to the beach. Book direct and save."
+        description="Book a wine country estate in Arroyo Grande, California. Private 13-acre estate sleeping 14 with pool, hot tub, and vineyard views. 15 minutes to the beach. Book direct and save."
         schema={locationSchema}
         breadcrumbs={[
           { name: 'Home', url: 'https://www.solmarestays.com' },

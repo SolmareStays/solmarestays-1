@@ -11,6 +11,7 @@ import { CTASection } from '@/components/home/CTASection';
 import { useState, useEffect } from 'react';
 import { sanityClient } from '@/lib/sanity.client';
 import { homePageQuery } from '@/lib/sanityQueries';
+import { REVIEWS } from '@/data/stats';
 
 const Index = () => {
   const [homeData, setHomeData] = useState<any>(null);
@@ -39,7 +40,8 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <SEO
         title="Avila Beach Vacation Rentals"
-        description="Refined vacation rentals in Avila Beach, Pismo Beach & SLO. 1,500+ five-star reviews. Book direct for the best rates."
+        absoluteTitle="Solmaré Stays — Avila Beach & Central Coast Vacation Rentals"
+        description={`Refined vacation rentals in Avila Beach, Pismo Beach & SLO. ${REVIEWS.totalRounded} guest reviews averaging ${REVIEWS.averageFive} out of 5. Book direct for the best rates.`}
       />
       <Header />
       <main>

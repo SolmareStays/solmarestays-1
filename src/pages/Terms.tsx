@@ -14,7 +14,7 @@ const Terms = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title={pageData?.title || "Terms and Conditions"}
+        title={pageData?.title || "Terms of Service"}
         description={pageData?.metaDescription || "Terms and conditions for using Solmaré Stays website."}
         breadcrumbs={[
           { name: 'Home', url: 'https://www.solmarestays.com/' },

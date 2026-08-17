@@ -12,6 +12,7 @@ import {
   ChevronDown, ChevronUp, MessageCircle, Star, ShieldCheck, Clock
 } from 'lucide-react';
 import { useState } from 'react';
+import { REVIEWS } from '@/data/stats';
 
 const faqs = [
   {
@@ -78,8 +79,8 @@ const locationSchema = {
   },
   aggregateRating: {
     '@type': 'AggregateRating',
-    ratingValue: '9.7',
-    ratingCount: '2429',
+    ratingValue: REVIEWS.averageTen,
+    ratingCount: String(REVIEWS.rated),
     bestRating: '10',
     worstRating: '1',
   },
@@ -176,9 +177,8 @@ const AvilaBeachPage = () => {
                 Avila Beach Vacation Rentals
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl">
-                Stay steps from the sand in one of California's sunniest beach towns. Our handpicked Avila Beach
-                vacation homes combine coastal charm with modern luxury, all professionally managed to hotel-quality
-                standards.
+                Stay steps from the sand in one of California's sunniest beach towns. Our Avila Beach houses are
+                well kept, walked before every stay, and managed by the people who live here.
               </p>
               <div className="flex flex-wrap gap-4 mt-8">
                 <Button variant="default" size="lg" asChild>

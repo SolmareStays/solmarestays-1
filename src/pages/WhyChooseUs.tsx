@@ -15,7 +15,7 @@ import placeHeroImage from '/about-us/fire-pit.jpg';
 const values = [
   {
     icon: Sparkles,
-    title: 'Curated Comfort',
+    title: 'Real Comfort',
     description: "From Parachute linens to locally sourced welcome baskets, every detail in a Solmaré home is chosen with intention. We think about the way guests actually use a space — the morning coffee routine, the late night wind-down, the midday beach return. Every home is stocked, staged, and styled so that comfort is never something you have to look for.",
   },
   {
@@ -30,7 +30,7 @@ const values = [
   },
 ];
 
-// Seamless Service features
+// Start-to-finish service features
 const seamlessFeatures = [
   {
     icon: Clock,
@@ -131,7 +131,7 @@ const WhyChooseUsPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title={pageData?.title || "The Solmaré Standard — Our Philosophy"}
+        title={pageData?.title || "Our Philosophy"}
         description={pageData?.metaDescription || "What sets Solmaré Stays apart. 50-point cleaning standard, 24/7 guest support, local concierge service, and the best rate guarantee. Elevated hospitality on California's Central Coast."}
         breadcrumbs={[
           { name: 'Home', url: 'https://www.solmarestays.com/' },
@@ -171,7 +171,7 @@ const WhyChooseUsPage = () => {
                     The Solmaré Standard
                   </h1>
                   <p className="text-lg text-white/80 leading-relaxed mb-8">
-                    Not just a vacation rental. A curated coastal experience defined by immaculate standards and effortless stays.
+                    Not just a vacation rental. Thirteen houses on one stretch of coast, each walked before you arrive.
                   </p>
                   <div className="flex flex-wrap gap-4">
                     <Button variant="default" size="xl" onClick={scrollToValues}>
@@ -319,7 +319,7 @@ const WhyChooseUsPage = () => {
               </div>
             </section>
 
-            {/* SECTION 6: Seamless Service */}
+            {/* SECTION 6: Start-to-finish service */}
             <section ref={seamlessRef} className="section-padding bg-muted">
               <div className="container mx-auto px-4 md:px-6 lg:px-8">
                 <motion.div
@@ -329,7 +329,7 @@ const WhyChooseUsPage = () => {
                   className="text-center mb-16"
                 >
                   <h2 className="font-serif text-3xl md:text-5xl font-semibold text-foreground mb-4 uppercase">
-                    Seamless From Start to Finish
+                    Looked After From Start to Finish
                   </h2>
                   <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
                     Modern conveniences designed to make your stay effortless.

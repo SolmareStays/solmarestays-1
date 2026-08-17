@@ -131,7 +131,7 @@ const GroupStaysPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Group Vacation Rentals on California's Central Coast"
+        title="Group Vacation Rentals in Avila Beach"
         description="Plan the perfect group getaway to Avila Beach. Our vacation rentals sleep 5 to 14+ guests, with options to book multiple properties for larger groups. Ideal for reunions, weddings, and retreats."
         schema={faqSchema}
         breadcrumbs={[
@@ -164,7 +164,7 @@ const GroupStaysPage = () => {
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed mb-8">
                 Whether it's a family reunion, a friend getaway, a wedding weekend, or a corporate
-                retreat — our curated properties provide the space, comfort, and location to bring
+                retreat — our properties provide the space, comfort, and location to bring
                 your group together on the coast.
               </p>
               <div className="flex flex-wrap gap-4">
@@ -316,7 +316,7 @@ const GroupStaysPage = () => {
                 </h2>
                 <div className="prose prose-lg text-muted-foreground space-y-4">
                   <p>
-                    Need space for more than 14 guests? No problem. Our portfolio of 11+ homes
+                    Need space for more than 14 guests? No problem. Our thirteen houses
                     across Avila Beach and the Central Coast means you can book several properties
                     in close proximity to create a private group compound experience.
                   </p>
@@ -355,8 +355,8 @@ const GroupStaysPage = () => {
                 Group Activities on the Central Coast
               </h2>
               <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-                From wine tours to beach bonfires, the Central Coast offers unforgettable
-                experiences for groups of every kind.
+                From wine tours to beach bonfires, there is plenty here for groups of
+                every kind.
               </p>
             </motion.div>
 
@@ -399,7 +399,7 @@ const GroupStaysPage = () => {
                 <div className="prose prose-lg text-muted-foreground space-y-4">
                   <p>
                     Organizing a group vacation doesn't have to be stressful. Here's our insider
-                    advice for making it seamless:
+                    advice for making it straightforward:
                   </p>
                   <ol className="space-y-3">
                     <li>
@@ -436,7 +436,7 @@ const GroupStaysPage = () => {
                         guest experiences
                       </Link>
                       .</strong> We can help arrange local activities, restaurant recommendations,
-                      and curated itineraries tailored to your group's interests and size.
+                      and itineraries built around your group's interests and size.
                     </li>
                   </ol>
                 </div>
@@ -485,7 +485,7 @@ const GroupStaysPage = () => {
               </h2>
               <p className="text-primary-foreground/80 text-lg max-w-2xl mx-auto mb-8">
                 Tell us about your group, your dates, and your vision. We'll help you find the
-                perfect combination of homes for an unforgettable Central Coast experience.
+                right combination of homes for your Central Coast trip.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Button variant="hero" size="xl" asChild>

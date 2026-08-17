@@ -3,6 +3,7 @@ import { useRef, useState, useEffect, useCallback } from 'react';
 import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useProperties } from '@/hooks/useProperties';
+import { REVIEWS } from '@/data/stats';
 
 const reviews = [
   {
@@ -148,7 +149,7 @@ export function ReviewsSection({ data }: { data?: any }) {
             {heading}
           </h2>
           <p className="text-primary font-serif text-lg md:text-xl font-medium mb-2">
-            ★ 9.6/10 average from 1,500+ verified reviews
+            ★ {REVIEWS.averageTen}/10 average from {REVIEWS.totalRounded} guest reviews
           </p>
           <p className="text-muted-foreground text-base max-w-xl mx-auto font-light">
             {subtitle}

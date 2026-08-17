@@ -23,7 +23,7 @@ export function PropertyCard({ property, index = 0, maskPrice = false }: Propert
         <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 shadow-soft group-hover:shadow-medium transition-shadow duration-300">
           <motion.img
             src={property.image}
-            alt={property.name}
+            alt={property.displayName}
             loading="lazy"
             decoding="async"
             width={600}
@@ -53,7 +53,7 @@ export function PropertyCard({ property, index = 0, maskPrice = false }: Propert
 
         <div className="space-y-3">
           <h3 className="font-serif text-xl font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
-            {property.name}
+            {property.displayName}
           </h3>
           {property.averageReviewRating && (
             <div className="flex items-center gap-1">

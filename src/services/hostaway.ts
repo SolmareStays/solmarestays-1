@@ -29,6 +29,23 @@ async function proxyFetch(endpoint: string, method: string = 'GET', body?: any):
  * Generate a URL-friendly slug from a property name
  * Uses only the part before the | pipe (the property name, not the tagline)
  */
+/**
+ * The house's name, for anything a guest reads.
+ *
+ * Hostaway listing names are written to win an OTA search — "Hummingbird House |
+ * Rooftop · Ocean Views · Avila". That string belongs in <title> and meta, where the
+ * keywords do work. It does NOT belong in an H1 or on a card, where it wraps to two
+ * ragged lines and reads like a spreadsheet cell.
+ *
+ * The brand voice rule is explicit: "the house by its name — Emberlight, not Bungalow 4,
+ * in anything a guest reads."
+ *
+ * Keep `name` for meta and schema; use `displayName` everywhere a person sees it.
+ */
+export function displayName(name: string): string {
+  return name.split('|')[0].trim();
+}
+
 function generateSlug(name: string): string {
   const baseName = name.split('|')[0].trim();
   return baseName
@@ -99,6 +116,7 @@ function transformListing(listing: HostawayListing): Property {
     id: String(listing.id),
     slug: generateSlug(listing.name),
     name: listing.name,
+    displayName: displayName(listing.name),
     location: listing.city,
     unitType: listing.bookingcomPropertyRoomName || getUnitType(listing.bedroomsNumber),
     description: listing.description,

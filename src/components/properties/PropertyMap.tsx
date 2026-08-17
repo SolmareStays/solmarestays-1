@@ -77,12 +77,16 @@ export function PropertyMap({ properties, height = '500px' }: PropertyMapProps) 
             <div class="aspect-video w-full rounded-md overflow-hidden mb-2">
               <img
                 src="${property.image}"
-                alt="${property.name}"
+                alt="${property.displayName}"
+                loading="lazy"
+                decoding="async"
+                width="220"
+                height="124"
                 class="w-full h-full object-cover"
               />
             </div>
             <h3 class="font-semibold text-gray-900 text-sm mb-1 line-clamp-1">
-              ${property.name}
+              ${property.displayName}
             </h3>
             <div class="flex justify-between items-center mt-2">
                 <p class="text-xs text-gray-500">${property.location}</p>
@@ -124,14 +128,25 @@ export function PropertyMap({ properties, height = '500px' }: PropertyMapProps) 
               className="flex-shrink-0 bg-white/95 backdrop-blur-sm rounded-xl p-3 shadow-lg hover:scale-105 transition-transform duration-200 min-w-[200px]"
             >
               <div className="flex gap-3">
+                {/*
+                  ⚠ These render at 56px. Hostaway serves the full-resolution original
+                  (1,280–1,350px, ~230KB each) and its S3 bucket ignores every resize
+                  param — verified: ?w=400, ?width=400, ?resize=400 all return the exact
+                  same bytes. Until an image service sits in front of it, the only lever
+                  is not fetching them until they are needed.
+                */}
                 <img
                   src={property.image}
-                  alt={property.name}
+                  alt={property.displayName}
+                  loading="lazy"
+                  decoding="async"
+                  width={56}
+                  height={56}
                   className="w-14 h-14 rounded-lg object-cover"
                 />
                 <div className="flex-1 min-w-0">
                   <h4 className="font-semibold text-foreground text-sm truncate">
-                    {property.name}
+                    {property.displayName}
                   </h4>
                   <p className="text-xs text-muted-foreground truncate">
                     {property.location}

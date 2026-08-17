@@ -85,7 +85,7 @@ const highlights = [
     icon: Compass,
     title: 'Oceano Dunes',
     description:
-      'One of the only places in California where you can drive on the beach. Rent an ATV or bring your own vehicle for an unforgettable dune adventure.',
+      'One of the only places in California where you can drive on the beach. Rent an ATV or bring your own vehicle out onto the dunes.',
   },
   {
     icon: ShoppingBag,
@@ -156,7 +156,7 @@ const PismoBeachPage = () => {
                 Pismo Beach Vacation Rentals
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl">
-                Experience the best of Pismo Beach from our curated collection of vacation homes just minutes away. The
+                See the best of Pismo Beach from a house just minutes away. The
                 pier, the dunes, the downtown — all within easy reach of your coastal retreat.
               </p>
               <div className="flex flex-wrap gap-4 mt-8">

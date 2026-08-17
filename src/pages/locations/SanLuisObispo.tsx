@@ -193,7 +193,7 @@ const SanLuisObispoPage = () => {
                 <div className="prose prose-lg text-muted-foreground space-y-5 leading-relaxed">
                   <p>
                     San Luis Obispo — or SLO, as locals call it — has been named one of the happiest cities in America,
-                    and it does not take long to understand why. Nestled in the coastal hills between Los Angeles and San
+                    and it does not take long to understand why. Set in the coastal hills between Los Angeles and San
                     Francisco, this small city of about 47,000 residents combines the cultural richness of a university
                     town with the relaxed pace of a Central Coast community. It is the kind of place where people come
                     for a visit and start planning their next trip before they leave.

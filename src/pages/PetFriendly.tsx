@@ -162,7 +162,7 @@ const PetFriendlyPage = () => {
               <p className="text-xl text-muted-foreground leading-relaxed mb-8">
                 Your dog deserves a vacation too. Our select pet-friendly rentals on California's
                 Central Coast let you bring the whole family — four-legged members included — for a
-                truly unforgettable beach getaway.
+                few days at the beach.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button variant="default" size="xl" asChild>
@@ -211,7 +211,7 @@ const PetFriendlyPage = () => {
                     Whether you're looking for a cozy bungalow for a couple and their dog or a
                     larger home for a family trip, our{' '}
                     <Link to="/collection" className="text-ocean hover:underline">
-                      curated collection
+                      collection
                     </Link>{' '}
                     has a pet-friendly option that fits your needs. Each home is professionally
                     cleaned to our rigorous 50-point standard after every stay, ensuring a fresh

@@ -11,6 +11,7 @@ import {
   ChevronDown, ChevronUp, MessageCircle, Star, ShieldCheck, Clock, ArrowRight
 } from 'lucide-react';
 import { useState } from 'react';
+import { REVIEWS } from '@/data/stats';
 
 const faqs = [
   {
@@ -67,8 +68,8 @@ const locationSchema = {
   },
   aggregateRating: {
     '@type': 'AggregateRating',
-    ratingValue: '9.7',
-    ratingCount: '2429',
+    ratingValue: REVIEWS.averageTen,
+    ratingCount: String(REVIEWS.rated),
     bestRating: '10',
     worstRating: '1',
   },
@@ -136,7 +137,7 @@ const CentralCoastPage = () => {
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl">
                 From sun-soaked beaches to world-class wine country, the Central Coast is California at its finest. Our
-                curated collection of vacation homes puts you in the heart of it all — professionally managed and always
+                houses put you in the middle of it — professionally managed and always
                 priced right.
               </p>
               <div className="flex flex-wrap gap-4 mt-8">
@@ -179,8 +180,8 @@ const CentralCoastPage = () => {
                     Unlike the crowded resort towns of Southern California or the fog-heavy coast of Northern California,
                     the Central Coast strikes the perfect balance. The pace is relaxed, the towns are walkable, the food
                     is farm-fresh, and the wine is world-class. Whether you are looking for a romantic weekend at the
-                    beach, a family vacation filled with outdoor adventure, or a wine country escape with friends, the
-                    Central Coast delivers an experience that feels both authentic and elevated.
+                    beach, a family vacation filled with outdoor adventure, or a few days in wine country with friends, the
+                    Central Coast holds up.
                   </p>
                   <p>
                     Our vacation rentals are spread across the Central Coast's most desirable communities: Avila Beach,
@@ -504,7 +505,7 @@ const CentralCoastPage = () => {
               transition={{ duration: 0.8 }}
             >
               <h2 className="font-serif text-3xl md:text-5xl font-semibold mb-6">
-                Your Central Coast Escape Awaits
+                Come See the Central Coast
               </h2>
               <p className="text-primary-foreground/80 text-lg max-w-2xl mx-auto mb-8">
                 Beach, wine, and everything in between. Book direct for the best rates — guaranteed.

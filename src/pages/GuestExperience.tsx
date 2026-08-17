@@ -41,7 +41,7 @@ const partnerDirectory = [
       { name: 'Inspired Dining Events', location: 'Central Coast', experience: 'Private chef dining at your rental.' },
       { name: "Rod & Hammer's SLO Stills", location: 'San Luis Obispo', experience: 'Handcrafted California whiskey.' },
       { name: 'Tolosa Winery', location: 'Edna Valley', experience: 'Estate Pinot Noir & Chardonnay.' },
-      { name: 'Austin Hope Winery', location: 'Paso Robles', experience: 'Iconic luxury Cabernet Sauvignon.' },
+      { name: 'Austin Hope Winery', location: 'Paso Robles', experience: 'Cabernet Sauvignon, and the tasting room to match.' },
       { name: 'DAOU Vineyards', location: 'Paso Robles', experience: 'World-class views and wines.' },
       { name: 'Kelsey See Canyon Vineyards', location: 'Avila Valley', experience: 'Apple wines in a rustic setting.' },
       { name: 'Peloton Cellars', location: 'Avila Beach', experience: 'Premium flights steps from sand.' },
@@ -95,8 +95,8 @@ const GuestExperiencePage = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title={pageData?.title || "Central Coast Experiences & Local Partners"}
-        description={pageData?.metaDescription || "Curated local experiences for Solmaré Stays guests. Wine tasting, dining, outdoor adventures, and more on California's Central Coast. Exclusive partner perks included with every stay."}
+        title={pageData?.title || "Guest Experiences | Central Coast Activities"}
+        description={pageData?.metaDescription || "Local experiences for Solmaré Stays guests. Wine tasting, dining, outdoor adventures, and more on California's Central Coast. Exclusive partner perks included with every stay."}
         breadcrumbs={[
           { name: 'Home', url: 'https://www.solmarestays.com/' },
           { name: 'Experiences', url: 'https://www.solmarestays.com/experiences' },
@@ -134,7 +134,7 @@ const GuestExperiencePage = () => {
                     More Than a Place to Stay
                   </h1>
                   <p className="text-base md:text-lg text-white/80 leading-relaxed mb-6 max-w-lg">
-                    We curate local partnerships and experiences that make every stay feel effortless, personal, and distinctly Central Coast.
+                    We build local partnerships that make a stay feel personal, and distinctly Central Coast.
                   </p>
                   <Button variant="default" size="xl" asChild>
                     <Link to="/collection">Browse Properties</Link>
@@ -156,7 +156,7 @@ const GuestExperiencePage = () => {
                     The Central Coast, Unlocked
                   </h2>
                   <p className="text-muted-foreground text-lg leading-relaxed mb-4">
-                    The best trips feel seamless. Solmaré guests get access to a network of trusted local businesses offering exclusive perks, preferred experiences, and insider recommendations so you can spend less time planning and more time enjoying your stay.
+                    The best trips run without friction. Solmaré guests get access to a network of trusted local businesses offering perks, preferred experiences, and insider recommendations so you can spend less time planning and more time enjoying your stay.
                   </p>
                   <p className="text-muted-foreground text-lg leading-relaxed">
                     Every partner is handpicked by our team — we focus on quality, consistency, and businesses we trust to deliver. From wine tastings to private chef dinners to electric bike rentals along the coast, this is the Central Coast the way locals experience it.
@@ -299,7 +299,7 @@ const GuestExperiencePage = () => {
                     How Guests Access These Experiences
                   </h2>
                   <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-                    Once your stay is confirmed, you'll receive access to our curated digital guest guide. Inside, you'll find full details on available partner offers, redemption codes, and our team's personal recommendations for the best hidden spots in town.
+                    Once your stay is confirmed, you'll receive access to our digital guest guide. Inside, you'll find full details on available partner offers, redemption codes, and our team's personal recommendations for the best hidden spots in town.
                   </p>
                   <div className="flex flex-wrap gap-4 justify-center">
                     <Button variant="hero" size="xl" asChild>

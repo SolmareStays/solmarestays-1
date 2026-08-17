@@ -244,8 +244,11 @@ const PropertyDetailPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* ⚠ title was property.name, so the tab read "Hummingbird House | Rooftop · Ocean
+          Views · Avila | Solmaré Stays" — two pipes and well past the SERP cutoff.
+          The full listing name stays in the schema below, where keywords still work. */}
       <SEO
-        title={property.name}
+        title={`${property.displayName} | Vacation Rental in ${property.location}`}
         description={property.description ? property.description.replace(/<[^>]+>/g, '').substring(0, 160).trim() + '...' : undefined}
         image={property.image}
         schema={{
@@ -284,14 +287,20 @@ const PropertyDetailPage = () => {
             const lower = a.toLowerCase();
             return lower.includes('pet') || lower.includes('dog');
           }),
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": property.averageReviewRating
-              ? (property.averageReviewRating > 5 ? property.averageReviewRating / 2 : property.averageReviewRating).toFixed(1)
-              : "4.8",
-            "bestRating": "5",
-            "ratingCount": "50",
-          },
+          /*
+           * ⚠ aggregateRating deliberately omitted.
+           *
+           * It used to assert `ratingCount: "50"` on every property and fall back to
+           * `ratingValue: "4.8"` when Hostaway had no rating at all. Hostaway gives us
+           * `averageReviewRating` but NO per-property review count, so 50 was invented —
+           * a fabricated number inside structured data, on thirteen pages.
+           *
+           * An unsupported count is worse than no rating: Google does not show review
+           * rich results for lodging anyway, so the markup earned nothing while carrying
+           * a manual-action risk. Portfolio-level figures live in src/data/stats.ts and
+           * are real. If Hostaway ever exposes a per-listing count, restore this using
+           * that value — not a constant.
+           */
           "offers": {
             "@type": "Offer",
             "priceSpecification": {
@@ -311,7 +320,7 @@ const PropertyDetailPage = () => {
         breadcrumbs={[
           { name: "Home", url: "https://www.solmarestays.com/" },
           { name: "Properties", url: "https://www.solmarestays.com/collection" },
-          { name: property.name, url: `https://www.solmarestays.com/property/${property.slug}` },
+          { name: property.displayName, url: `https://www.solmarestays.com/property/${property.slug}` },
         ]}
       />
       <Header />
@@ -369,7 +378,7 @@ const PropertyDetailPage = () => {
                   </a>
                 )}
                 <h1 className="font-serif text-4xl md:text-5xl font-semibold text-foreground mb-4">
-                  {property.name}
+                  {property.displayName}
                 </h1>
                 <div className="flex flex-wrap gap-6 text-muted-foreground">
                   <motion.span
@@ -448,7 +457,7 @@ const PropertyDetailPage = () => {
 
                 {/* Reviews Section - After Description, Before Amenities */}
                 <ReviewsSection
-                  propertyName={property.name}
+                  propertyName={property.displayName}
                   propertyId={property.id}
                   averageRating={property.averageReviewRating}
                 />

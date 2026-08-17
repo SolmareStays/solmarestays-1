@@ -17,6 +17,7 @@ import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 import { Calendar as CalendarIcon, X, Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { PORTFOLIO } from '@/data/stats';
 
 const CollectionPage = () => {
   const [locationFilter, setLocationFilter] = useState<string>('all');
@@ -89,8 +90,8 @@ const CollectionPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Browse Our Vacation Rental Collection"
-        description="Browse 12 vacation rentals in Avila Beach, Arroyo Grande, and San Luis Obispo. Studios to private estates sleeping 14. Pet-friendly options available. Book direct and save 15% vs. Airbnb — best rate guaranteed."
+        title="Browse All Properties"
+        description={`Browse ${PORTFOLIO.properties} vacation rentals in Avila Beach, Arroyo Grande, and San Luis Obispo. Studios to private estates sleeping 14. Pet-friendly options available. Book direct and save 15% vs. Airbnb — best rate guaranteed.`}
         breadcrumbs={[
           { name: 'Home', url: 'https://www.solmarestays.com/' },
           { name: 'Properties', url: 'https://www.solmarestays.com/collection' },
@@ -111,7 +112,7 @@ const CollectionPage = () => {
                 The Solmaré Collection
               </h1>
               <p className="text-xl text-muted-foreground">
-                A purposefully small portfolio of hand-selected estates, farmhouses, and beach bungalows. From the Avila shoreline to the valley vines, every stay is locally managed and meticulously prepared.
+                A shortlist, not a portfolio — estates, farmhouses and beach bungalows, chosen one at a time. From the Avila shoreline to the valley vines, every stay is locally managed and meticulously prepared.
               </p>
             </motion.div>
           </div>

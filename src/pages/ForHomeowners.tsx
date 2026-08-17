@@ -238,7 +238,7 @@ const ForHomeownersPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title={pageData?.title || "Vacation Rental Property Management — Avila Beach & Central Coast"}
+        title={pageData?.title || "Vacation Rental Property Management — Avila Beach"}
         description={pageData?.metaDescription || "Partner with Solmaré Stays to maximize your rental revenue on California's Central Coast. Full-service property management in Avila Beach, Pismo Beach, and SLO County. See your revenue projection."}
         breadcrumbs={[
           { name: 'Home', url: 'https://www.solmarestays.com/' },

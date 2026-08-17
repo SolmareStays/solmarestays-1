@@ -1,5 +1,21 @@
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
+import { REVIEWS, PORTFOLIO, CONTACT } from '@/data/stats';
+
+/**
+ * Alias routes → the URL that should own the ranking.
+ *
+ * ⚠ App.tsx serves four legacy paths from the same components as their primaries.
+ * `canonical` was built as SITE_URL + location.pathname, so every alias pointed at
+ * itself and competed with the page it duplicates. Anything not listed here
+ * self-canonicalises, which is correct for a real page.
+ */
+const CANONICAL_ALIASES: Record<string, string> = {
+  '/why-choose-us': '/philosophy',
+  '/for-homeowners': '/management',
+  '/guest-experience': '/experiences',
+  '/services': '/experiences',
+};
 
 interface BreadcrumbItem {
   name: string;
@@ -8,6 +24,17 @@ interface BreadcrumbItem {
 
 interface SEOProps {
   title: string;
+  /**
+   * Use the string verbatim instead of appending " | Solmaré Stays".
+   *
+   * ⚠ Needed because scripts/prerender.mjs writes the real <title> into the static
+   * HTML and React then overwrote it on hydration with a different string — the tab
+   * title visibly changed on every page. Worse, the homepage re-took
+   * "Avila Beach Vacation Rentals | Solmaré Stays", which is /avila-beach's title and
+   * exactly the cannibalisation the 2026-08-13 SEO pass removed. Any page whose
+   * prerender title is not `<title> | Solmaré Stays` must pass it here.
+   */
+  absoluteTitle?: string;
   description?: string;
   image?: string;
   type?: 'website' | 'article';
@@ -23,8 +50,8 @@ const organizationSchema = {
   name: 'Solmaré Stays',
   url: SITE_URL,
   logo: `${SITE_URL}/logo.png`,
-  description: "Professional vacation rental management on California's Central Coast. 13 properties across Avila Beach, Pismo Beach, Arroyo Grande, and San Luis Obispo. 1,500+ five-star reviews.",
-  telephone: '+1-805-242-6411',
+  description: `Professional vacation rental management on California's Central Coast. ${PORTFOLIO.properties} properties across Avila Beach, Pismo Beach, Arroyo Grande, and San Luis Obispo. ${REVIEWS.totalRounded} guest reviews averaging ${REVIEWS.averageFive} out of 5.`,
+  telephone: CONTACT.phoneSchema,
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Avila Beach',
@@ -54,9 +81,9 @@ const lodgingBusinessSchema = {
   '@type': 'LodgingBusiness',
   name: 'Solmaré Stays',
   url: SITE_URL,
-  telephone: '+1-805-242-6411',
+  telephone: CONTACT.phoneSchema,
   description:
-    "Professional vacation rental management on California's Central Coast. 13 properties in Avila Beach, Pismo Beach, Arroyo Grande, and San Luis Obispo. From cozy bungalows to luxury estates. 1,500+ five-star reviews. Book direct for the best rates.",
+    `Professional vacation rental management on California's Central Coast. ${PORTFOLIO.properties} properties in Avila Beach, Pismo Beach, Arroyo Grande, and San Luis Obispo. From beach bungalows to a wine country estate. ${REVIEWS.totalRounded} guest reviews averaging ${REVIEWS.averageFive} out of 5. Book direct for the best rates.`,
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Avila Beach',
@@ -71,13 +98,13 @@ const lodgingBusinessSchema = {
   },
   aggregateRating: {
     '@type': 'AggregateRating',
-    ratingValue: '4.82',
-    ratingCount: '746',
+    ratingValue: REVIEWS.averageFive,
+    ratingCount: String(REVIEWS.rated),
     bestRating: '5',
     worstRating: '1',
   },
   priceRange: '$140 - $4,000',
-  numberOfRooms: 13,
+  numberOfRooms: PORTFOLIO.properties,
   checkinTime: '15:00',
   checkoutTime: '11:00',
   amenityFeature: [
@@ -96,7 +123,7 @@ const webSiteSchema = {
   name: 'Solmaré Stays',
   url: SITE_URL,
   description:
-    "Vacation rentals on California's Central Coast. 13 properties in Avila Beach, Pismo Beach, Arroyo Grande, and San Luis Obispo. From beachfront bungalows to wine country estates. Book direct for the best rates.",
+    `Vacation rentals on California's Central Coast. ${PORTFOLIO.properties} properties in Avila Beach, Pismo Beach, Arroyo Grande, and San Luis Obispo. From beach bungalows to a wine country estate. Book direct for the best rates.`,
   publisher: {
     '@type': 'Organization',
     name: 'Solmaré Stays',
@@ -116,14 +143,15 @@ function buildBreadcrumbSchema(breadcrumbs: BreadcrumbItem[]) {
   };
 }
 
-export function SEO({ title, description, image, type = 'website', schema, breadcrumbs }: SEOProps) {
+export function SEO({ title, absoluteTitle, description, image, type = 'website', schema, breadcrumbs }: SEOProps) {
   const location = useLocation();
   const siteTitle = 'Solmaré Stays';
-  const fullTitle = `${title} | ${siteTitle}`;
-  const defaultDescription = 'Refined vacation rentals in Avila Beach, Pismo Beach & SLO. 1,500+ five-star reviews. Book direct for the best rates.';
+  const fullTitle = absoluteTitle ?? `${title} | ${siteTitle}`;
+  const defaultDescription = `Refined vacation rentals in Avila Beach, Pismo Beach & SLO. ${REVIEWS.totalRounded} guest reviews averaging ${REVIEWS.averageFive} out of 5. Book direct for the best rates.`;
 
-  // Construct canonical URL safely
-  const canonicalUrl = `${SITE_URL}${location.pathname}`;
+  // Construct canonical URL safely — aliases point at the page they duplicate.
+  const canonicalPath = CANONICAL_ALIASES[location.pathname] ?? location.pathname;
+  const canonicalUrl = `${SITE_URL}${canonicalPath}`;
 
   const isHomepage = location.pathname === '/' || location.pathname === '';
 

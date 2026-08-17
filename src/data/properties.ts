@@ -2,7 +2,10 @@ export interface Property {
   // Basic info
   id: string;
   slug: string;
+  /** The full Hostaway listing name, pipes and all. For <title>, meta and schema only. */
   name: string;
+  /** The house's name with the channel tagline stripped. Use this anywhere a guest reads it. */
+  displayName: string;
   location: string;
   unitType: string;
   description: string;

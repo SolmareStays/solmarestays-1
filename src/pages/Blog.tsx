@@ -28,7 +28,7 @@ const Blog = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEO
-        title="Blog"
+        title="Blog | Avila Beach & Central Coast Travel Guide"
         description="Travel tips, local guides, and insider recommendations for California's Central Coast. Discover the best of Avila Beach, Pismo Beach, and San Luis Obispo."
         breadcrumbs={breadcrumbs}
       />

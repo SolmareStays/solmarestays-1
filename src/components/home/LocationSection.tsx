@@ -23,7 +23,7 @@ const locations = [
     name: 'Arroyo Grande',
     image: pismoImg,
     imagePosition: 'center 40%',
-    description: 'A charming village nestled between the coast and rolling hills. Award-winning wineries, scenic trails, and a historic downtown.',
+    description: 'A small village between the coast and the rolling hills. Award-winning wineries, scenic trails, and a historic downtown.',
     mapLink: 'https://www.google.com/maps/search/?api=1&query=Arroyo+Grande,+CA',
   },
   {
@@ -31,7 +31,7 @@ const locations = [
     name: 'San Luis Obispo',
     image: sloImg,
     imagePosition: 'center bottom',
-    description: 'Where historic charm meets modern sophistication. World-class vineyards and a vibrant downtown nestled in the coastal foothills.',
+    description: 'Where historic charm meets modern sophistication. Vineyards and a walkable downtown in the coastal foothills.',
     mapLink: 'https://www.google.com/maps/search/?api=1&query=San+Luis+Obispo,+CA',
   },
 ];
