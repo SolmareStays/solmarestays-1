@@ -44,7 +44,7 @@ const Privacy = () => {
                 </h1>
 
                 <div className="prose prose-stone max-w-none text-muted-foreground">
-                  <p className="text-sm text-muted-foreground/70 mb-6 italic">Last Updated: April 10, 2026</p>
+                  <p className="text-sm text-muted-foreground/70 mb-6 italic">Last Updated: August 17, 2026</p>
 
                   <p className="mb-6">
                     Solmaré Stays is a trade name of Solmare Stays LLC, a California limited liability company (CA Entity No. B20260285501). At Solmaré Stays ("we," "us," or "our"), we are committed to protecting the privacy of our guests, website visitors, and property owners. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website at solmarestays.com and when you book or stay at one of our vacation rental properties on California's Central Coast.
@@ -85,7 +85,7 @@ const Privacy = () => {
                   <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Information Sharing</h2>
                   <p className="mb-4">We do not sell your personal information. We may share your information with:</p>
                   <ul className="list-disc pl-6 mb-6">
-                    <li><strong className="text-foreground">Service providers</strong> who assist with property management, cleaning, maintenance, and payment processing</li>
+                    <li><strong className="text-foreground">Service providers</strong> who assist with property management, cleaning, maintenance, payment processing, analytics, and advertising (including Meta and Google)</li>
                     <li><strong className="text-foreground">Booking platforms</strong> (Airbnb, Vrbo) when your reservation originates from those channels</li>
                     <li><strong className="text-foreground">Property owners</strong> whose homes you are staying in, limited to information necessary for your stay</li>
                     <li><strong className="text-foreground">Legal authorities</strong> when required by law, subpoena, or to protect our rights and safety</li>
@@ -94,6 +94,9 @@ const Privacy = () => {
                   <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Cookies and Tracking</h2>
                   <p className="mb-6">
                     Our website uses cookies to enhance your browsing experience, remember your preferences, and analyze site traffic. We use essential cookies for website functionality and analytics cookies (such as Google Analytics) to understand how visitors interact with our site. You can control cookie preferences through your browser settings. Disabling cookies may limit some website functionality, such as saved search preferences.
+                  </p>
+                  <p className="mb-6">
+                    We also use advertising technologies from Meta (Facebook and Instagram) and Google, including the Meta pixel and Google Ads tags. These may set cookies and send information about your activity on our site — such as pages viewed and booking steps completed — to those platforms so we can measure our advertising and show relevant ads. Some of this information is sent directly from our servers as well as from your browser. Under California law this may be considered "sharing" for cross-context behavioral advertising, and you may opt out as described below.
                   </p>
 
                   <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Data Security</h2>
@@ -111,7 +114,7 @@ const Privacy = () => {
                   <ul className="list-disc pl-6 mb-4">
                     <li>Know what personal information we collect, use, and disclose about you</li>
                     <li>Request deletion of your personal information</li>
-                    <li>Opt out of the sale or sharing of your personal information (we do not sell personal information)</li>
+                    <li>Opt out of the "sale" or "sharing" of your personal information for cross-context behavioral advertising. We do not sell your personal information for money. We do use Meta and Google advertising technologies, which California law may treat as "sharing" &mdash; to opt out, email us at info@solmarestays.com or use your browser's Global Privacy Control signal</li>
                     <li>Not be discriminated against for exercising your privacy rights</li>
                   </ul>
                   <p className="mb-4"><strong className="text-foreground">All Users:</strong> Regardless of location, you have the right to:</p>
