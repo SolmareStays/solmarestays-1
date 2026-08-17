@@ -29,3 +29,6 @@ fetch.json
 .cursor
 calender.json
 .vercel
+.env*
+public/_originals/
+public/src/
