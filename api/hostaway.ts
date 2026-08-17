@@ -31,25 +31,50 @@ function isRateLimited(ip: string): boolean {
   return entry.count > RATE_LIMIT;
 }
 
-// Allowed endpoints (whitelist to prevent abuse)
-const ALLOWED_ENDPOINTS = [
-  /^\/listings$/,
-  /^\/listings\/\d+$/,
-  /^\/listings\/\d+\/calendar/,
-  /^\/listings\/\d+\/calendar\/priceDetails$/,
-  /^\/reservations/,
-  /^\/coupons$/,
-  /^\/reviews/,
+/**
+ * Allowlist of (method, path) pairs — exactly the seven calls src/services/hostaway.ts
+ * makes, and nothing else.
+ *
+ * ⚠ The METHOD is half the rule. Matching on path alone let `/reservations` through for
+ * every verb, so an unauthenticated GET returned every reservation in the account —
+ * guest names, emails, phones, prices — and PUT/DELETE could rewrite them. Same for
+ * `/listings/{id}`, which PUT would have made writable. Booking needs POST /reservations
+ * and nothing needs GET, so the pair is what gets allowed.
+ *
+ * ⚠ Patterns are $-anchored. The old unanchored /^\/reservations/ also matched
+ * /reservations/12345 and /reservationsAnything.
+ */
+const ALLOWED_ROUTES: ReadonlyArray<{ method: 'GET' | 'POST'; pattern: RegExp }> = [
+  { method: 'GET', pattern: /^\/listings$/ },
+  { method: 'GET', pattern: /^\/listings\/\d+$/ },
+  { method: 'GET', pattern: /^\/listings\/\d+\/calendar$/ },
+  { method: 'POST', pattern: /^\/listings\/\d+\/calendar\/priceDetails$/ },
+  { method: 'POST', pattern: /^\/reservations$/ },
+  { method: 'GET', pattern: /^\/coupons$/ },
+  { method: 'GET', pattern: /^\/reviews$/ },
 ];
 
-function isAllowedEndpoint(endpoint: string): boolean {
+function isAllowedRoute(endpoint: string, method: string): boolean {
   const path = endpoint.split('?')[0]; // strip query params
-  return ALLOWED_ENDPOINTS.some(pattern => pattern.test(path));
+  const verb = method.toUpperCase();
+  return ALLOWED_ROUTES.some(r => r.method === verb && r.pattern.test(path));
 }
 
+// Browsers may call this only from our own site. The previous '*' let any origin on the
+// web invoke the proxy with our Hostaway token attached.
+const ALLOWED_ORIGINS = new Set([
+  'https://www.solmarestays.com',
+  'https://solmarestays.com',
+]);
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  // CORS headers
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  // CORS headers — echoed back only for origins we own. Same-origin calls from the site
+  // itself send no Origin header and are unaffected.
+  const origin = req.headers.origin;
+  if (origin && ALLOWED_ORIGINS.has(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+    res.setHeader('Vary', 'Origin');
+  }
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
@@ -80,8 +105,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(400).json({ error: 'Missing or invalid endpoint' });
   }
 
-  // Validate endpoint is on the allowlist
-  if (!isAllowedEndpoint(endpoint)) {
+  // Validate the method+endpoint pair is on the allowlist
+  if (!isAllowedRoute(endpoint, method)) {
     return res.status(403).json({ error: 'Endpoint not allowed' });
   }
 
