@@ -47,7 +47,7 @@ const Privacy = () => {
                   <p className="text-sm text-muted-foreground/70 mb-6 italic">Last Updated: April 10, 2026</p>
 
                   <p className="mb-6">
-                    At Solmaré Stays ("we," "us," or "our"), we are committed to protecting the privacy of our guests, website visitors, and property owners. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website at solmarestays.com and when you book or stay at one of our vacation rental properties on California's Central Coast.
+                    Solmaré Stays is a trade name of Solmare Stays LLC, a California limited liability company (CA Entity No. B20260285501). At Solmaré Stays ("we," "us," or "our"), we are committed to protecting the privacy of our guests, website visitors, and property owners. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website at solmarestays.com and when you book or stay at one of our vacation rental properties on California's Central Coast.
                   </p>
 
                   <p className="mb-6">

@@ -40,122 +40,177 @@ const Terms = () => {
               // Fallback Hardcoded Content
               <>
                 <h1 className="font-serif text-4xl font-semibold text-foreground mb-8">
-                  Terms and Conditions
+                  Booking Terms &amp; Conditions
                 </h1>
 
                 <div className="prose prose-stone max-w-none text-muted-foreground">
-                  <p className="text-sm text-muted-foreground/70 mb-6 italic">Last Updated: April 2026</p>
+                  <p className="text-sm text-muted-foreground/70 mb-6 italic">Last Updated: August 17, 2026</p>
 
                   <p className="mb-6">
-                    Welcome to Solmaré Stays!
-                  </p>
-
-                  <p className="mb-6">
-                    These terms and conditions outline the rules and regulations for the use of Solmaré Stays's Website, located at solmarestays.com.
+                    These Booking Terms &amp; Conditions (the &ldquo;Terms&rdquo;) govern your reservation and stay at any property managed by Solmar&eacute; Stays, a trade name of Solmare Stays LLC, a California limited liability company (CA Entity No. B20260285501) (&ldquo;Solmar&eacute; Stays,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;Manager&rdquo;). By completing a booking, you (the &ldquo;Guest&rdquo;) agree to these Terms on behalf of yourself and every member of your party.
                   </p>
 
                   <p className="mb-6">
-                    By accessing this website we assume you accept these terms and conditions. Do not continue to use Solmaré Stays if you do not agree to take all of the terms and conditions stated on this page.
+                    Solmar&eacute; Stays manages each property on behalf of its owner. We are not the owner of the properties we manage.
+                  </p>
+
+                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Who May Book</h2>
+                  <p className="mb-6">
+                    You must be at least 25 years old to make a reservation. The person who books must be a member of the traveling party, must occupy the property for the entire stay, and is responsible for the conduct of everyone in the party, including minors and visitors.
+                  </p>
+
+                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Booking and Confirmation</h2>
+                  <p className="mb-6">
+                    Your reservation is not confirmed until you receive a written confirmation from us. Rates, availability, and property details are subject to change until a booking is confirmed. If a reservation is accepted in error &mdash; including an obvious pricing error or a double-booking &mdash; we may cancel it and issue a full refund.
+                  </p>
+
+                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Rates, Fees, and Taxes</h2>
+                  <p className="mb-6">
+                    The total shown at checkout includes the nightly rate, a cleaning fee, and applicable taxes. Transient Occupancy Tax is collected and remitted to the applicable jurisdiction, and the rate varies by location (City of Avila Beach, City of Arroyo Grande, City of San Luis Obispo, and San Luis Obispo County). Additional guest fees may apply above the included occupancy.
+                  </p>
+
+                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Payment</h2>
+                  <p className="mb-6">
+                    Payment is processed through our third-party payment processor. We do not store full payment card numbers. By providing card details you authorize us to charge the amounts disclosed at checkout, and to charge the same card for damage, excess cleaning, or other amounts owed under these Terms.
+                  </p>
+
+                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Cancellations and Changes</h2>
+                  <p className="mb-6">
+                    The cancellation policy that applies to your reservation is the one displayed at the time of booking and restated in your confirmation. That policy governs. Cancellation requests must be made in writing to info@solmarestays.com.
                   </p>
 
                   <p className="mb-6">
-                    The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and all Agreements: “Client”, “You” and “Your” refers to you, the person logging onto this website and compliant to the Company's terms and conditions. “The Company”, “Ourselves”, “We”, “Our” and “Us”, refers to our Company. “Party”, “Parties”, or “Us”, refers to both the Client and ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner for the express purpose of meeting the Client's needs in respect of provision of the Company's stated services, in accordance with and subject to, the law. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to the same.
+                    Early departure does not entitle you to a refund of unused nights. Date changes are treated as a cancellation and rebooking, subject to availability and current rates. We strongly recommend travel insurance.
                   </p>
 
-                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">License</h2>
-                  <p className="mb-4">
-                    Unless otherwise stated, Solmaré Stays and/or its licensors own the intellectual property rights for all material on Solmaré Stays.
+                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Check-In and Check-Out</h2>
+                  <p className="mb-6">
+                    Check-in is after 3:00 PM or 4:00 PM depending on the property; check-out is by 11:00 AM. Your confirmation states the times for your property. Early check-in and late check-out may be available on request and are never guaranteed. Entry is by keyless smart lock, and access codes are sent before arrival.
                   </p>
-                  <p className="mb-4">
-                    All intellectual property rights are reserved. You may access this from Solmaré Stays for your own personal use subjected to restrictions set in these terms and conditions.
+
+                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Occupancy</h2>
+                  <p className="mb-6">
+                    Maximum occupancy is stated on each property listing and is strictly enforced, including infants and children. Exceeding the stated occupancy is grounds for immediate termination of the stay without refund. Unregistered overnight guests are not permitted.
                   </p>
-                  <p className="mb-4">You must not:</p>
+
+                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">House Rules</h2>
+                  <p className="mb-6">
+                    The house rules published on the property listing form part of these Terms. They include, without limitation:
+                  </p>
+
                   <ul className="list-disc pl-6 mb-6">
-                    <li>Republish material from Solmaré Stays</li>
-                    <li>Sell, rent or sub-license material from Solmaré Stays</li>
-                    <li>Reproduce, duplicate or copy material from Solmaré Stays</li>
-                    <li>Redistribute content from Solmaré Stays</li>
+                    <li>Quiet hours from 10:00 PM to 8:00 AM. Our properties are in residential neighborhoods.</li>
+                    <li>No parties or events. These are private residences, not event venues.</li>
+                    <li>No smoking or vaping anywhere inside a property. A cleaning and remediation charge will apply to violations.</li>
+                    <li>Parking only in the designated space assigned to your property.</li>
+                    <li>Pets are not permitted except at properties expressly designated as pet-friendly, and then only with prior written approval and payment of the applicable pet fee.</li>
                   </ul>
 
-                  <p className="mb-6">This Agreement shall begin on the date hereof.</p>
+                  <p className="mb-6">
+                    We may terminate a stay immediately and without refund for violation of these Terms or the house rules, exceeding occupancy, unauthorized pets or events, illegal activity, or conduct that endangers people or property or disturbs neighbors.
+                  </p>
 
-                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Hyperlinking to our Content</h2>
-                  <p className="mb-4">The following organizations may link to our Website without prior written approval:</p>
+                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Amenities Are Provided as a Courtesy &mdash; Use at Your Own Risk</h2>
+                  <p className="mb-6">
+                    Some properties offer recreational amenities as a free convenience, which may include bicycles, helmets, beach chairs, beach towels, boogie boards and other beach gear, outdoor grills, fire pits, swimming pools, hot tubs, decks, patios, balconies, and rooftop terraces.
+                  </p>
+
+                  <p className="mb-6">
+                    These amenities are provided &ldquo;as is,&rdquo; as a courtesy, and are not part of the accommodation you are paying for. Their use is entirely voluntary and at your own risk. You are responsible for inspecting any equipment before use and for determining whether it is suitable for you and for anyone in your party.
+                  </p>
+
+                  <p className="mb-6">
+                    By using any of these amenities, you and every member of your party knowingly and voluntarily assume all risk of injury, death, illness, or property damage arising from that use, and agree to release, hold harmless, and indemnify Solmar&eacute; Stays, the property owner, and their respective members, employees, agents, and contractors from any claim arising out of that use, except to the extent caused by their gross negligence or willful misconduct.
+                  </p>
+
                   <ul className="list-disc pl-6 mb-6">
-                    <li>Government agencies;</li>
-                    <li>Search engines;</li>
-                    <li>News organizations;</li>
-                    <li>Online directory distributors may link to our Website in the same manner as they hyperlink to the Websites of other listed businesses; and</li>
-                    <li>System wide Accredited Businesses except soliciting non-profit organizations, charity shopping malls, and charity fundraising groups which may not hyperlink to our Website.</li>
+                    <li><strong>Bicycles.</strong> Used at your own risk. You are responsible for inspecting brakes, tires, and condition before each ride. California law requires riders under 18 to wear a helmet, and we recommend helmets for all riders. Do not ride a bicycle you have any concern about &mdash; contact us instead.</li>
+                    <li><strong>Water features.</strong> Pools and hot tubs are unattended and have no lifeguard. Children must be supervised by an adult at all times. Do not use these features alone, under the influence of alcohol, or if pregnant or with a medical condition without consulting a physician.</li>
+                    <li><strong>Elevated areas.</strong> Decks, balconies, and rooftop terraces are unsupervised. Do not sit or climb on railings. Children must be supervised at all times.</li>
+                    <li><strong>Fire.</strong> Grills and fire pits must never be left unattended and must be fully extinguished after use.</li>
                   </ul>
+
+                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Children and Supervision</h2>
                   <p className="mb-6">
-                    These organizations may link to our home page, to publications or to other Website information so long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its products and/or services; and (c) fits within the context of the linking party's site.
+                    Our properties are private homes and are not childproofed. They may include stairs, elevated decks and rooftop terraces, fireplaces, water features, and other hazards. Guests bringing infants or young children are solely responsible for assessing the property&rsquo;s suitability and for supervising children at all times.
                   </p>
 
-                  <p className="mb-4">We may consider and approve other link requests from the following types of organizations:</p>
-                  <ul className="list-disc pl-6 mb-6">
-                    <li>commonly-known consumer and/or business information sources;</li>
-                    <li>dot.com community sites;</li>
-                    <li>associations or other groups representing charities;</li>
-                    <li>online directory distributors;</li>
-                    <li>internet portals;</li>
-                    <li>accounting, law and consulting firms; and</li>
-                    <li>educational institutions and trade associations.</li>
-                  </ul>
+                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Damage, Loss, and Excess Cleaning</h2>
                   <p className="mb-6">
-                    We will approve link requests from these organizations if we decide that: (a) the link would not make us look unfavorably to ourselves or to our accredited businesses; (b) the organization does not have any negative records with us; (c) the benefit to us from the visibility of the hyperlink compensates the absence of Solmaré Stays; and (d) the link is in the context of general resource information.
-                  </p>
-                  <p className="mb-6">
-                    These organizations may link to our home page so long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its products or services; and (c) fits within the context of the linking party's site.
-                  </p>
-                  <p className="mb-6">
-                    If you are one of the organizations listed in paragraph 2 above and are interested in linking to our website, you must inform us by sending an e-mail to Solmaré Stays. Please include your name, your organization name, contact information as well as the URL of your site, a list of any URLs from which you intend to link to our Website, and a list of the URLs on our site to which you would like to link. Wait 2-3 weeks for a response.
+                    You are responsible for the property and its contents during your stay. Please report accidental damage promptly. You authorize us to charge your payment card for damage beyond normal wear and tear, missing items, excess cleaning, smoking remediation, undisclosed pets, or violations resulting in fines.
                   </p>
 
-                  <p className="mb-4">Approved organizations may hyperlink to our Website as follows:</p>
-                  <ul className="list-disc pl-6 mb-6">
-                    <li>By use of our corporate name; or</li>
-                    <li>By use of the uniform resource locator being linked to; or</li>
-                    <li>By use of any other description of our Website being linked to that makes sense within the context and format of content on the linking party's site.</li>
-                  </ul>
+                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Manager Access, Maintenance, and Interruptions</h2>
                   <p className="mb-6">
-                    No use of Solmaré Stays's logo or other artwork will be allowed for linking absent a trademark license agreement.
+                    We may enter the property without prior notice in an emergency, and with reasonable notice for maintenance, repair, inspection, or to address a suspected violation of these Terms.
                   </p>
 
-                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">iFrames</h2>
                   <p className="mb-6">
-                    Without prior approval and written permission, you may not create frames around our Web Pages that alter in any way the visual presentation or appearance of our Website.
+                    We do not guarantee uninterrupted availability of utilities, internet, air conditioning, hot tubs, pools, or appliances. Temporary outages, construction or noise on neighboring property, and equipment failure outside our control are not grounds for a refund. If a property becomes unavailable or unsuitable before arrival, we may offer a comparable alternative or a full refund of amounts paid, and that is the limit of our obligation.
                   </p>
 
-                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Reservation of Rights</h2>
+                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Local Regulations and Short-Term Rental Licenses</h2>
                   <p className="mb-6">
-                    We reserve the right to request that you remove all links or any particular link to our Website. You approve to immediately remove all links to our Website upon request. We also reserve the right to amend these terms and conditions and its linking policy at any time. By continuously linking to our Website, you agree to be bound to and follow these linking terms and conditions.
+                    Our properties operate under short-term rental licenses issued by their local jurisdictions, and the license number is displayed on each listing. You agree to comply with all applicable local ordinances, including noise, parking, occupancy, and trash requirements. Fines issued as a result of your conduct are your responsibility.
                   </p>
 
-                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Removal of links from our website</h2>
                   <p className="mb-6">
-                    If you find any link on our Website that is offensive for any reason, you are free to contact and inform us any moment. We will consider requests to remove links but we are not obligated to or so or to respond to you directly.
-                  </p>
-                  <p className="mb-6">
-                    We do not ensure that the information on this website is correct, we do not warrant its completeness or accuracy; nor do we promise to ensure that the website remains available or that the material on the website is kept up to date.
+                    Stays are short-term only. No stay creates a tenancy or any residential occupancy right, and you agree to vacate at the scheduled check-out time.
                   </p>
 
-                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Disclaimer</h2>
-                  <p className="mb-4">
-                    To the maximum extent permitted by applicable law, we exclude all representations, warranties and conditions relating to our website and the use of this website. Nothing in this disclaimer will:
-                  </p>
-                  <ul className="list-disc pl-6 mb-6">
-                    <li>limit or exclude our or your liability for death or personal injury;</li>
-                    <li>limit or exclude our or your liability for fraud or fraudulent misrepresentation;</li>
-                    <li>limit any of our or your liabilities in any way that is not permitted under applicable law; or</li>
-                    <li>exclude any of our or your liabilities that may not be excluded under applicable law.</li>
-                  </ul>
+                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Limitation of Liability</h2>
                   <p className="mb-6">
-                    The limitations and prohibitions of liability set in this Section and elsewhere in this disclaimer: (a) are subject to the preceding paragraph; and (b) govern all liabilities arising under the disclaimer, including liabilities arising in contract, in tort and for breach of statutory duty.
+                    To the maximum extent permitted by California law, Solmar&eacute; Stays and the property owner are not liable for indirect, incidental, special, consequential, or punitive damages, or for lost enjoyment, lost profits, or travel costs, arising from your reservation or stay.
                   </p>
+
                   <p className="mb-6">
-                    As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.
+                    To the maximum extent permitted by law, our total aggregate liability arising out of or relating to your reservation or stay will not exceed the total amount you paid for that reservation.
                   </p>
+
+                  <p className="mb-6">
+                    Nothing in these Terms limits liability for death or personal injury caused by negligence where such limitation is prohibited by law, for fraud, or for any liability that cannot lawfully be excluded.
+                  </p>
+
+                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Indemnification</h2>
+                  <p className="mb-6">
+                    You agree to indemnify and hold harmless Solmar&eacute; Stays, the property owner, and their respective members, employees, agents, and contractors from any claim, loss, liability, fine, or expense (including reasonable attorneys&rsquo; fees) arising from your stay, your use of the property or its amenities, or any breach of these Terms by you or a member of your party.
+                  </p>
+
+                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Your Insurance</h2>
+                  <p className="mb-6">
+                    Your personal property is not insured by us or by the property owner. You are responsible for insuring your own belongings and for your own travel insurance.
+                  </p>
+
+                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Force Majeure</h2>
+                  <p className="mb-6">
+                    Neither party is liable for failure to perform due to events beyond reasonable control, including fire, flood, earthquake, storm, wildfire, power or utility failure, public health emergency, government order, or evacuation order. In such an event we will offer a refund of amounts paid for nights not stayed, or a credit, at our discretion.
+                  </p>
+
+                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Website Use and Intellectual Property</h2>
+                  <p className="mb-6">
+                    The content of this website, including text, photography, and branding, is owned by or licensed to us and is provided for your personal use. You may not republish, sell, sub-license, reproduce, or redistribute it without our written permission. We do not warrant that the information on this website is complete or error-free.
+                  </p>
+
+                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Privacy</h2>
+                  <p className="mb-6">
+                    Our handling of your personal information is described in our <a href="/privacy" className="underline">Privacy Policy</a>, which forms part of these Terms.
+                  </p>
+
+                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Governing Law and Venue</h2>
+                  <p className="mb-6">
+                    These Terms are governed by the laws of the State of California, without regard to conflict-of-law rules. Any dispute will be brought exclusively in the state or federal courts located in San Luis Obispo County, California, and both parties consent to that jurisdiction. In any action to enforce these Terms, the prevailing party is entitled to recover reasonable attorneys&rsquo; fees and costs.
+                  </p>
+
+                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">General</h2>
+                  <p className="mb-6">
+                    If any provision of these Terms is held unenforceable, the remainder stays in effect. These Terms, together with your confirmation and the property&rsquo;s house rules, are the entire agreement between you and Solmar&eacute; Stays regarding your stay. We may update these Terms at any time; the version in effect when you booked governs your reservation.
+                  </p>
+
+                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Contact</h2>
+                  <p className="mb-6">
+                    Solmare Stays LLC (dba Solmar&eacute; Stays)<br />California Entity No. B20260285501<br />3820 Sequoia Dr, San Luis Obispo, CA 93401<br />Email: info@solmarestays.com<br />Phone: (805) 242-6411
+                  </p>
+
                 </div>
               </>
             )}
