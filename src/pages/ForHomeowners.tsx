@@ -146,24 +146,34 @@ const OwnerLeadForm = () => {
     setIsSubmitting(true);
     try {
       const form = e.target as HTMLFormElement;
-      // Our own gate, not Web3Forms directly — see api/contact.ts.
-      const response = await fetch('/api/contact', {
+      // Verdict first, send second — see api/contact.ts. Never blocks delivery:
+      // if the route is down we send anyway and just do not claim the Lead.
+      const clean = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          ...formData,
-          subject: 'Property Management Inquiry — Management Page',
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
           botcheck: (form.elements.namedItem('botcheck') as HTMLInputElement)?.checked,
           elapsedMs: Date.now() - mountedAt.current,
         }),
+      })
+        .then((r) => r.json())
+        .then((v) => v.clean === true)
+        .catch(() => false);
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: new FormData(form),
       });
       const data = await response.json();
       if (data.success) {
         // The ONLY place a Lead may fire. A route change is interest, not a lead —
         // see the note in TrackingEvents.tsx. This is a real owner form submission.
         // Goes to the pixel AND the Conversions API under one shared event id.
-        // Gated on data.clean so bot submissions never train the ad account.
-        if (data.clean) {
+        // Gated on the verdict so bot submissions never train the ad account.
+        if (clean) {
           trackMetaEvent(
             'Lead',
             { content_name: 'management_form', content_category: 'owner' },
@@ -189,8 +199,10 @@ const OwnerLeadForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
-      {/* Access key removed — it is server-side in WEB3FORMS_ACCESS_KEY now.
-          Subject is sent in the JSON body by handleSubmit. */}
+      {/* ⚠ Public key — see the note on Contact.tsx. Cannot move server-side until
+          Web3Forms Pro; the free plan refuses server-side calls. */}
+      <input type="hidden" name="access_key" value={import.meta.env.VITE_WEB3FORMS} />
+      <input type="hidden" name="subject" value="Property Management Inquiry — Management Page" />
       <input type="hidden" name="from_name" value="Solmaré Stays — Owner Lead" />
       <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
 

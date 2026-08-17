@@ -114,17 +114,30 @@ const ContactPage = () => {
     try {
       const form = e.target as HTMLFormElement;
 
-      // Goes to our own /api/contact, not straight to Web3Forms. The access key
-      // lives server-side now, and the server scores the submission before
-      // forwarding — see api/contact.ts for why.
-      const response = await fetch('/api/contact', {
+      // Ask our own endpoint whether this looks human BEFORE sending. It only
+      // returns a verdict — Web3Forms' free plan rejects server-side calls, so
+      // the browser still does the actual send. See api/contact.ts.
+      //
+      // Never let this block delivery: if the verdict route is down we send
+      // anyway and simply do not claim the Lead.
+      const clean = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          ...formData,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
           botcheck: (form.elements.namedItem('botcheck') as HTMLInputElement)?.checked,
           elapsedMs: Date.now() - mountedAt.current,
         }),
+      })
+        .then((r) => r.json())
+        .then((v) => v.clean === true)
+        .catch(() => false);
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: new FormData(form),
       });
 
       const data = await response.json();
@@ -134,10 +147,10 @@ const ContactPage = () => {
         // see the note in TrackingEvents.tsx. This is a real contact form submission.
         // Goes to the pixel AND the Conversions API under one shared event id.
         //
-        // Gated on data.clean. The bots hitting this form render the page and
+        // Gated on the verdict. The bots hitting this form render the page and
         // submit through it, so before this gate existed every one of them fired
         // a Lead and Meta learned to go find more of them.
-        if (data.clean) {
+        if (clean) {
           trackMetaEvent(
             'Lead',
             { content_name: 'contact_form', content_category: 'contact' },
@@ -327,10 +340,13 @@ const ContactPage = () => {
                   </h2>
 
                   <form onSubmit={handleSubmit} className="space-y-6">
-                    {/* No access key here any more. It used to be a hidden input fed
-                        by VITE_WEB3FORMS, which put it in the public bundle for anyone
-                        to POST with. It lives in WEB3FORMS_ACCESS_KEY on the server
-                        now and only api/contact.ts ever sees it. */}
+                    {/* ⚠ This key is public — VITE_WEB3FORMS is build-time, so it is in
+                        the bundle. It cannot move server-side until Web3Forms Pro, whose
+                        free plan refuses server-side calls outright. Not currently being
+                        exploited: the bots render this page and submit through it, which
+                        is what /api/contact catches. */}
+                    <input type="hidden" name="access_key" value={import.meta.env.VITE_WEB3FORMS} />
+                    <input type="hidden" name="from_name" value="Solmaré Stays Website" />
 
                     {/* Anti-spam honeypot */}
                     <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
