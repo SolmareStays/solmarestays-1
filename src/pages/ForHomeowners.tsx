@@ -11,6 +11,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
+import { Turnstile } from '@/components/Turnstile';
 import { TrendingUp, Shield, Users, BarChart3, Calendar, Headphones, Check, Star, Quote, Send } from 'lucide-react';
 import homeownersHeroImage from '/homeowners/management-hero.jpg';
 import { trackMetaEvent } from '@/lib/track';
@@ -207,6 +208,8 @@ const OwnerLeadForm = () => {
         <Label htmlFor="owner-message">Tell us about your property</Label>
         <Textarea id="owner-message" name="message" value={formData.message} onChange={handleChange} placeholder="Bedrooms, current use, any questions..." rows={4} className="resize-none" />
       </div>
+
+      <Turnstile />
 
       <Button type="submit" variant="hero" size="xl" className="w-full" disabled={isSubmitting || isSubmitted}>
         {isSubmitted ? (<><Check className="w-5 h-5 mr-2" /> Sent! We'll be in touch.</>) : isSubmitting ? (<>Sending...</>) : (<><Send className="w-5 h-5 mr-2" /> Get My Free Revenue Projection</>)}

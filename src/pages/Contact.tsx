@@ -12,6 +12,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Mail, Phone, MapPin, Send, Check, Clock } from 'lucide-react';
 import { toast } from 'sonner';
+import { Turnstile } from '@/components/Turnstile';
 import contactHeroImage from '/contact/contact.jpg';
 import { trackMetaEvent } from '@/lib/track';
 
@@ -94,6 +95,17 @@ const ContactPage = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // The Subject <Select> is labelled "Subject *" and carries `required`, but
+    // Radix renders a <button>, not a native <select>, so that prop validates
+    // nothing — the value actually submitted comes from the hidden input below
+    // it, which falls back to 'Contact Form Submission'. Subject is the ONLY
+    // thing that routes an inquiry, so an unset one has to be caught here.
+    if (!formData.subject) {
+      toast.error('Please choose a subject so we can route your message.');
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -385,6 +397,8 @@ const ContactPage = () => {
                         className="resize-none"
                       />
                     </div>
+
+                    <Turnstile />
 
                     <Button
                       type="submit"
