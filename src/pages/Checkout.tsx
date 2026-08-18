@@ -852,7 +852,25 @@ export default function Checkout() {
                       ) : 'Finalize booking'}
                     </Button>
                     <p className="text-xs text-muted-foreground text-center mt-4">
-                      By clicking on this button, I agree to the Privacy Policy and Terms of Service.
+                      By clicking on this button, I agree to the{' '}
+                      <a
+                        href="/terms"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline hover:text-foreground"
+                      >
+                        Booking Terms &amp; Conditions
+                      </a>{' '}
+                      and the{' '}
+                      <a
+                        href="/privacy"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline hover:text-foreground"
+                      >
+                        Privacy Policy
+                      </a>
+                      , including the assumption of risk for bicycles, pools and other amenities.
                     </p>
                   </div>
                 </form>
