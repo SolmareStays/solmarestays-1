@@ -296,18 +296,65 @@ const PAGES = [
     title: 'Vacation Rental Property Management — Avila Beach | Solmaré Stays',
     description: 'Professional vacation rental management in Avila Beach, Pismo Beach, and SLO County. Maximize revenue with Solmaré Stays\' full-service property management.',
     h1: 'Vacation Rental Property Management',
-    body: `<p>Solmaré Stays provides full-service vacation rental management for homeowners on California's Central Coast. We handle everything — from listing optimization and dynamic pricing to guest communication, cleaning, and maintenance — so you can earn more while doing less.</p>
+    body: `<p>Solmaré Stays provides full-service vacation rental management for homeowners in San Luis Obispo County and across California's Central Coast. We handle everything — from listing optimization and dynamic pricing to guest communication, cleaning, and maintenance — so you can earn more while doing less.</p>
+<p>We are a local property management company based in Avila Beach, managing 13 short-term rentals within roughly 20 miles. Owners work directly with the team running their property, not a regional account manager at a national brand.</p>
 <h2>Why Partner with Solmaré Stays?</h2>
 <ul>
-<li>9.6/10 average guest rating across 1,500+ reviews</li>
-<li>Professional photography and listing optimization</li>
-<li>Dynamic pricing powered by PriceLabs</li>
-<li>24/7 local guest support team</li>
-<li>Hotel-quality cleaning and property inspections</li>
+<li><strong>Maximize your revenue</strong> — dynamic pricing and direct-booking strategies designed to outperform the market average</li>
+<li><strong>Protect your investment</strong> — strict guest screening and video-verified inspections after every stay</li>
+<li><strong>Professional guest management</strong> — we handle 100% of guest communication with 24/7 local support</li>
+<li><strong>Transparent reporting</strong> — real-time access to financial performance and calendar, no hidden fees</li>
+<li><strong>Flexible owner access</strong> — block dates for personal use whenever you want, without penalty</li>
+<li><strong>Dedicated local support</strong> — no call centers, direct access to the team that knows your property</li>
 </ul>
+<h2>What Our Property Management Includes</h2>
+<h3>Listing &amp; Marketing</h3>
+<ul>
+<li>Professional photography coordination</li>
+<li>Listing creation and optimization</li>
+<li>Multi-platform distribution (Airbnb, Vrbo, Direct)</li>
+<li>Ongoing listing updates</li>
+</ul>
+<h3>Pricing &amp; Revenue</h3>
+<ul>
+<li>Dynamic pricing adjustments powered by PriceLabs</li>
+<li>Seasonal strategy</li>
+<li>Length-of-stay optimization</li>
+<li>Transient occupancy tax collection and remittance</li>
+</ul>
+<h3>Guest Management</h3>
+<ul>
+<li>Strict guest screening</li>
+<li>24/7 guest communication</li>
+<li>Check-in and check-out coordination</li>
+<li>Concierge support</li>
+</ul>
+<h3>Cleaning &amp; Maintenance</h3>
+<ul>
+<li>Professional cleaning coordination</li>
+<li>Linen and laundry management</li>
+<li>Pre-arrival inspections</li>
+<li>Routine maintenance coordination</li>
+</ul>
+<h3>Owner Reporting</h3>
+<ul>
+<li>Monthly financial statements</li>
+<li>Real-time calendar visibility</li>
+<li>Owner portal access</li>
+</ul>
+<h2>Property Management Areas We Serve</h2>
+<p>Solmaré Stays manages vacation rentals throughout San Luis Obispo County, including <strong>Avila Beach</strong>, <strong>Pismo Beach</strong>, <strong>Shell Beach</strong>, <strong>Arroyo Grande</strong>, <strong>Oceano</strong>, and the city of <strong>San Luis Obispo</strong>. Every property is within about 20 miles of our Avila Beach base, which is what makes same-day maintenance response and in-person inspection between every stay possible.</p>
+<h2>What Owners Say</h2>
+<blockquote><p>"Our experience with Solmaré Stays has been exceptional. Their attentive service, transparency, and deep market insight make vacation rental ownership truly hands-off for us. After previously using another local company, the difference is clear — this has been a far superior, easier, and more professional experience in every way."</p><cite>Chad V., owner — La Casita, Avila Beach</cite></blockquote>
+<blockquote><p>"Solmaré Stays has done an amazing job managing Hummingbird House. The team handles all aspects of property management for me — bookings, cleaning, refilling supplies, and troubleshooting. The whole process is hands-off for me, and I get an organized revenue summary each month."</p><cite>Jane M., owner — The Hummingbird, Avila Beach</cite></blockquote>
+<blockquote><p>"Switching to Solmaré was a game-changer for my property. Unlike my previous manager, the transparency here is unmatched — I finally know exactly how my home is performing and where every dollar goes. There is no 'black box,' just clear communication and significantly higher returns."</p><cite>Michael H., owner — Monterey Heights, San Luis Obispo</cite></blockquote>
+<h2>How Much Does Property Management Cost?</h2>
+<p>Management is priced as a percentage of booking revenue, so the manager only earns when the property does. The exact rate depends on the property, its location, and how much service the owner wants. We provide a revenue projection and proposed terms before any commitment.</p>
+<h2>Request a Revenue Projection</h2>
+<p>If you own a short-term rental on the Central Coast and want to know what it could earn under professional management, request a free revenue projection using the form on this page, or call <a href="tel:+18052426411">(805) 242-6411</a>. We review your property, comparable local performance, and realistic occupancy for its location and size, then propose terms based on that analysis.</p>
 <h2>Owner Resources</h2>
 <ul>
-<li><a href="/blog/slo-county-short-term-rental-rules">Short-term rental rules in SLO County — permits, licenses & TOT</a></li>
+<li><a href="/blog/slo-county-short-term-rental-rules">Short-term rental rules in SLO County — permits, licenses &amp; TOT</a></li>
 <li><a href="/blog/avila-beach-property-management">What professional management looks like in Avila Beach</a></li>
 </ul>`,
     schema: {

@@ -299,11 +299,20 @@ const ForHomeownersPage = () => {
                   animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.8 }}
                 >
-                  <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight text-white mb-4">
-                    Thirteen houses,<br />
-                    chosen one at a time.
+                  {/* H1 leads with the service + place so it matches the search that
+                      paid for the click. The brand line keeps its place directly below —
+                      moving it out of the h1 is what lifted landing-page relevance. */}
+                  <h1 className="font-serif text-3xl md:text-4xl lg:text-[2.75rem] font-semibold leading-tight text-white mb-3">
+                    Vacation Rental<br />
+                    Property Management
+                    <span className="block text-lg md:text-xl lg:text-2xl font-normal text-white/90 mt-2">
+                      in San Luis Obispo County
+                    </span>
                   </h1>
                   <p className="text-base md:text-lg text-white/80 leading-relaxed mb-6 max-w-lg">
+                    <span className="block font-serif text-lg md:text-xl text-white mb-2">
+                      Thirteen houses, chosen one at a time.
+                    </span>
                     Ten in Avila Beach, two in Arroyo Grande, one in San Luis Obispo. Same crew, same pricing engine, same person answering at nine at night.
                   </p>
                   <div className="flex flex-wrap gap-4">
