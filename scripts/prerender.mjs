@@ -58,7 +58,7 @@ const PAGES = [
     // "1,500+ five-star reviews" was false (1,566 is TOTAL reviews; only 730 are 5-star).
     description: 'Refined vacation rentals in Avila Beach, Pismo Beach & SLO. 1,500+ guest reviews averaging 4.82 out of 5. Book direct for the best rates.',
     h1: 'Avila Beach Vacation Rentals — Book Direct & Save',
-    body: `<p>Solmaré Stays manages 13 premium vacation rentals across California's Central Coast — from beachfront bungalows in Avila Beach to a private wine country estate in Arroyo Grande. 1,500+ five-star reviews across Airbnb, VRBO, and Google.</p>
+    body: `<p>Solmaré Stays manages 13 premium vacation rentals across California's Central Coast — from beachfront bungalows in Avila Beach to a private wine country estate in Arroyo Grande. 1,500+ guest reviews averaging 4.82 out of 5 across Airbnb, VRBO, and Google.</p>
 <h2>Why Book Direct with Solmaré Stays?</h2>
 <ul><li>Save 15% vs Airbnb — best rate guaranteed</li><li>No service fees</li><li>Direct communication with our local Avila Beach team</li><li>24/7 guest support</li></ul>
 <h2>Our Locations</h2>
