@@ -89,7 +89,15 @@ export function classify(sub: Submission): string[] {
 
   // ── weak: each has a legitimate explanation, so two are required ──
   if (GENERIC_PHRASES.some((p) => norm.startsWith(p))) weak.push('generic template message');
-  if (!message) weak.push('empty message');
+
+  // 2026-08-31: `empty message` was REMOVED as a signal. The message field is not
+  // `required` on either form — you cannot hold a blank optional field against the
+  // person who left it blank. Paired with 'name and email share no token' (which a
+  // business address like info@millerproperties.com trips innocently) it silently
+  // suppressed Lead/generate_lead for exactly the owner who fills the required
+  // fields and submits. The lead still reached info@ and Notion, so nothing was
+  // lost — it just never counted as a conversion, which is the same hole the
+  // 8/31 tracking work was closing. Make the field required before restoring this.
 
   // "Elsie Follman" submitting joanne.l.c@att.blackberry.net is a stale scraped
   // list, not a typo.
