@@ -3,7 +3,10 @@
     {
       "source": "/assets/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     },
     {
@@ -33,31 +36,102 @@
     }
   ],
   "rewrites": [
-    { "source": "/collection", "destination": "/collection/index.html" },
-    { "source": "/philosophy", "destination": "/philosophy/index.html" },
-    { "source": "/management", "destination": "/management/index.html" },
-    { "source": "/experiences", "destination": "/experiences/index.html" },
-    { "source": "/contact", "destination": "/contact/index.html" },
-    { "source": "/pet-friendly", "destination": "/pet-friendly/index.html" },
-    { "source": "/group-stays", "destination": "/group-stays/index.html" },
-    { "source": "/avila-beach", "destination": "/avila-beach/index.html" },
-    { "source": "/pismo-beach", "destination": "/pismo-beach/index.html" },
-    { "source": "/san-luis-obispo", "destination": "/san-luis-obispo/index.html" },
-    { "source": "/central-coast", "destination": "/central-coast/index.html" },
-    { "source": "/terms", "destination": "/terms/index.html" },
-    { "source": "/privacy", "destination": "/privacy/index.html" },
-    { "source": "/arroyo-grande", "destination": "/arroyo-grande/index.html" },
+    {
+      "source": "/collection",
+      "destination": "/collection/index.html"
+    },
+    {
+      "source": "/philosophy",
+      "destination": "/philosophy/index.html"
+    },
+    {
+      "source": "/management",
+      "destination": "/management/index.html"
+    },
+    {
+      "source": "/experiences",
+      "destination": "/experiences/index.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact/index.html"
+    },
+    {
+      "source": "/pet-friendly",
+      "destination": "/pet-friendly/index.html"
+    },
+    {
+      "source": "/group-stays",
+      "destination": "/group-stays/index.html"
+    },
+    {
+      "source": "/avila-beach",
+      "destination": "/avila-beach/index.html"
+    },
+    {
+      "source": "/pismo-beach",
+      "destination": "/pismo-beach/index.html"
+    },
+    {
+      "source": "/san-luis-obispo",
+      "destination": "/san-luis-obispo/index.html"
+    },
+    {
+      "source": "/central-coast",
+      "destination": "/central-coast/index.html"
+    },
+    {
+      "source": "/terms",
+      "destination": "/terms/index.html"
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy/index.html"
+    },
+    {
+      "source": "/arroyo-grande",
+      "destination": "/arroyo-grande/index.html"
+    },
     {
       "source": "/(.*)",
       "destination": "/index.html"
     }
   ],
   "redirects": [
-    { "source": "/ourstory", "destination": "/philosophy", "permanent": true },
-    { "source": "/guidebook-pinehouse", "destination": "/property/the-pine-house", "permanent": true },
-    { "source": "/for-homeowners", "destination": "/management", "permanent": true },
-    { "source": "/why-choose-us", "destination": "/philosophy", "permanent": true },
-    { "source": "/guest-experience", "destination": "/experiences", "permanent": true },
-    { "source": "/services", "destination": "/experiences", "permanent": true }
+    {
+      "source": "/property/monterey-heights-suite",
+      "destination": "/collection",
+      "permanent": true
+    },
+    {
+      "source": "/ourstory",
+      "destination": "/philosophy",
+      "permanent": true
+    },
+    {
+      "source": "/guidebook-pinehouse",
+      "destination": "/property/the-pine-house",
+      "permanent": true
+    },
+    {
+      "source": "/for-homeowners",
+      "destination": "/management",
+      "permanent": true
+    },
+    {
+      "source": "/why-choose-us",
+      "destination": "/philosophy",
+      "permanent": true
+    },
+    {
+      "source": "/guest-experience",
+      "destination": "/experiences",
+      "permanent": true
+    },
+    {
+      "source": "/services",
+      "destination": "/experiences",
+      "permanent": true
+    }
   ]
 }
