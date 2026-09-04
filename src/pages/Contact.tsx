@@ -196,7 +196,11 @@ const ContactPage = () => {
       <Header />
       <main>
         {/* Hero Section */}
-        <section ref={heroRef} className="relative min-h-[35vh] lg:min-h-[40vh] flex items-center">
+        {/* overflow-hidden is load-bearing: the hero img animates from scale 1.1,
+            which pushes it ~80px past the viewport on each side. Without the clip
+            the whole page gains a horizontal scrollbar. Every other hero on the
+            site (GuestExperience, WhyChooseUs, ForHomeowners) already has it. */}
+        <section ref={heroRef} className="relative min-h-[35vh] lg:min-h-[40vh] flex items-center overflow-hidden">
           <div className="absolute inset-0">
             <motion.img
               src={contactHeroImage}

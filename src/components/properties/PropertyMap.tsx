@@ -41,7 +41,14 @@ export function PropertyMap({ properties, height = '500px' }: PropertyMapProps) 
       scrollWheelZoom: true
     }).setView(defaultCenter, 12);
 
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    // ⚠ Do NOT go back to basemaps.cartocdn.com. CARTO now requires an API key
+    // on that endpoint and, rather than failing, it serves a 200 PNG with
+    // "API KEY REQUIRED / carto.com/basemaps/apikey" burned diagonally into the
+    // tile image. Nothing in the DOM or the console reports it — the map just
+    // silently reads as broken to visitors. Verified 2026-09-04.
+    // OSM's standard tiles need no key; attribution below is their requirement.
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
