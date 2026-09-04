@@ -316,7 +316,7 @@ const GroupStaysPage = () => {
                 </h2>
                 <div className="prose prose-lg text-muted-foreground space-y-4">
                   <p>
-                    Need space for more than 14 guests? No problem. Our thirteen houses
+                    Need space for more than 14 guests? No problem. Our twelve houses
                     across Avila Beach and the Central Coast means you can book several properties
                     in close proximity to create a private group compound experience.
                   </p>

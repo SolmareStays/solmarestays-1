@@ -20,7 +20,7 @@ const SITE_URL = 'https://www.solmarestays.com';
 // Load .env manually (no dotenv dependency required)
 function loadEnv() {
   // Must read .env.local too. The repo ships .env.local, not .env — reading only
-  // .env made local runs silently drop all 13 /property/ URLs AND overwrite
+  // .env made local runs silently drop all 12 /property/ URLs AND overwrite
   // public/sitemap.xml with the truncated version. Vercel injects real env vars.
   const env = {};
   for (const name of ['.env', '.env.local']) {

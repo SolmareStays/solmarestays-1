@@ -210,7 +210,6 @@ export async function fetchListings(): Promise<Property[]> {
     '434918': 9,   // The Coral House
     '429263': 10,  // The Palm House
     '429264': 11,  // The Pine House
-    '400378': 12,  // Monterey Heights
   };
   result.sort((a, b) => (DISPLAY_ORDER[a.id] ?? 99) - (DISPLAY_ORDER[b.id] ?? 99));
 

@@ -50,7 +50,7 @@ const organizationSchema = {
   name: 'Solmaré Stays',
   url: SITE_URL,
   logo: `${SITE_URL}/logo.png`,
-  description: `Professional vacation rental management on California's Central Coast. ${PORTFOLIO.properties} properties across Avila Beach, Pismo Beach, Arroyo Grande, and San Luis Obispo. ${REVIEWS.totalRounded} guest reviews averaging ${REVIEWS.averageFive} out of 5.`,
+  description: `Professional vacation rental management on California's Central Coast. ${PORTFOLIO.properties} properties across Avila Beach and Arroyo Grande. ${REVIEWS.totalRounded} guest reviews averaging ${REVIEWS.averageFive} out of 5.`,
   telephone: CONTACT.phoneSchema,
   address: {
     '@type': 'PostalAddress',
@@ -83,7 +83,7 @@ const lodgingBusinessSchema = {
   url: SITE_URL,
   telephone: CONTACT.phoneSchema,
   description:
-    `Professional vacation rental management on California's Central Coast. ${PORTFOLIO.properties} properties in Avila Beach, Pismo Beach, Arroyo Grande, and San Luis Obispo. From beach bungalows to a wine country estate. ${REVIEWS.totalRounded} guest reviews averaging ${REVIEWS.averageFive} out of 5. Book direct for the best rates.`,
+    `Professional vacation rental management on California's Central Coast. ${PORTFOLIO.properties} properties in Avila Beach and Arroyo Grande. From beach bungalows to a wine country estate. ${REVIEWS.totalRounded} guest reviews averaging ${REVIEWS.averageFive} out of 5. Book direct for the best rates.`,
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Avila Beach',
@@ -123,7 +123,7 @@ const webSiteSchema = {
   name: 'Solmaré Stays',
   url: SITE_URL,
   description:
-    `Vacation rentals on California's Central Coast. ${PORTFOLIO.properties} properties in Avila Beach, Pismo Beach, Arroyo Grande, and San Luis Obispo. From beach bungalows to a wine country estate. Book direct for the best rates.`,
+    `Vacation rentals on California's Central Coast. ${PORTFOLIO.properties} properties in Avila Beach and Arroyo Grande. From beach bungalows to a wine country estate. Book direct for the best rates.`,
   publisher: {
     '@type': 'Organization',
     name: 'Solmaré Stays',

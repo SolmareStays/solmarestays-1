@@ -93,13 +93,6 @@ const testimonials = [
     text: "Great little place from which to enjoy Avila Beach. Just a short walk from the beach and boardwalk, yet just far enough to be quiet and peaceful. Everything was clean and in great condition.",
   },
   {
-    name: 'Andrea H.',
-    property: 'Monterey Heights',
-    date: 'September 2025',
-    channel: 'Airbnb',
-    text: "I really loved this quiet little bungalow. Super clean and simple and had everything I needed. Extremely quiet street and comfortable mattress.",
-  },
-  {
     name: 'Jennifer A.',
     property: 'The Pine House',
     date: 'January 2026',
@@ -171,7 +164,7 @@ const WhyChooseUsPage = () => {
                     The Solmaré Standard
                   </h1>
                   <p className="text-lg text-white/80 leading-relaxed mb-8">
-                    Not just a vacation rental. Thirteen houses on one stretch of coast, each walked before you arrive.
+                    Not just a vacation rental. Twelve houses on one stretch of coast, each walked before you arrive.
                   </p>
                   <div className="flex flex-wrap gap-4">
                     <Button variant="default" size="xl" onClick={scrollToValues}>

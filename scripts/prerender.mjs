@@ -58,27 +58,27 @@ const PAGES = [
     // "1,500+ five-star reviews" was false (1,566 is TOTAL reviews; only 730 are 5-star).
     description: 'Refined vacation rentals in Avila Beach, Pismo Beach & SLO. 1,500+ guest reviews averaging 4.82 out of 5. Book direct for the best rates.',
     h1: 'Avila Beach Vacation Rentals — Book Direct & Save',
-    body: `<p>Solmaré Stays manages 13 premium vacation rentals across California's Central Coast — from beachfront bungalows in Avila Beach to a private wine country estate in Arroyo Grande. 1,500+ guest reviews averaging 4.82 out of 5 across Airbnb, VRBO, and Google.</p>
+    body: `<p>Solmaré Stays manages 12 premium vacation rentals across California's Central Coast — from beachfront bungalows in Avila Beach to a private wine country estate in Arroyo Grande. 1,500+ guest reviews averaging 4.82 out of 5 across Airbnb, VRBO, and Google.</p>
 <h2>Why Book Direct with Solmaré Stays?</h2>
 <ul><li>Save 15% vs Airbnb — best rate guaranteed</li><li>No service fees</li><li>Direct communication with our local Avila Beach team</li><li>24/7 guest support</li></ul>
 <h2>Our Locations</h2>
 <ul><li><a href="/avila-beach">Avila Beach</a> — 10 properties, steps from the pier and beach</li><li><a href="/pismo-beach">Pismo Beach</a> — minutes from the pier and Oceano Dunes</li><li><a href="/san-luis-obispo">San Luis Obispo</a> — walk to downtown SLO and Cal Poly</li><li><a href="/arroyo-grande">Arroyo Grande</a> — private 13-acre wine country estate</li></ul>
 <h2>Featured Properties</h2>
 <ul><li><strong>Hummingbird House</strong> — 2BR/2BA, rooftop terrace with panoramic ocean views</li><li><strong>La Casita</strong> — luxury 2BR beach house, 1 minute from the sand</li><li><strong>Casitas Estate</strong> — private 13-acre estate sleeping 14 with pool & hot tub</li><li><strong>The Coral House</strong> — modern 1BR with bifold doors and ocean views</li></ul>
-<p>Browse all <a href="/collection">13 vacation rentals</a> or <a href="/contact">contact us</a> at (805) 242-6411.</p>`,
+<p>Browse all <a href="/collection">12 vacation rentals</a> or <a href="/contact">contact us</a> at (805) 242-6411.</p>`,
     schema: {
       "@context": "https://schema.org",
       "@type": "VacationRentalAgency",
       "name": "Solmaré Stays",
       "url": "https://www.solmarestays.com",
       "logo": "https://www.solmarestays.com/logo.png",
-      "description": "Professional vacation rental management on California's Central Coast. 13 properties in Avila Beach, Pismo Beach, Arroyo Grande, and San Luis Obispo.",
+      "description": "Professional vacation rental management on California's Central Coast. 12 properties in Avila Beach and Arroyo Grande.",
       "telephone": "+1-805-242-6411",
       "email": "kyle@solmarestays.com",
       "address": { "@type": "PostalAddress", "addressLocality": "Avila Beach", "addressRegion": "CA", "postalCode": "93424", "addressCountry": "US" },
       "areaServed": ["Avila Beach", "Pismo Beach", "Shell Beach", "Arroyo Grande", "San Luis Obispo"].map(c => ({ "@type": "City", "name": c })),
       // Verified against Hostaway 2026-08-08: 1,541 guest-to-host reviews across the
-      // 13 listings, of which 827 carry a numeric rating averaging 9.64/10 = 4.82/5.
+      // 12 listings, of which 827 carry a numeric rating averaging 9.64/10 = 4.82/5.
       // Was "4.9 / 2400", which counted host-to-guest reviews and rounded upward.
       "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "ratingCount": "827", "reviewCount": "1541", "bestRating": "5" },
       // sameAs ties the site to its off-site profiles so search engines and AI
@@ -89,7 +89,7 @@ const PAGES = [
       ]
     },
     faq: [
-      { q: "Who is Solmaré Stays?", a: "Solmaré Stays is a boutique vacation rental company based in Avila Beach, California. It manages 13 short-term rental properties across Avila Beach, Arroyo Grande, and San Luis Obispo on behalf of homeowners, and rents those same properties directly to travelers at solmarestays.com." },
+      { q: "Who is Solmaré Stays?", a: "Solmaré Stays is a boutique vacation rental company based in Avila Beach, California. It manages 12 short-term rental properties across Avila Beach, Arroyo Grande, and San Luis Obispo on behalf of homeowners, and rents those same properties directly to travelers at solmarestays.com." },
       { q: "Is it cheaper to book direct than on Airbnb?", a: "Yes. Booking directly at solmarestays.com costs less than the identical property on Airbnb or Vrbo, because those platforms add a guest service fee on top of the nightly rate. Booking direct also means you deal with the local Avila Beach team rather than a platform inbox." },
       { q: "Where are Solmaré Stays properties located?", a: "Ten properties are in Avila Beach, most within a block or two of the sand. Two are in Arroyo Grande wine country, including a 13-acre private estate and a working farm cottage. One is in San Luis Obispo, walking distance from downtown and Cal Poly." },
       { q: "What is the best time of year to visit Avila Beach?", a: "Avila Beach sits in a sheltered, south-facing cove, so it stays mild year-round — daytime highs average around 68°F and the town records roughly 3,500 hours of sunshine a year. Summer is busiest and books earliest. September is the warmest month and noticeably quieter than August." },
@@ -163,23 +163,23 @@ const PAGES = [
   {
     route: '/san-luis-obispo',
     title: 'San Luis Obispo Vacation Rentals | Solmaré Stays',
-    description: 'Vacation rentals in San Luis Obispo, CA. Walk to Cal Poly, minutes from downtown SLO. Book direct with Solmaré Stays.',
+    description: 'Vacation rentals near San Luis Obispo, CA. Beach houses in Avila Beach and Arroyo Grande, 10-20 minutes from downtown SLO and Cal Poly. Book direct.',
     h1: 'San Luis Obispo Vacation Rentals',
-    body: `<p>Stay in the heart of San Luis Obispo with Solmaré Stays. Our Monterey Heights Suite is a walkable distance from Cal Poly and minutes from downtown SLO's restaurants, shops, and Thursday night farmers market.</p>
-<h2>Our SLO Property</h2>
-<ul><li><strong>Monterey Heights Suite</strong> — Cal King bed, private patio, kitchenette, walk to Cal Poly campus</li></ul>
+    body: `<p>Solmaré Stays manages twelve houses in San Luis Obispo County. They are not in downtown SLO — they are in Avila Beach and Arroyo Grande, 10 to 20 minutes out, which puts the beach at your doorstep and downtown SLO a short drive away for dinner on Higuera Street or the Thursday night farmers market.</p>
+<h2>Where You'll Stay</h2>
+<ul><li><strong>Avila Beach</strong> — ten houses, most a block or two from the sand, about 10 minutes from downtown SLO and 15 from Cal Poly</li><li><strong>Arroyo Grande</strong> — a working farm cottage and a private wine country estate sleeping 14, about 20 minutes south</li></ul>
 <p>Visiting for a Cal Poly weekend? Read our guide to <a href="/blog/cal-poly-graduation-where-to-stay">where to stay for Cal Poly graduation and parents weekend</a>.</p>`,
     schema: {
       "@context": "https://schema.org",
       "@type": "LodgingBusiness",
       "name": "Solmaré Stays — San Luis Obispo Vacation Rentals",
       "url": `${BASE_URL}/san-luis-obispo`,
-      "address": { "@type": "PostalAddress", "addressLocality": "San Luis Obispo", "addressRegion": "CA", "addressCountry": "US" }
+      "address": { "@type": "PostalAddress", "addressLocality": "Avila Beach", "addressRegion": "CA", "addressCountry": "US" }
     },
     faq: [
-      { q: "Where can I stay near Cal Poly San Luis Obispo?", a: "Monterey Heights Suite is a 2-bedroom, 1-bathroom suite sleeping 4, within walking distance of both downtown SLO and Cal Poly. It starts from $140 per night, which makes it a practical base for campus visits, graduations, and parents' weekends." },
-      { q: "Is San Luis Obispo good for a family or group stay?", a: "Monterey Heights Suite sleeps 4 and suits families or two couples. Larger groups are better served by Wine Country Estate in Arroyo Grande, about 20 minutes south, which sleeps 14 across 5 bedrooms." },
-      { q: "How far is San Luis Obispo from the beach?", a: "About 15 minutes to Avila Beach and 20 minutes to Pismo Beach. Staying in SLO puts you between the coast and wine country, with downtown restaurants, the Thursday farmers market, and Bishop Peak hiking on your doorstep." }
+      { q: "Where can I stay near Cal Poly San Luis Obispo?", a: "Our Avila Beach houses are about 15 minutes from campus and range from studios sleeping two to a 2-bedroom sleeping four. They start around $140 per night and make a practical base for campus visits, graduations, and parents' weekends without paying downtown hotel rates." },
+      { q: "Is San Luis Obispo good for a family or group stay?", a: "Yes. Most of our Avila Beach houses sleep two to four, and several sit side by side on the same block, which works well for families booking two units. Larger groups are better served by Wine Country Estate in Arroyo Grande, about 20 minutes south, which sleeps 14 across 5 bedrooms." },
+      { q: "How far is San Luis Obispo from the beach?", a: "About 15 minutes to Avila Beach and 20 minutes to Pismo Beach. Our houses are on the coast side of that drive, so you get the beach on foot and SLO's downtown restaurants, Thursday farmers market, and Bishop Peak hiking a short drive inland." }
     ]
   },
   {
@@ -211,7 +211,7 @@ const PAGES = [
     title: 'Central Coast California Vacation Rentals | Solmaré Stays',
     description: 'Luxury vacation rentals on California\'s Central Coast. Avila Beach, Pismo Beach, San Luis Obispo, and Arroyo Grande. Book direct for the best rates.',
     h1: 'Central Coast California Vacation Rentals',
-    body: `<p>Solmaré Stays manages 13 premium vacation rentals across California's Central Coast, from beachfront bungalows in Avila Beach to a 13-acre wine country estate in Arroyo Grande.</p>
+    body: `<p>Solmaré Stays manages 12 premium vacation rentals across California's Central Coast, from beachfront bungalows in Avila Beach to a 13-acre wine country estate in Arroyo Grande.</p>
 <h2>Our Locations</h2>
 <ul>
 <li><a href="/avila-beach">Avila Beach</a> — 10 properties, steps to the sand</li>
@@ -236,13 +236,13 @@ const PAGES = [
   {
     route: '/collection',
     title: 'Browse All Properties | Solmaré Stays',
-    description: 'Browse all 13 vacation rental properties managed by Solmaré Stays. Avila Beach, Pismo Beach, SLO, and wine country. Filter by location, guests, and dates.',
+    description: 'Browse all 12 vacation rental properties managed by Solmaré Stays. Avila Beach, Pismo Beach, and wine country. Filter by location, guests, and dates.',
     h1: 'Our Vacation Rental Collection',
-    body: `<p>Browse Solmaré Stays' curated collection of 13 vacation rentals across California's Central Coast. From intimate beach studios to a 13-acre wine country estate, find your perfect stay.</p>`,
+    body: `<p>Browse Solmaré Stays' curated collection of 12 vacation rentals across California's Central Coast. From intimate beach studios to a 13-acre wine country estate, find your perfect stay.</p>`,
     faq: [
-      { q: "How many vacation rentals does Solmaré Stays have?", a: "Solmaré Stays manages 13 vacation rental properties on California's Central Coast: 10 in Avila Beach, 2 in Arroyo Grande wine country, and 1 in San Luis Obispo. All are managed and operated directly by the Solmaré team rather than sublet or franchised." },
+      { q: "How many vacation rentals does Solmaré Stays have?", a: "Solmaré Stays manages 12 vacation rental properties on California's Central Coast: 10 in Avila Beach, 2 in Arroyo Grande wine country, and 1 in San Luis Obispo. All are managed and operated directly by the Solmaré team rather than sublet or franchised." },
       { q: "What is the largest property you offer?", a: "Wine Country Estate in Arroyo Grande is the largest, with 5 bedrooms and 5 bathrooms across a private 13-acre property that sleeps 14. It includes a solar-heated pool and hot tub and is booked as a whole estate rather than by individual casita." },
-      { q: "What is the smallest or most affordable option?", a: "The Palm House, The Pine House, and Monterey Heights Suite all start around $140 per night. The Avila Beach studios sleep two, while Monterey Heights Suite in San Luis Obispo has two bedrooms and sleeps four, making it the best value for small groups." },
+      { q: "What is the smallest or most affordable option?", a: "The Palm House and The Pine House both start around $140 per night. Both are pet-friendly Avila Beach studios sleeping two, a block or two from the sand, which makes them the best value for couples." },
       { q: "Do you offer discounts for longer stays?", a: "Yes. Weekly and monthly stays receive automatic length-of-stay discounts that are applied when you select your dates. Longer bookings also tend to land on lower nightly rates because pricing responds to how far ahead the reservation is made." }
     ]
   },
@@ -297,7 +297,7 @@ const PAGES = [
     description: 'Professional vacation rental management in Avila Beach, Pismo Beach, and SLO County. Maximize revenue with Solmaré Stays\' full-service property management.',
     h1: 'Vacation Rental Property Management',
     body: `<p>Solmaré Stays provides full-service vacation rental management for homeowners in San Luis Obispo County and across California's Central Coast. We handle everything — from listing optimization and dynamic pricing to guest communication, cleaning, and maintenance — so you can earn more while doing less.</p>
-<p>We are a local property management company based in Avila Beach, managing 13 short-term rentals within roughly 20 miles. Owners work directly with the team running their property, not a regional account manager at a national brand.</p>
+<p>We are a local property management company based in Avila Beach, managing 12 short-term rentals within roughly 20 miles. Owners work directly with the team running their property, not a regional account manager at a national brand.</p>
 <h2>Why Partner with Solmaré Stays?</h2>
 <ul>
 <li><strong>Maximize your revenue</strong> — dynamic pricing and direct-booking strategies designed to outperform the market average</li>
@@ -347,7 +347,6 @@ const PAGES = [
 <h2>What Owners Say</h2>
 <blockquote><p><strong>+22% ADR lift &middot; 4.9-star rating.</strong> "Our experience with Solmaré Stays has been exceptional. Their attentive service, transparency, and deep market insight make vacation rental ownership truly hands-off for us. After previously using another local company, the difference is clear — this has been a far superior, easier, and more professional experience in every way."</p><cite>Chad V., owner — La Casita, Avila Beach</cite></blockquote>
 <blockquote><p><strong>+31% occupancy &middot; +42% profit increase.</strong> "Solmaré Stays has done an amazing job managing Hummingbird House. The team handles all aspects of property management for me — bookings, cleaning, refilling supplies, and troubleshooting. The whole process is hands-off for me, and I get an organized revenue summary each month."</p><cite>Jane M., owner — The Hummingbird, Avila Beach</cite></blockquote>
-<blockquote><p><strong>+32% revenue growth &middot; +48% guest satisfaction.</strong> "Switching to Solmaré was a game-changer for my property. Unlike my previous manager, the transparency here is unmatched — I finally know exactly how my home is performing and where every dollar goes. There is no 'black box,' just clear communication and significantly higher returns."</p><cite>Michael H., owner — Monterey Heights, San Luis Obispo</cite></blockquote>
 <h2>How Much Does Property Management Cost?</h2>
 <p>Management is priced as a percentage of booking revenue, so the manager only earns when the property does. The exact rate depends on the property, its location, and how much service the owner wants. We provide a revenue projection and proposed terms before any commitment.</p>
 <h2>Request a Revenue Projection</h2>
@@ -389,7 +388,7 @@ const PAGES = [
       { q: "What does a vacation rental property manager do?", a: "A vacation rental manager handles everything an owner would otherwise do themselves: creating and optimizing listings across Airbnb, Vrbo and Google, setting nightly rates, screening and communicating with guests, coordinating cleaning and linens between stays, inspecting the property, and handling maintenance issues as they come up." },
       { q: "How much does vacation rental management cost in Avila Beach?", a: "Management is priced as a percentage of booking revenue, so the manager only earns when the property does. The exact rate depends on the property, its location, and how much service the owner wants. Solmaré Stays provides a revenue projection and proposed terms before any commitment." },
       { q: "How does Solmaré Stays set nightly rates?", a: "Rates are dynamic rather than fixed. Solmaré uses PriceLabs alongside local market data and live booking pace to adjust pricing by season, day of week, remaining lead time, and local demand events. Rates are reviewed continuously rather than set once per season." },
-      { q: "Is Solmaré Stays local to Avila Beach?", a: "Yes. Solmaré Stays is based in Avila Beach and manages 13 properties, all within roughly 20 miles. That means same-day response to guest and maintenance issues, in-person inspection between every stay, and direct owner access rather than a regional account manager." },
+      { q: "Is Solmaré Stays local to Avila Beach?", a: "Yes. Solmaré Stays is based in Avila Beach and manages 12 properties, all within roughly 20 miles. That means same-day response to guest and maintenance issues, in-person inspection between every stay, and direct owner access rather than a regional account manager." },
       { q: "How do I get a revenue estimate for my property?", a: "Request a revenue projection at solmarestays.com/contact or call (805) 242-6411. Solmaré reviews the property, comparable local performance, and realistic occupancy for its location and size, then proposes terms based on that analysis." }
     ]
   },
@@ -438,7 +437,7 @@ const PAGES = [
 <h2>Wine Tasting in Avila Beach</h2>
 <p>Several tasting rooms are walkable from our vacation rentals: Alapay Cellars, Peloton Cellars, and Sinor-LaVallee are all within a 5-minute walk. For a bigger wine experience, Edna Valley and Arroyo Grande Valley wineries are a 10-minute drive.</p>
 <h2>Where to Stay</h2>
-<p>All of our <a href="/avila-beach">Avila Beach vacation rentals</a> are within walking distance of every restaurant on this list. <a href="/collection">Browse all 13 properties</a> or <a href="/contact">contact us</a> for recommendations based on your group size.</p>`,
+<p>All of our <a href="/avila-beach">Avila Beach vacation rentals</a> are within walking distance of every restaurant on this list. <a href="/collection">Browse all 12 properties</a> or <a href="/contact">contact us</a> for recommendations based on your group size.</p>`,
     faq: [
       { q: "What is the best restaurant in Avila Beach?", a: "Custom House is the best overall restaurant in Avila Beach, with ocean views, excellent seafood, and a prime location on the promenade." },
       { q: "Where can I get seafood in Avila Beach?", a: "Mersea's on the pier has the best fish and chips. Custom House offers upscale seafood with ocean views. Both are walkable from Solmaré Stays properties." },
@@ -584,13 +583,10 @@ const PAGES = [
 <h2>The Problem: SLO Sells Out on Cal Poly Weekends</h2>
 <p>San Luis Obispo is a small city with limited hotel inventory, and Cal Poly weekends (spring commencement in June, fall commencement in December, Open House in spring, move-in in September) reliably sell the whole town out. Hotels that normally charge $150 a night list at $400+ with two-night minimums, and the closest ones go first.</p>
 <p>The families who have done this before book months ahead. If your student just told you a date, book your lodging this week.</p>
-<h2>Option 1: Stay Walking Distance from Campus</h2>
-<p>Our <strong>Monterey Heights Suite</strong> is a 2-bedroom, 1-bath suite that sleeps 4, with a private patio and kitchenette, within walking distance of both Cal Poly and downtown San Luis Obispo. For a graduation weekend that means: no fighting for campus parking, walk to the ceremony, walk downtown for the celebration dinner, and a real kitchen for the morning of.</p>
-<p>It starts around $140 a night in normal season. <a href="/san-luis-obispo">Check dates and pricing here</a>.</p>
-<h2>Option 2: Stay at the Beach, Drive 20 Minutes</h2>
+<h2>Stay at the Beach, Drive 20 Minutes</h2>
 <p>Here's the local secret: <strong>Avila Beach is about 20 minutes from campus.</strong> Families who book our <a href="/avila-beach">Avila Beach vacation rentals</a> get a beach vacation wrapped around the ceremony: morning on the sand, afternoon at commencement, dinner on the promenade. For multi-day trips (move-in especially), the beach base is the better trip.</p>
 <p>Most of our 10 Avila Beach properties are 1-2 blocks from the sand, ranging from couples studios to two-bedroom beach houses.</p>
-<h2>Option 3: Bring the Whole Family</h2>
+<h2>Bring the Whole Family</h2>
 <p>Graduations pull grandparents, siblings, and partners into one trip. For big family groups, our <strong>Wine Country Estate</strong> in Arroyo Grande sleeps 14 across a private 13-acre property with a pool and hot tub, about 20 minutes from campus. One house, one kitchen, one celebration, instead of coordinating four hotel rooms. <a href="/group-stays">See group options</a>.</p>
 <h2>When to Book</h2>
 <ul>
@@ -602,7 +598,7 @@ const PAGES = [
 <h2>Why Book Direct</h2>
 <p>Booking directly at <a href="/collection">solmarestays.com</a> costs less than the same property on Airbnb or Vrbo because there's no platform service fee. And you're dealing with a local team that answers in minutes if anything comes up on your weekend. <a href="/contact">Contact us</a> or call (805) 242-6411 if you want a recommendation for your group size.</p>`,
     faq: [
-      { q: "Where should families stay for Cal Poly graduation?", a: "Book early; SLO sells out for commencement. Monterey Heights Suite sleeps 4 within walking distance of Cal Poly and downtown SLO. For larger family groups, Avila Beach vacation rentals are about 20 minutes from campus, and Wine Country Estate in Arroyo Grande sleeps 14." },
+      { q: "Where should families stay for Cal Poly graduation?", a: "Book early; SLO sells out for commencement. Our Avila Beach vacation rentals are about 20 minutes from campus and most are 1-2 blocks from the sand, which turns the weekend into a beach trip wrapped around the ceremony. For larger family groups, Wine Country Estate in Arroyo Grande sleeps 14." },
       { q: "How far in advance should I book lodging for Cal Poly graduation?", a: "For June commencement, book by February. Fall commencement by October, September move-in by July. San Luis Obispo's hotel inventory is small and Cal Poly weekends reliably sell the town out with steep price spikes." },
       { q: "Is Avila Beach a good base for visiting Cal Poly?", a: "Yes. Avila Beach is about 20 minutes from campus, and staying there wraps a beach vacation around the campus visit. Solmaré Stays has 10 vacation rentals in Avila Beach, most 1-2 blocks from the sand." }
     ]
@@ -667,7 +663,7 @@ const PAGES = [
 </ul>
 <h2>Make It a Weekend</h2>
 <p>The hot springs pair naturally with everything else in town: a morning on <a href="/avila-beach">Avila's sheltered, south-facing beach</a>, lunch on the promenade, the <a href="/blog/things-to-do-avila-beach">Bob Jones Trail</a> by bike, wine tasting at the walkable downtown tasting rooms, then a soak as the sun drops.</p>
-<p>Our <a href="/avila-beach">Avila Beach vacation rentals</a> are 1-2 blocks from the beach and a short drive (or bike ride up the Bob Jones Trail) from both springs. <a href="/collection">Browse all 13 properties</a>. If you're planning a couples trip, ask us which ones have the best sunset views.</p>`,
+<p>Our <a href="/avila-beach">Avila Beach vacation rentals</a> are 1-2 blocks from the beach and a short drive (or bike ride up the Bob Jones Trail) from both springs. <a href="/collection">Browse all 12 properties</a>. If you're planning a couples trip, ask us which ones have the best sunset views.</p>`,
     faq: [
       { q: "Are there hot springs in Avila Beach?", a: "Yes, two. Sycamore Mineral Springs Resort offers private hillside hot tubs fed by natural mineral springs, booked by the hour (roughly $20-25 per person). Avila Hot Springs has a large family-friendly warm mineral pool with inexpensive day passes." },
       { q: "How much does Sycamore Mineral Springs cost?", a: "The private hillside hot tubs run roughly $20-25 per person per hour, varying by day and time. Weekend evening slots sell out in summer, so reserve at least a day or two ahead." },
@@ -746,7 +742,7 @@ const PAGES = [
 <li>Registering for TOT late and owing back taxes on months of stays.</li>
 </ul>
 <h2>Or: Have Someone Handle All of This</h2>
-<p>This is a meaningful part of what professional management is for. Solmaré Stays manages 13 vacation rentals across Avila Beach, Arroyo Grande, and San Luis Obispo. We operate inside these rules every day, keep licenses current, and handle TOT registration and remittance as part of <a href="/management">full-service management</a>.</p>
+<p>This is a meaningful part of what professional management is for. Solmaré Stays manages 12 vacation rentals across Avila Beach and Arroyo Grande. We operate inside these rules every day, keep licenses current, and handle TOT registration and remittance as part of <a href="/management">full-service management</a>.</p>
 <p>If you own a property on the Central Coast and want to know what compliant short-term renting would look like, and what the property could earn, <a href="/management">request a free revenue projection</a> or call (805) 242-6411.</p>`,
     faq: [
       { q: "Do I need a permit to rent my house short-term in SLO County?", a: "In most of San Luis Obispo County, yes. Unincorporated areas like Avila Beach require county licensing for vacation rentals; the city of San Luis Obispo broadly prohibits unhosted whole-home rentals in residential zones; Arroyo Grande has its own city permit process. Confirm your parcel's jurisdiction first; requirements differ sharply." },
@@ -931,7 +927,7 @@ function generatePage(page) {
 
 function loadEnv() {
   // Read .env.local too — the repo ships .env.local, not .env, so reading only
-  // .env meant local builds silently skipped all 13 property pages and produced
+  // .env meant local builds silently skipped all 12 property pages and produced
   // a sitemap missing them. Vercel is unaffected (it injects real env vars).
   const env = {};
   for (const name of ['.env', '.env.local']) {

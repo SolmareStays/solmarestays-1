@@ -67,13 +67,6 @@ const ownerReviews = [
     rating: 5,
     text: 'Solmaré Stays has done an amazing job managing Hummingbird House. The team handles all aspects of property management for me — bookings, cleaning, refilling supplies, and troubleshooting. The whole process is hands-off for me, and I get an organized revenue summary each month.',
   },
-  {
-    name: 'Michael H., Owner',
-    property: 'Monterey Heights | San Luis Obispo',
-    stats: ['+32% Revenue Growth', '+48% Guest Satisfaction'],
-    rating: 5,
-    text: "Switching to Solmaré was a game-changer for my property. Unlike my previous manager, the transparency here is unmatched—I finally know exactly how my home is performing and where every dollar goes. There is no 'black box,' just clear communication and significantly higher returns. Hands down the best management team on the Central Coast.",
-  },
 ];
 
 // Comprehensive Services - 5 Columns
@@ -311,7 +304,7 @@ const ForHomeownersPage = () => {
                   </h1>
                   <p className="text-base md:text-lg text-white/80 leading-relaxed mb-6 max-w-lg">
                     <span className="block font-serif text-lg md:text-xl text-white mb-2">
-                      Thirteen houses, chosen one at a time.
+                      Twelve houses, chosen one at a time.
                     </span>
                     Ten in Avila Beach, two in Arroyo Grande, one in San Luis Obispo. Same crew, same pricing engine, same person answering at nine at night.
                   </p>

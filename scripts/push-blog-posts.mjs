@@ -150,7 +150,7 @@ Several tasting rooms are walkable from our vacation rentals: Alapay Cellars, Pe
 
 ## Where to Stay
 
-All of our [Avila Beach vacation rentals](/avila-beach) are within walking distance of every restaurant on this list. [Browse all 13 properties](/collection) or [contact us](/contact) for recommendations based on your group size.
+All of our [Avila Beach vacation rentals](/avila-beach) are within walking distance of every restaurant on this list. [Browse all 12 properties](/collection) or [contact us](/contact) for recommendations based on your group size.
 `,
   },
   {
@@ -377,19 +377,13 @@ San Luis Obispo is a small city with limited hotel inventory, and Cal Poly weeke
 
 The families who have done this before book months ahead. If your student just told you a date, book your lodging this week.
 
-## Option 1: Stay Walking Distance from Campus
-
-Our **Monterey Heights Suite** is a 2-bedroom, 1-bath suite that sleeps 4, with a private patio and kitchenette, within walking distance of both Cal Poly and downtown San Luis Obispo. For a graduation weekend that means: no fighting for campus parking, walk to the ceremony, walk downtown for the celebration dinner, and a real kitchen for the morning of.
-
-It starts around $140 a night in normal season. [Check dates and pricing here](/san-luis-obispo).
-
-## Option 2: Stay at the Beach, Drive 20 Minutes
+## Stay at the Beach, Drive 20 Minutes
 
 Here's the local secret: **Avila Beach is about 20 minutes from campus.** Families who book our [Avila Beach vacation rentals](/avila-beach) get a beach vacation wrapped around the ceremony: morning on the sand, afternoon at commencement, dinner on the promenade. For multi-day trips (move-in especially), the beach base is the better trip.
 
 Most of our 10 Avila Beach properties are 1-2 blocks from the sand, ranging from couples studios to two-bedroom beach houses.
 
-## Option 3: Bring the Whole Family
+## Bring the Whole Family
 
 Graduations pull grandparents, siblings, and partners into one trip. For big family groups, our **Wine Country Estate** in Arroyo Grande sleeps 14 across a private 13-acre property with a pool and hot tub, about 20 minutes from campus. One house, one kitchen, one celebration, instead of coordinating four hotel rooms. [See group options](/group-stays).
 
@@ -485,7 +479,7 @@ At the Highway 101 end of Avila Beach Drive, Avila Hot Springs is the casual, fa
 
 The hot springs pair naturally with everything else in town: a morning on [Avila's sheltered, south-facing beach](/avila-beach), lunch on the promenade, the [Bob Jones Trail](/blog/things-to-do-avila-beach) by bike, wine tasting at the walkable downtown tasting rooms, then a soak as the sun drops.
 
-Our [Avila Beach vacation rentals](/avila-beach) are 1-2 blocks from the beach and a short drive (or bike ride up the Bob Jones Trail) from both springs. [Browse all 13 properties](/collection). If you're planning a couples trip, ask us which ones have the best sunset views.
+Our [Avila Beach vacation rentals](/avila-beach) are 1-2 blocks from the beach and a short drive (or bike ride up the Bob Jones Trail) from both springs. [Browse all 12 properties](/collection). If you're planning a couples trip, ask us which ones have the best sunset views.
 `,
   },
   {
@@ -585,7 +579,7 @@ Every short-term stay in the county collects lodging tax from guests, and the to
 
 ## Or: Have Someone Handle All of This
 
-This is a meaningful part of what professional management is for. Solmaré Stays manages 13 vacation rentals across Avila Beach, Arroyo Grande, and San Luis Obispo. We operate inside these rules every day, keep licenses current, and handle TOT registration and remittance as part of [full-service management](/management).
+This is a meaningful part of what professional management is for. Solmaré Stays manages 12 vacation rentals across Avila Beach and Arroyo Grande. We operate inside these rules every day, keep licenses current, and handle TOT registration and remittance as part of [full-service management](/management).
 
 If you own a property on the Central Coast and want to know what compliant short-term renting would look like, and what the property could earn, [request a free revenue projection](/management) or call (805) 242-6411.
 `,
@@ -600,7 +594,7 @@ const COVERS = {
   'avila-beach-property-management': { ref: 'image-063cada11c8b8dafca80c174ffbadf9c73874d0a-1350x900-jpg', alt: "Rooftop terrace of an Avila Beach vacation rental overlooking the pier and bay" },
   'avila-beach-vs-pismo-beach': { ref: 'image-01856c5c7e33b6a688fa481e0ba86c3576231907-1280x958-jpg', alt: "Aerial view of Avila Beach, the estuary, and the surrounding hills" },
   'best-restaurants-avila-beach': { ref: 'image-22b280271c99f9f76baec85856df422be09a82b2-1280x958-jpg', alt: "The Avila Beach pier stretching over turquoise water" },
-  'cal-poly-graduation-where-to-stay': { ref: 'image-6991a88cc07c5dc6aafbff9b161f2bb69cc51c91-1350x900-jpg', alt: "Private patio with bistro seating at the Monterey Heights Suite in San Luis Obispo" },
+  'cal-poly-graduation-where-to-stay': { ref: 'image-6991a88cc07c5dc6aafbff9b161f2bb69cc51c91-1350x900-jpg', alt: "Private patio with bistro seating at an Avila Beach bungalowghts Suite in San Luis Obispo" },
   'large-group-vacation-rentals-central-coast': { ref: 'image-57be41d873e99cbf59c64ffc37fa6a2c66f153f9-1280x958-jpg', alt: "Aerial view of the Wine Country Estate in Arroyo Grande" },
   'pet-friendly-vacation-rentals-avila-beach': { ref: 'image-7e8f7d7a7ca8f61c2b25f43cd15c39ab34a21879-1350x900-jpg', alt: "Blue beach cottage exterior with a wooden deck in Avila Beach" },
   'slo-county-short-term-rental-rules': { ref: 'image-6b2801964c53c5d22aa2b3a14bdeabc191b85106-1349x900-jpg', alt: "Wood-clad farmhouse at dusk in Arroyo Grande" },

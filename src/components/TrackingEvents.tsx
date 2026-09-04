@@ -8,7 +8,7 @@ import { trackMetaEvent } from "@/lib/track";
 const PROPERTY_IDS: Record<string, string> = {
   "emberlight": "335975", "the-deckhouse": "335976", "the-nest": "335977",
   "shoreline-suite": "335978", "casa-azul": "335979", "la-casita": "335980",
-  "hummingbird-house": "391355", "monterey-heights-suite": "400378",
+  "hummingbird-house": "391355",
   "the-palm-house": "429263", "the-pine-house": "429264",
   "the-coral-house": "434918", "wine-country-estate": "504852",
   "flora-farm-cottage": "512768",

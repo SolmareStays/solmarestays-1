@@ -40,11 +40,12 @@ export const REVIEWS = {
 } as const;
 
 export const PORTFOLIO = {
-  /** Live Hostaway listings. Verified 13 'listed' on 2026-08-17. */
-  properties: 13,
+  /** Live Hostaway listings. Verified 12 'listed' on 2026-09-04 (Monterey Heights
+   *  left the portfolio; it was the only San Luis Obispo *city* property). */
+  properties: 12,
   avilaBeach: 10,
   arroyoGrande: 2,
-  sanLuisObispo: 1,
+  sanLuisObispo: 0,
 } as const;
 
 /**

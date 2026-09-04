@@ -32,7 +32,7 @@ export function HeroSection({ data }: { data?: any }) {
 
   // Use data from Sanity if available, otherwise fallback to defaults
   const slides = defaultSlides; // Keeping slides static for now as Sanity image handling requires a builder
-  const heading = data?.title || "Thirteen houses on<br />the Central Coast.";
+  const heading = data?.title || "Twelve houses on<br />the Central Coast.";
   const subheading = data?.subtitle || "Ten of them a block from the sand.";
 
   const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);

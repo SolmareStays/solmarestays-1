@@ -1,6 +1,6 @@
 # Solmaré Stays — Full Reference
 
-> Boutique vacation rental management and direct booking on California's Central Coast. 13 properties across Avila Beach, Arroyo Grande, and San Luis Obispo.
+> Boutique vacation rental management and direct booking on California's Central Coast. 12 properties across Avila Beach and Arroyo Grande, in San Luis Obispo County.
 
 This file provides detailed, structured information for AI systems, search engines, and
 autonomous agents. Canonical site: https://www.solmarestays.com
@@ -10,13 +10,13 @@ autonomous agents. Canonical site: https://www.solmarestays.com
 ## What is Solmaré Stays?
 
 Solmaré Stays is a boutique vacation rental management company based in Avila Beach,
-California. It manages 13 short-term rental properties on California's Central Coast on
+California. It manages 12 short-term rental properties on California's Central Coast on
 behalf of homeowners, and rents those same properties directly to travelers through
 solmarestays.com. Homeowners retain ownership; Solmaré handles all operations.
 
 **Contact:** (805) 242-6411 · kyle@solmarestays.com
 **Service area:** Avila Beach, Pismo Beach, Shell Beach, Arroyo Grande, San Luis Obispo (San Luis Obispo County, California)
-**Track record:** 1,541 guest reviews across the 13 properties, averaging 9.6/10 (4.8/5). Figures verified 2026-08-08 and cover Airbnb, Vrbo, and Google.
+**Track record:** 1,541 guest reviews across the portfolio, averaging 9.6/10 (4.8/5). Figures verified 2026-08-08 and cover Airbnb, Vrbo, and Google.
 
 ---
 
@@ -82,7 +82,7 @@ continuously rather than seasonally.
 
 ### What makes Solmaré different from a large management company?
 
-Solmaré manages 13 properties, all within roughly 20 miles of Avila Beach. The team
+Solmaré manages 12 properties, all within roughly 20 miles of Avila Beach. The team
 lives in the service area, which means same-day response to guest and maintenance
 issues, in-person property inspections between every stay, and direct owner access
 rather than a regional account manager. It is a boutique portfolio, not a franchise.
@@ -122,19 +122,13 @@ demand. Guest ratings are averages across Airbnb, Vrbo, and Google, expressed ou
 | Wine Country Estate | 5 | 5 | 14 | $2,500 | 10 | Solar-heated pool, hot tub, 4 casitas, pet friendly on request, whole-estate only |
 | Flora Farm Cottage | 2 | 2 | 4 | $275 | 9.3 | Hot tub, creek, fresh eggs, working farm |
 
-### San Luis Obispo (1 property)
-
-| Property | Beds | Baths | Sleeps | From | Rating | Notable |
-|---|---|---|---|---|---|---|
-| Monterey Heights Suite | 2 | 1 | 4 | $140 | 9.8 | Walk to Cal Poly SLO and downtown |
-
 ---
 
 ## Booking channels
 
 Solmaré properties are listed on Airbnb, Vrbo, and Google Vacation Rentals. The Coral
 House is additionally listed on Booking.com. Direct booking at solmarestays.com is
-available for all 13 properties and is the lowest-cost channel because it carries no
+available for all 12 properties and is the lowest-cost channel because it carries no
 platform guest service fee.
 
 ---
@@ -144,7 +138,7 @@ platform guest service fee.
 | URL | Purpose |
 |---|---|
 | https://www.solmarestays.com/ | Homepage |
-| https://www.solmarestays.com/collection | All 13 properties |
+| https://www.solmarestays.com/collection | All 12 properties |
 | https://www.solmarestays.com/property/{slug} | Individual property detail |
 | https://www.solmarestays.com/avila-beach | Avila Beach properties and area guide |
 | https://www.solmarestays.com/arroyo-grande | Arroyo Grande / wine country |

@@ -20,7 +20,7 @@ const faqs = [
   },
   {
     question: 'How far is San Luis Obispo from the beach?',
-    answer: 'San Luis Obispo is approximately 10-15 minutes from Avila Beach and 15 minutes from Pismo Beach by car. This makes it an excellent home base for guests who want to split their time between the beach and the vibrant downtown scene. Our properties in SLO and the surrounding area give you easy access to multiple beaches along the Central Coast.',
+    answer: 'San Luis Obispo is approximately 10-15 minutes from Avila Beach and 15 minutes from Pismo Beach by car. This makes it an excellent home base for guests who want to split their time between the beach and the vibrant downtown scene. Our houses are in Avila Beach and Arroyo Grande, so the beach is on your doorstep and downtown SLO is the short drive.',
   },
   {
     question: 'When is the SLO Farmers Market?',
@@ -58,19 +58,19 @@ const locationSchema = {
   '@type': 'LodgingBusiness',
   name: 'Solmaré Stays - San Luis Obispo Vacation Rentals',
   description:
-    'Vacation rentals in San Luis Obispo, California. Explore downtown SLO, Cal Poly, wine country, and the Central Coast beaches from professionally managed homes.',
+    'Vacation rentals in San Luis Obispo County, California. Professionally managed homes in Avila Beach and Arroyo Grande, 10-20 minutes from downtown SLO, Cal Poly, and Edna Valley wine country.',
   url: 'https://www.solmarestays.com/san-luis-obispo',
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'San Luis Obispo',
+    addressLocality: 'Avila Beach',
     addressRegion: 'CA',
-    postalCode: '93401',
+    postalCode: '93424',
     addressCountry: 'US',
   },
   geo: {
     '@type': 'GeoCoordinates',
-    latitude: 35.2828,
-    longitude: -120.6596,
+    latitude: 35.1803,
+    longitude: -120.7319,
   },
 };
 
@@ -117,13 +117,13 @@ const SanLuisObispoPage = () => {
   const { data: properties = [], isLoading } = useProperties();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  // Show SLO-area properties, plus nearby Avila properties
+  // No SLO *city* property since Monterey Heights left the portfolio (2026-09).
+  // The fallback below is now the normal path: show the whole SLO County portfolio.
   const sloProperties = useMemo(() => {
     return properties.filter(
       (p) =>
         p.location.toLowerCase().includes('san luis') ||
-        p.location.toLowerCase().includes('slo') ||
-        p.location.toLowerCase().includes('monterey heights')
+        p.location.toLowerCase().includes('slo')
     );
   }, [properties]);
 
@@ -134,7 +134,7 @@ const SanLuisObispoPage = () => {
     <div className="min-h-screen bg-background">
       <SEO
         title="San Luis Obispo Vacation Rentals"
-        description="Book vacation rentals in San Luis Obispo, California. Explore downtown SLO, Cal Poly, wine country, and the Central Coast beaches. Professionally managed homes with best rate guarantee."
+        description="Book vacation rentals near San Luis Obispo, California. Professionally managed homes in Avila Beach and Arroyo Grande, 10-20 minutes from downtown SLO, Cal Poly, and Edna Valley wine country."
         schema={locationSchema}
         breadcrumbs={[
           { name: 'Home', url: 'https://www.solmarestays.com' },
@@ -159,8 +159,8 @@ const SanLuisObispoPage = () => {
                 San Luis Obispo Vacation Rentals
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl">
-                Stay in one of California's happiest cities. Downtown dining, world-class wine country, and beach access
-                in every direction — all from the heart of the Central Coast.
+                One of California's happiest cities, and our beach houses are ten minutes from it. Downtown dining,
+                world-class wine country, and the sand at your doorstep.
               </p>
               <div className="flex flex-wrap gap-4 mt-8">
                 <Button variant="default" size="lg" asChild>
@@ -210,8 +210,8 @@ const SanLuisObispoPage = () => {
                     For travelers, San Luis Obispo is an ideal base for exploring the Central Coast. The city sits at the
                     intersection of Highway 101 and Highway 1, putting you within easy reach of Avila Beach (10 minutes),
                     Pismo Beach (15 minutes), Morro Bay (20 minutes), Paso Robles wine country (30 minutes), and even
-                    Hearst Castle and Big Sur (60-90 minutes). Our San Luis Obispo vacation rentals let you enjoy the
-                    best of the city while keeping the entire Central Coast at your doorstep.
+                    Hearst Castle and Big Sur (60-90 minutes). Our houses sit just outside the city in Avila Beach and
+                    Arroyo Grande, which puts the best of SLO within a short drive and the beach within a short walk.
                   </p>
                 </div>
               </motion.div>
@@ -337,15 +337,15 @@ const SanLuisObispoPage = () => {
                     regions with over 200 wineries and a charming downtown square. Known for bold Rhone varietals like
                     syrah and grenache, as well as powerful cabernet sauvignon and zinfandel, Paso Robles offers a more
                     rustic, agricultural wine country experience compared to Napa Valley — with prices to match. Many
-                    guests plan day trips to Paso Robles and return to their San Luis Obispo vacation rental in the evening.
+                    guests plan day trips to Paso Robles and return to the coast in the evening.
                   </p>
                   <p>
                     Cal Poly San Luis Obispo, California Polytechnic State University, adds a vibrant dimension to the
                     city. The campus itself is beautiful, set against the hills with gardens, organic farms, and
                     architectural landmarks. Cal Poly regularly hosts cultural events, sporting events, lectures, and
-                    performances that are open to the public. Parents visiting students will find our SLO vacation rentals
-                    far more comfortable and private than hotel rooms, especially during busy weekends like graduation,
-                    parents' weekend, and homecoming.
+                    performances that are open to the public. Parents visiting students will find our Avila Beach houses
+                    — about fifteen minutes from campus — far more comfortable and private than hotel rooms, especially
+                    during busy weekends like graduation, parents' weekend, and homecoming.
                   </p>
                 </div>
               </motion.div>
@@ -353,7 +353,7 @@ const SanLuisObispoPage = () => {
           </div>
         </section>
 
-        {/* Monterey Heights Feature */}
+        {/* Where you actually stay */}
         <section className="section-padding bg-background">
           <div className="container mx-auto px-4 md:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -364,26 +364,25 @@ const SanLuisObispoPage = () => {
                 transition={{ duration: 0.8 }}
               >
                 <h2 className="font-serif text-3xl md:text-4xl font-semibold text-foreground mb-6">
-                  Our San Luis Obispo Neighborhood: Monterey Heights
+                  Where You'll Stay: Avila Beach & Arroyo Grande
                 </h2>
                 <div className="prose prose-lg text-muted-foreground space-y-5 leading-relaxed">
                   <p>
-                    Our San Luis Obispo vacation rental is located in the desirable Monterey Heights neighborhood, a
-                    quiet, residential area with easy access to both downtown SLO and the beach communities. Monterey
-                    Heights is known for its tree-lined streets, friendly neighbors, and proximity to hiking trails
-                    including the popular Cerro San Luis (Madonna Mountain) trail.
+                    Our homes are not in downtown San Luis Obispo — they are 10 to 20 minutes away, in Avila Beach and
+                    Arroyo Grande. We think that is the better trade. You get the beach at your doorstep and quiet
+                    residential streets at night, and SLO stays a short, easy drive for dinner on Higuera Street or the
+                    Thursday Night Farmers Market.
                   </p>
                   <p>
-                    From Monterey Heights, you are a quick drive to downtown Higuera Street for dining and the Thursday
-                    Night Farmers Market, 10-15 minutes to Avila Beach for sand and surf, and perfectly positioned to
-                    explore wine country in the Edna Valley or Paso Robles. The neighborhood is peaceful and family-friendly,
-                    offering the kind of relaxed home base that hotels simply cannot match.
+                    Ten of our houses sit in Avila Beach, most within a block or two of the sand and about ten minutes
+                    from downtown SLO. Two more are in the Arroyo Grande wine country, roughly twenty minutes out, including
+                    a private estate that sleeps fourteen. Whichever you choose, Edna Valley, Bishop Peak, Cal Poly, and
+                    Pismo Beach are all within a short drive.
                   </p>
                   <p>
-                    Like all Solmaré Stays properties, our San Luis Obispo home is professionally managed to hotel-quality
-                    standards. Expect a spotless home, premium linens, a fully equipped kitchen, and a digital guidebook
-                    packed with our personal recommendations for the best restaurants, hikes, wineries, and hidden gems
-                    in the area.
+                    Every Solmaré Stays home is professionally managed to hotel-quality standards. Expect a spotless
+                    house, premium linens, a fully equipped kitchen, and a digital guidebook packed with our personal
+                    recommendations for the best restaurants, hikes, wineries, and hidden gems in the area.
                   </p>
                 </div>
               </motion.div>

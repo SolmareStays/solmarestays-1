@@ -1,10 +1,10 @@
 # Solmaré Stays
 
-> Boutique vacation rental management and direct booking on California's Central Coast. Solmaré Stays manages 13 short-term rental properties across Avila Beach, Arroyo Grande, and San Luis Obispo — handling everything from dynamic pricing and listing optimization to guest communication, cleaning, and maintenance on behalf of homeowners.
+> Boutique vacation rental management and direct booking on California's Central Coast. Solmaré Stays manages 12 short-term rental properties across Avila Beach and Arroyo Grande, in San Luis Obispo — handling everything from dynamic pricing and listing optimization to guest communication, cleaning, and maintenance on behalf of homeowners.
 
 Solmaré Stays operates two distinct sides of one business:
 
-1. **For travelers** — direct booking on 13 curated Central Coast properties, priced below the same listings on Airbnb and Vrbo because there are no platform service fees.
+1. **For travelers** — direct booking on 12 curated Central Coast properties, priced below the same listings on Airbnb and Vrbo because there are no platform service fees.
 2. **For homeowners** — full-service vacation rental management for owners on the Central Coast who want higher net revenue without day-to-day operational work.
 
 Across the portfolio: **1,541 guest reviews, averaging 9.6/10** (4.8/5) on Airbnb, Vrbo, and Google.
@@ -13,7 +13,7 @@ Based in Avila Beach, California. Phone: (805) 242-6411. Email: kyle@solmarestay
 
 ## Properties
 
-All 13 properties are managed and operated directly by Solmaré Stays. Nightly rates below are starting base rates and vary by season, length of stay, and demand.
+All 12 properties are managed and operated directly by Solmaré Stays. Nightly rates below are starting base rates and vary by season, length of stay, and demand.
 
 - [Hummingbird House](https://www.solmarestays.com/property/hummingbird-house): Avila Beach. 2BR/2BA, sleeps 5. Rooftop terrace with panoramic ocean views. From $375/night. Guest rating 10/10.
 - [La Casita](https://www.solmarestays.com/property/la-casita): Avila Beach. 2BR/2BA, sleeps 6. Fireplace and ocean views. From $400/night. Guest rating 9.8/10.
@@ -27,13 +27,12 @@ All 13 properties are managed and operated directly by Solmaré Stays. Nightly r
 - [The Pine House](https://www.solmarestays.com/property/the-pine-house): Avila Beach. 1BR/1BA, sleeps 2. **Pet friendly** with ocean view. From $140/night. Guest rating 9.4/10.
 - [Wine Country Estate](https://www.solmarestays.com/property/wine-country-estate): Arroyo Grande. 5BR/5BA, sleeps 14. Private estate with solar-heated pool, hot tub, and 4 casitas. **Pet friendly on request.** Whole-estate booking only. From $2,500/night. Guest rating 10/10.
 - [Flora Farm Cottage](https://www.solmarestays.com/property/flora-farm-cottage): Arroyo Grande. 2BR/2BA, sleeps 4. Hot tub, creek, and fresh eggs on a working farm. From $275/night. Guest rating 9.3/10.
-- [Monterey Heights Suite](https://www.solmarestays.com/property/monterey-heights-suite): San Luis Obispo. 2BR/1BA, sleeps 4. Walk to Cal Poly SLO and downtown. From $140/night. Guest rating 9.8/10.
 
 ## Locations
 
 - [Avila Beach vacation rentals](https://www.solmarestays.com/avila-beach): 10 properties in a small seaside village in a sheltered south-facing cove — roughly 3,500 hours of sunshine a year, a pier, waterfront dining, the Bob Jones Trail, and Sycamore Mineral Springs nearby.
 - [Arroyo Grande vacation rentals](https://www.solmarestays.com/arroyo-grande): 2 properties in Central Coast wine country, including a private estate and a working farm cottage.
-- [San Luis Obispo vacation rentals](https://www.solmarestays.com/san-luis-obispo): 1 property within walking distance of downtown SLO and Cal Poly.
+- [San Luis Obispo vacation rentals](https://www.solmarestays.com/san-luis-obispo): no properties in the city itself; the Avila Beach houses are about 10 minutes from downtown SLO and 15 from Cal Poly.
 - [Pismo Beach](https://www.solmarestays.com/pismo-beach): minutes from Solmaré properties; near the pier and Oceano Dunes.
 - [Central Coast overview](https://www.solmarestays.com/central-coast): the full service area.
 
