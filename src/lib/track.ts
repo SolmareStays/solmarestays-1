@@ -16,7 +16,7 @@ type TrackOptions = {
 };
 
 export function trackMetaEvent(
-  eventName: 'Lead' | 'ViewContent' | 'InitiateCheckout' | 'Purchase',
+  eventName: 'Lead' | 'ViewContent' | 'InitiateCheckout' | 'Purchase' | 'PageView',
   customData: Record<string, unknown> = {},
   options: TrackOptions = {},
 ) {

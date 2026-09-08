@@ -30,8 +30,16 @@ export function TrackingEvents() {
     if (path === lastTracked.current) return;
     lastTracked.current = path;
 
-    // Fire PageView on every SPA navigation (index.html only fires on initial load)
-    window.fbq?.("track", "PageView");
+    // PageView fires here for EVERY navigation including the first — index.html
+    // deliberately no longer fires it, because that copy was browser-only and
+    // the two together double-counted the initial load.
+    //
+    // 🔴 This must go through trackMetaEvent, not raw fbq: the website Custom
+    // Audience is built on the ALL_VISITORS pixel rule, i.e. PageView, so this
+    // was the one event that populates the retargeting pool and the one event
+    // with no server-side copy. Blockers and iOS ate it and the audience sat at
+    // 20 people. trackMetaEvent dual-fires browser + CAPI on one event_id.
+    trackMetaEvent("PageView", { page_path: path });
     window.gtag?.("event", "page_view", { page_path: path });
 
     const slug = path.replace(/^\//, "").replace(/\/$/, "");

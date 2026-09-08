@@ -28,7 +28,10 @@
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '882294231450852');
-    fbq('track', 'PageView');
+    // PageView is fired by TrackingEvents.tsx via trackMetaEvent, not here.
+    // Firing it in both places double-counted every initial page load, and this
+    // copy was browser-only — no event_id and no Conversions API pair, which is
+    // what starved the website Custom Audience. Do not restore it.
   </script>
   <!-- Google Analytics (GA4) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-YHD5N75Q4M"></script>
