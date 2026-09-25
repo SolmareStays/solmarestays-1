@@ -939,10 +939,17 @@ function generatePage(page) {
     // ⚠ Keep the srcset byte-identical to the <picture> in the matching page component
     // and to the preload in index.html. Three copies, one truth — if they drift the
     // browser downloads the hero twice and this optimisation inverts.
+    // ⚠ The static hero must match the HYDRATED hero's painted box, not just appear
+    // early. First attempt rendered it inside the 900px padded column at height:auto,
+    // so on mobile it painted ~275px tall while the React hero is 82vh (~730px). That
+    // hands Lighthouse a LARGER candidate once React mounts, and LCP simply moves to
+    // the later paint — 10.3s only fell to 7.8s. Full-bleed + h:82vh + object-fit:cover
+    // reproduces the component's box exactly, so the early paint IS the largest one and
+    // hydration introduces no new candidate.
     const hero = page.heroImage
-      ? `<picture><source type="image/avif" srcset="${page.heroImage.avif}" sizes="100vw"><img src="${page.heroImage.fallback}" alt="${page.heroImage.alt}" width="1280" height="853" fetchpriority="high" decoding="async" style="width:100%;height:auto;display:block;margin:0 0 2rem"></picture>`
+      ? `<picture><source type="image/avif" srcset="${page.heroImage.avif}" sizes="100vw"><img src="${page.heroImage.fallback}" alt="${page.heroImage.alt}" width="1280" height="853" fetchpriority="high" decoding="async" style="width:100%;height:82vh;min-height:550px;object-fit:cover;display:block"></picture>`
       : '';
-    const seoContent = `<div id="root"><div style="max-width:900px;margin:0 auto;padding:2rem;font-family:system-ui,sans-serif;color:#1a1a1a">${hero}<h1>${page.h1 || ''}</h1>${page.body || ''}<p><a href="${BASE_URL}">← Back to Solmaré Stays</a> | <a href="tel:+18052426411">(805) 242-6411</a></p></div></div>`;
+    const seoContent = `<div id="root">${hero}<div style="max-width:900px;margin:0 auto;padding:2rem;font-family:system-ui,sans-serif;color:#1a1a1a"><h1>${page.h1 || ''}</h1>${page.body || ''}<p><a href="${BASE_URL}">← Back to Solmaré Stays</a> | <a href="tel:+18052426411">(805) 242-6411</a></p></div></div>`;
     html = html.replace(/<div id="root"><\/div>/, seoContent);
   }
 
