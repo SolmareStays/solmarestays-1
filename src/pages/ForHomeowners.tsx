@@ -2,7 +2,7 @@ import { motion, useInView } from 'framer-motion';
 import { usePage } from '@/hooks/useSanityContent';
 import { SanitySectionRenderer } from '@/components/sanity/SanitySectionRenderer';
 import { useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { SEO } from '@/components/SEO';
@@ -13,7 +13,6 @@ import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
 import { Turnstile } from '@/components/Turnstile';
 import { TrendingUp, Shield, Users, BarChart3, Calendar, Headphones, Check, Star, Quote, Send } from 'lucide-react';
-import homeownersHeroImage from '/homeowners/management-hero.jpg';
 import { trackMetaEvent } from '@/lib/track';
 
 
@@ -118,6 +117,7 @@ const serviceCategories = [
 ];
 
 const OwnerLeadForm = () => {
+  const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({
@@ -175,11 +175,12 @@ const OwnerLeadForm = () => {
           window.gtag?.('event', 'generate_lead', { event_category: 'owner' });
         }
         setIsSubmitted(true);
-        toast.success("We'll be in touch within 24 hours with your revenue projection.");
-        setTimeout(() => {
-          setIsSubmitted(false);
-          setFormData({ name: '', email: '', phone: '', propertyLocation: '', message: '' });
-        }, 4000);
+        setFormData({ name: '', email: '', phone: '', propertyLocation: '', message: '' });
+        // Navigate to a real URL. The Lead / generate_lead events above are the
+        // primary signal, but a conversion that only exists as a JS event has no
+        // fallback — and the Google Ads WEBPAGE action "Owner — Lead Form Submit"
+        // needs a URL to match, which an in-place toast never gave it.
+        navigate('/management/thanks');
       } else {
         throw new Error('Submission failed');
       }
@@ -232,8 +233,29 @@ const OwnerLeadForm = () => {
         {isSubmitted ? (<><Check className="w-5 h-5 mr-2" /> Sent! We'll be in touch.</>) : isSubmitting ? (<>Sending...</>) : (<><Send className="w-5 h-5 mr-2" /> Get My Free Revenue Projection</>)}
       </Button>
 
+      {/* The Owner ads sell the phone — "No Call Center. My Cell." — and until
+          2026-09-24 this was the one response channel with zero instrumentation on
+          either platform. A tap here is owner intent and counts as a Lead, same as a
+          form submit: there is no weaker interpretation of someone dialling a
+          property manager from the management page. */}
       <p className="text-center text-xs text-muted-foreground">
-        Or call us directly at <a href="tel:+18052426411" className="text-ocean hover:underline">(805) 242-6411</a>
+        Or call us directly at{' '}
+        <a
+          href="tel:+18052426411"
+          className="text-ocean hover:underline"
+          onClick={() => {
+            trackMetaEvent('Lead', {
+              content_name: 'phone_click',
+              content_category: 'owner',
+            });
+            window.gtag?.('event', 'generate_lead', {
+              event_category: 'owner',
+              method: 'phone_click',
+            });
+          }}
+        >
+          (805) 242-6411
+        </a>
       </p>
     </form>
   );
@@ -275,15 +297,44 @@ const ForHomeownersPage = () => {
           <>
             {/* SECTION 1: Hero */}
             <section ref={heroRef} className="relative h-[82vh] min-h-[550px] flex items-center overflow-hidden">
-              <div className="absolute inset-0">
-                <motion.img
-                  src={homeownersHeroImage}
-                  alt="Coastal property"
-                  className="w-full h-full object-cover"
-                  initial={{ scale: 1.1 }}
-                  animate={{ scale: 1 }}
-                  transition={{ duration: 1.5, ease: "easeOut" }}
-                />
+              {/* 🔴 LCP element. Measured 9.5s on mobile 2026-09-24, which is why every
+                  Owner keyword scored post_click_quality_score = BELOW_AVERAGE, QS 1-3 and
+                  a $2.49 CPC while /avila-beach (3.6s) scored QS 8-10. Three rules here:
+
+                  1. Plain <img> inside <picture>, never motion.img. framer-motion defers
+                     the element past hydration, so the preload scanner never sees it.
+                     The zoom is CSS (hero-zoom) and animates the wrapper instead.
+                  2. fetchpriority="high" + eager. This is the one image on the page that
+                     must not wait behind anything.
+                  3. AVIF first, then WebP, then JPEG. 768w AVIF is 39KB against the old
+                     329KB single JPEG. Regenerate from public/_originals/homeowners/ if
+                     the art changes — do not ship a bare .jpg back into this slot.
+
+                  index.html injects a matching rel=preload for /management during HTML
+                  parse, before React boots. Keep the srcset in the two files in sync. */}
+              <div className="absolute inset-0 hero-zoom">
+                <picture>
+                  <source
+                    type="image/avif"
+                    srcSet="/homeowners/management-hero-768.avif 768w, /homeowners/management-hero-1280.avif 1280w, /homeowners/management-hero-1920.avif 1920w"
+                    sizes="100vw"
+                  />
+                  <source
+                    type="image/webp"
+                    srcSet="/homeowners/management-hero-768.webp 768w, /homeowners/management-hero-1280.webp 1280w, /homeowners/management-hero-1920.webp 1920w"
+                    sizes="100vw"
+                  />
+                  <img
+                    src="/homeowners/management-hero-1280.jpg"
+                    alt="Coastal property managed by Solmaré Stays in Avila Beach"
+                    className="w-full h-full object-cover"
+                    width={1280}
+                    height={853}
+                    fetchPriority="high"
+                    loading="eager"
+                    decoding="async"
+                  />
+                </picture>
               </div>
 
               <div className="absolute bottom-6 left-6 md:bottom-[55%] md:-translate-y-[-50%] md:left-16 w-[calc(100%-3rem)] md:w-auto bg-white/10 backdrop-blur-md p-6 md:p-10 rounded-[2rem] shadow-2xl border border-white/15">
@@ -306,7 +357,13 @@ const ForHomeownersPage = () => {
                     <span className="block font-serif text-lg md:text-xl text-white mb-2">
                       Twelve houses, chosen one at a time.
                     </span>
-                    Ten in Avila Beach, two in Arroyo Grande, one in San Luis Obispo. Same crew, same pricing engine, same person answering at nine at night.
+                    {/* 🔴 Read the count before editing: ten + two = twelve, and it must
+                        match config.py:PROPERTY_MAP. This line said "one in San Luis Obispo"
+                        until 2026-09-24 — a leftover from Monterey Heights, which left the
+                        portfolio on 9/4 — so the breakdown summed to thirteen while the
+                        sentence above it said twelve, on the landing page every Owner ad
+                        points at. */}
+                    Ten in Avila Beach, two in Arroyo Grande. Same crew, same pricing engine, same person answering at nine at night.
                   </p>
                   <div className="flex flex-wrap gap-4">
                     <Button variant="default" size="xl" asChild>

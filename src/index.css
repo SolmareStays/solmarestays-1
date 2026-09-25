@@ -360,3 +360,22 @@
   text-decoration-color: hsl(var(--destructive)) !important;
   color: hsl(var(--muted-foreground)) !important;
 }
+
+/* Hero zoom for the /management LCP image.
+   This replaces a framer-motion `initial={{scale:1.1}} animate={{scale:1}}` on the
+   <img> itself. Animating the wrapper in CSS keeps the <img> a plain, preload-
+   discoverable element — motion.img deferred it past hydration and was a large part
+   of the 9.5s LCP measured on 2026-09-24. Do not move this back onto the image. */
+.hero-zoom {
+  animation: hero-zoom-in 1.5s ease-out both;
+  will-change: transform;
+}
+
+@keyframes hero-zoom-in {
+  from { transform: scale(1.1); }
+  to   { transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-zoom { animation: none; }
+}

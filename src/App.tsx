@@ -32,6 +32,9 @@ const PismoBeach = lazy(() => import("./pages/locations/PismoBeach"));
 const SanLuisObispo = lazy(() => import("./pages/locations/SanLuisObispo"));
 const CentralCoast = lazy(() => import("./pages/locations/CentralCoast"));
 const ArroyoGrande = lazy(() => import("./pages/locations/ArroyoGrande"));
+// Conversion endpoints. Both forms navigate here on a successful submit so the
+// Google Ads WEBPAGE action has a URL to match — see src/pages/ThankYou.tsx.
+const ThankYou = lazy(() => import("./pages/ThankYou"));
 
 const queryClient = new QueryClient();
 
@@ -62,6 +65,8 @@ const App = () => (
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/:slug" element={<BlogPost />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/management/thanks" element={<ThankYou />} />
+                <Route path="/contact/thanks" element={<ThankYou />} />
                 <Route path="/terms" element={<Terms />} />
                 <Route path="/privacy" element={<Privacy />} />
                 <Route path="/pet-friendly" element={<PetFriendly />} />

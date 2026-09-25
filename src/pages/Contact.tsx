@@ -1,6 +1,6 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { SEO } from '@/components/SEO';
@@ -74,6 +74,7 @@ const faqSchema = {
 };
 
 const ContactPage = () => {
+  const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({
@@ -159,13 +160,10 @@ const ContactPage = () => {
           window.gtag?.('event', 'generate_lead', { event_category: 'contact' });
         }
         setIsSubmitted(true);
-        toast.success('Message sent successfully! We\'ll be in touch soon.');
-
-        // Reset form after delay
-        setTimeout(() => {
-          setIsSubmitted(false);
-          setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-        }, 3000);
+        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+        // A real URL, not just local state — see src/pages/ThankYou.tsx. The Lead
+        // event above is still the primary signal; this is the durable fallback.
+        navigate('/contact/thanks');
       } else {
         throw new Error('Form submission failed');
       }

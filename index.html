@@ -11,6 +11,32 @@
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-TNTVKWNN');</script>
   <!-- End Google Tag Manager -->
+  <!-- Route-aware LCP preload. This is a client-rendered SPA, so the browser has
+       nothing to discover until React boots — on /management that cost ~9.5s of LCP
+       on mobile, which Google priced in as post_click_quality_score = BELOW_AVERAGE
+       on every Owner keyword (QS 1-3, $2.49 CPC). This runs during HTML parse and
+       starts the hero fetch before main.tsx is even requested.
+       ⚠ Keep the srcset identical to the <picture> in src/pages/ForHomeowners.tsx —
+       a mismatch makes the browser download the hero twice. -->
+  <script>
+    (function () {
+      var p = location.pathname.replace(/\/$/, '');
+      if (p !== '/management' && p !== '/for-homeowners') return;
+      var l = document.createElement('link');
+      l.rel = 'preload';
+      l.as = 'image';
+      l.type = 'image/avif';
+      l.setAttribute('imagesrcset',
+        '/homeowners/management-hero-768.avif 768w,' +
+        '/homeowners/management-hero-1280.avif 1280w,' +
+        '/homeowners/management-hero-1920.avif 1920w');
+      l.setAttribute('imagesizes', '100vw');
+      l.setAttribute('fetchpriority', 'high');
+      document.head.appendChild(l);
+    })();
+  </script>
+  <link rel="preconnect" href="https://connect.facebook.net" />
+  <link rel="preconnect" href="https://www.googletagmanager.com" />
   <link rel="icon" href="/favicon.ico" sizes="48x48" />
   <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
   <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />

@@ -40,6 +40,13 @@ interface SEOProps {
   type?: 'website' | 'article';
   schema?: Record<string, any>;
   breadcrumbs?: BreadcrumbItem[];
+  /**
+   * Keep the page out of the index. For conversion endpoints only — /management/thanks
+   * and /contact/thanks, which exist so the Google Ads WEBPAGE conversion action has a
+   * URL to match. A thank-you page that ranks is a thank-you page that fires the
+   * conversion for organic visitors who never filled the form in.
+   */
+  noindex?: boolean;
 }
 
 const SITE_URL = 'https://www.solmarestays.com';
@@ -143,7 +150,7 @@ function buildBreadcrumbSchema(breadcrumbs: BreadcrumbItem[]) {
   };
 }
 
-export function SEO({ title, absoluteTitle, description, image, type = 'website', schema, breadcrumbs }: SEOProps) {
+export function SEO({ title, absoluteTitle, description, image, type = 'website', schema, breadcrumbs, noindex }: SEOProps) {
   const location = useLocation();
   const siteTitle = 'Solmaré Stays';
   const fullTitle = absoluteTitle ?? `${title} | ${siteTitle}`;
@@ -160,6 +167,7 @@ export function SEO({ title, absoluteTitle, description, image, type = 'website'
       <title>{fullTitle}</title>
       <meta name="description" content={description || defaultDescription} />
       <link rel="canonical" href={canonicalUrl} />
+      {noindex && <meta name="robots" content="noindex, nofollow" />}
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={type} />
