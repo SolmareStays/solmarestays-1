@@ -1,5 +1,5 @@
 import { motion, AnimatePresence, useInView } from 'framer-motion';
-import { useRef, useState, useMemo } from 'react';
+import { useRef, useState, useMemo, lazy, Suspense } from 'react';
 import avilaImg from '/home/avila.webp';
 import sloImg from '/home/san-luis.webp';
 import pismoImg from '/home/pismo-beach.webp';
@@ -7,7 +7,12 @@ import { ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useProperties } from '@/hooks/useProperties';
-import { PropertyMap } from '@/components/properties/PropertyMap';
+// Lazy so Leaflet (~148KB) leaves the initial graph. Index is eagerly imported for
+// homepage LCP, which previously dragged the maps chunk into a modulepreload on EVERY
+// route — /management paid for a map it never renders.
+const PropertyMap = lazy(() =>
+  import('@/components/properties/PropertyMap').then((m) => ({ default: m.PropertyMap }))
+);
 
 const locations = [
   {
@@ -148,7 +153,9 @@ export function LocationSection({ data }: { data?: any }) {
                 transition={{ duration: 0.6 }}
                 className="w-full h-full"
               >
-                <PropertyMap properties={filteredProperties} height="100%" />
+                <Suspense fallback={<div className="w-full h-full bg-secondary/30" />}>
+                  <PropertyMap properties={filteredProperties} height="100%" />
+                </Suspense>
               </motion.div>
 
               {/* External Link Overlay */}
