@@ -296,6 +296,12 @@ const PAGES = [
     title: 'Vacation Rental Property Management — Avila Beach | Solmaré Stays',
     description: 'Professional vacation rental management in Avila Beach, Pismo Beach, and SLO County. Maximize revenue with Solmaré Stays\' full-service property management.',
     h1: 'Vacation Rental Property Management',
+    // LCP element, painted from static HTML. See the heroImage note in generatePage().
+    heroImage: {
+      avif: '/homeowners/management-hero-768.avif 768w, /homeowners/management-hero-1280.avif 1280w, /homeowners/management-hero-1920.avif 1920w',
+      fallback: '/homeowners/management-hero-1280.jpg',
+      alt: 'Coastal property managed by Solmaré Stays in Avila Beach',
+    },
     body: `<p>Solmaré Stays provides full-service vacation rental management for homeowners in San Luis Obispo County and across California's Central Coast. We handle everything — from listing optimization and dynamic pricing to guest communication, cleaning, and maintenance — so you can earn more while doing less.</p>
 <p>We are a local property management company based in Avila Beach, managing 12 short-term rentals within roughly 20 miles. Owners work directly with the team running their property, not a regional account manager at a national brand.</p>
 <h2>Why Partner with Solmaré Stays?</h2>
@@ -916,7 +922,27 @@ function generatePage(page) {
 
   // Inject content into root div so ALL crawlers (Google + AI) see real HTML
   if (page.h1 || page.body) {
-    const seoContent = `<div id="root"><div style="max-width:900px;margin:0 auto;padding:2rem;font-family:system-ui,sans-serif;color:#1a1a1a"><h1>${page.h1 || ''}</h1>${page.body || ''}<p><a href="${BASE_URL}">← Back to Solmaré Stays</a> | <a href="tel:+18052426411">(805) 242-6411</a></p></div></div>`;
+    // 🔴 `heroImage` exists for LCP, not for crawlers — they already had the text.
+    //
+    // Measured 2026-09-25 on the deployed /management: TTFB 85ms, the preloaded AVIF
+    // complete at ~316ms, and LCP still 10.3s. The bytes were never the problem. This
+    // is a client-rendered SPA behind ~1MB of JS (ui 359KB + index 172KB + maps 146KB
+    // + framer 119KB), and the prerendered fallback injected here is TEXT ONLY — so
+    // the largest element on the page cannot paint until React mounts the hero. Under
+    // Lighthouse's 4x CPU throttle that is the whole ten seconds.
+    //
+    // Putting the hero in the static HTML lets the largest element paint from the
+    // preload at ~300ms; React then hydrates over it. Only set heroImage on routes
+    // whose LCP element is genuinely an image — on a text page this would make LCP
+    // worse, not better, by handing Lighthouse a bigger candidate to wait for.
+    //
+    // ⚠ Keep the srcset byte-identical to the <picture> in the matching page component
+    // and to the preload in index.html. Three copies, one truth — if they drift the
+    // browser downloads the hero twice and this optimisation inverts.
+    const hero = page.heroImage
+      ? `<picture><source type="image/avif" srcset="${page.heroImage.avif}" sizes="100vw"><img src="${page.heroImage.fallback}" alt="${page.heroImage.alt}" width="1280" height="853" fetchpriority="high" decoding="async" style="width:100%;height:auto;display:block;margin:0 0 2rem"></picture>`
+      : '';
+    const seoContent = `<div id="root"><div style="max-width:900px;margin:0 auto;padding:2rem;font-family:system-ui,sans-serif;color:#1a1a1a">${hero}<h1>${page.h1 || ''}</h1>${page.body || ''}<p><a href="${BASE_URL}">← Back to Solmaré Stays</a> | <a href="tel:+18052426411">(805) 242-6411</a></p></div></div>`;
     html = html.replace(/<div id="root"><\/div>/, seoContent);
   }
 
