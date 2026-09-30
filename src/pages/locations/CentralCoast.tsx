@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { FaqSection } from '@/components/FaqSection';
 import { SEO } from '@/components/SEO';
 import { PropertyCard } from '@/components/properties/PropertyCard';
 import { useProperties } from '@/hooks/useProperties';
@@ -552,6 +553,7 @@ const CentralCoastPage = () => {
           </div>
         </section>
       </main>
+      <FaqSection route="/central-coast" />
       <Footer />
     </div>
   );

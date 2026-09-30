@@ -91,6 +91,11 @@ export function LocationSection({ data }: { data?: any }) {
             transition={{ duration: 1.2, ease: 'easeOut' }}
             src={activeLocation.image}
             alt={activeLocation.name}
+            // ⚠ 542KB, and this section sits well below the fold — it was competing
+            // with the hero for bandwidth during the LCP window on a page measured at
+            // a 5.3s median LCP. Nothing above the fold needs it.
+            loading="lazy"
+            decoding="async"
             style={{ objectPosition: activeLocation.imagePosition || 'center bottom' }}
             className="absolute inset-0 w-full h-full object-cover"
           />

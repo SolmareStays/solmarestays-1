@@ -189,6 +189,21 @@ async function generateSitemap() {
     entries.push(buildUrlEntry(route.path, route.changefreq, route.priority));
   }
 
+  // County-wide owner pages, from the same generated market data prerender uses.
+  // ⚖ Only `verified: true` markets are in that file, so an unverified jurisdiction
+  // cannot reach the sitemap and invite crawls of a page making unchecked claims
+  // about what is legal. See src/data/markets.ts.
+  {
+    const markets = JSON.parse(
+      fs.readFileSync(path.join(ROOT, 'src/data/markets.generated.json'), 'utf-8'),
+    );
+    entries.push('  <!-- Owner market pages -->');
+    entries.push(buildUrlEntry('/vacation-rental-management', 'monthly', '0.9'));
+    for (const m of markets) {
+      entries.push(buildUrlEntry(`/vacation-rental-management/${m.slug}`, 'monthly', '0.8'));
+    }
+  }
+
   // Property pages
   if (propertyIds.length > 0) {
     entries.push('  <!-- Properties -->');

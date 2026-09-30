@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { EmailCapture } from '@/components/EmailCapture';
 import { SEO } from '@/components/SEO';
 import { useBlogPosts } from '@/hooks/useSanityContent';
 import { urlFor } from '@/lib/sanity.client';
@@ -160,6 +161,7 @@ const Blog = () => {
         </div>
       </section>
 
+      <EmailCapture source="blog-index" />
       <Footer />
     </div>
   );

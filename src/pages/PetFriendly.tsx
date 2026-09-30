@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { FaqSection } from '@/components/FaqSection';
 import { SEO } from '@/components/SEO';
 import { PropertyCard } from '@/components/properties/PropertyCard';
 import { useProperties } from '@/hooks/useProperties';
@@ -483,6 +484,7 @@ const PetFriendlyPage = () => {
           </div>
         </section>
       </main>
+      <FaqSection route="/pet-friendly" />
       <Footer />
     </div>
   );

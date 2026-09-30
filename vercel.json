@@ -37,6 +37,10 @@
   ],
   "rewrites": [
     {
+      "source": "/vacation-rental-management/(.*)",
+      "destination": "/index.html"
+    },
+    {
       "source": "/collection",
       "destination": "/collection/index.html"
     },
@@ -93,7 +97,27 @@
       "destination": "/arroyo-grande/index.html"
     },
     {
-      "source": "/(.*)",
+      "source": "/property/(.*)",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/blog/(.*)",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/checkout/(.*)",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/book",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/management/thanks",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/contact/thanks",
       "destination": "/index.html"
     }
   ],

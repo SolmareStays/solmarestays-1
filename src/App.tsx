@@ -18,6 +18,10 @@ const Checkout = lazy(() => import("./pages/Checkout"));
 const PropertyDetail = lazy(() => import("./pages/PropertyDetail"));
 const WhyChooseUs = lazy(() => import("./pages/WhyChooseUs"));
 const ForHomeowners = lazy(() => import("./pages/ForHomeowners"));
+// County-wide owner pages. Per-jurisdiction permit + tax facts, driven by
+// src/data/markets.ts — only verified markets resolve; the rest redirect to the hub.
+const ManagementHub = lazy(() => import("./pages/ManagementHub"));
+const ManagementMarket = lazy(() => import("./pages/ManagementMarket"));
 const GuestExperience = lazy(() => import("./pages/GuestExperience"));
 const Contact = lazy(() => import("./pages/Contact"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -56,6 +60,8 @@ const App = () => (
                 <Route path="/property/:slug" element={<PropertyDetail />} />
                 <Route path="/philosophy" element={<WhyChooseUs />} />
                 <Route path="/management" element={<ForHomeowners />} />
+                <Route path="/vacation-rental-management" element={<ManagementHub />} />
+                <Route path="/vacation-rental-management/:city" element={<ManagementMarket />} />
                 <Route path="/experiences" element={<GuestExperience />} />
                 {/* Redirects for old URLs */}
                 <Route path="/why-choose-us" element={<WhyChooseUs />} />

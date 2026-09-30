@@ -4,6 +4,7 @@ import { motion, useInView } from 'framer-motion';
 import { useRef, useState, useMemo } from 'react';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { EmailCapture } from '@/components/EmailCapture';
 import { BookingWidget } from '@/components/booking/BookingWidget';
 import { ImageGallery } from '@/components/properties/ImageGallery';
 import { ReviewsSection } from '@/components/properties/ReviewsSection';
@@ -597,6 +598,7 @@ const PropertyDetailPage = () => {
           </section>
         )}
       </main>
+      <EmailCapture source="property" />
       <Footer />
     </div>
   );

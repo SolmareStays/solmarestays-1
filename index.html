@@ -21,17 +21,31 @@
   <script>
     (function () {
       var p = location.pathname.replace(/\/$/, '');
-      if (p !== '/management' && p !== '/for-homeowners') return;
       var l = document.createElement('link');
       l.rel = 'preload';
       l.as = 'image';
-      l.type = 'image/avif';
-      l.setAttribute('imagesrcset',
-        '/homeowners/management-hero-768.avif 768w,' +
-        '/homeowners/management-hero-1280.avif 1280w,' +
-        '/homeowners/management-hero-1920.avif 1920w');
-      l.setAttribute('imagesizes', '100vw');
       l.setAttribute('fetchpriority', 'high');
+
+      if (p === '/management' || p === '/for-homeowners') {
+        l.type = 'image/avif';
+        l.setAttribute('imagesrcset',
+          '/homeowners/management-hero-768.avif 768w,' +
+          '/homeowners/management-hero-1280.avif 1280w,' +
+          '/homeowners/management-hero-1920.avif 1920w');
+        l.setAttribute('imagesizes', '100vw');
+      } else if (p === '') {
+        // Homepage hero. Measured 9/30 at a median 5.3s LCP — worse than the
+        // /management page this block was written for. Single 241KB WebP at
+        // 2400x1600, so no srcset: the bytes are not the bottleneck, the wait for
+        // React to mount the element is.
+        // ⚠ Keep in sync with defaultSlides[0] in HeroSection.tsx and the heroImage
+        // entry for '/' in scripts/prerender.mjs.
+        l.type = 'image/webp';
+        l.href = '/home/pismo-beach.webp';
+      } else {
+        return;
+      }
+
       document.head.appendChild(l);
     })();
   </script>

@@ -14,11 +14,62 @@ const TikTokIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+const DESTINATIONS = [
+  { to: '/avila-beach', label: 'Avila Beach' },
+  { to: '/pismo-beach', label: 'Pismo Beach' },
+  { to: '/san-luis-obispo', label: 'San Luis Obispo' },
+  { to: '/arroyo-grande', label: 'Arroyo Grande' },
+  { to: '/central-coast', label: 'Central Coast' },
+] as const;
+
+const FOR_OWNERS = [
+  { to: '/management', label: 'Property Management' },
+  { to: '/vacation-rental-management', label: 'SLO County Permit Status' },
+] as const;
+
+const STAY_TYPES = [
+  { to: '/collection', label: 'All Properties' },
+  { to: '/pet-friendly', label: 'Pet-Friendly Stays' },
+  { to: '/group-stays', label: 'Group Stays' },
+] as const;
+
+const GUIDES = [
+  { to: '/blog', label: 'All Guides' },
+  { to: '/blog/things-to-do-avila-beach', label: 'Things to Do in Avila Beach' },
+  { to: '/blog/best-restaurants-avila-beach', label: 'Where to Eat in Avila Beach' },
+  { to: '/blog/cal-poly-graduation-where-to-stay', label: 'Cal Poly Weekends' },
+  { to: '/blog/wine-country-stays-edna-valley-arroyo-grande', label: 'Edna Valley Wine Country' },
+  { to: '/blog/avila-beach-hot-springs', label: 'Avila Hot Springs' },
+] as const;
+
+function FooterColumn({
+  heading,
+  links,
+}: {
+  heading: string;
+  links: readonly { readonly to: string; readonly label: string }[];
+}) {
+  return (
+    <div>
+      <h4 className="font-serif text-lg font-semibold mb-4">{heading}</h4>
+      <ul className="space-y-3">
+        {links.map(({ to, label }) => (
+          <li key={to}>
+            <Link to={to} className="text-sm opacity-80 hover:opacity-100 transition-opacity">
+              {label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 export function Footer() {
   return (
     <footer className="bg-primary text-primary-foreground">
       <div className="container mx-auto px-4 md:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link to="/" className="flex flex-col items-start gap-1 mb-6 group">
@@ -69,26 +120,21 @@ export function Footer() {
           </div>
 
           {/* Destinations */}
-          <div>
-            <h4 className="font-serif text-lg font-semibold mb-4">Destinations</h4>
-            <ul className="space-y-3">
-              <li>
-                <Link to="/avila-beach" className="text-sm opacity-80 hover:opacity-100 transition-opacity">
-                  Avila Beach
-                </Link>
-              </li>
-              <li>
-                <Link to="/pet-friendly" className="text-sm opacity-80 hover:opacity-100 transition-opacity">
-                  Pet-Friendly Stays
-                </Link>
-              </li>
-              <li>
-                <Link to="/group-stays" className="text-sm opacity-80 hover:opacity-100 transition-opacity">
-                  Group Stays
-                </Link>
-              </li>
-            </ul>
-          </div>
+          <FooterColumn heading="Destinations" links={DESTINATIONS} />
+
+          {/* Ways to stay */}
+          <FooterColumn heading="Ways to Stay" links={STAY_TYPES} />
+
+          {/* For owners */}
+          <FooterColumn heading="For Owners" links={FOR_OWNERS} />
+
+          {/*
+            Guides. ⚠ /blog and its ten posts, plus four of the five city pages, had NO
+            internal link from the nav, the footer, the homepage or any property page —
+            fifteen sitemap URLs reachable only by sitemap. That is why posts targeting
+            real demand sat at position 20-40. Every new guide belongs in this list.
+          */}
+          <FooterColumn heading="Guides" links={GUIDES} />
 
           {/* Contact */}
           <div>

@@ -1,19 +1,16 @@
 import { motion, useInView } from 'framer-motion';
 import { usePage } from '@/hooks/useSanityContent';
 import { SanitySectionRenderer } from '@/components/sanity/SanitySectionRenderer';
-import { useRef, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useRef } from 'react';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { Link } from 'react-router-dom';
+import { FaqSection } from '@/components/FaqSection';
+import { OwnerLeadForm } from '@/components/OwnerLeadForm';
 import { SEO } from '@/components/SEO';
+import { REVIEWS, CONTACT } from '@/data/stats';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
-import { toast } from 'sonner';
-import { Turnstile } from '@/components/Turnstile';
-import { TrendingUp, Shield, Users, BarChart3, Calendar, Headphones, Check, Star, Quote, Send } from 'lucide-react';
-import { trackMetaEvent } from '@/lib/track';
+import { TrendingUp, Shield, Users, BarChart3, Calendar, Headphones, Check, Star, Quote } from 'lucide-react';
 
 
 // 6 Pillars - Sharpened Copy
@@ -115,151 +112,6 @@ const serviceCategories = [
     ],
   },
 ];
-
-const OwnerLeadForm = () => {
-  const navigate = useNavigate();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    propertyLocation: '',
-    message: '',
-  });
-  // Feeds the server's dwell check — see api/contact.ts.
-  const mountedAt = useRef(Date.now());
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    try {
-      const form = e.target as HTMLFormElement;
-      // Verdict first, send second — see api/contact.ts. Never blocks delivery:
-      // if the route is down we send anyway and just do not claim the Lead.
-      const clean = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-          botcheck: (form.elements.namedItem('botcheck') as HTMLInputElement)?.checked,
-          elapsedMs: Date.now() - mountedAt.current,
-        }),
-      })
-        .then((r) => r.json())
-        .then((v) => v.clean === true)
-        .catch(() => false);
-
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: new FormData(form),
-      });
-      const data = await response.json();
-      if (data.success) {
-        // The ONLY place a Lead may fire. A route change is interest, not a lead —
-        // see the note in TrackingEvents.tsx. This is a real owner form submission.
-        // Goes to the pixel AND the Conversions API under one shared event id.
-        // Gated on the verdict so bot submissions never train the ad account.
-        if (clean) {
-          trackMetaEvent(
-            'Lead',
-            { content_name: 'management_form', content_category: 'owner' },
-            { email: formData.email, phone: formData.phone },
-          );
-          window.gtag?.('event', 'generate_lead', { event_category: 'owner' });
-        }
-        setIsSubmitted(true);
-        setFormData({ name: '', email: '', phone: '', propertyLocation: '', message: '' });
-        // Navigate to a real URL. The Lead / generate_lead events above are the
-        // primary signal, but a conversion that only exists as a JS event has no
-        // fallback — and the Google Ads WEBPAGE action "Owner — Lead Form Submit"
-        // needs a URL to match, which an in-place toast never gave it.
-        navigate('/management/thanks');
-      } else {
-        throw new Error('Submission failed');
-      }
-    } catch {
-      toast.error('Something went wrong. Call us at (805) 242-6411.');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  return (
-    <form onSubmit={handleSubmit} className="space-y-5">
-      {/* ⚠ Public key — see the note on Contact.tsx. Cannot move server-side until
-          Web3Forms Pro; the free plan refuses server-side calls. */}
-      <input type="hidden" name="access_key" value={import.meta.env.VITE_WEB3FORMS} />
-      <input type="hidden" name="subject" value="Property Management Inquiry — Management Page" />
-      <input type="hidden" name="from_name" value="Solmaré Stays — Owner Lead" />
-      <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <div className="space-y-2">
-          <Label htmlFor="owner-name">Your Name *</Label>
-          <Input id="owner-name" name="name" value={formData.name} onChange={handleChange} placeholder="Full name" required className="h-12" />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="owner-email">Email *</Label>
-          <Input id="owner-email" name="email" type="email" value={formData.email} onChange={handleChange} placeholder="you@email.com" required className="h-12" />
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <div className="space-y-2">
-          <Label htmlFor="owner-phone">Phone</Label>
-          <Input id="owner-phone" name="phone" type="tel" value={formData.phone} onChange={handleChange} placeholder="(555) 123-4567" className="h-12" />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="owner-location">Property Location *</Label>
-          <Input id="owner-location" name="propertyLocation" value={formData.propertyLocation} onChange={handleChange} placeholder="City or address" required className="h-12" />
-        </div>
-      </div>
-
-      <div className="space-y-2">
-        <Label htmlFor="owner-message">Tell us about your property</Label>
-        <Textarea id="owner-message" name="message" value={formData.message} onChange={handleChange} placeholder="Bedrooms, current use, any questions..." rows={4} className="resize-none" />
-      </div>
-
-      <Turnstile />
-
-      <Button type="submit" variant="hero" size="xl" className="w-full" disabled={isSubmitting || isSubmitted}>
-        {isSubmitted ? (<><Check className="w-5 h-5 mr-2" /> Sent! We'll be in touch.</>) : isSubmitting ? (<>Sending...</>) : (<><Send className="w-5 h-5 mr-2" /> Get My Free Revenue Projection</>)}
-      </Button>
-
-      {/* The Owner ads sell the phone — "No Call Center. My Cell." — and until
-          2026-09-24 this was the one response channel with zero instrumentation on
-          either platform. A tap here is owner intent and counts as a Lead, same as a
-          form submit: there is no weaker interpretation of someone dialling a
-          property manager from the management page. */}
-      <p className="text-center text-xs text-muted-foreground">
-        Or call us directly at{' '}
-        <a
-          href="tel:+18052426411"
-          className="text-ocean hover:underline"
-          onClick={() => {
-            trackMetaEvent('Lead', {
-              content_name: 'phone_click',
-              content_category: 'owner',
-            });
-            window.gtag?.('event', 'generate_lead', {
-              event_category: 'owner',
-              method: 'phone_click',
-            });
-          }}
-        >
-          (805) 242-6411
-        </a>
-      </p>
-    </form>
-  );
-};
 
 const ForHomeownersPage = () => {
   const { data: pageData, isLoading } = usePage('management');
@@ -542,6 +394,104 @@ const ForHomeownersPage = () => {
               </div>
             </section>
 
+            {/*
+              SECTION 5b: Who you are actually hiring.
+              🔴 The whole site named no human being — a case-insensitive search for
+              "kyle" on the rendered page returned false. This page holds position 10.4
+              for "avila beach property management" and converted 0 of 107 landing-page
+              views in 30 days, while every owner who has ever signed came through a
+              personal introduction. An owner is being asked to hand over a house worth
+              close to a million dollars; an anonymous brand is the wrong thing to ask
+              that of, and it is the most likely reason this page does not convert.
+              ⏳ Kyle: a headshot at public/kyle-van-til.jpg slots in here. Deliberately
+              omitted rather than shipped as a broken <img>.
+            */}
+            <section className="section-padding bg-background border-t">
+              <div className="container mx-auto px-4 md:px-6 lg:px-8">
+                <div className="max-w-2xl mx-auto">
+                  <p className="text-xs tracking-[0.18em] uppercase text-muted-foreground mb-3">
+                    Who you are hiring
+                  </p>
+                  <h2 className="font-serif text-3xl md:text-4xl font-semibold mb-6">
+                    You deal with me, not an account manager
+                  </h2>
+                  <div className="space-y-4 text-base md:text-lg leading-relaxed">
+                    <p>
+                      I'm Kyle Van Til. I run Solmaré Stays from Avila Beach, where ten
+                      of our twelve houses are. I am not a call centre and there is no
+                      regional office — when something goes wrong at your property at
+                      nine at night, I am the person who answers.
+                    </p>
+                    <p>
+                      I started this because the choice for owners here was a national
+                      company that treats a house as inventory, or doing it all yourself.
+                      We took on twelve homes one at a time, and we turn down properties
+                      we cannot service properly — Cambria is 55 minutes from our crew,
+                      and I would rather say that than promise same-day maintenance I
+                      cannot deliver.
+                    </p>
+                    <p>
+                      What that has produced so far: {REVIEWS.totalRounded} guest reviews
+                      averaging {REVIEWS.averageFive} out of 5 across Airbnb, Vrbo and
+                      Google, an in-person inspection between every single stay, and
+                      owners who can block their own dates whenever they want.
+                    </p>
+                  </div>
+
+                  <dl className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-10 pt-8 border-t">
+                    <div>
+                      <dt className="text-sm text-muted-foreground mb-1">Response time</dt>
+                      <dd className="font-semibold">Within 24 hours, always</dd>
+                    </div>
+                    <div>
+                      <dt className="text-sm text-muted-foreground mb-1">Direct line</dt>
+                      <dd className="font-semibold">
+                        <a href={CONTACT.phoneHref} className="hover:underline">
+                          {CONTACT.phone}
+                        </a>
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="text-sm text-muted-foreground mb-1">Based in</dt>
+                      <dd className="font-semibold">Avila Beach, California</dd>
+                    </div>
+                  </dl>
+
+                  <div className="mt-8 pt-8 border-t">
+                    <h3 className="font-serif text-2xl font-semibold mb-4">
+                      What happens after you send the form
+                    </h3>
+                    <ol className="space-y-3 list-decimal pl-5 leading-relaxed">
+                      <li>
+                        I reply within 24 hours — to you, not from a shared inbox.
+                      </li>
+                      <li>
+                        I check what your address can actually be permitted for. Rules
+                        differ by jurisdiction across SLO County, and in some markets new
+                        short-term rental permits are not being issued at all — see the{' '}
+                        <Link to="/vacation-rental-management" className="underline">
+                          permit status by city
+                        </Link>
+                        .
+                      </li>
+                      <li>
+                        You get a revenue projection built from comparable local
+                        performance and realistic occupancy for your property's size and
+                        location — not a best case.
+                      </li>
+                      <li>
+                        If it makes sense for both of us, we talk terms. If it does not,
+                        I will tell you that instead.
+                      </li>
+                    </ol>
+                    <p className="text-sm text-muted-foreground mt-5">
+                      No cost, no obligation, and we do not sell or share your details.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
             {/* SECTION 6: Inline Lead Capture Form */}
             <section id="contact-form" className="section-padding bg-background">
               <div className="container mx-auto px-4 md:px-6 lg:px-8">
@@ -576,6 +526,7 @@ const ForHomeownersPage = () => {
           </>
         )}
       </main>
+      <FaqSection route="/management" />
       <Footer />
     </div>
   );

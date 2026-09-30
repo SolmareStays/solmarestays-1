@@ -3,6 +3,8 @@ import { useParams, Link } from 'react-router-dom';
 import { PortableText } from '@portabletext/react';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { EmailCapture } from '@/components/EmailCapture';
+import { FaqSection } from '@/components/FaqSection';
 import { SEO } from '@/components/SEO';
 import { useBlogPost } from '@/hooks/useSanityContent';
 import { urlFor, SanityImageSource } from '@/lib/sanity.client';
@@ -283,6 +285,10 @@ const BlogPost = () => {
         </motion.div>
       </article>
 
+      {/* Same 68-Q&A source that feeds this page's FAQPage schema — see FaqSection. */}
+      <FaqSection route={`/blog/${slug}`} />
+
+      <EmailCapture source={`blog/${slug}`} />
       <Footer />
     </div>
   );

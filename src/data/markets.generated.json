@@ -1,0 +1,146 @@
+[
+  {
+    "slug": "avila-beach",
+    "name": "Avila Beach",
+    "jurisdiction": "San Luis Obispo County (unincorporated)",
+    "unincorporated": true,
+    "permit": "open",
+    "permitDetail": "Avila Beach is unincorporated, so it is the County that permits short-term rentals, not a city. A Vacation Rental Zoning Clearance, a business licence and a Transient Occupancy Tax certificate are required, under Coastal Zone Land Use Ordinance section 23.08.165. The Permit Center decides whether a given parcel qualifies for a clearance or needs a Minor Use Permit, so the answer depends on your specific address.",
+    "totRate": "10.5%–12.5%",
+    "totDetail": "9% county Transient Occupancy Tax plus 1.5% Tourism Marketing District, and a further 2% Tourism Business Improvement District in some areas — so 10.5% or 12.5% depending on where the property sits.",
+    "doorsManaged": 10,
+    "minutesFromBase": 0,
+    "angle": "This is our home market. Ten of our twelve houses are here, the cleaning crew is based here, and inspections happen in person between every stay.",
+    "verified": true,
+    "sources": [
+      "https://www.slocounty.ca.gov/departments/planning-building/how-to-apply-for-a-permit-in-unincorporated-slo-co/land-use,-subdivision,-zoning/land-use-permit/business-license-clearance/vacation-rental-zoning-clearance/coastal-vacation-rental-clearance",
+      "https://www.slocounty.ca.gov/departments/auditor-controller-treasurer-tax-collector-public/tax-collector/services/transient-occupancy-tax-(hotel-tax)"
+    ]
+  },
+  {
+    "slug": "cayucos",
+    "name": "Cayucos",
+    "jurisdiction": "San Luis Obispo County (unincorporated)",
+    "unincorporated": true,
+    "permit": "open",
+    "permitDetail": "Cayucos is unincorporated, so a Vacation Rental Zoning Clearance, business licence and Transient Occupancy Tax certificate from the County are the requirement, under Coastal Zone Land Use Ordinance 23.08.165. Unlike Morro Bay a few miles north, Cayucos is not currently under a permit freeze — which is why it is one of the few genuinely open coastal markets left in the county.",
+    "totRate": "10.5%–12.5%",
+    "totDetail": "9% county Transient Occupancy Tax plus 1.5% Tourism Marketing District, and a further 2% Tourism Business Improvement District in some areas.",
+    "doorsManaged": 0,
+    "minutesFromBase": 35,
+    "angle": "We do not manage in Cayucos yet, and we will say so plainly. It is 35 minutes from our Avila base, which is inside the radius we will service — Google search already shows owners here looking for management.",
+    "verified": true,
+    "sources": [
+      "https://www.slocounty.ca.gov/departments/planning-building/how-to-apply-for-a-permit-in-unincorporated-slo-co/land-use,-subdivision,-zoning/land-use-permit/business-license-clearance/vacation-rental-zoning-clearance/coastal-vacation-rental-clearance"
+    ]
+  },
+  {
+    "slug": "cambria",
+    "name": "Cambria",
+    "jurisdiction": "San Luis Obispo County (unincorporated)",
+    "unincorporated": true,
+    "permit": "open",
+    "permitDetail": "Cambria is unincorporated and permitted by the County: a Vacation Rental Zoning Clearance, business licence and Transient Occupancy Tax certificate under Coastal Zone Land Use Ordinance 23.08.165. Water supply has historically constrained new building in Cambria, which is a separate question from whether an existing home can be cleared as a vacation rental — worth checking for your specific parcel.",
+    "totRate": "10.5%–12.5%",
+    "totDetail": "9% county Transient Occupancy Tax plus 1.5% Tourism Marketing District, and a further 2% Tourism Business Improvement District in some areas.",
+    "doorsManaged": 0,
+    "minutesFromBase": 55,
+    "angle": "Cambria is at the edge of what we can service well from Avila Beach at 55 minutes. We would rather tell an owner that than pretend a same-day maintenance promise holds an hour up the coast.",
+    "verified": true,
+    "sources": [
+      "https://www.slocounty.ca.gov/departments/planning-building/how-to-apply-for-a-permit-in-unincorporated-slo-co/land-use,-subdivision,-zoning/land-use-permit/business-license-clearance/vacation-rental-zoning-clearance/coastal-vacation-rental-clearance"
+    ]
+  },
+  {
+    "slug": "pismo-beach",
+    "name": "Pismo Beach",
+    "jurisdiction": "City of Pismo Beach",
+    "unincorporated": false,
+    "permit": "frozen",
+    "permitDetail": "Pismo Beach has not issued a new residential short-term rental licence since 7 November 2023. Only properties already licensed on that date can renew. Two further rules matter if you own here: the licence must be registered by the property owner and not by a management company, and short-term rentals are permitted only at single-family properties that are the owner’s primary residence.",
+    "totRate": "13.5%",
+    "totDetail": "10% city Transient Occupancy Tax, plus a 2% lodging business improvement district assessment and the 1.5% county Tourism Marketing District assessment.",
+    "doorsManaged": 0,
+    "minutesFromBase": 10,
+    "angle": "We cannot get you a new Pismo Beach licence, and neither can anyone else. If you already hold one, the licence stays in your name and we run the operation underneath it. If you are buying, check what actually transfers before you close — and note that a stay of 31 nights or longer is not a short-term rental, so the freeze does not reach it.",
+    "verified": true,
+    "sources": [
+      "https://www.prcity.com/DocumentCenter/View/25961/Pismo-Beach-Outside-Coastal-Zone-Short-Term-Rental-Ordinance",
+      "http://pismobeach.org/881/Vacation-Rental-Short-Term-Rental-Homest",
+      "https://www.pismobeach.org/461/Lodging-Businesses"
+    ]
+  },
+  {
+    "slug": "morro-bay",
+    "name": "Morro Bay",
+    "jurisdiction": "City of Morro Bay",
+    "unincorporated": false,
+    "permit": "frozen",
+    "permitDetail": "Morro Bay requires an STR permit, a business licence and a Transient Occupancy Tax account before you operate, with annual renewal and an inspection every four years. New permits must also sit at least 175 feet from the next short-term rental, measured property line to property line. The city is currently running a permit audit and is approving no new STRs until it closes.",
+    "totRate": "10% base",
+    "totDetail": "The city’s base Transient Occupancy Tax rate is 10%. Confirm current district assessments with the city before quoting a guest-facing total.",
+    "doorsManaged": 0,
+    "minutesFromBase": 30,
+    "angle": "Morro Bay is a renewal-and-compliance market, not an acquisition market. The 175-foot buffer means a lapsed permit can be genuinely hard to recover, so the operational job here is not missing a renewal.",
+    "verified": true,
+    "sources": [
+      "https://www.morrobayca.gov/1085/Short-Term-Vacation-Rentals",
+      "https://www.ksby.com/morro-bay/the-city-of-morro-bay-will-not-be-approving-any-new-short-term-rental-permits-in-2025"
+    ]
+  },
+  {
+    "slug": "paso-robles",
+    "name": "Paso Robles",
+    "jurisdiction": "City of El Paso de Robles",
+    "unincorporated": false,
+    "permit": "capped",
+    "permitDetail": "Paso Robles requires a short-term rental permit under Municipal Code chapter 21.34 plus a city business licence. Non-hosted permits — the normal case, where nobody lives on site — are at capacity, and new applications go onto a waiting list until one frees up. There is no cap on home-shares, where the owner lives on the property and rents part of it.",
+    "totRate": "11%",
+    "totDetail": "The city Transient Occupancy Tax is 11%, raised from 10%. Confirm any additional tourism district assessment with the city.",
+    "doorsManaged": 0,
+    "minutesFromBase": 50,
+    "angle": "If you want a non-hosted permit in Paso you are joining a queue, and we will tell you that before you engage us. Home-share is the open route, and 31-plus night furnished stays sit outside the permit question entirely.",
+    "verified": true,
+    "sources": [
+      "https://www.prcity.com/521/Short-Term-Rental-Task-Force",
+      "https://prcity.com/DocumentCenter/View/27355/Short-Term-Rental-Application-Packet",
+      "https://www.prcity.com/161/Transient-Occupancy-Tax"
+    ]
+  },
+  {
+    "slug": "los-osos",
+    "name": "Los Osos",
+    "jurisdiction": "San Luis Obispo County (unincorporated)",
+    "unincorporated": true,
+    "permit": "capped",
+    "permitDetail": "Los Osos is unincorporated but has its own community rule: vacation rentals are capped at 50 across the community, with a 500-foot buffer between them. A residential vacation rental may only be established in an existing single-family dwelling — not in a multi-family structure and not in a mobile home.",
+    "totRate": "10.5%–12.5%",
+    "totDetail": "9% county Transient Occupancy Tax plus 1.5% Tourism Marketing District, and a further 2% Tourism Business Improvement District in some areas.",
+    "doorsManaged": 0,
+    "minutesFromBase": 30,
+    "angle": "Fifty permits for the whole community means the answer is usually no, and an honest no is worth more to you than a revenue projection for a property that cannot be licensed.",
+    "verified": true,
+    "sources": [
+      "https://www.newtimesslo.com/los-osos-gets-new-growth-and-vacation-rental-policies-10408499/",
+      "https://www.slocounty.ca.gov/departments/planning-building/forms-documents/plans-and-elements/community-plans/los-osos-community-plan-update-files-513413e6e2b932dffc1fb3953e4a2d6c/residential-vacation-rentals-ordinance/lrp2020-00005-residential-vacation-rentals-ordinan"
+    ]
+  },
+  {
+    "slug": "atascadero",
+    "name": "Atascadero",
+    "jurisdiction": "City of Atascadero",
+    "unincorporated": false,
+    "permit": "emerging",
+    "permitDetail": "Atascadero allows legally permitted residences, or rooms within them, to be rented for stays under 30 days, and the current route is a Home Occupation Business Licence from the city, submitted with a site plan and a signed Home Occupation Conditions form. The city does not yet have a dedicated short-term rental ordinance; council has directed staff to draft one centred on primary-residence permits, so the rules here are actively changing.",
+    "totRate": "Confirm with city",
+    "totDetail": "Confirm the current Atascadero Transient Occupancy Tax rate and any district assessment with the city before quoting a guest-facing total.",
+    "doorsManaged": 0,
+    "minutesFromBase": 40,
+    "angle": "Atascadero is the one market in the county where the rules are being written right now. An owner starting here should expect the requirements to change, and should not build a plan that only works under today’s looser regime.",
+    "verified": true,
+    "sources": [
+      "https://www.atascadero.org/sites/default/files/2023-06/Vacation%20Rental%20Handout%202022%20v2.pdf",
+      "https://citizenportal.ai/articles/7619302/California/San-Luis-Obispo-County/Atascadero-City/Atascadero-council-tells-staff-to-draft-short-term-rental-ordinance-centered-on-primary-residence-permits"
+    ]
+  }
+]

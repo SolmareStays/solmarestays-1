@@ -117,10 +117,16 @@ const lodgingBusinessSchema = {
   amenityFeature: [
     { '@type': 'LocationFeatureSpecification', name: 'Free WiFi', value: true },
     { '@type': 'LocationFeatureSpecification', name: 'Free Parking', value: true },
-    { '@type': 'LocationFeatureSpecification', name: 'Air Conditioning', value: true },
+    // ⚠ A sitewide amenityFeature must be true of EVERY property or it is a false
+    // amenity claim. Two were not:
+    //   'Air Conditioning' — La Casita has none ("No A/C — ceiling fans in the living
+    //     room and both bedrooms" in its own Hostaway description).
+    //   'Pet Friendly' — only some units accept pets; La Casita's own house rules say
+    //     "Pets are only allowed in pet-friendly units and must be approved in advance".
+    // Per-property amenities belong on the property page, which builds them from
+    // Hostaway. The qualified subset is what /pet-friendly is for.
     { '@type': 'LocationFeatureSpecification', name: 'Kitchen', value: true },
     { '@type': 'LocationFeatureSpecification', name: 'Washer/Dryer', value: true },
-    { '@type': 'LocationFeatureSpecification', name: 'Pet Friendly', value: true },
   ],
 };
 

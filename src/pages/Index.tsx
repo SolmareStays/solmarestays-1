@@ -1,5 +1,6 @@
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { FaqSection } from '@/components/FaqSection';
 import { SEO } from '@/components/SEO';
 import { HeroSection } from '@/components/home/HeroSection';
 import { StatsSection } from '@/components/home/StatsSection';
@@ -52,6 +53,7 @@ const Index = () => {
         <LocationSection data={locationData} />
         <ReviewsSection data={reviewsData} />
       </main>
+      <FaqSection route="/" />
       <Footer />
     </div>
   );

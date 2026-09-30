@@ -10,7 +10,8 @@
     "prerender": "node scripts/prerender.mjs",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prebuild": "node scripts/extract-faqs.mjs && node scripts/emit-markets.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

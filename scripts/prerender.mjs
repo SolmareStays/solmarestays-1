@@ -56,15 +56,34 @@ const PAGES = [
     title: 'Solmaré Stays — Avila Beach & Central Coast Vacation Rentals',
     // ⚠ Keep in sync with src/data/stats.ts — that file is the source and explains why
     // "1,500+ five-star reviews" was false (1,566 is TOTAL reviews; only 730 are 5-star).
-    description: 'Refined vacation rentals in Avila Beach, Pismo Beach & SLO. 1,500+ guest reviews averaging 4.82 out of 5. Book direct for the best rates.',
+    description: 'Refined vacation rentals in Avila Beach, Pismo Beach & SLO. {{REVIEW_TOTAL}} guest reviews averaging {{REVIEW_AVG}} out of 5. Book direct for the best rates.',
     h1: 'Avila Beach Vacation Rentals — Book Direct & Save',
-    body: `<p>Solmaré Stays manages 12 premium vacation rentals across California's Central Coast — from beachfront bungalows in Avila Beach to a private wine country estate in Arroyo Grande. 1,500+ guest reviews averaging 4.82 out of 5 across Airbnb, VRBO, and Google.</p>
+    // 🔴 The homepage's LCP element is the hero slider image, and until now it could
+    // not paint until React mounted — the same defect that held /management at 9.5s.
+    // Measured 9/30 the homepage was WORSE than the page we fixed: median 5.3s across
+    // three warm mobile runs (4.8 / 5.6 / 5.3) against /management's 3.32s.
+    //
+    // ⚠ The image is NOT the lever — compressing /management's hero made it worse. The
+    // lever is painting the largest element from static HTML. pismo-beach.webp is
+    // already 241KB at 2400x1600, so it ships as-is with no new derivatives.
+    // ⚠ box reproduces HeroSection's `h-screen` + `object-cover`. It must match the
+    // hydrated box or hydration introduces a later, larger LCP candidate.
+    // ⚠ Keep this path in sync with defaultSlides[0] in HeroSection.tsx and the
+    // route-aware preload in index.html. Three copies, one truth.
+    heroImage: {
+      fallback: '/home/pismo-beach.webp',
+      alt: 'Living room opening onto an ocean-view patio in Avila Beach',
+      width: 2400,
+      height: 1600,
+      box: 'width:100%;height:100vh;object-fit:cover;display:block',
+    },
+    body: `<p>Solmaré Stays manages 12 premium vacation rentals across California's Central Coast — from beachfront bungalows in Avila Beach to a private wine country estate in Arroyo Grande. {{REVIEW_TOTAL}} guest reviews averaging {{REVIEW_AVG}} out of 5 across Airbnb, VRBO, and Google.</p>
 <h2>Why Book Direct with Solmaré Stays?</h2>
 <ul><li>Save 15% vs Airbnb — best rate guaranteed</li><li>No service fees</li><li>Direct communication with our local Avila Beach team</li><li>24/7 guest support</li></ul>
 <h2>Our Locations</h2>
-<ul><li><a href="/avila-beach">Avila Beach</a> — 10 properties, steps from the pier and beach</li><li><a href="/pismo-beach">Pismo Beach</a> — minutes from the pier and Oceano Dunes</li><li><a href="/san-luis-obispo">San Luis Obispo</a> — walk to downtown SLO and Cal Poly</li><li><a href="/arroyo-grande">Arroyo Grande</a> — private 13-acre wine country estate</li></ul>
+<ul><li><a href="/avila-beach">Avila Beach</a> — 10 properties, steps from the pier and beach</li><li><a href="/arroyo-grande">Arroyo Grande</a> — private 13-acre wine country estate and a farm cottage</li><li><a href="/pismo-beach">Pismo Beach</a> — our Avila houses are 10 minutes from the Pismo pier</li><li><a href="/san-luis-obispo">San Luis Obispo</a> — 15 minutes to downtown SLO, 20 to Cal Poly</li></ul>
 <h2>Featured Properties</h2>
-<ul><li><strong>Hummingbird House</strong> — 2BR/2BA, rooftop terrace with panoramic ocean views</li><li><strong>La Casita</strong> — luxury 2BR beach house, 1 minute from the sand</li><li><strong>Casitas Estate</strong> — private 13-acre estate sleeping 14 with pool & hot tub</li><li><strong>The Coral House</strong> — modern 1BR with bifold doors and ocean views</li></ul>
+<ul><li><a href="/property/hummingbird-house"><strong>Hummingbird House</strong></a> — 2BR, rooftop terrace with panoramic ocean views</li><li><a href="/property/la-casita"><strong>La Casita</strong></a> — 2BR beach house, sleeps 6, one minute from the sand</li><li><a href="/property/wine-country-estate"><strong>Wine Country Estate</strong></a> — private 13-acre estate sleeping 14</li><li><a href="/property/the-coral-house"><strong>The Coral House</strong></a> — modern 1BR with bifold doors and ocean views</li></ul>
 <p>Browse all <a href="/collection">12 vacation rentals</a> or <a href="/contact">contact us</a> at (805) 242-6411.</p>`,
     schema: {
       "@context": "https://schema.org",
@@ -74,7 +93,9 @@ const PAGES = [
       "logo": "https://www.solmarestays.com/logo.png",
       "description": "Professional vacation rental management on California's Central Coast. 12 properties in Avila Beach and Arroyo Grande.",
       "telephone": "+1-805-242-6411",
-      "email": "kyle@solmarestays.com",
+      // ⚠ Was kyle@solmarestays.com while every visible surface showed info@ — an
+      // inconsistent NAP suppresses the local pack. One address, everywhere.
+      "email": "info@solmarestays.com",
       "address": { "@type": "PostalAddress", "addressLocality": "Avila Beach", "addressRegion": "CA", "postalCode": "93424", "addressCountry": "US" },
       "areaServed": ["Avila Beach", "Pismo Beach", "Shell Beach", "Arroyo Grande", "San Luis Obispo"].map(c => ({ "@type": "City", "name": c })),
       // Verified against Hostaway 2026-08-08: 1,541 guest-to-host reviews across the
@@ -91,7 +112,11 @@ const PAGES = [
     faq: [
       { q: "Who is Solmaré Stays?", a: "Solmaré Stays is a boutique vacation rental company based in Avila Beach, California. It manages 12 short-term rental properties across Avila Beach, Arroyo Grande, and San Luis Obispo on behalf of homeowners, and rents those same properties directly to travelers at solmarestays.com." },
       { q: "Is it cheaper to book direct than on Airbnb?", a: "Yes. Booking directly at solmarestays.com costs less than the identical property on Airbnb or Vrbo, because those platforms add a guest service fee on top of the nightly rate. Booking direct also means you deal with the local Avila Beach team rather than a platform inbox." },
-      { q: "Where are Solmaré Stays properties located?", a: "Ten properties are in Avila Beach, most within a block or two of the sand. Two are in Arroyo Grande wine country, including a 13-acre private estate and a working farm cottage. One is in San Luis Obispo, walking distance from downtown and Cal Poly." },
+      // ⚠ This used to end "One is in San Luis Obispo, walking distance from downtown
+      // and Cal Poly." Monterey Heights was the only SLO *city* property and it left
+      // the portfolio on 2026-09-04 (PORTFOLIO.sanLuisObispo === 0), so the claim was
+      // false AND totalled 13 against the "12 properties" two fields above it.
+      { q: "Where are Solmaré Stays properties located?", a: "Ten properties are in Avila Beach, most within a block or two of the sand. Two are in Arroyo Grande wine country: a 13-acre private estate and a working farm cottage. Solmaré does not currently manage a property inside San Luis Obispo city, but Avila Beach is a 15-minute drive from downtown SLO and about 20 minutes from Cal Poly, which is why many visiting families stay at the beach instead." },
       { q: "What is the best time of year to visit Avila Beach?", a: "Avila Beach sits in a sheltered, south-facing cove, so it stays mild year-round — daytime highs average around 68°F and the town records roughly 3,500 hours of sunshine a year. Summer is busiest and books earliest. September is the warmest month and noticeably quieter than August." },
       { q: "Do you also manage properties for owners?", a: "Yes. Solmaré Stays provides full-service vacation rental management for Central Coast homeowners, covering listing optimization, dynamic pricing, guest communication, cleaning, and maintenance. Owners can request a revenue projection for their property at solmarestays.com/management." }
     ]
@@ -361,7 +386,12 @@ const PAGES = [
 <ul>
 <li><a href="/blog/slo-county-short-term-rental-rules">Short-term rental rules in SLO County — permits, licenses &amp; TOT</a></li>
 <li><a href="/blog/avila-beach-property-management">What professional management looks like in Avila Beach</a></li>
-</ul>`,
+<li><a href="/vacation-rental-management">Short-term rental permit status for every SLO County city</a></li>
+</ul>
+<h2>Who you are hiring</h2>
+<p>Solmaré Stays is run by Kyle Van Til from Avila Beach, where ten of the twelve houses are. There is no call centre and no regional office — when something goes wrong at a property at nine at night, Kyle is the person who answers. Owners get a reply within 24 hours, a direct line on (805) 242-6411, and the ability to block their own dates whenever they want.</p>
+<h2>What happens after you send the form</h2>
+<ol><li>Kyle replies within 24 hours — to you, not from a shared inbox.</li><li>We check what your address can actually be permitted for. Rules differ by jurisdiction across San Luis Obispo County, and in some markets new short-term rental permits are not being issued at all — see <a href="/vacation-rental-management">permit status by city</a>.</li><li>You get a revenue projection built from comparable local performance and realistic occupancy for your property's size and location, not a best case.</li><li>If it makes sense for both of us, we talk terms. If it does not, we say so.</li></ol>`,
     schema: {
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
@@ -371,7 +401,9 @@ const PAGES = [
       "image": "https://www.solmarestays.com/logo.png",
       "description": "Full-service vacation rental property management for homeowners on California's Central Coast, covering listing optimization, dynamic pricing, guest communication, cleaning, and maintenance.",
       "telephone": "+1-805-242-6411",
-      "email": "kyle@solmarestays.com",
+      // ⚠ Was kyle@solmarestays.com while every visible surface showed info@ — an
+      // inconsistent NAP suppresses the local pack. One address, everywhere.
+      "email": "info@solmarestays.com",
       "priceRange": "$$",
       "address": { "@type": "PostalAddress", "addressLocality": "Avila Beach", "addressRegion": "CA", "postalCode": "93424", "addressCountry": "US" },
       "geo": { "@type": "GeoCoordinates", "latitude": 35.1797, "longitude": -120.7331 },
@@ -811,6 +843,173 @@ const PAGES = [
   }
 ];
 
+/**
+ * County-wide owner pages, built from src/data/markets.generated.json (emitted from
+ * markets.ts by the prebuild step — only `verified: true` markets are in there).
+ *
+ * 🔴 These are not a template with the city name swapped. Each one is anchored on the
+ * jurisdiction's actual permit position and lodging tax, because those differ wildly:
+ * Pismo Beach has issued no new licence since 2023-11-07, Paso Robles non-hosted
+ * permits are at capacity, Morro Bay is mid-audit, the unincorporated county is open.
+ * Cloning a page that ignores that would be a doorway page AND wrong.
+ */
+const PERMIT_LABEL = {
+  open: 'Accepting new permits',
+  frozen: 'No new permits',
+  capped: 'At capacity / waiting list',
+  emerging: 'Rules being written',
+};
+
+const MARKETS = JSON.parse(
+  readFileSync(join(__dirname, '..', 'src/data/markets.generated.json'), 'utf-8'),
+);
+
+PAGES.push({
+  route: '/vacation-rental-management',
+  title: 'Vacation Rental Management in SLO County — Permit Status by City | Solmaré Stays',
+  description:
+    'Which San Luis Obispo County cities are still issuing short-term rental permits, and what lodging tax each charges. Pismo is frozen, Paso is capped, the unincorporated county is open.',
+  h1: 'Where you can still get a short-term rental permit in SLO County',
+  body:
+    `<p>Permit availability is not the same across San Luis Obispo County, and it decides whether owning a short-term rental here is even possible. Pismo Beach has issued no new residential licence since 7 November 2023. Paso Robles non-hosted permits are at capacity. The unincorporated county — Avila Beach, Cayucos, Cambria — is still open.</p>` +
+    `<h2>Permit status by jurisdiction</h2><table><tr><th>Market</th><th>Regulated by</th><th>New permits</th><th>Lodging tax</th></tr>` +
+    MARKETS.map(m =>
+      `<tr><td><a href="/vacation-rental-management/${m.slug}">${m.name}</a></td><td>${m.unincorporated ? 'SLO County' : m.jurisdiction.replace(/^City of /, '')}</td><td>${PERMIT_LABEL[m.permit]}</td><td>${m.totRate}</td></tr>`,
+    ).join('') +
+    `</table>` +
+    `<p>City limits and unincorporated county lines do not follow mailing addresses — a property addressed as Arroyo Grande or Paso Robles is often permitted by the County instead. <a href="/management">See how our management works</a> or read the <a href="/blog/slo-county-short-term-rental-rules">SLO County short-term rental guide</a>.</p>`,
+  schema: {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Short-term rental permit status by San Luis Obispo County jurisdiction',
+    itemListElement: MARKETS.map((m, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: `${m.name} — ${PERMIT_LABEL[m.permit]}`,
+      url: `${BASE_URL}/vacation-rental-management/${m.slug}`,
+    })),
+  },
+});
+
+for (const m of MARKETS) {
+  PAGES.push({
+    route: `/vacation-rental-management/${m.slug}`,
+    title: `Vacation Rental Management in ${m.name}, CA | Solmaré Stays`,
+    description: `Short-term rental management for ${m.name} owners. ${PERMIT_LABEL[m.permit]} — lodging tax ${m.totRate}. Local team, ${m.minutesFromBase === 0 ? 'based here' : `${m.minutesFromBase} minutes away`}.`,
+    h1: `Vacation Rental Management in ${m.name}`,
+    body:
+      `<h2>Permits: ${PERMIT_LABEL[m.permit]}</h2>` +
+      `<p>Regulated by ${m.jurisdiction}. ${m.permitDetail}</p>` +
+      `<h2>Lodging tax: ${m.totRate}</h2><p>${m.totDetail}</p>` +
+      (m.permit !== 'open'
+        ? `<p><strong>One route the cap does not close:</strong> a stay of 31 nights or longer is not a short-term rental, so permit caps and freezes do not reach it. Furnished monthly rentals are a different product with different economics, and in a frozen market they are often the only legal option.</p>`
+        : '') +
+      `<h2>Where we stand in ${m.name}</h2><p>${m.angle}</p>` +
+      `<ul><li>${m.doorsManaged > 0 ? `${m.doorsManaged} propert${m.doorsManaged === 1 ? 'y' : 'ies'} under management here` : 'No properties under management here yet'} — out of 12 across the county.</li>` +
+      `<li>${m.minutesFromBase === 0 ? 'Our crew is based in this market' : `${m.minutesFromBase} minutes from our Avila Beach base`} — which is what decides whether a same-day maintenance promise is real.</li></ul>` +
+      `<p><a href="/vacation-rental-management">Compare every SLO County market</a> | <a href="/management">How our management works</a></p>` +
+      (m.sources.length
+        ? `<h2>Sources</h2><ul>${m.sources.map(u => `<li><a href="${u}" rel="nofollow">${u}</a></li>`).join('')}</ul><p>Permit rules and tax rates change. Confirm current requirements with ${m.jurisdiction}.</p>`
+        : ''),
+    schema: {
+      '@context': 'https://schema.org',
+      '@type': 'ProfessionalService',
+      name: `Solmaré Stays — Vacation Rental Management, ${m.name}`,
+      url: `${BASE_URL}/vacation-rental-management/${m.slug}`,
+      telephone: '+1-805-242-6411',
+      email: 'info@solmarestays.com',
+      serviceType: 'Vacation rental property management',
+      areaServed: {
+        '@type': 'City',
+        name: m.name,
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: 'San Luis Obispo County, California',
+        },
+      },
+    },
+  });
+}
+
+/**
+ * The internal link graph, emitted into every prerendered page.
+ *
+ * ⚠ Keep in sync with DESTINATIONS / STAY_TYPES / GUIDES in
+ * src/components/layout/Footer.tsx. Two copies, one truth: React renders the real
+ * footer, this renders the same links for crawlers that never run the JS.
+ * Adding a page? Add it here, to the Footer, and to sitemap generation.
+ */
+const SITE_LINKS = {
+  Destinations: [
+    ['/avila-beach', 'Avila Beach vacation rentals'],
+    ['/pismo-beach', 'Pismo Beach vacation rentals'],
+    ['/san-luis-obispo', 'San Luis Obispo vacation rentals'],
+    ['/arroyo-grande', 'Arroyo Grande & wine country rentals'],
+    ['/central-coast', 'Central Coast vacation rentals'],
+  ],
+  'Ways to stay': [
+    ['/collection', 'All 12 properties'],
+    ['/pet-friendly', 'Pet-friendly stays'],
+    ['/group-stays', 'Group stays'],
+  ],
+  Guides: [
+    ['/blog', 'All guides'],
+    ['/blog/things-to-do-avila-beach', 'Things to do in Avila Beach'],
+    ['/blog/best-restaurants-avila-beach', 'Where to eat in Avila Beach'],
+    ['/blog/avila-beach-vs-pismo-beach', 'Avila Beach vs Pismo Beach'],
+    ['/blog/cal-poly-graduation-where-to-stay', 'Cal Poly graduation weekend'],
+    ['/blog/wine-country-stays-edna-valley-arroyo-grande', 'Edna Valley wine country'],
+    ['/blog/large-group-vacation-rentals-central-coast', 'Large group rentals'],
+    ['/blog/pet-friendly-vacation-rentals-avila-beach', 'Pet-friendly guide'],
+    ['/blog/avila-beach-hot-springs', 'Avila Beach hot springs'],
+    ['/blog/slo-county-short-term-rental-rules', 'SLO County STR rules'],
+  ],
+  'For owners': [
+    ['/management', 'Vacation rental property management'],
+    ['/vacation-rental-management', 'SLO County permit status by city'],
+    ['/blog/avila-beach-property-management', 'How management works in Avila Beach'],
+  ],
+};
+
+/**
+ * Render the FAQ as visible content.
+ *
+ * 🔴 All 20 pages carrying `faq:` emitted FAQPage schema and showed the visitor
+ * nothing — 68 Q&As that existed only inside a <script> tag. Google requires FAQPage
+ * content to be visible on the page, so the rich result was at risk; worse, the
+ * answers to "How much does management cost" and "Is it cheaper to book direct than
+ * Airbnb" — the two objections blocking both funnels — were written and hidden.
+ *
+ * ⚖ Same array feeds the schema and this markup, so they cannot diverge again.
+ */
+function escapeHtml(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function faqHtml(faq) {
+  if (!faq || faq.length === 0) return '';
+  const items = faq
+    .map(f => `<dt><strong>${escapeHtml(f.q)}</strong></dt><dd>${escapeHtml(f.a)}</dd>`)
+    .join('');
+  return `<section><h2>Frequently asked questions</h2><dl>${items}</dl></section>`;
+}
+
+function siteLinks(currentRoute) {
+  const groups = Object.entries(SITE_LINKS)
+    .map(([heading, links]) => {
+      const items = links
+        .filter(([href]) => href !== currentRoute)
+        .map(([href, label]) => `<li><a href="${href}">${label}</a></li>`)
+        .join('');
+      // ⚠ Deliberately not a heading — injecting four <h2>s into all 38 pages would
+      // corrupt every page's heading outline for the sake of a link list.
+      return items ? `<div><p><strong>${heading}</strong></p><ul>${items}</ul></div>` : '';
+    })
+    .filter(Boolean)
+    .join('');
+  return `<nav aria-label="Site">${groups}</nav>`;
+}
+
 function generatePage(page) {
   let html = template;
 
@@ -922,6 +1121,12 @@ function generatePage(page) {
 
   // Inject content into root div so ALL crawlers (Google + AI) see real HTML
   if (page.h1 || page.body) {
+    // 🔴 The footer and nav live in React, so until this block existed the prerendered
+    // HTML carried almost no internal links: /blog, its ten posts and four of the five
+    // city pages were reachable only from sitemap.xml. Fifteen orphaned URLs is why
+    // posts aimed at real demand sat at position 20-40. This emits the same link graph
+    // the React footer does, without waiting for ~1MB of JS. Self-links are dropped so
+    // a page never links to itself.
     // 🔴 `heroImage` exists for LCP, not for crawlers — they already had the text.
     //
     // Measured 2026-09-25 on the deployed /management: TTFB 85ms, the preloaded AVIF
@@ -946,10 +1151,15 @@ function generatePage(page) {
     // the later paint — 10.3s only fell to 7.8s. Full-bleed + h:82vh + object-fit:cover
     // reproduces the component's box exactly, so the early paint IS the largest one and
     // hydration introduces no new candidate.
+    // ⚠ `box` must reproduce the HYDRATED hero's painted box, not merely appear early.
+    // Default is /management's 82vh hero; the homepage hero is h-screen, so it passes
+    // its own. Get this wrong and hydration hands Lighthouse a LARGER candidate and
+    // LCP just moves to the later paint — that is how 10.3s only fell to 7.8s.
+    const heroBox = page.heroImage?.box || 'width:100%;height:82vh;min-height:550px;object-fit:cover;display:block';
     const hero = page.heroImage
-      ? `<picture><source type="image/avif" srcset="${page.heroImage.avif}" sizes="100vw"><img src="${page.heroImage.fallback}" alt="${page.heroImage.alt}" width="1280" height="853" fetchpriority="high" decoding="async" style="width:100%;height:82vh;min-height:550px;object-fit:cover;display:block"></picture>`
+      ? `<picture>${page.heroImage.avif ? `<source type="image/avif" srcset="${page.heroImage.avif}" sizes="100vw">` : ''}<img src="${page.heroImage.fallback}" alt="${page.heroImage.alt}" ${page.heroImage.width ? `width="${page.heroImage.width}" height="${page.heroImage.height}"` : 'width="1280" height="853"'} fetchpriority="high" decoding="async" style="${heroBox}"></picture>`
       : '';
-    const seoContent = `<div id="root">${hero}<div style="max-width:900px;margin:0 auto;padding:2rem;font-family:system-ui,sans-serif;color:#1a1a1a"><h1>${page.h1 || ''}</h1>${page.body || ''}<p><a href="${BASE_URL}">← Back to Solmaré Stays</a> | <a href="tel:+18052426411">(805) 242-6411</a></p></div></div>`;
+    const seoContent = `<div id="root">${hero}<div style="max-width:900px;margin:0 auto;padding:2rem;font-family:system-ui,sans-serif;color:#1a1a1a"><h1>${page.h1 || ''}</h1>${page.body || ''}${faqHtml(page.faq)}<p><a href="${BASE_URL}">← Back to Solmaré Stays</a> | <a href="tel:+18052426411">(805) 242-6411</a></p>${siteLinks(page.route)}</div></div>`;
     html = html.replace(/<div id="root"><\/div>/, seoContent);
   }
 
@@ -1080,6 +1290,33 @@ async function fetchReviewCounts() {
 /** Below this many rated reviews, publish no aggregateRating at all. */
 const MIN_RATINGS_FOR_AGGREGATE = 5;
 
+/**
+ * The SERP snippet for a property page.
+ *
+ * ⚠ This was `description.substring(0, 155) + '...'`, which clipped the listing's prose
+ * mid-word — La Casita's snippet read "…doors that open to the prom…". Property pages
+ * are the strongest template on the site and that was their entire pitch in search.
+ *
+ * Lead with the facts that decide the click (who it sleeps, where, what it costs),
+ * then as much of the listing's own first sentence as fits, cut on a word boundary.
+ */
+function propertyMetaDescription({ name, city, bedrooms, sleeps, price, description }) {
+  const facts = `${name} — ${bedrooms}BR ${city} vacation rental, sleeps ${sleeps}.`;
+  const tail = price ? ` From $${price}/night. Book direct.` : ' Book direct.';
+  const room = 158 - facts.length - tail.length;
+
+  let detail = '';
+  if (room > 24 && description) {
+    // First sentence of the listing's own copy, never mid-word.
+    const firstSentence = (description.split(/(?<=\.)\s/)[0] || '').trim();
+    const candidate = firstSentence.length <= room
+      ? firstSentence
+      : firstSentence.slice(0, room).replace(/\s+\S*$/, '').replace(/[,;:—-]$/, '') + '…';
+    detail = ` ${candidate}`;
+  }
+  return `${facts}${detail}${tail}`;
+}
+
 function buildPropertyPage(listing, reviewCount) {
   const slug = generateSlug(listing.name);
   const name = listing.name.split('|')[0].trim();
@@ -1107,7 +1344,7 @@ function buildPropertyPage(listing, reviewCount) {
   return {
     route: `/property/${slug}`,
     title: `${name} | Vacation Rental in ${city} | Solmaré Stays`,
-    description: description ? `${description.substring(0, 155)}...` : `${name} — ${bedrooms}BR/${bathrooms}BA vacation rental in ${city}. Sleeps ${sleeps}. Book direct with Solmaré Stays.`,
+    description: propertyMetaDescription({ name, city, bedrooms, sleeps, price, description }),
     image,
     h1: name,
     body: `<p>${tagline ? tagline + '. ' : ''}${bedrooms} bedroom${bedrooms !== 1 ? 's' : ''}, ${bathrooms} bathroom${bathrooms !== 1 ? 's' : ''}, sleeps ${sleeps}. Starting from $${price}/night in ${city}, California.</p>
@@ -1195,6 +1432,10 @@ async function main() {
   // literal in PAGES silently stops reconciling with the sum of the property
   // pages within days. Skipped entirely if the reviews API failed, rather than
   // leaving a stale literal in place.
+  // Fallback mirrors src/data/stats.ts (REVIEWS.totalRounded / averageFive). ⚠ Keep
+  // the two in sync; the live values below overwrite these whenever Hostaway answers.
+  let liveReviewCopy = { total: '1,500+', avg: '4.8' };
+
   if (reviewCounts.size > 0) {
     let reviews = 0, rated = 0, ratingSum = 0;
     for (const c of reviewCounts.values()) {
@@ -1207,6 +1448,27 @@ async function main() {
       home.schema.aggregateRating.ratingCount = String(rated);
       home.schema.aggregateRating.reviewCount = String(reviews);
       console.log(`  Sitewide rating: ${(avgTen / 2).toFixed(1)}/5 from ${rated} ratings across ${reviews} reviews`);
+
+      // 🔴 The schema was already live here, but the PROSE and the meta description
+      // were literals ("1,500+ … 4.82"), so the page told visitors one number while
+      // its own markup told Google another — measured 9/30 as 4.8/899/1556 in schema
+      // beside "1,500+ / 4.82" in the description. Same source, every surface now.
+      liveReviewCopy = {
+        total: `${Math.floor(reviews / 100) * 100}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '+',
+        avg: (avgTen / 2).toFixed(1),
+      };
+    }
+  }
+
+  // Substitute the review tokens into every page's description and body. Falls back
+  // to the stats.ts snapshot when the reviews API is unreachable, so a failed fetch
+  // degrades to a slightly stale number rather than shipping a literal "{{...}}".
+  for (const page of PAGES) {
+    for (const field of ['description', 'body']) {
+      if (typeof page[field] !== 'string') continue;
+      page[field] = page[field]
+        .replaceAll('{{REVIEW_TOTAL}}', liveReviewCopy.total)
+        .replaceAll('{{REVIEW_AVG}}', liveReviewCopy.avg);
     }
   }
 
@@ -1224,6 +1486,32 @@ async function main() {
     }
     writeFileSync(outputPath, html, 'utf-8');
     console.log(`  ${page.route || '/'} -> ${outputPath} (${(html.length / 1024).toFixed(0)}KB)`);
+    count++;
+  }
+
+  // 404.
+  //
+  // 🔴 vercel.json used to rewrite EVERY unmatched path to /index.html, so the SPA
+  // answered /faq, /cal-poly, /about and /definitely-not-real with HTTP 200 and the
+  // homepage's exact bytes. Search Console reads that as a soft 404 and it lets any
+  // URL on the internet become a duplicate of the homepage. The rewrites are now
+  // scoped to the genuinely dynamic prefixes (/property, /blog, /checkout, …), and
+  // Vercel serves this file — with a real 404 status — for anything else.
+  //
+  // ⚠ noindex is injected here rather than added to the shared template: every other
+  // page must stay indexable.
+  {
+    const notFound = {
+      route: '/404',
+      title: 'Page not found | Solmaré Stays',
+      description: 'That page does not exist. Browse our Central Coast vacation rentals instead.',
+      h1: 'That page does not exist',
+      body: `<p>The link may be out of date. Here is everything on the site — or call us on <a href="tel:+18052426411">(805) 242-6411</a>.</p>`,
+    };
+    const html = generatePage(notFound)
+      .replace('</head>', '  <meta name="robots" content="noindex">\n</head>');
+    writeFileSync(join(DIST, '404.html'), html, 'utf-8');
+    console.log(`  /404 -> ${join(DIST, '404.html')} (${(html.length / 1024).toFixed(0)}KB)`);
     count++;
   }
 

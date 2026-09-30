@@ -3,6 +3,7 @@ import { useState, useMemo } from 'react';
 import { format } from 'date-fns';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { FaqSection } from '@/components/FaqSection';
 import { SEO } from '@/components/SEO';
 import { PropertyCard } from '@/components/properties/PropertyCard';
 import { PropertyMap } from '@/components/properties/PropertyMap';
@@ -298,6 +299,7 @@ const CollectionPage = () => {
           </section>
         )}
       </main>
+      <FaqSection route="/collection" />
       <Footer />
     </div>
   );
