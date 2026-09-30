@@ -78,9 +78,10 @@ const ManagementHub = () => {
           non-hosted permits are at capacity. The unincorporated county is open.
         </p>
         <p className="text-muted-foreground mb-4 max-w-2xl">
-          We manage {PUBLISHED_MARKETS.reduce((n, m) => n + m.doorsManaged, 0)} properties
-          across the county and we will tell you plainly when a market is closed, rather
-          than sell you a projection for a property that cannot be licensed.
+          We work with owners across the whole county — Avila Beach to Cambria, Paso Robles
+          to Nipomo — and we specialise in design-led, higher-end homes. We will tell you
+          plainly when a market is closed rather than sell you a projection for a property
+          that cannot be licensed.
         </p>
         {/* Existing permit holders = the easiest owners to win, and in frozen markets
             the only ones who can operate at all. Kyle 2026-09-30. */}

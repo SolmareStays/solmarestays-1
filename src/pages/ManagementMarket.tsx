@@ -174,9 +174,9 @@ const ManagementMarket = () => {
               <strong className="text-foreground">
                 {market.doorsManaged > 0
                   ? `${market.doorsManaged} ${market.doorsManaged === 1 ? 'property' : 'properties'} under management here`
-                  : 'No properties under management here yet'}
+                  : `Taking on properties in ${market.name}`}
               </strong>{' '}
-              — out of {PORTFOLIO.properties} across the county.
+              — part of a {PORTFOLIO.properties}-home portfolio across San Luis Obispo County.
             </li>
             <li>
               <strong className="text-foreground">
@@ -184,7 +184,7 @@ const ManagementMarket = () => {
                   ? 'Our crew is based in this market'
                   : `${market.minutesFromBase} minutes from our Avila Beach base`}
               </strong>{' '}
-              — which is what decides whether a same-day maintenance promise is real.
+              — close enough for in-person inspection between every stay.
             </li>
             <li>
               <strong className="text-foreground">
@@ -193,6 +193,36 @@ const ManagementMarket = () => {
               across Airbnb, Vrbo and Google.
             </li>
           </ul>
+        </section>
+
+        {/*
+          Kyle 2026-09-30: we want clients in ALL areas of the county, we specialise in
+          high-end homes, and concierge is part of the offer.
+          🔴 CONCIERGE BRIGHT LINE — "we book things that don't move". The CA Seller of
+          Travel Act (B&P 17550) hooks on TRANSPORTATION and catches you for merely
+          ADVERTISING that you can arrange it; the penalty starts at a cease-and-desist
+          on ALL advertising, this website included. ✅ Safe to name: restaurants, wine
+          tastings, private chefs, spa, guides, photographers, in-home experiences.
+          ⛔ NEVER name or imply: flights, airport transfers, car services, van wine
+          tours, boat charters. Refer warmly, let the guest book it, take nothing.
+        */}
+        <section className="mb-10">
+          <h2 className="font-serif text-2xl font-semibold mb-3">
+            Built for high-end homes
+          </h2>
+          <p className="leading-relaxed mb-4">
+            We specialise in design-led, higher-end properties, and we run them like it:
+            professional photography, listing copy written for the house rather than a
+            template, dynamic nightly pricing, strict guest screening, hotel-grade linens,
+            and an in-person inspection between every single stay.
+          </p>
+          <p className="leading-relaxed">
+            Guests also get a concierge — we arrange restaurant reservations, winery
+            tastings, private chefs, in-home massage, surf and hiking guides and
+            photographers, and stock the house before arrival. It is a real reason guests
+            book direct with us a second time, and direct nights are the ones that carry
+            the least commission for you.
+          </p>
         </section>
 
         <section className="mb-10">

@@ -393,31 +393,26 @@ const ForHomeownersPage = () => {
                 </div>
               </div>
             </section>
-
             {/*
-              SECTION 5b: Who you are actually hiring.
-              🔴 The whole site named no human being — a case-insensitive search for
-              "kyle" on the rendered page returned false. This page holds position 10.4
-              for "avila beach property management" and converted 0 of 107 landing-page
-              views in 30 days, while every owner who has ever signed came through a
-              personal introduction. An owner is being asked to hand over a house worth
-              close to a million dollars; an anonymous brand is the wrong thing to ask
-              that of, and it is the most likely reason this page does not convert.
-              ⏳ Kyle: a headshot at public/kyle-van-til.jpg slots in here. Deliberately
-              omitted rather than shipped as a broken <img>.
+              SECTION 5b: Who you are hiring, what it costs, and how to start.
+
+              🔴 The site named no human at all while holding position 10.4 for its money
+              keyword and converting 0 of 107 landing-page views. Kyle has to be here.
+              ⚖ Kyle 2026-09-30: the first version was "way too scrolly" — this is the
+              same substance at roughly half the length. Two columns on desktop, facts as
+              a compact grid rather than prose. ⛔ Don't let it grow back into an essay.
             */}
             <section className="section-padding bg-background border-t">
               <div className="container mx-auto px-4 md:px-6 lg:px-8">
-                <div className="max-w-2xl mx-auto">
-                  <p className="text-xs tracking-[0.18em] uppercase text-muted-foreground mb-3">
-                    Who you are hiring
-                  </p>
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-6 mb-6">
-                    <picture className="flex-none">
+                <div className="max-w-4xl mx-auto">
+
+                  {/* Founder — photo beside the copy, not stacked above it. */}
+                  <div className="grid md:grid-cols-[160px_1fr] gap-8 items-start mb-14">
+                    <picture>
                       <source
                         type="image/webp"
                         srcSet="/team/kyle-van-til-400.webp 400w, /team/kyle-van-til-800.webp 800w"
-                        sizes="128px"
+                        sizes="160px"
                       />
                       <img
                         src="/team/kyle-van-til-400.jpg"
@@ -426,166 +421,121 @@ const ForHomeownersPage = () => {
                         height={400}
                         loading="lazy"
                         decoding="async"
-                        className="w-32 h-32 rounded-full object-cover"
+                        className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover"
                       />
                     </picture>
-                    <h2 className="font-serif text-3xl md:text-4xl font-semibold">
-                      You deal with me, not an account manager
-                    </h2>
-                  </div>
-                  <div className="space-y-4 text-base md:text-lg leading-relaxed">
-                    <p>
-                      I'm Kyle Van Til. I run Solmaré Stays from Avila Beach, where ten
-                      of our twelve houses are. I am not a call centre and there is no
-                      regional office — when something goes wrong at your property at
-                      nine at night, I am the person who answers.
-                    </p>
-                    <p>
-                      I started this because the choice for owners here was a national
-                      company that treats a house as inventory, or doing it all yourself.
-                      We took on twelve homes one at a time, and we turn down properties
-                      we cannot service properly — Cambria is 55 minutes from our crew,
-                      and I would rather say that than promise same-day maintenance I
-                      cannot deliver.
-                    </p>
-                    <p>
-                      What that has produced so far: {REVIEWS.totalRounded} guest reviews
-                      averaging {REVIEWS.averageFive} out of 5 across Airbnb, Vrbo and
-                      Google, an in-person inspection between every single stay, and
-                      owners who can block their own dates whenever they want.
-                    </p>
-                  </div>
-
-                  <dl className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-10 pt-8 border-t">
                     <div>
-                      <dt className="text-sm text-muted-foreground mb-1">Response time</dt>
-                      <dd className="font-semibold">Within 24 hours, always</dd>
+                      <p className="text-xs tracking-[0.18em] uppercase text-muted-foreground mb-2">
+                        Who you are hiring
+                      </p>
+                      <h2 className="font-serif text-2xl md:text-3xl font-semibold mb-4">
+                        You deal with me, not an account manager
+                      </h2>
+                      <p className="text-base md:text-lg leading-relaxed mb-4">
+                        I'm Kyle Van Til. I run Solmaré Stays from Avila Beach, where ten of
+                        our twelve homes are. No call centre, no regional office — when
+                        something goes wrong at nine at night, I'm the one who answers. We
+                        take on design-led homes across San Luis Obispo County and run them
+                        properly: {REVIEWS.totalRounded} guest reviews averaging{' '}
+                        {REVIEWS.averageFive} out of 5, and an in-person inspection between
+                        every stay.
+                      </p>
+                      <dl className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-3 text-sm">
+                        <div>
+                          <dt className="text-muted-foreground">Response</dt>
+                          <dd className="font-semibold">Within 24 hours</dd>
+                        </div>
+                        <div>
+                          <dt className="text-muted-foreground">Direct line</dt>
+                          <dd className="font-semibold">
+                            <a href={CONTACT.phoneHref} className="hover:underline">
+                              {CONTACT.phone}
+                            </a>
+                          </dd>
+                        </div>
+                        <div>
+                          <dt className="text-muted-foreground">Based in</dt>
+                          <dd className="font-semibold">Avila Beach</dd>
+                        </div>
+                      </dl>
                     </div>
+                  </div>
+
+                  {/* Fee + the two fastest ways in, side by side. */}
+                  <div className="grid md:grid-cols-2 gap-10 md:gap-14">
                     <div>
-                      <dt className="text-sm text-muted-foreground mb-1">Direct line</dt>
-                      <dd className="font-semibold">
-                        <a href={CONTACT.phoneHref} className="hover:underline">
-                          {CONTACT.phone}
-                        </a>
-                      </dd>
+                      <h2 className="font-serif text-2xl font-semibold mb-3">What we charge</h2>
+                      <p className="leading-relaxed mb-3">
+                        <strong>18% of net rental revenue</strong> — net, not gross. Our fee
+                        comes off after lodging tax, cleaning and pet fees, because those are
+                        pass-throughs rather than income. Plenty of managers quote a lower
+                        number and charge it on the full amount the guest paid, so run both
+                        on the same booking before you compare.
+                      </p>
+                      <ul className="space-y-1.5 text-sm text-muted-foreground mb-3">
+                        <li>No onboarding fee, no monthly minimum</li>
+                        <li>No charge on nights you block for yourself</li>
+                        <li>We only earn when the property does</li>
+                      </ul>
+                      <p className="text-sm text-muted-foreground">
+                        Terms flex with scope and channel mix, and whatever we agree goes in
+                        writing before you commit to anything.
+                      </p>
                     </div>
+
                     <div>
-                      <dt className="text-sm text-muted-foreground mb-1">Based in</dt>
-                      <dd className="font-semibold">Avila Beach, California</dd>
-                    </div>
-                  </dl>
-
-                  {/*
-                    The fee, stated (Kyle 2026-09-30). It appeared nowhere on the site and
-                    the FAQ deliberately dodged it, while "How much does management cost"
-                    is the first question every owner asks.
-                    🔴 18% of NET, not gross — canon is `fee = 18% x (price ex-tax −
-                    cleaning − pet)`, charged on what we actually receive. Lodging tax,
-                    cleaning and pet fees are pass-throughs, never our income. ⛔ Do not
-                    restate this as a percentage of gross booking value.
-                  */}
-                  <div className="mt-8 pt-8 border-t">
-                    <h2 className="font-serif text-2xl font-semibold mb-4">
-                      What we charge
-                    </h2>
-                    <p className="text-lg leading-relaxed mb-4">
-                      <strong>18% of net rental revenue.</strong> Net, not gross — we take
-                      our fee after lodging taxes, the cleaning fee and any pet fee come
-                      out, because those are pass-throughs, not income. A lot of managers
-                      quote a lower-sounding number and charge it on the full amount the
-                      guest paid. Run both on the same booking before you compare them.
-                    </p>
-                    <p className="leading-relaxed mb-4">
-                      We only earn when the property does. There is no onboarding fee, no
-                      monthly minimum, and no charge for the nights you block for yourself.
-                    </p>
-                    <p className="leading-relaxed">
-                      Terms vary a little with scope and channel mix, and we are happy to
-                      structure something that makes sense for your situation. Whatever we
-                      land on goes in writing before you commit to anything.
-                    </p>
-                  </div>
-
-                  {/*
-                    Kyle 2026-09-30: owners who ALREADY hold a permit are the easiest
-                    clients to win — no permit application, no waiting list, and in the
-                    frozen jurisdictions (Pismo, Morro Bay) they are the only owners who
-                    can legally operate at all. Giving this its own section on the money
-                    page, not burying it in a market page.
-                  */}
-                  <div className="mt-8 pt-8 border-t">
-                    <h2 className="font-serif text-2xl font-semibold mb-4">
-                      Already have a short-term rental permit?
-                    </h2>
-                    <p className="leading-relaxed mb-4">
-                      Then the hard part is done, and switching is simpler than most owners
-                      expect. Your permit stays in your name — we operate underneath it. We
-                      handle the channel migration, the calendar, the crew and the tax
-                      filings, and in most cases a property is live with us inside a week.
-                    </p>
-                    <p className="leading-relaxed">
-                      This matters more than it used to. Pismo Beach has issued no new
-                      residential short-term rental licence since November 2023 and Paso
-                      Robles non-hosted permits are at capacity, so in several SLO County
-                      markets an existing permit is the whole ballgame.{' '}
-                      <Link to="/vacation-rental-management" className="underline">
-                        See where permits are still available
-                      </Link>
-                      .
-                    </p>
-                  </div>
-
-                  {/*
-                    Kyle 2026-09-30: "work with all people, welcome all to reach out on
-                    their needs, we can help even if it's not a long-term partnership."
-                    The page previously leaned on "we'll tell you no", which is honest but
-                    closes the door. This opens it without over-promising.
-                  */}
-                  <div className="mt-8 pt-8 border-t">
-                    <h2 className="font-serif text-2xl font-semibold mb-4">
-                      Not looking for a manager? Ask anyway.
-                    </h2>
-                    <p className="leading-relaxed">
-                      We would rather this area be run well than run by us. If you self-manage
-                      and want a second opinion on your rates, if you are weighing whether a
-                      property pencils before you buy it, or if you just want to know which
-                      jurisdiction governs your address and what it allows — send the note.
-                      We will tell you what we know, and there is no expectation of anything
-                      after that.
-                    </p>
-                  </div>
-
-                  <div className="mt-8 pt-8 border-t">
-                    <h2 className="font-serif text-2xl font-semibold mb-4">
-                      What happens after you send the form
-                    </h2>
-                    <ol className="space-y-3 list-decimal pl-5 leading-relaxed">
-                      <li>
-                        I reply within 24 hours — to you, not from a shared inbox.
-                      </li>
-                      <li>
-                        I check what your address can actually be permitted for. Rules
-                        differ by jurisdiction across SLO County, and in some markets new
-                        short-term rental permits are not being issued at all — see the{' '}
+                      <h2 className="font-serif text-2xl font-semibold mb-3">
+                        Already have a permit?
+                      </h2>
+                      <p className="leading-relaxed mb-5">
+                        Then the hard part is done. It stays in your name, we operate
+                        underneath it, and most homes are live within a week. That matters
+                        more than it used to — Pismo Beach has issued no new licence since
+                        2023 and Paso Robles is at capacity, so in several markets an
+                        existing permit is the whole ballgame.{' '}
                         <Link to="/vacation-rental-management" className="underline">
-                          permit status by city
+                          Permit status by city
                         </Link>
                         .
-                      </li>
-                      <li>
-                        You get a revenue projection built from comparable local
-                        performance and realistic occupancy for your property's size and
-                        location — not a best case.
-                      </li>
-                      <li>
-                        If it makes sense for both of us, we talk terms. If it does not,
-                        I will tell you that instead.
-                      </li>
+                      </p>
+
+                      <h2 className="font-serif text-2xl font-semibold mb-3">
+                        Not hiring anyone? Ask anyway.
+                      </h2>
+                      <p className="leading-relaxed">
+                        We work with owners all over the county, and we are glad to help even
+                        when it does not turn into a partnership — a second opinion on your
+                        rates, whether a property pencils before you buy, or just which
+                        jurisdiction governs your address.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* What happens next — one tight row, not a stacked list. */}
+                  <div className="mt-14 pt-10 border-t">
+                    <h2 className="font-serif text-2xl font-semibold mb-6">
+                      What happens after you send the form
+                    </h2>
+                    <ol className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 list-none p-0">
+                      {[
+                        ['1', 'I reply within 24 hours — me, not a shared inbox.'],
+                        ['2', 'We check what your address can actually be permitted for.'],
+                        ['3', 'You get a revenue projection from real local comps, not a best case.'],
+                        ['4', 'If it fits, we talk terms. If it does not, I will say so.'],
+                      ].map(([n, text]) => (
+                        <li key={n}>
+                          <span className="font-serif text-2xl text-muted-foreground block mb-1">
+                            {n}
+                          </span>
+                          <span className="text-sm leading-relaxed">{text}</span>
+                        </li>
+                      ))}
                     </ol>
-                    <p className="text-sm text-muted-foreground mt-5">
-                      No cost, no obligation, and we do not sell or share your details.
+                    <p className="text-sm text-muted-foreground mt-6">
+                      No cost, no obligation, and we never sell or share your details.
                     </p>
                   </div>
+
                 </div>
               </div>
             </section>

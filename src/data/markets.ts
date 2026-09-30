@@ -116,7 +116,7 @@ export const MARKETS: Market[] = [
     doorsManaged: 10,
     minutesFromBase: 0,
     angle:
-      'This is our home market. Ten of our twelve houses are here, the cleaning crew is based here, and inspections happen in person between every stay.',
+      'This is our home market. Ten of our twelve houses are here, the cleaning crew is based here, and inspections happen in person between every stay \u2014 which is what a design-led home a block from the sand actually needs.',
     verified: true,
     sources: [
       'https://www.slocounty.ca.gov/departments/planning-building/how-to-apply-for-a-permit-in-unincorporated-slo-co/land-use,-subdivision,-zoning/land-use-permit/business-license-clearance/vacation-rental-zoning-clearance/coastal-vacation-rental-clearance',
@@ -137,7 +137,7 @@ export const MARKETS: Market[] = [
     doorsManaged: 0,
     minutesFromBase: 35,
     angle:
-      'We do not manage in Cayucos yet, and we will say so plainly. It is 35 minutes from our Avila base, which is inside the radius we will service — Google search already shows owners here looking for management.',
+      'Cayucos sits squarely in our service area at 35 minutes from the crew base, and it is one of very few coastal markets still issuing new permits while Morro Bay next door is frozen. If you own here, this is a market we actively want.',
     verified: true,
     sources: [
       'https://www.slocounty.ca.gov/departments/planning-building/how-to-apply-for-a-permit-in-unincorporated-slo-co/land-use,-subdivision,-zoning/land-use-permit/business-license-clearance/vacation-rental-zoning-clearance/coastal-vacation-rental-clearance',
@@ -157,7 +157,7 @@ export const MARKETS: Market[] = [
     doorsManaged: 0,
     minutesFromBase: 55,
     angle:
-      'Cambria is at the edge of what we can service well from Avila Beach at 55 minutes. We would rather tell an owner that than pretend a same-day maintenance promise holds an hour up the coast.',
+      'Cambria is one of the county\u2019s genuine luxury markets \u2014 oceanfront and Pine Knolls homes that reward being run properly \u2014 and we take on properties here. It is an hour up the coast, so we staff it deliberately rather than casually, and we will tell you exactly what that looks like for your property before you commit to anything.',
     verified: true,
     sources: [
       'https://www.slocounty.ca.gov/departments/planning-building/how-to-apply-for-a-permit-in-unincorporated-slo-co/land-use,-subdivision,-zoning/land-use-permit/business-license-clearance/vacation-rental-zoning-clearance/coastal-vacation-rental-clearance',
@@ -179,7 +179,7 @@ export const MARKETS: Market[] = [
     doorsManaged: 0,
     minutesFromBase: 10,
     angle:
-      'We cannot get you a new Pismo Beach licence, and neither can anyone else. If you already hold one, the licence stays in your name and we run the operation underneath it. If you are buying, check what actually transfers before you close — and note that a stay of 31 nights or longer is not a short-term rental, so the freeze does not reach it.',
+      'We cannot get you a new Pismo Beach licence, and neither can anyone else — but if you already hold one, this is exactly the conversation we want. The licence stays in your name and we run the operation underneath it. Buying here? Check what actually transfers before you close, and talk to us first.',
     verified: true,
     sources: [
       'https://www.prcity.com/DocumentCenter/View/25961/Pismo-Beach-Outside-Coastal-Zone-Short-Term-Rental-Ordinance',
@@ -201,7 +201,7 @@ export const MARKETS: Market[] = [
     doorsManaged: 0,
     minutesFromBase: 30,
     angle:
-      'Morro Bay is a renewal-and-compliance market, not an acquisition market. The 175-foot buffer means a lapsed permit can be genuinely hard to recover, so the operational job here is not missing a renewal.',
+      'Morro Bay is a renewal-and-compliance market rather than an acquisition one, and that suits us \u2014 the 175-foot buffer means a lapsed permit can be near-impossible to recover, so the job is running it well and never missing a date. If you hold a Morro Bay permit, we would like to talk.',
     verified: true,
     sources: [
       'https://www.morrobayca.gov/1085/Short-Term-Vacation-Rentals',
@@ -222,7 +222,7 @@ export const MARKETS: Market[] = [
     doorsManaged: 0,
     minutesFromBase: 50,
     angle:
-      'If you want a non-hosted permit in Paso you are joining a queue, and we will tell you that before you engage us. Home-share is the open route, and 31-plus night furnished stays sit outside the permit question entirely.',
+      'A non-hosted permit in Paso means joining a queue, and we will say so before you engage us rather than after. Home-share is the open route today, and we work with wine-country owners across the north county \u2014 tell us about the property and we will map the realistic options.',
     verified: true,
     sources: [
       'https://www.prcity.com/521/Short-Term-Rental-Task-Force',
@@ -244,7 +244,7 @@ export const MARKETS: Market[] = [
     doorsManaged: 0,
     minutesFromBase: 30,
     angle:
-      'Fifty permits for the whole community means the answer is usually no, and an honest no is worth more to you than a revenue projection for a property that cannot be licensed.',
+      'Fifty permits for the whole community means a new one is genuinely hard to come by \u2014 but if you already hold one, or you are not sure which category your property falls into, that is worth a conversation. We would rather look at it with you than guess from a distance.',
     verified: true,
     sources: [
       'https://www.newtimesslo.com/los-osos-gets-new-growth-and-vacation-rental-policies-10408499/',
@@ -265,7 +265,7 @@ export const MARKETS: Market[] = [
     doorsManaged: 0,
     minutesFromBase: 40,
     angle:
-      'Atascadero is the one market in the county where the rules are being written right now. An owner starting here should expect the requirements to change, and should not build a plan that only works under today’s looser regime.',
+      'Atascadero is the one market in the county where the rules are being written right now. We are glad to work with owners here — the honest advice is not to build a plan that only works under today’s looser regime, and we will help you think that through.',
     verified: true,
     sources: [
       'https://www.atascadero.org/sites/default/files/2023-06/Vacation%20Rental%20Handout%202022%20v2.pdf',
