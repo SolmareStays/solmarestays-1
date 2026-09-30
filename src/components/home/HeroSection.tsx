@@ -47,26 +47,59 @@ export function HeroSection({ data }: { data?: any }) {
       <section className="relative h-screen w-full overflow-hidden">
         {/* Full Screen Image Slider */}
         <div className="absolute inset-0 z-0">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentSlide}
-              initial={{ opacity: 0, scale: 1.02 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1.2, ease: "easeOut" }}
-              className="absolute inset-0"
-            >
-              <img
-                src={slides[currentSlide].image}
-                alt={slides[currentSlide].alt}
-                className="w-full h-full object-cover"
-                fetchPriority="high"
-                decoding="async"
-              />
-              {/* Gradient overlay for text contrast */}
-              <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/20 to-transparent" />
-            </motion.div>
-          </AnimatePresence>
+          {/*
+            🔴 SLIDE 0 IS A PLAIN, UNANIMATED <img>. Do not wrap it in motion.
+
+            This is the homepage LCP element. When the whole slider lived inside
+            AnimatePresence with initial={{opacity:0}}, hydration replaced the
+            statically-painted hero with an element starting at opacity 0 — and an
+            element at opacity 0 is not an LCP candidate. It only became one when the
+            1.2s fade finished, so the largest paint moved LATER, not earlier.
+            Measured on the deployed page, median of three warm runs:
+              static hero + fading motion wrapper .... 9.7s  (9.7 / 9.3 / 9.7)
+              no static hero at all .................. 5.3s  (4.8 / 5.6 / 5.3)
+            The fade was costing ~4.4s on its own.
+
+            Same rule already documented for /management: "Plain <img>, never
+            motion.img — framer-motion defers the element past hydration."
+
+            Slides 1+ still crossfade, because by then the LCP is long settled.
+            ⚠ Keep this src identical to the heroImage entry for '/' in
+            scripts/prerender.mjs and the preload in index.html.
+          */}
+          <div className="absolute inset-0">
+            <img
+              src={slides[0].image}
+              alt={slides[0].alt}
+              className="w-full h-full object-cover"
+              fetchPriority="high"
+              decoding="async"
+            />
+          </div>
+
+          {currentSlide !== 0 && (
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentSlide}
+                initial={{ opacity: 0, scale: 1.02 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1.2, ease: 'easeOut' }}
+                className="absolute inset-0"
+              >
+                <img
+                  src={slides[currentSlide].image}
+                  alt={slides[currentSlide].alt}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </motion.div>
+            </AnimatePresence>
+          )}
+
+          {/* Gradient overlay for text contrast — above every slide layer. */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/20 to-transparent" />
         </div>
 
         {/* Split Layout Container */}
