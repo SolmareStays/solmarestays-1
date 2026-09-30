@@ -3,7 +3,7 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { SEO } from '@/components/SEO';
 import { OwnerLeadForm } from '@/components/OwnerLeadForm';
-import { marketBySlug, PERMIT_LABEL, type Market } from '@/data/markets';
+import { marketBySlug, PERMIT_LABEL, LONG_TERM_OFFERING_LIVE, type Market } from '@/data/markets';
 import { CONTACT, REVIEWS, PORTFOLIO } from '@/data/stats';
 import { CheckCircle2, XCircle, Clock, FileText } from 'lucide-react';
 
@@ -122,12 +122,45 @@ const ManagementMarket = () => {
 
           {market.permit !== 'open' && (
             <p className="leading-relaxed mt-5 pt-5 border-t">
-              <strong>One route the cap does not close:</strong> a stay of 31 nights or
-              longer is not a short-term rental, so permit caps and freezes do not reach
-              it. Furnished monthly rentals are a different product with different
-              economics, and in a frozen market they are often the only legal option.
+              <strong>Worth knowing:</strong> a stay of 31 nights or longer is not a
+              short-term rental, so permit caps and freezes do not reach it.{' '}
+              {LONG_TERM_OFFERING_LIVE ? (
+                <>
+                  We manage furnished monthly stays as well as nightly ones, and in a
+                  capped market that is often the route that still works.
+                </>
+              ) : (
+                <>
+                  We do not take on 31+ night rentals yet — that is licensed activity in
+                  California and we will offer it when ours issues. We would still rather
+                  you knew the option exists, so ask and we will point you the right way.
+                </>
+              )}
             </p>
           )}
+        </section>
+
+        {/* Existing permit holders are the easiest and fastest owners to onboard, and in
+            a frozen market the only ones who can legally operate. Kyle 2026-09-30. */}
+        <section className="mb-10">
+          <h2 className="font-serif text-2xl font-semibold mb-3">
+            {market.permit === 'open'
+              ? `Already have a permit in ${market.name}?`
+              : `If you already hold a ${market.name} permit`}
+          </h2>
+          <p className="leading-relaxed">
+            Then the hard part is done, and switching is simpler than most owners expect.
+            Your permit stays in your name and we operate underneath it — channel
+            migration, calendar, cleaning crew and tax filings — with most properties live
+            within about a week.
+            {market.permit !== 'open' && (
+              <>
+                {' '}
+                In {market.name} that permit is genuinely valuable: it cannot currently be
+                replaced, so the job is running it well and never missing a renewal.
+              </>
+            )}
+          </p>
         </section>
 
         {/* Honest local position. */}
@@ -184,9 +217,14 @@ const ManagementMarket = () => {
           <h2 className="font-serif text-2xl md:text-3xl font-semibold mb-2">
             Get a revenue projection for your {market.name} property
           </h2>
-          <p className="text-muted-foreground mb-6">
+          <p className="text-muted-foreground mb-4">
             Tell us the address and we will come back with a realistic earnings estimate
             and a straight answer on whether it can be permitted. No cost, no obligation.
+          </p>
+          <p className="text-muted-foreground mb-6">
+            And if you are not looking to hire anyone — you self-manage, or you are just
+            weighing whether a property pencils — ask anyway. We would rather this area be
+            run well than run by us, and there is no expectation of anything after.
           </p>
           <OwnerLeadForm
             subject={`Property Management Inquiry — ${market.name} market page`}

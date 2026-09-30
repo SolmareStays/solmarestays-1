@@ -118,7 +118,7 @@ const PAGES = [
       // false AND totalled 13 against the "12 properties" two fields above it.
       { q: "Where are Solmaré Stays properties located?", a: "Ten properties are in Avila Beach, most within a block or two of the sand. Two are in Arroyo Grande wine country: a 13-acre private estate and a working farm cottage. Solmaré does not currently manage a property inside San Luis Obispo city, but Avila Beach is a 15-minute drive from downtown SLO and about 20 minutes from Cal Poly, which is why many visiting families stay at the beach instead." },
       { q: "What is the best time of year to visit Avila Beach?", a: "Avila Beach sits in a sheltered, south-facing cove, so it stays mild year-round — daytime highs average around 68°F and the town records roughly 3,500 hours of sunshine a year. Summer is busiest and books earliest. September is the warmest month and noticeably quieter than August." },
-      { q: "Do you also manage properties for owners?", a: "Yes. Solmaré Stays provides full-service vacation rental management for Central Coast homeowners, covering listing optimization, dynamic pricing, guest communication, cleaning, and maintenance. Owners can request a revenue projection for their property at solmarestays.com/management." }
+      { q: "Do you also manage properties for owners?", a: "Yes. Solmaré Stays provides full-service vacation rental management for San Luis Obispo County homeowners, covering listing optimization, dynamic pricing, guest communication, cleaning, and maintenance. The fee is 18% of net rental revenue — after lodging tax, cleaning and pet fees, not the gross a guest pays. Owners who already hold a short-term rental permit are the most common way properties join, since the permit stays in the owner\u0027s name. Owners can request a revenue projection at solmarestays.com/management, and questions are welcome even without a partnership." }
     ]
   },
   {
@@ -389,7 +389,14 @@ const PAGES = [
 <li><a href="/vacation-rental-management">Short-term rental permit status for every SLO County city</a></li>
 </ul>
 <h2>Who you are hiring</h2>
+<p><img src="/team/kyle-van-til-400.jpg" alt="Kyle Van Til, founder of Solmaré Stays, Avila Beach" width="128" height="128" loading="lazy" decoding="async" style="width:128px;height:128px;border-radius:50%;object-fit:cover"></p>
 <p>Solmaré Stays is run by Kyle Van Til from Avila Beach, where ten of the twelve houses are. There is no call centre and no regional office — when something goes wrong at a property at nine at night, Kyle is the person who answers. Owners get a reply within 24 hours, a direct line on (805) 242-6411, and the ability to block their own dates whenever they want.</p>
+<h2>What we charge</h2>
+<p><strong>18% of net rental revenue</strong> — net, not gross. The fee comes off after lodging taxes, the cleaning fee and any pet fee are taken out, because those are pass-throughs rather than income. Many managers quote a lower headline rate and apply it to the full amount the guest paid, so run both on the same booking before comparing. No onboarding fee, no monthly minimum, and no charge for nights you block for yourself. Terms vary a little with scope and channel mix, and we are happy to structure something that makes sense for your situation.</p>
+<h2>Already have a short-term rental permit?</h2>
+<p>Then the hard part is done. Your permit stays in your name and we operate underneath it — channel migration, calendar, crew and tax filings — and most properties are live within about a week. This matters more than it used to: Pismo Beach has issued no new residential short-term rental licence since November 2023 and Paso Robles non-hosted permits are at capacity, so in several SLO County markets an existing permit is the whole ballgame. <a href="/vacation-rental-management">See where permits are still available</a>.</p>
+<h2>Not looking for a manager? Ask anyway.</h2>
+<p>We would rather this area be run well than run by us. If you self-manage and want a second opinion on your rates, if you are weighing whether a property pencils before you buy it, or if you just want to know which jurisdiction governs your address and what it allows — send the note. We will tell you what we know, with no expectation of anything after that.</p>
 <h2>What happens after you send the form</h2>
 <ol><li>Kyle replies within 24 hours — to you, not from a shared inbox.</li><li>We check what your address can actually be permitted for. Rules differ by jurisdiction across San Luis Obispo County, and in some markets new short-term rental permits are not being issued at all — see <a href="/vacation-rental-management">permit status by city</a>.</li><li>You get a revenue projection built from comparable local performance and realistic occupancy for your property's size and location, not a best case.</li><li>If it makes sense for both of us, we talk terms. If it does not, we say so.</li></ol>`,
     schema: {
@@ -424,7 +431,12 @@ const PAGES = [
     },
     faq: [
       { q: "What does a vacation rental property manager do?", a: "A vacation rental manager handles everything an owner would otherwise do themselves: creating and optimizing listings across Airbnb, Vrbo and Google, setting nightly rates, screening and communicating with guests, coordinating cleaning and linens between stays, inspecting the property, and handling maintenance issues as they come up." },
-      { q: "How much does vacation rental management cost in Avila Beach?", a: "Management is priced as a percentage of booking revenue, so the manager only earns when the property does. The exact rate depends on the property, its location, and how much service the owner wants. Solmaré Stays provides a revenue projection and proposed terms before any commitment." },
+      // 🔴 The fee, stated (Kyle 2026-09-30). This answer used to dodge the number.
+      // Canon: fee = 18% x (price ex-tax − cleaning − pet), on what we RECEIVE.
+      // ⛔ Never restate as a percentage of gross booking value.
+      { q: "How much does vacation rental management cost in Avila Beach?", a: "Solmaré Stays charges 18% of net rental revenue. Net, not gross: the fee comes off after lodging taxes, the cleaning fee and any pet fee are taken out, because those are pass-throughs rather than income. Many managers quote a lower headline rate and apply it to the full amount the guest paid, so it is worth running both on the same booking before comparing. There is no onboarding fee, no monthly minimum, and no charge for owner-blocked nights. Terms vary a little with scope and channel mix, and everything is put in writing before any commitment." },
+      { q: "I already have a short-term rental permit. How hard is it to switch managers?", a: "Easier than most owners expect, and it is the most common way owners join Solmaré. The permit stays in the owner's name and Solmaré operates underneath it, handling the channel migration, calendar, cleaning crew and tax filings. Most properties are live within about a week. This matters more than it used to: Pismo Beach has issued no new residential short-term rental licence since November 2023 and Paso Robles non-hosted permits are at capacity, so in several San Luis Obispo County markets an existing permit is the only way to operate at all." },
+      { q: "Will you help if I am not looking to hire a manager?", a: "Yes. Solmaré works with owners across San Luis Obispo County and is happy to answer questions with no expectation of a partnership — a second opinion on nightly rates, whether a property pencils before you buy it, or simply which jurisdiction governs a given address and what it permits. Call (805) 242-6411 or send a note through the site." },
       { q: "How does Solmaré Stays set nightly rates?", a: "Rates are dynamic rather than fixed. Solmaré uses PriceLabs alongside local market data and live booking pace to adjust pricing by season, day of week, remaining lead time, and local demand events. Rates are reviewed continuously rather than set once per season." },
       { q: "Is Solmaré Stays local to Avila Beach?", a: "Yes. Solmaré Stays is based in Avila Beach and manages 12 properties, all within roughly 20 miles. That means same-day response to guest and maintenance issues, in-person inspection between every stay, and direct owner access rather than a regional account manager." },
       { q: "How do I get a revenue estimate for my property?", a: "Request a revenue projection at solmarestays.com/contact or call (805) 242-6411. Solmaré reviews the property, comparable local performance, and realistic occupancy for its location and size, then proposes terms based on that analysis." }
@@ -877,7 +889,9 @@ PAGES.push({
       `<tr><td><a href="/vacation-rental-management/${m.slug}">${m.name}</a></td><td>${m.unincorporated ? 'SLO County' : m.jurisdiction.replace(/^City of /, '')}</td><td>${PERMIT_LABEL[m.permit]}</td><td>${m.totRate}</td></tr>`,
     ).join('') +
     `</table>` +
-    `<p>City limits and unincorporated county lines do not follow mailing addresses — a property addressed as Arroyo Grande or Paso Robles is often permitted by the County instead. <a href="/management">See how our management works</a> or read the <a href="/blog/slo-county-short-term-rental-rules">SLO County short-term rental guide</a>.</p>`,
+    `<h2>Already hold a permit?</h2><p>That is the hard part done. Your permit stays in your name and we operate underneath it — channel migration, calendar, crew and tax filings — with most properties live within about a week. In the frozen markets an existing permit is the only way to operate at all.</p>` +
+    `<h2>Not looking to hire anyone?</h2><p>Ask anyway. We would rather this area be run well than run by us — a second opinion on your rates, whether a property pencils before you buy, or simply which jurisdiction governs your address. No expectation of anything after.</p>` +
+    `<p>City limits and unincorporated county lines do not follow mailing addresses — a property addressed as Arroyo Grande or Paso Robles is often permitted by the County instead. <a href="/management">See how our management works</a> (fee: 18% of net) or read the <a href="/blog/slo-county-short-term-rental-rules">SLO County short-term rental guide</a>.</p>`,
   schema: {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
@@ -901,9 +915,15 @@ for (const m of MARKETS) {
       `<h2>Permits: ${PERMIT_LABEL[m.permit]}</h2>` +
       `<p>Regulated by ${m.jurisdiction}. ${m.permitDetail}</p>` +
       `<h2>Lodging tax: ${m.totRate}</h2><p>${m.totDetail}</p>` +
+      // ⚠ Mirrors the LONG_TERM_OFFERING_LIVE === false branch in ManagementMarket.tsx.
+      // 30+ night rentals are licensed activity in California (no B&P 10131.01(a)
+      // exemption above 30 days) — the site states the fact without offering the
+      // service. ⛔ Do not promise 31+ night management here before the licence issues.
       (m.permit !== 'open'
-        ? `<p><strong>One route the cap does not close:</strong> a stay of 31 nights or longer is not a short-term rental, so permit caps and freezes do not reach it. Furnished monthly rentals are a different product with different economics, and in a frozen market they are often the only legal option.</p>`
+        ? `<p><strong>Worth knowing:</strong> a stay of 31 nights or longer is not a short-term rental, so permit caps and freezes do not reach it. We do not take on 31+ night rentals yet — that is licensed activity in California and we will offer it when ours issues. We would still rather you knew the option exists, so ask and we will point you the right way.</p>`
         : '') +
+      `<h2>${m.permit === 'open' ? `Already have a permit in ${m.name}?` : `If you already hold a ${m.name} permit`}</h2>` +
+      `<p>Then the hard part is done, and switching is simpler than most owners expect. Your permit stays in your name and we operate underneath it — channel migration, calendar, cleaning crew and tax filings — with most properties live within about a week.${m.permit !== 'open' ? ` In ${m.name} that permit is genuinely valuable: it cannot currently be replaced, so the job is running it well and never missing a renewal.` : ''}</p>` +
       `<h2>Where we stand in ${m.name}</h2><p>${m.angle}</p>` +
       `<ul><li>${m.doorsManaged > 0 ? `${m.doorsManaged} propert${m.doorsManaged === 1 ? 'y' : 'ies'} under management here` : 'No properties under management here yet'} — out of 12 across the county.</li>` +
       `<li>${m.minutesFromBase === 0 ? 'Our crew is based in this market' : `${m.minutesFromBase} minutes from our Avila Beach base`} — which is what decides whether a same-day maintenance promise is real.</li></ul>` +

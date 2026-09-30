@@ -18,7 +18,7 @@
     },
     {
       "q": "Do you also manage properties for owners?",
-      "a": "Yes. Solmaré Stays provides full-service vacation rental management for Central Coast homeowners, covering listing optimization, dynamic pricing, guest communication, cleaning, and maintenance. Owners can request a revenue projection for their property at solmarestays.com/management."
+      "a": "Yes. Solmaré Stays provides full-service vacation rental management for San Luis Obispo County homeowners, covering listing optimization, dynamic pricing, guest communication, cleaning, and maintenance. The fee is 18% of net rental revenue — after lodging tax, cleaning and pet fees, not the gross a guest pays. Owners who already hold a short-term rental permit are the most common way properties join, since the permit stays in the owner's name. Owners can request a revenue projection at solmarestays.com/management, and questions are welcome even without a partnership."
     }
   ],
   "/avila-beach": [
@@ -156,7 +156,15 @@
     },
     {
       "q": "How much does vacation rental management cost in Avila Beach?",
-      "a": "Management is priced as a percentage of booking revenue, so the manager only earns when the property does. The exact rate depends on the property, its location, and how much service the owner wants. Solmaré Stays provides a revenue projection and proposed terms before any commitment."
+      "a": "Solmaré Stays charges 18% of net rental revenue. Net, not gross: the fee comes off after lodging taxes, the cleaning fee and any pet fee are taken out, because those are pass-throughs rather than income. Many managers quote a lower headline rate and apply it to the full amount the guest paid, so it is worth running both on the same booking before comparing. There is no onboarding fee, no monthly minimum, and no charge for owner-blocked nights. Terms vary a little with scope and channel mix, and everything is put in writing before any commitment."
+    },
+    {
+      "q": "I already have a short-term rental permit. How hard is it to switch managers?",
+      "a": "Easier than most owners expect, and it is the most common way owners join Solmaré. The permit stays in the owner's name and Solmaré operates underneath it, handling the channel migration, calendar, cleaning crew and tax filings. Most properties are live within about a week. This matters more than it used to: Pismo Beach has issued no new residential short-term rental licence since November 2023 and Paso Robles non-hosted permits are at capacity, so in several San Luis Obispo County markets an existing permit is the only way to operate at all."
+    },
+    {
+      "q": "Will you help if I am not looking to hire a manager?",
+      "a": "Yes. Solmaré works with owners across San Luis Obispo County and is happy to answer questions with no expectation of a partnership — a second opinion on nightly rates, whether a property pencils before you buy it, or simply which jurisdiction governs a given address and what it permits. Call (805) 242-6411 or send a note through the site."
     },
     {
       "q": "How does Solmaré Stays set nightly rates?",

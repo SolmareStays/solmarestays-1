@@ -46,6 +46,28 @@
  * ────────────────────────────────────────────────────────────────────────────
  */
 
+/**
+ * 🔴 DRE GATE — controls whether the site OFFERS 30+ night (mid-term / long-term)
+ * furnished management. Keep false until the licence issues.
+ *
+ * California B&P 10131.01(a) exempts stays of 30 days or less, which is why the
+ * existing short-term operation needs no licence. There is NO such exemption above
+ * 30 days: arranging 31+ night rentals for other owners requires a broker licence, or
+ * a salesperson working under a broker. Furnished vs unfurnished is irrelevant to DRE —
+ * only duration matters — and operating without it is a misdemeanour under B&P 10139
+ * (up to $20,000 and/or six months). The DRE Licensee Alert explicitly names the
+ * evasion pattern of dressing a 31+ night stay up as a short-term booking.
+ *
+ * ⚖ Kyle asked on 2026-09-30 to market furnished rentals "long and short term". The
+ * short-term half is live. The long-term half is built and waiting on this flag rather
+ * than shipped, because advertising the service is itself the regulated activity.
+ * Per dre-license-path the salesperson licence is expected around Feb 2027 — flip this
+ * to true the day it ISSUES and is hung with the sponsoring broker, not before.
+ *
+ * ⛔ Do not flip this to make a page read better.
+ */
+export const LONG_TERM_OFFERING_LIVE = false;
+
 export type PermitStatus = 'open' | 'frozen' | 'capped' | 'emerging';
 
 export interface Market {

@@ -77,10 +77,18 @@ const ManagementHub = () => {
           Pismo Beach has issued no new licence since November 2023. Paso Robles
           non-hosted permits are at capacity. The unincorporated county is open.
         </p>
-        <p className="text-muted-foreground mb-12 max-w-2xl">
+        <p className="text-muted-foreground mb-4 max-w-2xl">
           We manage {PUBLISHED_MARKETS.reduce((n, m) => n + m.doorsManaged, 0)} properties
           across the county and we will tell you plainly when a market is closed, rather
           than sell you a projection for a property that cannot be licensed.
+        </p>
+        {/* Existing permit holders = the easiest owners to win, and in frozen markets
+            the only ones who can operate at all. Kyle 2026-09-30. */}
+        <p className="text-muted-foreground mb-12 max-w-2xl">
+          <strong className="text-foreground">Already hold a permit?</strong> That is the
+          hard part done — it stays in your name and we operate underneath it, usually
+          live within a week. And if you are not looking to hire anyone at all, ask
+          anyway: we would rather this area be run well than run by us.
         </p>
 
         {/* Summary table — the reference people will link to. */}

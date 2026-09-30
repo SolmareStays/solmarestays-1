@@ -412,9 +412,27 @@ const ForHomeownersPage = () => {
                   <p className="text-xs tracking-[0.18em] uppercase text-muted-foreground mb-3">
                     Who you are hiring
                   </p>
-                  <h2 className="font-serif text-3xl md:text-4xl font-semibold mb-6">
-                    You deal with me, not an account manager
-                  </h2>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-6 mb-6">
+                    <picture className="flex-none">
+                      <source
+                        type="image/webp"
+                        srcSet="/team/kyle-van-til-400.webp 400w, /team/kyle-van-til-800.webp 800w"
+                        sizes="128px"
+                      />
+                      <img
+                        src="/team/kyle-van-til-400.jpg"
+                        alt="Kyle Van Til, founder of Solmaré Stays, Avila Beach"
+                        width={400}
+                        height={400}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-32 h-32 rounded-full object-cover"
+                      />
+                    </picture>
+                    <h2 className="font-serif text-3xl md:text-4xl font-semibold">
+                      You deal with me, not an account manager
+                    </h2>
+                  </div>
                   <div className="space-y-4 text-base md:text-lg leading-relaxed">
                     <p>
                       I'm Kyle Van Til. I run Solmaré Stays from Avila Beach, where ten
@@ -457,10 +475,90 @@ const ForHomeownersPage = () => {
                     </div>
                   </dl>
 
+                  {/*
+                    The fee, stated (Kyle 2026-09-30). It appeared nowhere on the site and
+                    the FAQ deliberately dodged it, while "How much does management cost"
+                    is the first question every owner asks.
+                    🔴 18% of NET, not gross — canon is `fee = 18% x (price ex-tax −
+                    cleaning − pet)`, charged on what we actually receive. Lodging tax,
+                    cleaning and pet fees are pass-throughs, never our income. ⛔ Do not
+                    restate this as a percentage of gross booking value.
+                  */}
                   <div className="mt-8 pt-8 border-t">
-                    <h3 className="font-serif text-2xl font-semibold mb-4">
+                    <h2 className="font-serif text-2xl font-semibold mb-4">
+                      What we charge
+                    </h2>
+                    <p className="text-lg leading-relaxed mb-4">
+                      <strong>18% of net rental revenue.</strong> Net, not gross — we take
+                      our fee after lodging taxes, the cleaning fee and any pet fee come
+                      out, because those are pass-throughs, not income. A lot of managers
+                      quote a lower-sounding number and charge it on the full amount the
+                      guest paid. Run both on the same booking before you compare them.
+                    </p>
+                    <p className="leading-relaxed mb-4">
+                      We only earn when the property does. There is no onboarding fee, no
+                      monthly minimum, and no charge for the nights you block for yourself.
+                    </p>
+                    <p className="leading-relaxed">
+                      Terms vary a little with scope and channel mix, and we are happy to
+                      structure something that makes sense for your situation. Whatever we
+                      land on goes in writing before you commit to anything.
+                    </p>
+                  </div>
+
+                  {/*
+                    Kyle 2026-09-30: owners who ALREADY hold a permit are the easiest
+                    clients to win — no permit application, no waiting list, and in the
+                    frozen jurisdictions (Pismo, Morro Bay) they are the only owners who
+                    can legally operate at all. Giving this its own section on the money
+                    page, not burying it in a market page.
+                  */}
+                  <div className="mt-8 pt-8 border-t">
+                    <h2 className="font-serif text-2xl font-semibold mb-4">
+                      Already have a short-term rental permit?
+                    </h2>
+                    <p className="leading-relaxed mb-4">
+                      Then the hard part is done, and switching is simpler than most owners
+                      expect. Your permit stays in your name — we operate underneath it. We
+                      handle the channel migration, the calendar, the crew and the tax
+                      filings, and in most cases a property is live with us inside a week.
+                    </p>
+                    <p className="leading-relaxed">
+                      This matters more than it used to. Pismo Beach has issued no new
+                      residential short-term rental licence since November 2023 and Paso
+                      Robles non-hosted permits are at capacity, so in several SLO County
+                      markets an existing permit is the whole ballgame.{' '}
+                      <Link to="/vacation-rental-management" className="underline">
+                        See where permits are still available
+                      </Link>
+                      .
+                    </p>
+                  </div>
+
+                  {/*
+                    Kyle 2026-09-30: "work with all people, welcome all to reach out on
+                    their needs, we can help even if it's not a long-term partnership."
+                    The page previously leaned on "we'll tell you no", which is honest but
+                    closes the door. This opens it without over-promising.
+                  */}
+                  <div className="mt-8 pt-8 border-t">
+                    <h2 className="font-serif text-2xl font-semibold mb-4">
+                      Not looking for a manager? Ask anyway.
+                    </h2>
+                    <p className="leading-relaxed">
+                      We would rather this area be run well than run by us. If you self-manage
+                      and want a second opinion on your rates, if you are weighing whether a
+                      property pencils before you buy it, or if you just want to know which
+                      jurisdiction governs your address and what it allows — send the note.
+                      We will tell you what we know, and there is no expectation of anything
+                      after that.
+                    </p>
+                  </div>
+
+                  <div className="mt-8 pt-8 border-t">
+                    <h2 className="font-serif text-2xl font-semibold mb-4">
                       What happens after you send the form
-                    </h3>
+                    </h2>
                     <ol className="space-y-3 list-decimal pl-5 leading-relaxed">
                       <li>
                         I reply within 24 hours — to you, not from a shared inbox.
