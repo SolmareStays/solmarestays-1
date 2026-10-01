@@ -204,6 +204,17 @@ async function generateSitemap() {
     }
   }
 
+  // Guest-intent landing pages, from the same generated data the prerender uses.
+  {
+    const collections = JSON.parse(
+      fs.readFileSync(path.join(ROOT, 'src/data/guestCollections.generated.json'), 'utf-8'),
+    );
+    entries.push('  <!-- Guest landing pages -->');
+    for (const c of collections) {
+      entries.push(buildUrlEntry(`/${c.slug}`, 'weekly', '0.9'));
+    }
+  }
+
   // Property pages
   if (propertyIds.length > 0) {
     entries.push('  <!-- Properties -->');

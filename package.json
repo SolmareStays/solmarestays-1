@@ -11,7 +11,7 @@
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
-    "prebuild": "node scripts/extract-faqs.mjs && node scripts/emit-markets.mjs"
+    "prebuild": "node scripts/extract-faqs.mjs && node scripts/emit-markets.mjs && node scripts/emit-guest-collections.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

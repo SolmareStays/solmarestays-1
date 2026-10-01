@@ -22,6 +22,8 @@ const ForHomeowners = lazy(() => import("./pages/ForHomeowners"));
 // src/data/markets.ts — only verified markets resolve; the rest redirect to the hub.
 const ManagementHub = lazy(() => import("./pages/ManagementHub"));
 const ManagementMarket = lazy(() => import("./pages/ManagementMarket"));
+// Guest-intent landing pages, driven by src/data/guestCollections.ts.
+const GuestCollection = lazy(() => import("./pages/GuestCollection"));
 const GuestExperience = lazy(() => import("./pages/GuestExperience"));
 const Contact = lazy(() => import("./pages/Contact"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -62,6 +64,9 @@ const App = () => (
                 <Route path="/management" element={<ForHomeowners />} />
                 <Route path="/vacation-rental-management" element={<ManagementHub />} />
                 <Route path="/vacation-rental-management/:city" element={<ManagementMarket />} />
+                <Route path="/cal-poly" element={<GuestCollection />} />
+                <Route path="/wine-country" element={<GuestCollection />} />
+                <Route path="/beachfront" element={<GuestCollection />} />
                 <Route path="/experiences" element={<GuestExperience />} />
                 {/* Redirects for old URLs */}
                 <Route path="/why-choose-us" element={<WhyChooseUs />} />

@@ -29,6 +29,9 @@ const FOR_OWNERS = [
 
 const STAY_TYPES = [
   { to: '/collection', label: 'All Properties' },
+  { to: '/beachfront', label: 'Walk to the Beach' },
+  { to: '/cal-poly', label: 'Cal Poly Weekends' },
+  { to: '/wine-country', label: 'Wine Country' },
   { to: '/pet-friendly', label: 'Pet-Friendly Stays' },
   { to: '/group-stays', label: 'Group Stays' },
 ] as const;

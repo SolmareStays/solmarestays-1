@@ -965,6 +965,64 @@ for (const m of MARKETS) {
   });
 }
 
+
+/**
+ * Guest-intent landing pages, from src/data/guestCollections.generated.json (emitted
+ * from guestCollections.ts at prebuild). Same source as the React page, so the static
+ * HTML and the hydrated page cannot drift — which has already bitten twice here.
+ *
+ * ⚖ Three intents only. A page per coastal town would be a doorway page: we hold homes
+ * in Avila Beach and Arroyo Grande, so "vacation rentals in Morro Bay" has nothing real
+ * behind it. See the note at the top of guestCollections.ts.
+ */
+const GUEST_COLLECTIONS = JSON.parse(
+  readFileSync(join(__dirname, '..', 'src/data/guestCollections.generated.json'), 'utf-8'),
+);
+
+const COLLECTION_FAQS = {
+  'cal-poly': [
+    { q: 'How far is Avila Beach from Cal Poly?', a: 'About 20 minutes by car, and roughly 15 minutes from downtown San Luis Obispo. It is a straight run down Highway 101 to the Avila Beach Drive exit, with no mountain passes and little traffic outside summer weekends.' },
+    { q: 'How far ahead should I book for Cal Poly graduation?', a: 'As far ahead as you can. Commencement weekend is the earliest-booking date on the Central Coast and families routinely reserve a year out; the larger houses go first because there are fewer of them. Move-in weekend fills next, then parents weekend, then home football.' },
+    { q: 'Why does San Luis Obispo sell out for Cal Poly weekends?', a: 'Cal Poly has roughly 22,000 students and a large share of their families arrive at once into a city of about 47,000 people. There is simply not enough lodging inside the city on those dates, which is why rates climb and minimum stays appear, and why many visiting families stay at the beach instead.' },
+    { q: 'Do you have a rental inside San Luis Obispo city?', a: 'No. The City of San Luis Obispo only permits owner-occupied homestays, so whole-home short-term rentals are not legal inside the city limits. Our homes are in Avila Beach, about 20 minutes from campus, and in Arroyo Grande.' },
+  ],
+  'wine-country': [
+    { q: 'What is the difference between Edna Valley and Paso Robles?', a: 'Paso Robles has more than 200 wineries and the weekend traffic to match. The Edna Valley has a few dozen, mostly small, and runs cooler because fog pulls in off the ocean most mornings — so it produces Chardonnay and Pinot Noir rather than the big reds Paso is known for. It is generally far easier to walk into a tasting room without a reservation.' },
+    { q: 'How far is the Edna Valley from the beach?', a: 'About twenty minutes. From the Arroyo Grande Valley you are roughly ten minutes from the Edna Valley tasting rooms, fifteen from Arroyo Grande village, twenty from Avila Beach and twenty-five from downtown San Luis Obispo.' },
+    { q: 'Do you have a wine country property for a large group?', a: 'Yes. Our Arroyo Grande estate sits on 13 private acres and sleeps 14 across the main house and four casitas, with a solar-heated pool and a hot tub. It is booked as a whole estate rather than by the room.' },
+    { q: 'Can you arrange transport between wineries?', a: 'No — Solmaré does not arrange transportation. We are happy to point you to the local car services people here actually use, and you book them directly. Several Edna Valley tasting rooms are close enough together to walk between once you have parked.' },
+  ],
+  beachfront: [
+    { q: 'How close are your Avila Beach homes to the sand?', a: 'Most are a two to five minute walk. Avila is a small village, walkable end to end in about fifteen minutes, and the pier, promenade, waterfront restaurants and tasting rooms sit inside that same radius.' },
+    { q: 'Is Avila Beach sunnier than Pismo Beach?', a: 'Often, yes. Avila sits in a sheltered cove that faces south rather than west, so the headland takes the wind and the marine layer tends to burn off earlier than it does a few miles away. Avila can be sunny and still while Pismo, ten minutes down the coast, is grey and blowing.' },
+    { q: 'Is parking included?', a: 'Yes — every one of our homes has its own parking. Avila gets busy on summer weekends and public parking fills by late morning, so this matters more than it sounds.' },
+    { q: 'What is there to do in Avila Beach besides the beach?', a: 'The Bob Jones Trail runs flat and paved from the edge of the village along San Luis Obispo Creek, and we keep beach cruisers at several homes. Sycamore Mineral Springs is about eight minutes away with private hillside hot tubs, and downtown San Luis Obispo is fifteen.' },
+  ],
+};
+
+for (const c of GUEST_COLLECTIONS) {
+  PAGES.push({
+    route: `/${c.slug}`,
+    title: c.title,
+    description: c.description,
+    h1: c.h1,
+    body:
+      `<p>${c.lede}</p>` +
+      `<h2>${c.gridHeading}</h2><p>${c.gridIntro}</p>` +
+      c.sections.map(sec => `<h2>${sec.h2}</h2>${sec.body.map(b => `<p>${b}</p>`).join('')}`).join('') +
+      `<h2>Keep reading</h2><ul>${c.related.map(r => `<li><a href="${r.to}">${r.label}</a></li>`).join('')}</ul>`,
+    schema: {
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      name: c.h1,
+      description: c.description,
+      url: `${BASE_URL}/${c.slug}`,
+      about: c.sections.map(sec => sec.h2),
+    },
+    faq: COLLECTION_FAQS[c.slug] || [],
+  });
+}
+
 /**
  * The internal link graph, emitted into every prerendered page.
  *
@@ -983,6 +1041,9 @@ const SITE_LINKS = {
   ],
   'Ways to stay': [
     ['/collection', 'All 12 properties'],
+    ['/beachfront', 'Walk to the beach'],
+    ['/cal-poly', 'Cal Poly weekends'],
+    ['/wine-country', 'Wine country stays'],
     ['/pet-friendly', 'Pet-friendly stays'],
     ['/group-stays', 'Group stays'],
   ],
