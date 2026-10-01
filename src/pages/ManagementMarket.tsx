@@ -148,18 +148,27 @@ const ManagementMarket = () => {
               ? `Already have a permit in ${market.name}?`
               : `If you already hold a ${market.name} permit`}
           </h2>
+          {/* ⚠ The full how-switching-works paragraph lives once, on /management. It
+              used to repeat verbatim on all 18 market pages — the most duplicated block
+              on the site. Keep the market-specific sentence here and link out. */}
           <p className="leading-relaxed">
-            Then the hard part is done, and switching is simpler than most owners expect.
-            Your permit stays in your name and we operate underneath it — channel
-            migration, calendar, cleaning crew and tax filings — with most properties live
-            within about a week.
-            {market.permit !== 'open' && (
+            {market.permit !== 'open' ? (
               <>
-                {' '}
-                In {market.name} that permit is genuinely valuable: it cannot currently be
-                replaced, so the job is running it well and never missing a renewal.
+                In {market.name} an existing permit is genuinely valuable — it cannot
+                currently be replaced, so the job is running it well and never missing a
+                renewal.
               </>
-            )}
+            ) : (
+              <>
+                New permits are available in {market.name}, so you can start from scratch
+                here — but if you already hold one, switching is the faster route.
+              </>
+            )}{' '}
+            Your permit stays in your name either way.{' '}
+            <Link to="/management" className="underline">
+              How switching works
+            </Link>
+            .
           </p>
         </section>
 

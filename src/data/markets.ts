@@ -273,7 +273,8 @@ export const MARKETS: Market[] = [
     ],
   },
 
-  // ─── Arroyo Grande: we have doors here; TOT verified, permit route not yet. ───
+
+  // ─── South county: three different regimes within ten minutes of each other ───
   {
     slug: 'arroyo-grande',
     name: 'Arroyo Grande',
@@ -281,56 +282,83 @@ export const MARKETS: Market[] = [
     unincorporated: false,
     permit: 'open',
     permitDetail:
-      'Arroyo Grande requires a short-term rental clearance and a business licence, and collects Transient Occupancy Tax directly. Note that much of the wine country addressed as Arroyo Grande — including the Edna Valley side — is actually unincorporated county and permitted by the County instead, so the governing rules depend on which side of the city line your parcel falls.',
+      'Arroyo Grande permits both homestays and whole-home vacation rentals, but each needs a Minor Use Permit (Plot Plan Review) approved before you operate, plus a city business licence. The rule that decides most applications is separation: a vacation rental cannot be established within 500 feet of an existing short-term rental or a school. In the older parts of town that single constraint rules out a lot of otherwise eligible homes, so the first thing worth checking is what is already licensed around you. Note too that much of the wine country addressed as Arroyo Grande sits outside the city limits and is permitted by the County instead.',
     totRate: '13.5%',
     totDetail:
       '10% city Transient Occupancy Tax, plus 1.5% for the county Tourism Marketing District and a further 2% for the Arroyo Grande Tourism Business Improvement District.',
     doorsManaged: 2,
     minutesFromBase: 10,
     angle:
-      'We manage two properties here, including a 13-acre estate that sleeps 14, so we know how the city and county line splits this market and which rules land on which parcel.',
-    // 🔴 TOT verified from the city; the permit route is described from the
-    // city/county split rather than from the ordinance text. Read the AG
-    // ordinance before flipping this to true.
-    verified: false,
-    sources: ['https://www.agpd.org/127/Transient-Occupancy-Tax'],
+      'We manage two homes here — a 13-acre estate that sleeps 14 and a working farm cottage — so we know how the city and county line splits this market and which rules land on which parcel.',
+    verified: true,
+    sources: [
+      'https://www.arroyogrande.org/652/Short-Term-Rental-Regulations',
+      'https://www.agpd.org/127/Transient-Occupancy-Tax',
+    ],
   },
-
-  // ─── NOT YET VERIFIED — deliberately unpublished. ───
-  // Each needs its ordinance and TOT read from a primary source before it can
-  // render. ⛔ Do not guess a permit regime to fill a page.
   {
     slug: 'san-luis-obispo',
     name: 'San Luis Obispo',
     jurisdiction: 'City of San Luis Obispo',
     unincorporated: false,
-    permit: 'capped',
+    permit: 'frozen',
     permitDetail:
-      'PLACEHOLDER — SLO city restricts short-term rentals and enforces density/separation rules. Read the ordinance before publishing.',
-    totRate: '13% (unverified)',
-    totDetail: 'Recorded internally as 13%; confirm with the city before publishing.',
+      'This is the strictest jurisdiction in the county, and the distinction catches most owners out: the City of San Luis Obispo does not permit whole-home short-term rentals at all. Renting an entire property the owner does not live in is prohibited. What is allowed is a "homestay" — renting rooms inside your own primary residence, with the owner living there, capped at four adults at a time and stays of no more than 30 consecutive days. A homestay permit plus a business licence runs to roughly $900 in fees. If you own a second property inside the city limits, it cannot legally be a short-term rental.',
+    totRate: 'Confirm with city',
+    totDetail:
+      'Confirm the current San Luis Obispo city Transient Occupancy Tax rate and any district assessment with the city before quoting a guest-facing total.',
     doorsManaged: 0,
     minutesFromBase: 20,
     angle:
-      'We hold no doors inside SLO city. Avila Beach is 15 minutes from downtown, which is how visiting Cal Poly families actually solve this.',
-    verified: false,
-    sources: [],
+      'We hold no doors inside the city, and under the homestay-only rule a whole-home rental is not something we could run here for you. Avila Beach is 15 minutes from downtown and 20 from Cal Poly, which is how most visiting families actually solve this — and it is where our homes are.',
+    verified: true,
+    sources: [
+      'https://sanluisobispo.municipal.codes/Code/17.86.160',
+      'https://www.slocity.org/living/permits/homeowner-permits',
+    ],
   },
   {
     slug: 'grover-beach',
     name: 'Grover Beach',
     jurisdiction: 'City of Grover Beach',
     unincorporated: false,
-    permit: 'open',
-    permitDetail: 'PLACEHOLDER — read the Grover Beach STR ordinance before publishing.',
+    permit: 'frozen',
+    permitDetail:
+      'Grover Beach has run a short-term rental permit programme since its ordinance was adopted in June 2019, and there are currently no non-owner-occupied permits available. Owner-occupied rentals remain possible, but with a condition that rules out most investor use: the owner has to be in the residence, or in another residence on the same property, between 10pm and 7am during a stay. Transient Occupancy Tax and the Tourism Marketing District assessment are remitted monthly on any stay under 30 days.',
     totRate: '13.5%',
     totDetail:
       '12% city Transient Occupancy Tax plus the 1.5% county Tourism Marketing District assessment.',
     doorsManaged: 0,
     minutesFromBase: 5,
-    angle: 'Adjacent to Pismo but a separate jurisdiction with its own, more open rules.',
-    verified: false,
-    sources: ['https://www.groverbeach.org/543/Tax-Payment-TOTTMD'],
+    angle:
+      'Five minutes from us, and one of the markets where the honest answer shapes the plan: if you already hold a Grover permit it is worth protecting, and if you were hoping to buy and run a non-owner-occupied rental here, that door is shut for now.',
+    verified: true,
+    sources: [
+      'https://www.grover.org/345/Short-Term-Rentals',
+      'https://grover.org/DocumentCenter/View/12232/STR-Administrative-Rules',
+      'https://www.groverbeach.org/543/Tax-Payment-TOTTMD',
+    ],
+  },
+  {
+    slug: 'shell-beach',
+    name: 'Shell Beach',
+    jurisdiction: 'City of Pismo Beach',
+    unincorporated: false,
+    permit: 'frozen',
+    permitDetail:
+      'Shell Beach is part of the City of Pismo Beach, so Pismo’s rules apply here in full — and that matters, because Pismo has issued no new residential short-term rental licence since 7 November 2023. Only properties already licensed on that date can renew. Two further conditions apply: the licence must be registered by the property owner rather than by a management company, and short-term rentals are permitted only at single-family properties that are the owner’s primary residence.',
+    totRate: '13.5%',
+    totDetail:
+      '10% city Transient Occupancy Tax, plus a 2% lodging business improvement district assessment and the 1.5% county Tourism Marketing District assessment.',
+    doorsManaged: 0,
+    minutesFromBase: 5,
+    angle:
+      'People search Shell Beach as its own place, but it is governed by Pismo — which is the single most important fact about owning here right now. If you hold a licence already, that is the conversation we want.',
+    verified: true,
+    sources: [
+      'https://www.prcity.com/DocumentCenter/View/25961/Pismo-Beach-Outside-Coastal-Zone-Short-Term-Rental-Ordinance',
+      'http://pismobeach.org/881/Vacation-Rental-Short-Term-Rental-Homest',
+    ],
   },
   {
     slug: 'oceano',
@@ -339,14 +367,18 @@ export const MARKETS: Market[] = [
     unincorporated: true,
     permit: 'open',
     permitDetail:
-      'PLACEHOLDER — unincorporated, so the County zoning-clearance route applies. Confirm Oceano-specific community standards before publishing.',
+      'Oceano is unincorporated and sits in the County’s non-coastal zone, so the route is an Inland Vacation Rental Clearance plus a business licence and a Transient Occupancy Tax certificate. One restriction rules out a lot of properties here and is worth checking before you plan anything: a vacation rental is not permitted in an accessory dwelling unit, a guesthouse, or agricultural worker housing. If the space you had in mind is an ADU, the answer is no regardless of anything else.',
     totRate: '10.5%–12.5%',
-    totDetail: 'County rate: 9% TOT plus 1.5% TMD, plus 2% TBID in some areas.',
+    totDetail:
+      '9% county Transient Occupancy Tax plus 1.5% Tourism Marketing District, and a further 2% Tourism Business Improvement District in some areas.',
     doorsManaged: 0,
     minutesFromBase: 7,
-    angle: 'Dunes access with county rather than city permitting.',
-    verified: false,
-    sources: [],
+    angle:
+      'Seven minutes from us and genuinely open, which makes Oceano one of the more interesting south-county markets — dunes access, lower entry prices than Pismo, and county permitting rather than a city freeze.',
+    verified: true,
+    sources: [
+      'https://www.slocounty.ca.gov/departments/planning-building/how-to-apply-for-a-permit-in-unincorporated-slo-co/business-license-clearance/vacation-rental-zoning-clearance/inland-vacation-rental-clearance',
+    ],
   },
   {
     slug: 'nipomo',
@@ -355,14 +387,19 @@ export const MARKETS: Market[] = [
     unincorporated: true,
     permit: 'open',
     permitDetail:
-      'PLACEHOLDER — unincorporated inland; the County inland vacation-rental clearance route applies. Confirm before publishing.',
+      'Nipomo is unincorporated and in the County’s non-coastal zone, so an Inland Vacation Rental Clearance, a business licence and a Transient Occupancy Tax certificate are what is required. The restriction that catches people out here: a vacation rental cannot be an accessory dwelling unit, a guesthouse, or agricultural worker housing — which on the larger rural parcels around Nipomo is often exactly the building an owner had in mind. If your parcel is under a Williamson Act contract there is a separate clearance for that as well.',
     totRate: '10.5%–12.5%',
-    totDetail: 'County rate: 9% TOT plus 1.5% TMD, plus 2% TBID in some areas.',
+    totDetail:
+      '9% county Transient Occupancy Tax plus 1.5% Tourism Marketing District, and a further 2% Tourism Business Improvement District in some areas.',
     doorsManaged: 0,
     minutesFromBase: 15,
-    angle: 'Inland south county, county-permitted.',
-    verified: false,
-    sources: [],
+    angle:
+      'Larger lots and more land than the beach towns, and open for new permits. The ADU rule is the first thing to check on a rural Nipomo parcel, and we will check it with you before talking numbers.',
+    verified: true,
+    sources: [
+      'https://www.slocounty.ca.gov/departments/planning-building/how-to-apply-for-a-permit-in-unincorporated-slo-co/business-license-clearance/vacation-rental-zoning-clearance/inland-vacation-rental-clearance',
+      'https://www.slocounty.ca.gov/departments/planning-building/how-to-apply-for-a-permit-in-unincorporated-slo-co/business-license-clearance/vacation-rental-zoning-clearance/williamson-act-vacation-rental-clearance',
+    ],
   },
   {
     slug: 'templeton',
@@ -371,15 +408,79 @@ export const MARKETS: Market[] = [
     unincorporated: true,
     permit: 'open',
     permitDetail:
-      'PLACEHOLDER — unincorporated, so the County inland clearance route applies rather than the Paso Robles cap. Confirm before publishing.',
+      'Templeton is unincorporated, which is the single most useful thing an owner here can know: it is permitted by the County under an Inland Vacation Rental Clearance, not by the City of Paso Robles — so the Paso non-hosted permit cap does not apply to it. You need the clearance, a business licence and a Transient Occupancy Tax certificate. A vacation rental cannot be an accessory dwelling unit, guesthouse or agricultural worker housing, and Williamson Act parcels need their own clearance.',
     totRate: '10.5%–12.5%',
-    totDetail: 'County rate: 9% TOT plus 1.5% TMD, plus 2% TBID in some areas.',
+    totDetail:
+      '9% county Transient Occupancy Tax plus 1.5% Tourism Marketing District, and a further 2% Tourism Business Improvement District in some areas.',
     doorsManaged: 0,
     minutesFromBase: 45,
     angle:
-      'Wine country next to Paso Robles but outside the city cap — potentially the most under-served open market in the county.',
-    verified: false,
-    sources: [],
+      'Wine country next door to Paso Robles but outside the city cap — on paper the most under-served open market in the county, and the one we would most like to be asked about.',
+    verified: true,
+    sources: [
+      'https://www.slocounty.ca.gov/departments/planning-building/how-to-apply-for-a-permit-in-unincorporated-slo-co/business-license-clearance/vacation-rental-zoning-clearance/inland-vacation-rental-clearance',
+    ],
+  },
+  {
+    slug: 'santa-margarita',
+    name: 'Santa Margarita',
+    jurisdiction: 'San Luis Obispo County (unincorporated)',
+    unincorporated: true,
+    permit: 'open',
+    permitDetail:
+      'Santa Margarita is unincorporated and in the County’s non-coastal zone, so an Inland Vacation Rental Clearance, business licence and Transient Occupancy Tax certificate are the requirement. As everywhere inland, a vacation rental cannot be an accessory dwelling unit, guesthouse or agricultural worker housing, and a parcel under a Williamson Act contract needs its own separate clearance — which is common on the ranch land around here.',
+    totRate: '10.5%–12.5%',
+    totDetail:
+      '9% county Transient Occupancy Tax plus 1.5% Tourism Marketing District, and a further 2% Tourism Business Improvement District in some areas.',
+    doorsManaged: 0,
+    minutesFromBase: 30,
+    angle:
+      'Ranch country at the top of the Cuesta Grade, and open. Google already shows owners here looking for management, which is more than can be said for several bigger towns on this list.',
+    verified: true,
+    sources: [
+      'https://www.slocounty.ca.gov/departments/planning-building/how-to-apply-for-a-permit-in-unincorporated-slo-co/business-license-clearance/vacation-rental-zoning-clearance/inland-vacation-rental-clearance',
+      'https://www.slocounty.ca.gov/departments/planning-building/how-to-apply-for-a-permit-in-unincorporated-slo-co/business-license-clearance/vacation-rental-zoning-clearance/williamson-act-vacation-rental-clearance',
+    ],
+  },
+  {
+    slug: 'san-simeon',
+    name: 'San Simeon',
+    jurisdiction: 'San Luis Obispo County (unincorporated)',
+    unincorporated: true,
+    permit: 'open',
+    permitDetail:
+      'San Simeon is unincorporated and in the coastal zone, so a Vacation Rental Zoning Clearance under Coastal Zone Land Use Ordinance section 23.08.165 is the route, alongside a business licence and a Transient Occupancy Tax certificate. The Permit Center decides whether a given parcel qualifies for a clearance or needs a Minor Use Permit, so the answer depends on your specific address rather than on the town.',
+    totRate: '10.5%–12.5%',
+    totDetail:
+      '9% county Transient Occupancy Tax plus 1.5% Tourism Marketing District, and a further 2% Tourism Business Improvement District in some areas.',
+    doorsManaged: 0,
+    minutesFromBase: 75,
+    angle:
+      'Hearst Castle traffic makes this a real market, and it is open. It is also the furthest point in the county from us at about 75 minutes, so we would staff it deliberately and tell you honestly what our response time there looks like before you sign anything.',
+    verified: true,
+    sources: [
+      'https://www.slocounty.ca.gov/departments/planning-building/how-to-apply-for-a-permit-in-unincorporated-slo-co/land-use,-subdivision,-zoning/land-use-permit/business-license-clearance/vacation-rental-zoning-clearance/coastal-vacation-rental-clearance',
+    ],
+  },
+  {
+    slug: 'san-miguel',
+    name: 'San Miguel',
+    jurisdiction: 'San Luis Obispo County (unincorporated)',
+    unincorporated: true,
+    permit: 'open',
+    permitDetail:
+      'San Miguel is unincorporated and in the County’s non-coastal zone, so an Inland Vacation Rental Clearance plus a business licence and Transient Occupancy Tax certificate are what is needed. The inland rules apply in full: no vacation rental in an accessory dwelling unit, guesthouse or agricultural worker housing, and a separate clearance for Williamson Act parcels.',
+    totRate: '10.5%–12.5%',
+    totDetail:
+      '9% county Transient Occupancy Tax plus 1.5% Tourism Marketing District, and a further 2% Tourism Business Improvement District in some areas.',
+    doorsManaged: 0,
+    minutesFromBase: 55,
+    angle:
+      'The far north of the county, open for permits, and almost entirely ignored by the management companies clustered around Paso. If you own here we would rather hear from you than not.',
+    verified: true,
+    sources: [
+      'https://www.slocounty.ca.gov/departments/planning-building/how-to-apply-for-a-permit-in-unincorporated-slo-co/business-license-clearance/vacation-rental-zoning-clearance/inland-vacation-rental-clearance',
+    ],
   },
 ];
 

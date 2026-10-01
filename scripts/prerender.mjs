@@ -931,9 +931,15 @@ for (const m of MARKETS) {
         ? `<p><strong>Worth knowing:</strong> a stay of 31 nights or longer is not a short-term rental, so permit caps and freezes do not reach it. We do not take on 31+ night rentals yet — that is licensed activity in California and we will offer it when ours issues. We would still rather you knew the option exists, so ask and we will point you the right way.</p>`
         : '') +
       `<h2>${m.permit === 'open' ? `Already have a permit in ${m.name}?` : `If you already hold a ${m.name} permit`}</h2>` +
-      `<p>Then the hard part is done, and switching is simpler than most owners expect. Your permit stays in your name and we operate underneath it — channel migration, calendar, cleaning crew and tax filings — with most properties live within about a week.${m.permit !== 'open' ? ` In ${m.name} that permit is genuinely valuable: it cannot currently be replaced, so the job is running it well and never missing a renewal.` : ''}</p>` +
+      // ⚠ This paragraph used to run in full on all 18 pages — the single most
+      // duplicated block on the site. The market-specific sentence stays; the generic
+      // how-switching-works detail now lives once, on /management.
+      `<p>${m.permit !== 'open' ? `In ${m.name} an existing permit is genuinely valuable — it cannot currently be replaced, so the job is running it well and never missing a renewal.` : `New permits are available in ${m.name}, so you can start from scratch here — but if you already hold one, switching is the faster route.`} Your permit stays in your name either way. <a href="/management">How switching works</a>.</p>` +
       `<h2>Where we stand in ${m.name}</h2><p>${m.angle}</p>` +
-      `<ul><li>${m.doorsManaged > 0 ? `${m.doorsManaged} propert${m.doorsManaged === 1 ? 'y' : 'ies'} under management here` : 'No properties under management here yet'} — out of 12 across the county.</li>` +
+      // ⚠ Must match ManagementMarket.tsx — this said "No properties under management
+      // here yet" while React said "Taking on properties in X". Prerender/React drift
+      // again; it also repeated verbatim on 16 of 18 pages.
+      `<ul><li>${m.doorsManaged > 0 ? `${m.doorsManaged} propert${m.doorsManaged === 1 ? 'y' : 'ies'} under management in ${m.name}` : `Taking on properties in ${m.name}`} — part of a 12-home portfolio across San Luis Obispo County.</li>` +
       `<li>${m.minutesFromBase === 0 ? 'Our team is based in this market' : `${m.minutesFromBase} minutes from our Pismo Beach base`} — close enough for in-person inspection between every stay.</li></ul>` +
       `<p><a href="/vacation-rental-management">Compare every SLO County market</a> | <a href="/management">How our management works</a></p>` +
       (m.sources.length
