@@ -1517,6 +1517,47 @@ async function main() {
     count++;
   }
 
+  // llms.txt — the index AI crawlers read.
+  //
+  // 🔴 It was hand-maintained and had drifted twice over: it listed NONE of the nine
+  // owner market pages, and its review count said 1,541 while the live schema said
+  // 1,564. AI answers are a stated priority and this file is the entry point, so the
+  // two parts that go stale are now generated from the same sources everything else
+  // uses — the live Hostaway review recompute and markets.generated.json.
+  //
+  // ⚖ The prose stays hand-written in public/llms.txt; only the review figure and the
+  // homeowner section are substituted. Edit the copy there, not here.
+  {
+    const srcPath = join(__dirname, '..', 'public', 'llms.txt');
+    if (existsSync(srcPath)) {
+      let llms = readFileSync(srcPath, 'utf-8');
+
+      llms = llms.replace(
+        /\*\*[\d,]+ guest reviews, averaging [\d.]+\/10\*\* \([\d.]+\/5\)/,
+        `**${liveReviewCopy.total} guest reviews, averaging ${(Number(liveReviewCopy.avg) * 2).toFixed(1)}/10** (${liveReviewCopy.avg}/5)`,
+      );
+
+      const ownerLines = [
+        `- [Vacation rental property management](${BASE_URL}/management): full-service management for San Luis Obispo County homeowners — listing optimization, professional photography, dynamic pricing via PriceLabs, 24/7 local guest support, hotel-standard cleaning, and in-person inspection between every stay. Fee is 18% of net rental revenue (after lodging tax, cleaning and pet fees), not gross.`,
+        `- [Short-term rental permit status by city](${BASE_URL}/vacation-rental-management): which San Luis Obispo County jurisdictions are still issuing short-term rental permits, and what lodging tax each charges. Pismo Beach has issued no new residential licence since 7 November 2023; Paso Robles non-hosted permits are at capacity; Morro Bay is mid-audit; the unincorporated county is open.`,
+        ...MARKETS.map(m =>
+          // ⚠ Atascadero's totRate is "Confirm with city", which reads wrong after
+          // "lodging tax" — phrase those as unconfirmed rather than as a figure.
+          `- [Vacation rental management in ${m.name}](${BASE_URL}/vacation-rental-management/${m.slug}): ${PERMIT_LABEL[m.permit].toLowerCase()}; ${/^[\d]/.test(m.totRate) ? `lodging tax ${m.totRate}` : 'lodging tax not yet confirmed'}; regulated by ${m.jurisdiction}.`,
+        ),
+        `- [Contact](${BASE_URL}/contact): request a revenue projection for your property.`,
+      ].join('\n');
+
+      llms = llms.replace(
+        /## For homeowners\n\n[\s\S]*?\n\n## Guides/,
+        `## For homeowners\n\n${ownerLines}\n\n## Guides`,
+      );
+
+      writeFileSync(join(DIST, 'llms.txt'), llms, 'utf-8');
+      console.log(`  llms.txt -> ${MARKETS.length + 3} homeowner entries, reviews ${liveReviewCopy.total}`);
+    }
+  }
+
   // 404.
   //
   // 🔴 vercel.json used to rewrite EVERY unmatched path to /index.html, so the SPA
