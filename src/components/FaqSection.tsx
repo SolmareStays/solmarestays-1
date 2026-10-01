@@ -33,11 +33,13 @@ export function FaqSection({
   if (!items || items.length === 0) return null;
 
   return (
-    <section className={`py-16 md:py-24 ${className}`} aria-labelledby="faq-heading">
-      <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-3xl">
+    <section className={`section-padding bg-background ${className}`} aria-labelledby="faq-heading">
+      <div className="container mx-auto px-4 md:px-6 lg:px-8">
+        {/* ⚠ Scale matches every other section heading on the site (48px at md).
+            This was text-3xl/4xl and read a size smaller than its neighbours. */}
         <h2
           id="faq-heading"
-          className="font-serif text-3xl md:text-4xl font-semibold mb-8 text-center"
+          className="font-serif text-4xl md:text-5xl font-semibold text-foreground mb-10 text-center"
         >
           {heading}
         </h2>
@@ -50,22 +52,30 @@ export function FaqSection({
           violation this component exists to fix.
 
           <details> keeps its content in the DOM when closed, so the answers are
-          crawlable and still collapsed for the reader. The first item opens by default.
+          crawlable and still collapsed for the reader. All rows start closed — the
+          page reads cleaner, and nothing is hidden from a crawler by doing so.
+
+          Cards, matching the rest of the page rather than bare hairline rows.
         */}
-        <dl className="divide-y">
-          {items.map((item, i) => (
-            <div key={item.q} className="py-2">
-              <details open={i === 0} className="group">
-                <summary className="cursor-pointer list-none py-3 flex items-start justify-between gap-4">
-                  <dt className="text-base md:text-lg font-medium">{item.q}</dt>
+        <dl className="max-w-4xl mx-auto grid gap-4">
+          {items.map(item => (
+            <div
+              key={item.q}
+              className="bg-card rounded-2xl shadow-soft border border-border/50 overflow-hidden"
+            >
+              <details className="group">
+                <summary className="cursor-pointer list-none p-6 flex items-start justify-between gap-4">
+                  <dt className="font-serif text-lg font-semibold text-foreground">{item.q}</dt>
                   <span
                     aria-hidden="true"
-                    className="mt-1 flex-none transition-transform group-open:rotate-45 text-xl leading-none opacity-60"
+                    className="flex-none text-2xl leading-none text-muted-foreground/60 transition-transform duration-200 group-open:rotate-45"
                   >
                     +
                   </span>
                 </summary>
-                <dd className="pb-4 pr-8 text-base leading-relaxed opacity-90">{item.a}</dd>
+                <dd className="px-6 pb-6 text-muted-foreground text-sm leading-relaxed">
+                  {item.a}
+                </dd>
               </details>
             </div>
           ))}
