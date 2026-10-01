@@ -87,7 +87,7 @@ export interface Market {
   totDetail: string;
   /** Do we currently manage here? Honesty is the differentiator. */
   doorsManaged: number;
-  /** Driving minutes from the Avila Beach crew base. */
+  /** Approximate driving minutes from the Pismo Beach base. */
   minutesFromBase: number;
   /** The angle that is actually true in this market. */
   angle: string;
@@ -114,9 +114,9 @@ export const MARKETS: Market[] = [
     totDetail:
       '9% county Transient Occupancy Tax plus 1.5% Tourism Marketing District, and a further 2% Tourism Business Improvement District in some areas — so 10.5% or 12.5% depending on where the property sits.',
     doorsManaged: 10,
-    minutesFromBase: 0,
+    minutesFromBase: 10,
     angle:
-      'This is our home market. Ten of our twelve houses are here, the cleaning crew is based here, and inspections happen in person between every stay \u2014 which is what a design-led home a block from the sand actually needs.',
+      'This is where most of the portfolio lives. Ten of our twelve houses are in Avila Beach, ten minutes from our Pismo Beach base, and inspections happen in person between every stay \u2014 which is what a design-led home a block from the sand actually needs.',
     verified: true,
     sources: [
       'https://www.slocounty.ca.gov/departments/planning-building/how-to-apply-for-a-permit-in-unincorporated-slo-co/land-use,-subdivision,-zoning/land-use-permit/business-license-clearance/vacation-rental-zoning-clearance/coastal-vacation-rental-clearance',
@@ -135,9 +135,9 @@ export const MARKETS: Market[] = [
     totDetail:
       '9% county Transient Occupancy Tax plus 1.5% Tourism Marketing District, and a further 2% Tourism Business Improvement District in some areas.',
     doorsManaged: 0,
-    minutesFromBase: 35,
+    minutesFromBase: 40,
     angle:
-      'Cayucos sits squarely in our service area at 35 minutes from the crew base, and it is one of very few coastal markets still issuing new permits while Morro Bay next door is frozen. If you own here, this is a market we actively want.',
+      'Cayucos sits squarely in our service area at about 40 minutes up the coast from us, and it is one of very few coastal markets still issuing new permits while Morro Bay next door is frozen. If you own here, this is a market we actively want.',
     verified: true,
     sources: [
       'https://www.slocounty.ca.gov/departments/planning-building/how-to-apply-for-a-permit-in-unincorporated-slo-co/land-use,-subdivision,-zoning/land-use-permit/business-license-clearance/vacation-rental-zoning-clearance/coastal-vacation-rental-clearance',
@@ -155,9 +155,9 @@ export const MARKETS: Market[] = [
     totDetail:
       '9% county Transient Occupancy Tax plus 1.5% Tourism Marketing District, and a further 2% Tourism Business Improvement District in some areas.',
     doorsManaged: 0,
-    minutesFromBase: 55,
+    minutesFromBase: 60,
     angle:
-      'Cambria is one of the county\u2019s genuine luxury markets \u2014 oceanfront and Pine Knolls homes that reward being run properly \u2014 and we take on properties here. It is an hour up the coast, so we staff it deliberately rather than casually, and we will tell you exactly what that looks like for your property before you commit to anything.',
+      'Cambria is one of the county\u2019s genuine luxury markets \u2014 oceanfront and Pine Knolls homes that reward being run properly \u2014 and we take on properties here. It is about an hour up the coast from us, so we staff it deliberately rather than casually, and we will tell you exactly what that looks like for your property before you commit to anything.',
     verified: true,
     sources: [
       'https://www.slocounty.ca.gov/departments/planning-building/how-to-apply-for-a-permit-in-unincorporated-slo-co/land-use,-subdivision,-zoning/land-use-permit/business-license-clearance/vacation-rental-zoning-clearance/coastal-vacation-rental-clearance',
@@ -177,7 +177,7 @@ export const MARKETS: Market[] = [
     totDetail:
       '10% city Transient Occupancy Tax, plus a 2% lodging business improvement district assessment and the 1.5% county Tourism Marketing District assessment.',
     doorsManaged: 0,
-    minutesFromBase: 10,
+    minutesFromBase: 0,
     angle:
       'We cannot get you a new Pismo Beach licence, and neither can anyone else — but if you already hold one, this is exactly the conversation we want. The licence stays in your name and we run the operation underneath it. Buying here? Check what actually transfers before you close, and talk to us first.',
     verified: true,
@@ -199,7 +199,7 @@ export const MARKETS: Market[] = [
     totDetail:
       'The city’s base Transient Occupancy Tax rate is 10%. Confirm current district assessments with the city before quoting a guest-facing total.',
     doorsManaged: 0,
-    minutesFromBase: 30,
+    minutesFromBase: 35,
     angle:
       'Morro Bay is a renewal-and-compliance market rather than an acquisition one, and that suits us \u2014 the 175-foot buffer means a lapsed permit can be near-impossible to recover, so the job is running it well and never missing a date. If you hold a Morro Bay permit, we would like to talk.',
     verified: true,
@@ -242,7 +242,7 @@ export const MARKETS: Market[] = [
     totDetail:
       '9% county Transient Occupancy Tax plus 1.5% Tourism Marketing District, and a further 2% Tourism Business Improvement District in some areas.',
     doorsManaged: 0,
-    minutesFromBase: 30,
+    minutesFromBase: 35,
     angle:
       'Fifty permits for the whole community means a new one is genuinely hard to come by \u2014 but if you already hold one, or you are not sure which category your property falls into, that is worth a conversation. We would rather look at it with you than guess from a distance.',
     verified: true,
@@ -286,7 +286,7 @@ export const MARKETS: Market[] = [
     totDetail:
       '10% city Transient Occupancy Tax, plus 1.5% for the county Tourism Marketing District and a further 2% for the Arroyo Grande Tourism Business Improvement District.',
     doorsManaged: 2,
-    minutesFromBase: 20,
+    minutesFromBase: 10,
     angle:
       'We manage two properties here, including a 13-acre estate that sleeps 14, so we know how the city and county line splits this market and which rules land on which parcel.',
     // 🔴 TOT verified from the city; the permit route is described from the
@@ -310,7 +310,7 @@ export const MARKETS: Market[] = [
     totRate: '13% (unverified)',
     totDetail: 'Recorded internally as 13%; confirm with the city before publishing.',
     doorsManaged: 0,
-    minutesFromBase: 15,
+    minutesFromBase: 20,
     angle:
       'We hold no doors inside SLO city. Avila Beach is 15 minutes from downtown, which is how visiting Cal Poly families actually solve this.',
     verified: false,
@@ -327,7 +327,7 @@ export const MARKETS: Market[] = [
     totDetail:
       '12% city Transient Occupancy Tax plus the 1.5% county Tourism Marketing District assessment.',
     doorsManaged: 0,
-    minutesFromBase: 15,
+    minutesFromBase: 5,
     angle: 'Adjacent to Pismo but a separate jurisdiction with its own, more open rules.',
     verified: false,
     sources: ['https://www.groverbeach.org/543/Tax-Payment-TOTTMD'],
@@ -343,7 +343,7 @@ export const MARKETS: Market[] = [
     totRate: '10.5%–12.5%',
     totDetail: 'County rate: 9% TOT plus 1.5% TMD, plus 2% TBID in some areas.',
     doorsManaged: 0,
-    minutesFromBase: 15,
+    minutesFromBase: 7,
     angle: 'Dunes access with county rather than city permitting.',
     verified: false,
     sources: [],
@@ -359,7 +359,7 @@ export const MARKETS: Market[] = [
     totRate: '10.5%–12.5%',
     totDetail: 'County rate: 9% TOT plus 1.5% TMD, plus 2% TBID in some areas.',
     doorsManaged: 0,
-    minutesFromBase: 25,
+    minutesFromBase: 15,
     angle: 'Inland south county, county-permitted.',
     verified: false,
     sources: [],

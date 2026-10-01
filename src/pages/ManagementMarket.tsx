@@ -181,8 +181,8 @@ const ManagementMarket = () => {
             <li>
               <strong className="text-foreground">
                 {market.minutesFromBase === 0
-                  ? 'Our crew is based in this market'
-                  : `${market.minutesFromBase} minutes from our Avila Beach base`}
+                  ? 'Our team is based in this market'
+                  : `About ${market.minutesFromBase} minutes from our Pismo Beach base`}
               </strong>{' '}
               — close enough for in-person inspection between every stay.
             </li>

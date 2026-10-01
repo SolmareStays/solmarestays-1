@@ -59,11 +59,12 @@ const organizationSchema = {
   logo: `${SITE_URL}/logo.png`,
   description: `Professional vacation rental management on California's Central Coast. ${PORTFOLIO.properties} properties across Avila Beach and Arroyo Grande. ${REVIEWS.totalRounded} guest reviews averaging ${REVIEWS.averageFive} out of 5.`,
   telephone: CONTACT.phoneSchema,
+  // Business base = Pismo Beach. The homes are in Avila Beach / Arroyo Grande.
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Avila Beach',
+    addressLocality: 'Pismo Beach',
     addressRegion: 'CA',
-    postalCode: '93424',
+    postalCode: '93449',
     addressCountry: 'US',
   },
   areaServed: [
@@ -91,17 +92,20 @@ const lodgingBusinessSchema = {
   telephone: CONTACT.phoneSchema,
   description:
     `Professional vacation rental management on California's Central Coast. ${PORTFOLIO.properties} properties in Avila Beach and Arroyo Grande. From beach bungalows to a wine country estate. ${REVIEWS.totalRounded} guest reviews averaging ${REVIEWS.averageFive} out of 5. Book direct for the best rates.`,
+  // ⚠ This is the BUSINESS base (Pismo Beach), not where the homes are. Ten of the
+  // twelve properties sit in Avila Beach and two in Arroyo Grande — those addresses
+  // come from Hostaway per property. ⛔ Don't conflate the two again.
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Avila Beach',
+    addressLocality: 'Pismo Beach',
     addressRegion: 'CA',
-    postalCode: '93424',
+    postalCode: '93449',
     addressCountry: 'US',
   },
   geo: {
     '@type': 'GeoCoordinates',
-    latitude: 35.1803,
-    longitude: -120.7314,
+    latitude: 35.1428,
+    longitude: -120.6413,
   },
   aggregateRating: {
     '@type': 'AggregateRating',

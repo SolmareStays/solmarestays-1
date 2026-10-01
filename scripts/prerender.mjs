@@ -96,7 +96,7 @@ const PAGES = [
       // ⚠ Was kyle@solmarestays.com while every visible surface showed info@ — an
       // inconsistent NAP suppresses the local pack. One address, everywhere.
       "email": "info@solmarestays.com",
-      "address": { "@type": "PostalAddress", "addressLocality": "Avila Beach", "addressRegion": "CA", "postalCode": "93424", "addressCountry": "US" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Pismo Beach", "addressRegion": "CA", "postalCode": "93449", "addressCountry": "US" },
       "areaServed": ["Avila Beach", "Pismo Beach", "Shell Beach", "Arroyo Grande", "San Luis Obispo"].map(c => ({ "@type": "City", "name": c })),
       // Verified against Hostaway 2026-08-08: 1,541 guest-to-host reviews across the
       // 12 listings, of which 827 carry a numeric rating averaging 9.64/10 = 4.82/5.
@@ -110,7 +110,7 @@ const PAGES = [
       ]
     },
     faq: [
-      { q: "Who is Solmaré Stays?", a: "Solmaré Stays is a boutique vacation rental company based in Avila Beach, California. It manages 12 short-term rental properties across Avila Beach, Arroyo Grande, and San Luis Obispo on behalf of homeowners, and rents those same properties directly to travelers at solmarestays.com." },
+      { q: "Who is Solmaré Stays?", a: "Solmaré Stays is a small, hands-on vacation rental company based in Pismo Beach, California. It manages 12 short-term rental properties along the Central Coast — ten in Avila Beach and two in Arroyo Grande wine country — on behalf of homeowners, and rents those same properties directly to travelers at solmarestays.com." },
       { q: "Is it cheaper to book direct than on Airbnb?", a: "Yes. Booking directly at solmarestays.com costs less than the identical property on Airbnb or Vrbo, because those platforms add a guest service fee on top of the nightly rate. Booking direct also means you deal with the local Avila Beach team rather than a platform inbox." },
       // ⚠ This used to end "One is in San Luis Obispo, walking distance from downtown
       // and Cal Poly." Monterey Heights was the only SLO *city* property and it left
@@ -328,7 +328,7 @@ const PAGES = [
       alt: 'Coastal property managed by Solmaré Stays in Avila Beach',
     },
     body: `<p>Solmaré Stays provides full-service vacation rental management for homeowners in San Luis Obispo County and across California's Central Coast. We handle everything — from listing optimization and dynamic pricing to guest communication, cleaning, and maintenance — so you can earn more while doing less.</p>
-<p>We are a local property management company based in Avila Beach, managing 12 short-term rentals within roughly 20 miles. Owners work directly with the team running their property, not a regional account manager at a national brand.</p>
+<p>We are a small, local property management company based in Pismo Beach, running 12 short-term rentals along the coast — ten in Avila Beach and two in Arroyo Grande wine country. Owners work directly with the team running their property, not a regional account manager at a national brand.</p>
 <h2>Why Partner with Solmaré Stays?</h2>
 <ul>
 <li><strong>Maximize your revenue</strong> — dynamic pricing and direct-booking strategies designed to outperform the market average</li>
@@ -374,7 +374,7 @@ const PAGES = [
 <li>Owner portal access</li>
 </ul>
 <h2>Property Management Areas We Serve</h2>
-<p>Solmaré Stays manages vacation rentals throughout San Luis Obispo County, including <strong>Avila Beach</strong>, <strong>Pismo Beach</strong>, <strong>Shell Beach</strong>, <strong>Arroyo Grande</strong>, <strong>Oceano</strong>, and the city of <strong>San Luis Obispo</strong>. Every property is within about 20 miles of our Avila Beach base, which is what makes same-day maintenance response and in-person inspection between every stay possible.</p>
+<p>Solmaré Stays manages vacation rentals throughout San Luis Obispo County, including <strong>Avila Beach</strong>, <strong>Pismo Beach</strong>, <strong>Shell Beach</strong>, <strong>Arroyo Grande</strong>, <strong>Oceano</strong>, and the city of <strong>San Luis Obispo</strong>. Every property is within about 20 miles of our Pismo Beach base, which is what makes same-day maintenance response and in-person inspection between every stay possible.</p>
 <h2>What Owners Say</h2>
 <blockquote><p><strong>+22% ADR lift &middot; 4.9-star rating.</strong> "Our experience with Solmaré Stays has been exceptional. Their attentive service, transparency, and deep market insight make vacation rental ownership truly hands-off for us. After previously using another local company, the difference is clear — this has been a far superior, easier, and more professional experience in every way."</p><cite>Chad V., owner — La Casita, Avila Beach</cite></blockquote>
 <blockquote><p><strong>+31% occupancy &middot; +42% profit increase.</strong> "Solmaré Stays has done an amazing job managing Hummingbird House. The team handles all aspects of property management for me — bookings, cleaning, refilling supplies, and troubleshooting. The whole process is hands-off for me, and I get an organized revenue summary each month."</p><cite>Jane M., owner — The Hummingbird, Avila Beach</cite></blockquote>
@@ -390,7 +390,7 @@ const PAGES = [
 </ul>
 <h2>Who you are hiring</h2>
 <p><img src="/team/kyle-van-til-400.jpg" alt="Kyle Van Til, founder of Solmaré Stays, Avila Beach" width="128" height="128" loading="lazy" decoding="async" style="width:128px;height:128px;border-radius:50%;object-fit:cover"></p>
-<p>Solmaré Stays is run by Kyle Van Til from Avila Beach, where ten of the twelve houses are. There is no call centre and no regional office — when something goes wrong at a property at nine at night, Kyle is the person who answers. Owners get a reply within 24 hours, a direct line on (805) 242-6411, and the ability to block their own dates whenever they want.</p>
+<p>Solmaré Stays is run by Kyle Van Til out of Pismo Beach. We are a small team working the coast ourselves — no call centre, no regional office, no account managers. Between us we handle the guest messages, the turnovers, the inspections and the maintenance calls, and when something goes wrong at nine at night it is one of us who picks up. Owners get a reply within 24 hours, a direct line on (805) 242-6411, and the ability to block their own dates whenever they want.</p>
 <h2>What we charge</h2>
 <p><strong>18% of net rental revenue</strong> — net, not gross. The fee comes off after lodging taxes, the cleaning fee and any pet fee are taken out, because those are pass-throughs rather than income. Many managers quote a lower headline rate and apply it to the full amount the guest paid, so run both on the same booking before comparing. No onboarding fee, no monthly minimum, and no charge for nights you block for yourself. Terms vary a little with scope and channel mix, and we are happy to structure something that makes sense for your situation.</p>
 <h2>Already have a short-term rental permit?</h2>
@@ -417,8 +417,8 @@ const PAGES = [
       // inconsistent NAP suppresses the local pack. One address, everywhere.
       "email": "info@solmarestays.com",
       "priceRange": "$$",
-      "address": { "@type": "PostalAddress", "addressLocality": "Avila Beach", "addressRegion": "CA", "postalCode": "93424", "addressCountry": "US" },
-      "geo": { "@type": "GeoCoordinates", "latitude": 35.1797, "longitude": -120.7331 },
+      "address": { "@type": "PostalAddress", "addressLocality": "Pismo Beach", "addressRegion": "CA", "postalCode": "93449", "addressCountry": "US" },
+      "geo": { "@type": "GeoCoordinates", "latitude": 35.1428, "longitude": -120.6413 },
       "areaServed": ["Avila Beach", "Pismo Beach", "Shell Beach", "Arroyo Grande", "San Luis Obispo"].map(c => ({ "@type": "City", "name": c })),
       "serviceType": "Vacation rental property management",
       "hasOfferCatalog": {
@@ -441,11 +441,11 @@ const PAGES = [
       // ⛔ Never restate as a percentage of gross booking value.
       { q: "How much does vacation rental management cost in Avila Beach?", a: "Solmaré Stays charges 18% of net rental revenue. Net, not gross: the fee comes off after lodging taxes, the cleaning fee and any pet fee are taken out, because those are pass-throughs rather than income. Many managers quote a lower headline rate and apply it to the full amount the guest paid, so it is worth running both on the same booking before comparing. There is no onboarding fee, no monthly minimum, and no charge for owner-blocked nights. Terms vary a little with scope and channel mix, and everything is put in writing before any commitment." },
       { q: "I already have a short-term rental permit. How hard is it to switch managers?", a: "Easier than most owners expect, and it is the most common way owners join Solmaré. The permit stays in the owner's name and Solmaré operates underneath it, handling the channel migration, calendar, cleaning crew and tax filings. Most properties are live within about a week. This matters more than it used to: Pismo Beach has issued no new residential short-term rental licence since November 2023 and Paso Robles non-hosted permits are at capacity, so in several San Luis Obispo County markets an existing permit is the only way to operate at all." },
-      { q: "Which areas of San Luis Obispo County does Solmaré Stays manage?", a: "All of it. Solmaré Stays is based in Avila Beach and works with owners across San Luis Obispo County, including Pismo Beach, Shell Beach, Arroyo Grande, Grover Beach, Oceano, Nipomo, San Luis Obispo, Los Osos, Morro Bay, Cayucos, Cambria, Atascadero, Templeton and Paso Robles. Short-term rental permit rules differ by jurisdiction, so the first step is usually confirming which one governs a specific address." },
+      { q: "Which areas of San Luis Obispo County does Solmaré Stays manage?", a: "All of it. Solmaré Stays is based in Pismo Beach and works with owners across San Luis Obispo County, including Pismo Beach, Shell Beach, Arroyo Grande, Grover Beach, Oceano, Nipomo, San Luis Obispo, Los Osos, Morro Bay, Cayucos, Cambria, Atascadero, Templeton and Paso Robles. Short-term rental permit rules differ by jurisdiction, so the first step is usually confirming which one governs a specific address." },
       { q: "Do you offer concierge services for guests?", a: "Yes. Solmaré arranges restaurant reservations, winery tastings, private chefs, in-home massage, surf and hiking guides and photographers, and stocks the home before arrival. Solmaré does not arrange transportation; guests are pointed to local operators and book that themselves. The concierge is part of why guests return and book direct, which is the channel that carries the lowest commission for owners." },
       { q: "Will you help if I am not looking to hire a manager?", a: "Yes. Solmaré works with owners across San Luis Obispo County and is happy to answer questions with no expectation of a partnership — a second opinion on nightly rates, whether a property pencils before you buy it, or simply which jurisdiction governs a given address and what it permits. Call (805) 242-6411 or send a note through the site." },
       { q: "How does Solmaré Stays set nightly rates?", a: "Rates are dynamic rather than fixed. Solmaré uses PriceLabs alongside local market data and live booking pace to adjust pricing by season, day of week, remaining lead time, and local demand events. Rates are reviewed continuously rather than set once per season." },
-      { q: "Is Solmaré Stays local to Avila Beach?", a: "Yes. Solmaré Stays is based in Avila Beach and manages 12 properties, all within roughly 20 miles. That means same-day response to guest and maintenance issues, in-person inspection between every stay, and direct owner access rather than a regional account manager." },
+      { q: "Is Solmaré Stays local to Avila Beach?", a: "Yes. Solmaré Stays is based in Pismo Beach, about ten minutes down the coast, and ten of its twelve homes are in Avila Beach itself. Every property is within roughly 20 miles of the team, which is what makes same-day response to guest and maintenance issues, in-person inspection between every stay, and direct owner access possible rather than a regional account manager." },
       { q: "How do I get a revenue estimate for my property?", a: "Request a revenue projection at solmarestays.com/contact or call (805) 242-6411. Solmaré reviews the property, comparable local performance, and realistic occupancy for its location and size, then proposes terms based on that analysis." }
     ]
   },
@@ -934,7 +934,7 @@ for (const m of MARKETS) {
       `<p>Then the hard part is done, and switching is simpler than most owners expect. Your permit stays in your name and we operate underneath it — channel migration, calendar, cleaning crew and tax filings — with most properties live within about a week.${m.permit !== 'open' ? ` In ${m.name} that permit is genuinely valuable: it cannot currently be replaced, so the job is running it well and never missing a renewal.` : ''}</p>` +
       `<h2>Where we stand in ${m.name}</h2><p>${m.angle}</p>` +
       `<ul><li>${m.doorsManaged > 0 ? `${m.doorsManaged} propert${m.doorsManaged === 1 ? 'y' : 'ies'} under management here` : 'No properties under management here yet'} — out of 12 across the county.</li>` +
-      `<li>${m.minutesFromBase === 0 ? 'Our crew is based in this market' : `${m.minutesFromBase} minutes from our Avila Beach base`} — which is what decides whether a same-day maintenance promise is real.</li></ul>` +
+      `<li>${m.minutesFromBase === 0 ? 'Our team is based in this market' : `${m.minutesFromBase} minutes from our Pismo Beach base`} — close enough for in-person inspection between every stay.</li></ul>` +
       `<p><a href="/vacation-rental-management">Compare every SLO County market</a> | <a href="/management">How our management works</a></p>` +
       (m.sources.length
         ? `<h2>Sources</h2><ul>${m.sources.map(u => `<li><a href="${u}" rel="nofollow">${u}</a></li>`).join('')}</ul><p>Permit rules and tax rates change. Confirm current requirements with ${m.jurisdiction}.</p>`
