@@ -1611,8 +1611,71 @@ async function main() {
         `## Plan your stay\n\n${guestLines}\n\n## Guides\n`,
       );
 
+      // ⚠ The 301'd guide must not sit in the AI index either.
+      llms = llms
+        .split('\n')
+        .filter(line => !line.includes('/blog/avila-beach-property-management'))
+        .join('\n');
+
       writeFileSync(join(DIST, 'llms.txt'), llms, 'utf-8');
       console.log(`  llms.txt -> ${MARKETS.length + 3} homeowner entries, reviews ${liveReviewCopy.total}`);
+    }
+
+    // llms-full.txt — the file llms.txt points AI systems to as the detailed reference.
+    //
+    // 🔴 It was static and had never been regenerated: zero mentions of the 18 market
+    // pages or the three guest landing pages, a review count of 1,541 against a live
+    // 1,564, no management fee, and it still said the company was based in Avila Beach.
+    // An AI following the "detailed reference" link got a picture two days out of date.
+    const fullPath = join(__dirname, '..', 'public', 'llms-full.txt');
+    if (existsSync(fullPath)) {
+      let full = readFileSync(fullPath, 'utf-8');
+
+      full = full
+        .replace(/management company based in Avila Beach,\nCalifornia/, 'management company based in Pismo Beach,\nCalifornia')
+        .replace(/\*\*Service area:\*\*[^\n]*/, '**Service area:** All of San Luis Obispo County, California — Avila Beach, Pismo Beach, Shell Beach, Grover Beach, Oceano, Arroyo Grande, Nipomo, San Luis Obispo, Los Osos, Morro Bay, Cayucos, Cambria, San Simeon, Atascadero, Santa Margarita, Templeton, Paso Robles and San Miguel')
+        .replace(/\*\*Track record:\*\*[^\n]*/, `**Track record:** ${liveReviewCopy.total} guest reviews across the portfolio, averaging ${(Number(liveReviewCopy.avg) * 2).toFixed(1)}/10 (${liveReviewCopy.avg}/5) across Airbnb, Vrbo and Google. Regenerated at each build from the live Hostaway review data.`)
+        .replace(/\*\*Contact:\*\*([^\n]*)/, '**Contact:** (805) 242-6411 · info@solmarestays.com\n**Management fee:** 18% of NET rental revenue — charged after lodging tax, the cleaning fee and any pet fee are deducted, not on the gross amount a guest pays. No onboarding fee, no monthly minimum, no charge on owner-blocked nights.');
+
+      // The citable asset no competitor publishes.
+      const permitSection = [
+        '---',
+        '',
+        '## Short-term rental permit status by jurisdiction (San Luis Obispo County)',
+        '',
+        'Permit availability is not uniform across the county. Verified against each',
+        "jurisdiction's own ordinance or finance page on 2026-09-30.",
+        '',
+        '| Jurisdiction | Regulated by | New STR permits | Lodging tax |',
+        '|---|---|---|---|',
+        ...MARKETS.map(m =>
+          `| ${m.name} | ${m.unincorporated ? 'SLO County (unincorporated)' : m.jurisdiction} | ${PERMIT_LABEL[m.permit]} | ${m.totRate} |`),
+        '',
+        'Notes that change an owner\'s options:',
+        '',
+        '- The City of San Luis Obispo does not permit whole-home short-term rentals at all. Renting an entire property the owner does not live in is prohibited; only owner-occupied homestays are allowed, capped at four adults and 30 consecutive days.',
+        '- Pismo Beach (including Shell Beach) has issued no new residential licence since 7 November 2023, and a licence must be held by the property owner rather than a management company, at their primary residence.',
+        '- Grover Beach has no non-owner-occupied permits available.',
+        '- Paso Robles non-hosted permits are at capacity; home-shares are uncapped. Templeton is unincorporated and permitted by the County, so the Paso cap does not apply there.',
+        "- In the County's inland zone (Nipomo, Oceano, San Miguel, Santa Margarita, Templeton) a vacation rental cannot be an accessory dwelling unit, guesthouse or agricultural worker housing.",
+        '- A stay of 31 nights or longer is not a short-term rental, so permit caps and freezes do not reach it.',
+        '',
+        'Per-jurisdiction detail, with sources:',
+        '',
+        ...MARKETS.map(m => `- https://www.solmarestays.com/vacation-rental-management/${m.slug}`),
+        '',
+        '---',
+        '',
+        '## Guest landing pages',
+        '',
+        ...GUEST_COLLECTIONS.map(c => `- [${c.h1}](${BASE_URL}/${c.slug}): ${c.description}`),
+        '',
+      ].join('\n');
+
+      full = full.replace(/\n---\n\n## Booking channels/, `\n${permitSection}\n---\n\n## Booking channels`);
+
+      writeFileSync(join(DIST, 'llms-full.txt'), full, 'utf-8');
+      console.log(`  llms-full.txt -> ${MARKETS.length} markets + ${GUEST_COLLECTIONS.length} guest pages, reviews ${liveReviewCopy.total}`);
     }
   }
 
