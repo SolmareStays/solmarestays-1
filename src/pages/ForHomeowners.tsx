@@ -655,6 +655,20 @@ const ForHomeownersPage = () => {
                         and take on design-led, higher-end properties across San Luis Obispo
                         County. Every home is inspected in person between stays.
                       </p>
+                      {/*
+                        ⚠ The audit found the luxury + concierge positioning shipped in the
+                        PRERENDERED body but never in the React page — crawlers saw it,
+                        visitors didn't. One visible sentence here rather than a new section,
+                        because the page is already ~8,000px tall.
+                        🔴 CONCIERGE BRIGHT LINE: name only things that don't move. ⛔ Never
+                        flights, transfers, car service, van wine tours or charters.
+                      */}
+                      <p className="text-muted-foreground leading-relaxed mt-4">
+                        Guests get a concierge too — restaurant reservations, winery
+                        tastings, private chefs, in-home massage and local guides, and the
+                        house stocked before they arrive. It's a real part of why they come
+                        back and book direct.
+                      </p>
                     </div>
                   </div>
 
