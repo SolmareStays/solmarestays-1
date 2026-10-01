@@ -1049,14 +1049,19 @@ function escapeHtml(s) {
  * ⚠ Keep the slug matching in step with StayHereBlock.
  */
 function stayHereHtml(route) {
-  if (!route || !route.startsWith('/blog/')) return '';
-  const slug = route.replace('/blog/', '');
+  // ⚠ Guest landing pages need this as much as the guides do. Verified 2026-10-01 by
+  // asking an AI to answer from /cal-poly: it could describe "a one-bedroom option"
+  // but could not NAME a property, because the grid is React-only and the static HTML
+  // listed none. An assistant that cannot name a bookable home cannot send a booking.
+  if (!route) return '';
+  if (!route.startsWith('/blog/') && !['/cal-poly', '/wine-country', '/beachfront'].includes(route)) return '';
+  const slug = route.replace('/blog/', '').replace(/^\//, '');
   let picks;
   if (/wine-country|edna/.test(slug)) picks = [['wine-country-estate', 'Wine Country Estate'], ['flora-farm-cottage', 'Flora Farm Cottage']];
   else if (/large-group|group/.test(slug)) picks = [['wine-country-estate', 'Wine Country Estate (sleeps 14)'], ['la-casita', 'La Casita (sleeps 6)'], ['hummingbird-house', 'Hummingbird House (sleeps 5)']];
   else if (/cal-poly/.test(slug)) picks = [['wine-country-estate', 'Wine Country Estate (sleeps 14)'], ['la-casita', 'La Casita (sleeps 6)'], ['the-coral-house', 'The Coral House (sleeps 4)']];
   else if (/pet-friendly|dog/.test(slug)) picks = [['wine-country-estate', 'Wine Country Estate'], ['la-casita', 'La Casita'], ['the-deckhouse', 'The Deckhouse']];
-  else picks = [['la-casita', 'La Casita'], ['the-coral-house', 'The Coral House'], ['hummingbird-house', 'Hummingbird House']];
+  else picks = [['la-casita', 'La Casita (sleeps 6)'], ['the-coral-house', 'The Coral House (sleeps 4)'], ['hummingbird-house', 'Hummingbird House (sleeps 5)']];
   return `<h2>Where to stay</h2><p>Whole homes on the Central Coast, booked direct \u2014 no platform service fee.</p><ul>${
     picks.map(([s2, label]) => `<li><a href="/property/${s2}">${label}</a></li>`).join('')
   }<li><a href="/collection">Browse all 12 homes</a></li></ul>`;
