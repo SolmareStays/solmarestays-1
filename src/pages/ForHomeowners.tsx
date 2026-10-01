@@ -59,6 +59,30 @@ const ownerReviews = [
     text: 'Our experience with Solmaré Stays has been exceptional. Their attentive service, transparency, and deep market insight make vacation rental ownership truly hands-off for us. They are incredibly responsive and detail-oriented, consistently going above and beyond to ensure everything runs smoothly. After previously using another local company, the difference is clear—this has been a far superior, easier, and more professional experience in every way.',
   },
   {
+    /*
+      Michael Hodge — partner in First Street LLC, which owns Palm, Pine and The Coral
+      House ("same ownership as La Casita LLC", whose partners are Chad Van Til, Michael
+      Hodge and Mike Salucci).
+
+      ⚠ THIS QUOTE IS HIS APPROVED WORDING — Kyle drafted it, sent it, and Michael said
+      to go with that version. ⛔ Do not reword it. It was removed by accident in
+      bcf086f ("Remove Monterey Heights from the site") because it had been attributed
+      to Monterey Heights, the property that left the portfolio on 2026-09-04. The
+      review was never withdrawn; only the property was.
+
+      🔴 The original card also carried "+32% Revenue Growth" and "+48% Guest
+      Satisfaction". Those were Monterey Heights figures and are NOT carried over — they
+      described a property we no longer manage and neither is reproducible. The one stat
+      here is verified: Hostaway reports averageReviewRating 9.9/10 for The Coral House,
+      which is 5.0/5 on the scale the other cards use.
+    */
+    name: 'Michael H., Owner',
+    property: 'The Coral House | Avila Beach',
+    stats: ['5.0★ Rating'],
+    rating: 5,
+    text: "Switching to Solmaré was a game-changer for my property. Unlike my previous manager, the transparency here is unmatched—I finally know exactly how my home is performing and where every dollar goes. There is no 'black box,' just clear communication and significantly higher returns. Hands down the best management team on the Central Coast.",
+  },
+  {
     name: 'Jane M., Owner',
     property: 'The Hummingbird | Avila Beach',
     stats: ['+31% Occupancy', '+42% Profit Increase'],
