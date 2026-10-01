@@ -11,7 +11,8 @@ import { SEO } from '@/components/SEO';
 import { REVIEWS, CONTACT, PORTFOLIO } from '@/data/stats';
 import { PUBLISHED_MARKETS } from '@/data/markets';
 import { Button } from '@/components/ui/button';
-import { TrendingUp, Shield, Users, BarChart3, Calendar, Headphones, Check, Star, Quote } from 'lucide-react';
+import { TrendingUp, Shield, Users, BarChart3, Calendar, Headphones, Check, Star, Quote,
+  DollarSign, KeyRound, MapPin, FileCheck, ListChecks, Send, MessageCircle, type LucideIcon } from 'lucide-react';
 
 
 // 6 Pillars - Sharpened Copy
@@ -122,8 +123,15 @@ const serviceCategories = [
  * and guides so this section feeds the rest of the site rather than dead-ending.
  * ⛔ Keep `short` to one sentence. If it needs two, the answer is too complicated.
  */
-const OWNER_ANSWERS: { q: string; short: string; body: JSX.Element }[] = [
+const OWNER_ANSWERS: {
+  q: string;
+  short: string;
+  body: JSX.Element;
+  /** Pale-blue chip icon, matching the benefit cards above. */
+  icon: LucideIcon;
+}[] = [
   {
+    icon: DollarSign,
     q: 'What does it cost?',
     short: '18% of net rental revenue — not the gross a guest pays.',
     body: (
@@ -134,10 +142,17 @@ const OWNER_ANSWERS: { q: string; short: string; body: JSX.Element }[] = [
           quote a lower-sounding rate and charge it against the full amount the guest
           paid — run both on the same booking before you compare them.
         </p>
-        <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
-          <li>No onboarding fee and no monthly minimum</li>
-          <li>No charge on nights you block for yourself</li>
-          <li>We only earn when the property does</li>
+        <ul className="space-y-2">
+          {[
+            'No onboarding fee and no monthly minimum',
+            'No charge on nights you block for yourself',
+            'We only earn when the property does',
+          ].map(t => (
+            <li key={t} className="flex items-start gap-2">
+              <Check className="w-4 h-4 text-ocean flex-shrink-0 mt-0.5" />
+              <span>{t}</span>
+            </li>
+          ))}
         </ul>
         <p className="text-muted-foreground">
           Terms flex a little with scope and channel mix, and whatever we agree goes in
@@ -147,6 +162,7 @@ const OWNER_ANSWERS: { q: string; short: string; body: JSX.Element }[] = [
     ),
   },
   {
+    icon: KeyRound,
     q: 'I already have a short-term rental permit. How hard is it to switch?',
     short: 'Easier than most owners expect — the permit stays in your name.',
     body: (
@@ -169,6 +185,7 @@ const OWNER_ANSWERS: { q: string; short: string; body: JSX.Element }[] = [
     ),
   },
   {
+    icon: MapPin,
     q: 'Which areas do you cover?',
     short: 'All of San Luis Obispo County, from our base in Pismo Beach.',
     body: (
@@ -196,6 +213,7 @@ const OWNER_ANSWERS: { q: string; short: string; body: JSX.Element }[] = [
     ),
   },
   {
+    icon: FileCheck,
     q: 'Can I still get a permit where my property is?',
     short: 'Depends entirely on the jurisdiction — some are open, several are frozen.',
     body: (
@@ -222,6 +240,7 @@ const OWNER_ANSWERS: { q: string; short: string; body: JSX.Element }[] = [
     ),
   },
   {
+    icon: ListChecks,
     q: 'What do you actually do day to day?',
     short: 'Listing and pricing, guests, cleaning, maintenance — plus a guest concierge.',
     body: (
@@ -248,6 +267,7 @@ const OWNER_ANSWERS: { q: string; short: string; body: JSX.Element }[] = [
     ),
   },
   {
+    icon: Send,
     q: 'What happens after I send the form?',
     short: 'I reply within 24 hours, then we check what your address actually allows.',
     body: (
@@ -270,6 +290,7 @@ const OWNER_ANSWERS: { q: string; short: string; body: JSX.Element }[] = [
     ),
   },
   {
+    icon: MessageCircle,
     q: "What if I'm not looking to hire anyone?",
     short: 'Ask anyway — we help owners across the county with no strings.',
     body: (
@@ -566,33 +587,45 @@ const ForHomeownersPage = () => {
                 </div>
               </div>
             </section>
-            {/*
-            {/*
-              SECTION 5b: who we are, then the answers — in that order.
 
-              ⚖ Kyle 2026-09-30: "main about me section ... the other sections should have
-              a main line or two and is collapsable ... information based on what the
-              visitor is looking for, external links to other pages."
+            {/*
+              SECTION 5b: who we are, then the answers.
 
-              So: the About block stays open and does the selling; everything else is a
-              native <details> whose SUMMARY already carries the one-line answer, so a
-              scanner gets the whole picture without opening anything.
+              ⚖ Kyle 2026-09-30: "match the entire look of our website ... clean and
+              useful". Built from the page's OWN primitives so it stops reading as a
+              bolt-on:
+                · centred serif intro            text-center max-w-3xl mx-auto mb-12
+                · white card                     bg-card rounded-2xl shadow-soft border-border/50
+                · pale-blue icon chip            w-10 h-10 rounded-full bg-ocean/10
+                · teal Check bullets             text-ocean
+                · same container as every other section (⚠ the old max-w-4xl made this
+                  block ~150px narrower than the rest of the page and it showed)
 
               🔴 Native <details>, never Radix Accordion — Radix UNMOUNTS collapsed
-              content, which would hide this copy from Google entirely. <details> keeps
-              it in the DOM. Same rule as FaqSection.
+              content and would hide all of this from Google. Same rule as FaqSection.
+              ⚖ All rows start CLOSED: one-open-six-closed looked lopsided, and every
+              summary already carries its answer, so nothing is hidden by collapsing.
             */}
-            <section className="section-padding bg-background border-t">
+            <section className="section-padding bg-background">
               <div className="container mx-auto px-4 md:px-6 lg:px-8">
-                <div className="max-w-4xl mx-auto">
 
-                  {/* ── Who we are ── */}
-                  <div className="grid md:grid-cols-[180px_1fr] gap-8 md:gap-10 items-start">
+                <div className="text-center max-w-3xl mx-auto mb-12">
+                  <h2 className="font-serif text-4xl md:text-5xl font-semibold text-foreground mb-4">
+                    Who We Are
+                  </h2>
+                  <p className="text-muted-foreground text-lg">
+                    A small team on the coast, doing the work ourselves.
+                  </p>
+                </div>
+
+                {/* ── Founder card ── */}
+                <div className="max-w-5xl mx-auto bg-card p-6 md:p-10 rounded-2xl shadow-soft border border-border/50 mb-20">
+                  <div className="grid md:grid-cols-[auto_1fr] gap-8 md:gap-10 items-start">
                     <picture>
                       <source
                         type="image/webp"
                         srcSet="/team/kyle-van-til-400.webp 400w, /team/kyle-van-til-800.webp 800w"
-                        sizes="180px"
+                        sizes="176px"
                       />
                       <img
                         src="/team/kyle-van-til-400.jpg"
@@ -601,96 +634,97 @@ const ForHomeownersPage = () => {
                         height={400}
                         loading="lazy"
                         decoding="async"
-                        className="w-36 h-36 md:w-44 md:h-44 rounded-full object-cover"
+                        className="w-32 h-32 md:w-44 md:h-44 rounded-full object-cover mx-auto md:mx-0"
                       />
                     </picture>
+
                     <div>
-                      <p className="text-xs tracking-[0.18em] uppercase text-muted-foreground mb-2">
-                        Who we are
+                      <h3 className="font-serif text-2xl md:text-3xl font-semibold text-foreground mb-4">
+                        You deal with us, not an account manager
+                      </h3>
+                      <p className="text-muted-foreground leading-relaxed mb-4">
+                        I'm Kyle Van Til. I run Solmaré Stays out of Pismo Beach with a small
+                        team that works this stretch of coast every day — no call centre, no
+                        regional office. Between us we handle the guest messages, the
+                        turnovers, the inspections and the maintenance calls, and when
+                        something goes wrong at nine at night it's one of us who picks up.
                       </p>
-                      <h2 className="font-serif text-2xl md:text-3xl font-semibold mb-4">
-                        A small team on the coast, doing the work ourselves
-                      </h2>
-                      <p className="text-base md:text-lg leading-relaxed mb-4">
-                        I'm Kyle Van Til. I run Solmaré Stays out of Pismo Beach with a
-                        small team that works this stretch of coast every day — no call
-                        centre, no regional office, no account managers. Between us we
-                        handle the guest messages, the turnovers, the inspections and the
-                        maintenance calls, and when something goes wrong at nine at night
-                        it's one of us who picks up.
+                      <p className="text-muted-foreground leading-relaxed">
+                        We look after {PORTFOLIO.properties} homes — {PORTFOLIO.avilaBeach} in
+                        Avila Beach, {PORTFOLIO.arroyoGrande} in Arroyo Grande wine country —
+                        and take on design-led, higher-end properties across San Luis Obispo
+                        County. Every home is inspected in person between stays.
                       </p>
-                      <p className="text-base md:text-lg leading-relaxed mb-6">
-                        We look after {PORTFOLIO.properties} homes — {PORTFOLIO.avilaBeach}{' '}
-                        in Avila Beach, {PORTFOLIO.arroyoGrande} in Arroyo Grande wine
-                        country — and we take on design-led, higher-end properties across
-                        San Luis Obispo County. Being hands-on is the whole model: every
-                        home gets inspected in person between stays, not photographed by a
-                        contractor and signed off remotely.
-                      </p>
-                      <dl className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-4 text-sm border-t pt-5">
-                        <div>
-                          <dt className="text-muted-foreground mb-0.5">Based in</dt>
-                          <dd className="font-semibold">Pismo Beach</dd>
-                        </div>
-                        <div>
-                          <dt className="text-muted-foreground mb-0.5">Homes managed</dt>
-                          <dd className="font-semibold">{PORTFOLIO.properties}</dd>
-                        </div>
-                        <div>
-                          <dt className="text-muted-foreground mb-0.5">Guest reviews</dt>
-                          <dd className="font-semibold">
-                            {REVIEWS.totalRounded} · {REVIEWS.averageFive}/5
-                          </dd>
-                        </div>
-                        <div>
-                          <dt className="text-muted-foreground mb-0.5">Direct line</dt>
-                          <dd className="font-semibold">
-                            <a href={CONTACT.phoneHref} className="hover:underline">
-                              {CONTACT.phone}
+                    </div>
+                  </div>
+
+                  <dl className="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-8 pt-8 border-t border-border/50">
+                    {[
+                      ['Based in', 'Pismo Beach'],
+                      ['Homes managed', String(PORTFOLIO.properties)],
+                      ['Guest reviews', `${REVIEWS.totalRounded} · ${REVIEWS.averageFive}/5`],
+                      ['Direct line', CONTACT.phone],
+                    ].map(([label, value]) => (
+                      <div key={label}>
+                        <dt className="text-xs tracking-[0.12em] uppercase text-muted-foreground mb-1.5">
+                          {label}
+                        </dt>
+                        <dd className="font-serif text-lg font-semibold text-foreground">
+                          {label === 'Direct line' ? (
+                            <a href={CONTACT.phoneHref} className="hover:text-ocean transition-colors">
+                              {value}
                             </a>
-                          </dd>
-                        </div>
-                      </dl>
-                    </div>
-                  </div>
-
-                  {/* ── The answers, collapsed ── */}
-                  <div className="mt-14 pt-10 border-t">
-                    <h2 className="font-serif text-2xl md:text-3xl font-semibold mb-2">
-                      The questions owners actually ask
-                    </h2>
-                    <p className="text-muted-foreground mb-6">
-                      Short answer on every one. Open it for the detail.
-                    </p>
-
-                    <div className="divide-y border-t border-b">
-                      {OWNER_ANSWERS.map(({ q, short, body }, i) => (
-                        <details key={q} open={i === 0} className="group py-4">
-                          <summary className="cursor-pointer list-none flex items-start justify-between gap-4">
-                            <span>
-                              <span className="block font-semibold text-base md:text-lg mb-1">
-                                {q}
-                              </span>
-                              <span className="block text-muted-foreground text-sm md:text-base">
-                                {short}
-                              </span>
-                            </span>
-                            <span
-                              aria-hidden="true"
-                              className="mt-1 flex-none text-xl leading-none opacity-50 transition-transform group-open:rotate-45"
-                            >
-                              +
-                            </span>
-                          </summary>
-                          <div className="pt-4 pb-1 pr-8 space-y-3 leading-relaxed">
-                            {body}
-                          </div>
-                        </details>
-                      ))}
-                    </div>
-                  </div>
-
+                          ) : (
+                            value
+                          )}
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
                 </div>
+
+                {/* ── The answers ── */}
+                <div className="text-center max-w-3xl mx-auto mb-10">
+                  <h2 className="font-serif text-4xl md:text-5xl font-semibold text-foreground mb-4">
+                    Questions Owners Ask
+                  </h2>
+                  <p className="text-muted-foreground text-lg">
+                    The short answer is on every one. Open any for the detail.
+                  </p>
+                </div>
+
+                <div className="max-w-4xl mx-auto grid gap-4">
+                  {OWNER_ANSWERS.map(({ q, short, body, icon: Icon }) => (
+                    <details
+                      key={q}
+                      className="group bg-card rounded-2xl shadow-soft border border-border/50 overflow-hidden"
+                    >
+                      <summary className="cursor-pointer list-none p-6 flex items-start gap-4">
+                        <span className="w-10 h-10 rounded-full bg-ocean/10 flex items-center justify-center flex-shrink-0">
+                          <Icon className="w-5 h-5 text-ocean" />
+                        </span>
+                        <span className="flex-1 min-w-0">
+                          <span className="block font-serif text-lg font-semibold text-foreground mb-1">
+                            {q}
+                          </span>
+                          <span className="block text-muted-foreground text-sm leading-relaxed">
+                            {short}
+                          </span>
+                        </span>
+                        <span
+                          aria-hidden="true"
+                          className="flex-none text-2xl leading-none text-muted-foreground/60 transition-transform duration-200 group-open:rotate-45"
+                        >
+                          +
+                        </span>
+                      </summary>
+                      <div className="px-6 pb-6 pl-20 space-y-3 text-muted-foreground text-sm leading-relaxed">
+                        {body}
+                      </div>
+                    </details>
+                  ))}
+                </div>
+
               </div>
             </section>
 
