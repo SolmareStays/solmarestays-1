@@ -38,7 +38,6 @@ const BLOG_DATES = {
   '/blog/avila-beach-vs-pismo-beach': '2026-05-20',
   '/blog/things-to-do-avila-beach': '2026-06-18',
   '/blog/pet-friendly-vacation-rentals-avila-beach': '2026-07-02',
-  '/blog/avila-beach-property-management': '2026-07-15',
   '/blog/cal-poly-graduation-where-to-stay': '2026-08-13',
   '/blog/large-group-vacation-rentals-central-coast': '2026-08-13',
   '/blog/avila-beach-hot-springs': '2026-08-13',
@@ -386,7 +385,6 @@ const PAGES = [
 <h2>Owner Resources</h2>
 <ul>
 <li><a href="/blog/slo-county-short-term-rental-rules">Short-term rental rules in SLO County — permits, licenses &amp; TOT</a></li>
-<li><a href="/blog/avila-beach-property-management">What professional management looks like in Avila Beach</a></li>
 <li><a href="/vacation-rental-management">Short-term rental permit status for every SLO County city</a></li>
 </ul>
 <h2>Who you are hiring</h2>
@@ -563,7 +561,7 @@ const PAGES = [
   {
     route: '/blog/pet-friendly-vacation-rentals-avila-beach',
     image: 'https://cdn.sanity.io/images/mggny2hi/production/7e8f7d7a7ca8f61c2b25f43cd15c39ab34a21879-1350x900.jpg',
-    title: 'Pet-Friendly Vacation Rentals in Avila Beach (2026)',
+    title: 'Travelling with a Dog in Avila Beach — Beaches, Trails & Rules',
     description: 'The best pet-friendly vacation rentals in Avila Beach, CA. Bring your dog to the coast. Dog-friendly beaches, trails, restaurants, and accommodations.',
     h1: 'Pet-Friendly Vacation Rentals in Avila Beach',
     body: `<p><em>Traveling with your dog? Here's everything you need to know about bringing your pup to Avila Beach.</em></p>
@@ -593,48 +591,9 @@ const PAGES = [
     ]
   },
   {
-    route: '/blog/avila-beach-property-management',
-    image: 'https://cdn.sanity.io/images/mggny2hi/production/063cada11c8b8dafca80c174ffbadf9c73874d0a-1350x900.jpg',
-    title: 'Vacation Rental Property Management in Avila Beach, CA',
-    description: 'Thinking about hiring a property manager for your Avila Beach vacation rental? Here\'s what professional management looks like and what it costs.',
-    h1: 'Vacation Rental Property Management in Avila Beach',
-    body: `<p><em>If you own a vacation rental on the Central Coast and you're doing everything yourself (pricing, guest messages, cleaning coordination, maintenance), here's what it looks like when a professional takes over.</em></p>
-<h2>Self-Managing vs Professional Management</h2>
-<p>Most Avila Beach owners start by self-managing their rental. It works at first. Then the 2 AM guest messages, the double-bookings, the cleaning no-shows, and the bad reviews start adding up. The math changes.</p>
-<table><tr><th></th><th>Self-Managed</th><th>Solmaré Stays</th></tr>
-<tr><td>Avg occupancy</td><td>Typically 35-42%</td><td>51%</td></tr>
-<tr><td>Avg guest rating</td><td>Typically 4.5-4.7/5</td><td>4.8/5 (9.6/10)</td></tr>
-<tr><td>Response time</td><td>Hours</td><td>Minutes (local team)</td></tr>
-<tr><td>Pricing strategy</td><td>Fixed or manual</td><td>Dynamic (PriceLabs)</td></tr>
-<tr><td>Channels</td><td>Airbnb only</td><td>Airbnb + VRBO + Google + Direct</td></tr>
-<tr><td>Your time</td><td>10-20 hrs/week</td><td>0 hrs/week</td></tr></table>
-<h2>What's Included</h2>
-<ul>
-<li><strong>Listing optimization</strong>: professional photos, search-optimized descriptions, strategic pricing</li>
-<li><strong>Dynamic pricing</strong>: PriceLabs adjusts your rates daily based on demand, events, and market data</li>
-<li><strong>Multi-channel distribution</strong>: Airbnb, VRBO, Google Vacation Rentals, and our direct booking website</li>
-<li><strong>24/7 guest communication</strong>: a local team on call, not an overseas call centre</li>
-<li><strong>Professional cleaning</strong>: 50-point checklist, hotel-quality linens, restocking</li>
-<li><strong>Maintenance coordination</strong>: proactive inspections, vendor management, emergency response</li>
-<li><strong>Owner reporting</strong>: weekly performance reports, monthly financial statements</li>
-</ul>
-<h2>The Avila Beach Market</h2>
-<p>Avila Beach has unique dynamics: extreme seasonality (peak summer vs. quiet winter), event-driven demand (Cal Poly, wine festivals), and a small inventory that rewards quality. The market average occupancy is 40%. Our portfolio runs at 51%. That 11-point gap is the difference between a property that covers its mortgage and one that generates real income.</p>
-<h2>What It Costs</h2>
-<p>Management fees on the Central Coast typically range from 15-25% of gross revenue. The fee pays for itself when professional management increases your occupancy and ADR enough to more than offset the commission. Most owners we work with see a net revenue increase even after our fee.</p>
-<h2>Is It Right for You?</h2>
-<p>If you own a vacation rental in Avila Beach, Pismo Beach, Shell Beach, San Luis Obispo, or Arroyo Grande, we'd love to show you what your property could be earning. No pressure. We start with a free market analysis and revenue projection.</p>
-<p><a href="/management">Learn more about our management services</a> or <a href="/contact">get in touch</a>. Call Kyle directly at (805) 242-6411.</p>`,
-    faq: [
-      { q: "How much does vacation rental management cost in Avila Beach?", a: "Management fees on the Central Coast typically range from 15-25% of gross revenue. Solmaré Stays' fees vary by property. The fee pays for itself when professional management increases occupancy and revenue." },
-      { q: "What is the average occupancy for vacation rentals in Avila Beach?", a: "The market average occupancy in Avila Beach is approximately 40%. Solmaré Stays' portfolio runs at 51% occupancy, 11 points above the market average." },
-      { q: "Should I self-manage my Avila Beach vacation rental?", a: "Self-managing works if you have the time and expertise. But professional management typically lifts occupancy from the market's ~40% into the low 50s, improves guest ratings, and adds channels (VRBO, Google, direct) that most self-managers don't use." }
-    ]
-  },
-  {
     route: '/blog/cal-poly-graduation-where-to-stay',
     image: 'https://cdn.sanity.io/images/mggny2hi/production/6991a88cc07c5dc6aafbff9b161f2bb69cc51c91-1350x900.jpg',
-    title: 'Where to Stay for Cal Poly Graduation Weekend (SLO)',
+    title: 'Cal Poly Graduation Weekend — Dates, Parking & How to Plan',
     description: 'Visiting Cal Poly for graduation, move-in, or Open House? Where to stay in San Luis Obispo and Avila Beach, when to book, and how to beat hotel price spikes.',
     h1: 'Where to Stay for Cal Poly Graduation & Parents Weekend',
     body: `<p><em>If you're visiting Cal Poly for graduation, move-in weekend, Open House, or a campus tour, here's the honest local guide to where to stay, and when to book before everything sells out.</em></p>
@@ -731,7 +690,7 @@ const PAGES = [
   {
     route: '/blog/wine-country-stays-edna-valley-arroyo-grande',
     image: 'https://cdn.sanity.io/images/mggny2hi/production/329482dd8dc7eb485b0badcab30702cabaa18b7b-1350x900.jpg',
-    title: 'Where to Stay in SLO Wine Country — Edna Valley',
+    title: 'Edna Valley Wineries — A Local Tasting Guide',
     description: 'Where to stay for wine tasting in Edna Valley and Arroyo Grande Valley: a private 13-acre estate, a working farm cottage, and the wineries locals actually visit.',
     h1: 'Where to Stay in SLO Wine Country — Edna Valley & Arroyo Grande Valley',
     body: `<p><em>Edna Valley and Arroyo Grande Valley are what Napa was thirty years ago: world-class pinot noir and chardonnay, tasting rooms where the winemaker might pour your flight, and none of the crowds. Here's where to stay and where to taste.</em></p>
@@ -1063,7 +1022,6 @@ const SITE_LINKS = {
   'For owners': [
     ['/management', 'Vacation rental property management'],
     ['/vacation-rental-management', 'SLO County permit status by city'],
-    ['/blog/avila-beach-property-management', 'How management works in Avila Beach'],
   ],
 };
 
@@ -1080,6 +1038,28 @@ const SITE_LINKS = {
  */
 function escapeHtml(s) {
   return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+/**
+ * Property links for guide pages, mirroring src/components/StayHereBlock.tsx.
+ *
+ * 🔴 All ten blog posts carried 24-28 internal links and ZERO to a property page, so
+ * the guides sent their authority nowhere bookable. The React block fixes the hydrated
+ * page; this fixes the static HTML that crawlers and AI systems actually read.
+ * ⚠ Keep the slug matching in step with StayHereBlock.
+ */
+function stayHereHtml(route) {
+  if (!route || !route.startsWith('/blog/')) return '';
+  const slug = route.replace('/blog/', '');
+  let picks;
+  if (/wine-country|edna/.test(slug)) picks = [['wine-country-estate', 'Wine Country Estate'], ['flora-farm-cottage', 'Flora Farm Cottage']];
+  else if (/large-group|group/.test(slug)) picks = [['wine-country-estate', 'Wine Country Estate (sleeps 14)'], ['la-casita', 'La Casita (sleeps 6)'], ['hummingbird-house', 'Hummingbird House (sleeps 5)']];
+  else if (/cal-poly/.test(slug)) picks = [['wine-country-estate', 'Wine Country Estate (sleeps 14)'], ['la-casita', 'La Casita (sleeps 6)'], ['the-coral-house', 'The Coral House (sleeps 4)']];
+  else if (/pet-friendly|dog/.test(slug)) picks = [['wine-country-estate', 'Wine Country Estate'], ['la-casita', 'La Casita'], ['the-deckhouse', 'The Deckhouse']];
+  else picks = [['la-casita', 'La Casita'], ['the-coral-house', 'The Coral House'], ['hummingbird-house', 'Hummingbird House']];
+  return `<h2>Where to stay</h2><p>Whole homes on the Central Coast, booked direct \u2014 no platform service fee.</p><ul>${
+    picks.map(([s2, label]) => `<li><a href="/property/${s2}">${label}</a></li>`).join('')
+  }<li><a href="/collection">Browse all 12 homes</a></li></ul>`;
 }
 
 function faqHtml(faq) {
@@ -1255,7 +1235,7 @@ function generatePage(page) {
     const hero = page.heroImage
       ? `<picture>${page.heroImage.avif ? `<source type="image/avif" srcset="${page.heroImage.avif}" sizes="100vw">` : ''}<img src="${page.heroImage.fallback}" alt="${page.heroImage.alt}" ${page.heroImage.width ? `width="${page.heroImage.width}" height="${page.heroImage.height}"` : 'width="1280" height="853"'} fetchpriority="high" decoding="async" style="${heroBox}"></picture>`
       : '';
-    const seoContent = `<div id="root">${hero}<div style="max-width:900px;margin:0 auto;padding:2rem;font-family:system-ui,sans-serif;color:#1a1a1a"><h1>${page.h1 || ''}</h1>${page.body || ''}${faqHtml(page.faq)}<p><a href="${BASE_URL}">← Back to Solmaré Stays</a> | <a href="tel:+18052426411">(805) 242-6411</a></p>${siteLinks(page.route)}</div></div>`;
+    const seoContent = `<div id="root">${hero}<div style="max-width:900px;margin:0 auto;padding:2rem;font-family:system-ui,sans-serif;color:#1a1a1a"><h1>${page.h1 || ''}</h1>${page.body || ''}${stayHereHtml(page.route)}${faqHtml(page.faq)}<p><a href="${BASE_URL}">← Back to Solmaré Stays</a> | <a href="tel:+18052426411">(805) 242-6411</a></p>${siteLinks(page.route)}</div></div>`;
     html = html.replace(/<div id="root"><\/div>/, seoContent);
   }
 

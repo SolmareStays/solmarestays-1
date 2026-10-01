@@ -123,6 +123,11 @@
   ],
   "redirects": [
     {
+      "source": "/blog/avila-beach-property-management",
+      "destination": "/management",
+      "permanent": true
+    },
+    {
       "source": "/property/monterey-heights-suite",
       "destination": "/collection",
       "permanent": true

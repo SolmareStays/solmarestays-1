@@ -5,6 +5,7 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { EmailCapture } from '@/components/EmailCapture';
 import { FaqSection } from '@/components/FaqSection';
+import { StayHereBlock } from '@/components/StayHereBlock';
 import { SEO } from '@/components/SEO';
 import { useBlogPost } from '@/hooks/useSanityContent';
 import { urlFor, SanityImageSource } from '@/lib/sanity.client';
@@ -286,6 +287,9 @@ const BlogPost = () => {
       </article>
 
       {/* Same 68-Q&A source that feeds this page's FAQPage schema — see FaqSection. */}
+      {/* 🔴 All ten guides linked to ZERO property pages. See StayHereBlock. */}
+      <StayHereBlock slug={slug || ''} />
+
       <FaqSection route={`/blog/${slug}`} />
 
       <EmailCapture source={`blog/${slug}`} />

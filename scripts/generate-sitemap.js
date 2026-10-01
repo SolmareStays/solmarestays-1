@@ -78,7 +78,6 @@ const BLOG_ROUTES = [
   { path: '/blog/avila-beach-vs-pismo-beach', changefreq: 'monthly', priority: '0.8' },
   { path: '/blog/things-to-do-avila-beach', changefreq: 'monthly', priority: '0.8' },
   { path: '/blog/pet-friendly-vacation-rentals-avila-beach', changefreq: 'monthly', priority: '0.8' },
-  { path: '/blog/avila-beach-property-management', changefreq: 'monthly', priority: '0.8' },
   { path: '/blog/cal-poly-graduation-where-to-stay', changefreq: 'monthly', priority: '0.8' },
   { path: '/blog/large-group-vacation-rentals-central-coast', changefreq: 'monthly', priority: '0.8' },
   { path: '/blog/avila-beach-hot-springs', changefreq: 'monthly', priority: '0.8' },
@@ -244,7 +243,15 @@ async function generateSitemap() {
   // Sanity blog posts — skip slugs already listed statically in BLOG_ROUTES,
   // otherwise each post appears twice once its Sanity document exists.
   const staticBlogPaths = new Set(BLOG_ROUTES.map(r => r.path));
-  const sanityOnly = blogPosts.filter(p => !staticBlogPaths.has(`/blog/${p.slug}`));
+  // 🔴 Slugs that are 301'd in vercel.json must never re-enter the sitemap. The static
+  // list below is not enough: Sanity still returns the post, and anything not already
+  // in staticBlogPaths gets appended. A redirected URL in a sitemap is a crawl error.
+  const REDIRECTED_SLUGS = new Set([
+    'avila-beach-property-management', // -> /management (duplicated the money query)
+  ]);
+  const sanityOnly = blogPosts.filter(
+    p => !staticBlogPaths.has(`/blog/${p.slug}`) && !REDIRECTED_SLUGS.has(p.slug),
+  );
   if (sanityOnly.length > 0) {
     entries.push('  <!-- Blog Posts (CMS) -->');
     for (const post of sanityOnly) {

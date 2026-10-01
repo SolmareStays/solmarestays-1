@@ -40,8 +40,8 @@ const GUIDES = [
   { to: '/blog', label: 'All Guides' },
   { to: '/blog/things-to-do-avila-beach', label: 'Things to Do in Avila Beach' },
   { to: '/blog/best-restaurants-avila-beach', label: 'Where to Eat in Avila Beach' },
-  { to: '/blog/cal-poly-graduation-where-to-stay', label: 'Cal Poly Weekends' },
-  { to: '/blog/wine-country-stays-edna-valley-arroyo-grande', label: 'Edna Valley Wine Country' },
+  { to: '/blog/cal-poly-graduation-where-to-stay', label: 'Cal Poly Graduation Guide' },
+  { to: '/blog/wine-country-stays-edna-valley-arroyo-grande', label: 'Edna Valley Wineries' },
   { to: '/blog/avila-beach-hot-springs', label: 'Avila Hot Springs' },
 ] as const;
 
