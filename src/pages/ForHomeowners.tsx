@@ -433,6 +433,14 @@ const ForHomeownersPage = () => {
                         portfolio on 9/4 — so the breakdown summed to thirteen while the
                         sentence above it said twelve, on the landing page every Owner ad
                         points at. */}
+                    {/* The fee basis is the one claim that separates us from Vacasa and
+                        Evolve, who quote 25-35% of GROSS. It sat only inside the FAQ
+                        accordion, which Radix unmounts while collapsed, so it reached
+                        neither a visitor nor a crawler. Owner traffic converted at 0%
+                        with it hidden. Keep it above the fold. */}
+                    <span className="block text-white font-medium mb-2">
+                      18% of net rental revenue, not a cut of the gross. No long-term contract.
+                    </span>
                     Ten in Avila Beach, two in Arroyo Grande. Same crew, same pricing engine, same person answering at nine at night.
                   </p>
                   <div className="flex flex-wrap gap-4">
