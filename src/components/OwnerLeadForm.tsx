@@ -127,8 +127,26 @@ export const OwnerLeadForm = ({
           <Input id="owner-phone" name="phone" type="tel" value={formData.phone} onChange={handleChange} placeholder="(555) 123-4567" className="h-12" />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="owner-location">Property Location *</Label>
-          <Input id="owner-location" name="propertyLocation" value={formData.propertyLocation} onChange={handleChange} placeholder="City or address" required className="h-12" />
+          {/* Street address, not just a city. Permit eligibility is decided parcel by
+              parcel here — Avila carries a 50ft buffer from the nearest other STR, several
+              cities are frozen, and the unincorporated county is open — so "Avila Beach"
+              alone cannot be answered. The digit check is the lightest thing that rejects
+              a bare city name while still accepting every real address format. */}
+          <Label htmlFor="owner-location">Property Address *</Label>
+          <Input
+            id="owner-location"
+            name="propertyLocation"
+            value={formData.propertyLocation}
+            onChange={handleChange}
+            placeholder="123 Front St, Avila Beach"
+            required
+            pattern=".*\d.*"
+            title="Please include the street number. Permit rules are decided parcel by parcel, so the city on its own is not enough to check."
+            className="h-12"
+          />
+          <p className="text-xs text-muted-foreground">
+            Full street address, so we can check what your parcel is actually allowed.
+          </p>
         </div>
       </div>
 
