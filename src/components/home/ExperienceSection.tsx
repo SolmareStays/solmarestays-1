@@ -19,9 +19,12 @@ const partners = [
     category: "Private Chef",
   },
   {
-    name: "Central Coast Bike Rental",
+    // 🔴 Was "Central Coast Bike Rental". Transport may never be advertised here —
+    // the CA Seller of Travel Act hooks on advertising it, not just arranging it.
+    // See the note in src/pages/GuestExperience.tsx. Food, drink and tastings only.
+    name: "Avila Wine & Roasting Co.",
     image: img3,
-    category: "Adventure",
+    category: "Tasting Room",
   },
 ];
 

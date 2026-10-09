@@ -9,16 +9,22 @@ import { SEO } from '@/components/SEO';
 import { Button } from '@/components/ui/button';
 import { Wine, UtensilsCrossed, Bike, MapPin } from 'lucide-react';
 import servicesHeroImage from '/experience/hero.jpg';
-import heroImage1 from '/experience/bolt.avif';
+import heroImage1 from '/experience/AvilaWine.avif';
 import heroImage2 from '/experience/rod.avif';
 import heroImage3 from '/experience/inspired-dining.webp';
 
 // Featured Partners - 3 Cards
+//
+// 🔴 TRANSPORT PARTNERS MAY NEVER APPEAR HERE. BoltAbout, Uncorked Wine Tours and
+// Destination Drivers are VIP partners in the guest guide ONLY. The CA Seller of
+// Travel Act (B&P 17550) hooks on ADVERTISING transportation, not just arranging it,
+// and the first penalty is a cease-and-desist on all advertising including this site.
+// BoltAbout sat in this list until 2026-10-09. Food, drink and tastings only.
 const featuredPartners = [
   {
-    name: 'BoltAbout',
+    name: 'Avila Wine & Roasting Co.',
     image: heroImage1,
-    description: "Explore the coast with ease using premium electric bicycle rentals, perfect for cruising the scenic Bob Jones Trail or downtown SLO.",
+    description: "Coastal wines and small-batch coffee roasted on site, a few minutes from the Avila houses. Solmaré guests get a free tasting with a bottle purchase.",
   },
   {
     name: "Rod & Hammer's SLO Stills",
@@ -64,7 +70,6 @@ const partnerDirectory = [
     icon: Bike,
     title: 'Activities & Outdoors',
     venues: [
-      { name: 'BoltAbout E-Bikes', location: 'Avila Beach', experience: 'Electric bike rentals & tours.' },
       { name: 'Avila Valley Barn', location: 'Avila Valley', experience: 'Farm fresh produce & animals.' },
       { name: 'Bob Jones City to Sea Trail', location: 'Avila Valley', experience: 'Scenic walking & biking path.' },
       { name: 'Central Coast Kayaks', location: 'Shell Beach', experience: 'Sea cave tours & rentals.' },
@@ -124,11 +129,15 @@ const GuestExperiencePage = () => {
                 <div className="absolute inset-0 bg-black/20" />
               </div>
 
-              <div className="absolute bottom-6 left-6 md:bottom-16 md:left-16 w-[calc(100%-3rem)] md:w-auto bg-white/10 backdrop-blur-md p-6 md:p-10 rounded-[2rem] shadow-2xl border border-white/15">
+              <div className="absolute bottom-6 left-6 md:bottom-16 md:left-16 w-[calc(100%-3rem)] md:w-auto bg-foreground/60 p-6 md:p-10 rounded-[2rem] shadow-2xl border border-white/15">
+                {/* 🔴 No reveal animation on an above-the-fold hero. useInView(ref,
+                    {once:true}) does not reliably fire for an element already in the
+                    viewport at mount: measured on /experiences 2026-10-09, this H1 was
+                    still at computed opacity 0.14 ten seconds after load, with the
+                    inline style stuck at `opacity: 0`. The backdrop-blur that used to
+                    sit on the panel hid how invisible it was. An element at opacity 0
+                    is also not an LCP candidate. Render it. */}
                 <motion.div
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.8 }}
                 >
                   <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight text-white mb-4">
                     More Than a Place to Stay
@@ -159,7 +168,7 @@ const GuestExperiencePage = () => {
                     The best trips run without friction. Solmaré guests get access to a network of trusted local businesses offering perks, preferred experiences, and insider recommendations so you can spend less time planning and more time enjoying your stay.
                   </p>
                   <p className="text-muted-foreground text-lg leading-relaxed">
-                    Every partner is handpicked by our team — we focus on quality, consistency, and businesses we trust to deliver. From wine tastings to private chef dinners to electric bike rentals along the coast, this is the Central Coast the way locals experience it.
+                    Every partner is handpicked by our team — we focus on quality, consistency, and businesses we trust to deliver. From wine tastings to whiskey flights to private chef dinners in your own kitchen, this is the Central Coast the way locals experience it.
                   </p>
                 </motion.div>
               </div>

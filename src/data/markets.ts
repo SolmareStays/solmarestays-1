@@ -183,7 +183,7 @@ export const MARKETS: Market[] = [
     verified: true,
     sources: [
       'https://www.prcity.com/DocumentCenter/View/25961/Pismo-Beach-Outside-Coastal-Zone-Short-Term-Rental-Ordinance',
-      'http://pismobeach.org/881/Vacation-Rental-Short-Term-Rental-Homest',
+      'https://pismobeach.org/881/Vacation-Rental-and-Short-Term-Rental-Pe',
       'https://www.pismobeach.org/461/Lodging-Businesses',
     ],
   },
@@ -357,7 +357,7 @@ export const MARKETS: Market[] = [
     verified: true,
     sources: [
       'https://www.prcity.com/DocumentCenter/View/25961/Pismo-Beach-Outside-Coastal-Zone-Short-Term-Rental-Ordinance',
-      'http://pismobeach.org/881/Vacation-Rental-Short-Term-Rental-Homest',
+      'https://pismobeach.org/881/Vacation-Rental-and-Short-Term-Rental-Pe',
     ],
   },
   {

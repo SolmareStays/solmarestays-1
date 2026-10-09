@@ -249,8 +249,13 @@ const PropertyDetailPage = () => {
           Views · Avila | Solmaré Stays" — two pipes and well past the SERP cutoff.
           The full listing name stays in the schema below, where keywords still work. */}
       <SEO
+        // absoluteTitle, not title: SEO appends " | Solmaré Stays" to `title`, which
+        // pushed the longest property titles to 70 chars and truncated them in Google.
+        // ⚠ Must stay byte-identical to the template in scripts/prerender.mjs or the
+        // title visibly changes when React hydrates over the static page.
+        absoluteTitle={`${property.displayName} | Vacation Rental in ${property.location}`}
         title={`${property.displayName} | Vacation Rental in ${property.location}`}
-        description={property.description ? property.description.replace(/<[^>]+>/g, '').substring(0, 160).trim() + '...' : undefined}
+        description={property.description ? property.description.replace(/<[^>]+>/g, '').substring(0, 157).trim() + '...' : undefined}
         image={property.image}
         schema={{
           "@context": "https://schema.org",

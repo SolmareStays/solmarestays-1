@@ -34,9 +34,13 @@ export function ImageGallery({ images, className = '' }: ImageGalleryProps) {
           transition={{ duration: 0.3 }}
           onClick={() => openLightbox(0)}
         >
+          {/* This is the LCP element of a property page. It must not be lazy or
+              low-priority — the whole gallery sits above the fold. */}
           <img
             src={images[0]?.src}
             alt={images[0]?.alt}
+            loading="eager"
+            fetchPriority="high"
             decoding="async"
             width={800}
             height={800}
@@ -53,10 +57,14 @@ export function ImageGallery({ images, className = '' }: ImageGalleryProps) {
             transition={{ duration: 0.3 }}
             onClick={() => openLightbox(index + 1)}
           >
+            {/* ⚠ These four thumbnails are ABOVE THE FOLD. They were loading="lazy",
+                which left the grid filling in one tile at a time over ~10s and — because
+                the "+N more" overlay sits on top of the 4th — left a flat grey rectangle
+                where a photo should be. Eager, in the initial viewport. */}
             <img
               src={image.src}
               alt={image.alt}
-              loading="lazy"
+              loading="eager"
               decoding="async"
               width={400}
               height={400}

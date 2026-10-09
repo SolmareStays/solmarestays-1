@@ -153,11 +153,15 @@ const WhyChooseUsPage = () => {
               </div>
 
               {/* Content Box */}
-              <div className="absolute bottom-6 left-6 md:bottom-20 md:left-20 w-[calc(100%-3rem)] md:w-[600px] lg:w-[700px] bg-white/10 backdrop-blur-md p-8 md:p-12 rounded-[2.5rem] shadow-2xl border border-white/15">
+              <div className="absolute bottom-6 left-6 md:bottom-20 md:left-20 w-[calc(100%-3rem)] md:w-[600px] lg:w-[700px] bg-foreground/60 p-8 md:p-12 rounded-[2.5rem] shadow-2xl border border-white/15">
+                {/* 🔴 No reveal animation on an above-the-fold hero. useInView(ref,
+                    {once:true}) does not reliably fire for an element already in the
+                    viewport at mount: measured on /experiences 2026-10-09, this H1 was
+                    still at computed opacity 0.14 ten seconds after load, with the
+                    inline style stuck at `opacity: 0`. The backdrop-blur that used to
+                    sit on the panel hid how invisible it was. An element at opacity 0
+                    is also not an LCP candidate. Render it. */}
                 <motion.div
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.8 }}
                   className="max-w-xl"
                 >
                   <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight text-white mb-6">

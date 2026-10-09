@@ -82,13 +82,24 @@ const ownerReviews = [
     rating: 5,
     text: "Switching to Solmaré was a game-changer for my property. Unlike my previous manager, the transparency here is unmatched—I finally know exactly how my home is performing and where every dollar goes. There is no 'black box,' just clear communication and significantly higher returns. Hands down the best management team on the Central Coast.",
   },
-  {
-    name: 'Jane M., Owner',
-    property: 'The Hummingbird | Avila Beach',
-    stats: ['+31% Occupancy', '+42% Profit Increase'],
-    rating: 5,
-    text: 'Solmaré Stays has done an amazing job managing Hummingbird House. The team handles all aspects of property management for me — bookings, cleaning, refilling supplies, and troubleshooting. The whole process is hands-off for me, and I get an organized revenue summary each month.',
-  },
+  /*
+    🔴 REMOVED 2026-10-09: the "Jane M., Owner — The Hummingbird" card.
+
+    Hummingbird House changed hands on 2026-10-08. Jane is no longer the owner
+    (Cynthia Betchel and Craig Canfield are), so presenting her as a current owner
+    vouching for us was false on its face — and "Jane takes reference calls" had
+    already gone out to 39 prospects on 10/01, which makes a live reference card
+    pointing at a former owner worse than merely stale.
+
+    ⚠ Unlike the Michael H. case above, this is NOT a property that left the
+    portfolio with its review intact. We still manage Hummingbird; the person
+    speaking no longer owns it. Re-attributing the quote would misrepresent who
+    said it, so the card is gone rather than reworded.
+
+    To restore three cards, get a fresh quote from Cindy or Craig. ⛔ Do not
+    reinstate this one and do not reuse its "+31% Occupancy / +42% Profit
+    Increase" stats — those were Jane's reporting period, not the new owners'.
+  */
 ];
 
 // Comprehensive Services - 5 Columns
@@ -407,11 +418,15 @@ const ForHomeownersPage = () => {
                 </picture>
               </div>
 
-              <div className="absolute bottom-6 left-6 md:bottom-[55%] md:-translate-y-[-50%] md:left-16 w-[calc(100%-3rem)] md:w-auto bg-white/10 backdrop-blur-md p-6 md:p-10 rounded-[2rem] shadow-2xl border border-white/15">
+              <div className="absolute bottom-6 left-6 md:bottom-[55%] md:-translate-y-[-50%] md:left-16 w-[calc(100%-3rem)] md:w-auto bg-foreground/60 p-6 md:p-10 rounded-[2rem] shadow-2xl border border-white/15">
+                {/* 🔴 No reveal animation on an above-the-fold hero. useInView(ref,
+                    {once:true}) does not reliably fire for an element already in the
+                    viewport at mount: measured on /experiences 2026-10-09, this H1 was
+                    still at computed opacity 0.14 ten seconds after load, with the
+                    inline style stuck at `opacity: 0`. The backdrop-blur that used to
+                    sit on the panel hid how invisible it was. An element at opacity 0
+                    is also not an LCP candidate. Render it. */}
                 <motion.div
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.8 }}
                 >
                   {/* H1 leads with the service + place so it matches the search that
                       paid for the click. The brand line keeps its place directly below —
@@ -514,7 +529,9 @@ const ForHomeownersPage = () => {
                 </motion.div>
 
                 {/* 3 Cards Horizontally */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {/* 2 cards since the Jane M. card was removed 2026-10-09 — see the note
+                    on ownerReviews. Back to md:grid-cols-3 when a third quote lands. */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                   {ownerReviews.map((review, index) => (
                     <motion.div
                       key={index}

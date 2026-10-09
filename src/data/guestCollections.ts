@@ -46,9 +46,9 @@ export interface GuestCollection {
 export const GUEST_COLLECTIONS: GuestCollection[] = [
   {
     slug: 'cal-poly',
-    title: 'Where to Stay for Cal Poly Weekends — Graduation, Move-In & Parents Weekend | Solmaré Stays',
+    title: 'Where to Stay for Cal Poly Weekends | Solmaré Stays',
     description:
-      'San Luis Obispo sells out for Cal Poly graduation, move-in and parents weekend. Stay 20 minutes away in Avila Beach — whole homes that sleep 2 to 14, booked direct.',
+      'SLO sells out for Cal Poly graduation, move-in and parents weekend. Stay 20 minutes away in Avila Beach — whole homes sleeping 2 to 14, booked direct.',
     h1: 'Where to Stay for Cal Poly Weekends',
     lede:
       'Graduation, move-in, parents weekend and home football all empty San Luis Obispo at once. These are the most predictable sell-out dates on the Central Coast — and the reason most visiting families end up at the beach instead.',
@@ -99,9 +99,9 @@ export const GUEST_COLLECTIONS: GuestCollection[] = [
 
   {
     slug: 'wine-country',
-    title: 'Wine Country Vacation Rentals — Edna Valley & Arroyo Grande Valley | Solmaré Stays',
+    title: 'Wine Country Vacation Rentals, Edna Valley | Solmaré Stays',
     description:
-      'Whole-home wine country rentals in the Edna Valley and Arroyo Grande Valley, including a private 13-acre estate sleeping 14. Tasting rooms minutes away. Book direct.',
+      'Whole-home rentals in the Edna and Arroyo Grande Valleys, including a private 13-acre estate sleeping 14. Tasting rooms minutes away. Book direct.',
     h1: 'Wine Country Rentals in the Edna & Arroyo Grande Valleys',
     lede:
       'The quieter half of Central Coast wine country. Edna Valley and the Arroyo Grande Valley sit between the ocean and the hills, twenty minutes from the beach and a world away from the Paso Robles crowds.',
@@ -152,7 +152,7 @@ export const GUEST_COLLECTIONS: GuestCollection[] = [
     slug: 'beachfront',
     title: 'Walk-to-the-Sand Vacation Rentals in Avila Beach | Solmaré Stays',
     description:
-      'Ten homes in Avila Beach, most a block or two from the sand. A sheltered south-facing cove that stays sunny when the rest of the coast is fogged in. Book direct.',
+      'Ten homes in Avila Beach, most a block or two from the sand. A sheltered cove that stays sunny when the rest of the coast is fogged in. Book direct.',
     h1: 'Homes You Can Walk to the Beach From',
     lede:
       'Ten of our twelve houses are in Avila Beach, and most of them are a block or two from the sand. Close enough that the beach is where you go between things, not an expedition you plan.',

@@ -97,10 +97,12 @@ const PAGES = [
       "email": "info@solmarestays.com",
       "address": { "@type": "PostalAddress", "addressLocality": "Pismo Beach", "addressRegion": "CA", "postalCode": "93449", "addressCountry": "US" },
       "areaServed": ["Avila Beach", "Pismo Beach", "Shell Beach", "Arroyo Grande", "San Luis Obispo"].map(c => ({ "@type": "City", "name": c })),
-      // Verified against Hostaway 2026-08-08: 1,541 guest-to-host reviews across the
-      // 12 listings, of which 827 carry a numeric rating averaging 9.64/10 = 4.82/5.
+      // FALLBACK ONLY — overwritten below whenever the Hostaway reviews fetch answers.
+      // Verified against Hostaway 2026-10-09: 1,577 guest-to-host reviews across the
+      // 12 listings, of which 920 carry a numeric rating averaging 9.667/10 = 4.83/5.
       // Was "4.9 / 2400", which counted host-to-guest reviews and rounded upward.
-      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "ratingCount": "827", "reviewCount": "1541", "bestRating": "5" },
+      // ⚠ Keep in sync with src/data/stats.ts REVIEWS.
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "ratingCount": "920", "reviewCount": "1577", "bestRating": "5" },
       // sameAs ties the site to its off-site profiles so search engines and AI
       // systems resolve them to one entity instead of several unrelated mentions.
       "sameAs": [
@@ -377,7 +379,6 @@ const PAGES = [
 <h2>What Owners Say</h2>
 <blockquote><p><strong>+22% ADR lift &middot; 4.9-star rating.</strong> "Our experience with Solmaré Stays has been exceptional. Their attentive service, transparency, and deep market insight make vacation rental ownership truly hands-off for us. After previously using another local company, the difference is clear — this has been a far superior, easier, and more professional experience in every way."</p><cite>Chad V., owner — La Casita, Avila Beach</cite></blockquote>
 <blockquote><p><strong>5.0-star rating.</strong> "Switching to Solmaré was a game-changer for my property. Unlike my previous manager, the transparency here is unmatched—I finally know exactly how my home is performing and where every dollar goes. There is no 'black box,' just clear communication and significantly higher returns. Hands down the best management team on the Central Coast."</p><cite>Michael H., owner — The Coral House, Avila Beach</cite></blockquote>
-<blockquote><p><strong>+31% occupancy &middot; +42% profit increase.</strong> "Solmaré Stays has done an amazing job managing Hummingbird House. The team handles all aspects of property management for me — bookings, cleaning, refilling supplies, and troubleshooting. The whole process is hands-off for me, and I get an organized revenue summary each month."</p><cite>Jane M., owner — The Hummingbird, Avila Beach</cite></blockquote>
 <h2>How Much Does Property Management Cost?</h2>
 <p>Management is priced as a percentage of booking revenue, so the manager only earns when the property does. The exact rate depends on the property, its location, and how much service the owner wants. We provide a revenue projection and proposed terms before any commitment.</p>
 <h2>Request a Revenue Projection</h2>
@@ -474,7 +475,7 @@ const PAGES = [
     route: '/blog/best-restaurants-avila-beach',
     image: 'https://cdn.sanity.io/images/mggny2hi/production/22b280271c99f9f76baec85856df422be09a82b2-1280x958.jpg',
     title: 'Best Restaurants in Avila Beach — A Local\'s Guide (2026)',
-    description: 'The best restaurants in Avila Beach, CA ranked by a local. From seafood on the pier to hidden wine bars. Updated for 2026 with menus, prices, and reservation tips.',
+    description: 'The best restaurants in Avila Beach, ranked by a local. Seafood on the pier to hidden wine bars, with menus, prices and reservation tips for 2026.',
     h1: 'Best Restaurants in Avila Beach — A Local\'s Guide',
     body: `<p><em>Updated June 2026 by the Solmaré Stays team. We live and work in Avila Beach and eat at these spots weekly.</em></p>
 <p>Avila Beach may be a small town, but the dining scene punches well above its weight. From fresh-off-the-boat seafood to a quiet wine tasting with ocean views, these are the spots we actually send guests to.</p>
@@ -624,7 +625,7 @@ const PAGES = [
     route: '/blog/large-group-vacation-rentals-central-coast',
     image: 'https://cdn.sanity.io/images/mggny2hi/production/57be41d873e99cbf59c64ffc37fa6a2c66f153f9-1280x958.jpg',
     title: 'Large Group Vacation Rentals — Central Coast, CA',
-    description: 'Vacation rentals for large groups on the California Central Coast. A private 13-acre estate sleeping 14, and side-by-side Avila Beach bungalows for reunions and retreats.',
+    description: 'Large-group vacation rentals on the Central Coast: a private 13-acre estate sleeping 14, plus side-by-side Avila Beach bungalows for reunions and retreats.',
     h1: 'Large Group Vacation Rentals on the Central Coast (Sleeps 10-14+)',
     body: `<p><em>Family reunion, milestone birthday, company retreat, wedding weekend: housing 10 to 14+ people on the Central Coast comes down to two good options. Here's how to choose.</em></p>
 <h2>The Two Ways to House a Big Group</h2>
@@ -691,7 +692,7 @@ const PAGES = [
     route: '/blog/wine-country-stays-edna-valley-arroyo-grande',
     image: 'https://cdn.sanity.io/images/mggny2hi/production/329482dd8dc7eb485b0badcab30702cabaa18b7b-1350x900.jpg',
     title: 'Edna Valley Wineries — A Local Tasting Guide',
-    description: 'Where to stay for wine tasting in Edna Valley and Arroyo Grande Valley: a private 13-acre estate, a working farm cottage, and the wineries locals actually visit.',
+    description: 'Where to stay for wine tasting in the Edna and Arroyo Grande Valleys: a 13-acre estate, a working farm cottage, and the wineries locals actually visit.',
     h1: 'Where to Stay in SLO Wine Country — Edna Valley & Arroyo Grande Valley',
     body: `<p><em>Edna Valley and Arroyo Grande Valley are what Napa was thirty years ago: world-class pinot noir and chardonnay, tasting rooms where the winemaker might pour your flight, and none of the crowds. Here's where to stay and where to taste.</em></p>
 <h2>Why SLO Wine Country</h2>
@@ -727,7 +728,7 @@ const PAGES = [
     route: '/blog/slo-county-short-term-rental-rules',
     image: 'https://cdn.sanity.io/images/mggny2hi/production/6b2801964c53c5d22aa2b3a14bdeabc191b85106-1349x900.jpg',
     title: 'SLO County Short-Term Rental Rules 2026 — Permits & TOT',
-    description: 'What Central Coast owners need to know before renting short-term: permits and licenses by jurisdiction, transient occupancy tax rates, and the rules that trip owners up.',
+    description: 'What Central Coast owners need before renting short-term: permits by jurisdiction, transient occupancy tax rates, and the rules that trip owners up.',
     h1: "Short-Term Rental Rules in SLO County — An Owner's Guide",
     body: `<p><em>Thinking about renting out your Central Coast property as a vacation rental? The single most important thing to understand is that the rules change completely depending on which jurisdiction your property sits in. Sometimes they change across the street. Here's the owner's map.</em></p>
 <p><strong>A note before we start:</strong> rules and tax rates change, and this article is a practical orientation, not legal advice. Verify current requirements with the county or city before you list, or <a href="/contact">ask us</a> and we'll point you at the right office.</p>
@@ -777,7 +778,7 @@ const PAGES = [
   {
     route: '/for-homeowners',
     canonical: '/management',
-    title: 'Vacation Rental Property Management | Avila Beach & Central Coast | Solmaré Stays',
+    title: 'Vacation Rental Property Management, Avila Beach | Solmaré Stays',
     description: 'Professional vacation rental management in Avila Beach, Pismo Beach, and SLO County. Maximize revenue with Solmaré Stays\' full-service property management.',
     h1: 'Vacation Rental Property Management',
     body: `<p>This page has moved to <a href="/management">Solmaré Stays property management</a>. Full-service vacation rental management for homeowners on California's Central Coast.</p>`
@@ -845,9 +846,9 @@ const MARKETS = JSON.parse(
 
 PAGES.push({
   route: '/vacation-rental-management',
-  title: 'Vacation Rental Management in SLO County — Permit Status by City | Solmaré Stays',
+  title: 'Vacation Rental Management in SLO County | Solmaré Stays',
   description:
-    'Which San Luis Obispo County cities are still issuing short-term rental permits, and what lodging tax each charges. Pismo is frozen, Paso is capped, the unincorporated county is open.',
+    'Which SLO County cities still issue short-term rental permits and what lodging tax each charges. Pismo frozen, Paso capped, unincorporated county open.',
   h1: 'Where you can still get a short-term rental permit in SLO County',
   body:
     `<p>Permit availability is not the same across San Luis Obispo County, and it decides whether owning a short-term rental here is even possible. Pismo Beach has issued no new residential licence since 7 November 2023. Paso Robles non-hosted permits are at capacity. The unincorporated county — Avila Beach, Cayucos, Cambria — is still open.</p>` +
@@ -1424,7 +1425,12 @@ function buildPropertyPage(listing, reviewCount) {
 
   return {
     route: `/property/${slug}`,
-    title: `${name} | Vacation Rental in ${city} | Solmaré Stays`,
+    // ⚠ No " | Solmaré Stays" suffix here. With it, the three longest property titles
+    // ran 66–70 chars and truncated in Google (Wine Country Estate, Flora Farm Cottage,
+    // Hummingbird House). The brand is already in the domain, the Organization schema
+    // and the og:site_name. 🔴 PropertyDetail.tsx must pass this same string as
+    // `absoluteTitle` so the title does not change on hydration — see SEO.tsx.
+    title: `${name} | Vacation Rental in ${city}`,
     description: propertyMetaDescription({ name, city, bedrooms, sleeps, price, description }),
     image,
     h1: name,
