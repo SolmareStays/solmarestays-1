@@ -86,7 +86,7 @@ const ownerReviews = [
     🔴 REMOVED 2026-10-09: the "Jane M., Owner — The Hummingbird" card.
 
     Hummingbird House changed hands on 2026-10-08. Jane is no longer the owner
-    (Cynthia Betchel and Craig Canfield are), so presenting her as a current owner
+    (Cynthia Bechtel and Craig Canfield are), so presenting her as a current owner
     vouching for us was false on its face — and "Jane takes reference calls" had
     already gone out to 39 prospects on 10/01, which makes a live reference card
     pointing at a former owner worse than merely stale.
