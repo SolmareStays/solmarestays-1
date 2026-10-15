@@ -91,6 +91,14 @@ ol.steps li::before{content:counter(s);flex-shrink:0;width:22px;height:22px;back
 .tip.crit{background:#fff0f0;border-left:4px solid #c0392b;color:#7a1a1a}
 .tip.warm{background:#fdf8f0;border-left:4px solid #d4b070;color:#5a4a30}
 .tip strong{font-weight:700}
+.card.focus{border:2px solid #d4b070;background:linear-gradient(180deg,#fdfaf4 0%,#fff 180px);box-shadow:0 1px 3px rgba(180,140,60,.10)}
+.card.focus .card-t{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.ftag{font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:#6b4a10;background:#f6e8cc;border:1px solid #e0cba0;padding:3px 9px;border-radius:10px;white-space:nowrap}
+.fstar{color:#d4a017;font-size:19px;line-height:1}
+.metric{display:flex;gap:14px;flex-wrap:wrap;margin:14px 0}
+.metric div{flex:1 1 150px;background:#faf7f1;border:1px solid #e8dfcc;border-radius:8px;padding:12px 14px}
+.metric .mv{font-size:23px;font-weight:700;color:#0f2744;line-height:1.15}
+.metric .ml{font-size:11px;color:#7a6a50;margin-top:3px;line-height:1.35}
 
 /* Tables */
 .rt{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
@@ -184,6 +192,7 @@ ol.steps li::before{content:counter(s);flex-shrink:0;width:22px;height:22px;back
 <p style="font-size:14px;color:#444;line-height:1.7;margin-bottom:14px">Solmare Stays runs 12 coastal rental properties across Avila Beach and Arroyo Grande. You're coming in as the operations person on the ground &mdash; guest messaging, cleaning crew coordination, property walkthroughs, restocking, vendors, and eventually the full picture including social media and the business side.</p>
 <p style="font-size:14px;color:#444;line-height:1.7">This starts collaborative and grows with you. There's a learning curve and that's completely expected. Start doing things when you feel ready. Kyle is always there for help. The phases and pay are flexible. The goal is for you to be comfortable and confident.</p>
 <div class="tip good" style="margin-top:14px"><strong>The job boils down to two questions every day:</strong> Are the guests happy? Are the units healthy? If you're confident both are good, your job's done for now.</div>
+<div class="tip warm" style="margin-top:14px"><span class="fstar">&#9733;</span> <strong>Two focus areas for the next few weeks &mdash; cleaning coordination and restocking.</strong> Both are starred in the doc. Neither is a problem with the work itself; both are about the <em>record</em> keeping up with the work. Turnovers are being closed in Hostaway the same day <strong>82%</strong> of the time against <strong>96%</strong> over the summer, and the restock board has grown to <strong>45 open items with 4 of them invisible</strong>. Those are the two numbers to move, and both fixes are two-minute habits rather than projects. Details on the <strong>Daily Ops</strong> tab.</div>
 </div>
 
 <div class="card">
@@ -610,8 +619,17 @@ ol.steps li::before{content:counter(s);flex-shrink:0;width:22px;height:22px;back
 <div class="tip warm"><strong>This isn't a rigid schedule.</strong> It's a habit. You're not stressing every 5 minutes. Open Hostaway once an hour, scroll, see what's happening. Like checking social media. The more you do it, the more natural it gets.</div>
 </div>
 
-<div class="card">
-<div class="card-t">Turnover Workflow</div>
+<div class="card focus">
+<div class="card-t"><span class="fstar">&#9733;</span> Turnover Workflow <span class="ftag">Focus area 1 &mdash; cleaning coordination</span></div>
+<div class="tip warm" style="margin-top:0"><strong>This is one of two areas Kyle wants tightened up.</strong> Not because it's going badly &mdash; the whole thing runs and guests are happy. But it has a number attached to it and the number has moved the wrong way. Everything you need to fix it is below, and it's a habit, not a project.</div>
+
+<div class="metric">
+<div><div class="mv">96%</div><div class="ml">Turnovers closed in Hostaway the same day &mdash; June&ndash;August</div></div>
+<div><div class="mv" style="color:#b3261e">82%</div><div class="ml">Same measure since 1 September. 19 of 108 closed late.</div></div>
+<div><div class="mv">19 days</div><div class="ml">Worst single lag since September, on a 20 Sept turnover</div></div>
+</div>
+<p style="font-size:13px;color:#444;line-height:1.7;margin-bottom:14px">Read that fairly: <strong>82% is not bad work, and the cleans themselves are getting done.</strong> What slipped is the <em>recording</em> of them. But in Hostaway the record <strong>is</strong> the event &mdash; marking the task complete is what fires the guest's "your place is ready" message. A clean that happened at noon and got marked at 6 PM is, as far as the guest is concerned, a unit that wasn't ready until 6 PM. <strong>Getting back to 96% is the single clearest win available to you right now.</strong></p>
+
 <ol class="steps">
 <li>Guest checks out by 11 AM</li>
 <li>Cleaner arrives ~11 AM, marks Hostaway task "inProgress"</li>
@@ -619,8 +637,11 @@ ol.steps li::before{content:counter(s);flex-shrink:0;width:22px;height:22px;back
 <li>Takes walkthrough video, posts to group chat with "[Unit Name] &mdash; cleaned"</li>
 <li>Marks Hostaway task "completed" &mdash; this triggers guest "place is ready" notification</li>
 </ol>
-<div class="tip warn"><strong>#1 ops gap:</strong> Cleaner sends video and says "done" in group chat but forgets to update Hostaway. System doesn't know it's done. Guest doesn't get their ready message. YOU catch this by cross-referencing chat vs. Hostaway status.</div>
-<div class="tip info"><strong>No check-in today?</strong> A red (uncleaned) task is not urgent. Cleaners will batch it with the next day's work. Only follow up if there's a check-in and it's not done by 1 PM.</div>
+<div class="tip crit"><strong>#1 ops gap, and it's the whole of the 14-point drop:</strong> the cleaner sends the video and says "done" in the group chat, then doesn't update Hostaway. The system never learns. The guest never gets their ready message. <strong>The chat is not the record &mdash; Hostaway is.</strong> You close that gap by cross-referencing the two.</div>
+<div class="tip good"><strong>What "better" looks like, concretely:</strong> one sweep at <strong>2:45 PM</strong> (you're already doing a readiness check then) and one at <strong>end of day</strong>. Open the Hostaway task list, compare it against what the group chat said today, and close anything that's actually finished. Two minutes, twice a day. That's the entire fix &mdash; there is nothing cleverer to do.</div>
+<div class="tip warn"><strong>Lateness compounds quietly.</strong> The 19-day lag didn't start as a 19-day lag; it started as "I'll do it tonight." Once a task is more than a day old nobody can remember whether it was really done, so it sits. Same-day or not at all.</div>
+<div class="tip info"><strong>No check-in today?</strong> A red (uncleaned) task is not urgent &mdash; cleaners batch it with the next day's work. Only chase it if there's a check-in and it isn't done by 1 PM. <strong>But still close the task when it's done.</strong> "Not urgent" and "not recorded" are different things, and the second one is what's costing us the 14 points.</div>
+<div class="tip warm"><strong>Housekeeping while you're in there:</strong> Hostaway currently holds <strong>5 open non-cleaning tasks and all 5 are already done</strong> &mdash; the Coral and Pine dishwasher corrections, the Emberlight pet-friendly flag, the Flora AC flag and the Hummingbird AC/washer flag were all fixed on the listings on 12 October. Close them. A task list with finished work still sitting in it stops being something you trust, and then you stop reading it.</div>
 </div>
 
 <div class="card">
@@ -677,9 +698,23 @@ ol.steps li::before{content:counter(s);flex-shrink:0;width:22px;height:22px;back
 <div class="acc"><div class="acc-h" onclick="ta(this)"><h3>Feedback GC</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><p style="font-size:13px;color:#444"><strong>Who:</strong> Kyle, Ulises, you. All corrections, feedback, follow-ups about cleaning quality go here. Ulises relays to crew in his daily report.</p></div></div></div>
 </div>
 
-<div class="card">
-<div class="card-t">Restocking &mdash; Yours as of Sept 1</div>
-<p style="font-size:14px;color:#444;margin-bottom:12px">You own supply for all 12 units now. The system already exists in Notion &mdash; you're not inventing it, you're running it. It's the <strong>Restock Requests</strong> database, linked from the Hub Quick Nav and embedded on every property page.</p>
+<div class="card focus">
+<div class="card-t"><span class="fstar">&#9733;</span> Restocking <span class="ftag">Focus area 2</span></div>
+<div class="tip warm" style="margin-top:0"><strong>The second area Kyle wants tightened.</strong> Same deal as turnovers: the system works, 182 rows have been restocked through it, and nobody is saying otherwise. What's slipping is that the board has quietly grown and a few things have fallen off it entirely.</div>
+
+<div class="metric">
+<div><div class="mv">45</div><div class="ml">Items on the shopping board right now &mdash; 29 Needed, 14 Out, 2 Ordered</div></div>
+<div><div class="mv" style="color:#b3261e">4</div><div class="ml">Rows with a <strong>blank</strong> Status &mdash; invisible on the board, nobody will ever buy them</div></div>
+<div><div class="mv">65 days</div><div class="ml">How long Casitas dishwasher pods &amp; solo cups have been invisible</div></div>
+</div>
+
+<div class="tip crit"><strong>Fix the invisible rows first &mdash; this is the thing the card below warns about, and it has already happened again.</strong> Four rows currently have no Status: <strong>Casitas dishwasher pods</strong> and <strong>Casitas solo cups</strong> (both blank since 11 August), plus two empty rows with no item name at all (1 Sept and 5 Oct). They don't error. They don't show up red. They simply are not on the Shopping List board, so they never get bought. Set a Status on all four and delete the two empty ones.</div>
+
+<div class="tip warn"><strong>Flora Farm is the property to go to first &mdash; 14 open items, and they're the ones guests touch.</strong> Shampoo, conditioner, body wash, hand soap and dish soap are all sitting at Needed, plus ground coffee. That's a guest arriving to a bathroom with no shampoo. <strong>Casitas is also at 14</strong>, including the propane tank &mdash; which is the same propane sitting overdue on your Notion task list, so one trip closes both. <strong>Hummingbird coffee is marked Out</strong>, which means we don't own any, not that we ran low. And <strong>QR code magnets are Out for the whole Avila compound</strong>, which is why units are missing theirs.</div>
+
+<p style="font-size:14px;color:#444;margin-bottom:12px">You own supply for all 12 units. The system already exists in Notion &mdash; you're not inventing it, you're running it. It's the <strong>Restock Requests</strong> database, linked from the Hub Quick Nav and embedded on every property page.</p>
+
+<div class="tip good"><strong>What "better" looks like, concretely:</strong> the board should be <em>shrinking</em> between runs, not holding steady at 45. Two habits do it &mdash; <strong>flip rows to Restocked the same day you shelve the items</strong> (otherwise you rebuy), and <strong>never leave a Status blank</strong>, because a blank row is worse than a missing row: it looks like data and behaves like nothing.</div>
 
 <div class="acc"><div class="acc-h" onclick="ta(this)"><h3>Four lists, not twelve</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><p style="font-size:13px;color:#444;margin-bottom:10px">There are 4 physical supply stashes &mdash; not one per unit. Don't look for a "La Casita" or "Bungalow 4" list; those were retired on purpose.</p>
 <div class="tip warn" style="margin-top:0"><strong>The dropdown still shows a fifth option, "Monterey Heights."</strong> That property left the portfolio on 4 September. The option was deliberately left in place so its old rows don't go status-blank &mdash; <strong>never file anything against it.</strong></div>
