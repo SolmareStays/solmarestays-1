@@ -1241,6 +1241,30 @@ function generatePage(page) {
     const hero = page.heroImage
       ? `<picture>${page.heroImage.avif ? `<source type="image/avif" srcset="${page.heroImage.avif}" sizes="100vw">` : ''}<img src="${page.heroImage.fallback}" alt="${page.heroImage.alt}" ${page.heroImage.width ? `width="${page.heroImage.width}" height="${page.heroImage.height}"` : 'width="1280" height="853"'} fetchpriority="high" decoding="async" style="${heroBox}"></picture>`
       : '';
+    // Static twin of the route-aware preload in index.html. That one is built by JS, so
+    // the browser's PRELOAD SCANNER — the lookahead parser that discovers resources
+    // before the main parser reaches them — never sees it: the fetch only starts when
+    // that inline script executes, which is after GTM's. Emitting it as markup puts the
+    // hero in the first scan of the document instead. index.html's script now returns
+    // early when it finds this link, so the two can never both fire and double-fetch.
+    // ⚠ This is the FOURTH copy of the hero reference (component, heroImage above, the
+    // <picture> below, this preload). It is derived from heroImage on purpose — do not
+    // hard-code a path here or the "three copies, one truth" rule above gains a liar.
+    if (page.heroImage) {
+      const preload = page.heroImage.avif
+        ? `<link rel="preload" as="image" type="image/avif" imagesrcset="${page.heroImage.avif}" imagesizes="100vw" fetchpriority="high">`
+        : `<link rel="preload" as="image" href="${page.heroImage.fallback}" fetchpriority="high">`;
+      const before = html;
+      html = html.replace(/<meta name="viewport"[^>]*>/, (m) => `${m}\n  ${preload}`);
+      if (html === before) {
+        throw new Error(
+          `Hero preload not injected for ${page.route}: the viewport <meta> anchor is ` +
+          `missing from dist/index.html. Vite probably reformatted it — fix the regex ` +
+          `rather than letting 66 pages ship without their LCP preload.`
+        );
+      }
+    }
+
     const seoContent = `<div id="root">${hero}<div style="max-width:900px;margin:0 auto;padding:2rem;font-family:system-ui,sans-serif;color:#1a1a1a"><h1>${page.h1 || ''}</h1>${page.body || ''}${stayHereHtml(page.route)}${faqHtml(page.faq)}<p><a href="${BASE_URL}">← Back to Solmaré Stays</a> | <a href="tel:+18052426411">(805) 242-6411</a></p>${siteLinks(page.route)}</div></div>`;
     html = html.replace(/<div id="root"><\/div>/, seoContent);
   }

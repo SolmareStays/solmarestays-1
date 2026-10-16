@@ -4,6 +4,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Fonts, self-hosted and preloaded. These two files are the only ones an English
+       page fetches; the italic and latin-ext faces in src/index.css carry a
+       unicode-range and stay unfetched until a character needs them.
+       Before this, the faces came from a Google @import on line 1 of index.css, which
+       put them four hops deep: HTML → the 95KB stylesheet → gstatic's CSS → the woff2.
+       Preload here is deliberately ABOVE the GTM block so the preload scanner finds it
+       in the first chunk of the document.
+       ⚠ crossorigin is required on font preloads even same-origin — without it the
+       browser fetches the file a second time for the actual @font-face. -->
+  <link rel="preload" href="/fonts/inter-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/playfair-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -20,6 +31,16 @@
        a mismatch makes the browser download the hero twice. -->
   <script>
     (function () {
+      // scripts/prerender.mjs now emits a STATIC image preload as real markup for
+      // every route that has a heroImage, which the preload scanner can see and this
+      // script cannot beat. Bail out when it is already there — two preloads for the
+      // same URL dedupe in cache, but the mismatch warning above is cheaper to honour
+      // than to debug. This block still covers routes with no prerendered file:
+      // /checkout/:slug and any Sanity post added since the last build.
+      // ⚠ Deliberately no angle-bracket example in this comment: a link tag written
+      // out here is matched by any grep for preloads in the shipped HTML and reads as
+      // a real tag with no href. Describe the markup, do not spell it.
+      if (document.querySelector('link[rel="preload"][as="image"]')) return;
       var p = location.pathname.replace(/\/$/, '');
       var l = document.createElement('link');
       l.rel = 'preload';
