@@ -95,6 +95,7 @@ ol.steps li::before{content:counter(s);position:absolute;left:0;top:11px;width:2
 .card.focus .card-t{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .ftag{font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:#6b4a10;background:#f6e8cc;border:1px solid #e0cba0;padding:3px 9px;border-radius:10px;white-space:nowrap}
 .fstar{color:#d4a017;font-size:19px;line-height:1}
+.nw{white-space:nowrap}
 .metric{display:flex;gap:14px;flex-wrap:wrap;margin:14px 0}
 .metric div{flex:1 1 150px;background:#faf7f1;border:1px solid #e8dfcc;border-radius:8px;padding:12px 14px}
 .metric .mv{font-size:23px;font-weight:700;color:#0f2744;line-height:1.15}
@@ -214,8 +215,8 @@ ol.steps li::before{content:counter(s);position:absolute;left:0;top:11px;width:2
 <thead><tr><th>Standard</th><th>The rule</th></tr></thead>
 <tbody>
 <tr><td style="font-weight:600">Turnaround</td><td>Every unit clean <strong>within 29 hours of checkout</strong> &mdash; this is the one that covers 11 of 12</td></tr>
-<tr><td style="font-weight:600">Same-day turnovers</td><td><strong>Done on time, no exceptions.</strong> Check status around <strong>2:30 PM</strong>, and if a unit isn't ready, you're on it <strong>30 minutes before check-in</strong></td></tr>
-<tr><td style="font-weight:600">Casitas Estate</td><td><strong>Ready by Thursday 3 PM.</strong> It's the one property not on the 29-hour clock &mdash; six buildings, it runs on its own rhythm</td></tr>
+<tr><td class="nw" style="font-weight:600">Same-day turnovers</td><td><strong>Done on time, no exceptions.</strong> Check status around <strong>2:30 PM</strong>, and if a unit isn't ready, you're on it <strong>30 minutes before check-in</strong></td></tr>
+<tr><td class="nw" style="font-weight:600">Casitas Estate</td><td><strong>Ready by Thursday 3 PM.</strong> It's the one property not on the 29-hour clock &mdash; six buildings, it runs on its own rhythm</td></tr>
 <tr><td style="font-weight:600">Walkthroughs</td><td><strong>Every unit, every week.</strong> Non-negotiable unless Kyle says otherwise</td></tr>
 <tr><td style="font-weight:600">Reviews</td><td><strong>Responded to weekly</strong>, in Hostaway</td></tr>
 <tr><td style="font-weight:600">Supplies</td><td><strong>We should never run out of anything</strong></td></tr>
@@ -231,9 +232,9 @@ ol.steps li::before{content:counter(s);position:absolute;left:0;top:11px;width:2
 <table class="rt">
 <thead><tr><th>System</th><th>What you use it for</th></tr></thead>
 <tbody>
-<tr><td style="font-weight:700">Hostaway</td><td>Your main screen. Reservations, calendar, guest messages, <strong>reviews</strong>, cleaning tasks, property details, door code settings. Check it several times a day.</td></tr>
-<tr><td style="font-weight:700">Notion</td><td>Vendors, your task list, restock lists, the amenities register, SOPs, the walkthrough log. Everything you record.</td></tr>
-<tr><td style="font-weight:600">Schlage Home</td><td>One job: door codes and remote unlock.</td></tr>
+<tr><td class="nw" style="font-weight:700">Hostaway</td><td>Your main screen. Reservations, calendar, guest messages, <strong>reviews</strong>, cleaning tasks, property details, door code settings. Check it several times a day.</td></tr>
+<tr><td class="nw" style="font-weight:700">Notion</td><td>Vendors, your task list, restock lists, the amenities register, SOPs, the walkthrough log. Everything you record.</td></tr>
+<tr><td class="nw" style="font-weight:600">Schlage Home</td><td>One job: door codes and remote unlock.</td></tr>
 <tr><td style="font-weight:600">Airbnb</td><td>One job: changing a guest's check-in time (Airbnb controls its own door codes off that).</td></tr>
 <tr><td style="font-weight:600">UniFi</td><td>One job: the WiFi. Remote access to the <strong>Avila compound</strong> network only &mdash; the other properties aren't reachable this way.</td></tr>
 <tr><td style="font-weight:600">Guidebook</td><td>What the guest is reading. Point them here first &mdash; guide.solmarestays.com</td></tr>
@@ -248,8 +249,8 @@ ol.steps li::before{content:counter(s);position:absolute;left:0;top:11px;width:2
 <table class="rt">
 <thead><tr><th>Channel</th><th>Who</th><th>What goes there</th></tr></thead>
 <tbody>
-<tr><td style="font-weight:600">Cleaning Crew chat</td><td>Judith, Ulises, Kyle, you</td><td>Turnover updates, "[Unit] &mdash; cleaned", walkthrough videos, issues found, left-behinds. The 10:45 AM brief posts here automatically.</td></tr>
-<tr><td style="font-weight:600">Feedback chat</td><td>Kyle, Ulises, you</td><td>All corrections and feedback on cleaning quality. Ulises relays to the crew.</td></tr>
+<tr><td class="nw" style="font-weight:600">Cleaning Crew chat</td><td>Judith, Ulises, Kyle, you</td><td>Turnover updates, "[Unit] &mdash; cleaned", walkthrough videos, issues found, left-behinds. The 10:45 AM brief posts here automatically.</td></tr>
+<tr><td class="nw" style="font-weight:600">Feedback chat</td><td>Kyle, Ulises, you</td><td>All corrections and feedback on cleaning quality. Ulises relays to the crew.</td></tr>
 </tbody>
 </table>
 <div class="tip warn"><strong>Never put feedback in the main crew chat.</strong> It overwhelms them and it lands badly in front of everyone. Corrections go to the Feedback chat, always.</div>
@@ -287,11 +288,11 @@ ol.steps li::before{content:counter(s);position:absolute;left:0;top:11px;width:2
 <table class="rt">
 <thead><tr><th>Day</th><th>What it's for</th></tr></thead>
 <tbody>
-<tr><td style="font-weight:700">Monday</td><td><strong>Prep the week.</strong> Look ahead: which days have same-day turnovers, what big reservations are coming, which days you'll walk which units, and get Notion up to date. Half an hour here makes the rest of the week obvious.</td></tr>
-<tr><td style="font-weight:700">Wednesday</td><td><strong>Avila walkthroughs.</strong> The compound is nine units in a block &mdash; do them together.</td></tr>
-<tr><td style="font-weight:700">Friday</td><td><strong>Meeting with Kyle</strong> &mdash; the proper catch-up on the week. See below for what to bring.</td></tr>
-<tr><td style="font-weight:700">Once a week</td><td><strong>Reviews</strong> &mdash; pick a slot and keep it. <strong>Restock run</strong> &mdash; one consolidated trip beats five.</td></tr>
-<tr><td style="font-weight:700">Rolling</td><td>Arroyo Grande units (Casitas, Flora) fit around the rest &mdash; one trip covers both.</td></tr>
+<tr><td class="nw" style="font-weight:700">Monday</td><td><strong>Prep the week.</strong> Look ahead: which days have same-day turnovers, what big reservations are coming, which days you'll walk which units, and get Notion up to date. Half an hour here makes the rest of the week obvious.</td></tr>
+<tr><td class="nw" style="font-weight:700">Wednesday</td><td><strong>Avila walkthroughs.</strong> The compound is nine units in a block &mdash; do them together.</td></tr>
+<tr><td class="nw" style="font-weight:700">Friday</td><td><strong>Meeting with Kyle</strong> &mdash; the proper catch-up on the week. See below for what to bring.</td></tr>
+<tr><td class="nw" style="font-weight:700">Once a week</td><td><strong>Reviews</strong> &mdash; pick a slot and keep it. <strong>Restock run</strong> &mdash; one consolidated trip beats five.</td></tr>
+<tr><td class="nw" style="font-weight:700">Rolling</td><td>Arroyo Grande units (Casitas, Flora) fit around the rest &mdash; one trip covers both.</td></tr>
 </tbody>
 </table>
 <div class="tip warm">The days aren't sacred &mdash; if Wednesday is a washout, walk them Thursday. What matters is that by the end of the week every unit has been seen, the reviews are clear, and Kyle knows what you know.</div>
@@ -349,7 +350,7 @@ ol.steps li::before{content:counter(s);position:absolute;left:0;top:11px;width:2
 <tbody>
 <tr><td style="font-weight:600">Dirty</td><td><strong>The most useful visit.</strong> You see the damage, the spills and the broken thing before a clean covers it. Prioritise these.</td></tr>
 <tr><td style="font-weight:600">Clean</td><td>A quick confirmation it's actually guest-ready &mdash; and the chance to catch something the cleaner wouldn't flag, like a dead bulb or a drawer that sticks.</td></tr>
-<tr><td style="font-weight:600">Empty / between guests</td><td><strong>Don't skip these.</strong> An empty unit gets no eyes on it at all, so it's where a slow leak or a dead fridge sits undiscovered for weeks.</td></tr>
+<tr><td class="nw" style="font-weight:600">Empty / between guests</td><td><strong>Don't skip these.</strong> An empty unit gets no eyes on it at all, so it's where a slow leak or a dead fridge sits undiscovered for weeks.</td></tr>
 </tbody>
 </table>
 <div class="tip good"><strong>Group by town, not by schedule.</strong> The nine Avila compound units are within a block &mdash; that's one trip and it's most of your list. Casitas and Flora are both Arroyo Grande, so they go together. In practice: most units will be clean when you get there, so move through those quickly and <strong>spend your time in the dirty and empty ones</strong>.</div></div></div></div>
@@ -381,8 +382,8 @@ ol.steps li::before{content:counter(s);position:absolute;left:0;top:11px;width:2
 <table class="rt">
 <thead><tr><th>Database</th><th>Tracks</th><th>Green</th><th>Today</th></tr></thead>
 <tbody>
-<tr><td style="font-weight:600">Restock Requests</td><td>Consumables &mdash; coffee, paper, toiletries, batteries</td><td>All <strong>Restocked</strong></td><td>46 on the board</td></tr>
-<tr><td style="font-weight:600">Amenities &amp; Supplies</td><td>The physical stuff &mdash; towels, cookware, fixtures, decor</td><td>All <strong>Good</strong></td><td>1,277 Good, <strong>68 Missing</strong></td></tr>
+<tr><td class="nw" style="font-weight:600">Restock Requests</td><td>Consumables &mdash; coffee, paper, toiletries, batteries</td><td>All <strong>Restocked</strong></td><td>46 on the board</td></tr>
+<tr><td class="nw" style="font-weight:600">Amenities &amp; Supplies</td><td>The physical stuff &mdash; towels, cookware, fixtures, decor</td><td>All <strong>Good</strong></td><td>1,277 Good, <strong>68 Missing</strong></td></tr>
 </tbody>
 </table>
 <div class="tip warn"><strong>A blank is worse than a missing row.</strong> It looks like data and behaves like nothing &mdash; blank rows drop off every board silently, so nobody ever acts on them. There are blanks in both databases right now. <strong>Never leave a status or condition unset.</strong></div>
@@ -418,9 +419,9 @@ ol.steps li::before{content:counter(s);position:absolute;left:0;top:11px;width:2
 <table class="rt">
 <thead><tr><th>Cover</th><th>What that means</th></tr></thead>
 <tbody>
-<tr><td style="font-weight:600">The week overall</td><td>How it went. What was busy, what was quiet, anything that caught you out or nearly did.</td></tr>
-<tr><td style="font-weight:600">Each unit</td><td><strong>Go through them.</strong> What you saw on the walkthrough, what's changed, what's holding up. Twelve quick updates beats one general "all fine" &mdash; the things worth hearing are usually small and specific.</td></tr>
-<tr><td style="font-weight:600">The cleaners</td><td>How the crew are doing. Who's reliable, where turnovers slipped and why, anything Ulises has raised, anything you're having to chase twice.</td></tr>
+<tr><td class="nw" style="font-weight:600">The week overall</td><td>How it went. What was busy, what was quiet, anything that caught you out or nearly did.</td></tr>
+<tr><td class="nw" style="font-weight:600">Each unit</td><td><strong>Go through them.</strong> What you saw on the walkthrough, what's changed, what's holding up. Twelve quick updates beats one general "all fine" &mdash; the things worth hearing are usually small and specific.</td></tr>
+<tr><td class="nw" style="font-weight:600">The cleaners</td><td>How the crew are doing. Who's reliable, where turnovers slipped and why, anything Ulises has raised, anything you're having to chase twice.</td></tr>
 <tr><td style="font-weight:600">Repairs</td><td>What's broken, who's coming, what's been sitting too long. Anything a vendor has quoted.</td></tr>
 <tr><td style="font-weight:600">Upgrades</td><td>Things that aren't broken but should be better. You're in these units every week &mdash; you'll spot these before anyone else does.</td></tr>
 <tr><td style="font-weight:600">Anything at all, work-wise</td><td><strong>Genuinely anything.</strong> Something that isn't working, something you'd do differently, a process that's more hassle than it's worth, a question you've been sitting on. This part is as much yours as his.</td></tr>
@@ -440,7 +441,7 @@ ol.steps li::before{content:counter(s);position:absolute;left:0;top:11px;width:2
 <thead><tr><th>Channel</th><th>How the code works</th></tr></thead>
 <tbody>
 <tr><td style="color:#FF5A5F;font-weight:700">Airbnb</td><td><strong>Automatic.</strong> Airbnb creates a code on the Schlage lock with the guest's name and dates, and shows it to them in the Airbnb app. You don't make these. You can see them in Schlage under Manage Access.</td></tr>
-<tr><td style="color:#3B5998;font-weight:700">Vrbo &amp; Direct</td><td><strong>Manual.</strong> One shared code per property, always active, no dates. <strong>You change these</strong> &mdash; see below. The code reaches the guest in the automated Hostaway check-in message.</td></tr>
+<tr><td class="nw" style="color:#3B5998;font-weight:700">Vrbo &amp; Direct</td><td><strong>Manual.</strong> One shared code per property, always active, no dates. <strong>You change these</strong> &mdash; see below. The code reaches the guest in the automated Hostaway check-in message.</td></tr>
 </tbody>
 </table>
 <div class="tip crit"><strong>Because the direct code never expires, it's only as secure as how often we change it.</strong> Every past Vrbo and direct guest still knows the last one.</div>
@@ -685,7 +686,7 @@ ol.steps li::before{content:counter(s);position:absolute;left:0;top:11px;width:2
 <tbody>
 <tr><td style="color:#3B5998;font-weight:600">Vrbo</td><td>Different system, different deadline, handled in the Vrbo dashboard. <strong>Don't assume Airbnb's 14 days.</strong> Do the first one with Kyle; gather the same evidence regardless.</td></tr>
 <tr><td style="font-weight:600">Direct</td><td>No platform, no protection, no deposit. Recovery means invoicing the guest &mdash; that's a money conversation, so it's <strong>Kyle's</strong>. Your job is still the evidence pack, same day, same standard.</td></tr>
-<tr><td style="font-weight:600">Casitas Estate</td><td><strong>The only property with a damage deposit.</strong> Also our biggest unit and most expensive to put right. Walk it carefully after every checkout.</td></tr>
+<tr><td class="nw" style="font-weight:600">Casitas Estate</td><td><strong>The only property with a damage deposit.</strong> Also our biggest unit and most expensive to put right. Walk it carefully after every checkout.</td></tr>
 <tr><td style="font-weight:600">Everywhere else</td><td>Deposit is $0 by design &mdash; the platform's protection <em>is</em> the deposit. Which is exactly why the 14-day window is the whole ballgame.</td></tr>
 </tbody>
 </table>
