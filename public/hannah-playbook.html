@@ -79,9 +79,9 @@ ul.tl li::before{content:'\2014';position:absolute;left:0;color:#aaa}
 
 /* Steps */
 ol.steps{list-style:none;padding:0;counter-reset:s}
-ol.steps li{counter-increment:s;display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #f0ece4;font-size:13px;color:#444;line-height:1.5}
+ol.steps li{counter-increment:s;position:relative;padding:10px 0 10px 34px;border-bottom:1px solid #f0ece4;font-size:13px;color:#444;line-height:1.6}
 ol.steps li:last-child{border-bottom:none}
-ol.steps li::before{content:counter(s);flex-shrink:0;width:22px;height:22px;background:#0f2744;color:#fff;border-radius:50%;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px}
+ol.steps li::before{content:counter(s);position:absolute;left:0;top:11px;width:22px;height:22px;background:#0f2744;color:#fff;border-radius:50%;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}
 
 /* Tips */
 .tip{padding:12px 16px;border-radius:8px;margin:12px 0;font-size:13px;line-height:1.5}
@@ -203,7 +203,6 @@ ol.steps li::before{content:counter(s);flex-shrink:0;width:22px;height:22px;back
 <li><strong>Vendors</strong> &mdash; you dispatch and schedule. Always copy Kyle.</li>
 <li><strong>Damage claims</strong> &mdash; start to finish. 14-day clock.</li>
 <li><strong>Reviews</strong> &mdash; you <strong>respond to guests' reviews of us</strong>, all of them, weekly, no approval needed.</li>
-<li><strong>Ulises' monthly invoice</strong> &mdash; you verify the counts before Kyle pays it.</li>
 </ul>
 <div class="tip crit"><strong>Cleaners clean.</strong> They don't repair and they don't restock. They'll help when they can and it's good of them, but it is never expected and never assumed. If a unit has no coffee, that's yours &mdash; whether we were out of stock or it just didn't get put back.</div>
 </div>
@@ -290,7 +289,7 @@ ol.steps li::before{content:counter(s);flex-shrink:0;width:22px;height:22px;back
 <tbody>
 <tr><td style="font-weight:700">Monday</td><td><strong>Prep the week.</strong> Look ahead: which days have same-day turnovers, what big reservations are coming, which days you'll walk which units, and get Notion up to date. Half an hour here makes the rest of the week obvious.</td></tr>
 <tr><td style="font-weight:700">Wednesday</td><td><strong>Avila walkthroughs.</strong> The compound is nine units in a block &mdash; do them together.</td></tr>
-<tr><td style="font-weight:700">Friday</td><td><strong>Meeting with Kyle.</strong> Bring what's broken, what's in flight, what you spent, and anything you're unsure you handled right.</td></tr>
+<tr><td style="font-weight:700">Friday</td><td><strong>Meeting with Kyle</strong> &mdash; the proper catch-up on the week. See below for what to bring.</td></tr>
 <tr><td style="font-weight:700">Once a week</td><td><strong>Reviews</strong> &mdash; pick a slot and keep it. <strong>Restock run</strong> &mdash; one consolidated trip beats five.</td></tr>
 <tr><td style="font-weight:700">Rolling</td><td>Arroyo Grande units (Casitas, Flora) fit around the rest &mdash; one trip covers both.</td></tr>
 </tbody>
@@ -414,27 +413,21 @@ ol.steps li::before{content:counter(s);flex-shrink:0;width:22px;height:22px;back
 </div>
 
 <div class="card">
-<div class="card-t">Monthly &mdash; Checking Ulises' Invoice</div>
-<p style="font-size:13px;color:#444;margin-bottom:10px">Before Kyle pays it, confirm the work actually happened. You're checking <strong>counts, not prices</strong> &mdash; rates are his side.</p>
-<ol class="steps">
-<li>Count checkouts in Hostaway for the period, per property.</li>
-<li>Compare to the invoice lines. 8 Hummingbird checkouts should be 8 cleans.</li>
-<li>Anything extra needs a reason &mdash; a deep clean, a re-clean, a mid-stay service. All legitimate; they just need to match something real. Ask Ulises.</li>
-<li>Send Kyle the <strong>specific</strong> discrepancy. "Invoice shows 11 Coral cleans, Hostaway shows 9" is useful. "Looks high" isn't.</li>
-</ol>
-<div class="tip info">A stain treatment or extra linen charge here is also your signal to check whether it should have been a <strong>guest damage claim</strong>.</div>
-</div>
-
-<div class="card">
-<div class="card-t">Weekly Note to Kyle</div>
-<p style="font-size:13px;color:#444;margin-bottom:10px">Five minutes, in a text, Sunday or Monday. Not for approval &mdash; so he's never surprised.</p>
-<ul class="tl">
-<li>Anything broken or waiting on a vendor &mdash; what, where, who's coming</li>
-<li>Any claim in flight &mdash; property, guest, amount, stage</li>
-<li>Roughly what you spent and on what</li>
-<li>Anything a guest was unhappy about, <em>especially</em> if you handled it</li>
-<li><strong>Anything you're unsure you did right.</strong> Most valuable line in the message, easiest one to skip.</li>
-</ul>
+<div class="card-t">Friday &mdash; The Weekly Meeting With Kyle</div>
+<p style="font-size:14px;color:#444;line-height:1.7;margin-bottom:12px">This is the main one. It's a proper look at the week rather than a status report, and it's where most decisions get made &mdash; so come with the week in your head rather than waiting to be asked.</p>
+<table class="rt">
+<thead><tr><th>Cover</th><th>What that means</th></tr></thead>
+<tbody>
+<tr><td style="font-weight:600">The week overall</td><td>How it went. What was busy, what was quiet, anything that caught you out or nearly did.</td></tr>
+<tr><td style="font-weight:600">Each unit</td><td><strong>Go through them.</strong> What you saw on the walkthrough, what's changed, what's holding up. Twelve quick updates beats one general "all fine" &mdash; the things worth hearing are usually small and specific.</td></tr>
+<tr><td style="font-weight:600">The cleaners</td><td>How the crew are doing. Who's reliable, where turnovers slipped and why, anything Ulises has raised, anything you're having to chase twice.</td></tr>
+<tr><td style="font-weight:600">Repairs</td><td>What's broken, who's coming, what's been sitting too long. Anything a vendor has quoted.</td></tr>
+<tr><td style="font-weight:600">Upgrades</td><td>Things that aren't broken but should be better. You're in these units every week &mdash; you'll spot these before anyone else does.</td></tr>
+<tr><td style="font-weight:600">Anything at all, work-wise</td><td><strong>Genuinely anything.</strong> Something that isn't working, something you'd do differently, a process that's more hassle than it's worth, a question you've been sitting on. This part is as much yours as his.</td></tr>
+</tbody>
+</table>
+<div class="tip good"><strong>The most useful thing you can bring is the thing you're unsure you handled right.</strong> It's the easiest item to leave out and the one most worth ten minutes. Nothing goes wrong from asking; things go wrong from nobody mentioning it for three weeks.</div>
+<div class="tip warm"><strong>Between meetings, don't save things up.</strong> Friday is for the full picture, not for holding onto something urgent. Anything that can't wait &mdash; text him when it happens.</div>
 </div>
 </div>
 
