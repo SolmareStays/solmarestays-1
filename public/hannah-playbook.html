@@ -215,13 +215,13 @@ ol.steps li::before{content:counter(s);flex-shrink:0;width:22px;height:22px;back
 <h3>Own It</h3>
 <div class="ph-sub">You run it, Kyle monitors</div>
 <ul class="tl">
-<li><strong>Guest messaging</strong> &mdash; fully yours</li>
-<li><strong>Cleaner coordination</strong> &mdash; fully yours, including verifying Ulises' invoice against Hostaway before Kyle pays it</li>
-<li><strong>Restocking, all 12 units</strong> &mdash; you own the Notion Restock DB, you buy on the company card, you keep every receipt</li>
-<li><strong>Vendors</strong> &mdash; you dispatch, you schedule around the calendar, you route the invoice. No more "tell Kyle, he'll call."</li>
-<li><strong>Damage claims</strong> &mdash; NEW. When a guest breaks or stains something, you build the claim and file it. See the Damage &amp; Claims tab. There is a 14-day clock.</li>
-<li><strong>Property walkthroughs</strong> on your own schedule</li>
-<li><strong>Reviews</strong> &mdash; NEW. You respond to all of them, good and bad, without needing approval. And you review the guests.</li>
+<li><strong>Guest messaging</strong> &mdash; fully yours. Reach out to Kyle with questions any time.</li>
+<li><strong>Cleaner coordination</strong> &mdash; yours. <strong>Cleaners are there to clean</strong> &mdash; not to repair, not to restock. They'll help when they can, but it is never expected of them. Your job is making sure they're there daily, that early and late checkouts are communicated, and that units are clean on time.</li>
+<li><strong>Restocking and amenities, all 12 units</strong> &mdash; entirely yours. Cleaners will help flag status, but it lands on you. <strong>We should never run out of anything.</strong></li>
+<li><strong>Vendors</strong> &mdash; you dispatch and schedule around the calendar. <strong>Always copy Kyle on every text and email.</strong></li>
+<li><strong>Damage claims</strong> &mdash; yours, start to finish. There is a 14-day clock. See the Damage &amp; Claims tab.</li>
+<li><strong>Property walkthroughs</strong> &mdash; <strong>every unit, every week, without exception.</strong></li>
+<li><strong>Reviews</strong> &mdash; yours, good and bad, no approval needed. Cleared <strong>weekly</strong>. And you review the guests.</li>
 <li>Kyle checks in daily</li>
 </ul>
 <div class="tip crit" style="margin-bottom:0"><strong>The four things that became yours on 1 September:</strong> damage reimbursements, all vendors, all restocking, all reviews. Everything else you'd already been doing since August &mdash; it just doesn't have Kyle standing next to it anymore. You've now run all four through a full six weeks, including a stretch with Kyle out of the country.</div>
@@ -274,6 +274,26 @@ ol.steps li::before{content:counter(s);flex-shrink:0;width:22px;height:22px;back
 
 <!-- ======================= SYSTEMS & LOGINS ======================= -->
 <div class="tab" id="t-systems">
+
+<div class="card">
+<div class="card-t">Where To Look &mdash; Read This First</div>
+<p style="font-size:14px;color:#444;line-height:1.7;margin-bottom:12px"><strong>This playbook is not where the data lives.</strong> It covers your role, how to handle situations, and the things that genuinely aren't written down anywhere else. For anything with a system behind it, the system is the answer &mdash; it's current and this page would only go stale.</p>
+<table class="rt">
+<thead><tr><th>What you need</th><th>Where it lives</th></tr></thead>
+<tbody>
+<tr><td>Reservations, calendar, guest messages, cleaning tasks, door codes, check-in times</td><td><strong>Hostaway</strong></td></tr>
+<tr><td>Vendors &mdash; phone, email, trade, which properties</td><td><strong>Notion &rarr; Contacts</strong></td></tr>
+<tr><td>Supplies to buy</td><td><strong>Notion &rarr; Restock Requests</strong> (Shopping List board)</td></tr>
+<tr><td>What's in each unit and what condition it's in</td><td><strong>Notion &rarr; Amenities &amp; Supplies</strong></td></tr>
+<tr><td>Your task queue, maintenance log, walkthrough log</td><td><strong>Notion &rarr; Tasks</strong> (filter <code>assigned_to = Hannah</code>)</td></tr>
+<tr><td>Step-by-step procedures</td><td><strong>Notion &rarr; SOPs &amp; Playbooks</strong></td></tr>
+<tr><td>What a guest is reading about their unit</td><td><strong>The guidebook</strong> &mdash; guide.solmarestays.com</td></tr>
+<tr><td>Portfolio overview at a glance</td><td><strong>Mission Control</strong></td></tr>
+<tr><td style="font-weight:600">Role, judgment calls, escalation, unit quirks, emergencies</td><td style="font-weight:600">This page</td></tr>
+</tbody>
+</table>
+<div class="tip good"><strong>The point of this page is that you don't have to ask Kyle.</strong> If something here is wrong, out of date, or missing &mdash; tell him and it gets fixed, so the next person doesn't hit it too.</div>
+</div>
 
 <div class="card">
 <div class="card-t">Your Systems</div>
@@ -426,27 +446,9 @@ ol.steps li::before{content:counter(s);flex-shrink:0;width:22px;height:22px;back
 </div>
 
 <div class="card">
-<div class="card-t">Vendors</div>
-<table class="rt">
-<thead><tr><th>Name</th><th>Trade</th><th>Phone</th><th>Properties</th></tr></thead>
-<tbody>
-<tr><td style="font-weight:600">Sean St. Denis</td><td>Electrician</td><td class="mono">(805) 440-5555</td><td>All</td></tr>
-<tr><td style="font-weight:600">DJs Plumbing</td><td>Plumber</td><td class="mono">(805) 489-6989</td><td>All</td></tr>
-<tr><td style="font-weight:600">Rob Wrage</td><td>Painter</td><td class="mono">(805) 904-9356</td><td>All</td></tr>
-<tr><td style="font-weight:600">Rob Stone</td><td>Handyman</td><td class="mono">(805) 215-0677</td><td>All</td></tr>
-<tr><td style="font-weight:600">Chuck</td><td>Handyman</td><td class="mono">(415) 269-5903</td><td>All</td></tr>
-<tr><td style="font-weight:600">Jason</td><td>Pest Control</td><td class="mono">(805) 458-0593</td><td>Avila compound</td></tr>
-<tr><td style="font-weight:600">Eco Advantage</td><td>Pest Control</td><td class="mono">(805) 668-9336</td><td>Casitas Estate + Flora Farm</td></tr>
-<tr><td style="font-weight:600">Authorized Pest</td><td>Pest Control</td><td class="mono">(805) 473-2847</td><td>Flora Farm ($60/mo)</td></tr>
-<tr><td style="font-weight:600">Bulldog Pool (Chris)</td><td>Pool / Hot Tub</td><td class="mono">(805) 709-8919</td><td>Flora Farm ($160/mo, Mon ~7 AM)</td></tr>
-<tr><td style="font-weight:600">Scott</td><td>Pool / Hot Tub</td><td class="mono">(805) 602-0852</td><td>Casitas Estate</td></tr>
-<tr><td style="font-weight:600">Joey Grajeda</td><td>Property Care</td><td class="mono">(805) 234-8235</td><td>Casitas Estate</td></tr>
-<tr><td style="font-weight:600">Daryn</td><td>Landscaper</td><td class="mono">(805) 471-0670</td><td>General</td></tr>
-<tr><td style="font-weight:600">Cameron Van Vleet</td><td>WiFi / Tech</td><td class="mono">(805) 234-3129</td><td>Google Nest mesh</td></tr>
-<tr><td style="font-weight:600">Marjan</td><td>Interior Design</td><td class="mono">(805) 441-0255</td><td>Design projects</td></tr>
-</tbody>
-</table>
-<div class="tip good"><strong>All of this lives in Notion too.</strong> The Contacts database has every vendor with phone, email, trade, and properties. This is just a quick reference.</div>
+<div class="card-t">Vendors &rarr; Notion</div>
+<div class="tip crit" style="margin-top:0"><strong>The vendor roster is in Notion &rarr; Contacts. It is not duplicated here on purpose.</strong> Notion carries trade, phone, email, which properties they cover, and licence and insurance details &mdash; and it's kept current. The copy that used to sit on this page had drifted: it was missing the HVAC company, the glass company, Flora's farm contact and one of our handymen, and it still named a landscaper and a pool service that were replaced on 9 October.</div>
+<div class="tip good"><strong>The rule for all of them:</strong> reach out directly, and <strong>always copy Kyle</strong> on the text or email. Casitas Estate has more vendors than everywhere else combined &mdash; check its Notion page before dispatching.</div>
 </div>
 
 <div class="card">
@@ -620,28 +622,28 @@ ol.steps li::before{content:counter(s);flex-shrink:0;width:22px;height:22px;back
 </div>
 
 <div class="card focus">
-<div class="card-t"><span class="fstar">&#9733;</span> Turnover Workflow <span class="ftag">Focus area 1 &mdash; cleaning coordination</span></div>
-<div class="tip warm" style="margin-top:0"><strong>This is one of two areas Kyle wants tightened up.</strong> Not because it's going badly &mdash; the whole thing runs and guests are happy. But it has a number attached to it and the number has moved the wrong way. Everything you need to fix it is below, and it's a habit, not a project.</div>
+<div class="card-t"><span class="fstar">&#9733;</span> SOP &mdash; Turnovers <span class="ftag">Focus area 1</span></div>
+<div class="tip crit" style="margin-top:0"><strong>The deadlines. These are the rules, not targets.</strong><br>
+&bull; Every unit clean <strong>within 30 hours of checkout</strong>.<br>
+&bull; <strong>Casitas Estate &mdash; within 3 days.</strong><br>
+&bull; <strong>Every unit ready by Thursday 3 PM</strong>, every week, no exceptions.</div>
+
+<p style="font-size:13px;color:#444;line-height:1.7;margin-bottom:12px"><strong>Cleaners clean.</strong> They don't repair and they don't restock. They'll help when they can and it's good of them, but it is never expected and never assumed &mdash; if a unit is short on coffee, that's yours, not theirs.</p>
 
 <div class="metric">
-<div><div class="mv">96%</div><div class="ml">Turnovers closed in Hostaway the same day &mdash; June&ndash;August</div></div>
-<div><div class="mv" style="color:#b3261e">82%</div><div class="ml">Same measure since 1 September. 19 of 108 closed late.</div></div>
-<div><div class="mv">19 days</div><div class="ml">Worst single lag since September, on a 20 Sept turnover</div></div>
+<div><div class="mv">96%</div><div class="ml">Turnovers closed in Hostaway same-day, Jun&ndash;Aug</div></div>
+<div><div class="mv" style="color:#b3261e">82%</div><div class="ml">Since 1 September. 19 of 108 closed late.</div></div>
 </div>
-<p style="font-size:13px;color:#444;line-height:1.7;margin-bottom:14px">Read that fairly: <strong>82% is not bad work, and the cleans themselves are getting done.</strong> What slipped is the <em>recording</em> of them. But in Hostaway the record <strong>is</strong> the event &mdash; marking the task complete is what fires the guest's "your place is ready" message. A clean that happened at noon and got marked at 6 PM is, as far as the guest is concerned, a unit that wasn't ready until 6 PM. <strong>Getting back to 96% is the single clearest win available to you right now.</strong></p>
+<p style="font-size:13px;color:#444;line-height:1.7;margin-bottom:14px">The cleans are happening &mdash; it's the <em>recording</em> that slipped. Marking the Hostaway task complete is what fires the guest's "your place is ready" message, so an unmarked clean is an unready unit as far as the guest is concerned. <strong>Getting back to 96% is the clearest win available to you.</strong></p>
 
 <ol class="steps">
-<li>Guest checks out by 11 AM</li>
-<li>Cleaner arrives ~11 AM, marks Hostaway task "inProgress"</li>
-<li>Cleans unit (bungalows ~1-1.5 hrs, La Casita/Hummingbird ~2 hrs, Casitas ~4+ hrs)</li>
-<li>Takes walkthrough video, posts to group chat with "[Unit Name] &mdash; cleaned"</li>
-<li>Marks Hostaway task "completed" &mdash; this triggers guest "place is ready" notification</li>
+<li><strong>Daily:</strong> confirm the crew is on site. Communicate any early or late checkouts to them before they arrive.</li>
+<li>Cleaner marks the Hostaway task <strong>inProgress</strong> on arrival.</li>
+<li>Walkthrough video + "[Unit] &mdash; cleaned" to the crew chat.</li>
+<li>Task marked <strong>completed</strong> in Hostaway &mdash; this is the step that slips. <strong>Hostaway is the record; the group chat is not.</strong></li>
+<li><strong>You sweep twice a day</strong> &mdash; at 2:45 PM and at end of day &mdash; comparing the chat against Hostaway and closing anything actually finished. Two minutes each.</li>
 </ol>
-<div class="tip crit"><strong>#1 ops gap, and it's the whole of the 14-point drop:</strong> the cleaner sends the video and says "done" in the group chat, then doesn't update Hostaway. The system never learns. The guest never gets their ready message. <strong>The chat is not the record &mdash; Hostaway is.</strong> You close that gap by cross-referencing the two.</div>
-<div class="tip good"><strong>What "better" looks like, concretely:</strong> one sweep at <strong>2:45 PM</strong> (you're already doing a readiness check then) and one at <strong>end of day</strong>. Open the Hostaway task list, compare it against what the group chat said today, and close anything that's actually finished. Two minutes, twice a day. That's the entire fix &mdash; there is nothing cleverer to do.</div>
-<div class="tip warn"><strong>Lateness compounds quietly.</strong> The 19-day lag didn't start as a 19-day lag; it started as "I'll do it tonight." Once a task is more than a day old nobody can remember whether it was really done, so it sits. Same-day or not at all.</div>
-<div class="tip info"><strong>No check-in today?</strong> A red (uncleaned) task is not urgent &mdash; cleaners batch it with the next day's work. Only chase it if there's a check-in and it isn't done by 1 PM. <strong>But still close the task when it's done.</strong> "Not urgent" and "not recorded" are different things, and the second one is what's costing us the 14 points.</div>
-<div class="tip warm"><strong>Housekeeping while you're in there:</strong> Hostaway currently holds <strong>5 open non-cleaning tasks and all 5 are already done</strong> &mdash; the Coral and Pine dishwasher corrections, the Emberlight pet-friendly flag, the Flora AC flag and the Hummingbird AC/washer flag were all fixed on the listings on 12 October. Close them. A task list with finished work still sitting in it stops being something you trust, and then you stop reading it.</div>
+<div class="tip warn"><strong>Same-day or not at all.</strong> The 19-day lag started as "I'll do it tonight." After a day nobody can remember whether it was really done, so it sits.</div>
 </div>
 
 <div class="card">
@@ -662,34 +664,21 @@ ol.steps li::before{content:counter(s);flex-shrink:0;width:22px;height:22px;back
 </tbody></table>
 </div>
 
-<div class="card">
-<div class="card-t">Property Walkthroughs</div>
-<p style="font-size:14px;color:#444;margin-bottom:14px">Weekly walkthroughs catch problems before guests do. Be thorough, be efficient, fix what you can on the spot.</p>
+<div class="card focus">
+<div class="card-t"><span class="fstar">&#9733;</span> SOP &mdash; Weekly Walkthroughs <span class="ftag">Non-negotiable</span></div>
+<div class="tip crit" style="margin-top:0"><strong>Every single unit gets walked at least once a week. All 12. Every week.</strong> Even if it's dirty, even if it's occupied-adjacent, even if nothing has changed. One day or spread across three &mdash; doesn't matter. <strong>The only way a unit gets skipped is if Kyle says so.</strong></div>
 
-<div class="acc"><div class="acc-h" onclick="ta(this)"><h3>What to Look For</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><ul class="tl">
-<li><strong>Point out EVERYTHING</strong> &mdash; burned-out lightbulb, scuff on wall, wobbly chair, slow drain, dusty fan blade</li>
-<li>Take photos of anything that needs attention &mdash; send to Kyle or log in Notion</li>
-<li>Check beds, bathrooms, kitchen, outdoor areas, parking signage</li>
-<li>Check supplies &mdash; low on TP, towels, coffee, cleaning products?</li>
-<li>Check AC/heat &mdash; working? Set correctly?</li>
-<li>Check door codes &mdash; do they work?</li>
-<li>Check for guest left-behinds from previous stays</li>
-</ul></div></div></div>
+<p style="font-size:13px;color:#444;line-height:1.7;margin-bottom:12px">Notion has the full procedure under <strong>SOPs &rarr; Weekly walkthrough</strong>, including the assigned day per property. Each visit gets logged in the <strong>Walkthrough Log</strong>. That log is the proof it happened &mdash; a walkthrough nobody recorded didn't happen.</p>
 
-<div class="acc"><div class="acc-h" onclick="ta(this)"><h3>Fix It If You Can</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><ul class="tl">
-<li>Quick fix? Just do it &mdash; tighten a screw, replace a lightbulb, straighten a picture, wipe a surface</li>
-<li>Don't spend 30 minutes on something &mdash; if more than a few minutes, log it and move on</li>
-<li>Anything that needs a vendor &mdash; note it, tell Kyle, he'll dispatch</li>
-</ul><div class="tip warn"><strong>Real example:</strong> Kyle noticed a loose screw at Coral House during a walkthrough, said "I'll do it later," forgot, and had to make a separate 45-minute trip for a 30-second fix. Having it written down and doing it while you're there saves hours.</div></div></div></div>
-
-<div class="acc"><div class="acc-h" onclick="ta(this)"><h3>Be Efficient with Visits</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><ul class="tl">
-<li>Batch by location &mdash; 9 Avila units are within a block, do them together</li>
-<li>Casitas Estate + Flora Farm are both in Arroyo Grande &mdash; same trip</li>
-<li>5-10 min for a studio, 10-15 for larger properties</li>
-<li>High-turnover days (weekends), prioritize units with guests arriving that day</li>
-</ul></div></div></div>
-
-<div class="tip good"><strong>Always have Notion open during walkthroughs.</strong> The property page has the amenity list, open tasks, and details you won't memorize. You don't have to check every item, but scan it as a reference &mdash; it'll catch things your brain misses (like a missing bath mat).</div>
+<ol class="steps">
+<li>Open the unit's tab in <strong>Amenities &amp; Supplies</strong> and set <strong>condition</strong> as you go &mdash; Good, Needs Clean, Needs work, or Missing. Never leave it blank.</li>
+<li>Open its <strong>Restocking</strong> view and flip anything running down.</li>
+<li>Fix what takes two minutes &mdash; bulb, screw, straighten a picture. Log anything bigger in Notion Tasks with a photo.</li>
+<li>Check door codes work, supplies are in, AC/heat is set, and there are no guest left-behinds.</li>
+<li><strong>Log the visit in the Walkthrough Log.</strong></li>
+</ol>
+<div class="tip good"><strong>Batch by location.</strong> The 9 Avila units are within a block &mdash; do them together. Casitas Estate and Flora Farm are both Arroyo Grande, so they're one trip. 5&ndash;10 minutes for a studio, 10&ndash;15 for the larger places.</div>
+<div class="tip warn"><strong>Why this is the rule:</strong> walkthroughs are the only thing that catches a problem before a guest does, and they're the input to both databases. Skip a week and the Amenities board stops reflecting reality &mdash; which is how 68 items ended up marked Missing and 14 ended up blank.</div>
 </div>
 
 <div class="card">
@@ -699,100 +688,68 @@ ol.steps li::before{content:counter(s);flex-shrink:0;width:22px;height:22px;back
 </div>
 
 <div class="card focus">
-<div class="card-t"><span class="fstar">&#9733;</span> Restocking <span class="ftag">Focus area 2</span></div>
-<div class="tip warm" style="margin-top:0"><strong>The second area Kyle wants tightened.</strong> Same deal as turnovers: the system works, 182 rows have been restocked through it, and nobody is saying otherwise. What's slipping is that the board has quietly grown and a few things have fallen off it entirely.</div>
+<div class="card-t"><span class="fstar">&#9733;</span> SOP &mdash; Restocking &amp; Amenities <span class="ftag">Focus area 2</span></div>
+<div class="tip crit" style="margin-top:0"><strong>You are responsible for every item in every unit &mdash; supplies and amenities both. We should never run out of anything.</strong> If a guest finds no coffee, that is on you whether we were out of stock or it simply wasn't put back on turnover. Cleaners help flag status; they don't own it.</div>
 
-<div class="metric">
-<div><div class="mv">45</div><div class="ml">Items on the shopping board right now &mdash; 29 Needed, 14 Out, 2 Ordered</div></div>
-<div><div class="mv" style="color:#b3261e">4</div><div class="ml">Rows with a <strong>blank</strong> Status &mdash; invisible on the board, nobody will ever buy them</div></div>
-<div><div class="mv">65 days</div><div class="ml">How long Casitas dishwasher pods &amp; solo cups have been invisible</div></div>
-</div>
-
-<div class="tip crit"><strong>Fix the invisible rows first &mdash; this is the thing the card below warns about, and it has already happened again.</strong> Four rows currently have no Status: <strong>Casitas dishwasher pods</strong> and <strong>Casitas solo cups</strong> (both blank since 11 August), plus two empty rows with no item name at all (1 Sept and 5 Oct). They don't error. They don't show up red. They simply are not on the Shopping List board, so they never get bought. Set a Status on all four and delete the two empty ones.</div>
-
-<div class="tip warn"><strong>Flora Farm is the property to go to first &mdash; 14 open items, and they're the ones guests touch.</strong> Shampoo, conditioner, body wash, hand soap and dish soap are all sitting at Needed, plus ground coffee. That's a guest arriving to a bathroom with no shampoo. <strong>Casitas is also at 14</strong>, including the propane tank &mdash; which is the same propane sitting overdue on your Notion task list, so one trip closes both. <strong>Hummingbird coffee is marked Out</strong>, which means we don't own any, not that we ran low. And <strong>QR code magnets are Out for the whole Avila compound</strong>, which is why units are missing theirs.</div>
-
-<p style="font-size:14px;color:#444;margin-bottom:12px">You own supply for all 12 units. The system already exists in Notion &mdash; you're not inventing it, you're running it. It's the <strong>Restock Requests</strong> database, linked from the Hub Quick Nav and embedded on every property page.</p>
-
-<div class="tip good"><strong>What "better" looks like, concretely:</strong> the board should be <em>shrinking</em> between runs, not holding steady at 45. Two habits do it &mdash; <strong>flip rows to Restocked the same day you shelve the items</strong> (otherwise you rebuy), and <strong>never leave a Status blank</strong>, because a blank row is worse than a missing row: it looks like data and behaves like nothing.</div>
-
-<div class="acc"><div class="acc-h" onclick="ta(this)"><h3>Four lists, not twelve</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><p style="font-size:13px;color:#444;margin-bottom:10px">There are 4 physical supply stashes &mdash; not one per unit. Don't look for a "La Casita" or "Bungalow 4" list; those were retired on purpose.</p>
-<div class="tip warn" style="margin-top:0"><strong>The dropdown still shows a fifth option, "Monterey Heights."</strong> That property left the portfolio on 4 September. The option was deliberately left in place so its old rows don't go status-blank &mdash; <strong>never file anything against it.</strong></div>
+<p style="font-size:13px;color:#444;line-height:1.7;margin-bottom:12px"><strong>Two databases, one job. The goal is green across both.</strong></p>
 <table class="rt">
-<thead><tr><th>List</th><th>Covers</th><th>Where the supplies live</th></tr></thead>
+<thead><tr><th>Database</th><th>What it tracks</th><th>Green means</th><th>Where it stands (15 Oct)</th></tr></thead>
 <tbody>
-<tr><td style="font-weight:600">Avila Compound</td><td>All 9 Avila units</td><td>Upstairs supply closet (consumables: K-cups, sugar, dishwasher pods, sponges, batteries, bulbs) + Garage bin room (paper goods, PAYA gallon refills, laundry, labeled HDX tote wall for linens)</td></tr>
-<tr><td style="font-weight:600">Hummingbird</td><td>Hummingbird House</td><td>In-unit</td></tr>
-<tr><td style="font-weight:600">Flora Farm</td><td>Flora Farm</td><td>Pantry / garage shelves</td></tr>
-<tr><td style="font-weight:600">Casitas Estate</td><td>Whole estate, all 5 casitas</td><td>Garage cabinet wall &mdash; labeled coffee / beverage-paper / linen cabinets, plus the white 3-drawer toiletry cabinet next to the fridge</td></tr>
-</tbody></table>
-<div class="tip warn"><strong>The Hummingbird list is a placeholder.</strong> It was never built from real photos, so don't trust the par levels on it. When you do that unit, count what's actually there and fix the rows. That's the last piece of the rollout.</div></div></div></div>
+<tr><td style="font-weight:600">Restock Requests</td><td>Consumables &mdash; coffee, paper, toiletries, batteries</td><td>Everything <strong>Restocked</strong></td><td><strong>46 items</strong> sitting on the shopping board</td></tr>
+<tr><td style="font-weight:600">Amenities &amp; Supplies</td><td>The physical stuff in each unit &mdash; towels, cookware, decor, fixtures</td><td>Everything <strong>Good</strong></td><td><strong>1,277 Good, 68 Missing</strong>, 1 needs work, 1 needs clean</td></tr>
+</tbody>
+</table>
+<div class="tip warn"><strong>Both databases have blank rows right now, and a blank row is invisible.</strong> 2 in Restock, <strong>14 in Amenities</strong>. They don't error and they don't show red &mdash; they just silently drop off every board, so nobody ever acts on them. A blank is worse than a missing row because it looks like data. <strong>Never leave a condition or status unset.</strong></div>
 
-<div class="acc"><div class="acc-h" onclick="ta(this)"><h3>The Status column &mdash; this is the whole system</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i">
-<table class="rt">
-<thead><tr><th>Status</th><th>Means</th></tr></thead>
-<tbody>
-<tr><td style="font-weight:600">Out</td><td><strong>We don't own it at all &mdash; it needs to be bought for the first time.</strong> Not the same as Needed.</td></tr>
-<tr><td style="font-weight:600">Needed</td><td>We own it, we're out of it. Buy more.</td></tr>
-<tr><td style="font-weight:600">Ordered</td><td>Bought / on the way. Stops you buying it twice.</td></tr>
-<tr><td style="font-weight:600">Restocked</td><td>Back at par. Drops off the shopping board.</td></tr>
-</tbody></table>
-<div class="tip crit"><strong>Never leave a Status blank and never delete a Status option.</strong> A blank row silently vanishes from the Shopping List board &mdash; it doesn't error, it just disappears and you never buy the thing. This has already happened twice: 16 rows went invisible for a day when an option was deleted, and it happened again when <strong>Low</strong> was retired on 8 October. There are now <strong>four</strong> statuses, not five &mdash; if you remember a "Low", it's gone, use Needed.</div>
-<div class="tip info">Flip rows to <strong>Restocked</strong> the same day you shelve the items. If you wait, you'll buy duplicates on the next run.</div></div></div></div>
+<div class="acc"><div class="acc-h" onclick="ta(this)"><h3>The weekly rhythm</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><ul class="tl">
+<li><strong>During every walkthrough</strong> &mdash; open that unit's tab in both databases and set what you see. Two minutes per unit.</li>
+<li><strong>Ask the crew</strong> what's running low &mdash; towel counts, coffee, paper. They're in the units daily and they'll tell you. Then <em>you</em> record it.</li>
+<li><strong>One consolidated run a week.</strong> Check the Shopping List board before you go &mdash; it's all four lists in one place.</li>
+<li><strong>Flip to Restocked the same day you shelve it</strong>, or you'll buy it twice.</li>
+</ul>
+<div class="tip info"><strong>Four lists, not twelve</strong> &mdash; Avila Compound (all 9 units), Hummingbird, Flora Farm, Casitas Estate. A fifth option, Monterey Heights, still shows in the dropdown; that property left the portfolio on 4 September. <strong>Never file against it.</strong></div>
+<div class="tip warn"><strong>Statuses are Out / Needed / Ordered / Restocked.</strong> <em>Out</em> means we don't own it at all; <em>Needed</em> means we own it and ran down. If you remember a "Low", it was retired on 8 October &mdash; use Needed.</div></div></div></div>
 
 <div class="acc"><div class="acc-h" onclick="ta(this)"><h3>Buying &mdash; card, receipts, brands</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><ul class="tl">
 <li><strong>Company card in Apple Pay.</strong> Operational supplies only. Anything over $250, text Kyle first.</li>
-<li><strong>Photograph every receipt before you leave the parking lot</strong> and send it to Kyle same-day. A card charge with no receipt becomes a bookkeeping problem a month later when nobody remembers what it was &mdash; and it can't be assigned to the right property.</li>
-<li><strong>Note which property/list the run was for.</strong> "Costco $312 &mdash; Avila compound + Casitas" is enough. This is how expenses get split to the right owner.</li>
-<li><strong>Brands matter.</strong> The Notion rows have a "Brand / Source" column. Avila toiletries are PAYA gallon refills into wall dispensers; Casitas toiletries are R&amp;R Essentials "Lavender Peppermint" 45ml minis. Don't swap them &mdash; the compound has dispensers, the estate has minis.</li>
-<li>Avila coffee = Kirkland Summit Roast K-cups. Casitas coffee = Peet's Major Dickason.</li>
+<li><strong>Photograph every receipt before you leave the car park</strong> and send it same-day, noting which property or list it was for. That's how the cost reaches the right owner.</li>
+<li><strong>Brands are not interchangeable.</strong> Avila toiletries are PAYA gallon refills into wall dispensers; Casitas are R&amp;R Essentials "Lavender Peppermint" 45ml minis. Avila coffee is Kirkland Summit Roast K-cups; Casitas is Peet's Major Dickason. The Notion rows carry a Brand / Source column &mdash; follow it.</li>
 </ul>
-<div class="tip warn"><strong>Crew brings their own cleaning supplies.</strong> Don't buy cleaning chemicals for the Avila compound &mdash; that's the cleaners' cost, not ours.</div>
-<div class="tip warn"><strong>No snacks and no welcome wine at Casitas.</strong> Kyle's explicit call. Don't start a welcome-gift program without asking him.</div></div></div></div>
-
-<div class="acc"><div class="acc-h" onclick="ta(this)"><h3>The rhythm</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><ul class="tl">
-<li><strong>During every walkthrough:</strong> open the property's Restocking view, flip anything low. Two minutes.</li>
-<li><strong>When the crew flags something</strong> in the group chat, put it in Notion the same day. If it only lives in a text thread, it's gone.</li>
-<li><strong>One consolidated run a week</strong> beats five trips. Check the Shopping List board before you go &mdash; that board is everything across all 4 lists in one place.</li>
-<li><strong>Before a Casitas booking:</strong> that's our biggest turnover and up to 14 guests. Check it specifically, don't assume.</li>
-</ul></div></div></div>
+<div class="tip warn"><strong>Crew brings their own cleaning chemicals</strong> for the Avila compound &mdash; don't buy those. And <strong>no snacks or welcome wine at Casitas</strong>, Kyle's explicit call. Flora does stock snacks.</div></div></div></div>
 </div>
 
 <div class="card">
-<div class="card-t">Vendors &mdash; You Dispatch Now</div>
-<p style="font-size:14px;color:#444;margin-bottom:14px">Through August, the rule was "note it, tell Kyle, he'll call." That flips September 1. You call the vendor. You schedule them. You route the invoice. Kyle finds out because you told him, not because he arranged it.</p>
+<div class="card-t">SOP &mdash; Vendors</div>
+<div class="tip crit" style="margin-top:0"><strong>The vendor roster lives in Notion &rarr; Contacts, and only there.</strong> It carries every trade, phone, email, covered properties and licence details, and it is kept current. This page deliberately does not copy it &mdash; a second list is how we ended up calling people who'd been replaced.</div>
+
+<div class="tip good"><strong>Always copy Kyle on every vendor text and email.</strong> Not for permission &mdash; so he's never surprised. Example: you see ants across the compound, you text <strong>Jason at Allen's Pests</strong> and put Kyle on the thread. That's the pattern for all of them. Kyle is also adding you to the vendor group chats from here on.</div>
 
 <div class="acc"><div class="acc-h" onclick="ta(this)"><h3>Your authority &mdash; what you can call without asking</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i">
 <table class="rt">
 <thead><tr><th>Situation</th><th>What you do</th></tr></thead>
 <tbody>
-<tr><td><strong>Urgent, blocks the stay</strong><br><span style="font-size:12px;color:#888">No hot water, active leak, broken toilet, broken lock, no power, pest sighting, hot tub down at Flora/Casitas</span></td><td>Call the vendor now. Don't wait for Kyle. Text him after with property / issue / who you called.</td></tr>
-<tr><td><strong>Routine, under $250</strong><br><span style="font-size:12px;color:#888">Handyman batch list, a bulb run, a drain snake</span></td><td>Schedule it yourself. Batch it into one visit.</td></tr>
-<tr><td><strong>Over $250, or anything that looks like a project</strong><br><span style="font-size:12px;color:#888">Appliance replacement, a repair with a real quote, anything touching the structure</span></td><td>Get the quote, send it to Kyle, wait for a yes. Owners pay for these &mdash; that's his conversation.</td></tr>
-</tbody></table>
-<div class="tip good"><strong>Your spend limit is $250 per incident</strong> (Kyle, 15 Oct). Under that, act &mdash; no text needed first, just put it in the weekly note. Over it, get a quote and wait for a yes. It's per incident, not per week: three separate $200 problems are three calls you can make on your own.</div></div></div></div>
+<tr><td><strong>Urgent, blocks the stay</strong><br><span style="font-size:12px;color:#888">No hot water, active leak, broken toilet, broken lock, no power, pests, hot tub down</span></td><td>Call the vendor now. Don't wait. Text Kyle after with property / issue / who you called.</td></tr>
+<tr><td><strong>Routine, under $250</strong></td><td>Schedule it yourself. Batch it into one visit.</td></tr>
+<tr><td><strong>Over $250, or anything that looks like a project</strong></td><td>Get the quote, send it to Kyle, wait for a yes. Owners pay for these &mdash; that's his conversation.</td></tr>
+</tbody>
+</table>
+<div class="tip good"><strong>$250 per incident</strong> (Kyle, 15 Oct) &mdash; per incident, not per week. Three separate $200 problems are three calls you can make on your own.</div></div></div></div>
 
-<div class="acc"><div class="acc-h" onclick="ta(this)"><h3>Scheduling around guests &mdash; the part that bites</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><ul class="tl">
-<li><strong>Open the Hostaway calendar before you give a vendor a time.</strong> Never book a vendor into an occupied unit without asking the guest first.</li>
-<li><strong>Best window is a turnover day, 11 AM &ndash; 2 PM</strong> &mdash; guest gone, cleaner there to let them in, done before the 3 PM check-in.</li>
-<li><strong>Second-best is a vacant gap night.</strong> Look for the empty days on the calendar and aim work at them.</li>
-<li><strong>Tell the group chat</strong> any time a vendor will be on-site during a turnover, so the crew isn't surprised and parking works out.</li>
-<li>If work has to happen mid-stay, tell the guest before the vendor knocks. Never let a stranger show up at a door unannounced.</li>
-</ul>
-<div class="tip crit"><strong>Flora Farm: neighborhood construction ends 31 Oct,</strong> daytime only, final weeks. Rates are already discounted and it's disclosed in the listing, but guests will still mention it. Don't be caught off guard &mdash; it's known, it's temporary, it's daytime only.</div></div></div></div>
+<div class="acc"><div class="acc-h" onclick="ta(this)"><h3>Casitas Estate takes the most &mdash; by a long way</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><p style="font-size:13px;color:#444;margin-bottom:10px">It's 13 acres, six buildings, a pool, a hot tub and a septic system, and it carries more vendors than the rest of the portfolio combined &mdash; pool, pest, landscaping, appliances, grounds. Check its Notion page before you dispatch; several of its vendors changed in October and the estate has its own people for most trades.</p>
+<div class="tip warn"><strong>Two Casitas vendors were replaced on 9 October</strong> &mdash; the landscaper and the pool service. Read the Notion row, not your memory, before you call.</div></div></div></div>
 
-<div class="acc"><div class="acc-h" onclick="ta(this)"><h3>Invoices &mdash; where they go</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><ul class="tl">
-<li><strong>Every vendor invoices Kyle by email.</strong> Give them kyle@solmarestays.com when you book the job &mdash; not at the end, at the start. Vendors who don't get told will hand you a paper invoice and it'll sit in your car.</li>
-<li><strong>Tell them the property name</strong> so it lands on the invoice. "Coral House" on the invoice saves an hour of reconciliation later.</li>
-<li>If you pay a vendor on the company card, that's a receipt like any other &mdash; photograph it, send it, note the property.</li>
-<li><strong>Log the job in Notion Tasks</strong> when it's done: property, what was fixed, who did it, what it cost. This is what a walkthrough six months from now reads.</li>
+<div class="acc"><div class="acc-h" onclick="ta(this)"><h3>Scheduling around guests</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><ul class="tl">
+<li><strong>Open the Hostaway calendar before you give a vendor a time.</strong> Never book into an occupied unit without asking the guest first.</li>
+<li><strong>Best window is a turnover day, 11 AM &ndash; 2 PM</strong> &mdash; guest gone, cleaner there to let them in, done before check-in.</li>
+<li><strong>Tell the crew chat</strong> whenever a vendor will be on site during a turnover, so parking works out.</li>
+<li>If work must happen mid-stay, tell the guest before the vendor knocks.</li>
 </ul></div></div></div>
 
-<div class="acc"><div class="acc-h" onclick="ta(this)"><h3>Still batch the small stuff</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><p style="font-size:13px;color:#444;margin-bottom:10px">Owning vendor dispatch doesn't mean calling one out for a loose screw. The batching rule stands and now it's yours to run:</p><ul class="tl">
-<li>Keep a running handyman list in Notion Tasks, one line per item with the property</li>
-<li>When it hits 6&ndash;8 items or something urgent forces a visit, book him for the whole list</li>
-<li>"I've got 8 things at the compound &mdash; do as many as you can" is the right ask</li>
-</ul><div class="tip warn">A $100/hr callout for a 30-second fix is the most common way to burn owner money. But so is a separate 45-minute trip later &mdash; if you're standing there and it takes two minutes, just do it.</div></div></div></div>
+<div class="acc"><div class="acc-h" onclick="ta(this)"><h3>Invoices and logging</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><ul class="tl">
+<li><strong>Give them kyle@solmarestays.com at the time you book</strong>, not at the end. And tell them the property name so it lands on the invoice.</li>
+<li><strong>Log the job in Notion Tasks</strong> when it's done: property, what was fixed, who did it, cost.</li>
+<li><strong>Batch the small stuff.</strong> Keep a running handyman list; when it hits 6&ndash;8 items, book the whole list. A callout for one loose screw is the easiest way to burn owner money &mdash; but so is a second trip, so if you're standing there and it takes two minutes, just do it.</li>
+</ul></div></div></div>
 </div>
 
 <div class="card">
@@ -800,7 +757,7 @@ ol.steps li::before{content:counter(s);flex-shrink:0;width:22px;height:22px;back
 <div class="acc"><div class="acc-h" onclick="ta(this)"><h3>Non-Urgent: Batch for Handyman</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><p style="font-size:13px;color:#444;margin-bottom:10px">Cosmetic, annoying but livable. Doesn't block the stay.</p><ul class="tl">
 <li>Log it in Notion Tasks (property, issue, who reported, photos)</li>
 <li>Compile into a list for the handyman's next visit</li>
-<li>"Hey Rob, when you come by next week, I have a list of 8 things at the compound. Do as many as you can." (Rob Stone or Chuck &mdash; both in Contacts.)</li>
+<li>"When you come by next week I have a list of 8 things at the compound &mdash; do as many as you can." (Handymen are in Notion &rarr; Contacts.)</li>
 <li>Examples: fire pit pilot button, loose cable on deck, scuff on wall, light bulb</li>
 </ul><div class="tip warn">Don't call a handyman out for one loose screw at $100/hr. Batch it. He'll take 30 seconds when he's already there for other stuff.</div></div></div></div>
 
@@ -1038,8 +995,9 @@ ol.steps li::before{content:counter(s);flex-shrink:0;width:22px;height:22px;back
 <div class="tip good"><strong>Reviews are the only marketing that matters.</strong> A guest deciding between us and the place down the street reads the reviews and reads how the host answered them. You're not writing to the person who left it &mdash; they've already gone home. You're writing to the next hundred people who read it.</div>
 
 <div class="acc"><div class="acc-h" onclick="ta(this)"><h3>The two clocks</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><ul class="tl">
-<li><strong>You have 14 days after checkout to review the guest.</strong> Both sides are blind until both have submitted or the window closes.</li>
-<li><strong>Responding to their review of us</strong> &mdash; do it within a few days while it's near the top of the listing. Don't sit on it for a month.</li>
+<li><strong>Clear reviews once a week.</strong> Same slot every week &mdash; that's the rule, not a suggestion. Respond to what came in and review the guests who checked out.</li>
+<li><strong>You have 14 days after checkout to review the guest.</strong> Both sides are blind until both have submitted or the window closes &mdash; a weekly pass keeps you inside it comfortably.</li>
+<li><strong>Responding to their review of us</strong> &mdash; do it while it's near the top of the listing. Don't sit on it for a month.</li>
 </ul>
 <div class="tip warn"><strong>Set a weekly habit.</strong> Same time each week, open reviews, clear the backlog. Reviews are the easiest thing in this job to let slide because nothing breaks when you do &mdash; and then you look up and there are eleven of them. <strong>Right now there are 133.</strong> Don't try to clear that in one sitting; do ten a week, newest first, and it's gone by Christmas without ever feeling like a project.</div></div></div></div>
 
