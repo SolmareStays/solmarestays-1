@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow"><title>Hannah's Playbook — Solmare Stays</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,'Helvetica Neue',sans-serif;background:#f5f3ef;color:#1a1a1a;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.page{max-width:900px;margin:0 auto;padding:20px 16px 120px}
+
+/* Header */
+.header{background:linear-gradient(135deg,#0f2744,#1a3a5c);color:#fff;padding:40px 36px;border-radius:16px;margin-bottom:24px;position:relative;overflow:hidden}
+.header::after{content:'';position:absolute;top:-50%;right:-20%;width:300px;height:300px;background:radial-gradient(circle,rgba(255,255,255,.05),transparent 70%);border-radius:50%}
+.header .brand{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#a8c0d6;margin-bottom:10px}
+.header h1{font-size:28px;font-weight:700;line-height:1.2;margin-bottom:6px}
+.header .sub{font-size:14px;color:#a8c0d6;margin-bottom:14px}
+.header .pill{display:inline-block;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#d4e4f0;font-size:12px;padding:4px 14px;border-radius:20px}
+
+/* Nav */
+.nav{display:flex;flex-wrap:wrap;gap:6px;padding:4px 0 16px}
+.nav button{padding:12px 18px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid #d4cfc4;background:#fff;color:#555;transition:.2s;user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,.1);touch-action:manipulation;font-family:inherit;line-height:1;-webkit-appearance:none;appearance:none}
+.nav button:hover{border-color:#0f2744;color:#0f2744}
+.nav button.on{background:#0f2744;color:#fff;border-color:#0f2744}
+
+/* Tabs */
+.tab{display:none}.tab.on{display:block}
+
+/* Cards */
+.card{background:#fff;border-radius:12px;padding:28px;margin-bottom:16px;border:1px solid #e4e0d8}
+.card-t{font-size:18px;font-weight:700;color:#0f2744;margin-bottom:16px}
+
+/* Accordion */
+.acc{border:1px solid #e4e0d8;border-radius:10px;overflow:hidden;margin-bottom:10px}
+.acc-h{padding:14px 18px;background:#fafaf8;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none;transition:.15s;touch-action:manipulation;-webkit-tap-highlight-color:rgba(0,0,0,.05)}
+.acc-h:hover{background:#f0ece4}
+.acc-h h3{font-size:14px;font-weight:600;color:#0f2744}
+.acc-h .arr{font-size:11px;color:#999;transition:transform .2s}
+.acc.open .arr{transform:rotate(90deg)}
+.acc-b{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.acc.open .acc-b{max-height:8000px}
+.acc-i{padding:18px;border-top:1px solid #e4e0d8}
+
+/* Property cards */
+.pc{border:1px solid #e4e0d8;border-radius:10px;overflow:hidden;margin-bottom:8px}
+.pc-h{padding:14px 16px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none;touch-action:manipulation;-webkit-tap-highlight-color:rgba(0,0,0,.05)}
+.pc-h:hover{background:#f8f6f2}
+.pc-n{font-weight:700;font-size:14px;color:#0f2744}
+.pc-l{font-size:12px;color:#888;margin-left:8px;font-weight:400}
+.pc-b{max-height:0;overflow:hidden;transition:max-height .3s}
+.pc.open .pc-b{max-height:3000px}
+.pc-inner{padding:0 16px 16px;border-top:1px solid #f0ece4}
+.pg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+@media(max-width:500px){.pg{grid-template-columns:1fr}}
+.pd{background:#fafaf8;border-radius:6px;padding:8px 12px}
+.pd-l{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#999;margin-bottom:1px}
+.pd-v{font-size:13px;color:#333;font-weight:500}
+.pd-m{font-family:'SF Mono',Menlo,monospace;font-size:13px;color:#0f2744;font-weight:600}
+.pn{margin-top:10px;padding:10px 12px;background:#fff8f0;border:1px solid #f0e0c8;border-radius:6px;font-size:13px;color:#6b5020;line-height:1.5}
+.pn strong{color:#3a2a10}
+
+/* Badges */
+.badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;display:inline-block}
+.b-ac{background:#e0f0ff;color:#1a5a96}.b-noac{background:#fff0e0;color:#8b6914}.b-pet{background:#e8f4e8;color:#1a5c2a}
+
+/* Phase cards */
+.ph{border-radius:8px;padding:22px;border:1px solid #e4e0d8;margin-bottom:12px}
+.ph.p1{background:#f7f9fc;border-color:#c8d8e8}.ph.p2{background:#f9f7f4;border-color:#d4c8b8}.ph.p3{background:#f4f9f5;border-color:#b8d4be}
+.ph-lab{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:6px}
+.p1 .ph-lab{color:#2a6496}.p2 .ph-lab{color:#8b6914}.p3 .ph-lab{color:#1a7a3a}
+.ph h3{font-size:16px;font-weight:600;color:#0f2744;margin-bottom:3px}
+.ph .ph-sub{font-size:12px;color:#888;margin-bottom:12px}
+
+/* Lists */
+ul.tl{list-style:none;padding:0}
+ul.tl li{font-size:13px;color:#3a3a3a;padding:4px 0 4px 18px;position:relative;border-bottom:1px solid rgba(0,0,0,.04);line-height:1.5}
+ul.tl li:last-child{border-bottom:none}
+ul.tl li::before{content:'\2014';position:absolute;left:0;color:#aaa}
+
+/* Steps */
+ol.steps{list-style:none;padding:0;counter-reset:s}
+ol.steps li{counter-increment:s;position:relative;padding:10px 0 10px 34px;border-bottom:1px solid #f0ece4;font-size:13px;color:#444;line-height:1.6}
+ol.steps li:last-child{border-bottom:none}
+ol.steps li::before{content:counter(s);position:absolute;left:0;top:11px;width:22px;height:22px;background:#0f2744;color:#fff;border-radius:50%;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}
+
+/* Tips */
+.tip{padding:12px 16px;border-radius:8px;margin:12px 0;font-size:13px;line-height:1.5}
+.tip.info{background:#f0f6ff;border-left:4px solid #2a6496;color:#2a4a64}
+.tip.warn{background:#fff8f0;border-left:4px solid #e0841a;color:#6b4a10}
+.tip.good{background:#f0f9f0;border-left:4px solid #1a7a3a;color:#1a5c2a}
+.tip.crit{background:#fff0f0;border-left:4px solid #c0392b;color:#7a1a1a}
+.tip.warm{background:#fdf8f0;border-left:4px solid #d4b070;color:#5a4a30}
+.tip strong{font-weight:700}
+.card.focus{border:2px solid #d4b070;background:linear-gradient(180deg,#fdfaf4 0%,#fff 180px);box-shadow:0 1px 3px rgba(180,140,60,.10)}
+.card.focus .card-t{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.ftag{font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:#6b4a10;background:#f6e8cc;border:1px solid #e0cba0;padding:3px 9px;border-radius:10px;white-space:nowrap}
+.fstar{color:#d4a017;font-size:19px;line-height:1}
+.nw{white-space:nowrap}
+.metric{display:flex;gap:14px;flex-wrap:wrap;margin:14px 0}
+.metric div{flex:1 1 150px;background:#faf7f1;border:1px solid #e8dfcc;border-radius:8px;padding:12px 14px}
+.metric .mv{font-size:23px;font-weight:700;color:#0f2744;line-height:1.15}
+.metric .ml{font-size:11px;color:#7a6a50;margin-top:3px;line-height:1.35}
+
+/* Tables */
+.rt{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
+.rt th{text-align:left;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#999;padding:8px 10px;border-bottom:2px solid #f0ece4}
+.rt td{padding:8px 10px;border-bottom:1px solid #f0ece4;vertical-align:top}
+.rt tr:last-child td{border-bottom:none}
+.mono{font-family:'SF Mono',Menlo,monospace;font-size:12px;color:#0f2744;font-weight:600}
+
+/* Login cards */
+.lc{border:1px solid #e4e0d8;border-radius:10px;padding:16px 18px;margin-bottom:10px}
+.lc .ln{font-size:14px;font-weight:700;color:#0f2744;margin-bottom:2px;display:flex;align-items:center;gap:8px}
+.lc .ld{font-size:12px;color:#888;margin-bottom:10px}
+.lr{display:flex;align-items:center;gap:8px;margin-bottom:5px;font-size:13px}
+.ll{font-weight:600;color:#555;min-width:65px;flex-shrink:0;font-size:12px}
+.lv{background:#f7f9fc;border:1px solid #ddd;padding:3px 8px;border-radius:5px;font-family:'SF Mono',Menlo,monospace;font-size:12px;color:#0f2744;user-select:all;flex:1}
+.la{color:#2a6496;text-decoration:none;font-weight:600;font-size:13px}
+.la:hover{text-decoration:underline}
+
+/* Status badges */
+.st{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;letter-spacing:.5px;display:inline-block}
+.st-on{background:#e8f4e8;color:#1a5c2a}.st-need{background:#fff0e0;color:#8b6914}.st-later{background:#f0ece4;color:#8b7a50}
+
+/* Timeline */
+.tline{position:relative;padding-left:26px}
+.tline::before{content:'';position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:#e4e0d8}
+.tl-i{position:relative;margin-bottom:22px}
+.tl-i::before{content:'';position:absolute;left:-22px;top:5px;width:10px;height:10px;border-radius:50%;background:#0f2744;border:2px solid #fff;box-shadow:0 0 0 2px #0f2744}
+.tl-i.fut::before{background:#fff;box-shadow:0 0 0 2px #b0bec8}
+.tl-m{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#888;margin-bottom:2px}
+.tl-t{font-size:14px;font-weight:600;color:#0f2744;margin-bottom:3px}
+.tl-b{font-size:13px;color:#555;line-height:1.5}
+.tl-p{display:inline-block;background:#e8f4e8;color:#1a5c2a;font-size:12px;font-weight:700;padding:2px 10px;border-radius:12px;margin-top:5px}
+
+/* Callout */
+.co{border-radius:8px;padding:16px 18px;margin-top:16px;font-size:13px;line-height:1.6}
+.co.warm{background:#fdf8f0;border:1px solid #e0d0b8;color:#5a4a30}
+.co strong{color:#3a2a10}
+
+/* Decision tree */
+.dtree{background:#fafaf8;border:1px solid #e4e0d8;border-radius:10px;padding:20px 22px;margin:10px 0;font-family:'SF Mono',Menlo,monospace;font-size:12px;line-height:2;white-space:pre-wrap;color:#555}
+.dtree .q{color:#8b6914;font-weight:600}.dtree .yes{color:#1a7a3a}.dtree .no{color:#c0392b}.dtree .act{color:#2a6496}
+
+/* Scenario */
+.scenario{background:#fff;border:1px solid #e4e0d8;border-radius:10px;padding:16px 20px;margin-bottom:8px}
+.scenario-q{font-weight:600;font-size:14px;color:#8b6914;margin-bottom:6px}
+.scenario-a{font-size:13px;line-height:1.6;color:#444}
+
+/* Footer */
+.footer{text-align:center;padding-top:24px;font-size:12px;color:#aaa}
+
+/* Phone bar */
+.pbar{position:fixed;bottom:0;left:0;right:0;background:#0f2744;color:#fff;display:flex;justify-content:center;align-items:center;gap:20px;padding:12px 16px;font-size:13px;font-weight:600;z-index:100;box-shadow:0 -4px 20px rgba(0,0,0,.15)}
+.pbar a{color:#a8c0d6;text-decoration:none;display:flex;align-items:center;gap:5px}
+.pbar a:hover{color:#fff}
+
+/* Search */
+.sbox{width:100%;padding:11px 16px;border-radius:10px;border:1px solid #d4cfc4;font-size:14px;background:#fff;margin-bottom:14px;outline:none}
+.sbox:focus{border-color:#0f2744}
+.sbox::placeholder{color:#bbb}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="header">
+<div class="brand">Solmare Stays</div>
+<h1>Hannah's Playbook</h1>
+<div class="sub">What you own, how to do it, and who to call. Everything else lives in Hostaway and Notion.</div>
+<div class="pill">Phase 2 &mdash; live since 1 September 2026</div>
+<div class="pill">Rebuilt 15 Oct 2026</div>
+</div>
+
+<input type="text" class="sbox" placeholder="Search anything &mdash; door codes, walkthrough, claims, propane..." id="sb">
+
+<div class="nav">
+<button class="on" data-t="role">Your Role</button>
+<button data-t="rhythm">Day &amp; Week</button>
+<button data-t="howto">How-Tos</button>
+<button data-t="guests">Guests</button>
+<button data-t="claims">Damage &amp; Claims</button>
+<button data-t="vendors">Vendors</button>
+<button data-t="emergency">Emergency</button>
+</div>
+
+<!-- ======================= ROLE ======================= -->
+<div class="tab on" id="t-role">
+
+<div class="card">
+<div class="card-t">What This Page Is</div>
+<p style="font-size:14px;color:#444;line-height:1.7;margin-bottom:12px">This is <strong>how to do the job</strong> &mdash; what you own, the procedures, the judgment calls, and the handful of things that aren't written down anywhere else. It is deliberately <em>not</em> a reference manual. Property details, reservations, vendor numbers, supply lists: those live in systems that stay current, and a copy here would only go stale and start lying to you.</p>
+<div class="tip good"><strong>The point is that you don't have to ask Kyle.</strong> If something here is wrong, missing, or you had to ask anyway &mdash; tell him. It gets fixed, and the next person doesn't hit it.</div>
+<div class="tip warm"><strong>The job, in two questions:</strong> Are the guests happy? Are the units healthy? If both are genuinely yes, you're done for the day.</div>
+</div>
+
+<div class="card">
+<div class="card-t">What You Own</div>
+<ul class="tl">
+<li><strong>Guest messaging</strong> &mdash; fully yours. Ask Kyle anything, any time.</li>
+<li><strong>Cleaner coordination</strong> &mdash; crew on site daily, early and late checkouts communicated to them, units clean on time.</li>
+<li><strong>Restocking and amenities</strong> &mdash; every item in all 12 units. We never run out.</li>
+<li><strong>Walkthroughs</strong> &mdash; every unit, every week.</li>
+<li><strong>Vendors</strong> &mdash; you dispatch and schedule. Always copy Kyle.</li>
+<li><strong>Damage claims</strong> &mdash; start to finish. 14-day clock.</li>
+<li><strong>Reviews</strong> &mdash; you <strong>respond to guests' reviews of us</strong>, all of them, weekly, no approval needed.</li>
+</ul>
+<div class="tip crit"><strong>Cleaners clean.</strong> They don't repair and they don't restock. They'll help when they can and it's good of them, but it is never expected and never assumed. If a unit has no coffee, that's yours &mdash; whether we were out of stock or it just didn't get put back.</div>
+</div>
+
+<div class="card">
+<div class="card-t">The Standards</div>
+<p style="font-size:13px;color:#444;line-height:1.7;margin-bottom:12px">These are rules, not targets. If one is going to be missed, Kyle wants to know <em>before</em> it is, not after.</p>
+<table class="rt">
+<thead><tr><th>Standard</th><th>The rule</th></tr></thead>
+<tbody>
+<tr><td style="font-weight:600">Turnaround</td><td>Every unit clean <strong>within 29 hours of checkout</strong> &mdash; this is the one that covers 11 of 12</td></tr>
+<tr><td class="nw" style="font-weight:600">Same-day turnovers</td><td><strong>Done on time, no exceptions.</strong> Check status around <strong>2:30 PM</strong>, and if a unit isn't ready, you're on it <strong>30 minutes before check-in</strong></td></tr>
+<tr><td class="nw" style="font-weight:600">Casitas Estate</td><td><strong>Ready by Thursday 3 PM.</strong> It's the one property not on the 29-hour clock &mdash; six buildings, it runs on its own rhythm</td></tr>
+<tr><td style="font-weight:600">Walkthroughs</td><td><strong>Every unit, every week.</strong> Non-negotiable unless Kyle says otherwise</td></tr>
+<tr><td style="font-weight:600">Reviews</td><td><strong>Responded to weekly</strong>, in Hostaway</td></tr>
+<tr><td style="font-weight:600">Supplies</td><td><strong>We should never run out of anything</strong></td></tr>
+<tr><td style="font-weight:600">Spend</td><td><strong>$250 per incident</strong> without asking. Per incident, not per week</td></tr>
+</tbody>
+</table>
+<div class="tip crit"><strong>The bar for a guest arrival:</strong> nobody should ever walk into anything <strong>broken, dirty, or untidy.</strong> That's the whole standard, and everything below is just how we make it true.</div>
+</div>
+
+<div class="card">
+<div class="card-t">Where To Look</div>
+<p style="font-size:13px;color:#444;line-height:1.7;margin-bottom:12px"><strong>Hostaway and Notion do almost all of it.</strong> Schlage and Airbnb are helpers you open for one specific job each.</p>
+<table class="rt">
+<thead><tr><th>System</th><th>What you use it for</th></tr></thead>
+<tbody>
+<tr><td class="nw" style="font-weight:700">Hostaway</td><td>Your main screen. Reservations, calendar, guest messages, <strong>reviews</strong>, cleaning tasks, property details, door code settings. Check it several times a day.</td></tr>
+<tr><td class="nw" style="font-weight:700">Notion</td><td>Vendors, your task list, restock lists, the amenities register, SOPs, the walkthrough log. Everything you record.</td></tr>
+<tr><td class="nw" style="font-weight:600">Schlage Home</td><td>One job: door codes and remote unlock.</td></tr>
+<tr><td style="font-weight:600">Airbnb</td><td>One job: changing a guest's check-in time (Airbnb controls its own door codes off that).</td></tr>
+<tr><td style="font-weight:600">UniFi</td><td>One job: the WiFi. Remote access to the <strong>Avila compound</strong> network only &mdash; the other properties aren't reachable this way.</td></tr>
+<tr><td style="font-weight:600">Guidebook</td><td>What the guest is reading. Point them here first &mdash; guide.solmarestays.com</td></tr>
+<tr><td style="font-weight:600">Claude</td><td>Drafting replies, troubleshooting, working out how to word something. Use it freely.</td></tr>
+</tbody>
+</table>
+<div class="tip info"><strong>Looking for unit details?</strong> WiFi passwords, bed configuration, check-in times, max guests, amenities &mdash; all in <strong>Hostaway</strong> and the <strong>Notion property pages</strong>. They're kept current; this page isn't the place for them.</div>
+</div>
+
+<div class="card">
+<div class="card-t">Communication</div>
+<table class="rt">
+<thead><tr><th>Channel</th><th>Who</th><th>What goes there</th></tr></thead>
+<tbody>
+<tr><td class="nw" style="font-weight:600">Cleaning Crew chat</td><td>Judith, Ulises, Kyle, you</td><td>Turnover updates, "[Unit] &mdash; cleaned", walkthrough videos, issues found, left-behinds. The 10:45 AM brief posts here automatically.</td></tr>
+<tr><td class="nw" style="font-weight:600">Feedback chat</td><td>Kyle, Ulises, you</td><td>All corrections and feedback on cleaning quality. Ulises relays to the crew.</td></tr>
+</tbody>
+</table>
+<div class="tip warn"><strong>Never put feedback in the main crew chat.</strong> It overwhelms them and it lands badly in front of everyone. Corrections go to the Feedback chat, always.</div>
+<div class="tip good"><strong>Phone calls are fine.</strong> Call cleaners, call vendors &mdash; whatever's fastest. Just <strong>loop Kyle in on anything bigger he should know about</strong>, after the fact is fine. The two group chats are for the running record; a call is for getting something done now.</div>
+</div>
+
+<div class="card">
+<div class="card-t">Compensation</div>
+<table class="rt">
+<thead><tr><th>Phase</th><th>Rate</th><th>Notes</th></tr></thead>
+<tbody>
+<tr style="opacity:.5"><td style="font-weight:600">Phase 1 <span style="font-weight:400">&mdash; complete</span></td><td class="mono">$500/mo</td><td>Aug 10 &ndash; Aug 31. Leading messaging and cleaners alongside Kyle.</td></tr>
+<tr style="background:#f4f9f5"><td style="font-weight:600">Phase 2 <span style="font-weight:400">&mdash; active</span></td><td class="mono" style="color:#1a5c2a">$1,000/mo</td><td><strong>Since Sept 1.</strong> Everything on this page.</td></tr>
+<tr><td style="font-weight:600">Phase 3</td><td class="mono" style="color:#1a5c2a">$1,500+/mo</td><td>Full ops + social + the business side. Base $1,500 plus a share of cleaning margins, scope TBD.</td></tr>
+<tr><td style="font-weight:600">Emergency call-out</td><td class="mono" style="color:#1a5c2a">$50/hr</td><td>Unplanned on-site visit, rounded to the nearest half-hour. All phases.</td></tr>
+<tr><td style="font-weight:600">Property referral</td><td class="mono" style="color:#1a5c2a">$1,000</td><td>One-time, for any property you bring in that gets onboarded.</td></tr>
+<tr><td style="font-weight:600">New property bonus</td><td class="mono" style="color:#1a5c2a">$150</td><td>One-time per new property you help onboard (unit 13+).</td></tr>
+</tbody>
+</table>
+<div class="co warm"><strong>On pay:</strong> these are the framework, not a rigid contract. As you take on more, it moves up. The goal is 22 doors by August 2027 and a full operations manager role &mdash; that's the path this is on.</div>
+</div>
+</div>
+
+<!-- ======================= DAY & WEEK ======================= -->
+<div class="tab" id="t-rhythm">
+
+<div class="card">
+<div class="card-t">The Shape Of The Job</div>
+<p style="font-size:14px;color:#444;line-height:1.7;margin-bottom:12px">Most of this role is the same handful of things on a loop: <strong>know what's happening today, keep the units turning, walk them weekly, keep the shelves full, and keep Kyle unsurprised.</strong> The daily stuff is reactive &mdash; messages, turnovers, the odd fire. The weekly stuff is the part that actually keeps the portfolio healthy, and it's the part that quietly slides if you let it.</p>
+<div class="tip good"><strong>If you only protect three things in a week:</strong> every unit walked, every turnover closed in Hostaway the same day, and the restock board shrinking. Everything else recovers on its own. Those three don't.</div>
+</div>
+
+<div class="card">
+<div class="card-t">The Week</div>
+<table class="rt">
+<thead><tr><th>Day</th><th>What it's for</th></tr></thead>
+<tbody>
+<tr><td class="nw" style="font-weight:700">Monday</td><td><strong>Prep the week.</strong> Look ahead: which days have same-day turnovers, what big reservations are coming, which days you'll walk which units, and get Notion up to date. Half an hour here makes the rest of the week obvious.</td></tr>
+<tr><td class="nw" style="font-weight:700">Wednesday</td><td><strong>Avila walkthroughs.</strong> The compound is nine units in a block &mdash; do them together.</td></tr>
+<tr><td class="nw" style="font-weight:700">Friday</td><td><strong>Meeting with Kyle</strong> &mdash; the proper catch-up on the week. See below for what to bring.</td></tr>
+<tr><td class="nw" style="font-weight:700">Once a week</td><td><strong>Reviews</strong> &mdash; pick a slot and keep it. <strong>Restock run</strong> &mdash; one consolidated trip beats five.</td></tr>
+<tr><td class="nw" style="font-weight:700">Rolling</td><td>Arroyo Grande units (Casitas, Flora) fit around the rest &mdash; one trip covers both.</td></tr>
+</tbody>
+</table>
+<div class="tip warm">The days aren't sacred &mdash; if Wednesday is a washout, walk them Thursday. What matters is that by the end of the week every unit has been seen, the reviews are clear, and Kyle knows what you know.</div>
+</div>
+
+<div class="card">
+<div class="card-t">The Day</div>
+<table class="rt">
+<thead><tr><th>Time</th><th>What you do</th></tr></thead>
+<tbody>
+<tr><td style="font-weight:700;white-space:nowrap">Morning</td><td><strong>Open Hostaway.</strong> Who's leaving, who's arriving, what's unread. Scan the crew chat for anything overnight.</td></tr>
+<tr><td style="font-weight:700;white-space:nowrap">9&ndash;10 AM</td><td><strong>Pre-arrival.</strong> Today's arrivals &mdash; codes sorted, early check-in requests handled.</td></tr>
+<tr><td style="font-weight:700;white-space:nowrap">10:45 AM</td><td>Morning brief auto-posts to the crew chat. Check the crew acknowledge it.</td></tr>
+<tr><td style="font-weight:700;white-space:nowrap">11:00 AM</td><td><strong>Checkout.</strong> Cleaners arrive. Guest still there at 11:15 with a same-day arrival &rarr; text Kyle, he'll nudge them. Don't let cleaners wait.</td></tr>
+<tr><td style="font-weight:700;white-space:nowrap">11&ndash;3 PM</td><td><strong>Monitor turnovers.</strong> Your main job midday. Cross-reference the crew chat against Hostaway task status.</td></tr>
+<tr><td style="font-weight:700;white-space:nowrap">1:00 PM</td><td>Progress check. If a same-day turnover hasn't started by now, call the crew.</td></tr>
+<tr><td style="font-weight:700;white-space:nowrap">~2:30 PM</td><td><strong>Phone check on every unit with a check-in today.</strong> Is it done? This is the call that catches a same-day turnover running late while there's still time to do something.</td></tr>
+<tr><td style="font-weight:700;white-space:nowrap">2:45 PM</td><td><strong>Readiness check + first Hostaway sweep.</strong> Every arriving guest: unit clean, check-in info sent, code working.</td></tr>
+<tr><td style="font-weight:700;white-space:nowrap">30 min before check-in</td><td><strong>If a unit still isn't ready, you're on it.</strong> Call the cleaner, get an honest ETA, and message the guest before they're standing at the door.</td></tr>
+<tr><td style="font-weight:700;white-space:nowrap">3:00 PM</td><td><strong>Check-in</strong> &mdash; the 9 compound units. <strong>Hummingbird, Casitas and Flora are 4 PM.</strong></td></tr>
+<tr><td style="font-weight:700;white-space:nowrap">Evening</td><td><strong>Second Hostaway sweep.</strong> Close any task that's actually finished. Two minutes.</td></tr>
+</tbody>
+</table>
+<div class="tip warm"><strong>It's a habit, not a schedule.</strong> Open Hostaway once an hour and scroll. The more you do it the less it feels like anything.</div>
+</div>
+
+<div class="card focus">
+<div class="card-t"><span class="fstar">&#9733;</span> SOP &mdash; Turnovers <span class="ftag">Focus area</span></div>
+<div class="metric">
+<div><div class="mv">96%</div><div class="ml">Turnovers closed in Hostaway same-day, Jun&ndash;Aug</div></div>
+<div><div class="mv" style="color:#b3261e">82%</div><div class="ml">Since 1 September. 19 of 108 late.</div></div>
+</div>
+<p style="font-size:13px;color:#444;line-height:1.7;margin-bottom:12px">The cleans are happening &mdash; it's the <em>recording</em> that slipped. Marking the Hostaway task complete is what sends the guest their "your place is ready" message, so an unmarked clean is an unready unit as far as they know. <strong>Getting back to 96% is the clearest win you have.</strong></p>
+<ol class="steps">
+<li><strong>Confirm the crew is on site</strong> and tell them about any early or late checkout before they arrive.</li>
+<li>Cleaner marks the task <strong>inProgress</strong> on arrival.</li>
+<li>Walkthrough video + "[Unit] &mdash; cleaned" to the crew chat.</li>
+<li>Task marked <strong>completed</strong> in Hostaway. <strong>This is the step that slips.</strong></li>
+<li><strong>You sweep twice</strong> &mdash; 2:45 PM and end of day &mdash; comparing chat against Hostaway, closing anything finished.</li>
+</ol>
+<div class="tip crit"><strong>Hostaway is the record. The group chat is not.</strong> "Done" in the chat changes nothing in the system.</div>
+<div class="tip warn"><strong>The clock: 29 hours from checkout for 11 of the 12.</strong> Casitas is the exception &mdash; it runs to <strong>Thursday 3 PM</strong> instead, because six buildings don't turn in a day.<br><br><strong>Same-day turnovers are the ones that bite.</strong> There's no slack in them at all: the guest leaves at 11 and the next arrives at 3. Check every unit with a check-in <strong>around 2:30</strong>, and if one isn't ready <strong>30 minutes before check-in, that's yours to chase</strong> &mdash; call the cleaner, get a real ETA, and tell the guest before they arrive to a locked or dirty unit. A guest who's been warned is annoyed; a guest who's surprised leaves a review about it.</div>
+<div class="tip warn"><strong>Same-day or not at all.</strong> Our worst lag since September was 19 days, and it started as "I'll do it tonight." After a day nobody can remember whether it was really finished, so it sits.</div>
+</div>
+
+<div class="card focus">
+<div class="card-t"><span class="fstar">&#9733;</span> SOP &mdash; Weekly Walkthroughs <span class="ftag">Non-negotiable</span></div>
+<div class="tip crit" style="margin-top:0"><strong>Every unit, every week. All 12.</strong> One day or spread across three &mdash; doesn't matter. The only way a unit gets skipped is if Kyle says so.</div>
+<div class="tip good"><strong>Do them when units are dirty, not clean.</strong> That sounds backwards and isn't &mdash; a dirty unit is the honest one. You see what guests actually did to it, what broke, and what the clean is about to hide.</div>
+
+<div class="acc"><div class="acc-h" onclick="ta(this)"><h3>Which units, and in what state</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i">
+<p style="font-size:13px;color:#444;line-height:1.7;margin-bottom:10px"><strong>Walk them in whatever state you find them &mdash; dirty, clean or empty.</strong> Each tells you something different:</p>
+<table class="rt">
+<thead><tr><th>State</th><th>Why you go in</th></tr></thead>
+<tbody>
+<tr><td style="font-weight:600">Dirty</td><td><strong>The most useful visit.</strong> You see the damage, the spills and the broken thing before a clean covers it. Prioritise these.</td></tr>
+<tr><td style="font-weight:600">Clean</td><td>A quick confirmation it's actually guest-ready &mdash; and the chance to catch something the cleaner wouldn't flag, like a dead bulb or a drawer that sticks.</td></tr>
+<tr><td class="nw" style="font-weight:600">Empty / between guests</td><td><strong>Don't skip these.</strong> An empty unit gets no eyes on it at all, so it's where a slow leak or a dead fridge sits undiscovered for weeks.</td></tr>
+</tbody>
+</table>
+<div class="tip good"><strong>Group by town, not by schedule.</strong> The nine Avila compound units are within a block &mdash; that's one trip and it's most of your list. Casitas and Flora are both Arroyo Grande, so they go together. In practice: most units will be clean when you get there, so move through those quickly and <strong>spend your time in the dirty and empty ones</strong>.</div></div></div></div>
+<p style="font-size:13px;color:#444;line-height:1.7;margin-bottom:10px"><strong>You're checking three things, and the last two are the ones that get forgotten:</strong></p>
+<table class="rt">
+<thead><tr><th>Clean</th><th>Working</th></tr></thead>
+<tbody>
+<tr><td>Surfaces, floors, bathrooms, linens, tidiness, nothing left behind</td><td><strong>Run the shower.</strong> Hot? Pressure? Drain clearing?</td></tr>
+<tr><td>Beds made properly, pillows right, no stains</td><td><strong>Run the Keurig.</strong> They break. Verify, don't assume.</td></tr>
+<tr><td>Kitchen reset, dishes away, bins empty</td><td><strong>Open every cabinet and drawer.</strong> Hinges, handles, what's inside.</td></tr>
+<tr><td>Outdoor space swept, furniture straight</td><td>Heat/AC, lights and lamps, TV and remotes, fans, locks, windows</td></tr>
+</tbody>
+</table>
+
+<div class="tip crit"><strong>Then walk the outside &mdash; properly.</strong> Do it the way a guest arrives: from the street, up to the door, and all the way round. <strong>The exterior is the first thing they see and the last thing anyone checks.</strong> A spotless interior behind a dead lawn and a filthy BBQ still reads as a place nobody looks after.</div>
+
+<table class="rt">
+<thead><tr><th>Outside</th><th>What you're looking for</th></tr></thead>
+<tbody>
+<tr><td class="nw" style="font-weight:600">The approach</td><td>What they see walking up &mdash; entry, path, steps, door, lighting, house numbers, parking signage. Cobwebs and dead bulbs by a front door are the cheapest fix in this job and the most noticed.</td></tr>
+<tr><td class="nw" style="font-weight:600">Plants</td><td><strong>Watered</strong>, alive, not overgrown. Some units need this weekly &mdash; check the unit's Notion page. Dead plants photograph badly and guests mention them.</td></tr>
+<tr><td class="nw" style="font-weight:600">BBQs</td><td><strong>Check every one.</strong> Clean grates, tools present, cover on, and <strong>gas level &mdash; a guest finding an empty tank mid-cook is a message you'll be answering at 7 PM.</strong> At Flora the <strong>gas tank valve</strong> gets turned off, not just the burner knobs.</td></tr>
+<tr><td class="nw" style="font-weight:600">Outdoor furniture</td><td>Straight, clean, nothing broken or splintered. Cushions where they should be. Umbrellas working.</td></tr>
+<tr><td class="nw" style="font-weight:600">Fire pits &amp; hot tubs</td><td>Lights, runs, holds. Covers on. Where there's wood, there's wood stocked.</td></tr>
+<tr><td class="nw" style="font-weight:600">Trash area</td><td>Bins where they should be, lids on, not overflowing, and findable &mdash; guests ask about this constantly.</td></tr>
+<tr><td class="nw" style="font-weight:600">Bikes &amp; beach gear</td><td>There, usable, tyres up. These get advertised, so they need to exist and work.</td></tr>
+</tbody>
+</table>
+
+<div class="tip good"><strong>The overall sweep &mdash; this is the whole point.</strong> Stand in each space for a second and look at it the way someone arriving would. Not as a checklist, as a first impression. <strong>Anything a guest will look at, you look at first:</strong> the view from the sofa, the thing on the wall that's crooked, the mark on the ceiling, the smell when the door opens. If something would make you hesitate walking in, it's a finding &mdash; log it even if you can't name the category.</div>
+<ol class="steps">
+<li>Open the unit's tab in <strong>Amenities &amp; Supplies</strong> and set <strong>condition</strong> as you go &mdash; Good, Needs Clean, Needs work, Missing. Never leave it blank.</li>
+<li><strong>Anything you mark Missing, add to that property's Restock list as "Out" before you leave the unit.</strong> The two databases only work together &mdash; Missing records that it's gone, Out is what actually puts it on the shopping board and gets it replaced. Marking Missing alone means it stays missing.</li>
+<li>Open its <strong>Restocking</strong> view and flip anything running down.</li>
+<li>Fix what takes two minutes. Log anything bigger in Notion Tasks with a photo.</li>
+<li><strong>Log the visit in the Walkthrough Log.</strong> A walkthrough nobody recorded didn't happen.</li>
+</ol>
+<div class="tip info">Full procedure and the assigned day per property are in <strong>Notion &rarr; SOPs &rarr; Weekly walkthrough</strong>.</div>
+<div class="tip warn"><strong>Batch by location.</strong> The 9 Avila units are within a block. Casitas and Flora are both Arroyo Grande &mdash; one trip. 5&ndash;10 minutes a studio, 10&ndash;15 for the bigger places.</div>
+</div>
+
+<div class="card focus">
+<div class="card-t"><span class="fstar">&#9733;</span> SOP &mdash; Restocking &amp; Amenities <span class="ftag">Focus area</span></div>
+<div class="tip crit" style="margin-top:0"><strong>Every item in every unit is yours &mdash; supplies and amenities both. We should never run out of anything.</strong> The crew will tell you what they're seeing; recording and buying it is on you.</div>
+<p style="font-size:13px;color:#444;line-height:1.7;margin-bottom:10px"><strong>Two databases, one job &mdash; and the goal is green across both.</strong></p>
+<table class="rt">
+<thead><tr><th>Database</th><th>Tracks</th><th>Green</th><th>Today</th></tr></thead>
+<tbody>
+<tr><td class="nw" style="font-weight:600">Restock Requests</td><td>Consumables &mdash; coffee, paper, toiletries, batteries</td><td>All <strong>Restocked</strong></td><td>46 on the board</td></tr>
+<tr><td class="nw" style="font-weight:600">Amenities &amp; Supplies</td><td>The physical stuff &mdash; towels, cookware, fixtures, decor</td><td>All <strong>Good</strong></td><td>1,277 Good, <strong>68 Missing</strong></td></tr>
+</tbody>
+</table>
+<div class="tip warn"><strong>A blank is worse than a missing row.</strong> It looks like data and behaves like nothing &mdash; blank rows drop off every board silently, so nobody ever acts on them. There are blanks in both databases right now. <strong>Never leave a status or condition unset.</strong></div>
+<ul class="tl">
+<li><strong>During every walkthrough</strong> &mdash; set both databases for that unit. Two minutes.</li>
+<li><strong>Ask the crew</strong> what's low. They're in the units daily. Then <em>you</em> record it.</li>
+<li><strong>One consolidated run a week.</strong> Check the Shopping List board first &mdash; it's all four lists in one place.</li>
+<li><strong>Flip to Restocked the same day you shelve it</strong>, or you'll buy it twice.</li>
+</ul>
+<div class="tip crit"><strong>Missing in Amenities &rarr; Out in Restock. Every time.</strong> The two databases do different jobs: <strong>Amenities</strong> records that something is gone from the unit, <strong>Restock</strong> is what actually gets it bought. A row marked Missing and nothing else just sits there being true. If you mark it Missing on a walkthrough, add it to that property's restock list as <strong>Out</strong> before you leave.</div>
+<div class="tip info"><strong>Four lists:</strong> Avila Compound (all 9), Hummingbird, Flora Farm, Casitas Estate. <strong>Statuses are Out / Needed / Ordered / Restocked</strong> &mdash; <em>Out</em> means we own none of it, <em>Needed</em> means we have it and ran down.</div>
+<div class="tip warn"><strong>Brands aren't interchangeable.</strong> Avila toiletries are PAYA gallon refills into wall dispensers; Casitas are R&amp;R Essentials "Lavender Peppermint" minis. Avila coffee is Kirkland Summit Roast K-cups; Casitas is Peet's Major Dickason. The Notion rows carry a Brand / Source column &mdash; follow it. <strong>Don't buy cleaning chemicals for Avila</strong> (crew's cost), and <strong>no snacks or wine at Casitas</strong>.</div>
+<div class="tip good"><strong>Company card is in your Apple Pay.</strong> Photograph every receipt before you leave the car park, send it same-day, note which property or list it was for. That's how the cost reaches the right owner.</div>
+</div>
+
+<div class="card">
+<div class="card-t">SOP &mdash; Reviews (Weekly)</div>
+<div class="tip info" style="margin-top:0"><strong>All reviews are done in Hostaway.</strong> Same slot every week &mdash; respond to the reviews guests have left us. <strong>You're responding to their reviews, not writing reviews of them.</strong></div>
+<p style="font-size:13px;color:#444;line-height:1.7;margin-bottom:10px">You're not writing to the person who left it; they've gone home. You're writing to the next hundred people deciding between us and the place down the street.</p>
+<ul class="tl">
+<li><strong>4&ndash;5 stars:</strong> thank them by name, pick up the <em>one specific thing</em> they mentioned, invite them back. Two or three sentences. <strong>Never the same reply twice</strong> &mdash; they stack up visibly.</li>
+<li><strong>Under 4:</strong> wait until you're not annoyed. Acknowledge the real part plainly. <strong>"We've since replaced it" is the most valuable sentence you can write</strong> &mdash; if it isn't fixed, go fix it, then reply. Correct facts calmly, once. Never argue, never sarcasm, never mention what they paid.</li>
+<li><strong>Anything fixable in a review goes into Notion Tasks.</strong> One guest bothered enough to write it down means ten who didn't.</li>
+<li><strong>The same complaint twice is a project, not a task.</strong> Flag it to Kyle.</li>
+</ul>
+<div class="tip crit"><strong>Send it to Kyle first if</strong> they're asking for money, threatening legal action or a chargeback, alleging something unsafe, naming a neighbour or owner, or it's a Casitas review. Everything else, post it yourself.</div>
+<div class="tip warn"><strong>Where it stands:</strong> since 1 September, 41 of 174 reviews have a reply &mdash; but <strong>every single one under 10 stars is answered</strong>, which is the right priority. The backlog is 133 five-star ones. Ten a week clears it without it ever feeling like a project.</div>
+</div>
+
+<div class="card">
+<div class="card-t">Friday &mdash; The Weekly Meeting With Kyle</div>
+<p style="font-size:14px;color:#444;line-height:1.7;margin-bottom:12px">This is the main one. It's a proper look at the week rather than a status report, and it's where most decisions get made &mdash; so come with the week in your head rather than waiting to be asked.</p>
+<table class="rt">
+<thead><tr><th>Cover</th><th>What that means</th></tr></thead>
+<tbody>
+<tr><td class="nw" style="font-weight:600">The week overall</td><td>How it went. What was busy, what was quiet, anything that caught you out or nearly did.</td></tr>
+<tr><td class="nw" style="font-weight:600">Each unit</td><td><strong>Go through them.</strong> What you saw on the walkthrough, what's changed, what's holding up. Twelve quick updates beats one general "all fine" &mdash; the things worth hearing are usually small and specific.</td></tr>
+<tr><td class="nw" style="font-weight:600">The cleaners</td><td>How the crew are doing. Who's reliable, where turnovers slipped and why, anything Ulises has raised, anything you're having to chase twice.</td></tr>
+<tr><td style="font-weight:600">Repairs</td><td>What's broken, who's coming, what's been sitting too long. Anything a vendor has quoted.</td></tr>
+<tr><td style="font-weight:600">Upgrades</td><td>Things that aren't broken but should be better. You're in these units every week &mdash; you'll spot these before anyone else does.</td></tr>
+<tr><td class="nw" style="font-weight:600">Anything work-wise</td><td><strong>Genuinely anything.</strong> Something that isn't working, something you'd do differently, a process that's more hassle than it's worth, a question you've been sitting on. This part is as much yours as his.</td></tr>
+</tbody>
+</table>
+<div class="tip good"><strong>The most useful thing you can bring is the thing you're unsure you handled right.</strong> It's the easiest item to leave out and the one most worth ten minutes. Nothing goes wrong from asking; things go wrong from nobody mentioning it for three weeks.</div>
+<div class="tip warm"><strong>Between meetings, don't save things up.</strong> Friday is for the full picture, not for holding onto something urgent. Anything that can't wait &mdash; text him when it happens.</div>
+</div>
+</div>
+
+<!-- ======================= HOW-TOS ======================= -->
+<div class="tab" id="t-howto">
+
+<div class="card">
+<div class="card-t">Door Codes &mdash; How They Work</div>
+<table class="rt">
+<thead><tr><th>Channel</th><th>How the code works</th></tr></thead>
+<tbody>
+<tr><td style="color:#FF5A5F;font-weight:700">Airbnb</td><td><strong>Automatic.</strong> Airbnb creates a code on the Schlage lock with the guest's name and dates, and shows it to them in the Airbnb app. You don't make these. You can see them in Schlage under Manage Access.</td></tr>
+<tr><td class="nw" style="color:#3B5998;font-weight:700">Vrbo &amp; Direct</td><td><strong>Manual.</strong> One shared code per property, always active, no dates. <strong>You change these</strong> &mdash; see below. The code reaches the guest in the automated Hostaway check-in message.</td></tr>
+</tbody>
+</table>
+<div class="tip crit"><strong>Because the direct code never expires, it's only as secure as how often we change it.</strong> Every past Vrbo and direct guest still knows the last one.</div>
+</div>
+
+<div class="card">
+<div class="card-t">How To &mdash; Change the Direct / Vrbo Codes</div>
+<div class="tip warn" style="margin-top:0"><strong>How often:</strong> at least <strong>once a month across all properties</strong>, ideally <strong>two or three times a month</strong>. It's a manual job &mdash; nothing does it for you, and nothing reminds you. Put it in your calendar.</div>
+<ol class="steps">
+<li><strong>Pick a new code</strong> for the property. Avoid anything guessable &mdash; not the street number, not 1234.</li>
+<li><strong>Change it in the Schlage Home app</strong> &mdash; open the lock, Manage Access, edit the existing direct code. Don't add a second one; edit the one that's there or you'll end up with a lock full of live codes.</li>
+<li><strong>Change it in Hostaway too</strong> &mdash; listing settings &rarr; additional info &rarr; policies. <strong>This step is the one that gets missed</strong>, and missing it means the automated check-in message sends guests a code that no longer opens the door.</li>
+<li><strong>Check anyone already mid-stay.</strong> Guests get their code in the automated check-in message on the <strong>morning of arrival</strong>, so anyone arriving tomorrow gets the new one automatically &mdash; but someone already in the unit is holding the old code. Message them the new one directly.</li>
+<li>Note the date you did it, so you know when it's due again.</li>
+</ol>
+<div class="tip info"><strong>Not every property is a Schlage lock.</strong> The Avila units and Hummingbird are. <strong>Flora Farm is on Emtek keypads</strong> &mdash; an older system, no app, codes are changed at the keypad itself. <strong>Casitas Estate uses physical keys in a lockbox</strong> &mdash; nothing to rotate, but the lockbox code is sent 24h before arrival, so check it actually went out.</div>
+<div class="tip warn"><strong>Roughly 80% of our bookings are Airbnb</strong>, so a direct code might only get used once or twice between changes. That's fine &mdash; it isn't wasted effort, it's the reason the risk stays small.</div>
+</div>
+
+<div class="card">
+<div class="card-t">How To &mdash; WiFi Problems</div>
+<div class="tip info" style="margin-top:0"><strong>Our WiFi runs on UniFi.</strong> You can get into the <strong>Avila compound</strong> network remotely and actually see what's going on. <strong>The other properties have no remote access</strong> &mdash; for those you're diagnosing by question, not by dashboard.</div>
+
+<p style="font-size:13px;color:#444;line-height:1.7;margin-bottom:10px"><strong>Work through it in this order. Most of it you can do from your phone.</strong></p>
+<ol class="steps">
+<li><strong>How many units are affected?</strong> The nine Avila compound units share one network &mdash; if several guests complain at once, it's the network. One guest alone is almost always local to that unit.</li>
+<li><strong>Avila? Open UniFi and look.</strong> You can see whether access points are online and what's connected. If something's down or struggling, restart it from there and give it 2&ndash;3 minutes.</li>
+<li><strong>Check Spectrum for an outage.</strong> If the service is down in the area, there's nothing to fix at our end &mdash; and that's genuinely useful to know, because it changes what you tell the guest and stops you sending anyone out for nothing.</li>
+<li><strong>No outage, and only one unit?</strong> It's almost certainly local &mdash; a router or access point in that unit. Ask them to unplug it for 30 seconds and plug it back in. That fixes most of these.</li>
+<li><strong>Still down after that</strong> &mdash; that's Cameron (WiFi/tech, Notion Contacts). Text him and copy Kyle.</li>
+</ol>
+<div class="tip good"><strong>What to say meanwhile:</strong> "Let me take a look at it on our end &mdash; give me a couple of minutes." If it's a Spectrum outage, tell them plainly: guests are completely fine with "the provider has an outage in the area, here's what we know." They're not fine with silence.</div>
+<div class="tip warn"><strong>Busy weekends genuinely do slow the compound</strong> &mdash; nine units on one network. That's a real explanation and worth saying, but check UniFi before you reach for it, or you'll use it on a night something is actually broken.</div>
+<div class="tip crit"><strong>If you don't have UniFi access yet, get Kyle to set you up and walk it once.</strong> It's the difference between fixing this from your sofa and losing an evening to it.</div>
+</div>
+
+<div class="card">
+<div class="card-t">How To &mdash; Early Check-In</div>
+<div class="dtree"><span class="q">"Can we check in early?"</span>
+  |
+  +-- <span class="q">ASKED DAYS AHEAD?</span>
+  |   +-- <span class="act">"Totally! Message us the morning of and we'll let</span>
+  |      <span class="act">you know as soon as it's ready."</span>
+  |      <span class="yes">Never promise. Never give a time.</span>
+  |
+  +-- <span class="q">MORNING OF -- same-day turnover?</span>
+  |   +-- <span class="yes">YES</span> --> <span class="act">"We've got a checkout this morning so we need</span>
+  |   |        <span class="act">the time to clean. Plan on [3/4 PM] and we'll</span>
+  |   |        <span class="act">let you know if it's ready sooner."</span>
+  |   |
+  |   +-- <span class="no">NO -- unit is already clean</span>
+  |              <span class="act">"For sure, it's all ready -- come anytime</span>
+  |              <span class="act">after 1 PM!"</span>
+  |              <span class="yes">Never earlier than 1 PM.</span>
+  |
+  +-- <span class="q">CLEAN JUST FINISHED?</span>
+     +-- <span class="act">"Good news -- it's all set, head over whenever."</span>
+
+<span class="q">THEN:</span>
+  +-- <span class="yes">Airbnb</span>  --> change the check-in time in the Airbnb app
+  |            (that's what releases their code early)
+  +-- <span class="no">Vrbo/Direct</span> --> just message them. Code already works.</div>
+<div class="tip crit"><strong>Never invent a time.</strong> Don't say "ready in 30 minutes" unless the Hostaway task is marked complete. A false promise once sent a guest into a dirty unit.</div>
+</div>
+
+<div class="card">
+<div class="card-t">How To &mdash; Late Checkout</div>
+<p style="font-size:13px;color:#444;margin-bottom:10px"><strong>Generally no</strong>, but use judgment.</p>
+<ul class="tl">
+<li><strong>Default:</strong> "Checkout's at 11 &mdash; we need the time to get it ready. You're welcome to leave bags and enjoy the area though!"</li>
+<li><strong>Never</strong> when there's a same-day turnover, on a weekend, or when a last-minute booking could land.</li>
+<li><strong>Rare exception:</strong> quiet midweek day, nothing arriving, lovely guest wants an extra hour. Fine.</li>
+<li><strong>Casitas</strong> offers paid late checkout &mdash; Kyle approves those.</li>
+<li>Never mention how long they've stayed. Never say "I'll check" &mdash; it implies a yes.</li>
+</ul>
+</div>
+
+<div class="card">
+<div class="card-t">How To &mdash; Guest Locked Out</div>
+<ol class="steps">
+<li><strong>Unlock it remotely in the Schlage app.</strong> Get them inside first &mdash; that's the priority whether it's 2 PM or 2 AM. Everything else can wait.</li>
+<li>Then work out why: is the code active, is it the right lock, did it sync? Try resending it.</li>
+<li>If the smart lock won't play, send them to the emergency lockbox.</li>
+<li>If that fails too, call Kyle.</li>
+<li>On-site visit = <strong>$50/hr call-out</strong>.</li>
+</ol>
+</div>
+</div>
+
+<!-- ======================= GUESTS ======================= -->
+<div class="tab" id="t-guests">
+
+<div class="card">
+<div class="card-t">How It Works</div>
+<p style="font-size:14px;color:#444;margin-bottom:12px">Messages from Airbnb, Vrbo and direct bookings all land in Hostaway. You reply there and it syncs back. You never need to log into Airbnb or Vrbo to answer someone.</p>
+<div class="tip good"><strong>The whole point of your role:</strong> Kyle gets texted by one person instead of thirty guests every weekend. You're the filter &mdash; which doesn't mean you're on your own. Ask him anything, especially early on.</div>
+</div>
+
+<div class="card">
+<div class="card-t">How To Talk To Guests</div>
+<ul class="tl">
+<li>Be yourself &mdash; friendly, helpful, to the point. Two or three sentences is plenty.</li>
+<li>Read what they actually said and answer <em>that</em>.</li>
+<li>No "Dear", no sign-off, no "we apologize for the inconvenience". Just talk.</li>
+<li>Contractions always. "Totally", "for sure", "definitely" are all fine.</li>
+<li>If they're excited, match it. If they're frustrated, be honest and direct.</li>
+</ul>
+<div class="tip good"><strong>The 80% rule.</strong> If you're 80% sure, send it. An 80% right answer in ten minutes beats a perfect one in four hours. <em>"Let us know if that doesn't sort it, but try this"</em> covers most of troubleshooting. Use Claude to draft anything you're stuck on.</div>
+</div>
+
+<div class="card">
+<div class="card-t">Yours vs Kyle's</div>
+<div class="tip good" style="margin-top:0"><strong>Default: you handle it and keep Kyle looped in.</strong> That's the shift &mdash; it's no longer a list of things to hand off. You run the conversation, you make the call, and you tell him what happened. <strong>Escalate when you genuinely don't know</strong>, not when it's merely awkward.</div>
+<div class="acc"><div class="acc-h" onclick="ta(this)"><h3>Yours &mdash; handle it, loop Kyle in</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><ul class="tl">
+<li>WiFi, parking, amenities, checkout instructions, recommendations</li>
+<li>Early check-in and late checkout</li>
+<li>Door codes and lock troubleshooting</li>
+<li><strong>Pest reports</strong> &mdash; take it seriously, never downplay, get the vendor moving, tell Kyle</li>
+<li><strong>Cancellations and booking modifications</strong></li>
+<li><strong>Mattress and bedding complaints</strong></li>
+<li><strong>Upset guests</strong> &mdash; acknowledge fast, stay honest, keep hold of it</li>
+<li>Anything you can work out from the guidebook, Hostaway or Notion</li>
+</ul></div></div></div>
+<div class="acc"><div class="acc-h" onclick="ta(this)"><h3>Still Kyle's</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><ul class="tl">
+<li><strong>Money out</strong> &mdash; refunds, discounts, compensation, pricing. Never discuss it with a guest.</li>
+<li>Legal threats and chargebacks</li>
+<li>Owner communication</li>
+<li>Neighbour relations</li>
+<li>Casitas events and occupancy violations</li>
+<li>Anything over $250, and anything that's become a negotiation</li>
+</ul></div></div></div>
+<div class="tip warm"><strong>"I don't know" is the trigger, not "this is uncomfortable."</strong> An upset guest or a cancellation is yours even though neither is fun. Something you've genuinely never seen, or anything with money moving outward, goes to Kyle &mdash; and the honest version of that is "I'm not sure how to handle this one," which is always a fine thing to send him.</div>
+</div>
+
+<div class="card">
+<div class="card-t">Messages You Can Skip</div>
+<ul class="tl">
+<li>Thank-yous under about 60 characters</li>
+<li>"On our way" / "omw"</li>
+<li>"Figured it out" / "nevermind"</li>
+<li>Emoji-only messages, and platform automated messages</li>
+</ul>
+<div class="tip info"><strong>Inbox hygiene:</strong> the eyeball icon marks a message unread again. Use it like email &mdash; if it's not for now, come back to it.</div>
+</div>
+
+<div class="card">
+<div class="card-t">Common Situations</div>
+
+<div class="scenario"><div class="scenario-q">"The WiFi is slow / down"</div><div class="scenario-a">Check it from your phone first &mdash; see <strong>How-Tos &rarr; Check or Reset the Internet</strong>. Password is in Hostaway and their guidebook. Busy weekends genuinely slow the compound mesh; say so, it's true.</div></div>
+
+<div class="scenario"><div class="scenario-q">"Do you have AC?"</div><div class="scenario-a">Check the unit in Hostaway before answering &mdash; it varies, and some units have heat but no AC. If it's a no: "No AC in this one, but the evenings cool right down and there are ceiling fans and good cross-ventilation. Most guests are totally comfortable."</div></div>
+
+<div class="scenario"><div class="scenario-q">"Can we bring our dog?"</div><div class="scenario-a">Only some units are pet-friendly and the fee differs &mdash; check Hostaway for that listing. If theirs isn't: "Not pet-friendly unfortunately, but we've got a couple that are &mdash; want me to check availability?" Casitas needs prior approval, so escalate.</div></div>
+
+<div class="scenario"><div class="scenario-q">"I can't find my door code"</div><div class="scenario-a">Airbnb guest: it's in the Airbnb app under their trip, and visible to you in Schlage. Vrbo or direct: it's in their Hostaway check-in message. Send it directly either way.</div></div>
+
+<div class="scenario"><div class="scenario-q">Something's broken mid-stay</div><div class="scenario-a">"That's not right &mdash; let me get it sorted." <strong>Never promise a timeline.</strong> If it blocks the stay, call the vendor now (Notion Contacts) and copy Kyle. If it's cosmetic, log it in Notion Tasks for the next maintenance window.</div></div>
+
+<div class="scenario"><div class="scenario-q">"We found bugs" / pest report</div><div class="scenario-a">Yours. <strong>Never downplay it</strong> &mdash; "Really sorry, let me get this handled right now." Get the pest vendor out (Notion Contacts), copy Kyle on the thread. Tell Kyle straight away too, because he may want to offer something, and that part is his.</div></div>
+
+<div class="scenario"><div class="scenario-q">"The bed is uncomfortable"</div><div class="scenario-a">Yours. Every unit has the same mattress, so there's nothing to swap &mdash; but don't say "they're all the same" either. Offer what you can: an extra mattress topper, more pillows, a different room if there is one. If they push toward a refund, that's where Kyle comes in.</div></div>
+
+<div class="scenario"><div class="scenario-q">Guest wants to cancel or change dates</div><div class="scenario-a">Yours now. Check the calendar and the booking's cancellation terms in Hostaway and handle the modification. <strong>If it involves money moving back to them, stop and get Kyle</strong> &mdash; the change is yours, the refund is his.</div></div>
+
+<div class="scenario"><div class="scenario-q">Guest is upset &mdash; properly upset</div><div class="scenario-a">Yours to hold. Acknowledge fast and honestly: "That's not right, let me get this sorted." Don't get defensive, don't over-explain, don't promise a timeline you can't keep. Fix what can be fixed and tell Kyle what happened. <strong>The only line you don't cross is money</strong> &mdash; the moment they ask for a refund or compensation, that's Kyle's.</div></div>
+
+<div class="scenario"><div class="scenario-q">Guest left something behind</div><div class="scenario-a">Ask the crew. If found: "We found it! Happy to post it &mdash; send us an address. Shipping would be on you." Crew should always set aside found items, never bin them.</div></div>
+
+<div class="scenario"><div class="scenario-q">Guest wants to phone you</div><div class="scenario-a">"We're quickest on messages &mdash; what can I help with?" If they insist, Kyle.</div></div>
+
+<div class="scenario"><div class="scenario-q">Cleaner can't make it, or a guest won't leave</div><div class="scenario-a">Both go to Kyle fast. A missed cleaner on a same-day turnover is a fire drill. A guest still there at 11:15 &mdash; Kyle messages them, you keep the crew moving.</div></div>
+</div>
+</div>
+
+<!-- ======================= CLAIMS ======================= -->
+<div class="tab" id="t-claims">
+
+<div class="card">
+<div class="card-t">The 14-Day Clock</div>
+<div class="tip crit" style="font-size:15px"><strong>Airbnb damage claims must be filed within 14 days of the guest's checkout.</strong> Not from when you noticed. Not from when the cleaner mentioned it. And if another guest checks in before that, the window closes sooner.</div>
+<p style="font-size:14px;color:#444;line-height:1.7;margin:14px 0 0">Damage found on a Monday is worth money on Monday and worth nothing three weeks later, no matter how good the photos are. <strong>If you see damage, start the claim the same day</strong> &mdash; while you're still holding the phone with the pictures on it. You can always withdraw a request; you cannot reopen an expired one.</p>
+<div class="tip warn"><strong>This has already cost us.</strong> A Palm House claim &mdash; all the sheets, a duvet, pillows, fully photographed &mdash; sat in a group chat until it expired. Everything needed to get paid existed. Nobody filed it.</div>
+</div>
+
+<div class="card">
+<div class="card-t">Is It Actually a Claim?</div>
+<table class="rt">
+<thead><tr><th>Claim it</th><th>Cost of doing business</th></tr></thead>
+<tbody>
+<tr><td>Wine, makeup, blood or fake tan that won't wash out</td><td>Linens going thin and grey after two years</td></tr>
+<tr><td>Burns, rips, pet damage, cigarette holes</td><td>A pilling towel</td></tr>
+<tr><td>Broken furniture, cracked TV, holes in a wall</td><td>A scuff on a baseboard</td></tr>
+<tr><td>Smoke smell needing treatment</td><td>Normal cooking smells</td></tr>
+<tr><td>Missing towels, decor, kitchen kit, keys</td><td>A missing spoon</td></tr>
+<tr><td>Hours of extra cleaning beyond a normal turnover</td><td>Dishes in the sink, full bins</td></tr>
+<tr><td>Pet accident where no pet was declared</td><td>Sand everywhere. It's a beach.</td></tr>
+</tbody>
+</table>
+<div class="tip good"><strong>The honest test:</strong> would a reasonable person say the guest caused it, and will it cost real money to put right? If you're unsure, <strong>photograph it anyway</strong> &mdash; deciding later is free, photographing later is impossible.</div>
+
+<table class="rt">
+<thead><tr><th>What it'll cost</th><th>What you do</th></tr></thead>
+<tbody>
+<tr><td style="font-weight:700;white-space:nowrap">$50 or less</td><td><strong>Let it go.</strong> Don't file, don't chase it. It costs more in time and goodwill than it returns.</td></tr>
+<tr><td style="font-weight:700;white-space:nowrap">$50 &ndash; $100</td><td><strong>Your judgement &mdash; and the question is "how were they?"</strong> Lovely guests who had an accident and told us: let it go. Guests who trashed it, hid it, or were difficult all week: file it.</td></tr>
+<tr><td style="font-weight:700;white-space:nowrap">$100 or more</td><td><strong>File it.</strong> That's the rule. If something about it makes you hesitate, file it anyway and ask Kyle &mdash; the 14-day clock doesn't pause while you think.</td></tr>
+</tbody>
+</table>
+<div class="tip warn"><strong>Still photograph everything, including the small stuff.</strong> Two $40 items from the same stay is an $80 claim, and three of them is a pattern worth knowing about. The threshold decides whether you <em>file</em> &mdash; not whether you look.</div>
+</div>
+
+<div class="card">
+<div class="card-t">Build the Evidence</div>
+<ol class="steps">
+<li><strong>Photos.</strong> Wide shot showing which room, then close-ups. More than you think. Don't strip the timestamps.</li>
+<li><strong>The "before".</strong> The cleaner's walkthrough video from the <em>previous</em> turnover proves it was fine when this guest arrived. This is the quiet reason those videos matter.</li>
+<li><strong>The cost.</strong> A receipt, a screenshot of the replacement listing, or a written quote. A number with nothing behind it gets denied.</li>
+<li><strong>The reservation.</strong> Guest name, property, exact dates, channel. From Hostaway.</li>
+<li><strong>Who found it and when.</strong> "Judith, at the Tuesday turnover, around 11:30." Written down.</li>
+</ol>
+<div class="tip info"><strong>Tell the crew what you need:</strong> one wide shot showing which unit and room, not just a close-up of the stain. A close-up of a stained sheet could be any sheet in the portfolio.</div>
+</div>
+
+<div class="card">
+<div class="card-t">Filing &mdash; Airbnb</div>
+<p style="font-size:13px;color:#444;margin-bottom:10px">About 80% of bookings, so this is the path you'll use most. It's the <strong>Resolution Center</strong>, under the reservation.</p>
+<ol class="steps">
+<li>Within 14 days of checkout, open the reservation and start a reimbursement request.</li>
+<li><strong>Itemize.</strong> "Linens" is weak. "Queen fitted sheet, $34 &mdash; red wine, wouldn't wash out" is strong. Attach photos and the cost to each line.</li>
+<li><strong>Keep it factual.</strong> What was damaged, when, what it costs. No apologising, no arguing. You're documenting, not persuading.</li>
+<li><strong>The guest has 24 hours</strong> to pay, part-pay, decline or ignore.</li>
+<li><strong>If they don't pay in full, escalate to Airbnb</strong> under Host damage protection. <strong>"They said no" is the halfway point, not the end.</strong></li>
+<li>Log the outcome in Notion either way, and put it in your weekly note.</li>
+</ol>
+<div class="tip warn"><strong>Reviews and claims collide.</strong> A guest just asked for money sometimes leaves a bad review, and the windows overlap. Don't let that stop you &mdash; the deadline is real. If a claim is big enough that the review risk matters, tell Kyle <em>before</em> you file.</div>
+</div>
+
+<div class="card">
+<div class="card-t">Other Channels</div>
+<table class="rt">
+<thead><tr><th>Channel</th><th>How you recover</th></tr></thead>
+<tbody>
+<tr><td style="color:#3B5998;font-weight:600">Vrbo</td><td>Different system, different deadline, handled in the Vrbo dashboard. <strong>Don't assume Airbnb's 14 days.</strong> Do the first one with Kyle; gather the same evidence regardless.</td></tr>
+<tr><td style="font-weight:600">Direct</td><td>No platform, no protection, no deposit. Recovery means invoicing the guest &mdash; that's a money conversation, so it's <strong>Kyle's</strong>. Your job is still the evidence pack, same day, same standard.</td></tr>
+<tr><td class="nw" style="font-weight:600">Casitas Estate</td><td><strong>The only property with a damage deposit.</strong> Also our biggest unit and most expensive to put right. Walk it carefully after every checkout.</td></tr>
+<tr><td style="font-weight:600">Everywhere else</td><td>Deposit is $0 by design &mdash; the platform's protection <em>is</em> the deposit. Which is exactly why the 14-day window is the whole ballgame.</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="card">
+<div class="card-t">Stains &mdash; the Everyday Case</div>
+<ol class="steps">
+<li>Crew photographs the item at the turnover and posts it to the crew chat</li>
+<li><strong>You pull it out of the chat that day</strong> &mdash; a photo in a group chat is not a record, it scrolls away</li>
+<li>Does it wash out, or is the item dead? If Judith couldn't shift it, it's dead.</li>
+<li>Dead: replacement cost + photos + reservation &rarr; file it</li>
+<li><strong>Replace the item first</strong> so the unit isn't short for the next guest. Paperwork second.</li>
+</ol>
+</div>
+
+<div class="card">
+<div class="card-t">Yours vs Kyle's</div>
+<div class="tip good"><strong>Rule of thumb:</strong> money coming <em>in</em> from a guest who broke something is yours to chase. Money going <em>out</em> to a guest &mdash; refunds, discounts, goodwill &mdash; is always Kyle's.</div>
+<p style="font-size:13px;color:#444;margin-top:10px"><strong>Straight to Kyle:</strong> anything that becomes a negotiation, anything where they're asking for a refund <em>and</em> we're asking them for money, direct-booking recovery, four-figure damage, insurance, legal threats, anything involving an owner, and the decision to let something go for goodwill.</p>
+</div>
+</div>
+
+<!-- ======================= VENDORS ======================= -->
+<div class="tab" id="t-vendors">
+
+<div class="card">
+<div class="card-t">The Roster Lives in Notion</div>
+<div class="tip crit" style="margin-top:0"><strong>Notion &rarr; Contacts has every vendor</strong> &mdash; trade, phone, email, which properties they cover, licence and insurance details. It's kept current. This page deliberately doesn't copy it; the copy that used to sit here had drifted badly, missing several vendors entirely while still naming two who'd been replaced.</div>
+<div class="tip good"><strong>Call them. Text them. Whatever's fastest.</strong> You don't need permission to contact a vendor. <strong>Always copy Kyle</strong> on the text or email, and he's adding you to the vendor group chats from here on.<br><br>Example: ants across the compound &rarr; text Jason at Allen's Pests, put Kyle on it. That's the pattern for all of them.</div>
+<div class="tip warm"><strong>Get familiar with the whole roster &mdash; names, faces, trades, which properties they cover.</strong> Read through Notion Contacts properly once rather than meeting each one at an emergency. The goal is that you're comfortable picking up the phone to any of them without checking first, because the moment you need the plumber is never the moment to work out who the plumber is.<br><br><strong>If you think someone's missing &mdash; a trade we don't seem to have, or a name you've heard Kyle mention that isn't in there &mdash; ask him.</strong> The roster only stays good if the gaps get reported.</div>
+</div>
+
+<div class="card">
+<div class="card-t">Your Authority</div>
+<table class="rt">
+<thead><tr><th>Situation</th><th>What you do</th></tr></thead>
+<tbody>
+<tr><td><strong>Urgent &mdash; blocks the stay</strong><br><span style="font-size:12px;color:#888">No hot water, active leak, broken toilet or lock, no power, pests, hot tub down</span></td><td>Call the vendor now. Don't wait for Kyle. Text him after: property, issue, who you called.</td></tr>
+<tr><td><strong>Routine, under $250</strong></td><td>Schedule it yourself. Batch it into one visit.</td></tr>
+<tr><td><strong>Over $250, or a real project</strong><br><span style="font-size:12px;color:#888">Appliance replacement, anything with a quote, anything structural</span></td><td>Get the quote, send it to Kyle, wait for a yes. Owners pay for these &mdash; his conversation.</td></tr>
+</tbody>
+</table>
+<div class="tip good"><strong>$250 is per incident, not per week.</strong> Three separate $200 problems are three calls you can make on your own.</div>
+</div>
+
+<div class="card">
+<div class="card-t">Casitas Takes The Most</div>
+<p style="font-size:13px;color:#444;line-height:1.7">Thirteen acres, six buildings, a pool, a hot tub and a septic system. It carries <strong>more vendors than the rest of the portfolio combined</strong> &mdash; pool, pest, landscaping, appliances, grounds &mdash; and it has its own people for most trades. <strong>Check its Notion page before you dispatch</strong>, and read the row rather than going from memory: two of its vendors changed in October.</p>
+</div>
+
+<div class="card">
+<div class="card-t">Scheduling &amp; Invoices</div>
+<ul class="tl">
+<li><strong>Open the Hostaway calendar before you give anyone a time.</strong> Never book into an occupied unit without asking the guest.</li>
+<li><strong>Best window is a turnover day, 11 AM &ndash; 2 PM</strong> &mdash; guest gone, cleaner there to let them in, done before check-in.</li>
+<li><strong>Tell the crew chat</strong> whenever a vendor will be on site during a turnover, so parking works out.</li>
+<li>Work mid-stay? Tell the guest before the vendor knocks. Never let a stranger turn up at a door unannounced.</li>
+<li><strong>Give them kyle@solmarestays.com when you book</strong>, not at the end &mdash; and the property name, so it lands on the invoice.</li>
+<li><strong>Log the job in Notion Tasks</strong>: property, what was done, who did it, cost.</li>
+</ul>
+<div class="tip warn"><strong>Batch the small stuff.</strong> Keep a running handyman list; when it hits six or eight items, book the whole lot. A call-out for one loose screw is the easiest way to burn owner money &mdash; but so is a second trip, so if you're standing there and it takes two minutes, just do it.</div>
+</div>
+</div>
+
+<!-- ======================= EMERGENCY ======================= -->
+<div class="tab" id="t-emergency">
+
+<div class="card">
+<div class="card-t">Emergencies</div>
+<div class="tip crit"><strong>Life-threatening: call 911 first.</strong> Then text Kyle.</div>
+<div class="acc"><div class="acc-h" onclick="ta(this)"><h3>Gas smell</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><ol class="steps">
+<li>Tell the guest to leave the unit immediately.</li>
+<li>Call the gas company.</li>
+<li>Call Kyle.</li>
+</ol></div></div></div>
+<div class="acc"><div class="acc-h" onclick="ta(this)"><h3>Maintenance emergency</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><ol class="steps">
+<li>No hot water, broken toilet, active leak, broken lock, safety hazard &mdash; call the vendor directly (Notion Contacts).</li>
+<li>Give them Kyle's email to invoice.</li>
+<li>Text Kyle: property, issue, severity, what you did.</li>
+<li>To the guest: "That's not right, let me get this sorted." <strong>Never promise a timeline.</strong></li>
+<li>On-site visit = $50/hr call-out.</li>
+</ol></div></div></div>
+<div class="acc"><div class="acc-h" onclick="ta(this)"><h3>Angry or upset guest</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><ol class="steps">
+<li>Acknowledge honestly and fast: "That's not right, let me get this sorted."</li>
+<li><strong>Don't engage on refunds or compensation.</strong></li>
+<li>Text Kyle: guest name, property, what they're upset about.</li>
+<li>He makes all resolution decisions.</li>
+</ol></div></div></div>
+<div class="acc"><div class="acc-h" onclick="ta(this)"><h3>Guest locked out</h3><span class="arr">&#9654;</span></div><div class="acc-b"><div class="acc-i"><p style="font-size:13px;color:#444">Full steps under <strong>How-Tos</strong>. Short version: unlock it remotely in Schlage first, diagnose second, lockbox third, Kyle fourth.</p></div></div></div>
+</div>
+
+<div class="card">
+<div class="card-t">Numbers</div>
+<table class="rt">
+<thead><tr><th>Who</th><th>Number</th></tr></thead>
+<tbody>
+<tr><td style="font-weight:700">Emergency</td><td class="mono">911</td></tr>
+<tr><td style="font-weight:700">Kyle &mdash; cell/text</td><td class="mono">(805) 801-6429</td></tr>
+<tr><td style="font-weight:700">Kyle &mdash; business</td><td class="mono">(805) 242-6411</td></tr>
+<tr><td style="font-weight:700">Ulises &mdash; cleaning</td><td class="mono">(805) 631-9084</td></tr>
+<tr><td style="font-weight:700">SLO Police (non-emergency)</td><td class="mono">(805) 781-7312</td></tr>
+<tr><td style="font-weight:700">French Hospital</td><td>1911 Johnson Ave, SLO</td></tr>
+</tbody></table>
+<div class="tip info">Every other number &mdash; vendors, crew, owners &mdash; is in <strong>Notion &rarr; Contacts</strong>.</div>
+</div>
+</div>
+
+<div class="footer">Solmare Stays &middot; Hannah's Playbook &middot; Rebuilt October 15, 2026<br>Role, procedures and how-tos. Everything else lives in Hostaway and Notion.<br>Questions? Text Kyle: (805) 801-6429</div>
+</div>
+
+<div class="pbar">
+<span>Need help?</span>
+<a href="tel:8058016429">Kyle: (805) 801-6429</a>
+<a href="tel:8056319084">Ulises: (805) 631-9084</a>
+</div>
+
+<script>
+document.querySelectorAll('.nav button').forEach(t=>{t.addEventListener('click',()=>{document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('on'));document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));t.classList.add('on');document.getElementById('t-'+t.dataset.t).classList.add('on');window.scrollTo({top:0,behavior:'smooth'})})});
+function ta(h){h.closest('.acc').classList.toggle('open')}
+document.getElementById('sb').addEventListener('input',function(){const q=this.value.toLowerCase().trim();
+if(!q){document.querySelectorAll('.scenario').forEach(s=>s.style.display='');document.querySelectorAll('.acc').forEach(a=>a.classList.remove('open'));return}
+const tabs=document.querySelectorAll('.tab');let found=false;
+tabs.forEach(tab=>{const text=tab.textContent.toLowerCase();if(text.includes(q)&&!found){document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('on'));tabs.forEach(x=>x.classList.remove('on'));const id=tab.id.replace('t-','');document.querySelector('[data-t="'+id+'"]').classList.add('on');tab.classList.add('on');found=true}});
+document.querySelectorAll('.acc').forEach(a=>{if(a.textContent.toLowerCase().includes(q)){a.classList.add('open')}});
+document.querySelectorAll('.scenario').forEach(s=>{s.style.display=s.textContent.toLowerCase().includes(q)?'':'none'})})
+</script>
+</body>
+</html>
