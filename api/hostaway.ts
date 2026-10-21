@@ -67,6 +67,54 @@ const ALLOWED_ORIGINS = new Set([
   'https://solmarestays.com',
 ]);
 
+/**
+ * Strip operational secrets out of any Hostaway listing object before it reaches a
+ * browser.
+ *
+ * 🚨 Measured 2026-10-20 against the LIVE endpoint: an unauthenticated
+ * `POST /api/hostaway {endpoint:"/listings"}` returned all 12 listings with 145 fields
+ * each, including `doorSecurityCode` and `wifiPassword` for every property. The
+ * method+path allowlist above stops the wrong CALLS; nothing was filtering the
+ * RESPONSE, so the allowed calls were the leak.
+ *
+ * Deny-list rather than allow-list on purpose: the front end reads a long tail of
+ * listing fields and an allow-list risks breaking booking. Verified against
+ * src/services/hostaway.ts — of these keys the site reads only `address` and
+ * `publicAddress`, which are kept. Everything removed here is unused by the client.
+ *
+ * ⚠ A new sensitive field added by Hostaway will NOT be caught by this list. The
+ * durable fix is a field allow-list built from a full audit of what the client
+ * actually consumes. This is the immediate stop-the-bleeding version.
+ */
+const LISTING_SECRET_FIELDS = [
+  'wifiPassword', 'wifiUsername', 'doorSecurityCode', 'personalNote',
+  'contactName', 'contactSurName', 'contactPhone1', 'contactPhone2',
+  'contactEmail', 'contactAddress', 'contactCity', 'contactZipCode',
+  'contactCountry', 'invoicingContactName', 'invoicingContactSurName',
+  'invoicingContactEmail', 'invoicingContactPhone1', 'invoicingContactPhone2',
+  'invoicingContactAddress', 'invoicingContactCity', 'invoicingContactZipcode',
+  'invoicingContactCountry', 'propertyRentAmount', 'propertyLicenseNumber',
+  'bookingcomPropertyRoomName', 'specialInstruction', 'doorSecurityCodeInstruction',
+] as const;
+
+function stripSecrets(obj: unknown): unknown {
+  if (Array.isArray(obj)) return obj.map(stripSecrets);
+  if (obj && typeof obj === 'object') {
+    const out: Record<string, unknown> = { ...(obj as Record<string, unknown>) };
+    for (const k of LISTING_SECRET_FIELDS) delete out[k];
+    return out;
+  }
+  return obj;
+}
+
+function redactListingSecrets(data: unknown): unknown {
+  if (data && typeof data === 'object' && 'result' in (data as Record<string, unknown>)) {
+    const d = data as Record<string, unknown>;
+    return { ...d, result: stripSecrets(d.result) };
+  }
+  return stripSecrets(data);
+}
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // CORS headers — echoed back only for origins we own. Same-origin calls from the site
   // itself send no Origin header and are unaffected.
@@ -131,8 +179,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const response = await fetch(url, fetchOptions);
     const data = await response.json();
 
-    // Forward the response status and body
-    return res.status(response.status).json(data);
+    // Forward the response status and body, with secrets stripped.
+    return res.status(response.status).json(redactListingSecrets(data));
   } catch (error) {
     console.error('Hostaway proxy error:', error);
     return res.status(502).json({ error: 'Failed to reach Hostaway API' });
