@@ -123,6 +123,11 @@
   ],
   "redirects": [
     {
+      "source": "/cleaning-guide.html",
+      "destination": "/cleaning-guide-d0fa0ebd4576746f.html",
+      "permanent": false
+    },
+    {
       "source": "/blog/avila-beach-property-management",
       "destination": "/management",
       "permanent": true
