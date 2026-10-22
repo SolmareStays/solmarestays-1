@@ -42,7 +42,7 @@ const faqs = [
   },
   {
     question: 'Why should I book direct instead of through Airbnb or Vrbo?',
-    answer: 'Booking direct with Solmaré Stays guarantees the best available rate. Third-party platforms charge service fees that inflate the price by 10-15%. When you book direct on our website, you skip those fees entirely and get our best-rate guarantee, plus direct communication with our local team from the moment you book.',
+    answer: 'Booking direct means you deal with the local team that cleans and maintains the home, not a platform inbox. Prices vary by date and channel, so compare the full total before you book.',
   },
 ];
 
@@ -153,7 +153,7 @@ const AvilaBeachPage = () => {
     <div className="min-h-screen bg-background">
       <SEO
         title="Avila Beach Vacation Rentals"
-        description="Book the best Avila Beach vacation rentals. Walk to the beach, restaurants, and wineries. Professionally managed homes with hotel-quality standards on California's Central Coast. Best rate guaranteed when you book direct."
+        description="Book the best Avila Beach vacation rentals. Walk to the beach, restaurants, and wineries. Professionally managed homes with hotel-quality standards on California's Central Coast. Book direct with the local team."
         schema={locationSchema}
         breadcrumbs={[
           { name: 'Home', url: 'https://www.solmarestays.com' },
@@ -482,9 +482,9 @@ const AvilaBeachPage = () => {
               {[
                 {
                   icon: Star,
-                  title: 'Best Rate Guarantee',
+                  title: 'Book Direct',
                   description:
-                    'Book direct and skip the 10-15% service fees charged by Airbnb and Vrbo. Our direct rates are always the lowest available.',
+                    'Talk to us, not a platform inbox. Same homes, same crew.',
                 },
                 {
                   icon: ShieldCheck,
@@ -635,7 +635,7 @@ const AvilaBeachPage = () => {
                 Book Your Avila Beach Vacation Rental
               </h2>
               <p className="text-primary-foreground/80 text-lg max-w-2xl mx-auto mb-8">
-                Skip the service fees. Book direct for the best rates on the Central Coast's sunniest beach town.
+                Book direct with the local team that runs the house.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Button variant="hero" size="xl" asChild>

@@ -132,7 +132,7 @@ const PismoBeachPage = () => {
     <div className="min-h-screen bg-background">
       <SEO
         title="Pismo Beach Vacation Rentals"
-        description="Find vacation rentals near Pismo Beach, California. Stay minutes from the pier, Oceano Dunes, and downtown Pismo in professionally managed coastal homes. Best rate guaranteed when you book direct with Solmaré Stays."
+        description="Find vacation rentals near Pismo Beach, California. Stay minutes from the pier, Oceano Dunes, and downtown Pismo in professionally managed coastal homes. Book direct with Solmaré Stays."
         schema={locationSchema}
         breadcrumbs={[
           { name: 'Home', url: 'https://www.solmarestays.com' },
@@ -457,9 +457,9 @@ const PismoBeachPage = () => {
               {[
                 {
                   icon: Star,
-                  title: 'Best Rate Guarantee',
+                  title: 'Book Direct',
                   description:
-                    'No hidden service fees. Our direct booking prices beat Airbnb and Vrbo every time.',
+                    'Talk to us, not a platform inbox. Same homes, same crew.',
                 },
                 {
                   icon: ShieldCheck,
@@ -555,7 +555,7 @@ const PismoBeachPage = () => {
                 Your Pismo Beach Getaway Starts Here
               </h2>
               <p className="text-primary-foreground/80 text-lg max-w-2xl mx-auto mb-8">
-                Book direct for the best rates. No service fees, no surprises — just the coast.
+                Book direct with the local team that runs the house.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Button variant="hero" size="xl" asChild>

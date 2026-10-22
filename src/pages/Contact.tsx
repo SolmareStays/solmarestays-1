@@ -39,8 +39,8 @@ const faqItems = [
     answer: 'Our Avila Beach properties are one to two blocks from the sand — a one to three minute walk. Our Arroyo Grande estate is about 15 minutes from Pismo Beach and 20 minutes from Avila Beach by car. Our San Luis Obispo property is 10 to 15 minutes from the nearest beach.',
   },
   {
-    question: 'How do I save 15% by booking direct?',
-    answer: 'When you book through our website instead of Airbnb or Vrbo, you avoid their service fees — which typically add 12 to 15% to the booking total. Our direct prices reflect this savings. We guarantee our direct rate is the best available rate for any of our properties.',
+    question: 'Why book direct?',
+    answer: 'Booking direct means you deal with the local team that cleans and maintains the home, not a platform inbox. Prices vary by date and channel, so compare the full total before you book.',
   },
   {
     question: 'Do you offer discounts for longer stays?',

@@ -42,7 +42,7 @@ const Index = () => {
       <SEO
         title="Avila Beach Vacation Rentals"
         absoluteTitle="Solmaré Stays — Avila Beach & Central Coast Vacation Rentals"
-        description={`Refined vacation rentals in Avila Beach, Pismo Beach & SLO. ${REVIEWS.totalRounded} guest reviews averaging ${REVIEWS.averageFive} out of 5. Book direct for the best rates.`}
+        description={`Refined vacation rentals in Avila Beach, Pismo Beach & SLO. ${REVIEWS.totalRounded} guest reviews averaging ${REVIEWS.averageFive} out of 5. Book direct with the local team.`}
       />
       <Header />
       <main>

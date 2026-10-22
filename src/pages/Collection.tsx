@@ -92,7 +92,7 @@ const CollectionPage = () => {
     <div className="min-h-screen bg-background">
       <SEO
         title="Browse All Properties"
-        description={`Browse ${PORTFOLIO.properties} vacation rentals in Avila Beach and Arroyo Grande. Studios to private estates sleeping 14. Pet-friendly options available. Book direct and save 15% vs. Airbnb — best rate guaranteed.`}
+        description={`Browse ${PORTFOLIO.properties} vacation rentals in Avila Beach and Arroyo Grande. Studios to private estates sleeping 14. Pet-friendly options available. Book direct with the local team that runs the house.`}
         breadcrumbs={[
           { name: 'Home', url: 'https://www.solmarestays.com/' },
           { name: 'Properties', url: 'https://www.solmarestays.com/collection' },

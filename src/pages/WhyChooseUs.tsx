@@ -39,8 +39,8 @@ const seamlessFeatures = [
   },
   {
     icon: BadgeCheck,
-    title: 'Best Rate Guarantee',
-    description: "We monitor local market rates daily to ensure our direct-booking prices are always fair, competitive, and free from the hidden service fees found on big listing sites.",
+    title: 'Book Direct',
+    description: "Talk to us, not a platform inbox. Same homes, same crew.",
   },
   {
     icon: Smartphone,
@@ -125,7 +125,7 @@ const WhyChooseUsPage = () => {
     <div className="min-h-screen bg-background">
       <SEO
         title={pageData?.title || "Our Philosophy"}
-        description={pageData?.metaDescription || "What sets Solmaré Stays apart. 50-point cleaning standard, 24/7 guest support, local concierge service, and the best rate guarantee. Elevated hospitality on California's Central Coast."}
+        description={pageData?.metaDescription || "What sets Solmaré Stays apart. 50-point cleaning standard, 24/7 guest support, and local concierge service. Elevated hospitality on California's Central Coast."}
         breadcrumbs={[
           { name: 'Home', url: 'https://www.solmarestays.com/' },
           { name: 'Our Philosophy', url: 'https://www.solmarestays.com/philosophy' },
@@ -370,7 +370,7 @@ const WhyChooseUsPage = () => {
                     Ready to Experience the Difference?
                   </h2>
                   <p className="text-primary-foreground/70 text-lg max-w-2xl mx-auto mb-8">
-                    The coast is calling. Book direct for the best rates guaranteed.
+                    The coast is calling. Book direct with the local team.
                   </p>
                   <div className="flex flex-wrap justify-center gap-4">
                     <Button variant="default" size="xl" className="bg-white text-primary hover:bg-white/90" asChild>

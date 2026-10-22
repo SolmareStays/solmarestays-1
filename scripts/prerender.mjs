@@ -55,7 +55,7 @@ const PAGES = [
     title: 'Solmaré Stays — Avila Beach & Central Coast Vacation Rentals',
     // ⚠ Keep in sync with src/data/stats.ts — that file is the source and explains why
     // "1,500+ five-star reviews" was false (1,566 is TOTAL reviews; only 730 are 5-star).
-    description: 'Refined vacation rentals in Avila Beach, Pismo Beach & SLO. {{REVIEW_TOTAL}} guest reviews averaging {{REVIEW_AVG}} out of 5. Book direct for the best rates.',
+    description: 'Refined vacation rentals in Avila Beach, Pismo Beach & SLO. {{REVIEW_TOTAL}} guest reviews averaging {{REVIEW_AVG}} out of 5. Book direct with the local team.',
     h1: 'Avila Beach Vacation Rentals — Book Direct & Save',
     // 🔴 The homepage's LCP element is the hero slider image, and until now it could
     // not paint until React mounted — the same defect that held /management at 9.5s.
@@ -78,7 +78,7 @@ const PAGES = [
     },
     body: `<p>Solmaré Stays manages 12 premium vacation rentals across California's Central Coast — from beachfront bungalows in Avila Beach to a private wine country estate in Arroyo Grande. {{REVIEW_TOTAL}} guest reviews averaging {{REVIEW_AVG}} out of 5 across Airbnb, VRBO, and Google.</p>
 <h2>Why Book Direct with Solmaré Stays?</h2>
-<ul><li>Save 15% vs Airbnb — best rate guaranteed</li><li>No service fees</li><li>Direct communication with our local Avila Beach team</li><li>24/7 guest support</li></ul>
+<ul><li>Book direct with the local team that runs the house</li><li>Talk to us, not a platform inbox</li><li>24/7 guest support</li></ul>
 <h2>Our Locations</h2>
 <ul><li><a href="/avila-beach">Avila Beach</a> — 10 properties, steps from the pier and beach</li><li><a href="/arroyo-grande">Arroyo Grande</a> — private 13-acre wine country estate and a farm cottage</li><li><a href="/pismo-beach">Pismo Beach</a> — our Avila houses are 10 minutes from the Pismo pier</li><li><a href="/san-luis-obispo">San Luis Obispo</a> — 15 minutes to downtown SLO, 20 to Cal Poly</li></ul>
 <h2>Featured Properties</h2>
@@ -112,7 +112,7 @@ const PAGES = [
     },
     faq: [
       { q: "Who is Solmaré Stays?", a: "Solmaré Stays is a small, hands-on vacation rental company based in Pismo Beach, California. It manages 12 short-term rental properties along the Central Coast — ten in Avila Beach and two in Arroyo Grande wine country — on behalf of homeowners, and rents those same properties directly to travelers at solmarestays.com." },
-      { q: "Is it cheaper to book direct than on Airbnb?", a: "Yes. Booking directly at solmarestays.com costs less than the identical property on Airbnb or Vrbo, because those platforms add a guest service fee on top of the nightly rate. Booking direct also means you deal with the local Avila Beach team rather than a platform inbox." },
+      { q: "Why book direct instead of Airbnb or Vrbo?", a: "Booking direct means you deal with the local team that cleans and maintains the home, not a platform inbox. Prices vary by date and channel, so compare the full total before you book." },
       // ⚠ This used to end "One is in San Luis Obispo, walking distance from downtown
       // and Cal Poly." Monterey Heights was the only SLO *city* property and it left
       // the portfolio on 2026-09-04 (PORTFOLIO.sanLuisObispo === 0), so the claim was
@@ -125,7 +125,7 @@ const PAGES = [
   {
     route: '/avila-beach',
     title: 'Avila Beach Vacation Rentals | Solmaré Stays',
-    description: 'Browse luxury vacation rentals in Avila Beach, CA. Steps to the sand, ocean views, pet-friendly options. Book direct with Solmaré Stays for the best rates.',
+    description: 'Browse luxury vacation rentals in Avila Beach, CA. Steps to the sand, ocean views, pet-friendly options. Book direct with Solmaré Stays.',
     h1: 'Avila Beach Vacation Rentals',
     body: `<p>Discover Solmaré Stays' curated collection of vacation rentals in Avila Beach, California. Our properties are located just steps from the sand, offering ocean views, modern amenities, and the authentic Central Coast experience.</p>
 <h2>Why Stay in Avila Beach?</h2>
@@ -235,7 +235,7 @@ const PAGES = [
   {
     route: '/central-coast',
     title: 'Central Coast California Vacation Rentals | Solmaré Stays',
-    description: 'Luxury vacation rentals on California\'s Central Coast. Avila Beach, Pismo Beach, San Luis Obispo, and Arroyo Grande. Book direct for the best rates.',
+    description: 'Luxury vacation rentals on California\'s Central Coast. Avila Beach, Pismo Beach, San Luis Obispo, and Arroyo Grande. Book direct with the local team.',
     h1: 'Central Coast California Vacation Rentals',
     body: `<p>Solmaré Stays manages 12 premium vacation rentals across California's Central Coast, from beachfront bungalows in Avila Beach to a 13-acre wine country estate in Arroyo Grande.</p>
 <h2>Our Locations</h2>
@@ -599,7 +599,7 @@ const PAGES = [
     h1: 'Where to Stay for Cal Poly Graduation & Parents Weekend',
     body: `<p><em>If you're visiting Cal Poly for graduation, move-in weekend, Open House, or a campus tour, here's the honest local guide to where to stay, and when to book before everything sells out.</em></p>
 <h2>The Problem: SLO Sells Out on Cal Poly Weekends</h2>
-<p>San Luis Obispo is a small city with limited hotel inventory, and Cal Poly weekends (spring commencement in June, fall commencement in December, Open House in spring, move-in in September) reliably sell the whole town out. Hotels that normally charge $150 a night list at $400+ with two-night minimums, and the closest ones go first.</p>
+<p>San Luis Obispo is a small city with limited hotel inventory, and Cal Poly weekends (spring commencement in late May, Open House in spring, and move-in before the fall term starts in mid-August) reliably sell the whole town out. Hotels that normally charge $150 a night list at $400+ with two-night minimums, and the closest ones go first.</p>
 <p>The families who have done this before book months ahead. If your student just told you a date, book your lodging this week.</p>
 <h2>Stay at the Beach, Drive 20 Minutes</h2>
 <p>Here's the local secret: <strong>Avila Beach is about 20 minutes from campus.</strong> Families who book our <a href="/avila-beach">Avila Beach vacation rentals</a> get a beach vacation wrapped around the ceremony: morning on the sand, afternoon at commencement, dinner on the promenade. For multi-day trips (move-in especially), the beach base is the better trip.</p>
@@ -608,16 +608,15 @@ const PAGES = [
 <p>Graduations pull grandparents, siblings, and partners into one trip. For big family groups, our <strong>Wine Country Estate</strong> in Arroyo Grande sleeps 14 across a private 13-acre property with a pool and hot tub, about 20 minutes from campus. One house, one kitchen, one celebration, instead of coordinating four hotel rooms. <a href="/group-stays">See group options</a>.</p>
 <h2>When to Book</h2>
 <ul>
-<li><strong>Spring commencement (June):</strong> book by February. This is the single most compressed weekend of the year in SLO.</li>
-<li><strong>Fall commencement (December):</strong> book by October.</li>
-<li><strong>Move-in (September):</strong> book by July.</li>
+<li><strong>Commencement (late May):</strong> book by January. Under Cal Poly's new semester calendar, spring commencement is May 22 and 23, 2027. This is the single most compressed weekend of the year in SLO.</li>
+<li><strong>Move-in (August):</strong> book by June. The fall term starts mid-August.</li>
 <li><strong>Open House / campus tours (spring):</strong> book 6-8 weeks out.</li>
 </ul>
 <h2>Why Book Direct</h2>
-<p>Booking directly at <a href="/collection">solmarestays.com</a> costs less than the same property on Airbnb or Vrbo because there's no platform service fee. And you're dealing with a local team that answers in minutes if anything comes up on your weekend. <a href="/contact">Contact us</a> or call (805) 242-6411 if you want a recommendation for your group size.</p><h2>Why the whole county fills, not just the city</h2><p>Cal Poly has roughly 22,000 students. San Luis Obispo has about 47,000 residents. On commencement weekend a large share of those students' families arrive at once, and the city does not hold that many beds.</p><p>The overflow pushes out in every direction: Avila, Pismo, Arroyo Grande, Morro Bay, Atascadero. By the time the city sells out, so has everything within twenty minutes of it. This is why the advice to book early is not padding.</p><h2>The dates that matter, in order of how fast they go</h2><p>Commencement weekend goes first and goes earliest. Families book it a year ahead, and the larger houses disappear before the small ones because there are fewer of them.</p><p>September move-in fills next, then parents weekend, then home football. Winter and spring are open outside those dates, and a Cal Poly visit in February is a different and much cheaper trip.</p><h2>Logistics nobody tells you until you are there</h2><p>Parking on campus during commencement is the part people underestimate. Arrive far earlier than feels reasonable, and agree a meeting point with your party before you split up, because phone service around the venue gets patchy when several thousand people are in one place.</p><p>Ceremonies run in blocks by college, so your day depends on which one your graduate is in. Check the specific time before booking dinner, and book dinner before you arrive. Restaurants in SLO take reservations weeks out for that weekend.</p><h2>The twenty minute version</h2><p>Avila Beach is about twenty minutes from campus and fifteen from downtown. Highway 101 south, then the Avila Beach Drive exit. No passes, no real traffic outside summer weekends.</p><p>What you trade twenty minutes for: a whole house instead of three rooms, parking you do not fight for, a kitchen on the morning of the ceremony, and somewhere for the rest of the family to go while the graduate does their thing.</p><p>We do not manage anything inside San Luis Obispo city, and that is not an oversight. The city only permits owner-occupied homestays, so whole-home rentals inside the city limits are not legal there.</p><!-- expanded 2026-10-01; mirrors the Sanity body. Re-running scripts/mirror keys off this marker. -->`,
+<p>Booking directly at <a href="/collection">solmarestays.com</a> puts you in touch with a local team that answers in minutes if anything comes up on your weekend. <a href="/contact">Contact us</a> or call (805) 242-6411 if you want a recommendation for your group size.</p><h2>Why the whole county fills, not just the city</h2><p>Cal Poly has roughly 22,000 students. San Luis Obispo has about 47,000 residents. On commencement weekend a large share of those students' families arrive at once, and the city does not hold that many beds.</p><p>The overflow pushes out in every direction: Avila, Pismo, Arroyo Grande, Morro Bay, Atascadero. By the time the city sells out, so has everything within twenty minutes of it. This is why the advice to book early is not padding.</p><h2>The dates that matter, in order of how fast they go</h2><p>Commencement weekend goes first and goes earliest. Families book it a year ahead, and the larger houses disappear before the small ones because there are fewer of them.</p><p>September move-in fills next, then parents weekend, then home football. Winter and spring are open outside those dates, and a Cal Poly visit in February is a different and much cheaper trip.</p><h2>Logistics nobody tells you until you are there</h2><p>Parking on campus during commencement is the part people underestimate. Arrive far earlier than feels reasonable, and agree a meeting point with your party before you split up, because phone service around the venue gets patchy when several thousand people are in one place.</p><p>Ceremonies run in blocks by college, so your day depends on which one your graduate is in. Check the specific time before booking dinner, and book dinner before you arrive. Restaurants in SLO take reservations weeks out for that weekend.</p><h2>The twenty minute version</h2><p>Avila Beach is about twenty minutes from campus and fifteen from downtown. Highway 101 south, then the Avila Beach Drive exit. No passes, no real traffic outside summer weekends.</p><p>What you trade twenty minutes for: a whole house instead of three rooms, parking you do not fight for, a kitchen on the morning of the ceremony, and somewhere for the rest of the family to go while the graduate does their thing.</p><p>We do not manage anything inside San Luis Obispo city, and that is not an oversight. The city only permits owner-occupied homestays, so whole-home rentals inside the city limits are not legal there.</p><!-- expanded 2026-10-01; mirrors the Sanity body. Re-running scripts/mirror keys off this marker. -->`,
     faq: [
       { q: "Where should families stay for Cal Poly graduation?", a: "Book early; SLO sells out for commencement. Our Avila Beach vacation rentals are about 20 minutes from campus and most are 1-2 blocks from the sand, which turns the weekend into a beach trip wrapped around the ceremony. For larger family groups, Wine Country Estate in Arroyo Grande sleeps 14." },
-      { q: "How far in advance should I book lodging for Cal Poly graduation?", a: "For June commencement, book by February. Fall commencement by October, September move-in by July. San Luis Obispo's hotel inventory is small and Cal Poly weekends reliably sell the town out with steep price spikes." },
+      { q: "How far in advance should I book lodging for Cal Poly graduation?", a: "For commencement in late May, book by January. For move-in before the fall term starts in mid-August, book by June. San Luis Obispo's hotel inventory is small and Cal Poly weekends reliably sell the town out with steep price spikes." },
       { q: "Is Avila Beach a good base for visiting Cal Poly?", a: "Yes. Avila Beach is about 20 minutes from campus, and staying there wraps a beach vacation around the campus visit. Solmaré Stays has 10 vacation rentals in Avila Beach, most 1-2 blocks from the sand." }
     ]
   },
@@ -1063,7 +1062,7 @@ function stayHereHtml(route) {
   else if (/cal-poly/.test(slug)) picks = [['wine-country-estate', 'Wine Country Estate (sleeps 14)'], ['la-casita', 'La Casita (sleeps 6)'], ['the-coral-house', 'The Coral House (sleeps 4)']];
   else if (/pet-friendly|dog/.test(slug)) picks = [['wine-country-estate', 'Wine Country Estate'], ['la-casita', 'La Casita'], ['the-deckhouse', 'The Deckhouse']];
   else picks = [['la-casita', 'La Casita (sleeps 6)'], ['the-coral-house', 'The Coral House (sleeps 4)'], ['hummingbird-house', 'Hummingbird House (sleeps 5)']];
-  return `<h2>Where to stay</h2><p>Whole homes on the Central Coast, booked direct \u2014 no platform service fee.</p><ul>${
+  return `<h2>Where to stay</h2><p>Whole homes on the Central Coast, booked direct with the local team.</p><ul>${
     picks.map(([s2, label]) => `<li><a href="/property/${s2}">${label}</a></li>`).join('')
   }<li><a href="/collection">Browse all 12 homes</a></li></ul>`;
 }

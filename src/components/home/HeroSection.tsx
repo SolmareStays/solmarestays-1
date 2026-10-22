@@ -130,7 +130,7 @@ export function HeroSection({ data }: { data?: any }) {
                     Explore Properties
                   </span>
                   <span className="absolute inset-0 z-10 flex items-center justify-center text-base font-medium text-white transition-all duration-500 [transform:translateY(100%)] opacity-0 group-hover:[transform:translateY(0)] group-hover:opacity-100">
-                    Book Direct & Save 15%
+                    Book Direct
                   </span>
                 </Link>
                 <Button
@@ -245,7 +245,7 @@ export function HeroSection({ data }: { data?: any }) {
                       Book Now
                     </Button>
                     <p className="text-[11px] text-white/50 text-center mt-2 leading-relaxed">
-                      Book Direct & Save up to 15%<br />Best Rate Guaranteed
+                      Book direct with the local team<br />that runs the house
                     </p>
                   </div>
                 </div>

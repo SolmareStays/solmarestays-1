@@ -466,7 +466,7 @@ const PetFriendlyPage = () => {
               </h2>
               <p className="text-primary-foreground/80 text-lg max-w-2xl mx-auto mb-8">
                 The coast is calling — for both of you. Browse our pet-friendly rentals, book
-                direct for the best rates, and start planning an Avila Beach vacation the whole
+                direct, and start planning an Avila Beach vacation the whole
                 family can enjoy.
               </p>
               <div className="flex flex-wrap justify-center gap-4">

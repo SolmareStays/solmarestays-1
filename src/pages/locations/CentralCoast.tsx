@@ -59,7 +59,7 @@ const locationSchema = {
   '@type': 'LodgingBusiness',
   name: 'Solmaré Stays - Central Coast California Vacation Rentals',
   description:
-    'Premium vacation rentals on California\'s Central Coast. Properties in Avila Beach, Pismo Beach, San Luis Obispo, and surrounding communities. Professionally managed with best rate guarantee.',
+    'Premium vacation rentals on California\'s Central Coast. Properties in Avila Beach, Pismo Beach, San Luis Obispo, and surrounding communities. Professionally managed by a local team.',
   url: 'https://www.solmarestays.com/central-coast',
   address: {
     '@type': 'PostalAddress',
@@ -112,7 +112,7 @@ const CentralCoastPage = () => {
     <div className="min-h-screen bg-background">
       <SEO
         title="Central Coast California Vacation Rentals"
-        description="Discover premium vacation rentals on California's Central Coast. Properties in Avila Beach, Pismo Beach, and San Luis Obispo. Professionally managed homes with best rate guarantee. Book direct and save."
+        description="Discover premium vacation rentals on California's Central Coast. Properties in Avila Beach, Pismo Beach, and San Luis Obispo. Professionally managed homes. Book direct with the local team."
         schema={locationSchema}
         breadcrumbs={[
           { name: 'Home', url: 'https://www.solmarestays.com' },
@@ -403,7 +403,7 @@ const CentralCoastPage = () => {
                 Why Book Direct with Solmaré Stays
               </h2>
               <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-                We live here. We manage every property personally. And we guarantee the best rates.
+                We live here. We manage every property personally.
               </p>
             </motion.div>
 
@@ -411,9 +411,9 @@ const CentralCoastPage = () => {
               {[
                 {
                   icon: Star,
-                  title: 'Best Rate Guarantee',
+                  title: 'Book Direct',
                   description:
-                    'Book direct and save 10-15% versus Airbnb and Vrbo. No service fees, no hidden costs — just the best price on every stay.',
+                    'Talk to us, not a platform inbox. Same homes, same crew.',
                 },
                 {
                   icon: ShieldCheck,
@@ -509,7 +509,7 @@ const CentralCoastPage = () => {
                 Come See the Central Coast
               </h2>
               <p className="text-primary-foreground/80 text-lg max-w-2xl mx-auto mb-8">
-                Beach, wine, and everything in between. Book direct for the best rates — guaranteed.
+                Beach, wine, and everything in between. Book direct with the local team.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Button variant="hero" size="xl" asChild>

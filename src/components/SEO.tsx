@@ -91,7 +91,7 @@ const lodgingBusinessSchema = {
   url: SITE_URL,
   telephone: CONTACT.phoneSchema,
   description:
-    `Professional vacation rental management on California's Central Coast. ${PORTFOLIO.properties} properties in Avila Beach and Arroyo Grande. From beach bungalows to a wine country estate. ${REVIEWS.totalRounded} guest reviews averaging ${REVIEWS.averageFive} out of 5. Book direct for the best rates.`,
+    `Professional vacation rental management on California's Central Coast. ${PORTFOLIO.properties} properties in Avila Beach and Arroyo Grande. From beach bungalows to a wine country estate. ${REVIEWS.totalRounded} guest reviews averaging ${REVIEWS.averageFive} out of 5. Book direct with the local team.`,
   // ⚠ This is the BUSINESS base (Pismo Beach), not where the homes are. Ten of the
   // twelve properties sit in Avila Beach and two in Arroyo Grande — those addresses
   // come from Hostaway per property. ⛔ Don't conflate the two again.
@@ -140,7 +140,7 @@ const webSiteSchema = {
   name: 'Solmaré Stays',
   url: SITE_URL,
   description:
-    `Vacation rentals on California's Central Coast. ${PORTFOLIO.properties} properties in Avila Beach and Arroyo Grande. From beach bungalows to a wine country estate. Book direct for the best rates.`,
+    `Vacation rentals on California's Central Coast. ${PORTFOLIO.properties} properties in Avila Beach and Arroyo Grande. From beach bungalows to a wine country estate. Book direct with the local team.`,
   publisher: {
     '@type': 'Organization',
     name: 'Solmaré Stays',
@@ -164,7 +164,7 @@ export function SEO({ title, absoluteTitle, description, image, type = 'website'
   const location = useLocation();
   const siteTitle = 'Solmaré Stays';
   const fullTitle = absoluteTitle ?? `${title} | ${siteTitle}`;
-  const defaultDescription = `Refined vacation rentals in Avila Beach, Pismo Beach & SLO. ${REVIEWS.totalRounded} guest reviews averaging ${REVIEWS.averageFive} out of 5. Book direct for the best rates.`;
+  const defaultDescription = `Refined vacation rentals in Avila Beach, Pismo Beach & SLO. ${REVIEWS.totalRounded} guest reviews averaging ${REVIEWS.averageFive} out of 5. Book direct with the local team.`;
 
   // Construct canonical URL safely — aliases point at the page they duplicate.
   const canonicalPath = CANONICAL_ALIASES[location.pathname] ?? location.pathname;

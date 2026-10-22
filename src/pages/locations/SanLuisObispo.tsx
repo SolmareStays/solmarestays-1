@@ -466,9 +466,9 @@ const SanLuisObispoPage = () => {
               {[
                 {
                   icon: Star,
-                  title: 'Best Rate Guarantee',
+                  title: 'Book Direct',
                   description:
-                    'Book direct and save 10-15% versus Airbnb or Vrbo. No service fees, no hidden charges, just straightforward pricing.',
+                    'Talk to us, not a platform inbox. Same homes, same crew.',
                 },
                 {
                   icon: ShieldCheck,
@@ -564,7 +564,7 @@ const SanLuisObispoPage = () => {
                 Book Your San Luis Obispo Getaway
               </h2>
               <p className="text-primary-foreground/80 text-lg max-w-2xl mx-auto mb-8">
-                Experience the happiest city in America. Book direct for the best rates — guaranteed.
+                Experience the happiest city in America. Book direct with the local team.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Button variant="hero" size="xl" asChild>

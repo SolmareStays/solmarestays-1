@@ -20,7 +20,7 @@ import { useProperties } from '@/hooks/useProperties';
 export function StayHereBlock({
   slug,
   heading = 'Where to stay',
-  blurb = 'Whole homes on the Central Coast, booked direct — no platform service fee.',
+  blurb = 'Whole homes on the Central Coast, booked direct with the local team.',
   limit = 3,
 }: {
   /** Blog slug, used to choose which homes are relevant. */

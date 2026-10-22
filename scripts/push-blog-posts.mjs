@@ -373,7 +373,7 @@ _If you're visiting Cal Poly for graduation, move-in weekend, Open House, or a c
 
 ## The Problem: SLO Sells Out on Cal Poly Weekends
 
-San Luis Obispo is a small city with limited hotel inventory, and Cal Poly weekends (spring commencement in June, fall commencement in December, Open House in spring, move-in in September) reliably sell the whole town out. Hotels that normally charge $150 a night list at $400+ with two-night minimums, and the closest ones go first.
+San Luis Obispo is a small city with limited hotel inventory, and Cal Poly weekends (spring commencement in late May, Open House in spring, and move-in before the fall term starts in mid-August) reliably sell the whole town out. Hotels that normally charge $150 a night list at $400+ with two-night minimums, and the closest ones go first.
 
 The families who have done this before book months ahead. If your student just told you a date, book your lodging this week.
 
@@ -389,14 +389,13 @@ Graduations pull grandparents, siblings, and partners into one trip. For big fam
 
 ## When to Book
 
-- **Spring commencement (June):** book by February. This is the single most compressed weekend of the year in SLO.
-- **Fall commencement (December):** book by October.
-- **Move-in (September):** book by July.
+- **Commencement (late May):** book by January. Under Cal Poly's new semester calendar, spring commencement is May 22 and 23, 2027. This is the single most compressed weekend of the year in SLO.
+- **Move-in (August):** book by June. The fall term starts mid-August.
 - **Open House / campus tours (spring):** book 6-8 weeks out.
 
 ## Why Book Direct
 
-Booking directly at [solmarestays.com](/collection) costs less than the same property on Airbnb or Vrbo because there's no platform service fee. And you're dealing with a local team that answers in minutes if anything comes up on your weekend. [Contact us](/contact) or call (805) 242-6411 if you want a recommendation for your group size.
+Booking directly at [solmarestays.com](/collection) puts you in touch with a local team that answers in minutes if anything comes up on your weekend. [Contact us](/contact) or call (805) 242-6411 if you want a recommendation for your group size.
 `,
   },
   {

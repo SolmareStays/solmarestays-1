@@ -280,9 +280,9 @@ export const MARKETS: Market[] = [
     name: 'Arroyo Grande',
     jurisdiction: 'City of Arroyo Grande',
     unincorporated: false,
-    permit: 'open',
+    permit: 'capped',
     permitDetail:
-      'Arroyo Grande permits both homestays and whole-home vacation rentals, but each needs a Minor Use Permit (Plot Plan Review) approved before you operate, plus a city business licence. The rule that decides most applications is separation: a vacation rental cannot be established within 500 feet of an existing short-term rental or a school. In the older parts of town that single constraint rules out a lot of otherwise eligible homes, so the first thing worth checking is what is already licensed around you. Note too that much of the wine country addressed as Arroyo Grande sits outside the city limits and is permitted by the County instead.',
+      'Arroyo Grande has reached its cap of 90 vacation rentals and is not granting new approvals at this time. Arroyo Grande permits both homestays and whole-home vacation rentals, but each needs a Minor Use Permit (Plot Plan Review) approved before you operate, plus a city business licence. The rule that decides most applications is separation: a vacation rental cannot be established within 500 feet of an existing short-term rental or a school. In the older parts of town that single constraint rules out a lot of otherwise eligible homes, so the first thing worth checking is what is already licensed around you. Note too that much of the wine country addressed as Arroyo Grande sits outside the city limits and is permitted by the County instead.',
     totRate: '13.5%',
     totDetail:
       '10% city Transient Occupancy Tax, plus 1.5% for the county Tourism Marketing District and a further 2% for the Arroyo Grande Tourism Business Improvement District.',

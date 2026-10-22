@@ -405,9 +405,9 @@ const ArroyoGrandePage = () => {
               {[
                 {
                   icon: Star,
-                  title: 'Best Rate Guarantee',
+                  title: 'Book Direct',
                   description:
-                    'Book direct and save 10-15% versus Airbnb or Vrbo. No service fees, no hidden charges, just straightforward pricing.',
+                    'Talk to us, not a platform inbox. Same homes, same crew.',
                 },
                 {
                   icon: ShieldCheck,
@@ -503,7 +503,7 @@ const ArroyoGrandePage = () => {
                 Book Your Wine Country Getaway
               </h2>
               <p className="text-primary-foreground/80 text-lg max-w-2xl mx-auto mb-8">
-                Seven private acres of Central Coast wine country — reserved entirely for your group. Book direct for the best rates.
+                Seven private acres of Central Coast wine country — reserved entirely for your group. Book direct with the local team.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Button variant="hero" size="xl" asChild>
