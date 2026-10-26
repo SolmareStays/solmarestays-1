@@ -16,7 +16,7 @@ import heroImage3 from '/home/home-09.webp'
 const defaultSlides = [
   { image: heroImage1, alt: 'Living room opening onto an ocean-view patio in Avila Beach' },
   { image: heroImage2, alt: 'Casitas Estate at dusk' },
-  { image: heroImage3, alt: 'Coastal bedroom with ocean view' },
+  { image: heroImage3, alt: 'Living room opening onto a sunny deck' },
 ];
 
 const guestOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];

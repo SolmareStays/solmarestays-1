@@ -29,7 +29,7 @@ const faqs = [
   },
   {
     question: 'Is Arroyo Grande good for group trips and retreats?',
-    answer: 'Absolutely. Our Casitas Estate in Arroyo Grande is specifically designed for groups — it sleeps up to 14 guests across six king suites on seven private acres. With a pool, hot tub, bocce court, and walking trails, it is ideal for family reunions, corporate retreats, wedding parties, and milestone celebrations. The wine country setting and proximity to beaches make it a uniquely versatile group destination.',
+    answer: 'Absolutely. Our Casitas Estate in Arroyo Grande is specifically designed for groups — it sleeps up to 14 guests across five king suites on 13 private acres. With a pool, hot tub, bocce court, and walking trails, it is ideal for family reunions, corporate retreats, wedding parties, and milestone celebrations. The wine country setting and proximity to beaches make it a uniquely versatile group destination.',
   },
   {
     question: 'What is the weather like in Arroyo Grande?',
@@ -90,7 +90,7 @@ const highlights = [
   },
   {
     icon: TreePine,
-    title: 'Seven Private Acres',
+    title: '13 Private Acres',
     description:
       'Our Casitas Estate sits on 13 acres of rolling vineyard landscape. Private trails, pool, hot tub, and bocce court — all exclusively yours.',
   },
@@ -132,7 +132,7 @@ const ArroyoGrandePage = () => {
     <div className="min-h-screen bg-background">
       <SEO
         title="Arroyo Grande & Wine Country Vacation Rentals"
-        description="Book a wine country estate in Arroyo Grande, California. Private 13-acre estate sleeping 14 with pool, hot tub, and vineyard views. 15 minutes to the beach. Book direct and save."
+        description="Book a wine country estate in Arroyo Grande, California. Private 13-acre estate sleeping 14 with pool, hot tub, and vineyard views. 15 minutes to the beach. Book direct with the local team."
         schema={locationSchema}
         breadcrumbs={[
           { name: 'Home', url: 'https://www.solmarestays.com' },
@@ -203,7 +203,7 @@ const ArroyoGrandePage = () => {
                   </p>
                   <p>
                     Our Casitas Estate in Arroyo Grande takes this location and elevates it into something extraordinary:
-                    seven private acres of vineyard-lined grounds, a 3,700 square foot main house, five private casitas each
+                    13 private acres with a vineyard walking loop, a 3,700 square foot main house, four private casitas each
                     with a king bed and fireplace, a pool, hot tub, bocce court, and walking trails — all reserved exclusively
                     for your group. Talley and Chamisal vineyards are nearby. It is one of the most beloved private estates on
                     the Central Coast, and it is now managed by Solmaré Stays.
@@ -303,24 +303,24 @@ const ArroyoGrandePage = () => {
                 transition={{ duration: 0.8 }}
               >
                 <h2 className="font-serif text-3xl md:text-4xl font-semibold text-foreground mb-6">
-                  Casitas Estate: Seven Acres of Wine Country, Exclusively Yours
+                  Casitas Estate: 13 Acres of Wine Country, Exclusively Yours
                 </h2>
                 <div className="prose prose-lg text-muted-foreground space-y-5 leading-relaxed">
                   <p>
-                    Our flagship Arroyo Grande property is the Casitas Estate — a seven-acre wine country compound that
-                    sleeps up to 14 guests across six private king suites. The estate features a 3,700 square foot Main
-                    House with a full commercial kitchen, bar, and dining room that seats the entire group, plus five
+                    Our flagship Arroyo Grande property is the Casitas Estate — a 13-acre wine country estate that
+                    sleeps up to 14 guests across five private king suites. The estate features a 3,700 square foot Main
+                    House with a full commercial kitchen, bar, and dining room that seats the entire group, plus four
                     private casitas scattered across the grounds, each with its own king bed, fireplace, and en-suite bathroom.
                   </p>
                   <p>
                     The grounds are designed for gathering and relaxation. A private pool and hot tub sit surrounded by
                     vineyard views with no neighbors in sight. A full-size bocce court is tucked into the landscape for
-                    afternoon tournaments. Walking trails wind through the full 13 acres, past oak trees and working
-                    vines, offering the kind of space and privacy that simply does not exist at a hotel or resort.
+                    afternoon tournaments. A private walking loop winds through 7 acres of vineyard and oak trees,
+                    offering the kind of space and privacy that simply does not exist at a hotel or resort.
                   </p>
                   <p>
                     The Casitas Estate is ideal for family reunions, corporate retreats, wedding parties, and milestone
-                    celebrations. It is a whole-estate booking — all six suites, the Main House, pool, hot tub, bocce court,
+                    celebrations. It is a whole-estate booking — all five suites, the Main House, pool, hot tub, bocce court,
                     and all 13 acres are reserved exclusively for your group. No other guests, no shared spaces, no
                     schedules imposed on you.
                   </p>
@@ -503,7 +503,7 @@ const ArroyoGrandePage = () => {
                 Book Your Wine Country Getaway
               </h2>
               <p className="text-primary-foreground/80 text-lg max-w-2xl mx-auto mb-8">
-                Seven private acres of Central Coast wine country — reserved entirely for your group. Book direct with the local team.
+                13 private acres of Central Coast wine country, reserved entirely for your group. Book direct with the local team.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Button variant="hero" size="xl" asChild>

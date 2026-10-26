@@ -271,7 +271,7 @@ _Traveling with your dog? Here's everything you need to know about bringing your
 
 Solmaré Stays offers pet-friendly vacation rentals in Avila Beach that welcome dogs:
 
-- **The Palm House**: King studio with ocean peeks and a private balcony. Fenced area nearby.
+- **The Palm House**: King studio with a private balcony. Fenced area nearby.
 - **The Pine House**: Queen studio with balcony views. Walking distance to the beach.
 - **Wine Country Estate (Arroyo Grande)**: 13-acre private estate with room to roam. Dogs welcome with approval.
 

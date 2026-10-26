@@ -76,13 +76,13 @@ const PAGES = [
       height: 1600,
       box: 'width:100%;height:100vh;object-fit:cover;display:block',
     },
-    body: `<p>Solmaré Stays manages 12 premium vacation rentals across California's Central Coast — from beachfront bungalows in Avila Beach to a private wine country estate in Arroyo Grande. {{REVIEW_TOTAL}} guest reviews averaging {{REVIEW_AVG}} out of 5 across Airbnb, VRBO, and Google.</p>
+    body: `<p>Solmaré Stays manages 12 premium vacation rentals across California's Central Coast — from beach bungalows a block or two from the sand in Avila Beach to a private wine country estate in Arroyo Grande. {{REVIEW_TOTAL}} guest reviews averaging {{REVIEW_AVG}} out of 5 across Airbnb, VRBO, and Google.</p>
 <h2>Why Book Direct with Solmaré Stays?</h2>
 <ul><li>Book direct with the local team that runs the house</li><li>Talk to us, not a platform inbox</li><li>24/7 guest support</li></ul>
 <h2>Our Locations</h2>
 <ul><li><a href="/avila-beach">Avila Beach</a> — 10 properties, steps from the pier and beach</li><li><a href="/arroyo-grande">Arroyo Grande</a> — private 13-acre wine country estate and a farm cottage</li><li><a href="/pismo-beach">Pismo Beach</a> — our Avila houses are 10 minutes from the Pismo pier</li><li><a href="/san-luis-obispo">San Luis Obispo</a> — 15 minutes to downtown SLO, 20 to Cal Poly</li></ul>
 <h2>Featured Properties</h2>
-<ul><li><a href="/property/hummingbird-house"><strong>Hummingbird House</strong></a> — 2BR, rooftop terrace with panoramic ocean views</li><li><a href="/property/la-casita"><strong>La Casita</strong></a> — 2BR beach house, sleeps 6, one minute from the sand</li><li><a href="/property/wine-country-estate"><strong>Wine Country Estate</strong></a> — private 13-acre estate sleeping 14</li><li><a href="/property/the-coral-house"><strong>The Coral House</strong></a> — modern 1BR with bifold doors and ocean views</li></ul>
+<ul><li><a href="/property/hummingbird-house"><strong>Hummingbird House</strong></a> — 2BR, rooftop terrace with panoramic ocean views</li><li><a href="/property/la-casita"><strong>La Casita</strong></a> — 2BR beach house, sleeps 6, one minute from the sand</li><li><a href="/property/wine-country-estate"><strong>Wine Country Estate</strong></a> — private 13-acre estate sleeping 14</li><li><a href="/property/the-coral-house"><strong>The Coral House</strong></a> — modern 1BR with bifold doors</li></ul>
 <p>Browse all <a href="/collection">12 vacation rentals</a> or <a href="/contact">contact us</a> at (805) 242-6411.</p>`,
     schema: {
       "@context": "https://schema.org",
@@ -125,22 +125,22 @@ const PAGES = [
   {
     route: '/avila-beach',
     title: 'Avila Beach Vacation Rentals | Solmaré Stays',
-    description: 'Browse luxury vacation rentals in Avila Beach, CA. Steps to the sand, ocean views, pet-friendly options. Book direct with Solmaré Stays.',
+    description: 'Browse luxury vacation rentals in Avila Beach, CA. Steps to the sand, pet-friendly options. Book direct with Solmaré Stays.',
     h1: 'Avila Beach Vacation Rentals',
-    body: `<p>Discover Solmaré Stays' curated collection of vacation rentals in Avila Beach, California. Our properties are located just steps from the sand, offering ocean views, modern amenities, and the authentic Central Coast experience.</p>
+    body: `<p>Discover Solmaré Stays' curated collection of vacation rentals in Avila Beach, California. Most of our properties are a block or two from the sand, with modern amenities and the authentic Central Coast experience.</p>
 <h2>Why Stay in Avila Beach?</h2>
 <p>Avila Beach is a small seaside village on California's Central Coast, sheltered in a south-facing cove with roughly 3,500 hours of sunshine a year and daytime highs averaging around 68°F. Walk to the pier, enjoy waterfront dining, explore the Bob Jones Trail, or visit nearby hot springs at Sycamore Mineral Springs.</p>
 <h2>Our Avila Beach Properties</h2>
 <ul>
 <li><strong>Hummingbird House</strong> — 2BR/2BA with private rooftop terrace and panoramic ocean views</li>
 <li><strong>La Casita</strong> — Luxury 2BR beach house with chef's kitchen, 1 minute from the sand</li>
-<li><strong>The Coral House</strong> — Modern 1BR with bifold doors and ocean views</li>
+<li><strong>The Coral House</strong> — Modern 1BR with bifold doors</li>
 <li><strong>Shoreline Suite</strong> — Spacious 1BR with full kitchen and balcony</li>
 <li><strong>The Deckhouse</strong> — Historic beach cottage with King bed, sleeps 4</li>
 <li><strong>Emberlight</strong> — Private fire pit bungalow, steps to the beach</li>
 <li><strong>Casa Azul</strong> — Colorful King bed studio with vintage charm</li>
 <li><strong>The Nest</strong> — Intimate couples retreat with King bed</li>
-<li><strong>The Palm House</strong> — Pet-friendly studio with ocean peeks</li>
+<li><strong>The Palm House</strong> — Pet-friendly studio</li>
 <li><strong>The Pine House</strong> — Pet-friendly cottage with balcony views</li>
 </ul>
 <h2>Frequently Asked Questions</h2>
@@ -154,7 +154,7 @@ const PAGES = [
       "@context": "https://schema.org",
       "@type": "LodgingBusiness",
       "name": "Solmaré Stays — Avila Beach Vacation Rentals",
-      "description": "Luxury vacation rentals in Avila Beach, CA. Steps to the sand with ocean views.",
+      "description": "Luxury vacation rentals in Avila Beach, CA. Steps to the sand.",
       "url": `${BASE_URL}/avila-beach`,
       "address": { "@type": "PostalAddress", "addressLocality": "Avila Beach", "addressRegion": "CA", "addressCountry": "US" },
       "geo": { "@type": "GeoCoordinates", "latitude": 35.1797, "longitude": -120.7331 }
@@ -168,7 +168,7 @@ const PAGES = [
   {
     route: '/pismo-beach',
     title: 'Pismo Beach Vacation Rentals | Solmaré Stays',
-    description: 'Find luxury vacation rentals near Pismo Beach, CA. Ocean views, modern amenities, and steps to the sand. Book direct with Solmaré Stays.',
+    description: 'Find luxury vacation rentals near Pismo Beach, CA. Our Avila Beach homes are minutes from the Pismo pier. Book direct with Solmaré Stays.',
     h1: 'Pismo Beach Vacation Rentals',
     body: `<p>Experience California's Central Coast from Solmaré Stays' collection of vacation rentals near Pismo Beach. Our Avila Beach properties are just 5 minutes from Pismo Beach, offering easy access to both towns.</p>
 <h2>About Pismo Beach</h2>
@@ -237,7 +237,7 @@ const PAGES = [
     title: 'Central Coast California Vacation Rentals | Solmaré Stays',
     description: 'Luxury vacation rentals on California\'s Central Coast. Avila Beach, Pismo Beach, San Luis Obispo, and Arroyo Grande. Book direct with the local team.',
     h1: 'Central Coast California Vacation Rentals',
-    body: `<p>Solmaré Stays manages 12 premium vacation rentals across California's Central Coast, from beachfront bungalows in Avila Beach to a 13-acre wine country estate in Arroyo Grande.</p>
+    body: `<p>Solmaré Stays manages 12 premium vacation rentals across California's Central Coast, from beach bungalows a block or two from the sand in Avila Beach to a 13-acre wine country estate in Arroyo Grande.</p>
 <h2>Our Locations</h2>
 <ul>
 <li><a href="/avila-beach">Avila Beach</a> — 10 properties, steps to the sand</li>
@@ -280,7 +280,7 @@ const PAGES = [
     body: `<p>Traveling with your dog? Solmaré Stays offers pet-friendly vacation rentals in Avila Beach. Our pet-friendly properties welcome well-behaved dogs so your whole family can enjoy the Central Coast together.</p>
 <h2>Pet-Friendly Properties</h2>
 <ul>
-<li><strong>The Palm House</strong> — King studio with ocean peeks and private balcony. Pet fee applies.</li>
+<li><strong>The Palm House</strong> — King studio with a private balcony. Pet fee applies.</li>
 <li><strong>The Pine House</strong> — Queen studio with balcony views. Pet fee applies.</li>
 <li><strong>Wine Country Estate</strong> — 13-acre estate with room to roam. Dogs welcome with approval.</li>
 </ul>`,
@@ -569,7 +569,7 @@ const PAGES = [
 <h2>Our Pet-Friendly Rentals</h2>
 <p>Solmaré Stays offers pet-friendly vacation rentals in Avila Beach that welcome dogs:</p>
 <ul>
-<li><strong>The Palm House</strong>: King studio with ocean peeks and a private balcony. Fenced area nearby.</li>
+<li><strong>The Palm House</strong>: King studio with a private balcony. Fenced area nearby.</li>
 <li><strong>The Pine House</strong>: Queen studio with balcony views. Walking distance to the beach.</li>
 <li><strong>Wine Country Estate (Arroyo Grande)</strong>: 13-acre private estate with room to roam. Dogs welcome with approval.</li>
 </ul>
