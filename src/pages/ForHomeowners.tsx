@@ -454,7 +454,10 @@ const ForHomeownersPage = () => {
                         neither a visitor nor a crawler. Owner traffic converted at 0%
                         with it hidden. Keep it above the fold. */}
                     <span className="block text-white font-medium mb-2">
-                      18% of net rental revenue, not a cut of the gross. No long-term contract.
+                      New owners: your first month of management is free.
+                    </span>
+                    <span className="block text-white/90 mb-2">
+                      Plans from 10%, full service typically 18% of net rental revenue, not a cut of the gross. No long-term contract.
                     </span>
                     Ten in Avila Beach, two in Arroyo Grande. Same crew, same pricing engine, same person answering at nine at night.
                   </p>
