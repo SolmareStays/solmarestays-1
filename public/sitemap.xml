@@ -21,6 +21,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.solmarestays.com/permit-check</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.solmarestays.com/experiences</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
