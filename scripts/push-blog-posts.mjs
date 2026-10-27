@@ -580,7 +580,7 @@ Every short-term stay in the county collects lodging tax from guests, and the to
 
 This is a meaningful part of what professional management is for. Solmaré Stays manages 12 vacation rentals across Avila Beach and Arroyo Grande. We operate inside these rules every day, keep licenses current, and handle TOT registration and remittance as part of [full-service management](/management).
 
-If you own a property on the Central Coast and want to know what compliant short-term renting would look like, and what the property could earn, [request a free revenue projection](/management) or call (805) 242-6411.
+If you own a property on the Central Coast and want to know what compliant short-term renting would look like, and what the property could earn, [request a revenue projection](/management).
 `,
   },
 ];
