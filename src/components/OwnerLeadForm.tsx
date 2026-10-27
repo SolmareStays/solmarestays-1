@@ -95,7 +95,7 @@ export const OwnerLeadForm = ({
         throw new Error('Submission failed');
       }
     } catch {
-      toast.error('Something went wrong. Call us at (805) 242-6411.');
+      toast.error('Something went wrong. Please try again in a minute.');
     } finally {
       setIsSubmitting(false);
     }
@@ -158,33 +158,9 @@ export const OwnerLeadForm = ({
       <Turnstile />
 
       <Button type="submit" variant="hero" size="xl" className="w-full" disabled={isSubmitting || isSubmitted}>
-        {isSubmitted ? (<><Check className="w-5 h-5 mr-2" /> Sent! We'll be in touch.</>) : isSubmitting ? (<>Sending...</>) : (<><Send className="w-5 h-5 mr-2" /> Get My Free Revenue Projection</>)}
+        {isSubmitted ? (<><Check className="w-5 h-5 mr-2" /> Sent! We'll be in touch.</>) : isSubmitting ? (<>Sending...</>) : (<><Send className="w-5 h-5 mr-2" /> Get My Revenue Projection</>)}
       </Button>
 
-      {/* The Owner ads sell the phone — "No Call Center. My Cell." — and until
-          2026-09-24 this was the one response channel with zero instrumentation on
-          either platform. A tap here is owner intent and counts as a Lead, same as a
-          form submit: there is no weaker interpretation of someone dialling a
-          property manager from the management page. */}
-      <p className="text-center text-xs text-muted-foreground">
-        Or call us directly at{' '}
-        <a
-          href="tel:+18052426411"
-          className="text-ocean hover:underline"
-          onClick={() => {
-            trackMetaEvent('Lead', {
-              content_name: 'phone_click',
-              content_category: 'owner',
-            });
-            window.gtag?.('event', 'generate_lead', {
-              event_category: 'owner',
-              method: 'phone_click',
-            });
-          }}
-        >
-          (805) 242-6411
-        </a>
-      </p>
     </form>
   );
 };
