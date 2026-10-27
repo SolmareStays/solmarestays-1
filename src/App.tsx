@@ -21,6 +21,7 @@ const ForHomeowners = lazy(() => import("./pages/ForHomeowners"));
 // County-wide owner pages. Per-jurisdiction permit + tax facts, driven by
 // src/data/markets.ts — only verified markets resolve; the rest redirect to the hub.
 const ManagementHub = lazy(() => import("./pages/ManagementHub"));
+const PermitCheck = lazy(() => import("./pages/PermitCheck"));
 const ManagementMarket = lazy(() => import("./pages/ManagementMarket"));
 // Guest-intent landing pages, driven by src/data/guestCollections.ts.
 const GuestCollection = lazy(() => import("./pages/GuestCollection"));
@@ -63,6 +64,7 @@ const App = () => (
                 <Route path="/philosophy" element={<WhyChooseUs />} />
                 <Route path="/management" element={<ForHomeowners />} />
                 <Route path="/vacation-rental-management" element={<ManagementHub />} />
+                <Route path="/permit-check" element={<PermitCheck />} />
                 <Route path="/vacation-rental-management/:city" element={<ManagementMarket />} />
                 <Route path="/cal-poly" element={<GuestCollection />} />
                 <Route path="/wine-country" element={<GuestCollection />} />

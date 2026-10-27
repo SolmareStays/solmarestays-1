@@ -25,6 +25,7 @@ const DESTINATIONS = [
 const FOR_OWNERS = [
   { to: '/management', label: 'Property Management' },
   { to: '/vacation-rental-management', label: 'SLO County Permit Status' },
+  { to: '/permit-check', label: 'STR Permit Check' },
 ] as const;
 
 const STAY_TYPES = [

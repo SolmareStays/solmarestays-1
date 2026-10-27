@@ -4,7 +4,6 @@ import { Footer } from '@/components/layout/Footer';
 import { SEO } from '@/components/SEO';
 import { OwnerLeadForm } from '@/components/OwnerLeadForm';
 import { PUBLISHED_MARKETS, PERMIT_LABEL, type PermitStatus } from '@/data/markets';
-import { CONTACT } from '@/data/stats';
 
 const SITE_URL = 'https://www.solmarestays.com';
 
@@ -159,11 +158,7 @@ const ManagementHub = () => {
           <OwnerLeadForm subject="Property Management Inquiry — SLO County hub" />
           <p className="text-xs text-muted-foreground mt-6">
             Permit rules and tax rates change. Confirm current requirements with the
-            relevant jurisdiction, or call{' '}
-            <a href={CONTACT.phoneHref} className="underline">
-              {CONTACT.phone}
-            </a>
-            .
+            relevant jurisdiction.
           </p>
         </section>
       </main>

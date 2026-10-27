@@ -292,11 +292,8 @@ const ManagementMarket = () => {
             </ul>
             <p className="text-xs text-muted-foreground mt-4">
               Permit rules and tax rates change. Confirm current requirements with{' '}
-              {market.jurisdiction} before making a decision, or call us on{' '}
-              <a href={CONTACT.phoneHref} className="underline">
-                {CONTACT.phone}
-              </a>{' '}
-              and we will walk through your specific address.
+              {market.jurisdiction} before making a decision, or send us the address
+              through the form and we will walk through it.
             </p>
           </section>
         )}

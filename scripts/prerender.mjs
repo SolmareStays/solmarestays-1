@@ -829,7 +829,7 @@ const PAGES = [
  * 🔴 These are not a template with the city name swapped. Each one is anchored on the
  * jurisdiction's actual permit position and lodging tax, because those differ wildly:
  * Pismo Beach has issued no new licence since 2023-11-07, Paso Robles non-hosted
- * permits are at capacity, Morro Bay is mid-audit, the unincorporated county is open.
+ * permits are at capacity, Morro Bay runs a waitlist, the unincorporated county is open.
  * Cloning a page that ignores that would be a doorway page AND wrong.
  */
 const PERMIT_LABEL = {
@@ -871,6 +871,21 @@ PAGES.push({
       url: `${BASE_URL}/vacation-rental-management/${m.slug}`,
     })),
   },
+});
+
+// /permit-check — landing page for the permit ads. Mirrors src/pages/PermitCheck.tsx.
+PAGES.push({
+  route: '/permit-check',
+  title: 'SLO County STR Permit Check — What Does Your Address Allow? | Solmaré Stays',
+  description:
+    'Short-term rental permit status for every San Luis Obispo County jurisdiction, and a check on your own address. Kyle replies within 24 hours.',
+  h1: 'What does your address allow?',
+  body:
+    `<p>Short-term rental rules change from one SLO County jurisdiction to the next, and the mailing address does not tell you which one governs. A home addressed as Arroyo Grande or Paso Robles is often permitted by the County instead. Send the address and Kyle checks which rules apply and whether the property can be licensed. You hear back within 24 hours. No obligation.</p>` +
+    `<h2>Where permits stand today</h2><ul>` +
+    MARKETS.map(m => `<li><a href="/vacation-rental-management/${m.slug}">${m.name}</a>: ${PERMIT_LABEL[m.permit]} (${m.unincorporated ? 'SLO County' : m.jurisdiction.replace(/^City of /, '')})</li>`).join('') +
+    `</ul><p>Open does not mean every parcel qualifies. Avila Beach, for example, has a minimum distance between vacation rentals, and inland the County does not allow one in an ADU or guest house.</p>` +
+    `<h2>Already have a permit?</h2><p>Keep your permit and we run the home under it. New owners: your first month of management is free. Plans from 10%, full service typically 18% of net rental revenue, not a cut of the gross. 30 days notice, no long-term contract.</p>`,
 });
 
 for (const m of MARKETS) {
@@ -1022,6 +1037,7 @@ const SITE_LINKS = {
   'For owners': [
     ['/management', 'Vacation rental property management'],
     ['/vacation-rental-management', 'SLO County permit status by city'],
+    ['/permit-check', 'STR permit check'],
   ],
 };
 
@@ -1621,7 +1637,7 @@ async function main() {
 
       const ownerLines = [
         `- [Vacation rental property management](${BASE_URL}/management): full-service management for San Luis Obispo County homeowners — listing optimization, professional photography, dynamic pricing via PriceLabs, 24/7 local guest support, hotel-standard cleaning, and in-person inspection between every stay. Fee is 18% of net rental revenue (after lodging tax, cleaning and pet fees), not gross.`,
-        `- [Short-term rental permit status by city](${BASE_URL}/vacation-rental-management): which San Luis Obispo County jurisdictions are still issuing short-term rental permits, and what lodging tax each charges. Pismo Beach has issued no new residential licence since 7 November 2023; Paso Robles non-hosted permits are at capacity; Morro Bay is mid-audit; the unincorporated county is open.`,
+        `- [Short-term rental permit status by city](${BASE_URL}/vacation-rental-management): which San Luis Obispo County jurisdictions are still issuing short-term rental permits, and what lodging tax each charges. Pismo Beach has issued no new residential licence since 7 November 2023; Paso Robles non-hosted permits are at capacity; Morro Bay whole-home permits come off a waitlist; the unincorporated county is open.`,
         ...MARKETS.map(m =>
           // ⚠ Atascadero's totRate is "Confirm with city", which reads wrong after
           // "lodging tax" — phrase those as unconfirmed rather than as a figure.
