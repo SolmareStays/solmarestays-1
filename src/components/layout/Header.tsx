@@ -35,7 +35,7 @@ export function Header() {
             <Link to="/" className="flex flex-col items-center group">
               <div className="relative">
                 <img
-                  src="/logo.png"
+                  src="/brand/solmare-stays-colour.svg"
                   alt="Solmaré Stays"
                   draggable="false"
                   className="w-20 h-20 md:w-28 md:h-28 object-contain transition-transform duration-300 group-hover:scale-105"

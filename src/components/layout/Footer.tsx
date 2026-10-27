@@ -79,7 +79,7 @@ export function Footer() {
             <Link to="/" className="flex flex-col items-start gap-1 mb-6 group">
               <div className="relative mb-2">
                 <img
-                  src="/footerlogo.png"
+                  src="/brand/solmare-stays-white.svg"
                   alt="Solmaré Stays"
                   draggable="false"
                   className="w-32 h-32 md:w-40 md:h-40 object-contain transition-transform duration-300 group-hover:scale-105"
